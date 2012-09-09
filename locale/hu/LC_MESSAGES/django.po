@@ -1,0 +1,116 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-08 22:18+0200\n"
+"PO-Revision-Date: 2012-09-08 22:18\n"
+"Last-Translator:   <tuskone16@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Translated-Using: django-rosetta 0.6.8\n"
+
+#: countries/models.py:15 personel/models.py:11 university/models.py:8
+msgid "Country"
+msgstr ""
+
+#: countries/models.py:16
+msgid "Countries"
+msgstr ""
+
+#: personel/models.py:9 report_forms/c1/models.py:92
+msgid "User"
+msgstr "Felhasználó"
+
+#: personel/models.py:10 university/models.py:7 university/models.py:14
+msgid "University"
+msgstr "Egyetem"
+
+#: report_forms/c1/models.py:7
+msgid "Planned"
+msgstr "Tervezett"
+
+#: report_forms/c1/models.py:8
+msgid "Acute"
+msgstr "Azonnali"
+
+#: report_forms/c1/models.py:12
+msgid "No"
+msgstr "Nem"
+
+#: report_forms/c1/models.py:13
+msgid "If yes, specify here"
+msgstr "Ha igen, pontosabban"
+
+#: report_forms/c1/models.py:79
+msgid "Patients ID"
+msgstr ""
+
+#: report_forms/c1/models.py:80
+msgid "Case ID"
+msgstr ""
+
+#: report_forms/c1/models.py:81
+msgid "Date of Birth"
+msgstr ""
+
+#: report_forms/c1/models.py:82
+msgid "Date of Delivery"
+msgstr ""
+
+#: report_forms/c1/models.py:83
+msgid "Number of previous deliveries"
+msgstr ""
+
+#: report_forms/c1/models.py:84
+msgid "Number of earlier deliveries by c-section"
+msgstr ""
+
+#: report_forms/c1/models.py:85
+msgid "The c-section"
+msgstr ""
+
+#: report_forms/c1/models.py:86
+msgid "Weight of newborn"
+msgstr ""
+
+#: report_forms/c1/models.py:87
+msgid "Mother illnes or risk"
+msgstr ""
+
+#: report_forms/c1/models.py:88
+msgid "Specify"
+msgstr ""
+
+#: report_forms/c1/models.py:89
+msgid "DRG Code"
+msgstr ""
+
+#: report_forms/c1/models.py:90
+msgid "Other diagnosises"
+msgstr ""
+
+#: report_forms/c1/models.py:98
+msgid "C-Section Rate"
+msgstr ""
+
+#: report_forms/c1/models.py:99
+msgid "C-Section Rates"
+msgstr ""
+
+#: report_forms/c1/templates/form.html:10
+msgid "Submit"
+msgstr ""
+
+#: university/models.py:15
+msgid "Universities"
+msgstr ""
