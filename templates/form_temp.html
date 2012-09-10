@@ -1,0 +1,6 @@
+{% for field in form %}
+    <tr{% if field.errors %} class="error"{% endif %}>
+        <td>{{ field.label_tag }}: </td>
+        <td {% if field.errors %} class="jq_tool" title='{{ field.errors }}'{% endif %}>{{ field }}</td>
+    </tr>
+{% endfor %}

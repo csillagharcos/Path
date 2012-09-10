@@ -83,6 +83,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'countries',
+
+    'pathstatic',
     'university',
     'personel',
 

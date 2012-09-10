@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<div align="justify" style="text-align: justify;text-justify: auto;">
+    {% blocktrans %}
+    Program: Eva Belicza Dr., Judit Lám Dr., Erika Takács<br />
+    The PATH project by the World Health Organization Regional Office for Europe launched in 2003. The PATH to hospital quality improvement support benchmarking tools (Performance Assessment Tool for quality improvement in Hospitals), which helps hospitals work to assess the results, review, and to the results starting quality improvement activity to other hospitals the practical experience of using.<br />
+    The PATH system goes beyond the traditional economic versus performance, clinical effectiveness of professional-type differentiation, and develop a comprehensive perspective, which includes both clinical effectiveness, efficiency, labor orientation of the reactive control, safety and patient centeredness. The PATH is not just a hospital performance measurement tools, but also focus on the interpretation of the results. The network within the hospital carried out a comparative analysis (benchmarking) will help the hospitals to learn about best practices. The PATH provides support for the initial stages of organizational benchmarking hospitals, sheltered environment for the measurement of culture.<br />
+    The PATH provides four main components of the hospitals: a theoretical framework to evaluate performance, the necessary tools (such as indicators and guides), custom reports, and a national network. The first two components of the WHO Regional Office for Europe provides, while the latter two are adapted to local conditions in the country co-ordinators provide. The indicators include, for example, the current mortality rates, operating room utilization, employee smoking prevalence. In Hungary, the networking features direct contact with representatives of the participating hospitals, and two or three months of work under discussion, participants will discuss the data collection, processing and interpretation of results, dilemmas and experiences.<br /></div>
+    {% endblocktrans %}
+    <a href="http://pathqualityproject.eu/">{% trans "PATH international website" %}</a><br />
+    <img src="{{ STATIC_URL }}/images/emk_logo.jpg" alt="EMK Logo" height=64 /><br />
+{% endblock content %}

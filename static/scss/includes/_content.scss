@@ -1,0 +1,17 @@
+/* content.scss */
+
+#wrapper{
+  width: 900px;
+  margin: 0 auto;
+}
+
+.error input, .error select{
+  border: 1px solid red;
+}
+
+#content_block{
+  text-align: center;
+  table{
+    margin: 0 auto;
+  }
+}

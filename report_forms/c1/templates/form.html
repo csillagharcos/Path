@@ -1,12 +1,27 @@
 {% extends "base.html" %}
 {% load i18n %}
-
 {% block content %}
 <form action="" method="POST" enctype="multipart/form-data">
     <table>
         {% csrf_token %}
-        {{ form.as_table }}
+        {% include "form_temp.html" %}
     </table>
     <input type="submit" value="{% trans "Submit" %}">
 </form>
 {% endblock content %}
+
+{% block js %}
+<script src="{{ STATIC_URL }}js/jquery.tooltip.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".jq_tool").tooltip()
+    $("#id_weight_of_the_newborn").ready(function(){
+        $(this).val($(this).val().replace(" g",""))
+    }).focus(function(){
+        $(this).val($(this).val().replace(" g",""))
+    }).blur(function(){
+        var content = $(this).val($(this).val() + " g")
+    })
+})
+</script>
+{% endblock js %}

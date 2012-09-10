@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-08 22:18+0200\n"
+"POT-Creation-Date: 2012-09-09 17:16+0200\n"
 "PO-Revision-Date: 2012-09-08 22:18\n"
 "Last-Translator:   <tuskone16@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,11 @@ msgstr ""
 msgid "Countries"
 msgstr ""
 
-#: personel/models.py:9 report_forms/c1/models.py:92
+#: pathstatic/templates/login.html:11
+msgid "Login"
+msgstr ""
+
+#: personel/models.py:9 report_forms/c1/models.py:53
 msgid "User"
 msgstr "Felhasználó"
 
@@ -35,80 +39,131 @@ msgstr "Felhasználó"
 msgid "University"
 msgstr "Egyetem"
 
-#: report_forms/c1/models.py:7
+#: report_forms/c1/models.py:10
 msgid "Planned"
 msgstr "Tervezett"
 
-#: report_forms/c1/models.py:8
+#: report_forms/c1/models.py:11
 msgid "Acute"
 msgstr "Azonnali"
 
-#: report_forms/c1/models.py:12
+#: report_forms/c1/models.py:15
 msgid "No"
 msgstr "Nem"
 
-#: report_forms/c1/models.py:13
+#: report_forms/c1/models.py:16
 msgid "If yes, specify here"
 msgstr "Ha igen, pontosabban"
 
-#: report_forms/c1/models.py:79
+#: report_forms/c1/models.py:36
+msgid "Other Diagnose"
+msgstr ""
+
+#: report_forms/c1/models.py:37 report_forms/c1/models.py:51
+msgid "Other Diagnoses"
+msgstr ""
+
+#: report_forms/c1/models.py:40
 msgid "Patients ID"
 msgstr ""
 
-#: report_forms/c1/models.py:80
+#: report_forms/c1/models.py:41
 msgid "Case ID"
 msgstr ""
 
-#: report_forms/c1/models.py:81
+#: report_forms/c1/models.py:42
 msgid "Date of Birth"
 msgstr ""
 
-#: report_forms/c1/models.py:82
+#: report_forms/c1/models.py:43
 msgid "Date of Delivery"
 msgstr ""
 
-#: report_forms/c1/models.py:83
+#: report_forms/c1/models.py:44
 msgid "Number of previous deliveries"
 msgstr ""
 
-#: report_forms/c1/models.py:84
+#: report_forms/c1/models.py:45
 msgid "Number of earlier deliveries by c-section"
 msgstr ""
 
-#: report_forms/c1/models.py:85
+#: report_forms/c1/models.py:46
 msgid "The c-section"
 msgstr ""
 
-#: report_forms/c1/models.py:86
+#: report_forms/c1/models.py:47
 msgid "Weight of newborn"
 msgstr ""
 
-#: report_forms/c1/models.py:87
+#: report_forms/c1/models.py:48
 msgid "Mother illnes or risk"
 msgstr ""
 
-#: report_forms/c1/models.py:88
+#: report_forms/c1/models.py:49
 msgid "Specify"
 msgstr ""
 
-#: report_forms/c1/models.py:89
+#: report_forms/c1/models.py:50
 msgid "DRG Code"
 msgstr ""
 
-#: report_forms/c1/models.py:90
-msgid "Other diagnosises"
-msgstr ""
-
-#: report_forms/c1/models.py:98
+#: report_forms/c1/models.py:59
 msgid "C-Section Rate"
 msgstr ""
 
-#: report_forms/c1/models.py:99
+#: report_forms/c1/models.py:60
 msgid "C-Section Rates"
 msgstr ""
 
 #: report_forms/c1/templates/form.html:10
 msgid "Submit"
+msgstr ""
+
+#: report_forms/c1/templates/statistics.html:5
+msgid "Overall:"
+msgstr ""
+
+#: report_forms/c1/templates/statistics.html:6
+msgid "Removed:"
+msgstr ""
+
+#: report_forms/c1/templates/statistics.html:7
+msgid "Counted:"
+msgstr ""
+
+#: report_forms/c1/templates/statistics.html:9
+msgid "C-section rate:"
+msgstr ""
+
+#: report_forms/c1/templates/statistics.html:10
+msgid "Rate of planned C-section:"
+msgstr ""
+
+#: report_forms/c1/templates/statistics.html:11
+msgid "Rate of acute C-section:"
+msgstr ""
+
+#: report_forms/c1/templates/statistics.html:12
+msgid "Rate of c-section by the mother's age is less than 20:"
+msgstr ""
+
+#: report_forms/c1/templates/statistics.html:13
+msgid "Rate of c-section by the mother's age is between 20-35:"
+msgstr ""
+
+#: report_forms/c1/templates/statistics.html:14
+msgid "Rate of c-section by the mother's age is more than 35:"
+msgstr ""
+
+#: report_forms/c1/templates/statistics.html:15
+msgid ""
+"Rate of acute C-section by the previous number of deliveries first delivery:"
+msgstr ""
+
+#: report_forms/c1/templates/statistics.html:16
+msgid ""
+"Rate of acute C-section by the previous number of deliveries first delivery "
+"one or more previous deliveries:"
 msgstr ""
 
 #: university/models.py:15

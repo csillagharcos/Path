@@ -26,57 +26,15 @@ DRG_CODES_CHOICES = (
     ('674', '674'),
 )
 
-DIAGNOSES_CHOICES = (
-    ('', '-- Select --'),
-    ('O30.0','O30.0'),
-    ('O30.1','O30.1'),
-    ('O30.2','O30.2'),
-    ('O30.8','O30.8'),
-    ('O30.9','O30.9'),
-    ('O31.0','O31.0'),
-    ('O31.1','O31.1'),
-    ('O31.2','O31.2'),
-    ('O31.8','O31.8'),
-    ('O32.0','O32.0'),
-    ('O32.1','O32.1'),
-    ('O32.2','O32.2'),
-    ('O32.3','O32.3'),
-    ('O32.4','O32.4'),
-    ('O32.5','O32.5'),
-    ('O32.6','O32.6'),
-    ('O32.8','O32.8'),
-    ('O32.9','O32.9'),
-    ('O36.4','O36.4'),
-    ('O36.7','O36.7'),
-    ('O60.H','O60.H'),
-    ('O63.2','O63.2'),
-    ('O64.0','O64.0'),
-    ('O64.1','O64.1'),
-    ('O64.2','O64.2'),
-    ('O64.3','O64.3'),
-    ('O64.4','O64.4'),
-    ('O64.5','O64.5'),
-    ('O64.8','O64.8'),
-    ('O64.9','O64.9'),
-    ('O66.1','O66.1'),
-    ('O80.1','O80.1'),
-    ('O83.0','O83.0'),
-    ('O83.1','O83.1'),
-    ('O83.3','O83.3'),
-    ('O84','O84'),
-    ('O84.0','O84.0'),
-    ('O84.1','O84.1'),
-    ('O84.2','O84.2'),
-    ('O84.8','O84.8'),
-    ('O84.9','O84.9'),
-    ('Z37.1','Z37.1'),
-    ('Z37.2','Z37.2'),
-    ('Z37.3','Z37.3'),
-    ('Z37.4','Z37.4'),
-    ('Z37.5','Z37.5'),
-    ('Z37.6','Z37.6'),
-    ('Z37.7','Z37.7')
-)
+class c1OtherDiagnose(models.Model):
+    name                            = models.CharField(max_length=5)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _('Other Diagnose')
+        verbose_name_plural = _('Other Diagnoses')
 
 class c1(models.Model):
     patient_id                      = models.IntegerField(_('Patients ID'), unique=True)
@@ -88,9 +46,9 @@ class c1(models.Model):
     the_c_section                   = models.IntegerField(_('The c-section'), max_length=1, choices=C_SECTION_CHOICES, default=0)
     weight_of_the_newborn           = models.FloatField(_('Weight of newborn'))
     mother_illness                  = models.IntegerField(_('Mother illnes or risk'), max_length=1, choices=MOTHER_ILLNESS_CHOICES, default=0)
-    specify_mother_illness          = models.CharField(_('Specify'), max_length=255)
+    specify_mother_illness          = models.CharField(_('Specify'), max_length=255, null=True, blank=True)
     drg_code                        = models.CharField(_('DRG Code'), max_length=4,choices=DRG_CODES_CHOICES, default='')
-    other_diagnoses                 = models.CharField(_('Other diagnosises'), max_length=5, choices=DIAGNOSES_CHOICES, default='')
+    other_diagnoses                 = models.ManyToManyField(c1OtherDiagnose, verbose_name=_('Other Diagnoses'), null=True, blank=True)
     added_on                        = models.DateTimeField(auto_now_add=True)
     added_by                        = models.ForeignKey(User, verbose_name=_('User'))
 
@@ -100,7 +58,6 @@ class c1(models.Model):
     class Meta:
         verbose_name = _('C-Section Rate')
         verbose_name_plural = _('C-Section Rates')
-
 
 class c1CSV(CsvModel):
     patient_id                      = IntegerField()        #A
@@ -121,3 +78,4 @@ class c1CSV(CsvModel):
         delimiter = ";"
 
 admin.site.register(c1)
+#admin.site.register(c1OtherDiagnose)
