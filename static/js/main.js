@@ -5,3 +5,19 @@ function showNext(element){
         element.parents('tr').next().hide()
     }
 }
+
+function addSuffix(element, suffix){
+        element.ready(function(){
+            $(this).val($(this).val().replace(" "+suffix,""))
+        }).focus(function(){
+            $(this).val($(this).val().replace(" "+suffix,""))
+        }).blur(function(){
+            var content = $(this).val($(this).val() + " "+suffix)
+        })
+}
+
+$(document).ready(function(){
+    $("td").each(function(){
+        $(this).html( $(this).html().replace('?</label>:','?</label>'))
+    })
+})

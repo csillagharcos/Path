@@ -4,15 +4,15 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $(".jq_tool").tooltip()
+
             showNext( $('#id_patient_allergy') )
-            $("#id_weight_of_patient").ready(function(){
-                $(this).val($(this).val().replace(" kg",""))
-            }).focus(function(){
-                        $(this).val($(this).val().replace(" kg",""))
-                    }).blur(function(){
-                        var content = $(this).val($(this).val() + " kg")
-                    })
             $("#id_patient_allergy").change(function(){showNext($(this))})
+
+            addSuffix($(".size"), 'kg')
+            addSuffix($(".milligramm"), 'mg')
+
+            $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd" })
+            $(".datepicker").datepicker({ dateFormat: "yy-mm-dd" })
         })
     </script>
 {% endblock js %}

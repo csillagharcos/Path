@@ -8,8 +8,15 @@
         <meta name="description" content="">
         <link rel="stylesheet" HREF="{{ STATIC_URL }}css/main.css" TYPE="text/css">
         <link rel="stylesheet" HREF="{{ STATIC_URL }}css/jquery.tooltip.css" TYPE="text/css">
+        <link rel="stylesheet" HREF="{{ STATIC_URL }}css/jquery.ui.css" TYPE="text/css">
+        <link rel="stylesheet" HREF="{{ STATIC_URL }}css/jquery.timepicker.css" TYPE="text/css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+        <script src="{{ STATIC_URL }}js/jquery.timepicker.js"></script>
+        {% if request.LANGUAGE_CODE == 'hu' %}
+            <script src="{{ STATIC_URL }}js/jquery.ui.hu.js"></script>
+            <script src="{{ STATIC_URL }}js/jquery.timepicker.hu.js"></script>
+        {% endif %}
         <script src="{{ STATIC_URL }}js/main.js"></script>
     </head>
     <body>

@@ -17,7 +17,7 @@ MOTHER_ILLNESS_CHOICES = (
 )
 
 DRG_CODES_CHOICES = (
-    ('', '-- Select --'),
+    ('', _('-- Select --')),
     ('671', '671'),
     ('671A', '671A'),
     ('671B', '671B'),
