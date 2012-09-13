@@ -13,7 +13,7 @@ C_SECTION_CHOICES = (
 
 MOTHER_ILLNESS_CHOICES = (
     (0, _('No')),
-    (1, _('If yes, specify here')),
+    (1, _('Yes')),
 )
 
 DRG_CODES_CHOICES = (
@@ -39,8 +39,8 @@ class c1OtherDiagnose(models.Model):
 class c1(models.Model):
     patient_id                      = models.IntegerField(_('Patients ID'), unique=True)
     case_id                         = models.IntegerField(_('Case ID'))
-    date_of_birth                   = models.DateField(_('Date of Birth'))
-    date_of_delivery                = models.DateTimeField(_('Date of Delivery'))
+    date_of_birth                   = models.DateField(_('Date of birth'))
+    date_of_delivery                = models.DateTimeField(_('Date of delivery'))
     number_of_prev_deliveries       = models.IntegerField(_('Number of previous deliveries'))
     number_of_prev_deliveries_by_c  = models.IntegerField(_('Number of earlier deliveries by c-section'), default=0)
     the_c_section                   = models.IntegerField(_('The c-section'), max_length=1, choices=C_SECTION_CHOICES, default=0)
@@ -48,7 +48,7 @@ class c1(models.Model):
     mother_illness                  = models.IntegerField(_('Mother illnes or risk'), max_length=1, choices=MOTHER_ILLNESS_CHOICES, default=0)
     specify_mother_illness          = models.CharField(_('Specify'), max_length=255, null=True, blank=True)
     drg_code                        = models.CharField(_('DRG Code'), max_length=4,choices=DRG_CODES_CHOICES, default='')
-    other_diagnoses                 = models.ManyToManyField(c1OtherDiagnose, verbose_name=_('Other Diagnoses'), null=True, blank=True)
+    other_diagnoses                 = models.ManyToManyField(c1OtherDiagnose, verbose_name=_('Other diagnoses'), null=True, blank=True)
     added_on                        = models.DateTimeField(auto_now_add=True)
     added_by                        = models.ForeignKey(User, verbose_name=_('User'))
 

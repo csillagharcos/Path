@@ -45,13 +45,94 @@ table {
 
 /* content.scss */
 #wrapper {
-  width: 900px;
+  width: 600px;
   margin: 0 auto; }
 
 .error input, .error select {
   border: 1px solid red; }
 
+#main_menu {
+  clear: both;
+  padding-bottom: 3px;
+  float: left; }
+  #main_menu li {
+    display: inline-block;
+    padding-right: 10px; }
+    #main_menu li a {
+      font-size: 14px;
+      text-decoration: none; }
+
+#header img {
+  float: left;
+  padding: 10px; }
+#header #header_login, #header #header_logout {
+  float: right; }
+  #header #header_login a, #header #header_logout a {
+    position: relative;
+    padding: 20px 20px 0px 0px;
+    text-decoration: none;
+    color: black; }
+    #header #header_login a:hover, #header #header_logout a:hover {
+      text-decoration: underline;
+      color: #708090; }
+#header #header_login_form {
+  position: absolute;
+  padding: 5px;
+  margin: 2px 0 20px -200px;
+  width: 260px;
+  background-color: #0d4f92;
+  border: 1px solid #87ceeb;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px; }
+  #header #header_login_form .login_button {
+    position: absolute;
+    margin-left: 160px;
+    margin-top: -51px;
+    width: 100px;
+    height: 50px;
+    background-color: #87ceeb;
+    border: 1px solid #add8e6;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px; }
+
+#report_forms td {
+  padding: 0 20px 10px 0; }
+  #report_forms td img {
+    height: 32px; }
+  #report_forms td:first-child {
+    width: 80%;
+    text-align: left;
+    vertical-align: middle; }
+
+.report_form {
+  width: 500px; }
+  .report_form td {
+    text-align: left; }
+    .report_form td:first-child {
+      width: 350px; }
+
+select[multiple="multiple"] {
+  width: 150px;
+  height: 120px; }
+
+hr {
+  margin: 20px 0; }
+
+#language_selector {
+  float: right; }
+  #language_selector li {
+    display: inline-block;
+    padding-right: 10px; }
+    #language_selector li a {
+      font-size: 12px;
+      text-decoration: none; }
+
 #content_block {
+  clear: both;
   text-align: center; }
   #content_block table {
     margin: 0 auto; }
+  #content_block p {
+    padding-bottom: 10px; }

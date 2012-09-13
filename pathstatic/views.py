@@ -1,4 +1,5 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
@@ -28,3 +29,8 @@ def homepage(request):
 
 def knowledge_center(request):
     return render_to_response('knowledge_center.html', context_instance=RequestContext(request))
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/')

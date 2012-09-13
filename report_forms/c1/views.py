@@ -17,8 +17,8 @@ def Display(request):
         if form.is_valid():
             new_c1 = c1.objects.create(patient_id=form.cleaned_data['patient_id'],
                 case_id=form.cleaned_data['case_id'],
-                date_of_birth=datetime.strptime(form.cleaned_data['date_of_birth']),
-                date_of_delivery=datetime.strptime(form.cleaned_data['date_of_delivery'],),
+                date_of_birth=form.cleaned_data['date_of_birth'],
+                date_of_delivery=form.cleaned_data['date_of_delivery'],
                 number_of_prev_deliveries = form.cleaned_data['number_of_prev_deliveries'],
                 number_of_prev_deliveries_by_c = form.cleaned_data['number_of_prev_deliveries_by_c'],
                 the_c_section = form.cleaned_data['the_c_section'],
@@ -32,10 +32,10 @@ def Display(request):
             return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
         else:
             form = C1Form(request.POST)
-            return render(request, 'form.html', { 'form': form })
+            return render(request, 'c1.html', { 'form': form })
 
     form = C1Form()
-    return render(request, 'form.html', { 'form': form })
+    return render(request, 'c1.html', { 'form': form })
 
 @login_required
 def Import(request):
@@ -75,7 +75,7 @@ def Import(request):
     else:
         form = FileUploadForm()
         context = { "form" : form }
-        return render_to_response('form.html', context, context_instance=RequestContext(request))
+        return render_to_response('c1.html', context, context_instance=RequestContext(request))
 
 
 @login_required

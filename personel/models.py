@@ -10,4 +10,7 @@ class Personel(models.Model):
     workplace      = models.ForeignKey(School, verbose_name=_('University'))
     country        = models.ForeignKey(Country, verbose_name=_('Country'))
 
+    def __unicode__(self):
+        return self.workplace.university_name + " worker: " + self.user.get_full_name()
+
 admin.site.register(Personel)

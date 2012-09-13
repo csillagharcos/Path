@@ -10,6 +10,8 @@ urlpatterns = patterns('',
     url(r'^knowledgecenter', 'pathstatic.views.knowledge_center', name="knowledge_center"),
     url(r'^$', 'pathstatic.views.homepage', name="homepage"),
     url(r'^login/', 'pathstatic.views.login_page'),
+    url(r'^logout', 'pathstatic.views.user_logout'),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 )
 
 if 'rosetta' in settings.INSTALLED_APPS:

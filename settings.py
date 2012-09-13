@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
 import os
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
@@ -25,6 +27,10 @@ DATABASES = {
 
 TIME_ZONE = 'Europe/Budapest'
 LANGUAGE_CODE = 'en-us'
+LANGUAGES = (
+    ('en', 'English'),
+    ('hu', 'Magyar'),
+)
 
 SITE_ID = 1
 
@@ -53,6 +59,10 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,8 +97,9 @@ INSTALLED_APPS = (
     'pathstatic',
     'university',
     'personel',
-
+    'report_forms',
     'report_forms.c1',
+    'report_forms.c21',
 
     'rosetta',
     'south',

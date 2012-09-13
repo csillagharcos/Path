@@ -1,27 +1,23 @@
-{% extends "base.html" %}
-{% load i18n %}
-{% block content %}
-<form action="" method="POST" enctype="multipart/form-data">
-    <table>
-        {% csrf_token %}
-        {% include "form_temp.html" %}
-    </table>
-    <input type="submit" value="{% trans "Submit" %}">
-</form>
-{% endblock content %}
-
+{% extends "form.html" %}
 {% block js %}
 <script src="{{ STATIC_URL }}js/jquery.tooltip.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $(".jq_tool").tooltip()
+    $("#id_mother_illness").parents('tr').next().hide()
     $("#id_weight_of_the_newborn").ready(function(){
         $(this).val($(this).val().replace(" g",""))
     }).focus(function(){
         $(this).val($(this).val().replace(" g",""))
     }).blur(function(){
-        var content = $(this).val($(this).val() + " g")
+        $(this).val($(this).val() + " g")
+    })
+    $("#id_mother_illness").change(function(){showNext($(this))})
+    $('form').submit(function(ev){
+        $("#id_weight_of_the_newborn").val($("#id_weight_of_the_newborn").val().replace(" g",""))
     })
 })
+
 </script>
 {% endblock js %}

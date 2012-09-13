@@ -1,0 +1,18 @@
+{% extends "form.html" %}
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.tooltip.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".jq_tool").tooltip()
+            showNext( $('#id_patient_allergy') )
+            $("#id_weight_of_patient").ready(function(){
+                $(this).val($(this).val().replace(" kg",""))
+            }).focus(function(){
+                        $(this).val($(this).val().replace(" kg",""))
+                    }).blur(function(){
+                        var content = $(this).val($(this).val() + " kg")
+                    })
+            $("#id_patient_allergy").change(function(){showNext($(this))})
+        })
+    </script>
+{% endblock js %}

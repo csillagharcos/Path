@@ -6,12 +6,39 @@
     {% trans "Removed:" %} {{ removed }}<br />
     {% trans "Counted:" %} {{ counted }}<br />
     <br />
-    {% trans "C-section rate:" %} {{ indicator_one }}%<br />
-    {% trans "Rate of planned C-section:" %} {{ subindicator_one }}%<br />
-    {% trans "Rate of acute C-section:" %} {{ subindicator_two }}%<br />
-    {% trans "Rate of c-section by the mother's age is less than 20:" %} {{ subindicator_three_one }}%<br />
-    {% trans "Rate of c-section by the mother's age is between 20-35:" %} {{ subindicator_three_two }}%<br />
-    {% trans "Rate of c-section by the mother's age is more than 35:" %} {{ subindicator_three_three }}%<br />
-    {% trans "Rate of acute C-section by the previous number of deliveries first delivery:" %} {{ subindicator_four_one }}%<br />
-    {% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries:" %} {{ subindicator_four_two }}%<br />
+    {% trans "C-section rate:" %} {{ indicator_one|floatformat:"2" }}%<br />
+    {% trans "Rate of planned C-section:" %} {{ subindicator_one|floatformat:"2" }}%<br />
+    {% trans "Rate of acute C-section:" %} {{ subindicator_two|floatformat:"2" }}%<br />
+    {% trans "Rate of c-section by the mother's age is less than 20:" %} {{ subindicator_three_one|floatformat:"2" }}%<br />
+    {% trans "Rate of c-section by the mother's age is between 20-35:" %} {{ subindicator_three_two|floatformat:"2" }}%<br />
+    {% trans "Rate of c-section by the mother's age is more than 35:" %} {{ subindicator_three_three|floatformat:"2" }}%<br />
+    {% trans "Rate of acute C-section by the previous number of deliveries first delivery:" %} {{ subindicator_four_one|floatformat:"2" }}%<br />
+    {% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries:" %} {{ subindicator_four_two|floatformat:"2" }}%<br />
+    <br /><br />
+    <hr />
+    Grafikon tesztelés:
+    <hr />
+    <br /><br />
+    <div class="bargraph"></div>
 {% endblock content %}
+
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
+    <script style="text/javascript">
+    var DataForGraph = new Array(
+        ["{{ indicator_one|floatformat:"2" }}".replace(",","."), 'C-section rate','red'],
+        ["{{ subindicator_one|floatformat:"2" }}".replace(",","."),'Planned rate','green'],
+        ["{{ subindicator_two|floatformat:"2" }}".replace(",","."),'Acute rate','blue'],
+        ["{{ subindicator_three_one|floatformat:"2" }}".replace(",","."),"<20 rate",'cyan'],
+        ["{{ subindicator_three_two|floatformat:"2" }}".replace(",","."),"20-35 rate", 'black'],
+        ["{{ subindicator_three_three|floatformat:"2" }}".replace(",","."),">35 rate", 'gray'],
+        ["{{ subindicator_four_one|floatformat:"2" }}".replace(",","."),"prev delivery", 'gray'],
+        ["{{ subindicator_four_two|floatformat:"2" }}".replace(",","."),"c-sec delivery", 'gray']
+    );
+    $('.bargraph').jqBarGraph({
+                                data: DataForGraph,
+                                postfix: '%',
+                                width: 600
+    });
+    </script>
+{% endblock js %}

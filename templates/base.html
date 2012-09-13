@@ -9,20 +9,67 @@
         <link rel="stylesheet" HREF="{{ STATIC_URL }}css/main.css" TYPE="text/css">
         <link rel="stylesheet" HREF="{{ STATIC_URL }}css/jquery.tooltip.css" TYPE="text/css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+        <script src="{{ STATIC_URL }}js/main.js"></script>
     </head>
     <body>
         <div id="wrapper">
-            <div id="header"><img src="{{ STATIC_URL }}images/path.png" alt="Logo for the Path project" /></div>
+            <div id="header">
+                <img src="{{ STATIC_URL }}images/path.png" alt="{% trans "Logo for the Path project"%}" />
+                {% if user.is_authenticated %}
+                    <div id="header_logout">
+                        {% trans "Hey" %} {{ user.first_name }}! <a href="/logout/">{% trans "log out" %}</a>
+                    </div>
+                {% else %}
+                    <div id="header_login">
+                        <a href="#">{% trans "login" %}</a>
+                        <div id="header_login_form" style="display: none;">
+                            <form action="/login/?next={{ request.path }}" method="POST">
+                                {% csrf_token %}
+                                <table>
+                                    <tr>
+                                        <td><input type="text" name="username" id="id_username" placeholder="{% trans "Username" %}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="password" name="password" id="id_password" placeholder="{% trans "Password" %}" /></td>
+                                    </tr>
+                                </table>
+                                <input type="submit" class="login_button" value="{% trans "Login" %}" />
+                            </form>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
             <ul id="main_menu">
                 <li><a href="{% url homepage %}">{% trans "Homepage" %}</a></li>
                 <li><a href="{% url report_forms %}">{% trans "Report Forms" %}</a></li>
                 <li><a href="{% url knowledge_center %}">{% trans "Knowledge Corner" %}</a></li>
-                <li></li>
-                <li></li>
+            </ul>
+            <ul id="language_selector">
+                {% for lang in LANGUAGES %}
+                    {% csrf_token %}
+                    <li><a href="{{ lang.0 }}">{{ lang.1 }}</a></li>
+                {% endfor %}
             </ul>
             <div id="content_block"><hr />{% block content %}{% endblock content %}<hr /></div>
             <div id="footer">FOOTER</div>
         </div>
         {% block js %}{% endblock js %}
+        <script type="text/javascript">
+            $("#language_selector").children("li").children("a").click(function(ev){
+                ev.preventDefault()
+                var language = $(this).attr("href")
+                var csrf = $(this).parent('li').siblings('div').children('input').val()
+                $.post("/i18n/setlang/", { language: language, csrfmiddlewaretoken: csrf } )
+                setTimeout(function(){
+                    location.reload()
+                }, 100)
+            })
+
+            $("#header_login a").click(function(ev){
+                ev.preventDefault()
+                $(this)./*parent("#header_login").*/siblings("#header_login_form").slideToggle()
+            })
+        </script>
     </body>
 </html>
