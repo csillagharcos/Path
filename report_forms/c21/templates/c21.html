@@ -4,8 +4,10 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $(".jq_tool").tooltip()
+            hideElements($('#id_antibiotic_given'), 'tr:nth-last-child(1)')
+            showNextTwo($('#id_patient_allergy'))
 
-            showNext( $('#id_patient_allergy') )
+//            showNext( $('#id_patient_allergy') )
             $("#id_patient_allergy").change(function(){showNext($(this))})
 
             addSuffix($(".size"), 'kg')
@@ -13,6 +15,12 @@
 
             $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd" })
             $(".datepicker").datepicker({ dateFormat: "yy-mm-dd" })
+        })
+        $('form').submit(function(ev){
+            $(".size, .milligramm").each(function(){
+                $(this).val($(this).val().replace(" mg",""))
+                $(this).val($(this).val().replace(" kg",""))
+            })
         })
     </script>
 {% endblock js %}

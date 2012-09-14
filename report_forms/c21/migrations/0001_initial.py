@@ -8,50 +8,55 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'c1OtherDiagnose'
-        db.create_table('c1_c1otherdiagnose', (
+        # Adding model 'Medicine'
+        db.create_table('c21_medicine', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=5)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=255)),
+            ('dose', self.gf('django.db.models.fields.FloatField')()),
+            ('doseUnder', self.gf('django.db.models.fields.FloatField')()),
+            ('doseAbove', self.gf('django.db.models.fields.FloatField')()),
         ))
-        db.send_create_signal('c1', ['c1OtherDiagnose'])
+        db.send_create_signal('c21', ['Medicine'])
 
-        # Adding model 'c1'
-        db.create_table('c1_c1', (
+        # Adding model 'c21'
+        db.create_table('c21_c21', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('patient_id', self.gf('django.db.models.fields.IntegerField')(unique=True)),
             ('case_id', self.gf('django.db.models.fields.IntegerField')()),
+            ('hospital_registration_number', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('date_of_birth', self.gf('django.db.models.fields.DateField')()),
-            ('date_of_delivery', self.gf('django.db.models.fields.DateTimeField')()),
-            ('number_of_prev_deliveries', self.gf('django.db.models.fields.IntegerField')()),
-            ('number_of_prev_deliveries_by_c', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('the_c_section', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=1)),
-            ('weight_of_the_newborn', self.gf('django.db.models.fields.FloatField')()),
-            ('mother_illness', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=1)),
-            ('specify_mother_illness', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('drg_code', self.gf('django.db.models.fields.CharField')(default='', max_length=4)),
+            ('weight_of_patient', self.gf('django.db.models.fields.IntegerField')()),
+            ('principal_diagnoses_code', self.gf('django.db.models.fields.CharField')(default='', max_length=5)),
+            ('principal_procedure_code', self.gf('django.db.models.fields.CharField')(max_length=10)),
+            ('procedure_planned', self.gf('django.db.models.fields.IntegerField')(default=1, max_length=1)),
+            ('patient_allergy', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=1)),
+            ('generic_name_of_drug', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
+            ('penicilin_allergy', self.gf('django.db.models.fields.IntegerField')(default=1)),
+            ('preoperative_infection', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=1)),
+            ('surgical_incision', self.gf('django.db.models.fields.DateTimeField')()),
+            ('antibiotic_given', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=1)),
+            ('name_of_first_dose', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='First Dose', null=True, to=orm['c21.Medicine'])),
+            ('first_dose', self.gf('django.db.models.fields.FloatField')(max_length=10, null=True, blank=True)),
+            ('name_of_second_dose', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='Second Dose', null=True, to=orm['c21.Medicine'])),
+            ('second_dose', self.gf('django.db.models.fields.FloatField')(max_length=10, null=True, blank=True)),
+            ('name_of_other_dose', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
+            ('other_dose', self.gf('django.db.models.fields.FloatField')(max_length=10, null=True, blank=True)),
+            ('route_of_admin', self.gf('django.db.models.fields.IntegerField')(default=1, max_length=1, null=True, blank=True)),
+            ('date_of_first_dose', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+            ('total_dose_in_24h', self.gf('django.db.models.fields.FloatField')(max_length=10, null=True, blank=True)),
+            ('date_of_last_dose', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+            ('date_of_wound_close', self.gf('django.db.models.fields.DateTimeField')()),
             ('added_on', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('added_by', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
         ))
-        db.send_create_signal('c1', ['c1'])
-
-        # Adding M2M table for field other_diagnoses on 'c1'
-        db.create_table('c1_c1_other_diagnoses', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('c1', models.ForeignKey(orm['c1.c1'], null=False)),
-            ('c1otherdiagnose', models.ForeignKey(orm['c1.c1otherdiagnose'], null=False))
-        ))
-        db.create_unique('c1_c1_other_diagnoses', ['c1_id', 'c1otherdiagnose_id'])
+        db.send_create_signal('c21', ['c21'])
 
 
     def backwards(self, orm):
-        # Deleting model 'c1OtherDiagnose'
-        db.delete_table('c1_c1otherdiagnose')
+        # Deleting model 'Medicine'
+        db.delete_table('c21_medicine')
 
-        # Deleting model 'c1'
-        db.delete_table('c1_c1')
-
-        # Removing M2M table for field other_diagnoses on 'c1'
-        db.delete_table('c1_c1_other_diagnoses')
+        # Deleting model 'c21'
+        db.delete_table('c21_c21')
 
 
     models = {
@@ -84,28 +89,43 @@ class Migration(SchemaMigration):
             'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
             'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
         },
-        'c1.c1': {
-            'Meta': {'object_name': 'c1'},
+        'c21.c21': {
+            'Meta': {'object_name': 'c21'},
             'added_by': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
             'added_on': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'antibiotic_given': ('django.db.models.fields.IntegerField', [], {'default': '0', 'max_length': '1'}),
             'case_id': ('django.db.models.fields.IntegerField', [], {}),
             'date_of_birth': ('django.db.models.fields.DateField', [], {}),
-            'date_of_delivery': ('django.db.models.fields.DateTimeField', [], {}),
-            'drg_code': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '4'}),
+            'date_of_first_dose': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'date_of_last_dose': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'date_of_wound_close': ('django.db.models.fields.DateTimeField', [], {}),
+            'first_dose': ('django.db.models.fields.FloatField', [], {'max_length': '10', 'null': 'True', 'blank': 'True'}),
+            'generic_name_of_drug': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'hospital_registration_number': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'mother_illness': ('django.db.models.fields.IntegerField', [], {'default': '0', 'max_length': '1'}),
-            'number_of_prev_deliveries': ('django.db.models.fields.IntegerField', [], {}),
-            'number_of_prev_deliveries_by_c': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'other_diagnoses': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['c1.c1OtherDiagnose']", 'null': 'True', 'blank': 'True'}),
-            'patient_id': ('django.db.models.fields.IntegerField', [], {'unique': 'True'}),
-            'specify_mother_illness': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'the_c_section': ('django.db.models.fields.IntegerField', [], {'default': '0', 'max_length': '1'}),
-            'weight_of_the_newborn': ('django.db.models.fields.FloatField', [], {})
+            'name_of_first_dose': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'First Dose'", 'null': 'True', 'to': "orm['c21.Medicine']"}),
+            'name_of_other_dose': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'name_of_second_dose': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'Second Dose'", 'null': 'True', 'to': "orm['c21.Medicine']"}),
+            'other_dose': ('django.db.models.fields.FloatField', [], {'max_length': '10', 'null': 'True', 'blank': 'True'}),
+            'patient_allergy': ('django.db.models.fields.IntegerField', [], {'default': '0', 'max_length': '1'}),
+            'penicilin_allergy': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
+            'preoperative_infection': ('django.db.models.fields.IntegerField', [], {'default': '0', 'max_length': '1'}),
+            'principal_diagnoses_code': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '5'}),
+            'principal_procedure_code': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
+            'procedure_planned': ('django.db.models.fields.IntegerField', [], {'default': '1', 'max_length': '1'}),
+            'route_of_admin': ('django.db.models.fields.IntegerField', [], {'default': '1', 'max_length': '1', 'null': 'True', 'blank': 'True'}),
+            'second_dose': ('django.db.models.fields.FloatField', [], {'max_length': '10', 'null': 'True', 'blank': 'True'}),
+            'surgical_incision': ('django.db.models.fields.DateTimeField', [], {}),
+            'total_dose_in_24h': ('django.db.models.fields.FloatField', [], {'max_length': '10', 'null': 'True', 'blank': 'True'}),
+            'weight_of_patient': ('django.db.models.fields.IntegerField', [], {})
         },
-        'c1.c1otherdiagnose': {
-            'Meta': {'object_name': 'c1OtherDiagnose'},
+        'c21.medicine': {
+            'Meta': {'object_name': 'Medicine'},
+            'dose': ('django.db.models.fields.FloatField', [], {}),
+            'doseAbove': ('django.db.models.fields.FloatField', [], {}),
+            'doseUnder': ('django.db.models.fields.FloatField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '5'})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '255'})
         },
         'contenttypes.contenttype': {
             'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
@@ -116,4 +136,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['c1']
+    complete_apps = ['c21']
