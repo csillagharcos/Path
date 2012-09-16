@@ -27,7 +27,7 @@ class Migration(SchemaMigration):
             ('the_c_section', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=1)),
             ('weight_of_the_newborn', self.gf('django.db.models.fields.FloatField')()),
             ('mother_illness', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=1)),
-            ('specify_mother_illness', self.gf('django.db.models.fields.CharField')(max_length=255)),
+            ('specify_mother_illness', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
             ('drg_code', self.gf('django.db.models.fields.CharField')(default='', max_length=4)),
             ('added_on', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('added_by', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
@@ -98,7 +98,7 @@ class Migration(SchemaMigration):
             'number_of_prev_deliveries_by_c': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'other_diagnoses': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['c1.c1OtherDiagnose']", 'null': 'True', 'blank': 'True'}),
             'patient_id': ('django.db.models.fields.IntegerField', [], {'unique': 'True'}),
-            'specify_mother_illness': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            'specify_mother_illness': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'the_c_section': ('django.db.models.fields.IntegerField', [], {'default': '0', 'max_length': '1'}),
             'weight_of_the_newborn': ('django.db.models.fields.FloatField', [], {})
         },

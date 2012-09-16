@@ -11,6 +11,7 @@ YES_NO_CHOICES = (
     (1, _('Yes')),
 )
 
+
 PRINCIPAL_DIAG_CODE = (
     ('', _('-- Select --')),
     ('C18', 'C18'),
@@ -20,8 +21,7 @@ PRINCIPAL_DIAG_CODE = (
     ('C20.1', 'C21.1'),
     ('C20.2', 'C21.2'),
     ('C20.8', 'C21.8'),
-)
-
+    )
 PENICILIN_ALLERGY_CHOICES = (
     ('1', _('Immediate')),
     ('2', _('Other')),
@@ -61,6 +61,7 @@ class c21(models.Model):
     generic_name_of_drug            = models.CharField(_('Generic name of antibiotic drug'), max_length=255, null=True, blank=True)
     penicilin_allergy               = models.IntegerField(_('In case of allergy to penicillin, scale of severity?'), choices=PENICILIN_ALLERGY_CHOICES, default=1)
     preoperative_infection          = models.IntegerField(_('Has patient preoperative infection?'), max_length=1, choices=YES_NO_CHOICES, default=0)
+    type_of_infection               = models.CharField(_('Type of infection'), max_length=255, null=True, blank=True)
     surgical_incision               = models.DateTimeField(_('Date of surgical incision'))
     antibiotic_given                = models.IntegerField(_('Prophylactic antibiotic given?'), max_length=1, choices=YES_NO_CHOICES, default=0)
     name_of_first_dose              = models.ForeignKey(Medicine, verbose_name=_('Name of first dose'), related_name="First Dose", null=True, blank=True)
@@ -85,38 +86,39 @@ class c21(models.Model):
         verbose_name_plural = _('Planned surgery for colorectal cancers')
 
 class c21CSV(CsvModel):
-    case_id                         = IntegerField()
-    hospital_registration_number    = IntegerField()
+    case_id                         = CharField()
+    hospital_registration_number    = CharField()
     date_of_birth                   = CharField()
-    weight_of_patient               = IntegerField()
+    weight_of_patient               = CharField()
     principal_diagnoses_code        = CharField()
     principal_procedure_code        = CharField()
-    procedure_planned               = IntegerField()
-    patient_allergy                 = IntegerField()
+    procedure_planned               = CharField()
+    patient_allergy                 = CharField()
     generic_name_of_drug            = CharField()
-    penicilin_allergy               = IntegerField()
-    preoperative_infection          = IntegerField()
+    penicilin_allergy               = CharField()
+    preoperative_infection          = CharField()
+    type_of_infection               = CharField()
     surgical_incision               = CharField()
     surgical_incision_time          = CharField()
-    antibiotic_given                = IntegerField()
+    antibiotic_given                = CharField()
     name_of_first_dose              = CharField()
-    first_dose                      = FloatField()
     name_of_second_dose             = CharField()
-    second_dose                     = FloatField()
     name_of_other_dose              = CharField()
-    other_dose                      = FloatField()
-    route_of_admin                  = IntegerField()
+    first_dose                      = CharField()
+    second_dose                     = CharField()
+    other_dose                      = CharField()
+    route_of_admin                  = CharField()
     date_of_first_dose              = CharField()
     time_of_first_dose              = CharField()
-    total_dose_in_24h               = FloatField
+    total_dose_in_24h               = CharField()
     date_of_last_dose               = CharField()
     time_of_last_dose               = CharField()
     date_of_wound_close             = CharField()
     time_of_wound_close             = CharField()
 
     class Meta:
-        delimiter = ";"
         has_header = True
+        delimiter = ";"
 
 admin.site.register(c21)
 admin.site.register(Medicine)

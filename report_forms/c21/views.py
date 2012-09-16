@@ -8,7 +8,7 @@ from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.utils import simplejson
 from report_forms.c21.forms import C21Form, FileUploadForm
-from report_forms.c21.models import c21, c21CSV
+from report_forms.c21.models import c21, c21CSV, Medicine
 
 @login_required
 def Display(request):
@@ -16,6 +16,7 @@ def Display(request):
         form = C21Form(request.POST)
         if form.is_valid():
             new_c21 = c21.objects.create(
+                ### DATE TIME NINCS MÉG KÉSZ! ELSZÁLL MERT NINCS DATE TIME!
                 case_id                         = form.cleaned_data['case_id'],
                 hospital_registration_number    = form.cleaned_data['hospital_registration_number'],
                 date_of_birth                   = datetime.strptime(form.cleaned_data['date_of_birth']),
@@ -27,6 +28,7 @@ def Display(request):
                 generic_name_of_drug            = form.cleaned_data['generic_name_of_drug'],
                 penicilin_allergy               = form.cleaned_data['penicilin_allergy'],
                 preoperative_infection          = form.cleaned_data['preoperative_infection'],
+                type_of_infection               = form.cleaned_data['type_of_infection'],
                 surgical_incision               = datetime.strptime(form.cleaned_data['surgical_incision']),
                 antibiotic_given                = form.cleaned_data['antibiotic_given'],
                 name_of_first_dose              = form.cleaned_data['name_of_first_dose'],
@@ -59,33 +61,34 @@ def Import(request):
         imported_csv = c21CSV.import_data(data=csv_file)
         for line in imported_csv:
             try:
-                parsed_diagnoses=()
-                print parsed_diagnoses
                 new_c21 = c21.objects.create(
-                    case_id                         = line.case_id,
+                    ### DATE TIME NINCS MÉG KÉSZ! ELSZÁLL MERT NINCS DATE TIME!
+                    ### KÜLÖN KELL ÖSSZEADNI A DATE ÉS TIME MEZŐKET A CSV-BŐL!
+                    case_id                         = parseInt(line.case_id),
                     hospital_registration_number    = line.hospital_registration_number,
                     date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
-                    weight_of_patient               = line.weight_of_patient,
+                    weight_of_patient               = parseInt(line.weight_of_patient),
                     principal_diagnoses_code        = line.principal_diagnoses_code,
                     principal_procedure_code        = line.principal_procedure_code,
-                    procedure_planned               = line.procedure_planned,
-                    patient_allergy                 = line.patient_allergy,
+                    procedure_planned               = parseInt(line.procedure_planned),
+                    patient_allergy                 = parseInt(line.patient_allergy),
                     generic_name_of_drug            = line.generic_name_of_drug,
-                    penicilin_allergy               = line.penicilin_allergy,
-                    preoperative_infection          = line.preoperative_infection,
-                    surgical_incision               = line.surgical_incision,
-                    antibiotic_given                = line.antibiotic_given,
-                    name_of_first_dose              = line.name_of_first_dose,
-                    first_dose                      = line.first_dose,
-                    name_of_second_dose             = line.name_of_second_dose,
-                    second_dose                     = line.second_dose,
+                    penicilin_allergy               = parseInt(line.penicilin_allergy),
+                    preoperative_infection          = parseInt(line.preoperative_infection),
+                    type_of_infection               = line.type_of_infection,
+                    surgical_incision               = datetime.strptime(line.surgical_incision, "%Y-%m-%d %H:%M:%S"),
+                    antibiotic_given                = parseInt(line.antibiotic_given),
+                    name_of_first_dose              = Medicine.objects.get(name = line.name_of_first_dose),
+                    name_of_second_dose             = Medicine.objects.get(name = line.name_of_second_dose),
                     name_of_other_dose              = line.name_of_other_dose,
-                    other_dose                      = line.other_dose,
-                    route_of_admin                  = line.route_of_admin,
-                    date_of_first_dose              = line.date_of_first_dose,
-                    total_dose_in_24h               = line.total_dose_in_24h,
-                    date_of_last_dose               = line.date_of_last_dose,
-                    date_of_wound_close             = line.date_of_wound_close,
+                    first_dose                      = float(line.first_dose),
+                    second_dose                     = float(line.second_dose),
+                    other_dose                      = float(line.other_dose),
+                    route_of_admin                  = parseInt(line.route_of_admin),
+                    date_of_first_dose              = datetime.strptime(line.date_of_first_dose, "%Y-%m-%d %H:%M:%S"),
+                    total_dose_in_24h               = float(line.total_dose_in_24h),
+                    date_of_last_dose               = datetime.strptime(line.date_of_last_dose, "%Y-%m-%d %H:%M:%S"),
+                    date_of_wound_close             = datetime.strptime(line.date_of_wound_close, "%Y-%m-%d %H:%M:%S"),
                     added_by                        = request.user,
                 )
                 new_c21.save()
@@ -200,3 +203,15 @@ def calculate_age(born):
         return today.year - born.year - 1
     else:
         return today.year - born.year
+
+def parseInt(integer):
+    try:
+        return int(integer)
+    except ValueError:
+        return ''
+
+def parseFloat(integer):
+    try:
+        return float(integer)
+    except ValueError:
+        return ''

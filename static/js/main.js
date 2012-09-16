@@ -30,7 +30,6 @@ function addSuffix(element, suffix){
 }
 
 $(document).ready(function(){
-    funkyHighlight( $('table') )
     $("td").each(function(){
         $(this).html( $(this).html().replace('?</label>:','?</label>'))
     })
