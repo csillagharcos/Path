@@ -4,6 +4,7 @@ function showNext(element){
     }else{
         element.parents('tr').next().hide()
     }
+    /* change event added every fricking time! have to check somehow */
     element.change(function(){ showNext(element) })
 }
 
@@ -15,6 +16,7 @@ function showNextTwo(element){
         element.parents('tr').next().hide()
         element.parents('tr').next().next().hide()
     }
+    /* change event added every fricking time! have to check somehow */
     element.change(function(){ showNextTwo(element) })
 }
 
@@ -41,5 +43,6 @@ function hideElements(element, limit){
     }else{
         element.parents('tr').nextUntil(limit, 'tr').show()
     }
+    /* change event added every fricking time! have to check somehow */
     element.change(function(){ hideElements(element, limit) })
 }

@@ -125,20 +125,9 @@ def Statistics(request):
                 numerator[7] += 1                                           #subindicator 4.2
 
     ''' Counting '''
-    try:
-        indicator_one               = numerator[0] / len(countable_case)     * 100
-    except ZeroDivisionError:
-        indicator_one  = 0
-
-    try:
-        subindicator_one            = numerator[1] / len(countable_case)     * 100
-    except ZeroDivisionError:
-        subindicator_one  = 0
-
-    try:
-        subindicator_two            = numerator[2] / len(countable_case)     * 100
-    except ZeroDivisionError:
-        subindicator_two  = 0
+    indicator_one               = numerator[0] / len(countable_case)     * 100
+    subindicator_one            = numerator[1] / len(countable_case)     * 100
+    subindicator_two            = numerator[2] / len(countable_case)     * 100
 
     try:
         subindicator_three_one  = numerator[3] / agedenominator[0]   * 100
@@ -188,6 +177,6 @@ def calculate_age(born):
     except ValueError:
         birthday = born.replace(year=today.year, day=born.day-1)
     if birthday > today:
-        return today.year - born.year - 1
+        return int(today.year - born.year - 1)
     else:
-        return today.year - born.year
+        return int(today.year - born.year)
