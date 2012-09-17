@@ -16,10 +16,9 @@ def Display(request):
         form = C21Form(request.POST)
         if form.is_valid():
             new_c21 = c21.objects.create(
-                ### DATE TIME NINCS MÉG KÉSZ! ELSZÁLL MERT NINCS DATE TIME!
                 case_id                         = form.cleaned_data['case_id'],
                 hospital_registration_number    = form.cleaned_data['hospital_registration_number'],
-                date_of_birth                   = datetime.strptime(form.cleaned_data['date_of_birth']),
+                date_of_birth                   = datetime.strptime(form.cleaned_data['date_of_birth'], "%Y-%m-%d"),
                 weight_of_patient               = form.cleaned_data['weight_of_patient'],
                 principal_diagnoses_code        = form.cleaned_data['principal_diagnoses_code'],
                 principal_procedure_code        = form.cleaned_data['principal_procedure_code'],
@@ -29,7 +28,7 @@ def Display(request):
                 penicilin_allergy               = form.cleaned_data['penicilin_allergy'],
                 preoperative_infection          = form.cleaned_data['preoperative_infection'],
                 type_of_infection               = form.cleaned_data['type_of_infection'],
-                surgical_incision               = datetime.strptime(form.cleaned_data['surgical_incision']),
+                surgical_incision               = datetime.strptime(form.cleaned_data['surgical_incision'], "%Y-%m-%d %H:%M:%S"),
                 antibiotic_given                = form.cleaned_data['antibiotic_given'],
                 name_of_first_dose              = form.cleaned_data['name_of_first_dose'],
                 first_dose                      = form.cleaned_data['first_dose'],
@@ -38,10 +37,10 @@ def Display(request):
                 name_of_other_dose              = form.cleaned_data['name_of_other_dose'],
                 other_dose                      = form.cleaned_data['other_dose'],
                 route_of_admin                  = form.cleaned_data['route_of_admin'],
-                date_of_first_dose              = datetime.strptime(form.cleaned_data['date_of_first_dose']),
+                date_of_first_dose              = datetime.strptime(form.cleaned_data['date_of_first_dose'], "%Y-%m-%d %H:%M:%S"),
                 total_dose_in_24h               = form.cleaned_data['total_dose_in_24h'],
-                date_of_last_dose               = datetime.strptime(form.cleaned_data['date_of_last_dose']),
-                date_of_wound_close             = datetime.strptime(form.cleaned_data['date_of_wound_close']),
+                date_of_last_dose               = datetime.strptime(form.cleaned_data['date_of_last_dose'], "%Y-%m-%d %H:%M:%S"),
+                date_of_wound_close             = datetime.strptime(form.cleaned_data['date_of_wound_close'], "%Y-%m-%d %H:%M:%S"),
                 added_by                        = request.user,
             )
             new_c21.save()
@@ -62,8 +61,6 @@ def Import(request):
         for line in imported_csv:
             try:
                 new_c21 = c21.objects.create(
-                    ### DATE TIME NINCS MÉG KÉSZ! ELSZÁLL MERT NINCS DATE TIME!
-                    ### KÜLÖN KELL ÖSSZEADNI A DATE ÉS TIME MEZŐKET A CSV-BŐL!
                     case_id                         = parseInt(line.case_id),
                     hospital_registration_number    = line.hospital_registration_number,
                     date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
@@ -76,7 +73,7 @@ def Import(request):
                     penicilin_allergy               = parseInt(line.penicilin_allergy),
                     preoperative_infection          = parseInt(line.preoperative_infection),
                     type_of_infection               = line.type_of_infection,
-                    surgical_incision               = datetime.strptime(line.surgical_incision, "%Y-%m-%d %H:%M:%S"),
+                    surgical_incision               = datetime.strptime(line.surgical_incision+" "+line.surgical_incision_time, "%Y-%m-%d %H:%M:%S"),
                     antibiotic_given                = parseInt(line.antibiotic_given),
                     name_of_first_dose              = Medicine.objects.get(name = line.name_of_first_dose),
                     name_of_second_dose             = Medicine.objects.get(name = line.name_of_second_dose),
@@ -85,10 +82,10 @@ def Import(request):
                     second_dose                     = float(line.second_dose),
                     other_dose                      = float(line.other_dose),
                     route_of_admin                  = parseInt(line.route_of_admin),
-                    date_of_first_dose              = datetime.strptime(line.date_of_first_dose, "%Y-%m-%d %H:%M:%S"),
+                    date_of_first_dose              = datetime.strptime(line.date_of_first_dose+" "+line.time_of_first_dose, "%Y-%m-%d %H:%M:%S"),
                     total_dose_in_24h               = float(line.total_dose_in_24h),
-                    date_of_last_dose               = datetime.strptime(line.date_of_last_dose, "%Y-%m-%d %H:%M:%S"),
-                    date_of_wound_close             = datetime.strptime(line.date_of_wound_close, "%Y-%m-%d %H:%M:%S"),
+                    date_of_last_dose               = datetime.strptime(line.date_of_last_dose+" "+line.time_of_last_dose, "%Y-%m-%d %H:%M:%S"),
+                    date_of_wound_close             = datetime.strptime(line.date_of_wound_close+" "+line.time_of_wound_close, "%Y-%m-%d %H:%M:%S"),
                     added_by                        = request.user,
                 )
                 new_c21.save()
