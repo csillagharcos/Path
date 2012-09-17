@@ -1,6 +1,6 @@
 function showNext(element){
     if( element.val() == 1){
-        element.parents('tr').next()
+        element.parents('tr').next().show()
     }else{
         element.parents('tr').next().hide()
     }
@@ -9,10 +9,8 @@ function showNext(element){
 
 function showNextTwo(element){
     if( element.val() == 1){
-        element.parents('tr').next()
-        setTimeout(function(){
-            element.parents('tr').next().next()
-        },102)
+        element.parents('tr').next().show()
+        element.parents('tr').next().next().show()
     }else{
         element.parents('tr').next().hide()
         element.parents('tr').next().next().hide()
@@ -41,7 +39,7 @@ function hideElements(element, limit){
     if( element.val() == 0 ){
         element.parents('tr').nextUntil(limit, 'tr').hide()
     }else{
-        element.parents('tr').nextUntil(limit, 'tr')
+        element.parents('tr').nextUntil(limit, 'tr').show()
     }
     element.change(function(){ hideElements(element, limit) })
 }
