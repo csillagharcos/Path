@@ -77,7 +77,7 @@ MIDDLEWARE_CLASSES = (
 AUTH_PROFILE_MODULE = 'personel.Personel'
 LOGIN_URL="/login/"
 
-ROOT_URLCONF = 'Path.urls'
+ROOT_URLCONF = 'path.urls'
 
 TEMPLATE_DIRS = (
     rel('templates'),
