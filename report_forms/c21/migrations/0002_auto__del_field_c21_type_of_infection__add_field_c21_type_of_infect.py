@@ -8,56 +8,23 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Medicine'
-        db.create_table('c21_medicine', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('dose', self.gf('django.db.models.fields.FloatField')()),
-            ('doseUnder', self.gf('django.db.models.fields.FloatField')()),
-            ('doseAbove', self.gf('django.db.models.fields.FloatField')()),
-        ))
-        db.send_create_signal('c21', ['Medicine'])
+        # Deleting field 'c21.type_of_infection'
+        db.delete_column('c21_c21', 'type_of_infection')
 
-        # Adding model 'c21'
-        db.create_table('c21_c21', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('case_id', self.gf('django.db.models.fields.IntegerField')()),
-            ('hospital_registration_number', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('date_of_birth', self.gf('django.db.models.fields.DateField')()),
-            ('weight_of_patient', self.gf('django.db.models.fields.IntegerField')()),
-            ('principal_diagnoses_code', self.gf('django.db.models.fields.CharField')(default='', max_length=5)),
-            ('principal_procedure_code', self.gf('django.db.models.fields.CharField')(max_length=10)),
-            ('procedure_planned', self.gf('django.db.models.fields.IntegerField')(default=1, max_length=1)),
-            ('patient_allergy', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=1)),
-            ('generic_name_of_drug', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
-            ('penicilin_allergy', self.gf('django.db.models.fields.IntegerField')(default=1)),
-            ('preoperative_infection', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=1)),
-            ('type_of_infection', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
-            ('surgical_incision', self.gf('django.db.models.fields.DateTimeField')()),
-            ('antibiotic_given', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=1)),
-            ('name_of_first_dose', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='First Dose', null=True, to=orm['c21.Medicine'])),
-            ('first_dose', self.gf('django.db.models.fields.FloatField')(max_length=10, null=True, blank=True)),
-            ('name_of_second_dose', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='Second Dose', null=True, to=orm['c21.Medicine'])),
-            ('second_dose', self.gf('django.db.models.fields.FloatField')(max_length=10, null=True, blank=True)),
-            ('name_of_other_dose', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
-            ('other_dose', self.gf('django.db.models.fields.FloatField')(max_length=10, null=True, blank=True)),
-            ('route_of_admin', self.gf('django.db.models.fields.IntegerField')(default=1, max_length=1, null=True, blank=True)),
-            ('date_of_first_dose', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
-            ('total_dose_in_24h', self.gf('django.db.models.fields.FloatField')(max_length=10, null=True, blank=True)),
-            ('date_of_last_dose', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
-            ('date_of_wound_close', self.gf('django.db.models.fields.DateTimeField')()),
-            ('added_on', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('added_by', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-        ))
-        db.send_create_signal('c21', ['c21'])
+        # Adding field 'c21.type_of_infect'
+        db.add_column('c21_c21', 'type_of_infect',
+                      self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'Medicine'
-        db.delete_table('c21_medicine')
+        # Adding field 'c21.type_of_infection'
+        db.add_column('c21_c21', 'type_of_infection',
+                      self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True),
+                      keep_default=False)
 
-        # Deleting model 'c21'
-        db.delete_table('c21_c21')
+        # Deleting field 'c21.type_of_infect'
+        db.delete_column('c21_c21', 'type_of_infect')
 
 
     models = {
@@ -118,7 +85,7 @@ class Migration(SchemaMigration):
             'second_dose': ('django.db.models.fields.FloatField', [], {'max_length': '10', 'null': 'True', 'blank': 'True'}),
             'surgical_incision': ('django.db.models.fields.DateTimeField', [], {}),
             'total_dose_in_24h': ('django.db.models.fields.FloatField', [], {'max_length': '10', 'null': 'True', 'blank': 'True'}),
-            'type_of_infection': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'type_of_infect': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'weight_of_patient': ('django.db.models.fields.IntegerField', [], {})
         },
         'c21.medicine': {

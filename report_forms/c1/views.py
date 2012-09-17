@@ -125,9 +125,21 @@ def Statistics(request):
                 numerator[7] += 1                                           #subindicator 4.2
 
     ''' Counting '''
-    indicator_one               = numerator[0] / len(countable_case)     * 100
-    subindicator_one            = numerator[1] / len(countable_case)     * 100
-    subindicator_two            = numerator[2] / len(countable_case)     * 100
+    try:
+        indicator_one               = numerator[0] / len(countable_case)     * 100
+    except ZeroDivisionError:
+        indicator_one  = 0
+
+    try:
+        subindicator_one            = numerator[1] / len(countable_case)     * 100
+    except ZeroDivisionError:
+        subindicator_one  = 0
+
+    try:
+        subindicator_two            = numerator[2] / len(countable_case)     * 100
+    except ZeroDivisionError:
+        subindicator_two  = 0
+
     try:
         subindicator_three_one  = numerator[3] / agedenominator[0]   * 100
     except ZeroDivisionError:

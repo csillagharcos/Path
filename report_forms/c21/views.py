@@ -60,6 +60,14 @@ def Import(request):
         imported_csv = c21CSV.import_data(data=csv_file)
         for line in imported_csv:
             try:
+                try:
+                    first_dose_name = Medicine.objects.get(name = line.name_of_first_dose)
+                except ObjectDoesNotExist:
+                    first_dose_name = ""
+                try:
+                    second_dose_name = Medicine.objects.get(name = line.name_of_second_dose)
+                except ObjectDoesNotExist:
+                    second_dose_name = ""
                 new_c21 = c21.objects.create(
                     case_id                         = parseInt(line.case_id),
                     hospital_registration_number    = line.hospital_registration_number,
@@ -73,24 +81,27 @@ def Import(request):
                     penicilin_allergy               = parseInt(line.penicilin_allergy),
                     preoperative_infection          = parseInt(line.preoperative_infection),
                     type_of_infection               = line.type_of_infection,
-                    surgical_incision               = datetime.strptime(line.surgical_incision+" "+line.surgical_incision_time, "%Y-%m-%d %H:%M:%S"),
+                    surgical_incision               = datetime.strptime(line.surgical_incision+" "+line.surgical_incision_time, "%Y-%m-%d %H:%M"),
                     antibiotic_given                = parseInt(line.antibiotic_given),
-                    name_of_first_dose              = Medicine.objects.get(name = line.name_of_first_dose),
-                    name_of_second_dose             = Medicine.objects.get(name = line.name_of_second_dose),
+                    name_of_first_dose              = first_dose_name,
+                    name_of_second_dose             = second_dose_name,
                     name_of_other_dose              = line.name_of_other_dose,
-                    first_dose                      = float(line.first_dose),
-                    second_dose                     = float(line.second_dose),
-                    other_dose                      = float(line.other_dose),
+                    first_dose                      = parseFloat(line.first_dose),
+                    second_dose                     = parseFloat(line.second_dose),
+                    other_dose                      = parseFloat(line.other_dose),
                     route_of_admin                  = parseInt(line.route_of_admin),
-                    date_of_first_dose              = datetime.strptime(line.date_of_first_dose+" "+line.time_of_first_dose, "%Y-%m-%d %H:%M:%S"),
-                    total_dose_in_24h               = float(line.total_dose_in_24h),
-                    date_of_last_dose               = datetime.strptime(line.date_of_last_dose+" "+line.time_of_last_dose, "%Y-%m-%d %H:%M:%S"),
-                    date_of_wound_close             = datetime.strptime(line.date_of_wound_close+" "+line.time_of_wound_close, "%Y-%m-%d %H:%M:%S"),
+                    date_of_first_dose              = datetime.strptime(line.date_of_first_dose+" "+line.time_of_first_dose, "%Y-%m-%d %H:%M"),
+                    total_dose_in_24h               = parseFloat(line.total_dose_in_24h),
+                    date_of_last_dose               = datetime.strptime(line.date_of_last_dose+" "+line.time_of_last_dose, "%Y-%m-%d %H:%M"),
+                    date_of_wound_close             = datetime.strptime(line.date_of_wound_close+" "+line.time_of_wound_close, "%Y-%m-%d %H:%M"),
                     added_by                        = request.user,
                 )
                 new_c21.save()
             except IntegrityError:
                 exists += (line.case_id,)
+#            except ValueError:
+#                #TODO: Normal error message in case of first row fuckup
+#                return HttpResponse(simplejson.dumps({"value" : "Delete the first row!"}), mimetype="application/json")
         return HttpResponse(simplejson.dumps({"value" : exists}), mimetype="application/json")
     else:
         form = FileUploadForm()
@@ -100,7 +111,6 @@ def Import(request):
 
 @login_required
 def Statistics(request):
-    return render_to_response('base.html')
 #    ''' Query '''
 #    countable_case=uncountable_case=()
 #    cases = c1.objects.all()
@@ -188,7 +198,7 @@ def Statistics(request):
 #        "subindicator_four_one": subindicator_four_one,
 #        "subindicator_four_two": subindicator_four_two,
 #    }
-#    return render_to_response('statistics.html', context, context_instance=RequestContext(request))
+    return render_to_response('statistics.html', {}, context_instance=RequestContext(request))
 
 def calculate_age(born):
     today = date.today()
@@ -203,12 +213,13 @@ def calculate_age(born):
 
 def parseInt(integer):
     try:
-        return int(integer)
+        value = int(integer)
     except ValueError:
-        return ''
+        value = None
+    return value
 
 def parseFloat(integer):
     try:
         return float(integer)
     except ValueError:
-        return ''
+        return None

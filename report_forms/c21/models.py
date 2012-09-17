@@ -117,7 +117,6 @@ class c21CSV(CsvModel):
     time_of_wound_close             = CharField()
 
     class Meta:
-        has_header = True
         delimiter = ";"
 
 admin.site.register(c21)
