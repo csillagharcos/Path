@@ -32,6 +32,25 @@
                     <li><a href="{% url homepage %}">{% trans "Homepage" %}</a></li>
                     <li><a href="{% url report_forms %}">{% trans "Report Forms" %}</a></li>
                     <li><a href="{% url knowledge_center %}">{% trans "Knowledge Corner" %}</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="/logout/">{% trans "log out" %}</a></li>
+                    {% else %}
+                        <li class="login"><a href="#">{% trans "login" %}</a></li>
+                        <div id="header_login_form" style="display: none;">
+                            <form action="/login/?next={{ request.path }}" method="POST">
+                                {% csrf_token %}
+                                <table>
+                                    <tr>
+                                        <td><input type="text" name="username" id="id_username" placeholder="{% trans "Username" %}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="password" name="password" id="id_password" placeholder="{% trans "Password" %}" /></td>
+                                    </tr>
+                                </table>
+                                <input type="submit" class="login_button" value="{% trans "Login" %}" />
+                            </form>
+                        </div>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -58,34 +77,11 @@
                 }, 100)
             })
 
-            $("#header_login a").click(function(ev){
+            $(".login a").click(function(ev){
                 ev.preventDefault()
-                $(this)./*parent("#header_login").*/siblings("#header_login_form").slideToggle()
+                $(this).parent(".login").siblings("#header_login_form").slideToggle()
             })
         </script>
 
 
-{#                {% if user.is_authenticated %}#}
-{#                    <div id="header_logout">#}
-{#                        {% trans "Hey" %} {{ user.first_name }}! <a href="/logout/">{% trans "log out" %}</a>#}
-{#                    </div>#}
-{#                {% else %}#}
-{#                    <div id="header_login">#}
-{#                        <a href="#">{% trans "login" %}</a>#}
-{#                        <div id="header_login_form" style="display: none;">#}
-{#                            <form action="/login/?next={{ request.path }}" method="POST">#}
-{#                                {% csrf_token %}#}
-{#                                <table>#}
-{#                                    <tr>#}
-{#                                        <td><input type="text" name="username" id="id_username" placeholder="{% trans "Username" %}"/></td>#}
-{#                                    </tr>#}
-{#                                    <tr>#}
-{#                                        <td><input type="password" name="password" id="id_password" placeholder="{% trans "Password" %}" /></td>#}
-{#                                    </tr>#}
-{#                                </table>#}
-{#                                <input type="submit" class="login_button" value="{% trans "Login" %}" />#}
-{#                            </form>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                {% endif %}#}
 </html>
