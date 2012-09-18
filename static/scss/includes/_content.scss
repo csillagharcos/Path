@@ -101,13 +101,15 @@ a{
 }
 
 #report_forms{
+  width: 80%;
+  margin: 0 auto;
   td{
     padding: 0 20px 10px 0;
     img{
       height: 32px;
     }
     &:first-child{
-      width: 80%;
+      width: 95%;
       text-align: left;
       vertical-align: middle;
     }
@@ -115,7 +117,7 @@ a{
 }
 
 .report_form{
-  width: 500px;
+  margin: 0 auto;
   td{
     text-align: left;
     &:first-child{

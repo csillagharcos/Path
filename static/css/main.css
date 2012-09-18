@@ -136,17 +136,20 @@ a {
   a:hover {
     color: #c5d900; }
 
-#report_forms td {
-  padding: 0 20px 10px 0; }
-  #report_forms td img {
-    height: 32px; }
-  #report_forms td:first-child {
-    width: 80%;
-    text-align: left;
-    vertical-align: middle; }
+#report_forms {
+  width: 80%;
+  margin: 0 auto; }
+  #report_forms td {
+    padding: 0 20px 10px 0; }
+    #report_forms td img {
+      height: 32px; }
+    #report_forms td:first-child {
+      width: 95%;
+      text-align: left;
+      vertical-align: middle; }
 
 .report_form {
-  width: 500px; }
+  margin: 0 auto; }
   .report_form td {
     text-align: left; }
     .report_form td:first-child {
