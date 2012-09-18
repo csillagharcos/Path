@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    {% trans "Overall:" %} {{ overall }}<br />
+    {% trans "Removed:" %} {{ removed }}<br />
+    {% trans "Counted:" %} {{ counted }}<br />
+    <br />
+    {% trans "C-section rate:" %} {{ indicator_one }}%<br />
+    {% trans "Rate of planned C-section:" %} {{ subindicator_one }}%<br />
+    {% trans "Rate of acute C-section:" %} {{ subindicator_two }}%<br />
+    {% trans "Rate of c-section by the mother's age is less than 20:" %} {{ subindicator_three_one }}%<br />
+    {% trans "Rate of c-section by the mother's age is between 20-35:" %} {{ subindicator_three_two }}%<br />
+    {% trans "Rate of c-section by the mother's age is more than 35:" %} {{ subindicator_three_three }}%<br />
+    {% trans "Rate of acute C-section by the previous number of deliveries first delivery:" %} {{ subindicator_four_one }}%<br />
+    {% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries:" %} {{ subindicator_four_two }}%<br />
+{% endblock content %}

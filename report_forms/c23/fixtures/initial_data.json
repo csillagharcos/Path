@@ -1,0 +1,1 @@
+[{"pk": 1, "model": "c23.medicine", "fields": {"doseUnder": 1000.0, "doseAbove": 2000.0, "name": "Cefazolin", "dose": 2000.0}}, {"pk": 2, "model": "c23.medicine", "fields": {"doseUnder": 750.0, "doseAbove": 1500.0, "name": "Cefuroxim", "dose": 1500.0}}, {"pk": 3, "model": "c23.medicine", "fields": {"doseUnder": 900.0, "doseAbove": 1000.0, "name": "Vancomycin", "dose": 15.0}}]
