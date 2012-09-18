@@ -1,71 +1,102 @@
 /* content.scss */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Tahoma" , sans-serif;
+  font-size: 11px;
+  color: #414141;
+  background: #FFF;
+}
+p {
+  line-height: 1.2em;
+  text-align: justify;
+  color: #414141;
+  padding-bottom: 5px;
+}
+img {
+  border: none;
+}
 
-#wrapper{
-  width: 600px;
+#page {
+  width: 990px;
   margin: 0 auto;
+}
+#top {
+  width: 990px;
+  height: 205px;
+  margin-bottom: 25px;
+  background: #FFF url('../images/bgr_top.jpg') top left no-repeat;
+}
+
+#menu_bgr {
+  width: 990px;
+  height: 63px;
+  background: #FFF url('../images/bgr_menu.png') top left no-repeat;
+  position: relative;
+}
+#menu {
+  width: 652px;
+  height: 21px;
+  float:right;
+  padding-right:9px;
+}
+#menu ul{
+  padding-top:42px;
+  float: right;
+}
+#menu ul li{
+  height: 21px;
+  float: left;
+  list-style-type: none;
+  margin: 0; padding: 0;
+}
+
+#menu ul li a {
+  height: 21px;
+  display: block;
+}
+
+#menu ul li a {
+  color: white;
+  padding-left: 30px;
+  padding-top: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+  &:hover{
+    color: #c5d900;
+  }
+}
+
+#logos {
+  width: 292px;
+  height: 155px;
+  float: left;
+  margin: 17px 0 0 27px;
+}
+#logos img {
+  float: left;
+}
+#logo_path {
+  margin: 0 0 5px 137px;
+}
+#content2_home {
+  width: 950px;
+  padding: 10px;
+  text-align: center;
+  background-color: #e5e5e5;
+  margin: 40px 0 25px 0;
 }
 
 .error input, .error select{
   border: 1px solid red;
 }
 
-#main_menu{
-  clear: both;
-  padding-bottom: 3px;
-  float: left;
-  li{
-    display: inline-block;
-    padding-right: 10px;
-    a{
-      font-size: 14px;
-      text-decoration: none;
-    }
-  }
-}
-
-#header{
-  img{
-    float: left;
-    padding: 10px;
-  }
-  #header_login{
-    float: right;
-    a{
-      position: relative;
-      padding: 20px 20px 0px 0px;
-      text-decoration: none;
-      color: black;
-      &:hover{
-        text-decoration: underline;
-        color: #708090;
-      }
-    }
-  }
-  #header_login_form{
-    position: absolute;
-    padding: 5px;
-    margin: 2px 0 20px -200px;
-    width: 260px;
-    background-color: #0d4f92;
-    border: 1px solid #87ceeb;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    .login_button{
-      position: absolute;
-      margin-left:160px;
-      margin-top: -51px;
-      width: 100px;
-      height: 50px;
-      background-color: #87ceeb;
-      border: 1px solid #add8e6;
-      -webkit-border-radius: 2px;
-      -moz-border-radius: 2px;
-      border-radius: 2px;
-    }
-  }
-  #header_logout{
-    @extend #header_login;
+a{
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  &:hover{
+    color: #c5d900;
   }
 }
 
@@ -98,30 +129,67 @@ select[multiple="multiple"]{
   height: 120px;
 }
 
-hr{
-  margin: 20px 0;
-}
-
 #language_selector{
-  float: right;
+  position: absolute;
+  top: 28px;
+  left: 880px;
   li{
     display: inline-block;
-    padding-right: 10px;
+    padding-left: 10px;
     a{
-      font-size: 12px;
+      font-size: 11px;
       text-decoration: none;
     }
   }
 }
 
-#content_block{
-  clear: both;
-  text-align: center;
-  table{
-    margin: 0 auto;
-  }
-  p{
-    padding-bottom: 10px;
-  }
-}
 
+
+
+
+
+
+
+
+//#header{
+//  #header_login{
+//    float: right;
+//    a{
+//      position: relative;
+//      padding: 20px 20px 0px 0px;
+//      text-decoration: none;
+//      color: black;
+//      &:hover{
+//        text-decoration: underline;
+//        color: #708090;
+//      }
+//    }
+//  }
+//  #header_login_form{
+//    position: absolute;
+//    padding: 5px;
+//    margin: 2px 0 20px -200px;
+//    width: 260px;
+//    background-color: #0d4f92;
+//    border: 1px solid #87ceeb;
+//    -webkit-border-radius: 10px;
+//    -moz-border-radius: 10px;
+//    border-radius: 10px;
+//    .login_button{
+//      position: absolute;
+//      margin-left:160px;
+//      margin-top: -51px;
+//      width: 100px;
+//      height: 50px;
+//      background-color: #87ceeb;
+//      border: 1px solid #add8e6;
+//      -webkit-border-radius: 2px;
+//      -moz-border-radius: 2px;
+//      border-radius: 2px;
+//    }
+//  }
+//  #header_logout{
+//    @extend #header_login;
+//  }
+//}
+//

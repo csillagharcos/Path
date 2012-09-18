@@ -19,48 +19,33 @@
         {% endif %}
         <script src="{{ STATIC_URL }}js/main.js"></script>
     </head>
-    <body>
-        <div id="wrapper">
-            <div id="header">
-                <img src="{{ STATIC_URL }}images/path.png" alt="{% trans "Logo for the Path project"%}" />
-                {% if user.is_authenticated %}
-                    <div id="header_logout">
-                        {% trans "Hey" %} {{ user.first_name }}! <a href="/logout/">{% trans "log out" %}</a>
-                    </div>
-                {% else %}
-                    <div id="header_login">
-                        <a href="#">{% trans "login" %}</a>
-                        <div id="header_login_form" style="display: none;">
-                            <form action="/login/?next={{ request.path }}" method="POST">
-                                {% csrf_token %}
-                                <table>
-                                    <tr>
-                                        <td><input type="text" name="username" id="id_username" placeholder="{% trans "Username" %}"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="password" name="password" id="id_password" placeholder="{% trans "Password" %}" /></td>
-                                    </tr>
-                                </table>
-                                <input type="submit" class="login_button" value="{% trans "Login" %}" />
-                            </form>
-                        </div>
-                    </div>
-                {% endif %}
-            </div>
-            <ul id="main_menu">
-                <li><a href="{% url homepage %}">{% trans "Homepage" %}</a></li>
-                <li><a href="{% url report_forms %}">{% trans "Report Forms" %}</a></li>
-                <li><a href="{% url knowledge_center %}">{% trans "Knowledge Corner" %}</a></li>
-            </ul>
+    <div id="page">
+        <div id="menu_bgr">
             <ul id="language_selector">
                 {% for lang in LANGUAGES %}
                     {% csrf_token %}
                     <li><a href="{{ lang.0 }}">{{ lang.1 }}</a></li>
                 {% endfor %}
             </ul>
-            <div id="content_block"><hr />{% block content %}{% endblock content %}<hr /></div>
-            <div id="footer">FOOTER</div>
+            <div id="menu">
+                <ul>
+                    <li><a href="{% url homepage %}">{% trans "Homepage" %}</a></li>
+                    <li><a href="{% url report_forms %}">{% trans "Report Forms" %}</a></li>
+                    <li><a href="{% url knowledge_center %}">{% trans "Knowledge Corner" %}</a></li>
+                </ul>
+            </div>
         </div>
+        <div id=top>
+            <div id="logos">
+                <a href="#"><img id="logo_path" src="{{ STATIC_URL }}images/logo_path.png" alt="" /></a>
+                <a href="#"><img src="{{ STATIC_URL }}images/logo_nc.png" alt="" /></a>
+                <a href="http://www.who.int/en/"><img src="{{ STATIC_URL }}images/logo_head_part.png" alt="" /></a>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+
+        <div id="content2_home">{% block content %}{% endblock content %}</div>
+
         {% block js %}{% endblock js %}
         <script type="text/javascript">
             $("#language_selector").children("li").children("a").click(function(ev){
@@ -78,5 +63,29 @@
                 $(this)./*parent("#header_login").*/siblings("#header_login_form").slideToggle()
             })
         </script>
-    </body>
+
+
+{#                {% if user.is_authenticated %}#}
+{#                    <div id="header_logout">#}
+{#                        {% trans "Hey" %} {{ user.first_name }}! <a href="/logout/">{% trans "log out" %}</a>#}
+{#                    </div>#}
+{#                {% else %}#}
+{#                    <div id="header_login">#}
+{#                        <a href="#">{% trans "login" %}</a>#}
+{#                        <div id="header_login_form" style="display: none;">#}
+{#                            <form action="/login/?next={{ request.path }}" method="POST">#}
+{#                                {% csrf_token %}#}
+{#                                <table>#}
+{#                                    <tr>#}
+{#                                        <td><input type="text" name="username" id="id_username" placeholder="{% trans "Username" %}"/></td>#}
+{#                                    </tr>#}
+{#                                    <tr>#}
+{#                                        <td><input type="password" name="password" id="id_password" placeholder="{% trans "Password" %}" /></td>#}
+{#                                    </tr>#}
+{#                                </table>#}
+{#                                <input type="submit" class="login_button" value="{% trans "Login" %}" />#}
+{#                            </form>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endif %}#}
 </html>

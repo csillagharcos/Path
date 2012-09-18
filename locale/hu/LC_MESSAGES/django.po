@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-13 20:32+0200\n"
-"PO-Revision-Date: 2012-09-13 20:31\n"
-"Last-Translator: Richard Hajdu <t@a.com>\n"
+"POT-Creation-Date: 2012-09-17 23:21+0200\n"
+"PO-Revision-Date: 2012-09-18 01:25\n"
+"Last-Translator:   <t@a.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Translated-Using: django-rosetta 0.6.8\n"
 
@@ -39,67 +39,16 @@ msgstr "Jelszó"
 msgid ""
 "\n"
 "        <p>Program: Eva Belicza Dr., Judit Lám Dr., Erika Takács</p>\n"
-"        <p>The PATH project by the World Health Organization Regional Office "
-"for Europe launched in 2003. The PATH to hospital quality improvement "
-"support benchmarking tools (Performance Assessment Tool for quality "
-"improvement in Hospitals), which helps hospitals work to assess the results, "
-"review, and to the results starting quality improvement activity to other "
-"hospitals the practical experience of using.</p>\n"
-"        <p>The PATH system goes beyond the traditional economic versus "
-"performance, clinical effectiveness of professional-type differentiation, "
-"and develop a comprehensive perspective, which includes both clinical "
-"effectiveness, efficiency, labor orientation of the reactive control, safety "
-"and patient centeredness. The PATH is not just a hospital performance "
-"measurement tools, but also focus on the interpretation of the results. The "
-"network within the hospital carried out a comparative analysis "
-"(benchmarking) will help the hospitals to learn about best practices. The "
-"PATH provides support for the initial stages of organizational benchmarking "
-"hospitals, sheltered environment for the measurement of culture.</p>\n"
-"        <p>The PATH provides four main components of the hospitals: a "
-"theoretical framework to evaluate performance, the necessary tools (such as "
-"indicators and guides), custom reports, and a national network. The first "
-"two components of the WHO Regional Office for Europe provides, while the "
-"latter two are adapted to local conditions in the country co-ordinators "
-"provide. The indicators include, for example, the current mortality rates, "
-"operating room utilization, employee smoking prevalence. In Hungary, the "
-"networking features direct contact with representatives of the participating "
-"hospitals, and two or three months of work under discussion, participants "
-"will discuss the data collection, processing and interpretation of results, "
-"dilemmas and experiences.</p></div>\n"
+"        <p>The PATH project by the World Health Organization Regional Office for Europe launched in 2003. The PATH to hospital quality improvement support benchmarking tools (Performance Assessment Tool for quality improvement in Hospitals), which helps hospitals work to assess the results, review, and to the results starting quality improvement activity to other hospitals the practical experience of using.</p>\n"
+"        <p>The PATH system goes beyond the traditional economic versus performance, clinical effectiveness of professional-type differentiation, and develop a comprehensive perspective, which includes both clinical effectiveness, efficiency, labor orientation of the reactive control, safety and patient centeredness. The PATH is not just a hospital performance measurement tools, but also focus on the interpretation of the results. The network within the hospital carried out a comparative analysis (benchmarking) will help the hospitals to learn about best practices. The PATH provides support for the initial stages of organizational benchmarking hospitals, sheltered environment for the measurement of culture.</p>\n"
+"        <p>The PATH provides four main components of the hospitals: a theoretical framework to evaluate performance, the necessary tools (such as indicators and guides), custom reports, and a national network. The first two components of the WHO Regional Office for Europe provides, while the latter two are adapted to local conditions in the country co-ordinators provide. The indicators include, for example, the current mortality rates, operating room utilization, employee smoking prevalence. In Hungary, the networking features direct contact with representatives of the participating hospitals, and two or three months of work under discussion, participants will discuss the data collection, processing and interpretation of results, dilemmas and experiences.</p></div>\n"
 "    "
 msgstr ""
 "\n"
 "<p>Programvezető: Dr. Belicza Éva, Dr. Lám Judit, Takács Erika</p>\n"
-"<p>A PATH projektet az Egészségügyi Világszervezet Európai Regionális "
-"Irodája indította el 2003-ban. A PATH a kórházi minőségfejlesztést támogató "
-"teljesítményértékelő eszközrendszer (Performance Assessment Tool for quality "
-"improvement in Hospitals), amely segítséget nyújt a kórházak számára a "
-"munkájuk értékeléséhez, az eredményeik felülvizsgálatához, és ahhoz, hogy az "
-"eredményekből kiindulva minőségfejlesztési tevékenységet végezzenek más "
-"kórházak gyakorlati tapasztalatait is felhasználva.</p>\n"
-"<p>A PATH rendszere túlmutat a hagyományos, gazdasági teljesítmény vs. "
-"klinikai eredményesség típusú szakmai felosztáson, és egy olyan átfogó "
-"nézőpontot alakít ki, amely egyaránt magában foglalja a klinikai "
-"eredményességet, a hatékonyságot, a munkaerő-orientáltságot, a reagáló "
-"irányítást, a biztonságot és a betegközpontúságot. A PATH nem csupán egy "
-"kórházi teljesítményt mérő eszközrendszer, hanem az eredmények értelmezésére "
-"is hangsúlyt helyez. A hálózaton belül működő kórházakkal végzett "
-"összehasonlító elemzés (benchmarking) révén segítséget nyújt a kórházaknak a "
-"legjobban bevált gyakorlat megismerésében. A PATH támogatást nyújt a "
-"szervezeti teljesítményértékelés bevezető szakaszában lévő kórházaknak, "
-"védett környezetet kínál a mérési kultúra kialakításához.</p>\n"
-"<p>A PATH négy főbb alkotóelemet kínál a kórházak számára: elméleti keretet "
-"a teljesítmény értékeléséhez, az ehhez szükséges eszközrendszert "
-"(indikátorok és kézikönyvek formájában), egyéni beszámolókat és egy nemzeti "
-"szintű hálózatot. Az első két alkotóelemet a WHO Európai Regionális Irodája "
-"nyújtja, míg az utóbbi kettőt a helyi viszonyokhoz igazítva az ország-"
-"koordinátorok szolgáltatják. A jelenlegi indikátorok között szerepelnek "
-"például halálozási arányok, műtőkihasználtság, dolgozói dohányzási "
-"prevalencia. A magyarországi hálózatépítésre a közvetlen kapcsolattartás "
-"jellemző a résztvevő kórházak képviselőivel, valamint két-három havonta "
-"munkamegbeszélés keretében a résztvevők megvitatják az adatgyűjtéssel, -"
-"feldolgozással és az eredmények értelmezésével kapcsolatos dilemmákat, "
-"tapasztalatokat.</p>"
+"<p>A PATH projektet az Egészségügyi Világszervezet Európai Regionális Irodája indította el 2003-ban. A PATH a kórházi minőségfejlesztést támogató teljesítményértékelő eszközrendszer (Performance Assessment Tool for quality improvement in Hospitals), amely segítséget nyújt a kórházak számára a munkájuk értékeléséhez, az eredményeik felülvizsgálatához, és ahhoz, hogy az eredményekből kiindulva minőségfejlesztési tevékenységet végezzenek más kórházak gyakorlati tapasztalatait is felhasználva.</p>\n"
+"<p>A PATH rendszere túlmutat a hagyományos, gazdasági teljesítmény vs. klinikai eredményesség típusú szakmai felosztáson, és egy olyan átfogó nézőpontot alakít ki, amely egyaránt magában foglalja a klinikai eredményességet, a hatékonyságot, a munkaerő-orientáltságot, a reagáló irányítást, a biztonságot és a betegközpontúságot. A PATH nem csupán egy kórházi teljesítményt mérő eszközrendszer, hanem az eredmények értelmezésére is hangsúlyt helyez. A hálózaton belül működő kórházakkal végzett összehasonlító elemzés (benchmarking) révén segítséget nyújt a kórházaknak a legjobban bevált gyakorlat megismerésében. A PATH támogatást nyújt a szervezeti teljesítményértékelés bevezető szakaszában lévő kórházaknak, védett környezetet kínál a mérési kultúra kialakításához.</p>\n"
+"<p>A PATH négy főbb alkotóelemet kínál a kórházak számára: elméleti keretet a teljesítmény értékeléséhez, az ehhez szükséges eszközrendszert (indikátorok és kézikönyvek formájában), egyéni beszámolókat és egy nemzeti szintű hálózatot. Az első két alkotóelemet a WHO Európai Regionális Irodája nyújtja, míg az utóbbi kettőt a helyi viszonyokhoz igazítva az ország-koordinátorok szolgáltatják. A jelenlegi indikátorok között szerepelnek például halálozási arányok, műtőkihasználtság, dolgozói dohányzási prevalencia. A magyarországi hálózatépítésre a közvetlen kapcsolattartás jellemző a résztvevő kórházak képviselőivel, valamint két-három havonta munkamegbeszélés keretében a résztvevők megvitatják az adatgyűjtéssel, -feldolgozással és az eredmények értelmezésével kapcsolatos dilemmákat, tapasztalatokat.</p></div>"
 
 #: pathstatic/templates/index.html:11
 msgid "PATH international website"
@@ -138,7 +87,7 @@ msgstr "Nem"
 msgid "Yes"
 msgstr "Igen"
 
-#: report_forms/c1/models.py:20 report_forms/c21/models.py:15
+#: report_forms/c1/models.py:20 report_forms/c21/models.py:16
 msgid "-- Select --"
 msgstr "-- Válassz --"
 
@@ -158,7 +107,8 @@ msgstr "Betegazonosító"
 msgid "Case ID"
 msgstr "Esetazonosító"
 
-#: report_forms/c1/models.py:42 report_forms/c21/models.py:55
+#: report_forms/c1/models.py:42 report_forms/c21/forms.py:14
+#: report_forms/c21/models.py:55
 msgid "Date of birth"
 msgstr "Születési idő"
 
@@ -185,8 +135,8 @@ msgstr "Az újszülött súlya"
 #: report_forms/c1/models.py:48
 msgid "Mother illnes or risk"
 msgstr ""
-"Van-e az anyának olyan betegsége, kockázata, amely esetében a hüvelyi szülés "
-"súlyos állapotromlást idézett volna elő (testi deformitás, súlyos "
+"Van-e az anyának olyan betegsége, kockázata, amely esetében a hüvelyi szülés"
+" súlyos állapotromlást idézett volna elő (testi deformitás, súlyos "
 "belgyógyászati kórkép, placenta preavia, retina leválás kockázata stb…)?"
 
 #: report_forms/c1/models.py:49
@@ -278,13 +228,51 @@ msgstr ""
 msgid "In case of allergy to penicillin, scale of severity?"
 msgstr "Penicilin allergia esetén annak súlyossága"
 
-#: report_forms/c21/forms.py:8 report_forms/c21/models.py:72
+#: report_forms/c21/forms.py:8 report_forms/c21/models.py:73
 msgid "Route of administration of first dose"
 msgstr "Első dózis beadási módja"
 
+#: report_forms/c21/forms.py:10 report_forms/c21/models.py:77
+msgid "Date of surgical wound closure"
+msgstr "A műtéti seb zárásának dátuma"
+
 #: report_forms/c21/forms.py:10 report_forms/c21/forms.py:11
+#: report_forms/c21/forms.py:12 report_forms/c21/forms.py:13
+#: report_forms/c21/forms.py:14
 msgid "[click here]"
 msgstr "[kattints ide]"
+
+#: report_forms/c21/forms.py:11 report_forms/c21/models.py:74
+msgid "Date of first dose"
+msgstr "Első dózis beadási dátuma"
+
+#: report_forms/c21/forms.py:12 report_forms/c21/models.py:65
+msgid "Date of surgical incision"
+msgstr "A műtéti bemetszés időpontja"
+
+#: report_forms/c21/forms.py:13 report_forms/c21/models.py:76
+msgid "Date of last dose"
+msgstr "Utolsó dózis beadási dátuma"
+
+#: report_forms/c21/forms.py:16 report_forms/c21/models.py:56
+msgid "Weight of patient"
+msgstr "A beteg testtömege"
+
+#: report_forms/c21/forms.py:18 report_forms/c21/models.py:68
+msgid "First dose"
+msgstr "Első dózis"
+
+#: report_forms/c21/forms.py:19 report_forms/c21/models.py:70
+msgid "Second dose"
+msgstr "Második dózis"
+
+#: report_forms/c21/forms.py:20 report_forms/c21/models.py:72
+msgid "Other dose"
+msgstr "Egyéb dózis"
+
+#: report_forms/c21/forms.py:21 report_forms/c21/models.py:75
+msgid "Total doses in 24 hours"
+msgstr "24 órán belüli összdózis"
 
 #: report_forms/c21/models.py:26
 msgid "Immediate"
@@ -342,10 +330,6 @@ msgstr "Gyógyszerek"
 msgid "Hospital registration number"
 msgstr "Kórházi regisztrációs szám"
 
-#: report_forms/c21/models.py:56
-msgid "Weight of patient"
-msgstr "A beteg testtömege"
-
 #: report_forms/c21/models.py:57
 msgid "Principal diagnosis code (ICD-10 or DRG)"
 msgstr "Fődiagnózis kód (BNO10)"
@@ -371,52 +355,25 @@ msgid "Has patient preoperative infection?"
 msgstr "Van-e a betegnek műtétet megelőző fertőzése?"
 
 #: report_forms/c21/models.py:64
-msgid "Date of surgical incision"
-msgstr "A műtéti bemetszés időpontja"
+#, fuzzy
+msgid "Type of infection"
+msgstr "A császármetszés"
 
-#: report_forms/c21/models.py:65
+#: report_forms/c21/models.py:66
 msgid "Prophylactic antibiotic given?"
 msgstr "Profilaktikus antibiotikumot adtak?"
 
-#: report_forms/c21/models.py:66
+#: report_forms/c21/models.py:67
 msgid "Name of first dose"
 msgstr "Első hatóanyag neve"
 
-#: report_forms/c21/models.py:67
-msgid "First dose"
-msgstr "Első dózis"
-
-#: report_forms/c21/models.py:68
+#: report_forms/c21/models.py:69
 msgid "Name of second dose"
 msgstr "Második hatóanyag neve"
 
-#: report_forms/c21/models.py:69
-msgid "Second dose"
-msgstr "Második dózis"
-
-#: report_forms/c21/models.py:70
+#: report_forms/c21/models.py:71
 msgid "Name of other dose"
 msgstr "Egyéb hatóanyag neve"
-
-#: report_forms/c21/models.py:71
-msgid "Other dose"
-msgstr "Egyéb dózis"
-
-#: report_forms/c21/models.py:73
-msgid "Date of first dose"
-msgstr "Első dózis beadási dátuma"
-
-#: report_forms/c21/models.py:74
-msgid "Total doses in 24 hours"
-msgstr "24 órán belüli összdózis"
-
-#: report_forms/c21/models.py:75
-msgid "Date of last dose"
-msgstr "Utolsó dózis beadási dátuma"
-
-#: report_forms/c21/models.py:76
-msgid "Date of surgical wound closure"
-msgstr "A műtéti seb zárásának dátuma"
 
 #: report_forms/c21/models.py:85
 msgid "Planned surgery for colorectal cancer"
@@ -435,81 +392,16 @@ msgid "C1. C-section rate"
 msgstr "C.1. Császármetszések aránya"
 
 #: report_forms/templates/list_of_report_forms.html:7
-#: report_forms/templates/list_of_report_forms.html:12
-#: report_forms/templates/list_of_report_forms.html:18
-#: report_forms/templates/list_of_report_forms.html:23
-#: report_forms/templates/list_of_report_forms.html:28
-#: report_forms/templates/list_of_report_forms.html:33
-#: report_forms/templates/list_of_report_forms.html:38
-#: report_forms/templates/list_of_report_forms.html:43
-#: report_forms/templates/list_of_report_forms.html:48
-#: report_forms/templates/list_of_report_forms.html:53
 msgid "Form"
 msgstr "Űrlap"
 
 #: report_forms/templates/list_of_report_forms.html:8
-#: report_forms/templates/list_of_report_forms.html:13
-#: report_forms/templates/list_of_report_forms.html:19
-#: report_forms/templates/list_of_report_forms.html:24
-#: report_forms/templates/list_of_report_forms.html:29
-#: report_forms/templates/list_of_report_forms.html:34
-#: report_forms/templates/list_of_report_forms.html:39
-#: report_forms/templates/list_of_report_forms.html:44
-#: report_forms/templates/list_of_report_forms.html:49
-#: report_forms/templates/list_of_report_forms.html:54
 msgid "Statistics"
 msgstr "Statisztika"
 
 #: report_forms/templates/list_of_report_forms.html:9
-#: report_forms/templates/list_of_report_forms.html:14
-#: report_forms/templates/list_of_report_forms.html:20
-#: report_forms/templates/list_of_report_forms.html:25
-#: report_forms/templates/list_of_report_forms.html:30
-#: report_forms/templates/list_of_report_forms.html:35
-#: report_forms/templates/list_of_report_forms.html:40
-#: report_forms/templates/list_of_report_forms.html:45
-#: report_forms/templates/list_of_report_forms.html:50
-#: report_forms/templates/list_of_report_forms.html:55
 msgid "Import"
 msgstr "Importálás"
-
-#: report_forms/templates/list_of_report_forms.html:11
-msgid ""
-"C.2.1. Prophylactic antibiotic use - Planned surgery for colorectal cancer"
-msgstr "C.2.1. Tervezett colorectalis daganat műtét"
-
-#: report_forms/templates/list_of_report_forms.html:17
-msgid "C.2.3. Prophylactic antibiotic use - Hip replacement"
-msgstr "C.2.3. Csípőprotézis"
-
-#: report_forms/templates/list_of_report_forms.html:22
-msgid "C.2.4. Prophylactic antibiotic use - Hysterectomy"
-msgstr "C.2.4. Méheltávolítás"
-
-#: report_forms/templates/list_of_report_forms.html:27
-msgid "C.3.1. 30-day in-hospital mortality of patients admitted with AMI"
-msgstr "C.3.1. AMI halálozás"
-
-#: report_forms/templates/list_of_report_forms.html:32
-msgid ""
-"C.3.2. 30-day in-hospital mortality of patients admitted with acute stroke"
-msgstr "C.3.2. Stroke halálozás"
-
-#: report_forms/templates/list_of_report_forms.html:37
-msgid "C.8. Length of Stay"
-msgstr "C.8. Ápolási idő"
-
-#: report_forms/templates/list_of_report_forms.html:42
-msgid "C.13. Needle stick injuries"
-msgstr "C.13. Tűszúrás"
-
-#: report_forms/templates/list_of_report_forms.html:47
-msgid "C.20. AMI patients prescribed aspirin at discharge"
-msgstr "C.20. AMI-val kezelt betegek elbocsátása"
-
-#: report_forms/templates/list_of_report_forms.html:52
-msgid "R1. Indicators for rehabilitation hospitals and departments"
-msgstr "R1. Indikátorok rehabilitációs szakkórházak és osztályok számára"
 
 #: templates/base.html:25
 msgid "Logo for the Path project"
@@ -543,8 +435,31 @@ msgstr "Tudástár"
 msgid "Universities"
 msgstr "Egyetemek"
 
-#~ msgid "If yes, specify here"
-#~ msgstr "Ha igen, pontosabban"
+#~ msgid ""
+#~ "C.2.1. Prophylactic antibiotic use - Planned surgery for colorectal cancer"
+#~ msgstr "C.2.1. Tervezett colorectalis daganat műtét"
 
-#~ msgid "Log"
-#~ msgstr "Belép"
+#~ msgid "C.2.3. Prophylactic antibiotic use - Hip replacement"
+#~ msgstr "C.2.3. Csípőprotézis"
+
+#~ msgid "C.2.4. Prophylactic antibiotic use - Hysterectomy"
+#~ msgstr "C.2.4. Méheltávolítás"
+
+#~ msgid "C.3.1. 30-day in-hospital mortality of patients admitted with AMI"
+#~ msgstr "C.3.1. AMI halálozás"
+
+#~ msgid ""
+#~ "C.3.2. 30-day in-hospital mortality of patients admitted with acute stroke"
+#~ msgstr "C.3.2. Stroke halálozás"
+
+#~ msgid "C.8. Length of Stay"
+#~ msgstr "C.8. Ápolási idő"
+
+#~ msgid "C.13. Needle stick injuries"
+#~ msgstr "C.13. Tűszúrás"
+
+#~ msgid "C.20. AMI patients prescribed aspirin at discharge"
+#~ msgstr "C.20. AMI-val kezelt betegek elbocsátása"
+
+#~ msgid "R1. Indicators for rehabilitation hospitals and departments"
+#~ msgstr "R1. Indikátorok rehabilitációs szakkórházak és osztályok számára"
