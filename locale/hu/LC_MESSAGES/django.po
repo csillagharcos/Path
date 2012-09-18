@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-18 14:49+0200\n"
-"PO-Revision-Date: 2012-09-18 14:51\n"
+"POT-Creation-Date: 2012-09-18 15:14+0200\n"
+"PO-Revision-Date: 2012-09-18 15:15\n"
 "Last-Translator:   <t@a.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -64,6 +64,7 @@ msgstr "Bejelentkezés"
 
 #: personel/models.py:9 report_forms/c1/models.py:53
 #: report_forms/c21/models.py:79 report_forms/c23/models.py:76
+#: report_forms/c24/models.py:68
 msgid "User"
 msgstr "Felhasználó"
 
@@ -80,12 +81,12 @@ msgid "Acute"
 msgstr "Azonnali"
 
 #: report_forms/c1/models.py:15 report_forms/c21/models.py:10
-#: report_forms/c23/models.py:10
+#: report_forms/c23/models.py:10 report_forms/c24/models.py:10
 msgid "No"
 msgstr "Nem"
 
 #: report_forms/c1/models.py:16 report_forms/c21/models.py:11
-#: report_forms/c23/models.py:11
+#: report_forms/c23/models.py:11 report_forms/c24/models.py:11
 msgid "Yes"
 msgstr "Igen"
 
@@ -107,13 +108,14 @@ msgid "Patients ID"
 msgstr "Betegazonosító"
 
 #: report_forms/c1/models.py:41 report_forms/c21/models.py:53
-#: report_forms/c23/models.py:49
+#: report_forms/c23/models.py:49 report_forms/c24/models.py:42
 msgid "Case ID"
 msgstr "Esetazonosító"
 
 #: report_forms/c1/models.py:42 report_forms/c21/forms.py:14
 #: report_forms/c21/models.py:55 report_forms/c23/forms.py:14
-#: report_forms/c23/models.py:51
+#: report_forms/c23/models.py:51 report_forms/c24/forms.py:14
+#: report_forms/c24/models.py:44
 msgid "Date of birth"
 msgstr "Születési idő"
 
@@ -167,66 +169,77 @@ msgstr "Császármetszés arányok"
 #: report_forms/c1/templates/filled_out.html:5
 #: report_forms/c21/templates/filled_out.html:5
 #: report_forms/c23/templates/filled_out.html:5
+#: report_forms/c24/templates/filled_out.html:5
 msgid "Congratulations for filling out the form!"
 msgstr "Gratulálunk, kitöltötted a kérdőívet"
 
 #: report_forms/c1/templates/statistics.html:5
 #: report_forms/c21/templates/statistics.html:5
 #: report_forms/c23/templates/statistics.html:5
+#: report_forms/c24/templates/statistics.html:5
 msgid "Overall:"
 msgstr "Összesen:"
 
 #: report_forms/c1/templates/statistics.html:6
 #: report_forms/c21/templates/statistics.html:6
 #: report_forms/c23/templates/statistics.html:6
+#: report_forms/c24/templates/statistics.html:6
 msgid "Removed:"
 msgstr "Eltávolítva:"
 
 #: report_forms/c1/templates/statistics.html:7
 #: report_forms/c21/templates/statistics.html:7
 #: report_forms/c23/templates/statistics.html:7
+#: report_forms/c24/templates/statistics.html:7
 msgid "Counted:"
 msgstr "Beleszámolva:"
 
 #: report_forms/c1/templates/statistics.html:9
 #: report_forms/c21/templates/statistics.html:9
 #: report_forms/c23/templates/statistics.html:9
+#: report_forms/c24/templates/statistics.html:9
 msgid "C-section rate:"
 msgstr "Császármetszés aránya:"
 
 #: report_forms/c1/templates/statistics.html:10
 #: report_forms/c21/templates/statistics.html:10
 #: report_forms/c23/templates/statistics.html:10
+#: report_forms/c24/templates/statistics.html:10
 msgid "Rate of planned C-section:"
 msgstr "Tervezett császármetszések aránya:"
 
 #: report_forms/c1/templates/statistics.html:11
 #: report_forms/c21/templates/statistics.html:11
 #: report_forms/c23/templates/statistics.html:11
+#: report_forms/c24/templates/statistics.html:11
 msgid "Rate of acute C-section:"
 msgstr "Sürgős császármetszések aránya:"
 
 #: report_forms/c1/templates/statistics.html:12
 #: report_forms/c21/templates/statistics.html:12
 #: report_forms/c23/templates/statistics.html:12
+#: report_forms/c24/templates/statistics.html:12
 msgid "Rate of c-section by the mother's age is less than 20:"
 msgstr "Császármetszések aránya az anya fiatalabb, mint 20 év:"
 
 #: report_forms/c1/templates/statistics.html:13
 #: report_forms/c21/templates/statistics.html:13
 #: report_forms/c23/templates/statistics.html:13
+#: report_forms/c24/templates/statistics.html:13
 msgid "Rate of c-section by the mother's age is between 20-35:"
 msgstr "Császármetszések aránya az anya fiatalabb 20 és 35 év közt van:"
 
 #: report_forms/c1/templates/statistics.html:14
 #: report_forms/c21/templates/statistics.html:14
 #: report_forms/c23/templates/statistics.html:14
+#: report_forms/c24/templates/statistics.html:14
 msgid "Rate of c-section by the mother's age is more than 35:"
 msgstr "Császármetszések aránya az anya idősebb, mint 35 év:"
 
 #: report_forms/c1/templates/statistics.html:15
 #: report_forms/c21/templates/statistics.html:15
 #: report_forms/c23/templates/statistics.html:15
+#: report_forms/c24/templates/statistics.html:15
 msgid ""
 "Rate of acute C-section by the previous number of deliveries first delivery:"
 msgstr "Császármetszések aránya a korábbi szülések száma alapján első szülés:"
@@ -234,6 +247,7 @@ msgstr "Császármetszések aránya a korábbi szülések száma alapján első 
 #: report_forms/c1/templates/statistics.html:16
 #: report_forms/c21/templates/statistics.html:16
 #: report_forms/c23/templates/statistics.html:16
+#: report_forms/c24/templates/statistics.html:16
 msgid ""
 "Rate of acute C-section by the previous number of deliveries first delivery "
 "one or more previous deliveries:"
@@ -243,16 +257,19 @@ msgstr ""
 
 #: report_forms/c21/forms.py:7 report_forms/c21/models.py:62
 #: report_forms/c23/forms.py:7 report_forms/c23/models.py:59
+#: report_forms/c24/forms.py:7 report_forms/c24/models.py:51
 msgid "In case of allergy to penicillin, scale of severity?"
 msgstr "Penicilin allergia esetén annak súlyossága"
 
 #: report_forms/c21/forms.py:8 report_forms/c21/models.py:73
 #: report_forms/c23/forms.py:8 report_forms/c23/models.py:70
+#: report_forms/c24/forms.py:8 report_forms/c24/models.py:62
 msgid "Route of administration of first dose"
 msgstr "Első dózis beadási módja"
 
 #: report_forms/c21/forms.py:10 report_forms/c21/models.py:77
 #: report_forms/c23/forms.py:10 report_forms/c23/models.py:74
+#: report_forms/c24/forms.py:10 report_forms/c24/models.py:66
 msgid "Date of surgical wound closure"
 msgstr "A műtéti seb zárásának dátuma"
 
@@ -261,72 +278,89 @@ msgstr "A műtéti seb zárásának dátuma"
 #: report_forms/c21/forms.py:14 report_forms/c23/forms.py:10
 #: report_forms/c23/forms.py:11 report_forms/c23/forms.py:12
 #: report_forms/c23/forms.py:13 report_forms/c23/forms.py:14
+#: report_forms/c24/forms.py:10 report_forms/c24/forms.py:11
+#: report_forms/c24/forms.py:12 report_forms/c24/forms.py:13
+#: report_forms/c24/forms.py:14
 msgid "[click here]"
 msgstr "[kattints ide]"
 
 #: report_forms/c21/forms.py:11 report_forms/c21/models.py:74
 #: report_forms/c23/forms.py:11 report_forms/c23/models.py:71
+#: report_forms/c24/forms.py:11 report_forms/c24/models.py:63
 msgid "Date of first dose"
 msgstr "Első dózis beadási dátuma"
 
 #: report_forms/c21/forms.py:12 report_forms/c21/models.py:65
 #: report_forms/c23/forms.py:12 report_forms/c23/models.py:62
+#: report_forms/c24/forms.py:12 report_forms/c24/models.py:54
 msgid "Date of surgical incision"
 msgstr "A műtéti bemetszés időpontja"
 
 #: report_forms/c21/forms.py:13 report_forms/c21/models.py:76
 #: report_forms/c23/forms.py:13 report_forms/c23/models.py:73
+#: report_forms/c24/forms.py:13 report_forms/c24/models.py:65
 msgid "Date of last dose"
 msgstr "Utolsó dózis beadási dátuma"
 
 #: report_forms/c21/forms.py:16 report_forms/c21/models.py:56
 #: report_forms/c23/forms.py:16 report_forms/c23/models.py:52
+#: report_forms/c24/forms.py:16 report_forms/c24/models.py:45
 msgid "Weight of patient"
 msgstr "A beteg testtömege"
 
 #: report_forms/c21/forms.py:18 report_forms/c21/models.py:68
 #: report_forms/c23/forms.py:18 report_forms/c23/models.py:65
+#: report_forms/c24/forms.py:18 report_forms/c24/models.py:57
 msgid "First dose"
 msgstr "Első dózis"
 
 #: report_forms/c21/forms.py:19 report_forms/c21/models.py:70
 #: report_forms/c23/forms.py:19 report_forms/c23/models.py:67
+#: report_forms/c24/forms.py:19 report_forms/c24/models.py:59
 msgid "Second dose"
 msgstr "Második dózis"
 
 #: report_forms/c21/forms.py:20 report_forms/c21/models.py:72
 #: report_forms/c23/forms.py:20 report_forms/c23/models.py:69
+#: report_forms/c24/forms.py:20 report_forms/c24/models.py:61
 msgid "Other dose"
 msgstr "Egyéb dózis"
 
 #: report_forms/c21/forms.py:21 report_forms/c21/models.py:75
 #: report_forms/c23/forms.py:21 report_forms/c23/models.py:72
+#: report_forms/c24/forms.py:21 report_forms/c24/models.py:64
 msgid "Total doses in 24 hours"
 msgstr "24 órán belüli összdózis"
 
 #: report_forms/c21/models.py:26 report_forms/c23/models.py:23
+#: report_forms/c24/models.py:16
 msgid "Immediate"
 msgstr "Azonnali"
 
 #: report_forms/c21/models.py:27 report_forms/c21/models.py:35
 #: report_forms/c23/models.py:20 report_forms/c23/models.py:24
-#: report_forms/c23/models.py:32
+#: report_forms/c23/models.py:32 report_forms/c24/models.py:17
+#: report_forms/c24/models.py:25
 msgid "Other"
 msgstr "Egyéb"
 
 #: report_forms/c21/models.py:28 report_forms/c23/models.py:25
+#: report_forms/c24/models.py:18
 msgid "No Information"
 msgstr "Nincs információ"
 
 #: report_forms/c21/models.py:32 report_forms/c23/models.py:29
+#: report_forms/c24/models.py:22
 msgid "IV"
 msgstr "IV"
 
 #: report_forms/c21/models.py:33 report_forms/c23/models.py:30
+#: report_forms/c24/models.py:23
 msgid "IM"
 msgstr "IM"
 
 #: report_forms/c21/models.py:34 report_forms/c23/models.py:31
+#: report_forms/c24/models.py:24
 msgid "SC"
 msgstr "SC"
 
@@ -335,74 +369,92 @@ msgid "PO"
 msgstr "PO"
 
 #: report_forms/c21/models.py:40 report_forms/c23/models.py:36
+#: report_forms/c24/models.py:29
 msgid "Name"
 msgstr "Név"
 
 #: report_forms/c21/models.py:41 report_forms/c23/models.py:37
+#: report_forms/c24/models.py:30
 msgid "Dosage"
 msgstr "Dózis"
 
 #: report_forms/c21/models.py:42 report_forms/c23/models.py:38
+#: report_forms/c24/models.py:31
 msgid "Dosage under 60kg"
 msgstr "Dózis 60kg alatt"
 
 #: report_forms/c21/models.py:43 report_forms/c23/models.py:39
+#: report_forms/c24/models.py:32
 msgid "Dosage above 100kg"
 msgstr "Dózis 100kg alatt"
 
 #: report_forms/c21/models.py:49 report_forms/c23/models.py:45
+#: report_forms/c24/models.py:38
 msgid "Medicine"
 msgstr "Gyógyszer"
 
 #: report_forms/c21/models.py:50 report_forms/c23/models.py:46
+#: report_forms/c24/models.py:39
 msgid "Medicines"
 msgstr "Gyógyszerek"
 
 #: report_forms/c21/models.py:54 report_forms/c23/models.py:50
+#: report_forms/c24/models.py:43
 msgid "Hospital registration number"
 msgstr "Kórházi regisztrációs szám"
 
 #: report_forms/c21/models.py:57 report_forms/c23/models.py:53
+#: report_forms/c24/models.py:46
 msgid "Principal diagnosis code (ICD-10 or DRG)"
 msgstr "Fődiagnózis kód (BNO10)"
 
 #: report_forms/c21/models.py:58 report_forms/c23/models.py:55
+#: report_forms/c24/models.py:47
 msgid "Principal procedure code"
 msgstr "Fődiagnózis miatt végzett műtéti beavatkozás kódja"
 
 #: report_forms/c21/models.py:59 report_forms/c23/models.py:56
+#: report_forms/c24/models.py:48
 msgid "Is the surgical procedure planned?"
 msgstr "A műtéti beavatkozás tervezett?"
 
 #: report_forms/c21/models.py:60 report_forms/c23/models.py:57
+#: report_forms/c24/models.py:49
 msgid "Is patient allergic to any antibiotics suggested in the protocol?"
 msgstr "A beteg allergiás a protokollban valamelyik antibiotikumra?"
 
 #: report_forms/c21/models.py:61 report_forms/c23/models.py:58
+#: report_forms/c24/models.py:50
 msgid "Generic name of antibiotic drug"
 msgstr "Hatóanyag amelyre a beteg allergiás"
 
 #: report_forms/c21/models.py:63 report_forms/c23/models.py:60
+#: report_forms/c24/models.py:52
 msgid "Has patient preoperative infection?"
 msgstr "Van-e a betegnek műtétet megelőző fertőzése?"
 
 #: report_forms/c21/models.py:64 report_forms/c23/models.py:61
+#: report_forms/c24/models.py:53
 msgid "Type of infection"
 msgstr "Fertőzés típusa"
 
 #: report_forms/c21/models.py:66 report_forms/c23/models.py:63
+#: report_forms/c24/models.py:55
 msgid "Prophylactic antibiotic given?"
 msgstr "Profilaktikus antibiotikumot adtak?"
 
 #: report_forms/c21/models.py:67 report_forms/c23/models.py:64
+#: report_forms/c24/models.py:56
 msgid "Name of first dose"
 msgstr "Első hatóanyag neve"
 
 #: report_forms/c21/models.py:69 report_forms/c23/models.py:66
+#: report_forms/c24/models.py:58
 msgid "Name of second dose"
 msgstr "Második hatóanyag neve"
 
 #: report_forms/c21/models.py:71 report_forms/c23/models.py:68
+#: report_forms/c24/models.py:60
 msgid "Name of other dose"
 msgstr "Egyéb hatóanyag neve"
 
@@ -421,6 +473,10 @@ msgstr "Egyéb fődiagnózis kód (BNO10)"
 #: report_forms/c23/models.py:82 report_forms/c23/models.py:83
 msgid "Planned surgery for hip replacement"
 msgstr "Tervezett csípőprotézis műtét"
+
+#: report_forms/c24/models.py:74 report_forms/c24/models.py:75
+msgid "Planned surgery for hysterectomy"
+msgstr "Tervezett méheltávolítás műtét"
 
 #: report_forms/templates/form.html:9
 msgid "Submit"

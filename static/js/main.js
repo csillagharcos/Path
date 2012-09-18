@@ -1,10 +1,10 @@
-function showNext(element, eq){
-    if( element.val() == eq){
-        element.parents('tr').next().effect("highlight", {}, 100)
+function showNext(element, bool){
+    if( element.val() == bool){
+        element.parents('tr').next().show()
     }else{
         element.parents('tr').next().hide()
     }
-    element.unbind('change').bind('change', function(){ showNext(element) })
+    element.unbind('change').bind('change', function(){ showNext(element, 1) })
 }
 
 function showNextTwo(element){
