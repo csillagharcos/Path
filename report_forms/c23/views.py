@@ -7,21 +7,22 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.utils import simplejson
-from report_forms.c21.forms import C21Form, FileUploadForm
-from report_forms.c21.models import c21, c21CSV, Medicine
+from report_forms.c23.forms import C23Form, FileUploadForm
+from report_forms.c23.models import c23, c23CSV, Medicine
 
 @login_required
 def Display(request):
     if request.method == "POST":
-        form = C21Form(request.POST)
+        form = C23Form(request.POST)
         if form.is_valid():
-            new_c21 = c21.objects.create(
+            new_c23 = c23.objects.create(
                 case_id                         = form.cleaned_data['case_id'],
                 hospital_registration_number    = form.cleaned_data['hospital_registration_number'],
                 date_of_birth                   = datetime.strptime(form.cleaned_data['date_of_birth'], "%Y-%m-%d"),
                 weight_of_patient               = form.cleaned_data['weight_of_patient'],
                 principal_diagnoses_code        = form.cleaned_data['principal_diagnoses_code'],
                 principal_procedure_code        = form.cleaned_data['principal_procedure_code'],
+                principal_procedure_code_other  = form.cleaned_data['principal_procedure_code_other'],
                 procedure_planned               = form.cleaned_data['procedure_planned'],
                 patient_allergy                 = form.cleaned_data['patient_allergy'],
                 generic_name_of_drug            = form.cleaned_data['generic_name_of_drug'],
@@ -43,21 +44,21 @@ def Display(request):
                 date_of_wound_close             = datetime.strptime(form.cleaned_data['date_of_wound_close'], "%Y-%m-%d %H:%M:%S"),
                 added_by                        = request.user,
             )
-            new_c21.save()
+            new_c23.save()
             return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
         else:
-            form = C21Form(request.POST)
-            return render(request, 'c21.html', { 'form': form })
+            form = C23Form(request.POST)
+            return render(request, 'c23.html', { 'form': form })
 
-    form = C21Form()
-    return render(request, 'c21.html', { 'form': form })
+    form = C23Form()
+    return render(request, 'c23.html', { 'form': form })
 
 @login_required
 def Import(request):
     if request.method == "POST":
         exists=()
         csv_file = request.FILES['file']
-        imported_csv = c21CSV.import_data(data=csv_file)
+        imported_csv = c23CSV.import_data(data=csv_file)
         for line in imported_csv:
             try:
                 try: first_dose_name = Medicine.objects.get(name = line.name_of_first_dose)
@@ -77,7 +78,7 @@ def Import(request):
                 else:
                     pa = parseInt(line.penicilin_allergy)
 
-                new_c21 = c21.objects.create(
+                new_c23 = c23.objects.create(
                     case_id                         = parseInt(line.case_id),
                     hospital_registration_number    = line.hospital_registration_number,
                     date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
@@ -105,7 +106,7 @@ def Import(request):
                     date_of_wound_close             = dowc,
                     added_by                        = request.user,
                 )
-                new_c21.save()
+                new_c23.save()
             except ValueError:
                 #TODO: Normal error message in case of first row fuckup
                 pass
@@ -119,7 +120,7 @@ def Import(request):
 
 @login_required
 def Statistics(request):
-#    ''' Query '''
+    ''' Query '''
 #    countable_case=uncountable_case=()
 #    cases = c1.objects.all()
 #    for case in cases:
@@ -128,7 +129,7 @@ def Statistics(request):
 #        else:
 #            countable_case += (case,)
 #
-#    ''' Working '''
+    ''' Working '''
 #    numerator = map(float,[0,0,0,0,0,0,0,0])
 #    agedenominator = [0,0,0]
 #    previousdenominator = [0,0]
@@ -163,7 +164,7 @@ def Statistics(request):
 #            else:
 #                numerator[7] += 1                                           #subindicator 4.2
 #
-#    ''' Counting '''
+    ''' Counting '''
 #    indicator_one               = numerator[0] / len(countable_case)     * 100
 #    subindicator_one            = numerator[1] / len(countable_case)     * 100
 #    subindicator_two            = numerator[2] / len(countable_case)     * 100
@@ -192,7 +193,7 @@ def Statistics(request):
 #    except ZeroDivisionError:
 #        subindicator_four_two   = 0
 #
-#    ''' Displaying '''
+    ''' Displaying '''
 #    context = {
 #        "overall": len(cases),
 #        "removed": len(uncountable_case),

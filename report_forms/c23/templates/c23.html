@@ -7,8 +7,7 @@
             hideElements($('#id_antibiotic_given'), 'tr:nth-last-child(1)')
             showNextTwo($('#id_patient_allergy'))
             showNext( $('#id_preoperative_infection'), 1 )
-
-//            $("#id_patient_allergy").change( function(){ showNext( $(this) ) } )
+            showNext( $('#id_principal_diagnoses_code'), 0 )
 
             addSuffix($(".size"), 'kg')
             addSuffix($(".milligramm"), 'mg')

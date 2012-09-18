@@ -1,23 +1,21 @@
-function showNext(element){
-    if( element.val() == 1){
-        element.parents('tr').next().show()
+function showNext(element, eq){
+    if( element.val() == eq){
+        element.parents('tr').next().effect("highlight", {}, 100)
     }else{
         element.parents('tr').next().hide()
     }
-    /* change event added every fricking time! have to check somehow */
-    element.change(function(){ showNext(element) })
+    element.unbind('change').bind('change', function(){ showNext(element) })
 }
 
 function showNextTwo(element){
     if( element.val() == 1){
-        element.parents('tr').next().show()
-        element.parents('tr').next().next().show()
+        element.parents('tr').next().effect("highlight", {}, 100)
+        element.parents('tr').next().next().effect("highlight", {}, 100)
     }else{
         element.parents('tr').next().hide()
         element.parents('tr').next().next().hide()
     }
-    /* change event added every fricking time! have to check somehow */
-    element.change(function(){ showNextTwo(element) })
+    element.unbind('change').bind('change', function(){ showNextTwo(element) })
 }
 
 
@@ -41,8 +39,8 @@ function hideElements(element, limit){
     if( element.val() == 0 ){
         element.parents('tr').nextUntil(limit, 'tr').hide()
     }else{
-        element.parents('tr').nextUntil(limit, 'tr').show()
+        element.parents('tr').nextUntil(limit, 'tr').effect("highlight", {}, 100)
     }
-    /* change event added every fricking time! have to check somehow */
-    element.change(function(){ hideElements(element, limit) })
+    element.unbind('change').bind('change', function(){ hideElements(element, limit) })
+
 }

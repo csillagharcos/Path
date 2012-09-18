@@ -14,13 +14,10 @@ YES_NO_CHOICES = (
 
 PRINCIPAL_DIAG_CODE = (
     ('', _('-- Select --')),
-    ('C18', 'C18'),
-    ('C19', 'C19'),
-    ('C20', 'C20'),
-    ('C20.0', 'C21.0'),
-    ('C20.1', 'C21.1'),
-    ('C20.2', 'C21.2'),
-    ('C20.8', 'C21.8'),
+    ('S70.0', 'S70.0'),
+    ('S70.1', 'S70.1'),
+    ('S70.2', 'S70.2'),
+    ('0', _('Other')),
     )
 PENICILIN_ALLERGY_CHOICES = (
     ('1', _('Immediate')),
@@ -33,7 +30,6 @@ ROUTE_OF_ADMIN_CHOICES = (
     (2, _('IM')),
     (3, _('SC')),
     (4, _('Other')),
-    (5, _('PO')),
 )
 
 class Medicine(models.Model):
@@ -49,12 +45,13 @@ class Medicine(models.Model):
         verbose_name = _('Medicine')
         verbose_name_plural = _('Medicines')
 
-class c21(models.Model):
+class c23(models.Model):
     case_id                         = models.IntegerField(_('Case ID'))
     hospital_registration_number    = models.CharField(_('Hospital registration number'), max_length=50)
     date_of_birth                   = models.DateField(_('Date of birth'))
     weight_of_patient               = models.IntegerField(_('Weight of patient'))
     principal_diagnoses_code        = models.CharField(_('Principal diagnosis code (ICD-10 or DRG)'), max_length=5, choices=PRINCIPAL_DIAG_CODE, default='')
+    principal_diagnoses_code_other  = models.CharField(_('Other principal diagnosis code (ICD-10 or DRG)'), max_length=10, null=True, blank=True)
     principal_procedure_code        = models.CharField(_('Principal procedure code'), max_length=10)
     procedure_planned               = models.IntegerField(_('Is the surgical procedure planned?'), max_length=1, choices=YES_NO_CHOICES, default=1)
     patient_allergy                 = models.IntegerField(_('Is patient allergic to any antibiotics suggested in the protocol?'), max_length=1, choices=YES_NO_CHOICES, default=0)
@@ -82,10 +79,10 @@ class c21(models.Model):
         return str(self.case_id)
 
     class Meta:
-        verbose_name = _('Planned surgery for colorectal cancer')
-        verbose_name_plural = _('Planned surgery for colorectal cancers')
+        verbose_name = _('Planned surgery for hip replacement')
+        verbose_name_plural = _('Planned surgery for hip replacement')
 
-class c21CSV(CsvModel):
+class c23CSV(CsvModel):
     case_id                         = CharField()
     hospital_registration_number    = CharField()
     date_of_birth                   = CharField()
@@ -119,5 +116,5 @@ class c21CSV(CsvModel):
     class Meta:
         delimiter = ";"
 
-admin.site.register(c21)
+admin.site.register(c23)
 admin.site.register(Medicine)
