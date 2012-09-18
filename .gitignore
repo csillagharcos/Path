@@ -13,6 +13,8 @@ sdist
 develop-eggs
 .installed.cfg
 
+local_settings.py
+
 #IDE
 .idea
 
