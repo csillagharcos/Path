@@ -56,7 +56,6 @@ class c32CSV(CsvModel):
     patient_id                      = IntegerField()
     case_id                         = IntegerField()
     date_of_birth                   = CharField()
-    date_of_delivery                = CharField()
     date_of_admission               = CharField()
     patient_admission_status        = CharField()
     date_of_discharge               = CharField()

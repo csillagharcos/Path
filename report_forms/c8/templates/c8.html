@@ -1,0 +1,13 @@
+{% extends "form.html" %}
+{% block js %}
+<script src="{{ STATIC_URL }}js/jquery.tooltip.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".jq_tool").tooltip()
+    $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd" })
+    $(".datepicker").datepicker({ dateFormat: "yy-mm-dd" })
+})
+
+</script>
+{% endblock js %}

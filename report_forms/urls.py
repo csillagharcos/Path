@@ -26,4 +26,8 @@ urlpatterns = patterns('',
     url(r'c32$', 'report_forms.c32.views.Display', name='c32_display'),
     url(r'c32/import$', 'report_forms.c32.views.Import', name='c32_import'),
     url(r'c32/statistics$', 'report_forms.c32.views.Statistics', name='c32_stat'),
+
+    url(r'c8$', 'report_forms.c8.views.Display', name='c8_display'),
+    url(r'c8/import$', 'report_forms.c8.views.Import', name='c8_import'),
+    url(r'c8/statistics$', 'report_forms.c8.views.Statistics', name='c8_stat'),
 )
