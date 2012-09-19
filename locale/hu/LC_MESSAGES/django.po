@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-18 15:14+0200\n"
-"PO-Revision-Date: 2012-09-18 15:15\n"
+"POT-Creation-Date: 2012-09-19 13:38+0200\n"
+"PO-Revision-Date: 2012-09-19 13:42\n"
 "Last-Translator:   <t@a.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -64,13 +64,42 @@ msgstr "Bejelentkezés"
 
 #: personel/models.py:9 report_forms/c1/models.py:53
 #: report_forms/c21/models.py:79 report_forms/c23/models.py:76
-#: report_forms/c24/models.py:68
+#: report_forms/c24/models.py:68 report_forms/c31/models.py:44
+#: report_forms/c32/models.py:46
 msgid "User"
 msgstr "Felhasználó"
 
 #: personel/models.py:10 university/models.py:7 university/models.py:14
 msgid "University"
 msgstr "Egyetem"
+
+#: report_forms/c1/forms.py:7 report_forms/c1/models.py:42
+#: report_forms/c21/forms.py:14 report_forms/c21/models.py:55
+#: report_forms/c23/forms.py:14 report_forms/c23/models.py:51
+#: report_forms/c24/forms.py:14 report_forms/c24/models.py:44
+#: report_forms/c31/forms.py:7 report_forms/c31/models.py:37
+#: report_forms/c32/forms.py:7 report_forms/c32/models.py:39
+msgid "Date of birth"
+msgstr "Születési idő"
+
+#: report_forms/c1/forms.py:7 report_forms/c1/forms.py:8
+#: report_forms/c21/forms.py:10 report_forms/c21/forms.py:11
+#: report_forms/c21/forms.py:12 report_forms/c21/forms.py:13
+#: report_forms/c21/forms.py:14 report_forms/c23/forms.py:10
+#: report_forms/c23/forms.py:11 report_forms/c23/forms.py:12
+#: report_forms/c23/forms.py:13 report_forms/c23/forms.py:14
+#: report_forms/c24/forms.py:10 report_forms/c24/forms.py:11
+#: report_forms/c24/forms.py:12 report_forms/c24/forms.py:13
+#: report_forms/c24/forms.py:14 report_forms/c31/forms.py:7
+#: report_forms/c31/forms.py:8 report_forms/c31/forms.py:9
+#: report_forms/c32/forms.py:7 report_forms/c32/forms.py:8
+#: report_forms/c32/forms.py:9
+msgid "[click here]"
+msgstr "[kattints ide]"
+
+#: report_forms/c1/forms.py:8 report_forms/c1/models.py:43
+msgid "Date of delivery"
+msgstr "Szülés dátuma"
 
 #: report_forms/c1/models.py:10
 msgid "Planned"
@@ -82,16 +111,19 @@ msgstr "Azonnali"
 
 #: report_forms/c1/models.py:15 report_forms/c21/models.py:10
 #: report_forms/c23/models.py:10 report_forms/c24/models.py:10
+#: report_forms/c31/models.py:10 report_forms/c32/models.py:10
 msgid "No"
 msgstr "Nem"
 
 #: report_forms/c1/models.py:16 report_forms/c21/models.py:11
 #: report_forms/c23/models.py:11 report_forms/c24/models.py:11
+#: report_forms/c31/models.py:11 report_forms/c32/models.py:11
 msgid "Yes"
 msgstr "Igen"
 
 #: report_forms/c1/models.py:20 report_forms/c21/models.py:16
-#: report_forms/c23/models.py:16
+#: report_forms/c23/models.py:16 report_forms/c31/models.py:15
+#: report_forms/c32/models.py:15
 msgid "-- Select --"
 msgstr "-- Válassz --"
 
@@ -103,25 +135,16 @@ msgstr "Egyéb Diagnózis"
 msgid "Other Diagnoses"
 msgstr "Egyéb Diagnózisok"
 
-#: report_forms/c1/models.py:40
+#: report_forms/c1/models.py:40 report_forms/c31/models.py:35
+#: report_forms/c32/models.py:37
 msgid "Patients ID"
 msgstr "Betegazonosító"
 
 #: report_forms/c1/models.py:41 report_forms/c21/models.py:53
 #: report_forms/c23/models.py:49 report_forms/c24/models.py:42
+#: report_forms/c31/models.py:36 report_forms/c32/models.py:38
 msgid "Case ID"
 msgstr "Esetazonosító"
-
-#: report_forms/c1/models.py:42 report_forms/c21/forms.py:14
-#: report_forms/c21/models.py:55 report_forms/c23/forms.py:14
-#: report_forms/c23/models.py:51 report_forms/c24/forms.py:14
-#: report_forms/c24/models.py:44
-msgid "Date of birth"
-msgstr "Születési idő"
-
-#: report_forms/c1/models.py:43
-msgid "Date of delivery"
-msgstr "Szülés dátuma"
 
 #: report_forms/c1/models.py:44
 msgid "Number of previous deliveries"
@@ -170,6 +193,8 @@ msgstr "Császármetszés arányok"
 #: report_forms/c21/templates/filled_out.html:5
 #: report_forms/c23/templates/filled_out.html:5
 #: report_forms/c24/templates/filled_out.html:5
+#: report_forms/c31/templates/filled_out.html:5
+#: report_forms/c32/templates/filled_out.html:5
 msgid "Congratulations for filling out the form!"
 msgstr "Gratulálunk, kitöltötted a kérdőívet"
 
@@ -177,6 +202,8 @@ msgstr "Gratulálunk, kitöltötted a kérdőívet"
 #: report_forms/c21/templates/statistics.html:5
 #: report_forms/c23/templates/statistics.html:5
 #: report_forms/c24/templates/statistics.html:5
+#: report_forms/c31/templates/c31_statistics.html:5
+#: report_forms/c32/templates/c32_statistics.html:5
 msgid "Overall:"
 msgstr "Összesen:"
 
@@ -184,6 +211,8 @@ msgstr "Összesen:"
 #: report_forms/c21/templates/statistics.html:6
 #: report_forms/c23/templates/statistics.html:6
 #: report_forms/c24/templates/statistics.html:6
+#: report_forms/c31/templates/c31_statistics.html:6
+#: report_forms/c32/templates/c32_statistics.html:6
 msgid "Removed:"
 msgstr "Eltávolítva:"
 
@@ -191,6 +220,8 @@ msgstr "Eltávolítva:"
 #: report_forms/c21/templates/statistics.html:7
 #: report_forms/c23/templates/statistics.html:7
 #: report_forms/c24/templates/statistics.html:7
+#: report_forms/c31/templates/c31_statistics.html:7
+#: report_forms/c32/templates/c32_statistics.html:7
 msgid "Counted:"
 msgstr "Beleszámolva:"
 
@@ -272,17 +303,6 @@ msgstr "Első dózis beadási módja"
 #: report_forms/c24/forms.py:10 report_forms/c24/models.py:66
 msgid "Date of surgical wound closure"
 msgstr "A műtéti seb zárásának dátuma"
-
-#: report_forms/c21/forms.py:10 report_forms/c21/forms.py:11
-#: report_forms/c21/forms.py:12 report_forms/c21/forms.py:13
-#: report_forms/c21/forms.py:14 report_forms/c23/forms.py:10
-#: report_forms/c23/forms.py:11 report_forms/c23/forms.py:12
-#: report_forms/c23/forms.py:13 report_forms/c23/forms.py:14
-#: report_forms/c24/forms.py:10 report_forms/c24/forms.py:11
-#: report_forms/c24/forms.py:12 report_forms/c24/forms.py:13
-#: report_forms/c24/forms.py:14
-msgid "[click here]"
-msgstr "[kattints ide]"
 
 #: report_forms/c21/forms.py:11 report_forms/c21/models.py:74
 #: report_forms/c23/forms.py:11 report_forms/c23/models.py:71
@@ -477,6 +497,90 @@ msgstr "Tervezett csípőprotézis műtét"
 #: report_forms/c24/models.py:74 report_forms/c24/models.py:75
 msgid "Planned surgery for hysterectomy"
 msgstr "Tervezett méheltávolítás műtét"
+
+#: report_forms/c31/forms.py:8 report_forms/c31/models.py:38
+#: report_forms/c32/forms.py:8 report_forms/c32/models.py:40
+#, fuzzy
+msgid "Date of hospital admission"
+msgstr "A műtéti bemetszés időpontja"
+
+#: report_forms/c31/forms.py:9 report_forms/c31/models.py:40
+#: report_forms/c32/forms.py:9 report_forms/c32/models.py:42
+#, fuzzy
+msgid "Date of hospital discharge"
+msgstr "Utolsó dózis beadási dátuma"
+
+#: report_forms/c31/models.py:22 report_forms/c32/models.py:24
+msgid "From home/nursing home/community care"
+msgstr "otthonából/szociális otthonból/nyugdíjas házból"
+
+#: report_forms/c31/models.py:23 report_forms/c32/models.py:25
+msgid "Transferred from another hospital"
+msgstr "más kórházból áthelyezve"
+
+#: report_forms/c31/models.py:27 report_forms/c32/models.py:29
+msgid "Home/nursing home/community care"
+msgstr "otthonába/szociális otthonba/ nyugdíjas házba távozott"
+
+#: report_forms/c31/models.py:28 report_forms/c32/models.py:30
+msgid "Transferred into another hospital"
+msgstr "más fekvőbeteg gyógyintézetbe áthelyezve"
+
+#: report_forms/c31/models.py:29 report_forms/c32/models.py:31
+msgid "Death"
+msgstr "elhunyt"
+
+#: report_forms/c31/models.py:30 report_forms/c32/models.py:32
+msgid "Discharge at own request"
+msgstr "saját felelősségére távozott"
+
+#: report_forms/c31/models.py:39 report_forms/c32/models.py:41
+msgid "Patient admission status"
+msgstr "A beteg felvételének jellege"
+
+#: report_forms/c31/models.py:41 report_forms/c32/models.py:43
+msgid "Patient discharge status"
+msgstr "A beteg további sorsa a kórházi távozáskor"
+
+#: report_forms/c31/models.py:42 report_forms/c32/models.py:44
+msgid "ICD-10 at that departmental admission"
+msgstr "A diagnózis kódja (BNO)"
+
+#: report_forms/c31/models.py:50
+#, fuzzy
+msgid "30-day in-hospital mortality of patient admitted with AMI"
+msgstr "C.3.1. AMI halálozás"
+
+#: report_forms/c31/models.py:51
+#, fuzzy
+msgid "30-day in-hospital mortality of patients admitted with AMI"
+msgstr "C.3.1. AMI halálozás"
+
+#: report_forms/c31/templates/c31_statistics.html:9
+#: report_forms/c32/templates/c32_statistics.html:9
+msgid "Hospital mortality rate within 30 days:"
+msgstr "Kórházi halálozás 30 napon belül"
+
+#: report_forms/c31/templates/c31_statistics.html:10
+#: report_forms/c32/templates/c32_statistics.html:10
+msgid "Hospital mortality rate within 30 days without transmissions:"
+msgstr ""
+"Kórházi halálozás 30 napon belül nem átvett és nem áthelyezett betegekre"
+
+#: report_forms/c31/templates/c31_statistics.html:11
+#: report_forms/c32/templates/c32_statistics.html:11
+msgid "Hospital mortality rate within 2 days:"
+msgstr "Kórházi halálozás 2 napon belül"
+
+#: report_forms/c32/models.py:52
+#, fuzzy
+msgid "30-day in-hospital mortality of patient admitted with Stroke"
+msgstr "C.3.2. Stroke halálozás"
+
+#: report_forms/c32/models.py:53
+#, fuzzy
+msgid "30-day in-hospital mortality of patients admitted with Stroke"
+msgstr "C.3.2. Stroke halálozás"
 
 #: report_forms/templates/form.html:9
 msgid "Submit"

@@ -19,4 +19,11 @@ urlpatterns = patterns('',
     url(r'c24/import$', 'report_forms.c24.views.Import', name='c24_import'),
     url(r'c24/statistics$', 'report_forms.c24.views.Statistics', name='c24_stat'),
 
+    url(r'c31$', 'report_forms.c31.views.Display', name='c31_display'),
+    url(r'c31/import$', 'report_forms.c31.views.Import', name='c31_import'),
+    url(r'c31/statistics$', 'report_forms.c31.views.Statistics', name='c31_stat'),
+
+    url(r'c32$', 'report_forms.c32.views.Display', name='c32_display'),
+    url(r'c32/import$', 'report_forms.c32.views.Import', name='c32_import'),
+    url(r'c32/statistics$', 'report_forms.c32.views.Statistics', name='c32_stat'),
 )

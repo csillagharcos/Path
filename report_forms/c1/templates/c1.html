@@ -17,6 +17,8 @@ $(document).ready(function(){
     $('form').submit(function(ev){
         $("#id_weight_of_the_newborn").val($("#id_weight_of_the_newborn").val().replace(" g",""))
     })
+    $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd" })
+    $(".datepicker").datepicker({ dateFormat: "yy-mm-dd" })
 })
 
 </script>
