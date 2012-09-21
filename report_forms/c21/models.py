@@ -5,36 +5,7 @@ from django.db import models
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from csvImporter.model import CsvModel
-
-YES_NO_CHOICES = (
-    (0, _('No')),
-    (1, _('Yes')),
-)
-
-
-PRINCIPAL_DIAG_CODE = (
-    ('', _('-- Select --')),
-    ('C18', 'C18'),
-    ('C19', 'C19'),
-    ('C20', 'C20'),
-    ('C20.0', 'C21.0'),
-    ('C20.1', 'C21.1'),
-    ('C20.2', 'C21.2'),
-    ('C20.8', 'C21.8'),
-    )
-PENICILIN_ALLERGY_CHOICES = (
-    ('1', _('Immediate')),
-    ('2', _('Other')),
-    ('3', _('No Information'))
-)
-
-ROUTE_OF_ADMIN_CHOICES = (
-    (1, _('IV')),
-    (2, _('IM')),
-    (3, _('SC')),
-    (4, _('Other')),
-    (5, _('PO')),
-)
+from report_forms.choices import PRINCIPAL_DIAG_CODE_C, YES_NO_CHOICES, PENICILIN_ALLERGY_CHOICES, ROUTE_OF_ADMIN_CHOICES
 
 class Medicine(models.Model):
     name                   = models.CharField(_('Name'),max_length=255)
@@ -54,7 +25,7 @@ class c21(models.Model):
     hospital_registration_number    = models.CharField(_('Hospital registration number'), max_length=50)
     date_of_birth                   = models.DateField(_('Date of birth'))
     weight_of_patient               = models.IntegerField(_('Weight of patient'))
-    principal_diagnoses_code        = models.CharField(_('Principal diagnosis code (ICD-10 or DRG)'), max_length=5, choices=PRINCIPAL_DIAG_CODE, default='')
+    principal_diagnoses_code        = models.CharField(_('Principal diagnosis code (ICD-10 or DRG)'), max_length=5, choices=PRINCIPAL_DIAG_CODE_C, default='')
     principal_procedure_code        = models.CharField(_('Principal procedure code'), max_length=10)
     procedure_planned               = models.IntegerField(_('Is the surgical procedure planned?'), max_length=1, choices=YES_NO_CHOICES, default=1)
     patient_allergy                 = models.IntegerField(_('Is patient allergic to any antibiotics suggested in the protocol?'), max_length=1, choices=YES_NO_CHOICES, default=0)

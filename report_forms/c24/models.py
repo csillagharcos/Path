@@ -5,25 +5,7 @@ from django.db import models
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from csvImporter.model import CsvModel
-
-YES_NO_CHOICES = (
-    (0, _('No')),
-    (1, _('Yes')),
-)
-
-
-PENICILIN_ALLERGY_CHOICES = (
-    ('1', _('Immediate')),
-    ('2', _('Other')),
-    ('3', _('No Information'))
-)
-
-ROUTE_OF_ADMIN_CHOICES = (
-    (1, _('IV')),
-    (2, _('IM')),
-    (3, _('SC')),
-    (4, _('Other')),
-)
+from report_forms.choices import YES_NO_CHOICES, PENICILIN_ALLERGY_CHOICES, ROUTE_OF_ADMIN_CHOICES_FOUR
 
 class Medicine(models.Model):
     name                   = models.CharField(_('Name'),max_length=255)
@@ -59,7 +41,7 @@ class c24(models.Model):
     second_dose                     = models.FloatField(_('Second dose'), max_length=10, null=True, blank=True)
     name_of_other_dose              = models.CharField(_("Name of other dose"), max_length=255, null=True, blank=True)
     other_dose                      = models.FloatField(_('Other dose'), max_length=10, null=True, blank=True)
-    route_of_admin                  = models.IntegerField(_('Route of administration of first dose'), max_length=1, choices=ROUTE_OF_ADMIN_CHOICES, null=True, blank=True, default=1)
+    route_of_admin                  = models.IntegerField(_('Route of administration of first dose'), max_length=1, choices=ROUTE_OF_ADMIN_CHOICES_FOUR, null=True, blank=True, default=1)
     date_of_first_dose              = models.DateTimeField(_('Date of first dose'), null=True, blank=True)
     total_dose_in_24h               = models.FloatField(_('Total doses in 24 hours'), max_length=10, null=True, blank=True)
     date_of_last_dose               = models.DateTimeField(_('Date of last dose'), null=True, blank=True)

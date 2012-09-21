@@ -5,26 +5,8 @@ from django.db import models
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from csvImporter.model import CsvModel
+from report_forms.choices import C_SECTION_CHOICES, DRG_CODES_CHOICES, YES_NO_CHOICES
 
-C_SECTION_CHOICES = (
-    (0, _('Planned')),
-    (1, _('Acute')),
-)
-
-MOTHER_ILLNESS_CHOICES = (
-    (0, _('No')),
-    (1, _('Yes')),
-)
-
-DRG_CODES_CHOICES = (
-    ('', _('-- Select --')),
-    ('671', '671'),
-    ('671A', '671A'),
-    ('671B', '671B'),
-    ('672', '672'),
-    ('673', '673'),
-    ('674', '674'),
-)
 
 class c1OtherDiagnose(models.Model):
     name                            = models.CharField(max_length=5)
@@ -45,7 +27,7 @@ class c1(models.Model):
     number_of_prev_deliveries_by_c  = models.IntegerField(_('Number of earlier deliveries by c-section'), default=0)
     the_c_section                   = models.IntegerField(_('The c-section'), max_length=1, choices=C_SECTION_CHOICES, default=0)
     weight_of_the_newborn           = models.FloatField(_('Weight of newborn'))
-    mother_illness                  = models.IntegerField(_('Mother illnes or risk'), max_length=1, choices=MOTHER_ILLNESS_CHOICES, default=0)
+    mother_illness                  = models.IntegerField(_('Mother illnes or risk'), max_length=1, choices=YES_NO_CHOICES, default=0)
     specify_mother_illness          = models.CharField(_('Specify'), max_length=255, null=True, blank=True)
     drg_code                        = models.CharField(_('DRG Code'), max_length=4,choices=DRG_CODES_CHOICES, default='')
     other_diagnoses                 = models.ManyToManyField(c1OtherDiagnose, verbose_name=_('Other diagnoses'), null=True, blank=True)
