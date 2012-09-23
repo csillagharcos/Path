@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-21 13:57+0200\n"
-"PO-Revision-Date: 2012-09-21 18:22\n"
+"POT-Creation-Date: 2012-09-23 12:04+0200\n"
+"PO-Revision-Date: 2012-09-23 12:12\n"
 "Last-Translator:   <t@a.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgstr "Bejelentkezés"
 #: report_forms/c21/models.py:50 report_forms/c23/models.py:52
 #: report_forms/c24/models.py:50 report_forms/c31/models.py:20
 #: report_forms/c32/models.py:20 report_forms/c8/models.py:25
-#: report_forms/r1--/models.py:46
+#: report_forms/r1/models.py:83
 msgid "User"
 msgstr "Felhasználó"
 
@@ -76,6 +76,7 @@ msgid "University"
 msgstr "Egyetem"
 
 #: report_forms/choices.py:4 report_forms/choices.py:101
+#: report_forms/choices.py:198
 msgid "Planned"
 msgstr "Tervezett"
 
@@ -86,15 +87,15 @@ msgstr "Azonnali"
 #: report_forms/choices.py:9 report_forms/choices.py:33
 #: report_forms/choices.py:58 report_forms/choices.py:75
 #: report_forms/choices.py:93 report_forms/choices.py:119
-#: report_forms/choices.py:144 report_forms/r1--/models.py:15
+#: report_forms/choices.py:144
 msgid "-- Select --"
 msgstr "-- Válassz --"
 
-#: report_forms/choices.py:19 report_forms/r1--/models.py:10
+#: report_forms/choices.py:19
 msgid "No"
 msgstr "Nem"
 
-#: report_forms/choices.py:20 report_forms/r1--/models.py:11
+#: report_forms/choices.py:20
 msgid "Yes"
 msgstr "Igen"
 
@@ -148,27 +149,27 @@ msgstr "SC"
 msgid "PO"
 msgstr "PO"
 
-#: report_forms/choices.py:81 report_forms/r1--/models.py:24
+#: report_forms/choices.py:81
 msgid "From home/nursing home/community care"
 msgstr "otthonából/szociális otthonból/nyugdíjas házból"
 
-#: report_forms/choices.py:82 report_forms/r1--/models.py:25
+#: report_forms/choices.py:82
 msgid "Transferred from another hospital"
 msgstr "más kórházból áthelyezve"
 
-#: report_forms/choices.py:86 report_forms/r1--/models.py:29
+#: report_forms/choices.py:86
 msgid "Home/nursing home/community care"
 msgstr "otthonába/szociális otthonba/ nyugdíjas házba távozott"
 
-#: report_forms/choices.py:87 report_forms/r1--/models.py:30
+#: report_forms/choices.py:87
 msgid "Transferred into another hospital"
 msgstr "más fekvőbeteg gyógyintézetbe áthelyezve"
 
-#: report_forms/choices.py:88 report_forms/r1--/models.py:31
+#: report_forms/choices.py:88
 msgid "Death"
 msgstr "elhunyt"
 
-#: report_forms/choices.py:89 report_forms/r1--/models.py:32
+#: report_forms/choices.py:89
 msgid "Discharge at own request"
 msgstr "saját felelősségére távozott"
 
@@ -241,6 +242,30 @@ msgstr "A beteg orvosi javaslat ellenére saját felelőségére távozott vagy"
 msgid "In-hospital death"
 msgstr "Kórházi elhalálozás"
 
+#: report_forms/choices.py:190
+msgid "neurology"
+msgstr "neurológia"
+
+#: report_forms/choices.py:191
+msgid "cardiology"
+msgstr "kardiológia"
+
+#: report_forms/choices.py:192
+msgid "muskoloskeletal"
+msgstr "mozgásszervi"
+
+#: report_forms/choices.py:193
+msgid "pulmonary"
+msgstr "légzőszervi"
+
+#: report_forms/choices.py:194
+msgid "other"
+msgstr "egyéb"
+
+#: report_forms/choices.py:199
+msgid "Unplanned"
+msgstr "Nem tervezett"
+
 #: report_forms/c1/forms.py:7 report_forms/c1/models.py:24
 #: report_forms/c20/forms.py:7 report_forms/c20/models.py:13
 #: report_forms/c21/forms.py:14 report_forms/c21/models.py:26
@@ -249,7 +274,7 @@ msgstr "Kórházi elhalálozás"
 #: report_forms/c31/forms.py:7 report_forms/c31/models.py:13
 #: report_forms/c32/forms.py:7 report_forms/c32/models.py:13
 #: report_forms/c8/forms.py:7 report_forms/c8/models.py:13
-#: report_forms/r1--/forms.py:7 report_forms/r1--/models.py:39
+#: report_forms/r1/forms.py:7 report_forms/r1/models.py:13
 msgid "Date of birth"
 msgstr "Születési idő"
 
@@ -267,8 +292,7 @@ msgstr "Születési idő"
 #: report_forms/c32/forms.py:7 report_forms/c32/forms.py:8
 #: report_forms/c32/forms.py:9 report_forms/c8/forms.py:7
 #: report_forms/c8/forms.py:8 report_forms/c8/forms.py:9
-#: report_forms/c8/forms.py:10 report_forms/r1--/forms.py:7
-#: report_forms/r1--/forms.py:8 report_forms/r1--/forms.py:9
+#: report_forms/c8/forms.py:10 report_forms/r1/forms.py:7
 msgid "[click here]"
 msgstr "[kattints ide]"
 
@@ -286,7 +310,7 @@ msgstr "Egyéb Diagnózisok"
 
 #: report_forms/c1/models.py:22 report_forms/c31/models.py:11
 #: report_forms/c32/models.py:11 report_forms/c8/models.py:11
-#: report_forms/r1--/models.py:37
+#: report_forms/r1/models.py:11
 msgid "Patients ID"
 msgstr "Betegazonosító"
 
@@ -294,7 +318,7 @@ msgstr "Betegazonosító"
 #: report_forms/c21/models.py:24 report_forms/c23/models.py:25
 #: report_forms/c24/models.py:24 report_forms/c31/models.py:12
 #: report_forms/c32/models.py:12 report_forms/c8/models.py:12
-#: report_forms/r1--/models.py:38
+#: report_forms/r1/models.py:12
 msgid "Case ID"
 msgstr "Esetazonosító"
 
@@ -350,7 +374,7 @@ msgstr "Császármetszés arányok"
 #: report_forms/c31/templates/filled_out.html:5
 #: report_forms/c32/templates/filled_out.html:5
 #: report_forms/c8/templates/filled_out.html:5
-#: report_forms/r1--/templates/filled_out.html:5
+#: report_forms/r1/templates/filled_out.html:5
 msgid "Congratulations for filling out the form!"
 msgstr "Gratulálunk, kitöltötted a kérdőívet"
 
@@ -363,7 +387,7 @@ msgstr "Gratulálunk, kitöltötted a kérdőívet"
 #: report_forms/c31/templates/c31_statistics.html:5
 #: report_forms/c32/templates/c32_statistics.html:5
 #: report_forms/c8/templates/c8_statistics.html:5
-#: report_forms/r1--/templates/c32_statistics.html:5
+#: report_forms/r1/templates/r1_statistics.html:5
 msgid "Overall:"
 msgstr "Összesen:"
 
@@ -376,7 +400,7 @@ msgstr "Összesen:"
 #: report_forms/c31/templates/c31_statistics.html:6
 #: report_forms/c32/templates/c32_statistics.html:6
 #: report_forms/c8/templates/c8_statistics.html:6
-#: report_forms/r1--/templates/c32_statistics.html:6
+#: report_forms/r1/templates/r1_statistics.html:6
 msgid "Removed:"
 msgstr "Eltávolítva:"
 
@@ -389,7 +413,7 @@ msgstr "Eltávolítva:"
 #: report_forms/c31/templates/c31_statistics.html:7
 #: report_forms/c32/templates/c32_statistics.html:7
 #: report_forms/c8/templates/c8_statistics.html:7
-#: report_forms/r1--/templates/c32_statistics.html:7
+#: report_forms/r1/templates/r1_statistics.html:7
 msgid "Counted:"
 msgstr "Beleszámolva:"
 
@@ -504,7 +528,7 @@ msgstr "Tűszúrások"
 #: report_forms/c31/templates/c31_statistics.html:9
 #: report_forms/c32/templates/c32_statistics.html:9
 #: report_forms/c8/templates/c8_statistics.html:9
-#: report_forms/r1--/templates/c32_statistics.html:9
+#: report_forms/r1/templates/r1_statistics.html:9
 msgid "Hospital mortality rate within 30 days:"
 msgstr "Kórházi halálozás 30 napon belül"
 
@@ -513,7 +537,7 @@ msgstr "Kórházi halálozás 30 napon belül"
 #: report_forms/c31/templates/c31_statistics.html:10
 #: report_forms/c32/templates/c32_statistics.html:10
 #: report_forms/c8/templates/c8_statistics.html:10
-#: report_forms/r1--/templates/c32_statistics.html:10
+#: report_forms/r1/templates/r1_statistics.html:10
 msgid "Hospital mortality rate within 30 days without transmissions:"
 msgstr ""
 "Kórházi halálozás 30 napon belül nem átvett és nem áthelyezett betegekre"
@@ -523,11 +547,12 @@ msgstr ""
 #: report_forms/c31/templates/c31_statistics.html:11
 #: report_forms/c32/templates/c32_statistics.html:11
 #: report_forms/c8/templates/c8_statistics.html:11
-#: report_forms/r1--/templates/c32_statistics.html:11
+#: report_forms/r1/templates/r1_statistics.html:11
 msgid "Hospital mortality rate within 2 days:"
 msgstr "Kórházi halálozás 2 napon belül"
 
 #: report_forms/c20/forms.py:8 report_forms/c20/models.py:23
+#: report_forms/r1/models.py:50
 msgid "Date of discharge"
 msgstr "Az elbocsátás dátuma"
 
@@ -556,7 +581,7 @@ msgstr "Ismert az aszpirin kontraindikáció vagy intolerancia?"
 msgid "Type of discharge"
 msgstr "A beteg további sorsa"
 
-#: report_forms/c20/models.py:19
+#: report_forms/c20/models.py:19 report_forms/r1/models.py:15
 msgid "If other"
 msgstr "Ha egyéb"
 
@@ -580,12 +605,12 @@ msgstr ""
 "thrombocyta aggregációgátló th-t?"
 
 #: report_forms/c20/models.py:31 report_forms/c32/models.py:26
-#: report_forms/r1--/models.py:52
+#: report_forms/r1/models.py:89
 msgid "30-day in-hospital mortality of patient admitted with Stroke"
 msgstr "Stroke halálozás"
 
 #: report_forms/c20/models.py:32 report_forms/c32/models.py:27
-#: report_forms/r1--/models.py:53
+#: report_forms/r1/models.py:90
 msgid "30-day in-hospital mortality of patients admitted with Stroke"
 msgstr "Stroke halálozások"
 
@@ -763,30 +788,27 @@ msgstr "Tervezett méheltávolítás műtét"
 #: report_forms/c31/forms.py:8 report_forms/c31/models.py:14
 #: report_forms/c32/forms.py:8 report_forms/c32/models.py:14
 #: report_forms/c8/forms.py:8 report_forms/c8/models.py:14
-#: report_forms/r1--/forms.py:8 report_forms/r1--/models.py:40
 msgid "Date of hospital admission"
 msgstr "Kórházi felvétel dátuma"
 
 #: report_forms/c31/forms.py:9 report_forms/c31/models.py:16
 #: report_forms/c32/forms.py:9 report_forms/c32/models.py:16
 #: report_forms/c8/forms.py:9 report_forms/c8/forms.py:10
-#: report_forms/c8/models.py:19 report_forms/r1--/forms.py:9
-#: report_forms/r1--/models.py:42
+#: report_forms/c8/models.py:19
 msgid "Date of hospital discharge"
 msgstr "Kórházi elbocsátás dátuma"
 
 #: report_forms/c31/models.py:15 report_forms/c32/models.py:15
-#: report_forms/c8/models.py:15 report_forms/r1--/models.py:41
+#: report_forms/c8/models.py:15
 msgid "Patient admission status"
 msgstr "A beteg felvételének jellege"
 
 #: report_forms/c31/models.py:17 report_forms/c32/models.py:17
-#: report_forms/c8/models.py:20 report_forms/r1--/models.py:43
+#: report_forms/c8/models.py:20 report_forms/r1/models.py:48
 msgid "Patient discharge status"
 msgstr "A beteg további sorsa a kórházi távozáskor"
 
 #: report_forms/c31/models.py:18 report_forms/c32/models.py:18
-#: report_forms/r1--/models.py:44
 msgid "ICD-10 at that departmental admission"
 msgstr "A diagnózis kódja (BNO)"
 
@@ -829,6 +851,151 @@ msgstr "Ápolási idő"
 #: report_forms/c8/models.py:32
 msgid "Length of Stays"
 msgstr "Ápolási idők"
+
+#: report_forms/r1/models.py:14
+msgid "Professional field of rehabilitation"
+msgstr "Rehabilitáció szakterülete"
+
+#: report_forms/r1/models.py:16
+msgid "Date of admission"
+msgstr "Betegfelvétel dátuma"
+
+#: report_forms/r1/models.py:17 report_forms/r1/models.py:51
+msgid "FIM applied at admission"
+msgstr "FIM felvételkor alkalmazásra került"
+
+#: report_forms/r1/models.py:18 report_forms/r1/models.py:52
+msgid "FIM date of assessment"
+msgstr "FIM felmérés ideje"
+
+#: report_forms/r1/models.py:19 report_forms/r1/models.py:53
+msgid "FIM value/score"
+msgstr "FIM eredmény/pontszám"
+
+#: report_forms/r1/models.py:20 report_forms/r1/models.py:54
+msgid "Barthel index applied at admission"
+msgstr "Barthel index felvételkor alkalmazásra került"
+
+#: report_forms/r1/models.py:21 report_forms/r1/models.py:55
+msgid "Barthel index date of assessment"
+msgstr "Barthel index felmérés ideje"
+
+#: report_forms/r1/models.py:22 report_forms/r1/models.py:56
+msgid "Barthel index value/score"
+msgstr "Barthel index eredmény/pontszám"
+
+#: report_forms/r1/models.py:23 report_forms/r1/models.py:57
+msgid "6 minutes walk test applied at admission"
+msgstr "6 minutes walk test felvételkor alkalmazásra került"
+
+#: report_forms/r1/models.py:24 report_forms/r1/models.py:58
+msgid "6 minutes walk test date of assessment"
+msgstr "6 minutes walk test felmérés ideje"
+
+#: report_forms/r1/models.py:25 report_forms/r1/models.py:59
+msgid "6 minutes walk test value/score"
+msgstr "6 minutes walk test eredmény/pontszám"
+
+#: report_forms/r1/models.py:26 report_forms/r1/models.py:60
+msgid "SF-36 applied at admission"
+msgstr "SF-36 felvételkor alkalmazásra került"
+
+#: report_forms/r1/models.py:27 report_forms/r1/models.py:61
+msgid "SF-36 date of assessment"
+msgstr "SF-36 felmérés ideje"
+
+#: report_forms/r1/models.py:28 report_forms/r1/models.py:62
+msgid "SF-36 value/score"
+msgstr "SF-36 eredmény/pontszám"
+
+#: report_forms/r1/models.py:29 report_forms/r1/models.py:63
+msgid "SAT applied at admission"
+msgstr "SAT felvételkor alkalmazásra került"
+
+#: report_forms/r1/models.py:30 report_forms/r1/models.py:64
+msgid "SAT date of assessment"
+msgstr "SAT felmérés ideje"
+
+#: report_forms/r1/models.py:31 report_forms/r1/models.py:65
+msgid "SAT value/score"
+msgstr "SAT eredmény/pontszám"
+
+#: report_forms/r1/models.py:32 report_forms/r1/models.py:66
+msgid "FEV-1 applied at admission"
+msgstr "FEV-1 felvételkor alkalmazásra került"
+
+#: report_forms/r1/models.py:33 report_forms/r1/models.py:67
+msgid "FEV-1 date of assessment"
+msgstr "FEV-1 felmérés ideje"
+
+#: report_forms/r1/models.py:34 report_forms/r1/models.py:68
+msgid "FEV-1 value/score"
+msgstr "FEV-1 eredmény/pontszám"
+
+#: report_forms/r1/models.py:35 report_forms/r1/models.py:69
+msgid "ASIA impairment applied at admission"
+msgstr "ASIA impairment score felvételkor alkalmazásra került"
+
+#: report_forms/r1/models.py:36 report_forms/r1/models.py:70
+msgid "ASIA impairment date of assessment"
+msgstr "ASIA impairment score felmérés ideje"
+
+#: report_forms/r1/models.py:37 report_forms/r1/models.py:71
+msgid "ASIA impairment value/score"
+msgstr "ASIA impairment score eredmény/pontszám"
+
+#: report_forms/r1/models.py:38 report_forms/r1/models.py:72
+msgid ""
+"Standard neurological classification of spinal cord injury  applied at "
+"admission"
+msgstr ""
+"Standard neurological classification of spinal cord injury felvételkor "
+"alkalmazásra került"
+
+#: report_forms/r1/models.py:39 report_forms/r1/models.py:73
+msgid ""
+"Standard neurological classification of spinal cord injury  date of "
+"assessment"
+msgstr ""
+"Standard neurological classification of spinal cord injury felmérés ideje"
+
+#: report_forms/r1/models.py:40 report_forms/r1/models.py:74
+msgid ""
+"Standard neurological classification of spinal cord injury  value/score"
+msgstr ""
+"Standard neurological classification of spinal cord injury eredmény/pontszám"
+
+#: report_forms/r1/models.py:41 report_forms/r1/models.py:75
+msgid "Spinal Cord Independence Measure applied at admission"
+msgstr "Spinal Cord Independence Measure felvételkor alkalmazásra került"
+
+#: report_forms/r1/models.py:42 report_forms/r1/models.py:76
+msgid "Spinal Cord Independence Measure date of assessment"
+msgstr "Spinal Cord Independence Measure felmérés ideje"
+
+#: report_forms/r1/models.py:43 report_forms/r1/models.py:77
+msgid "Spinal Cord Independence Measure value/score"
+msgstr "Spinal Cord Independence Measure eredmény/pontszám"
+
+#: report_forms/r1/models.py:44 report_forms/r1/models.py:78
+msgid "Other applied at admission"
+msgstr "Egyéb felvételkor alkalmazásra került"
+
+#: report_forms/r1/models.py:45 report_forms/r1/models.py:79
+msgid "Other name of functional assessment"
+msgstr "Egyéb felvételkor alkalmazásra került"
+
+#: report_forms/r1/models.py:46 report_forms/r1/models.py:80
+msgid "Other date of assessment"
+msgstr "Egyéb felmérés ideje"
+
+#: report_forms/r1/models.py:47 report_forms/r1/models.py:81
+msgid "Other value/score"
+msgstr "Egyéb eredmény/pontszám"
+
+#: report_forms/r1/models.py:49
+msgid "Discharge"
+msgstr "Az elbocsájtás"
 
 #: report_forms/templates/form.html:9
 msgid "Submit"

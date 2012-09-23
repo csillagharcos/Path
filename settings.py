@@ -107,6 +107,7 @@ INSTALLED_APPS = (
     'report_forms.c8',
     'report_forms.c13',
     'report_forms.c20',
+    'report_forms.r1',
 
     'rosetta',
     'south',

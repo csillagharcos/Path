@@ -185,3 +185,16 @@ TYPE_OF_DISCHARGE = (
     (4, _('In-hospital death')),
     (0, _('Other')),
 )
+
+FIELD_OF_REHAB = (
+    (0, _('neurology')),
+    (1, _('cardiology')),
+    (2, _('muskoloskeletal')),
+    (3, _('pulmonary')),
+    (4, _('other')),
+)
+
+DISCHARGE = (
+    (0, _('Planned')),
+    (1, _('Unplanned')),
+)

@@ -39,4 +39,8 @@ urlpatterns = patterns('',
     url(r'c20/import$', 'report_forms.c20.views.Import', name='c20_import'),
     url(r'c20/statistics$', 'report_forms.c20.views.Statistics', name='c20_stat'),
 
+    url(r'r1$', 'report_forms.r1.views.Display', name='r1_display'),
+    url(r'r1/import$', 'report_forms.r1.views.Import', name='r1_import'),
+    url(r'r1/statistics$', 'report_forms.r1.views.Statistics', name='r1_stat'),
+
 )
