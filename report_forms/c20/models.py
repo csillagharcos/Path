@@ -35,12 +35,17 @@ class c20CSV(CsvModel):
     patient_id                      = IntegerField()
     case_id                         = IntegerField()
     date_of_birth                   = CharField()
-    date_of_delivery                = CharField()
-    date_of_admission               = CharField()
-    patient_admission_status        = CharField()
+    diagnosis_code                  = CharField()
+    type_of_unit                    = CharField()
+    patient_allergic_aspirin        = CharField()
+    aspirin_intolerance             = CharField()
+    type_of_discharge               = CharField()
+    type_of_discharge_empty         = CharField()
+    aspirin_refusal                 = CharField()
+    aspirin_at_discharge            = CharField()
+    non_aspirin_platelet            = CharField()
     date_of_discharge               = CharField()
-    patient_discharge_status        = CharField()
-    icd                             = CharField()
+
 
     class Meta:
         delimiter = ";"

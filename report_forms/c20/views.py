@@ -9,6 +9,7 @@ from django.utils import simplejson
 from report_forms.c20.forms import C20Form, FileUploadForm
 from report_forms.c20.models import c20, c20CSV
 from django.utils.translation import ugettext_lazy as _
+from report_forms.tools import parseInt
 
 @login_required
 def Display(request):
@@ -43,14 +44,19 @@ def Import(request):
         for line in imported_csv:
             try:
                 new_c20 = c20.objects.create(
-                                            patient_id                      = line.patient_id,
-                                            case_id                         = line.case_id,
+                                            patient_id                      = parseInt(line.patient_id),
+                                            case_id                         = parseInt(line.case_id),
                                             date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
-                                            date_of_admission               = datetime.strptime(line.date_of_admission, "%Y-%m-%d"),
-                                            patient_admission_status        = line.patient_admission_status,
+                                            diagnosis_code                  = line.diagnosis_code,
+                                            type_of_unit                    = parseInt(line.type_of_unit),
+                                            patient_allergic_aspirin        = parseInt(line.patient_allergic_aspirin),
+                                            aspirin_intolerance             = parseInt(line.aspirin_intolerance),
+                                            type_of_discharge               = parseInt(line.type_of_discharge),
+                                            type_of_discharge_empty         = line.type_of_discharge_empty,
+                                            aspirin_refusal                 = parseInt(line.aspirin_refusal),
+                                            aspirin_at_discharge            = parseInt(line.aspirin_at_discharge),
+                                            non_aspirin_platelet            = parseInt(line.non_aspirin_platelet),
                                             date_of_discharge               = datetime.strptime(line.date_of_discharge, "%Y-%m-%d"),
-                                            patient_discharge_status        = line.patient_discharge_status,
-                                            icd                             = line.icd,
                                             added_by                        = request.user,
                 )
                 new_c20.save()
@@ -86,13 +92,3 @@ def Statistics(request):
 #        "subindicator_two": subindicator_two,
     }
     return render_to_response('c20_statistics.html', context, context_instance=RequestContext(request))
-
-def calculate_age(born, today = date.today()):
-    try:
-        birthday = born.replace(year=today.year)
-    except ValueError:
-        birthday = born.replace(year=today.year, day=born.day-1)
-    if birthday > today:
-        return int(today.year - born.year - 1)
-    else:
-        return int(today.year - born.year)

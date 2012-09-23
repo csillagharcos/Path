@@ -10,6 +10,7 @@ from django.utils import simplejson
 from report_forms.c31.forms import C31Form, FileUploadForm
 from report_forms.c31.models import c31, c31CSV
 from django.utils.translation import ugettext_lazy as _
+from report_forms.tools import calculate_age
 
 @login_required
 def Display(request):
@@ -44,13 +45,13 @@ def Import(request):
         for line in imported_csv:
             try:
                 new_c31 = c31.objects.create(
-                                            patient_id                      = int(line.patient_id),
-                                            case_id                         = int(line.case_id),
+                                            patient_id                      = parseInt(line.patient_id),
+                                            case_id                         = parseInt(line.case_id),
                                             date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
                                             date_of_admission               = datetime.strptime(line.date_of_admission, "%Y-%m-%d"),
-                                            patient_admission_status        = int(line.patient_admission_status),
+                                            patient_admission_status        = parseInt(line.patient_admission_status),
                                             date_of_discharge               = datetime.strptime(line.date_of_discharge, "%Y-%m-%d"),
-                                            patient_discharge_status        = int(line.patient_discharge_status),
+                                            patient_discharge_status        = parseInt(line.patient_discharge_status),
                                             icd                             = line.icd,
                                             added_by                        = request.user,
                 )
@@ -106,13 +107,3 @@ def Statistics(request):
         "subindicator_two": subindicator_two,
     }
     return render_to_response('c31_statistics.html', context, context_instance=RequestContext(request))
-
-def calculate_age(born, today = date.today()):
-    try:
-        birthday = born.replace(year=today.year)
-    except ValueError:
-        birthday = born.replace(year=today.year, day=born.day-1)
-    if birthday > today:
-        return int(today.year - born.year - 1)
-    else:
-        return int(today.year - born.year)

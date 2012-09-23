@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, date
+from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.db.utils import IntegrityError
 from django.http import HttpResponse
@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django.utils import simplejson
 from report_forms.r1.forms import r1Form, FileUploadForm
 from report_forms.r1.models import r1, r1CSV
-from django.utils.translation import ugettext_lazy as _
+from report_forms.tools import parseFloat, parseInt
 
 @login_required
 def Display(request):
@@ -109,74 +109,74 @@ def Import(request):
                                             patient_id                      = line.patient_id,
                                             case_id                         = line.case_id,
                                             date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
-                                            field_of_rehab                  = int(line.field_of_rehab),
+                                            field_of_rehab                  = parseInt(line.field_of_rehab),
                                             field_of_rehab_other            = line.field_of_rehab_other,
                                             date_of_admission               = datetime.strptime(line.date_of_admission, "%Y-%m-%d"),
-                                            FIM_applied                     = int(line.FIM_applied),
+                                            FIM_applied                     = parseInt(line.FIM_applied),
                                             FIM_date_of_assess              = datetime.strptime(line.FIM_date_of_assess, "%Y-%m-%d"),
-                                            FIM_score                       = float(line.FIM_score),
-                                            BI_applied                      = int(line.BI_applied),
+                                            FIM_score                       = parseFloat(line.FIM_score),
+                                            BI_applied                      = parseInt(line.BI_applied),
                                             BI_date_of_assess               = datetime.strptime(line.BI_date_of_assess, "%Y-%m-%d"),
-                                            BI_score                        = float(line.BI_score),
-                                            SMWT_applied                    = int(line.SMWT_applied),
+                                            BI_score                        = parseFloat(line.BI_score),
+                                            SMWT_applied                    = parseInt(line.SMWT_applied),
                                             SMWT_date_of_assess             = datetime.strptime(line.SMWT_date_of_assess, "%Y-%m-%d"),
-                                            SMWT_score                      = float(line.SMWT_score),
-                                            SF_applied                      = int(line.SF_applied),
+                                            SMWT_score                      = parseFloat(line.SMWT_score),
+                                            SF_applied                      = parseInt(line.SF_applied),
                                             SF_date_of_assess               = datetime.strptime(line.SF_date_of_assess, "%Y-%m-%d"),
-                                            SF_score                        = float(line.SF_score),
-                                            SAT_applied                     = int(line.SAT_applied),
+                                            SF_score                        = parseFloat(line.SF_score),
+                                            SAT_applied                     = parseInt(line.SAT_applied),
                                             SAT_date_of_assess              = datetime.strptime(line.SAT_date_of_assess, "%Y-%m-%d"),
-                                            SAT_score                       = float(line.SAT_score),
-                                            FEV_applied                     = int(line.FEV_applied),
+                                            SAT_score                       = parseFloat(line.SAT_score),
+                                            FEV_applied                     = parseInt(line.FEV_applied),
                                             FEV_date_of_assess              = datetime.strptime(line.FEV_date_of_assess, "%Y-%m-%d"),
-                                            FEV_score                       = float(line.FEV_score),
-                                            AI_applied                      = int(line.AI_applied),
+                                            FEV_score                       = parseFloat(line.FEV_score),
+                                            AI_applied                      = parseInt(line.AI_applied),
                                             AI_date_of_assess               = datetime.strptime(line.AI_date_of_assess, "%Y-%m-%d"),
-                                            AI_score                        = float(line.AI_score),
-                                            SNC_applied                     = int(line.SNC_applied),
+                                            AI_score                        = parseFloat(line.AI_score),
+                                            SNC_applied                     = parseInt(line.SNC_applied),
                                             SNC_date_of_assess              = datetime.strptime(line.SNC_date_of_assess, "%Y-%m-%d"),
-                                            SNC_score                       = float(line.SNC_score),
-                                            SCI_applied                     = int(line.SCI_applied),
+                                            SNC_score                       = parseFloat(line.SNC_score),
+                                            SCI_applied                     = parseInt(line.SCI_applied),
                                             SCI_date_of_assess              = datetime.strptime(line.SCI_date_of_assess, "%Y-%m-%d"),
-                                            SCI_score                       = float(line.SCI_score),
-                                            Other_applied                   = int(line.Other_applied),
+                                            SCI_score                       = parseFloat(line.SCI_score),
+                                            Other_applied                   = parseInt(line.Other_applied),
                                             Other_name_of                   = line.other_name_of,
                                             Other_date_of_assess            = datetime.strptime(line.Other_date_of_assess, "%Y-%m-%d"),
-                                            Other_score                     = float(line.Other_score),
-                                            patient_discharge_status        = int(line.patient_discharge_status),
-                                            discharge                       = int(line.discharge),
+                                            Other_score                     = parseFloat(line.Other_score),
+                                            patient_discharge_status        = parseInt(line.patient_discharge_status),
+                                            discharge                       = parseInt(line.discharge),
                                             date_of_discharge               = datetime.strptime(line.date_of_discharge, "%Y-%m-%d"),
-                                            FIM_applied_discharge           = int(line.FIM_applied_discharge),
+                                            FIM_applied_discharge           = parseInt(line.FIM_applied_discharge),
                                             FIM_date_of_assess_discharge    = datetime.strptime(line.FIM_date_of_assess_discharge, "%Y-%m-%d"),
-                                            FIM_score_discharge             = float(line.FIM_score_discharge),
-                                            BI_applied_discharge            = int(line.BI_applied_discharge),
+                                            FIM_score_discharge             = parseFloat(line.FIM_score_discharge),
+                                            BI_applied_discharge            = parseInt(line.BI_applied_discharge),
                                             BI_date_of_assess_discharge     = datetime.strptime(line.BI_date_of_assess_discharge, "%Y-%m-%d"),
-                                            BI_score_discharge              = float(line.BI_score_discharge),
-                                            SMWT_applied_discharge          = int(line.SMWT_applied_discharge),
+                                            BI_score_discharge              = parseFloat(line.BI_score_discharge),
+                                            SMWT_applied_discharge          = parseInt(line.SMWT_applied_discharge),
                                             SMWT_date_of_assess_discharge   = datetime.strptime(line.SMWT_date_of_assess_discharge, "%Y-%m-%d"),
-                                            SMWT_score_discharge            = float(line.SMWT_score_discharge),
-                                            SF_applied_discharge            = int(line.SF_applied_discharge),
+                                            SMWT_score_discharge            = parseFloat(line.SMWT_score_discharge),
+                                            SF_applied_discharge            = parseInt(line.SF_applied_discharge),
                                             SF_date_of_assess_discharge     = datetime.strptime(line.SF_date_of_assess_discharge, "%Y-%m-%d"),
-                                            SF_score_discharge              = float(line.SF_score_discharge),
-                                            SAT_applied_discharge           = int(line.SAT_applied_discharge),
+                                            SF_score_discharge              = parseFloat(line.SF_score_discharge),
+                                            SAT_applied_discharge           = parseInt(line.SAT_applied_discharge),
                                             SAT_date_of_assess_discharge    = datetime.strptime(line.SAT_date_of_assess_discharge, "%Y-%m-%d"),
-                                            SAT_score_discharge             = float(line.SAT_score_discharge),
-                                            FEV_applied_discharge           = int(line.FEV_applied_discharge),
+                                            SAT_score_discharge             = parseFloat(line.SAT_score_discharge),
+                                            FEV_applied_discharge           = parseInt(line.FEV_applied_discharge),
                                             FEV_date_of_assess_discharge    = datetime.strptime(line.FEV_date_of_assess_discharge, "%Y-%m-%d"),
-                                            FEV_score_discharge             = float(line.FEV_score_discharge),
-                                            AI_applied_discharge            = int(line.AI_applied_discharge),
+                                            FEV_score_discharge             = parseFloat(line.FEV_score_discharge),
+                                            AI_applied_discharge            = parseInt(line.AI_applied_discharge),
                                             AI_date_of_assess_discharge     = datetime.strptime(line.AI_date_of_assess_discharge, "%Y-%m-%d"),
-                                            AI_score_discharge              = float(line.AI_score_discharge),
-                                            SNC_applied_discharge           = int(line.SNC_applied_discharge),
+                                            AI_score_discharge              = parseFloat(line.AI_score_discharge),
+                                            SNC_applied_discharge           = parseInt(line.SNC_applied_discharge),
                                             SNC_date_of_assess_discharge    = datetime.strptime(line.SNC_date_of_assess_discharge, "%Y-%m-%d"),
-                                            SNC_score_discharge             = float(line.SNC_score_discharge),
-                                            SCI_applied_discharge           = int(line.SCI_applied_discharge),
+                                            SNC_score_discharge             = parseFloat(line.SNC_score_discharge),
+                                            SCI_applied_discharge           = parseInt(line.SCI_applied_discharge),
                                             SCI_date_of_assess_discharge    = datetime.strptime(line.SCI_date_of_assess_discharge, "%Y-%m-%d"),
-                                            SCI_score_discharge             = float(line.SCI_score_discharge),
-                                            Other_applied_discharge         = int(line.Other_applied_discharge),
+                                            SCI_score_discharge             = parseFloat(line.SCI_score_discharge),
+                                            Other_applied_discharge         = parseInt(line.Other_applied_discharge),
                                             Other_name_of_discharge         = line.Other_name_of_discharge,
                                             Other_date_of_assess_discharge  = datetime.strptime(line.Other_date_of_assess_discharge, "%Y-%m-%d"),
-                                            Other_score_discharge           = float(line.Other_score_discharge),
+                                            Other_score_discharge           = parseFloat(line.Other_score_discharge),
                                             added_by                        = request.user,
                 )
                 new_r1.save()
@@ -212,13 +212,3 @@ def Statistics(request):
 #        "subindicator_two": subindicator_two,
     }
     return render_to_response('r1_statistics.html', context, context_instance=RequestContext(request))
-
-def calculate_age(born, today = date.today()):
-    try:
-        birthday = born.replace(year=today.year)
-    except ValueError:
-        birthday = born.replace(year=today.year, day=born.day-1)
-    if birthday > today:
-        return int(today.year - born.year - 1)
-    else:
-        return int(today.year - born.year)

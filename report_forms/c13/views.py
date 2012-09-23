@@ -84,13 +84,3 @@ def Statistics(request):
 #        "subindicator_two": subindicator_two,
     }
     return render_to_response('c13_statistics.html', context, context_instance=RequestContext(request))
-
-def calculate_age(born, today = date.today()):
-    try:
-        birthday = born.replace(year=today.year)
-    except ValueError:
-        birthday = born.replace(year=today.year, day=born.day-1)
-    if birthday > today:
-        return int(today.year - born.year - 1)
-    else:
-        return int(today.year - born.year)

@@ -9,6 +9,7 @@ from django.utils import simplejson
 from report_forms.c8.forms import C8Form, FileUploadForm
 from report_forms.c8.models import c8, c8CSV
 from django.utils.translation import ugettext_lazy as _
+from report_forms.tools import parseInt
 
 @login_required
 def Display(request):
@@ -48,17 +49,17 @@ def Import(request):
         for line in imported_csv:
             try:
                 new_c8 = c8.objects.create(
-                                            patient_id                      = int(line.patient_id),
-                                            case_id                         = int(line.case_id),
+                                            patient_id                      = parseInt(line.patient_id),
+                                            case_id                         = parseInt(line.case_id),
                                             date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
                                             date_of_admission               = datetime.strptime(line.date_of_admission, "%Y-%m-%d"),
-                                            patient_admission_status        = int(line.patient_admission_status),
-                                            type_of_admission               = int(line.type_of_admission),
-                                            was_surgical_procedure          = int(line.was_surgical_procedure),
+                                            patient_admission_status        = parseInt(line.patient_admission_status),
+                                            type_of_admission               = parseInt(line.type_of_admission),
+                                            was_surgical_procedure          = parseInt(line.was_surgical_procedure),
                                             date_of_surgical_procedure      = datetime.strptime(line.date_of_surgical_procedure, "%Y-%m-%d"),
                                             date_of_discharge               = datetime.strptime(line.date_of_discharge, "%Y-%m-%d"),
-                                            patient_discharge_status        = int(line.patient_discharge_status),
-                                            diagnosis_group                 = int(line.diagnosis_group),
+                                            patient_discharge_status        = parseInt(line.patient_discharge_status),
+                                            diagnosis_group                 = parseInt(line.diagnosis_group),
                                             icd                             = line.icd,
                                             drg                             = line.drg,
                                             added_by                        = request.user,
@@ -95,13 +96,3 @@ def Statistics(request):
 #        "subindicator_two": subindicator_two,
     }
     return render_to_response('c8_statistics.html', context, context_instance=RequestContext(request))
-
-def calculate_age(born, today = date.today()):
-    try:
-        birthday = born.replace(year=today.year)
-    except ValueError:
-        birthday = born.replace(year=today.year, day=born.day-1)
-    if birthday > today:
-        return int(today.year - born.year - 1)
-    else:
-        return int(today.year - born.year)

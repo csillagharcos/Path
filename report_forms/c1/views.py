@@ -9,6 +9,7 @@ from django.template import RequestContext
 from django.utils import simplejson
 from report_forms.c1.forms import C1Form, FileUploadForm
 from report_forms.c1.models import c1, c1CSV, c1OtherDiagnose
+from report_forms.tools import calculate_age
 
 @login_required
 def Display(request):
@@ -169,14 +170,3 @@ def Statistics(request):
         "subindicator_four_two": subindicator_four_two,
     }
     return render_to_response('statistics.html', context, context_instance=RequestContext(request))
-
-def calculate_age(born):
-    today = date.today()
-    try:
-        birthday = born.replace(year=today.year)
-    except ValueError:
-        birthday = born.replace(year=today.year, day=born.day-1)
-    if birthday > today:
-        return int(today.year - born.year - 1)
-    else:
-        return int(today.year - born.year)
