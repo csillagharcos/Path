@@ -35,9 +35,9 @@ class r1(models.Model):
     AI_applied                      = models.IntegerField(_('ASIA impairment applied at admission'), max_length=1, choices=YES_NO_CHOICES, default=0)
     AI_date_of_assess               = models.DateField(_('ASIA impairment date of assessment'), null=True, blank=True)
     AI_score                        = models.FloatField(_('ASIA impairment value/score'), null=True, blank=True)
-    SNC_applied                     = models.IntegerField(_('Standard neurological classification of spinal cord injury  applied at admission'), max_length=1, choices=YES_NO_CHOICES, default=0)
-    SNC_date_of_assess              = models.DateField(_('Standard neurological classification of spinal cord injury  date of assessment'), null=True, blank=True)
-    SNC_score                       = models.FloatField(_('Standard neurological classification of spinal cord injury  value/score'), null=True, blank=True)
+    SNC_applied                     = models.IntegerField(_('Standard neurological classification of spinal cord injury applied at admission'), max_length=1, choices=YES_NO_CHOICES, default=0)
+    SNC_date_of_assess              = models.DateField(_('Standard neurological classification of spinal cord injury date of assessment'), null=True, blank=True)
+    SNC_score                       = models.FloatField(_('Standard neurological classification of spinal cord injury value/score'), null=True, blank=True)
     SCI_applied                     = models.IntegerField(_('Spinal Cord Independence Measure applied at admission'), max_length=1, choices=YES_NO_CHOICES, default=0)
     SCI_date_of_assess              = models.DateField(_('Spinal Cord Independence Measure date of assessment'), null=True, blank=True)
     SCI_score                       = models.FloatField(_('Spinal Cord Independence Measure value/score'), null=True, blank=True)
@@ -86,8 +86,8 @@ class r1(models.Model):
         return str(self.patient_id)
 
     class Meta:
-        verbose_name = _('30-day in-hospital mortality of patient admitted with Stroke')
-        verbose_name_plural = _('30-day in-hospital mortality of patients admitted with Stroke')
+        verbose_name = _('Indicators for rehabilitation hospital and department')
+        verbose_name_plural = _('Indicators for rehabilitation hospitals and departments')
 
 class r1CSV(CsvModel):
     patient_id                      = IntegerField()

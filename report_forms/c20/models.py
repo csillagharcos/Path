@@ -28,8 +28,8 @@ class c20(models.Model):
         return str(self.patient_id)
 
     class Meta:
-        verbose_name = _('30-day in-hospital mortality of patient admitted with Stroke')
-        verbose_name_plural = _('30-day in-hospital mortality of patients admitted with Stroke')
+        verbose_name = _('AMI patient prescribed aspirin at discharge')
+        verbose_name_plural = _('AMI patients prescribed aspirin at discharge')
 
 class c20CSV(CsvModel):
     patient_id                      = IntegerField()
