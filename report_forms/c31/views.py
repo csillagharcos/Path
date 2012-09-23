@@ -44,13 +44,13 @@ def Import(request):
         for line in imported_csv:
             try:
                 new_c31 = c31.objects.create(
-                                            patient_id                      = line.patient_id,
-                                            case_id                         = line.case_id,
+                                            patient_id                      = int(line.patient_id),
+                                            case_id                         = int(line.case_id),
                                             date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
                                             date_of_admission               = datetime.strptime(line.date_of_admission, "%Y-%m-%d"),
-                                            patient_admission_status        = line.patient_admission_status,
+                                            patient_admission_status        = int(line.patient_admission_status),
                                             date_of_discharge               = datetime.strptime(line.date_of_discharge, "%Y-%m-%d"),
-                                            patient_discharge_status        = line.patient_discharge_status,
+                                            patient_discharge_status        = int(line.patient_discharge_status),
                                             icd                             = line.icd,
                                             added_by                        = request.user,
                 )
