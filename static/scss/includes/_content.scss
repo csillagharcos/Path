@@ -101,11 +101,16 @@ a{
 }
 
 #report_forms{
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
+  th{
+    font-weight: bold;
+  }
   td{
     padding: 0 20px 10px 0;
     img{
+      margin: 0 auto;
+      padding-left: 20px;
       height: 32px;
     }
     &:first-child{
@@ -169,23 +174,13 @@ select[multiple="multiple"]{
   }
 }
 
-//#header{
-//  #header_login{
-//    float: right;
-//    a{
-//      position: relative;
-//      padding: 20px 20px 0px 0px;
-//      text-decoration: none;
-//      color: black;
-//      &:hover{
-//        text-decoration: underline;
-//        color: #708090;
-//      }
-//    }
-//  }
-
-//  #header_logout{
-//    @extend #header_login;
-//  }
-//}
-//
+table.statistics{
+  margin: 0 auto;
+  td{
+    text-align: left;
+  }
+  td:last-child{
+    padding-left: 20px;
+    font-weight: bold;
+  }
+}

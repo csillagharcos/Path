@@ -137,11 +137,15 @@ a {
     color: #c5d900; }
 
 #report_forms {
-  width: 80%;
+  width: 100%;
   margin: 0 auto; }
+  #report_forms th {
+    font-weight: bold; }
   #report_forms td {
     padding: 0 20px 10px 0; }
     #report_forms td img {
+      margin: 0 auto;
+      padding-left: 20px;
       height: 32px; }
     #report_forms td:first-child {
       width: 95%;
@@ -173,7 +177,7 @@ select[multiple="multiple"] {
 #header_login_form {
   position: absolute;
   padding: 5px;
-  margin: 20px 0 20px 200px;
+  margin: 10px 0 20px 200px;
   width: 260px;
   background-color: #0d4f92;
   border: 1px solid #87ceeb;
@@ -191,3 +195,11 @@ select[multiple="multiple"] {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px; }
+
+table.statistics {
+  margin: 0 auto; }
+  table.statistics td {
+    text-align: left; }
+  table.statistics td:last-child {
+    padding-left: 20px;
+    font-weight: bold; }

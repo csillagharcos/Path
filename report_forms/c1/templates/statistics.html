@@ -2,24 +2,54 @@
 {% load i18n %}
 
 {% block content %}
-    {% trans "Overall:" %} {{ overall }}<br />
-    {% trans "Removed:" %} {{ removed }}<br />
-    {% trans "Counted:" %} {{ counted }}<br />
-    <br />
-    {% trans "C-section rate:" %} {{ indicator_one|floatformat:"2" }}%<br />
-    {% trans "Rate of planned C-section:" %} {{ subindicator_one|floatformat:"2" }}%<br />
-    {% trans "Rate of acute C-section:" %} {{ subindicator_two|floatformat:"2" }}%<br />
-    {% trans "Rate of c-section by the mother's age is less than 20:" %} {{ subindicator_three_one|floatformat:"2" }}%<br />
-    {% trans "Rate of c-section by the mother's age is between 20-35:" %} {{ subindicator_three_two|floatformat:"2" }}%<br />
-    {% trans "Rate of c-section by the mother's age is more than 35:" %} {{ subindicator_three_three|floatformat:"2" }}%<br />
-    {% trans "Rate of acute C-section by the previous number of deliveries first delivery:" %} {{ subindicator_four_one|floatformat:"2" }}%<br />
-    {% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries:" %} {{ subindicator_four_two|floatformat:"2" }}%<br />
-    <br /><br />
-    <hr />
-    Grafikon tesztelés:
-    <hr />
-    <br /><br />
-    <div class="bargraph"></div>
+        <table class="statistics">
+            <tr>
+                <td>{% trans "Overall:" %}</td>
+                <td>{{ overall }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "Removed:" %}</td>
+                <td>{{ counted }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "Counted:" %}</td>
+                <td>{{ overall }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "C-section rate:" %}</td>
+                <td>{{ indicator_one|floatformat:"2" }}%</td>
+            </tr>
+            <tr>
+                <td>{% trans "Rate of planned C-section:" %}</td>
+                <td>{{ subindicator_one|floatformat:"2" }}%</td>
+            </tr>
+            <tr>
+                <td>{% trans "Rate of acute C-section:" %}</td>
+                <td>{{ subindicator_two|floatformat:"2" }}%</td>
+            </tr>
+            <tr>
+                <td>{% trans "Rate of c-section by the mother's age is less than 20:" %}</td>
+                <td>{{ subindicator_three_one|floatformat:"2" }}%</td>
+            </tr>
+            <tr>
+                <td>{% trans "Rate of c-section by the mother's age is between 20-35:" %}</td>
+                <td>{{ subindicator_three_two|floatformat:"2" }}%</td>
+            </tr>
+            <tr>
+                <td>{% trans "Rate of c-section by the mother's age is more than 35:" %}</td>
+                <td>{{ subindicator_three_three|floatformat:"2" }}%</td>
+            </tr>
+            <tr>
+                <td>{% trans "Rate of acute C-section by the previous number of deliveries first delivery:" %}</td>
+                <td>{{ subindicator_four_one|floatformat:"2" }}%</td>
+            </tr>
+            <tr>
+                <td>{% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries:" %}</td>
+                <td>{{ subindicator_four_two|floatformat:"2" }}%</td>
+            </tr>
+        </table>
+        <br />
+        <a href="{% url report_forms %}"><- {% trans "Back" %}</a>
 {% endblock content %}
 
 {% block js %}
