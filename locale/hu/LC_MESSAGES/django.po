@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-24 16:52+0200\n"
-"PO-Revision-Date: 2012-09-24 16:53\n"
+"PO-Revision-Date: 2012-09-25 01:17\n"
 "Last-Translator:   <t@a.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1278,7 +1278,7 @@ msgstr "Adatgyűjtő lapok"
 #: report_forms/templates/list_of_report_forms.html:102
 #: report_forms/templates/list_of_report_forms.html:112
 msgid "Data reporting tables"
-msgstr "Adatjelentő táblákat"
+msgstr "Adatjelentő tábla"
 
 #: report_forms/templates/list_of_report_forms.html:13
 #: report_forms/templates/list_of_report_forms.html:23
