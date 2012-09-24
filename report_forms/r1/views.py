@@ -8,7 +8,8 @@ from django.template import RequestContext
 from django.utils import simplejson
 from report_forms.r1.forms import r1Form, FileUploadForm
 from report_forms.r1.models import r1, r1CSV
-from report_forms.tools import parseFloat, parseInt
+from report_forms.tools import parseFloat, parseInt, csvDump
+from django.utils.translation import ugettext_lazy as _
 
 @login_required
 def Display(request):
@@ -212,3 +213,79 @@ def Statistics(request):
 #        "subindicator_two": subindicator_two,
     }
     return render_to_response('r1_statistics.html', context, context_instance=RequestContext(request))
+
+def Template(request):
+    model = (
+        _('Patients ID'),
+        _('Case ID'),
+        _('Date of birth'),
+        _('Professional field of rehabilitation'),
+        _('If other'),
+        _('Date of admission'),
+        _('FIM applied at admission'),
+        _('FIM date of assessment'),
+        _('FIM value/score'),
+        _('Barthel index applied at admission'),
+        _('Barthel index date of assessment'),
+        _('Barthel index value/score'),
+        _('6 minutes walk test applied at admission'),
+        _('6 minutes walk test date of assessment'),
+        _('6 minutes walk test value/score'),
+        _('SF-36 applied at admission'),
+        _('SF-36 date of assessment'),
+        _('SF-36 value/score'),
+        _('SAT applied at admission'),
+        _('SAT date of assessment'),
+        _('SAT value/score'),
+        _('FEV-1 applied at admission'),
+        _('FEV-1 date of assessment'),
+        _('FEV-1 value/score'),
+        _('ASIA impairment applied at admission'),
+        _('ASIA impairment date of assessment'),
+        _('ASIA impairment value/score'),
+        _('Standard neurological classification of spinal cord injury applied at admission'),
+        _('Standard neurological classification of spinal cord injury date of assessment'),
+        _('Standard neurological classification of spinal cord injury value/score'),
+        _('Spinal Cord Independence Measure applied at admission'),
+        _('Spinal Cord Independence Measure date of assessment'),
+        _('Spinal Cord Independence Measure value/score'),
+        _('Other applied at admission'),
+        _('Other name of functional assessment'),
+        _('Other date of assessment'),
+        _('Other value/score'),
+        _('Patient discharge status'),
+        _('Discharge'),
+        _('Date of discharge'),
+        _('FIM applied at discharge'),
+        _('FIM date of assessment'),
+        _('FIM value/score'),
+        _('Barthel index applied at discharge'),
+        _('Barthel index date of assessment'),
+        _('Barthel index value/score'),
+        _('6 minutes walk test applied at discharge'),
+        _('6 minutes walk test date of assessment'),
+        _('6 minutes walk test value/score'),
+        _('SF-36 applied at discharge'),
+        _('SF-36 date of assessment'),
+        _('SF-36 value/score'),
+        _('SAT applied at discharge'),
+        _('SAT date of assessment'),
+        _('SAT value/score'),
+        _('FEV-1 applied at discharge'),
+        _('FEV-1 date of assessment'),
+        _('FEV-1 value/score'),
+        _('ASIA impairment applied at discharge'),
+        _('ASIA impairment date of assessment'),
+        _('ASIA impairment value/score'),
+        _('Standard neurological classification of spinal cord injury applied at discharge'),
+        _('Standard neurological classification of spinal cord injury date of assessment'),
+        _('Standard neurological classification of spinal cord injury value/score'),
+        _('Spinal Cord Independence Measure applied at discharge'),
+        _('Spinal Cord Independence Measure date of assessment'),
+        _('Spinal Cord Independence Measure value/score'),
+        _('Other applied at discharge'),
+        _('Other name of functional assessment'),
+        _('Other date of assessment'),
+        _('Other value/score'),
+        )
+    return csvDump(model, "r1")

@@ -60,4 +60,4 @@ class c1CSV(CsvModel):
         delimiter = ";"
 
 admin.site.register(c1)
-#admin.site.register(c1OtherDiagnose)
+admin.site.register(c1OtherDiagnose)

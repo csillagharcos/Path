@@ -9,7 +9,8 @@ from django.template import RequestContext
 from django.utils import simplejson
 from report_forms.c21.forms import C21Form, FileUploadForm
 from report_forms.c21.models import c21, c21CSV, Medicine
-from report_forms.tools import parseInt, parseFloat
+from report_forms.tools import parseInt, parseFloat, csvDump
+from django.utils.translation import ugettext_lazy as _
 
 @login_required
 def Display(request):
@@ -208,3 +209,37 @@ def Statistics(request):
 #        "subindicator_four_two": subindicator_four_two,
 #    }
     return render_to_response('statistics.html', {}, context_instance=RequestContext(request))
+
+def Template(request):
+    model = (
+        _('Case ID'),
+        _('Hospital registration number'),
+        _('Date of birth'),
+        _('Weight of patient'),
+        _('Principal diagnosis code (ICD-10 or DRG)'),
+        _('Principal procedure code'),
+        _('Is the surgical procedure planned?'),
+        _('Is patient allergic to any antibiotics suggested in the protocol?'),
+        _('Generic name of antibiotic drug'),
+        _('In case of allergy to penicillin, scale of severity?'),
+        _('Has patient preoperative infection?'),
+        _('Type of infection'),
+        _('Date of surgical incision'),
+        _('Time of surgical incision'),
+        _('Prophylactic antibiotic given?'),
+        _('Name of first dose'),
+        _('Name of second dose'),
+        _('Name of other dose'),
+        _('First dose'),
+        _('Second dose'),
+        _('Other dose'),
+        _('Route of administration of first dose'),
+        _('Date of first dose'),
+        _('Time of first dose'),
+        _('Total doses in 24 hours'),
+        _('Date of last dose'),
+        _('Time of last dose'),
+        _('Date of surgical wound closure'),
+        _('Time of surgical wound closure'),
+        )
+    return csvDump(model, "c21")

@@ -9,7 +9,7 @@ from django.utils import simplejson
 from report_forms.c32.forms import C32Form, FileUploadForm
 from report_forms.c32.models import c32, c32CSV
 from django.utils.translation import ugettext_lazy as _
-from report_forms.tools import calculate_age, parseInt
+from report_forms.tools import calculate_age, parseInt, csvDump
 
 @login_required
 def Display(request):
@@ -106,3 +106,16 @@ def Statistics(request):
         "subindicator_two": subindicator_two,
     }
     return render_to_response('c32_statistics.html', context, context_instance=RequestContext(request))
+
+def Template(request):
+    model = (
+        _('Patients ID'),
+        _('Case ID'),
+        _('Date of birth'),
+        _('Date of hospital admission'),
+        _('Patient admission status'),
+        _('Date of hospital discharge'),
+        _('Patient discharge status'),
+        _('ICD-10 at that departmental admission'),
+        )
+    return csvDump(model, "c32")

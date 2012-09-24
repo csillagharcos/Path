@@ -9,6 +9,7 @@ from django.utils import simplejson
 from report_forms.c13.forms import C13Form, FileUploadForm
 from report_forms.c13.models import c13, c13CSV
 from django.utils.translation import ugettext_lazy as _
+from report_forms.tools import csvDump
 
 @login_required
 def Display(request):
@@ -84,3 +85,15 @@ def Statistics(request):
 #        "subindicator_two": subindicator_two,
     }
     return render_to_response('c13_statistics.html', context, context_instance=RequestContext(request))
+
+def Template(request):
+    model = (
+        _('Job'),
+        _('Observed year'),
+        _('Number of needle stick injuries in the observed year'),
+        _('Total number of hospital staff at the beginning of the year (1st January)'),
+        _('Total number of hospital staff at the end of the year (31st December)'),
+        _('Total number of contracted working hours for the data at the beginning of the year/day (employee+ entrepreneur)'),
+        _('Total number of contracted working hours for the data at the end of the year /day(employee+ entrepreneur)'),
+        )
+    return csvDump(model, "c13")

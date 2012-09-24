@@ -9,7 +9,7 @@ from django.utils import simplejson
 from report_forms.c20.forms import C20Form, FileUploadForm
 from report_forms.c20.models import c20, c20CSV
 from django.utils.translation import ugettext_lazy as _
-from report_forms.tools import parseInt
+from report_forms.tools import parseInt, csvDump
 
 @login_required
 def Display(request):
@@ -92,3 +92,21 @@ def Statistics(request):
 #        "subindicator_two": subindicator_two,
     }
     return render_to_response('c20_statistics.html', context, context_instance=RequestContext(request))
+
+def Template(request):
+    model = (
+        _('Case ID'),
+        _('Hospital registration number'),
+        _('Date of birth'),
+        _('Principal diagnosis code (ICD-10)'),
+        _('Type of unit'),
+        _('Patient allergic to aspirin?'),
+        _('Is there a known contraindication or intolerance of aspirin?'),
+        _('Type of discharge'),
+        _('If other'),
+        _('Is there a known objection/refusal to take aspirin-containing medication?'),
+        _('Was patient prescribed at discharge to take aspirin?'),
+        _('Was patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy?'),
+        _('Date of discharge'),
+        )
+    return csvDump(model, "c20")

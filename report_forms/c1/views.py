@@ -6,10 +6,11 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from django.utils import simplejson
+from django.utils import simplejson, translation
 from report_forms.c1.forms import C1Form, FileUploadForm
 from report_forms.c1.models import c1, c1CSV, c1OtherDiagnose
-from report_forms.tools import calculate_age
+from report_forms.tools import calculate_age, csvDump
+from django.utils.translation import ugettext_lazy as _
 
 @login_required
 def Display(request):
@@ -170,3 +171,21 @@ def Statistics(request):
         "subindicator_four_two": subindicator_four_two,
     }
     return render_to_response('statistics.html', context, context_instance=RequestContext(request))
+
+def Template(request):
+    model = (
+        _('Patients ID'),
+        _('Case ID'),
+        _('Date of birth'),
+        _('Date of delivery'),
+        _('Time of delivery'),
+        _('Number of previous deliveries'),
+        _('Number of earlier deliveries by c-section'),
+        _('The c-section'),
+        _('Weight of newborn'),
+        _('Mother illnes or risk'),
+        _('Specify'),
+        _('DRG Code'),
+        _('Other diagnoses'),
+        )
+    return csvDump(model, "c1")

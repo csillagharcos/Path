@@ -1,4 +1,7 @@
+import csv
 from datetime import date
+from django.http import HttpResponse
+from django.utils.translation import ugettext_lazy as _
 
 def calculate_age(born, today = date.today()):
     try:
@@ -22,3 +25,14 @@ def parseFloat(integer):
         return float(integer)
     except ValueError:
         return None
+
+
+def csvDump(model, name = "excelfile"):
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename='+name+'.csv'
+    writer = csv.writer(response, delimiter=';')
+    row = []
+    for mo in model:
+        row.append(mo.encode('utf8'))
+    writer.writerow(row)
+    return response
