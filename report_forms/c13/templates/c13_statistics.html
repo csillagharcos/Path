@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n l10n %}
 {% block header %}<div id="content_home">{% trans "C.13. Needle stick injuries" %}</div>{% endblock header %}
 
 {% block content %}
@@ -10,36 +10,62 @@
     <table class="needle">
         <tr>
             <th>{% trans "Job" %}</th>
-            <th>{% trans "Job" %}</th>
-            <th>{% trans "Job" %}</th>
-            <th>{% trans "Job" %}</th>
-            <th>{% trans "Job" %}</th>
+            <th>{% trans "Number of needle stick injuries to 100 workers (average number)" %}</th>
+            <th>{% trans "Number of needle stick injuries to 100 workers (FTE = full time equivalent)" %}</th>
         </tr>
-        {% for job in stuff %}
+        {% for job in jobs %}
         <tr>
             <td>{{ job.0 }}</td>
-            <td>{{ job.1 }}</td>
-            <td>{{ job.2 }}</td>
-            <td>{{ job.3 }}</td>
-            <td>{{ job.4 }}</td>
+            <td>{{ job.1|floatformat:"2" }}</td>
+            <td>{{ job.2|floatformat:"2" }}</td>
         </tr>
         {% endfor %}
     </table>
+    <div id="avg" style="margin-top: 20px; height: 200px;"></div>
+    <div id="fte" style="margin-top: 20px; height: 200px;"></div>
 {% endblock content %}
 
 {% block js %}
     <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.pointLabels.min.js"></script>
     <script style="text/javascript">
-    var DataForGraph = new Array(
-        ["{{ indicator_one|floatformat:"2" }}".replace(",","."), '30 days','red'],
-        ["{{ subindicator_one|floatformat:"2" }}".replace(",","."),'30 days wo trans','green'],
-        ["{{ subindicator_two|floatformat:"2" }}".replace(",","."),'2 days','blue']
-    );
-    $('.bargraph').jqBarGraph({
-                                data: DataForGraph,
-                                postfix: '%',
-                                width: 940,
-                                barSpace: 80
-    });
+        $(document).ready(function(){
+            var plot1 = $.jqplot('avg', [[{% for job in jobs %}{{ job.1 }}{% if not forloop.last %},{% endif %}{% endfor %}]], {
+                title: "{% trans "Number of needle stick injuries to 100 workers (average number)" %}",
+                seriesDefaults:{
+                    renderer:$.jqplot.BarRenderer,
+                    pointLabels: { show: true }
+                },
+                axes: {
+                    xaxis: {
+                        renderer: $.jqplot.CategoryAxisRenderer,
+                        ticks: [{% for job in jobs %}"{{ job.0 }}"{% if not forloop.last %},{% endif %}{% endfor %}]
+                    },
+                    yaxis: {
+                        tickOptions: {formatString: '%d'}
+                    }
+                }
+            });
+
+            var plot2 = $.jqplot('fte', [[{% for job in jobs %}{% localize off %}{{ job.2 }}{% endlocalize %}{% if not forloop.last %},{% endif %}{% endfor %}]], {
+                title: "{% trans "Number of needle stick injuries to 100 workers (FTE = full time equivalent)" %}",
+                seriesDefaults:{
+                    renderer:$.jqplot.BarRenderer,
+                    pointLabels: { show: true }
+                },
+                axes: {
+                    xaxis: {
+                        renderer: $.jqplot.CategoryAxisRenderer,
+                        ticks: [{% for job in jobs %}"{{ job.0 }}"{% if not forloop.last %},{% endif %}{% endfor %}]
+                    },
+                    yaxis: {
+                        tickOptions: {formatString: '%.2f'}
+                    }
+                }
+            });
+        });
     </script>
 {% endblock js %}

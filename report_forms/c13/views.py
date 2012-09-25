@@ -13,8 +13,9 @@ def Display(request):
     if request.method == "POST":
         form = C13Form(request.POST)
         if form.is_valid():
+            print '111'
             new_c13 = c13.objects.create(
-                job                             = joblist.objects.get(pk=1),
+                job                             = form.cleaned_data['job'],
                 year                            = form.cleaned_data['year'],
                 needlestick_injuries            = form.cleaned_data['needlestick_injuries'],
                 staff_beginning                 = form.cleaned_data['staff_beginning'],
@@ -26,10 +27,7 @@ def Display(request):
             new_c13.save()
             return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
         else:
-            if request.LANGUAGE_CODE == "hu":
-                form = C13Form_hungarian(request.POST)
-            else:
-                form = C13Form(request.POST)
+            form = C13Form(request.POST)
             return render(request, 'c13.html', { 'form': form })
     if request.LANGUAGE_CODE == "hu":
         form = C13Form_hungarian()
@@ -49,22 +47,21 @@ def Statistics(request):
             job_name = case.job.job_hungarian
         else:
             job_name = case.job.job_english
+        try: first = case.needlestick_injuries / (case.staff_beginning + case.staff_end)/2 *100
+        except: first = 0
+        try: second = case.needlestick_injuries / ((case.working_hours_beginning + case.working_hours_end)*0.5)/8 *100
+        except: second = 0
         group.append([
                   job_name,
-                  (case.staff_beginning + case.staff_end)/2,
-                  ((case.working_hours_beginning + case.working_hours_end)*0.5)/8,
-                  case.needlestick_injuries / (case.staff_beginning + case.staff_end)/2 *100,
-                  case.needlestick_injuries / ((case.working_hours_beginning + case.working_hours_end)*0.5)/8 *100,
+                  first,
+                  second,
         ])
 
     context = {
         "overall": len(cases),
         "removed": len(uncountable_case),
         "counted": len(countable_case),
-        "stuff" : group,
-#        "indicator_one": indicator_one,
-#        "subindicator_one": subindicator_one,
-#        "subindicator_two": subindicator_two,
+        "jobs" : group,
     }
     return render_to_response('c13_statistics.html', context, context_instance=RequestContext(request))
 

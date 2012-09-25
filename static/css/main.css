@@ -221,6 +221,9 @@ table.needle {
     border: 1px solid black;
     color: white;
     padding: 5px; }
+  table.needle td:first-child {
+    width: 50%; }
   table.needle td {
+    width: 25%;
     padding: 2px;
     border: 1px solid black; }

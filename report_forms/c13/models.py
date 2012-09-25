@@ -15,12 +15,6 @@ class joblist(models.Model):
     def __unicode__(self):
         return self.job_english + " (" + self.job_hungarian + ")"
 
-    def english(self):
-        return self.job_english
-
-    def hungarian(self):
-        return self.job_hungarian
-
     class Meta:
         verbose_name = _('Job')
         verbose_name_plural = _('Jobs')
