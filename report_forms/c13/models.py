@@ -8,8 +8,25 @@ from django.utils.translation import ugettext_lazy as _
 from csvImporter.model import CsvModel
 from report_forms.choices import JOB_CHOICES
 
+class joblist(models.Model):
+    job_english                     = models.CharField(_('Job name in english'), max_length=255, default="")
+    job_hungarian                   = models.CharField(_('Job name in hungarian'), max_length=255, default="")
+
+    def __unicode__(self):
+        return self.job_english + " (" + self.job_hungarian + ")"
+
+    def english(self):
+        return self.job_english
+
+    def hungarian(self):
+        return self.job_hungarian
+
+    class Meta:
+        verbose_name = _('Job')
+        verbose_name_plural = _('Jobs')
+
 class c13(models.Model):
-    job                             = models.CharField(_('Job'), max_length=255, choices=JOB_CHOICES, default="")
+    job                             = models.ForeignKey(joblist, verbose_name=_('Job'))
     year                            = models.IntegerField(_('Observed year'), default=2012)
     needlestick_injuries            = models.IntegerField(_('Number of needle stick injuries in the observed year'), default=0)
     staff_beginning                 = models.IntegerField(_('Total number of hospital staff at the beginning of the year (1st January)'), default=0)
@@ -20,22 +37,11 @@ class c13(models.Model):
     added_by                        = models.ForeignKey(User, verbose_name=_('User'))
 
     def __unicode__(self):
-        return str(self.patient_id)
+        return str(self.job)
 
     class Meta:
         verbose_name = _('Needle stick injury')
         verbose_name_plural = _('Needle stick injuries')
 
-class c13CSV(CsvModel):
-    job                             = CharField()
-    year                            = IntegerField()
-    needlestick_injuries            = IntegerField()
-    staff_beginning                 = IntegerField()
-    staff_end                       = IntegerField()
-    working_hours_beginning         = IntegerField()
-    working_hours_end               = IntegerField()
-
-    class Meta:
-        delimiter = ";"
-
 admin.site.register(c13)
+admin.site.register(joblist)
