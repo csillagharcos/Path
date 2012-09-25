@@ -72,7 +72,6 @@ def Import(request):
                 )
                 new_c20.save()
             except IntegrityError:
-                #todo: testing for fail state
                 pass
         return HttpResponse(simplejson.dumps({"value" : "okay."}), mimetype="application/json")
     else:
@@ -112,9 +111,12 @@ def Statistics(request):
             cindicator_three += 1
 
     ''' Counting '''
-    indicator_one   = cindicator_one   / len(countable_case) * 100
-    indicator_two   = float(cindicator_two   / len(countable_case) * 100)
-    indicator_three = float(cindicator_three / len(countable_case) * 100)
+    try: indicator_one   = cindicator_one   / len(countable_case) * 100
+    except: indicator_one = 0
+    try: indicator_two   = float(cindicator_two   / len(countable_case) * 100)
+    except: indicator_one = 0
+    try: indicator_three = float(cindicator_three / len(countable_case) * 100)
+    except: indicator_one = 0
 
     ''' Displaying '''
     context = {
