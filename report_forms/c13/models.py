@@ -31,7 +31,7 @@ class c13(models.Model):
     added_by                        = models.ForeignKey(User, verbose_name=_('User'))
 
     def __unicode__(self):
-        return str(self.job)
+        return self.job.job_english +"("+ self.job.job_hungarian +") - " + str(self.year)
 
     class Meta:
         verbose_name = _('Needle stick injury')
