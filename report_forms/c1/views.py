@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, date
+from py_compile import PyCompileError
+from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.utils import IntegrityError
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.utils import simplejson, translation
@@ -43,8 +45,13 @@ def Display(request):
 def Import(request):
     if request.method == "POST":
         exists=()
-        csv_file = request.FILES['file']
-        imported_csv = c1CSV.import_data(data=csv_file)
+        try:
+            csv_file = request.FILES['file']
+            imported_csv = c1CSV.import_data(data=csv_file)
+        except UnicodeDecodeError:
+            return render_to_response('error.html', {"message": _("You probably forgot to delete the first row of the csv file, please recheck.") }, context_instance=RequestContext(request))
+        except CsvDataException:
+            return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
         for line in imported_csv:
             try:
                 parsed_diagnoses=()
@@ -73,7 +80,7 @@ def Import(request):
                 new_c1.save()
             except IntegrityError:
                 exists += (line.patient_id,)
-        return HttpResponse(simplejson.dumps({"value" : exists}), mimetype="application/json")
+        return HttpResponseRedirect('/reportforms/')
     else:
         form = FileUploadForm()
         context = { "form" : form }

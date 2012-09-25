@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, date
+from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.utils import IntegrityError
@@ -59,8 +60,13 @@ def Display(request):
 def Import(request):
     if request.method == "POST":
         exists=()
-        csv_file = request.FILES['file']
-        imported_csv = c23CSV.import_data(data=csv_file)
+        try:
+            csv_file = request.FILES['file']
+            imported_csv = c23CSV.import_data(data=csv_file)
+        except UnicodeDecodeError:
+            return render_to_response('error.html', {"message": _("You probably forgot to delete the first row of the csv file, please recheck.") }, context_instance=RequestContext(request))
+        except CsvDataException:
+            return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
         for line in imported_csv:
             try:
                 try: first_dose_name = Medicine.objects.get(name = line.name_of_first_dose)

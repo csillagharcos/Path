@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
+from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.db.utils import IntegrityError
 from django.http import HttpResponse
@@ -102,8 +103,13 @@ def Display(request):
 @login_required
 def Import(request):
     if request.method == "POST":
-        csv_file = request.FILES['file']
-        imported_csv = r1CSV.import_data(data=csv_file)
+        try:
+            csv_file = request.FILES['file']
+            imported_csv = r1CSV.import_data(data=csv_file)
+        except UnicodeDecodeError:
+            return render_to_response('error.html', {"message": _("You probably forgot to delete the first row of the csv file, please recheck.") }, context_instance=RequestContext(request))
+        except CsvDataException:
+            return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
         for line in imported_csv:
             try:
                 new_r1 = r1.objects.create(
@@ -182,7 +188,6 @@ def Import(request):
                 )
                 new_r1.save()
             except IntegrityError:
-                #todo: testing for fail state
                 pass
         return HttpResponse(simplejson.dumps({"value" : "okay."}), mimetype="application/json")
     else:

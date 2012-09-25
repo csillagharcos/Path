@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, date
+from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.utils import IntegrityError
@@ -58,8 +59,13 @@ def Display(request):
 def Import(request):
     if request.method == "POST":
         exists=()
-        csv_file = request.FILES['file']
-        imported_csv = c21CSV.import_data(data=csv_file)
+        try:
+            csv_file = request.FILES['file']
+            imported_csv = c21CSV.import_data(data=csv_file)
+        except UnicodeDecodeError:
+            return render_to_response('error.html', {"message": _("You probably forgot to delete the first row of the csv file, please recheck.") }, context_instance=RequestContext(request))
+        except CsvDataException:
+            return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
         for line in imported_csv:
             try:
                 try: first_dose_name = Medicine.objects.get(name = line.name_of_first_dose)
@@ -108,16 +114,13 @@ def Import(request):
                     added_by                        = request.user,
                 )
                 new_c21.save()
-            except ValueError:
-                #TODO: Normal error message in case of first row fuckup
+            except:
                 pass
-#                return HttpResponse(simplejson.dumps({"value" : "Delete the first row!"}), mimetype="application/json")
         return HttpResponse(simplejson.dumps({"value" : exists}), mimetype="application/json")
     else:
         form = FileUploadForm()
         context = { "form" : form }
         return render_to_response('c21.html', context, context_instance=RequestContext(request))
-
 
 @login_required
 def Statistics(request):
