@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-25 18:04+0200\n"
-"PO-Revision-Date: 2012-09-25 18:05\n"
+"POT-Creation-Date: 2012-09-25 22:37+0200\n"
+"PO-Revision-Date: 2012-09-25 22:38\n"
 "Last-Translator:   <t@a.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,11 +27,11 @@ msgstr "Ország"
 msgid "Countries"
 msgstr "Országok"
 
-#: pathstatic/forms.py:5 templates/base.html:44
+#: pathstatic/forms.py:5 templates/base.html:45
 msgid "Username"
 msgstr "Felhasználó"
 
-#: pathstatic/forms.py:6 templates/base.html:47
+#: pathstatic/forms.py:6 templates/base.html:48
 msgid "Password"
 msgstr "Jelszó"
 
@@ -58,7 +58,7 @@ msgstr "Nemzetközi PATH honlap"
 msgid "Under development..."
 msgstr "Fejlesztés alatt."
 
-#: pathstatic/templates/login.html:11 templates/base.html:50
+#: pathstatic/templates/login.html:11 templates/base.html:51
 msgid "Login"
 msgstr "Bejelentkezés"
 
@@ -268,7 +268,7 @@ msgstr "Nem tervezett"
 
 #: report_forms/c1/forms.py:8 report_forms/c1/models.py:24
 #: report_forms/c1/views.py:186 report_forms/c20/forms.py:7
-#: report_forms/c20/models.py:13 report_forms/c20/views.py:133
+#: report_forms/c20/models.py:13 report_forms/c20/views.py:136
 #: report_forms/c21/forms.py:14 report_forms/c21/models.py:26
 #: report_forms/c21/views.py:220 report_forms/c23/forms.py:15
 #: report_forms/c23/models.py:27 report_forms/c23/views.py:225
@@ -333,7 +333,7 @@ msgid "Patients ID"
 msgstr "Betegazonosító"
 
 #: report_forms/c1/models.py:23 report_forms/c1/views.py:185
-#: report_forms/c20/models.py:11 report_forms/c20/views.py:131
+#: report_forms/c20/models.py:11 report_forms/c20/views.py:134
 #: report_forms/c21/models.py:24 report_forms/c21/views.py:218
 #: report_forms/c23/models.py:25 report_forms/c23/views.py:223
 #: report_forms/c24/models.py:24 report_forms/c24/views.py:220
@@ -567,6 +567,13 @@ msgstr "Vissza"
 msgid "Congratulations for filling out the form!"
 msgstr "Gratulálunk, kitöltötted a kérdőívet"
 
+#: report_forms/c13/forms.py:15 report_forms/c13/forms.py:21
+#: report_forms/c13/models.py:19 report_forms/c13/models.py:23
+#: report_forms/c13/views.py:70
+#: report_forms/c13/templates/c13_statistics.html:12
+msgid "Job"
+msgstr "Munkakör"
+
 #: report_forms/c13/models.py:12
 msgid "Job name in english"
 msgstr "Munkakör angolul"
@@ -575,38 +582,28 @@ msgstr "Munkakör angolul"
 msgid "Job name in hungarian"
 msgstr "Munkakör magyarul"
 
-#: report_forms/c13/models.py:19 report_forms/c13/models.py:23
-#: report_forms/c13/views.py:71
-#: report_forms/c13/templates/c13_statistics.html:12
-#: report_forms/c13/templates/c13_statistics.html:13
-#: report_forms/c13/templates/c13_statistics.html:14
-#: report_forms/c13/templates/c13_statistics.html:15
-#: report_forms/c13/templates/c13_statistics.html:16
-msgid "Job"
-msgstr "Munkakör"
-
 #: report_forms/c13/models.py:20
 msgid "Jobs"
 msgstr "Munkák"
 
-#: report_forms/c13/models.py:24 report_forms/c13/views.py:72
+#: report_forms/c13/models.py:24 report_forms/c13/views.py:71
 msgid "Observed year"
 msgstr "Vizsgálat éve"
 
-#: report_forms/c13/models.py:25 report_forms/c13/views.py:73
+#: report_forms/c13/models.py:25 report_forms/c13/views.py:72
 msgid "Number of needle stick injuries in the observed year"
 msgstr "Tűszúrásos sérülések száma a vizsgálat évében"
 
-#: report_forms/c13/models.py:26 report_forms/c13/views.py:74
+#: report_forms/c13/models.py:26 report_forms/c13/views.py:73
 msgid ""
 "Total number of hospital staff at the beginning of the year (1st January)"
 msgstr "Dolgozók létszáma a vizsgált év elején (jan.01)"
 
-#: report_forms/c13/models.py:27 report_forms/c13/views.py:75
+#: report_forms/c13/models.py:27 report_forms/c13/views.py:74
 msgid "Total number of hospital staff at the end of the year (31st December)"
 msgstr "Dolgozók létszáma a vizsgált év végén (dec.31.)"
 
-#: report_forms/c13/models.py:28 report_forms/c13/views.py:76
+#: report_forms/c13/models.py:28 report_forms/c13/views.py:75
 msgid ""
 "Total number of contracted working hours for the data at the beginning of "
 "the year/day (employee+ entrepreneur)"
@@ -614,7 +611,7 @@ msgstr ""
 "az év eleji adatban megadott dolgozói létszámhoz tartozó szerződött napi "
 "óraszám (alkalmazott+vállalkozó)"
 
-#: report_forms/c13/models.py:29 report_forms/c13/views.py:77
+#: report_forms/c13/models.py:29 report_forms/c13/views.py:76
 msgid ""
 "Total number of contracted working hours for the data at the end of the year"
 " /day(employee+ entrepreneur)"
@@ -636,56 +633,69 @@ msgstr "Tűszúrások"
 msgid "C.13. Needle stick injuries"
 msgstr "C.13. Tűszúrás"
 
+#: report_forms/c13/templates/c13_statistics.html:13
+#: report_forms/c13/templates/c13_statistics.html:37
+msgid "Number of needle stick injuries to 100 workers (average number)"
+msgstr "100 dolgozóra (átlagos létszámra ) jutó tűszúrások száma"
+
+#: report_forms/c13/templates/c13_statistics.html:14
+#: report_forms/c13/templates/c13_statistics.html:54
+msgid ""
+"Number of needle stick injuries to 100 workers (FTE = full time equivalent)"
+msgstr ""
+"100 dolgozóra (teljes munkaidőre átszámított átlagos létszámra ) jutó "
+"tűszúrások száma"
+
 #: report_forms/c20/forms.py:8 report_forms/c20/models.py:23
-#: report_forms/c20/views.py:143 report_forms/r1/models.py:50
+#: report_forms/c20/views.py:146 report_forms/r1/models.py:50
 #: report_forms/r1/views.py:263
 msgid "Date of discharge"
 msgstr "Az elbocsátás dátuma"
 
-#: report_forms/c20/models.py:12 report_forms/c20/views.py:132
+#: report_forms/c20/models.py:12 report_forms/c20/views.py:135
 #: report_forms/c21/models.py:25 report_forms/c21/views.py:219
 #: report_forms/c23/models.py:26 report_forms/c23/views.py:224
 #: report_forms/c24/models.py:25 report_forms/c24/views.py:221
 msgid "Hospital registration number"
 msgstr "Kórházi regisztrációs szám"
 
-#: report_forms/c20/models.py:14 report_forms/c20/views.py:134
+#: report_forms/c20/models.py:14 report_forms/c20/views.py:137
 msgid "Principal diagnosis code (ICD-10)"
 msgstr "Fődiagnózis (BNO10)"
 
-#: report_forms/c20/models.py:15 report_forms/c20/views.py:135
+#: report_forms/c20/models.py:15 report_forms/c20/views.py:138
 msgid "Type of unit"
 msgstr "Osztály típusa"
 
-#: report_forms/c20/models.py:16 report_forms/c20/views.py:136
+#: report_forms/c20/models.py:16 report_forms/c20/views.py:139
 msgid "Patient allergic to aspirin?"
 msgstr "A beteg allergiás-e az aszpirinre?"
 
-#: report_forms/c20/models.py:17 report_forms/c20/views.py:137
+#: report_forms/c20/models.py:17 report_forms/c20/views.py:140
 msgid "Is there a known contraindication or intolerance of aspirin?"
 msgstr "Ismert az aszpirin kontraindikáció vagy intolerancia?"
 
-#: report_forms/c20/models.py:18 report_forms/c20/views.py:138
+#: report_forms/c20/models.py:18 report_forms/c20/views.py:141
 msgid "Type of discharge"
 msgstr "A beteg további sorsa"
 
-#: report_forms/c20/models.py:19 report_forms/c20/views.py:139
+#: report_forms/c20/models.py:19 report_forms/c20/views.py:142
 #: report_forms/r1/models.py:15 report_forms/r1/views.py:228
 msgid "If other"
 msgstr "Ha egyéb"
 
-#: report_forms/c20/models.py:20 report_forms/c20/views.py:140
+#: report_forms/c20/models.py:20 report_forms/c20/views.py:143
 msgid ""
 "Is there a known objection/refusal to take aspirin-containing medication?"
 msgstr ""
 "Ismert-e tiltakozás/elutasítás az aszpirin tartalmú készítmények szedésével "
 "szemben?"
 
-#: report_forms/c20/models.py:21 report_forms/c20/views.py:141
+#: report_forms/c20/models.py:21 report_forms/c20/views.py:144
 msgid "Was patient prescribed at discharge to take aspirin?"
 msgstr "A betegnek távozáskor elrendelték az aszpirin szedését?"
 
-#: report_forms/c20/models.py:22 report_forms/c20/views.py:142
+#: report_forms/c20/models.py:22 report_forms/c20/views.py:145
 msgid ""
 "Was patient prescribed to take other (non-aspirin-containing) platelet "
 "aggregation inhibitor therapy?"
@@ -1439,23 +1449,23 @@ msgstr "Adatjelentő tábla"
 msgid "Short indicator description"
 msgstr "Rövidített indikátor leírások"
 
-#: templates/base.html:32
+#: templates/base.html:33
 msgid "Homepage"
 msgstr "Kezdőlap"
 
-#: templates/base.html:33
+#: templates/base.html:34
 msgid "Report Forms"
 msgstr "Jelentési lapok"
 
-#: templates/base.html:34
+#: templates/base.html:35
 msgid "Knowledge Corner"
 msgstr "Tudástár"
 
-#: templates/base.html:36
+#: templates/base.html:37
 msgid "log out"
 msgstr "kijelentkezés"
 
-#: templates/base.html:38
+#: templates/base.html:39
 msgid "login"
 msgstr "bejelentkezés"
 

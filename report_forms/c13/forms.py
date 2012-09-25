@@ -7,25 +7,18 @@ class englishJoblist(ModelChoiceField):
     def label_from_instance(self, obj):
         return obj.job_english
 
-    def __unicode__(self):
-        return _('puss')
-
 class hungarianJoblist(ModelChoiceField):
     def label_from_instance(self, obj):
         return obj.job_hungarian
-    def __unicode__(self):
-        return _('puss')
-
-
 
 class C13Form(ModelForm):
-    job =   englishJoblist(queryset=joblist.objects.all())
+    job =   englishJoblist(queryset=joblist.objects.all(), label=_('Job'))
     class Meta:
         model = c13
         exclude = ('added_by')
 
 class C13Form_hungarian(ModelForm):
-    job =   hungarianJoblist(queryset=joblist.objects.all())
+    job =   hungarianJoblist(queryset=joblist.objects.all(), label=_('Job'))
     class Meta:
         model = c13
         exclude = ('added_by')
