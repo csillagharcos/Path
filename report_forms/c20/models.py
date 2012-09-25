@@ -16,7 +16,7 @@ class c20(models.Model):
     patient_allergic_aspirin        = models.IntegerField(_('Patient allergic to aspirin?'), max_length=1, choices=YES_NO_CHOICES, default=0)
     aspirin_intolerance             = models.IntegerField(_('Is there a known contraindication or intolerance of aspirin?'), max_length=1, choices=YES_NO_CHOICES, default=0)
     type_of_discharge               = models.IntegerField(_('Type of discharge'), max_length=1, choices=TYPE_OF_DISCHARGE, default=1)
-    type_of_discharge_empty         = models.CharField(_('If other'), max_length=255)
+    type_of_discharge_empty         = models.CharField(_('If other'), max_length=255, null=True, blank=True)
     aspirin_refusal                 = models.IntegerField(_('Is there a known objection/refusal to take aspirin-containing medication?'), max_length=1, choices=YES_NO_CHOICES, default=0)
     aspirin_at_discharge            = models.IntegerField(_('Was patient prescribed at discharge to take aspirin?'), max_length=1, choices=YES_NO_CHOICES, default=1)
     non_aspirin_platelet            = models.IntegerField(_('Was patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy?'), max_length=1, choices=YES_NO_CHOICES, default=0)
@@ -25,7 +25,7 @@ class c20(models.Model):
     added_by                        = models.ForeignKey(User, verbose_name=_('User'))
 
     def __unicode__(self):
-        return str(self.patient_id)
+        return str(self.case_id)
 
     class Meta:
         verbose_name = _('AMI patient prescribed aspirin at discharge')

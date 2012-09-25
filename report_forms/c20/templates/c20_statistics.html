@@ -3,19 +3,34 @@
 {% block header %}<div id="content_home">{% trans "C.20. AMI patients prescribed aspirin at discharge" %}</div>{% endblock header %}
 
 {% block content %}
-    {% trans "Overall:" %} {{ overall }}<br />
-    {% trans "Removed:" %} {{ removed }}<br />
-    {% trans "Counted:" %} {{ counted }}<br />
+    <table class="statistics">
+        <tr>
+            <td>{% trans "Overall:" %}</td>
+            <td>{{ overall }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Removed:" %}</td>
+            <td>{{ counted }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Counted:" %}</td>
+            <td>{{ overall }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Patient prescribed at discharge to take aspirin:" %}</td>
+            <td>{{ indicator_one|floatformat:"2" }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy:" %}</td>
+            <td>{{ indicator_two|floatformat:"2" }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Patient prescribed to take aspirin or other (non-aspirin-containing) platelet aggregation inhibitor therapy:" %}</td>
+            <td>{{ indicator_three|floatformat:"2" }}%</td>
+        </tr>
+    </table>
     <br />
-    {% trans "Hospital mortality rate within 30 days:" %} {{ indicator_one|floatformat:"2" }}%<br />
-    {% trans "Hospital mortality rate within 30 days without transmissions:" %} {{ subindicator_one|floatformat:"2" }}%<br />
-    {% trans "Hospital mortality rate within 2 days:" %} {{ subindicator_two|floatformat:"2" }}%<br />
-    <br /><br />
-    <hr />
-    Grafikon tesztelés:
-    <hr />
-    <br /><br />
-    <div class="bargraph"></div>
+    <a href="{% url report_forms %}"><- {% trans "Back" %}</a>
 {% endblock content %}
 
 {% block js %}
