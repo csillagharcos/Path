@@ -1,4 +1,5 @@
 function showNext(element, bool){
+    if( bool.empty() ) { bool = 1}
     if( element.val() == bool){
         element.parents('tr').next().show()
     }else{

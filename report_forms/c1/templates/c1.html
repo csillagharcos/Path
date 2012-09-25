@@ -8,7 +8,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(".jq_tool").tooltip()
-    $("#id_mother_illness").parents('tr').next().hide()
+    showNextTwo($('#id_mother_illness'))
+
     $("#id_weight_of_the_newborn").ready(function(){
         $(this).val($(this).val().replace(" g",""))
     }).focus(function(){
