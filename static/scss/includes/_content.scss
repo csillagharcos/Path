@@ -84,7 +84,17 @@ img {
   padding: 10px;
   text-align: center;
   background-color: #e5e5e5;
-  margin: 40px 0 25px 0;
+  margin: 0px 0 25px 0;
+}
+
+#content_home {
+  width: 950px;
+  padding: 10px;
+  text-align: center;
+  background-color: #414141;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .error input, .error select{
@@ -182,5 +192,20 @@ table.statistics{
   td:last-child{
     padding-left: 20px;
     font-weight: bold;
+  }
+}
+
+table.needle{
+  margin: 0 auto;
+  th{
+    background-color: #808080;
+    font-weight: bold;
+    border: 1px solid black;
+    color: white;
+    padding: 5px;
+  }
+  td{
+    padding: 2px;
+    border: 1px solid black;
   }
 }

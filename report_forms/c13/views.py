@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, date
-from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
-from django.db.utils import IntegrityError
-from django.http import HttpResponse
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from django.utils import simplejson
-from report_forms.c13.forms import C13Form, FileUploadForm
-from report_forms.c13.models import c13, c13CSV
+from django.utils import translation
+from report_forms.c13.forms import C13Form, C13Form_hungarian
+from report_forms.c13.models import c13, joblist
 from django.utils.translation import ugettext_lazy as _
 from report_forms.tools import csvDump
 
@@ -18,7 +14,7 @@ def Display(request):
         form = C13Form(request.POST)
         if form.is_valid():
             new_c13 = c13.objects.create(
-                job                             = form.cleaned_data['job'],
+                job                             = joblist.objects.get(pk=1),
                 year                            = form.cleaned_data['year'],
                 needlestick_injuries            = form.cleaned_data['needlestick_injuries'],
                 staff_beginning                 = form.cleaned_data['staff_beginning'],
@@ -30,61 +26,42 @@ def Display(request):
             new_c13.save()
             return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
         else:
-            form = C13Form(request.POST)
+            if request.LANGUAGE_CODE == "hu":
+                form = C13Form_hungarian(request.POST)
+            else:
+                form = C13Form(request.POST)
             return render(request, 'c13.html', { 'form': form })
-
-    form = C13Form()
-    return render(request, 'c13.html', { 'form': form })
-
-@login_required
-def Import(request):
-    if request.method == "POST":
-        try:
-            csv_file = request.FILES['file']
-            imported_csv = c13CSV.import_data(data=csv_file)
-        except UnicodeDecodeError:
-            return render_to_response('error.html', {"message": _("You probably forgot to delete the first row of the csv file, please recheck.") }, context_instance=RequestContext(request))
-        except CsvDataException:
-            return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
-        for line in imported_csv:
-            try:
-                new_c13 = c13.objects.create(
-                                            job                             = line.job,
-                                            year                            = line.year,
-                                            needlestick_injuries            = line.needlestick_injuries,
-                                            staff_beginning                 = line.staff_beginning,
-                                            staff_end                       = line.staff_end,
-                                            working_hours_beginning         = line.working_hours_beginning,
-                                            working_hours_end               = line.working_hours_end,
-                                            added_by                        = request.user,
-                )
-                new_c13.save()
-            except:
-                pass
-        return HttpResponse(simplejson.dumps({"value" : "okay."}), mimetype="application/json")
+    if request.LANGUAGE_CODE == "hu":
+        form = C13Form_hungarian()
     else:
-        form = FileUploadForm()
-        context = { "form" : form }
-        return render_to_response('c13.html', context, context_instance=RequestContext(request))
-
+        form = C13Form()
+    return render(request, 'c13.html', { 'form': form })
 
 @login_required
 def Statistics(request):
     ''' Query '''
     countable_case=uncountable_case=()
     cases = c13.objects.all()
+    group = []
+    print
     for case in cases:
-        pass
+        if translation.get_language() == "hu":
+            job_name = case.job.job_hungarian
+        else:
+            job_name = case.job.job_english
+        group.append([
+                  job_name,
+                  (case.staff_beginning + case.staff_end)/2,
+                  ((case.working_hours_beginning + case.working_hours_end)*0.5)/8,
+                  case.needlestick_injuries / (case.staff_beginning + case.staff_end)/2 *100,
+                  case.needlestick_injuries / ((case.working_hours_beginning + case.working_hours_end)*0.5)/8 *100,
+        ])
 
-    ''' Working '''
-
-    ''' Counting '''
-
-    ''' Displaying '''
     context = {
         "overall": len(cases),
         "removed": len(uncountable_case),
         "counted": len(countable_case),
+        "stuff" : group,
 #        "indicator_one": indicator_one,
 #        "subindicator_one": subindicator_one,
 #        "subindicator_two": subindicator_two,

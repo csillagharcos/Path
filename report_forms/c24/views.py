@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from _sqlite3 import IntegrityError
 from datetime import datetime, date
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
@@ -9,7 +10,7 @@ from django.template import RequestContext
 from django.utils import simplejson
 from report_forms.c24.forms import C24Form, FileUploadForm
 from report_forms.c24.models import c24, c24CSV, Medicine
-from report_forms.tools import parseInt, parseFloat
+from report_forms.tools import parseInt, parseFloat, csvDump
 from django.utils.translation import ugettext_lazy as _
 
 @login_required
@@ -120,7 +121,7 @@ def Import(request):
     else:
         form = FileUploadForm()
         context = { "form" : form }
-        return render_to_response('c24.html', context, context_instance=RequestContext(request))
+        return render_to_response('c24_file_upload.html', context, context_instance=RequestContext(request))
 
 
 @login_required
@@ -212,7 +213,7 @@ def Statistics(request):
 #        "subindicator_four_one": subindicator_four_one,
 #        "subindicator_four_two": subindicator_four_two,
 #    }
-    return render_to_response('statistics.html', {}, context_instance=RequestContext(request))
+    return render_to_response('c24_statistics.html', {}, context_instance=RequestContext(request))
 
 def Template(request):
     model = (

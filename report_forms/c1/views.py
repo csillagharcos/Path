@@ -84,7 +84,7 @@ def Import(request):
     else:
         form = FileUploadForm()
         context = { "form" : form }
-        return render_to_response('file_upload.html', context, context_instance=RequestContext(request))
+        return render_to_response('c1_file_upload.html', context, context_instance=RequestContext(request))
 
 
 @login_required
@@ -177,7 +177,7 @@ def Statistics(request):
         "subindicator_four_one": subindicator_four_one,
         "subindicator_four_two": subindicator_four_two,
     }
-    return render_to_response('statistics.html', context, context_instance=RequestContext(request))
+    return render_to_response('c1_statistics.html', context, context_instance=RequestContext(request))
 
 def Template(request):
     model = (

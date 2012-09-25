@@ -1,4 +1,7 @@
 {% extends "form.html" %}
+{% load i18n %}
+{% block header %}<div id="content_home">{% trans "C.3.2. 30-day in-hospital mortality of patients admitted with acute stroke" %}</div>{% endblock header %}
+
 {% block js %}
 <script src="{{ STATIC_URL }}js/jquery.tooltip.min.js"></script>
 <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>

@@ -77,7 +77,7 @@ def Import(request):
     else:
         form = FileUploadForm()
         context = { "form" : form }
-        return render_to_response('c8.html', context, context_instance=RequestContext(request))
+        return render_to_response('c8_file_upload.html', context, context_instance=RequestContext(request))
 
 
 @login_required

@@ -1,4 +1,7 @@
 {% extends "form.html" %}
+{% load i18n %}
+{% block header %}<div id="content_home">{% trans "C.2.1. Prophylactic antibiotic use - Planned surgery for colorectal cancer" %}</div>{% endblock header %}
+
 {% block js %}
     <script src="{{ STATIC_URL }}js/jquery.tooltip.min.js"></script>
     <script type="text/javascript">

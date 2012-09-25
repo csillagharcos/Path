@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% block header %}<div id="content_home">{% trans "C.3.1. 30-day in-hospital mortality of patients admitted with AMI" %}</div>{% endblock header %}
 
 {% block content %}
+    <strong>{% trans "Choose a file and click on the submit button." %}</strong><br />
     <form action="" method="POST" enctype="multipart/form-data">
         <table class="report_form">
             {% csrf_token %}
