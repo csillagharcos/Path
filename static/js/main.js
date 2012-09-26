@@ -1,7 +1,7 @@
 function showNext(element, bool){
-    if( bool.empty() ) { bool = 1}
-    if( element.val() == bool){
-        element.parents('tr').next().show()
+    if( bool === undefined ) { bool = 1}
+    if( element.val() == bool ){
+        element.parents('tr').next().effect("highlight", {}, 100)
     }else{
         element.parents('tr').next().hide()
     }
