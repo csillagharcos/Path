@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-25 22:37+0200\n"
-"PO-Revision-Date: 2012-09-25 22:38\n"
+"POT-Creation-Date: 2012-09-26 16:13+0200\n"
+"PO-Revision-Date: 2012-09-26 16:13\n"
 "Last-Translator:   <t@a.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -182,39 +182,47 @@ msgid "Emergency care"
 msgstr "Egyéb sürgősségi ellátás"
 
 #: report_forms/choices.py:107 report_forms/choices.py:120
+#: report_forms/c8/views.py:322
 msgid "Stroke"
 msgstr "Stroke"
 
 #: report_forms/choices.py:108 report_forms/choices.py:126
+#: report_forms/c8/views.py:323
 msgid "Hospital acquired pneumonia"
 msgstr "Közösségben szerzett tüdőgyulladás"
 
 #: report_forms/choices.py:109 report_forms/choices.py:133
+#: report_forms/c8/views.py:324
 msgid "Hip fracture"
 msgstr "Combnyaktörés"
 
 #: report_forms/choices.py:110 report_forms/choices.py:145
+#: report_forms/c8/views.py:325
 msgid "CABG"
 msgstr "Bypass (CABG)"
 
 #: report_forms/choices.py:111 report_forms/choices.py:154
+#: report_forms/c8/views.py:326
 msgid "Knee arthroscopy"
 msgstr "Térd artroszkópia"
 
 #: report_forms/choices.py:112 report_forms/choices.py:138
-#: report_forms/choices.py:158
+#: report_forms/choices.py:158 report_forms/c8/views.py:327
 msgid "Inguinal hernia"
 msgstr "Lágyéksérv"
 
 #: report_forms/choices.py:113 report_forms/choices.py:163
+#: report_forms/c8/views.py:328
 msgid "Tonsillectomy and/or adenoidectomy"
 msgstr "Mandula és/vagy orrmandula mütét"
 
 #: report_forms/choices.py:114 report_forms/choices.py:166
+#: report_forms/c8/views.py:329
 msgid "Cholecystectomy"
 msgstr "Epehólyag-eltávolítás"
 
 #: report_forms/choices.py:115 report_forms/choices.py:171
+#: report_forms/c8/views.py:330
 msgid "Varicose veins - stripping and ligation"
 msgstr "Visszér-műtét - lehántolás és lekötés"
 
@@ -277,7 +285,7 @@ msgstr "Nem tervezett"
 #: report_forms/c31/models.py:13 report_forms/c31/views.py:120
 #: report_forms/c32/forms.py:7 report_forms/c32/models.py:13
 #: report_forms/c32/views.py:119 report_forms/c8/forms.py:7
-#: report_forms/c8/models.py:13 report_forms/c8/views.py:109
+#: report_forms/c8/models.py:13 report_forms/c8/views.py:346
 #: report_forms/r1/forms.py:7 report_forms/r1/models.py:13
 #: report_forms/r1/views.py:226
 msgid "Date of birth"
@@ -327,7 +335,7 @@ msgstr "Egyéb Diagnózisok"
 #: report_forms/c1/models.py:22 report_forms/c1/views.py:184
 #: report_forms/c31/models.py:11 report_forms/c31/views.py:118
 #: report_forms/c32/models.py:11 report_forms/c32/views.py:117
-#: report_forms/c8/models.py:11 report_forms/c8/views.py:107
+#: report_forms/c8/models.py:11 report_forms/c8/views.py:344
 #: report_forms/r1/models.py:11 report_forms/r1/views.py:224
 msgid "Patients ID"
 msgstr "Betegazonosító"
@@ -339,7 +347,7 @@ msgstr "Betegazonosító"
 #: report_forms/c24/models.py:24 report_forms/c24/views.py:220
 #: report_forms/c31/models.py:12 report_forms/c31/views.py:119
 #: report_forms/c32/models.py:12 report_forms/c32/views.py:118
-#: report_forms/c8/models.py:12 report_forms/c8/views.py:108
+#: report_forms/c8/models.py:12 report_forms/c8/views.py:345
 #: report_forms/r1/models.py:12 report_forms/r1/views.py:225
 msgid "Case ID"
 msgstr "Esetazonosító"
@@ -570,7 +578,7 @@ msgstr "Gratulálunk, kitöltötted a kérdőívet"
 #: report_forms/c13/forms.py:15 report_forms/c13/forms.py:21
 #: report_forms/c13/models.py:19 report_forms/c13/models.py:23
 #: report_forms/c13/views.py:70
-#: report_forms/c13/templates/c13_statistics.html:12
+#: report_forms/c13/templates/c13_statistics.html:8
 msgid "Job"
 msgstr "Munkakör"
 
@@ -633,13 +641,13 @@ msgstr "Tűszúrások"
 msgid "C.13. Needle stick injuries"
 msgstr "C.13. Tűszúrás"
 
-#: report_forms/c13/templates/c13_statistics.html:13
-#: report_forms/c13/templates/c13_statistics.html:37
+#: report_forms/c13/templates/c13_statistics.html:9
+#: report_forms/c13/templates/c13_statistics.html:32
 msgid "Number of needle stick injuries to 100 workers (average number)"
 msgstr "100 dolgozóra (átlagos létszámra ) jutó tűszúrások száma"
 
-#: report_forms/c13/templates/c13_statistics.html:14
-#: report_forms/c13/templates/c13_statistics.html:54
+#: report_forms/c13/templates/c13_statistics.html:10
+#: report_forms/c13/templates/c13_statistics.html:49
 msgid ""
 "Number of needle stick injuries to 100 workers (FTE = full time equivalent)"
 msgstr ""
@@ -990,27 +998,27 @@ msgstr "C.2.4. Méheltávolítás"
 #: report_forms/c31/views.py:121 report_forms/c32/forms.py:8
 #: report_forms/c32/models.py:14 report_forms/c32/views.py:120
 #: report_forms/c8/forms.py:8 report_forms/c8/models.py:14
-#: report_forms/c8/views.py:110
+#: report_forms/c8/views.py:347
 msgid "Date of hospital admission"
 msgstr "Kórházi felvétel dátuma"
 
 #: report_forms/c31/forms.py:9 report_forms/c31/models.py:16
 #: report_forms/c31/views.py:123 report_forms/c32/forms.py:9
 #: report_forms/c32/models.py:16 report_forms/c32/views.py:122
-#: report_forms/c8/forms.py:9 report_forms/c8/forms.py:10
-#: report_forms/c8/models.py:19 report_forms/c8/views.py:115
+#: report_forms/c8/forms.py:9 report_forms/c8/models.py:19
+#: report_forms/c8/views.py:352
 msgid "Date of hospital discharge"
 msgstr "Kórházi elbocsátás dátuma"
 
 #: report_forms/c31/models.py:15 report_forms/c31/views.py:122
 #: report_forms/c32/models.py:15 report_forms/c32/views.py:121
-#: report_forms/c8/models.py:15 report_forms/c8/views.py:111
+#: report_forms/c8/models.py:15 report_forms/c8/views.py:348
 msgid "Patient admission status"
 msgstr "A beteg felvételének jellege"
 
 #: report_forms/c31/models.py:17 report_forms/c31/views.py:124
 #: report_forms/c32/models.py:17 report_forms/c32/views.py:123
-#: report_forms/c8/models.py:20 report_forms/c8/views.py:116
+#: report_forms/c8/models.py:20 report_forms/c8/views.py:353
 #: report_forms/r1/models.py:48 report_forms/r1/views.py:261
 msgid "Patient discharge status"
 msgstr "A beteg további sorsa a kórházi távozáskor"
@@ -1037,14 +1045,12 @@ msgstr "C.3.1. AMI halálozás"
 
 #: report_forms/c31/templates/c31_statistics.html:10
 #: report_forms/c32/templates/c32_statistics.html:10
-#: report_forms/c8/templates/c8_statistics.html:10
 #: report_forms/r1/templates/r1_statistics.html:10
 msgid "Hospital mortality rate within 30 days:"
 msgstr "Kórházi halálozás 30 napon belül"
 
 #: report_forms/c31/templates/c31_statistics.html:11
 #: report_forms/c32/templates/c32_statistics.html:11
-#: report_forms/c8/templates/c8_statistics.html:11
 #: report_forms/r1/templates/r1_statistics.html:11
 msgid "Hospital mortality rate within 30 days without transmissions:"
 msgstr ""
@@ -1052,7 +1058,6 @@ msgstr ""
 
 #: report_forms/c31/templates/c31_statistics.html:12
 #: report_forms/c32/templates/c32_statistics.html:12
-#: report_forms/c8/templates/c8_statistics.html:12
 #: report_forms/r1/templates/r1_statistics.html:12
 msgid "Hospital mortality rate within 2 days:"
 msgstr "Kórházi halálozás 2 napon belül"
@@ -1073,27 +1078,28 @@ msgid ""
 "C.3.2. 30-day in-hospital mortality of patients admitted with acute stroke"
 msgstr "C.3.2. Stroke halálozás"
 
-#: report_forms/c8/models.py:16 report_forms/c8/views.py:112
-msgid "Type of admission"
-msgstr "A felvétel tipusa"
-
-#: report_forms/c8/models.py:17 report_forms/c8/views.py:113
-msgid "Was surgical procedure?"
-msgstr "Történt sebészeti beavatkozás?"
-
-#: report_forms/c8/models.py:18 report_forms/c8/views.py:114
+#: report_forms/c8/forms.py:10 report_forms/c8/models.py:18
+#: report_forms/c8/views.py:351
 msgid "Date of first surgical procedure"
 msgstr "Első sebészeti beavatkozás dátuma"
 
-#: report_forms/c8/models.py:21 report_forms/c8/views.py:117
+#: report_forms/c8/models.py:16 report_forms/c8/views.py:349
+msgid "Type of admission"
+msgstr "A felvétel tipusa"
+
+#: report_forms/c8/models.py:17 report_forms/c8/views.py:350
+msgid "Was surgical procedure?"
+msgstr "Történt sebészeti beavatkozás?"
+
+#: report_forms/c8/models.py:21 report_forms/c8/views.py:354
 msgid "Diagnosis group"
 msgstr "Diagnózis csoport megnevezése"
 
-#: report_forms/c8/models.py:22 report_forms/c8/views.py:118
+#: report_forms/c8/models.py:22 report_forms/c8/views.py:355
 msgid "Diagnosis code: ICD-10"
 msgstr "Diagnózis kódja: BNO"
 
-#: report_forms/c8/models.py:23 report_forms/c8/views.py:119
+#: report_forms/c8/models.py:23 report_forms/c8/views.py:356
 msgid "Diagnosis code: DRG"
 msgstr "Diagnózis kódja: HBCs"
 
@@ -1111,6 +1117,36 @@ msgstr "Ápolási idők"
 #: report_forms/templates/list_of_report_forms.html:76
 msgid "C.8. Length of Stay"
 msgstr "C.8. Ápolási idő"
+
+#: report_forms/c8/templates/c8_statistics.html:18
+msgid "Average length of stay"
+msgstr "Átlag ápolási idő"
+
+#: report_forms/c8/templates/c8_statistics.html:22
+msgid "Median length of stay"
+msgstr "Medián ápolási idő"
+
+#: report_forms/c8/templates/c8_statistics.html:23
+msgid "days"
+msgstr "nap"
+
+#: report_forms/c8/templates/c8_statistics.html:26
+msgid "Average length of stay until the first surgical procedure"
+msgstr "Átlag ápolási idő az első műtéti beavatkozásig"
+
+#: report_forms/c8/templates/c8_statistics.html:30
+msgid "Median length of stay until the first surgical procedure"
+msgstr "Medián ápolási idő az első műtéti beavatkozásig"
+
+#: report_forms/c8/templates/c8_statistics.html:34
+msgid ""
+"Average length of stay from the first surgical procedure until discharge"
+msgstr "Átlag ápolási idő az első műtéti beavatkozástól az elbocsátásig"
+
+#: report_forms/c8/templates/c8_statistics.html:38
+msgid ""
+"Median length of stay from the first surgical procedure until discharge"
+msgstr "Medián ápolási idő az első műtéti beavatkozástól az elbocsátásig"
 
 #: report_forms/r1/forms.py:8 report_forms/r1/models.py:16
 #: report_forms/r1/views.py:229

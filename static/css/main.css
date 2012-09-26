@@ -229,6 +229,7 @@ table.needle {
     border: 1px solid black; }
 
 table.los {
+  width: 900px;
   margin: 10px auto; }
   table.los th {
     background-color: #808080;
