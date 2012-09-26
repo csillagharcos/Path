@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from csvImporter.model import CsvModel
-from report_forms.choices import FIELD_OF_REHAB, YES_NO_CHOICES, DISCHARGE_STATUS_CHOICES, DISCHARGE
+from report_forms.choices import FIELD_OF_REHAB, YES_NO_CHOICES, DISCHARGE_STATUS_CHOICES, DISCHARGE, IF_UNPLANNED_DISCHARGE
 
 class r1(models.Model):
     patient_id                      = models.IntegerField(_('Patients ID'), unique=True)
@@ -47,6 +47,7 @@ class r1(models.Model):
     Other_score                     = models.FloatField(_('Other value/score'), null=True, blank=True)
     patient_discharge_status        = models.IntegerField(_('Patient discharge status'), max_length=1, default=0, choices=DISCHARGE_STATUS_CHOICES)
     discharge                       = models.IntegerField(_('Discharge'), max_length=1, default=0, choices=DISCHARGE)
+    if_unplanned                    = models.IntegerField(_('If unplanned, the reason'), max_length=1, default=0, choices=IF_UNPLANNED_DISCHARGE, null=True, blank=True)
     date_of_discharge               = models.DateField(_('Date of discharge'))
     FIM_applied_discharge           = models.IntegerField(_('FIM applied at discharge'), max_length=1, choices=YES_NO_CHOICES, default=0)
     FIM_date_of_assess_discharge    = models.DateField(_('FIM date of assessment'), null=True, blank=True)
@@ -129,6 +130,7 @@ class r1CSV(CsvModel):
     Other_score                     = CharField()
     patient_discharge_status        = CharField()
     discharge                       = CharField()
+    if_unplanned                    = CharField()
     date_of_discharge               = CharField()
     FIM_applied_discharge           = CharField()
     FIM_date_of_assess_discharge    = CharField()

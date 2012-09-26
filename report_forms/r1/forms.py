@@ -16,6 +16,7 @@ class r1Form(ModelForm):
     SNC_date_of_assess                  = forms.DateTimeField(label=_('Standard neurological classification of spinal cord injury date of assessment'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('[click here]')}))
     SCI_date_of_assess                  = forms.DateTimeField(label=_('Spinal Cord Independence Measure date of assessment'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('[click here]')}))
     Other_date_of_assess                = forms.DateTimeField(label=_('Other date of assessment'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('[click here]')}))
+    date_of_discharge                   = forms.DateTimeField(label=_('Date of discharge'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('[click here]')}))
     FIM_date_of_assess_discharge        = forms.DateTimeField(label=_('FIM date of assessment'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('[click here]')}))
     BI_date_of_assess_discharge         = forms.DateTimeField(label=_('Barthel index date of assessment'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('[click here]')}))
     SMWT_date_of_assess_discharge       = forms.DateTimeField(label=_('6 minutes walk test date of assessment'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('[click here]')}))

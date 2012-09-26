@@ -3,34 +3,66 @@
 {% block header %}<div id="content_home">{% trans "R1. indicators for rehabilitation hospitals and departments" %}</div>{% endblock header %}
 
 {% block content %}
-    {% trans "Overall:" %} {{ overall }}<br />
-    {% trans "Removed:" %} {{ removed }}<br />
-    {% trans "Counted:" %} {{ counted }}<br />
-    <br />
-    {% trans "Hospital mortality rate within 30 days:" %} {{ indicator_one|floatformat:"2" }}%<br />
-    {% trans "Hospital mortality rate within 30 days without transmissions:" %} {{ subindicator_one|floatformat:"2" }}%<br />
-    {% trans "Hospital mortality rate within 2 days:" %} {{ subindicator_two|floatformat:"2" }}%<br />
-    <br /><br />
-    <hr />
-    Grafikon tesztelés:
-    <hr />
-    <br /><br />
-    <div class="bargraph"></div>
+    <table class="los">
+        <tr>
+            <th colspan="2">{% trans "Functional assessment at admission" %}</th>
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 7 days of admission" %}</td>
+            <td>{{ r1a1 }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 48 hours of admission" %}</td>
+            <td>{{ r1a2 }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 72 hours of admission" %}</td>
+            <td>{{ r1a3 }}%</td>
+        </tr>
+    </table>
+
+    <table class="los">
+        <tr>
+            <th colspan="2">{% trans "Functional assessment prior to discharge" %}</th>
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of patients who have documented evidence of functional assessment in 3 days prior to discharge" %}</td>
+            <td>{{ r1b1 }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of patients who have documented evidence of functional assessment in 1 days prior to discharge" %}</td>
+            <td>{{ r1b2 }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of patients who have documented evidence of functional assessment in 2 days prior to discharge" %}</td>
+            <td>{{ r1b3 }}%</td>
+        </tr>
+    </table>
+
+    <table class="los">
+        <tr>
+            <th colspan="2">{% trans "Unplanned interruption to rehabilitation program" %}</th>
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}</td>
+            <td>{{ r21 }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}</td>
+            <td>{{ r22 }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}</td>
+            <td>{{ r23 }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}</td>
+            <td>{{ r24 }}%</td>
+        </tr>
+    </table>
 {% endblock content %}
 
 {% block js %}
-    <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
     <script style="text/javascript">
-    var DataForGraph = new Array(
-        ["{{ indicator_one|floatformat:"2" }}".replace(",","."), '30 days','red'],
-        ["{{ subindicator_one|floatformat:"2" }}".replace(",","."),'30 days wo trans','green'],
-        ["{{ subindicator_two|floatformat:"2" }}".replace(",","."),'2 days','blue']
-    );
-    $('.bargraph').jqBarGraph({
-                                data: DataForGraph,
-                                postfix: '%',
-                                width: 940,
-                                barSpace: 80
-    });
     </script>
 {% endblock js %}

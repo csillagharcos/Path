@@ -19,6 +19,19 @@ function showNextTwo(element){
     element.unbind('change').bind('change', function(){ showNextTwo(element) })
 }
 
+function showNextThree(element){
+    if( element.val() == 1){
+        element.parents('tr').next().effect("highlight", {}, 100)
+        element.parents('tr').next().next().effect("highlight", {}, 100)
+        element.parents('tr').next().next().next().effect("highlight", {}, 100)
+    }else{
+        element.parents('tr').next().hide()
+        element.parents('tr').next().next().hide()
+        element.parents('tr').next().next().next().hide()
+    }
+    element.unbind('change').bind('change', function(){ showNextThree(element) })
+}
+
 
 function addSuffix(element, suffix){
         element.ready(function(){

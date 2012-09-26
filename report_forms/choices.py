@@ -198,3 +198,11 @@ DISCHARGE = (
     (0, _('Planned')),
     (1, _('Unplanned')),
 )
+
+IF_UNPLANNED_DISCHARGE = (
+    (0, _('Complication realated to main disease')),
+    (1, _('Acute medical illness')),
+    (2, _('Acute surgical illness')),
+    (3, _('Acute needs of traumatology care')),
+    (4, _('Decision of the patient or his/her family')),
+)

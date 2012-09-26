@@ -8,6 +8,30 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(".jq_tool").tooltip()
+    showNextTwo($("#id_FIM_applied"))
+    showNextTwo($("#id_BI_applied"))
+    showNextTwo($("#id_SMWT_applied"))
+    showNextTwo($("#id_SF_applied"))
+    showNextTwo($("#id_SAT_applied"))
+    showNextTwo($("#id_FEV_applied"))
+    showNextTwo($("#id_AI_applied"))
+    showNextTwo($("#id_SNC_applied"))
+    showNextTwo($("#id_SCI_applied"))
+    showNextThree($("#id_Other_applied"))
+
+    showNext($('#id_discharge'))
+
+    showNextTwo($("#id_FIM_applied_discharge"))
+    showNextTwo($("#id_BI_applied_discharge"))
+    showNextTwo($("#id_SMWT_applied_discharge"))
+    showNextTwo($("#id_SF_applied_discharge"))
+    showNextTwo($("#id_SAT_applied_discharge"))
+    showNextTwo($("#id_FEV_applied_discharge"))
+    showNextTwo($("#id_AI_applied_discharge"))
+    showNextTwo($("#id_SNC_applied_discharge"))
+    showNextTwo($("#id_SCI_applied_discharge"))
+    showNextThree($("#id_Other_applied_discharge"))
+
     $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd" })
     $(".datepicker").datepicker({ dateFormat: "yy-mm-dd" })
 })

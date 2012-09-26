@@ -57,6 +57,7 @@ def Display(request):
                 Other_score                     = form.cleaned_data['Other_score'],
                 patient_discharge_status        = form.cleaned_data['patient_discharge_status'],
                 discharge                       = form.cleaned_data['discharge'],
+                if_unplanned                    = form.cleaned_data['if_unplanned'],
                 date_of_discharge               = form.cleaned_data['date_of_discharge'],
                 FIM_applied_discharge           = form.cleaned_data['FIM_applied_discharge'],
                 FIM_date_of_assess_discharge    = form.cleaned_data['FIM_date_of_assess_discharge'],
@@ -152,6 +153,7 @@ def Import(request):
                                             Other_score                     = parseFloat(line.Other_score),
                                             patient_discharge_status        = parseInt(line.patient_discharge_status),
                                             discharge                       = parseInt(line.discharge),
+                                            if_unplanned                    = parseInt(line.if_unplanned),
                                             date_of_discharge               = datetime.strptime(line.date_of_discharge, "%Y-%m-%d"),
                                             FIM_applied_discharge           = parseInt(line.FIM_applied_discharge),
                                             FIM_date_of_assess_discharge    = datetime.strptime(line.FIM_date_of_assess_discharge, "%Y-%m-%d"),
@@ -199,23 +201,98 @@ def Import(request):
 @login_required
 def Statistics(request):
     ''' Query '''
-    countable_case=uncountable_case=()
+    r1a_countable_case=r1a_uncountable_case=r1b_countable_case=r1b_uncountable_case=r2_countable_case=r2_uncountable_case=()
     cases = r1.objects.all()
     for case in cases:
-        pass
+        if case.patient_discharge_status == 1 and case.discharge == 0:
+            r2_countable_case += (case,)
+        else:
+            r2_uncountable_case += (case,)
+        if (case.date_of_discharge - case.date_of_admission).days > 7:
+            r1a_countable_case += (case,)
+            r1b_countable_case += (case,)
+        elif case.discharge == 1:
+            r1a_uncountable_case += (case,)
+            r1b_countable_case += (case,)
+        else:
+            r1a_uncountable_case += (case,)
+            r1b_uncountable_case += (case,)
 
     ''' Working '''
+    r1a_first_indicator = r1a_second_indicator = r1a_third_indicator = 0
+    r1b_first_indicator = r1b_second_indicator = r1b_third_indicator = 0
+    r2_first_indicator = r2_second_indicator = r2_third_indicator = r2_fourth_indicator = 0
+    for case in r1a_countable_case:
+        if (case.FIM_date_of_assess - case.date_of_admission).days < 7 or (case.BI_date_of_assess - case.date_of_admission).days < 7 or (case.SMWT_date_of_assess - case.date_of_admission).days < 7 or (case.SF_date_of_assess - case.date_of_admission).days < 7 or (case.SAT_date_of_assess - case.date_of_admission).days < 7 or (case.FEV_date_of_assess - case.date_of_admission).days < 7 or (case.AI_date_of_assess - case.date_of_admission).days < 7 or (case.SNC_date_of_assess - case.date_of_admission).days < 7 or (case.SCI_date_of_assess - case.date_of_admission).days < 7 or (case.Other_date_of_assess - case.date_of_admission).days < 7:
+            r1a_first_indicator += 1
+        if (case.FIM_date_of_assess - case.date_of_admission).days < 2 or (case.BI_date_of_assess - case.date_of_admission).days < 2 or (case.SMWT_date_of_assess - case.date_of_admission).days < 2 or (case.SF_date_of_assess - case.date_of_admission).days < 2 or (case.SAT_date_of_assess - case.date_of_admission).days < 2 or (case.FEV_date_of_assess - case.date_of_admission).days < 2 or (case.AI_date_of_assess - case.date_of_admission).days < 2 or (case.SNC_date_of_assess - case.date_of_admission).days < 2 or (case.SCI_date_of_assess - case.date_of_admission).days < 2 or (case.Other_date_of_assess - case.date_of_admission).days < 2:
+            r1a_second_indicator += 1
+        if (case.FIM_date_of_assess - case.date_of_admission).days < 3 or (case.BI_date_of_assess - case.date_of_admission).days < 3 or (case.SMWT_date_of_assess - case.date_of_admission).days < 3 or (case.SF_date_of_assess - case.date_of_admission).days < 3 or (case.SAT_date_of_assess - case.date_of_admission).days < 3 or (case.FEV_date_of_assess - case.date_of_admission).days < 3 or (case.AI_date_of_assess - case.date_of_admission).days < 3 or (case.SNC_date_of_assess - case.date_of_admission).days < 3 or (case.SCI_date_of_assess - case.date_of_admission).days < 3 or (case.Other_date_of_assess - case.date_of_admission).days < 3:
+            r1a_second_indicator += 1
+
+    for case in r1b_countable_case:
+        if (case.FIM_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.BI_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.SMWT_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.SF_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.SAT_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.FEV_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.AI_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.SNC_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.SCI_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.Other_date_of_assess_discharge - case.date_of_admission).days < 4:
+            r1a_first_indicator += 1
+        if (case.FIM_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.BI_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.SMWT_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.SF_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.SAT_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.FEV_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.AI_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.SNC_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.SCI_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.Other_date_of_assess_discharge - case.date_of_admission).days < 2:
+            r1a_second_indicator += 1
+        if (case.FIM_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.BI_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.SMWT_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.SF_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.SAT_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.FEV_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.AI_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.SNC_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.SCI_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.Other_date_of_assess_discharge - case.date_of_admission).days < 3:
+            r1a_second_indicator += 1
+
+    for case in r2_countable_case:
+        if case.discharge:
+            r2_first_indicator += 1
+            if case.if_unplanned == 1 or case.if_unplanned == 2 or case.if_unplanned == 3:
+                r2_second_indicator += 1
+            elif case.if_unplanned == 4:
+                r2_third_indicator += 1
+            elif not case.if_unplanned:
+                r2_fourth_indicator += 1
 
     ''' Counting '''
+
+    try: r1a_first = r1a_first_indicator / len(r1a_countable_case) * 100
+    except: r1a_first = 0
+    try: r1a_second = r1a_second_indicator / len(r1a_countable_case) * 100
+    except: r1a_second = 0
+    try: r1a_third = r1a_third_indicator / len(r1a_countable_case) * 100
+    except: r1a_third = 0
+
+    try: r1b_first = r1b_first_indicator / len(r1b_countable_case) * 100
+    except: r1b_first = 0
+    try: r1b_second = r1b_second_indicator / len(r1b_countable_case) * 100
+    except: r1b_second = 0
+    try: r1b_third = r1b_third_indicator / len(r1b_countable_case) * 100
+    except: r1b_third = 0
+
+    try: r2_first = r2_first_indicator / len(r2_countable_case) * 100
+    except: r2_first = 0
+    try: r2_second = r2_second_indicator / len(r2_countable_case) * 100
+    except: r2_second = 0
+    try: r2_third = r2_third_indicator / len(r2_countable_case) * 100
+    except: r2_third = 0
+    try: r2_fourth = r2_fourth_indicator / len(r2_countable_case) * 100
+    except: r2_fourth = 0
+
 
     ''' Displaying '''
     context = {
         "overall": len(cases),
-        "removed": len(uncountable_case),
-        "counted": len(countable_case),
-#        "indicator_one": indicator_one,
-#        "subindicator_one": subindicator_one,
-#        "subindicator_two": subindicator_two,
+        "r1aremoved": len(r1a_uncountable_case),
+        "r1acounted": len(r1a_countable_case),
+        "r1bremoved": len(r1b_uncountable_case),
+        "r1bcounted": len(r1b_countable_case),
+        "r2removed": len(r2_uncountable_case),
+        "r2counted": len(r2_countable_case),
+        "r1a1": r1a_first,
+        "r1a2": r1a_second,
+        "r1a3": r1a_third,
+        "r1b1": r1b_first,
+        "r1b2": r1b_second,
+        "r1b3": r1b_third,
+        "r21": r2_first,
+        "r22": r2_second,
+        "r23": r2_third,
+        "r24": r2_fourth,
     }
     return render_to_response('r1_statistics.html', context, context_instance=RequestContext(request))
 
