@@ -213,3 +213,22 @@ table.needle{
     border: 1px solid black;
   }
 }
+
+table.los{
+  margin: 10px auto;
+  th{
+    background-color: #808080;
+    font-weight: bold;
+    border: 1px solid black;
+    color: white;
+    padding: 5px;
+  }
+  td:first-child{
+    width: 50%;
+  }
+  td{
+    width: 25%;
+    padding: 2px;
+    border: 1px solid black;
+  }
+}

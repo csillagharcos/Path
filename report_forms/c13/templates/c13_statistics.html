@@ -3,10 +3,6 @@
 {% block header %}<div id="content_home">{% trans "C.13. Needle stick injuries" %}</div>{% endblock header %}
 
 {% block content %}
-{#    {% trans "Overall:" %} {{ overall }}<br />#}
-{#    {% trans "Removed:" %} {{ removed }}<br />#}
-{#    {% trans "Counted:" %} {{ counted }}<br />#}
-{#    <br />#}
     <table class="needle">
         <tr>
             <th>{% trans "Job" %}</th>
@@ -26,7 +22,6 @@
 {% endblock content %}
 
 {% block js %}
-    <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
     <script src="{{ STATIC_URL }}js/jqplot.barRenderer.min.js"></script>
     <script src="{{ STATIC_URL }}js/jqplot.categoryAxisRenderer.min.js"></script>

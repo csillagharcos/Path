@@ -227,3 +227,18 @@ table.needle {
     width: 25%;
     padding: 2px;
     border: 1px solid black; }
+
+table.los {
+  margin: 10px auto; }
+  table.los th {
+    background-color: #808080;
+    font-weight: bold;
+    border: 1px solid black;
+    color: white;
+    padding: 5px; }
+  table.los td:first-child {
+    width: 50%; }
+  table.los td {
+    width: 25%;
+    padding: 2px;
+    border: 1px solid black; }
