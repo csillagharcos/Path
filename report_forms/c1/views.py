@@ -59,7 +59,7 @@ def Import(request):
                 new_c1 = c1.objects.create( patient_id=line.patient_id,
                                             case_id=line.case_id,
                                             date_of_birth=datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
-                                            date_of_delivery=datetime.strptime(line.date_of_delivery+' '+line.time_of_delivery, "%Y-%m-%d %H:%M:%S"),
+                                            date_of_delivery=datetime.strptime(line.date_of_delivery+' '+line.time_of_delivery, "%Y-%m-%d %H:%M"),
                                             number_of_prev_deliveries = line.number_of_prev_deliveries,
                                             number_of_prev_deliveries_by_c = line.number_of_prev_deliveries_by_c,
                                             the_c_section = line.the_c_section,
