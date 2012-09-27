@@ -47,7 +47,7 @@ def Display(request):
                 added_by                        = request.user,
             )
             new_c24.save()
-            return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
+            return render_to_response('c24_filled_out.html', {}, context_instance=RequestContext(request))
         else:
             form = C24Form(request.POST)
             return render(request, 'c24.html', { 'form': form })

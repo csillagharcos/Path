@@ -29,7 +29,7 @@ def Display(request):
                 added_by                        = request.user,
             )
             new_c32.save()
-            return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
+            return render_to_response('c32_filled_out.html', {}, context_instance=RequestContext(request))
         else:
             form = C32Form(request.POST)
             return render(request, 'c32.html', { 'form': form })

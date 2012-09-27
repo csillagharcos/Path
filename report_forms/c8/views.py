@@ -34,7 +34,7 @@ def Display(request):
                 added_by                        = request.user,
             )
             new_c8.save()
-            return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
+            return render_to_response('c8_filled_out.html', {}, context_instance=RequestContext(request))
         else:
             form = C8Form(request.POST)
             return render(request, 'c8.html', { 'form': form })

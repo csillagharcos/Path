@@ -47,7 +47,7 @@ def Display(request):
                 added_by                        = request.user,
             )
             new_c21.save()
-            return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
+            return render_to_response('c21_filled_out.html', {}, context_instance=RequestContext(request))
         else:
             form = C21Form(request.POST)
             return render(request, 'c21.html', { 'form': form })

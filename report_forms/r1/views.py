@@ -93,7 +93,7 @@ def Display(request):
                 added_by                        = request.user,
             )
             new_r1.save()
-            return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
+            return render_to_response('r1_filled_out.html', {}, context_instance=RequestContext(request))
         else:
             form = r1Form(request.POST)
             return render(request, 'r1.html', { 'form': form })

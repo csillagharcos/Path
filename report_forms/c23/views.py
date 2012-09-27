@@ -48,7 +48,7 @@ def Display(request):
                 added_by                        = request.user,
             )
             new_c23.save()
-            return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
+            return render_to_response('c23_filled_out.html', {}, context_instance=RequestContext(request))
         else:
             form = C23Form(request.POST)
             return render(request, 'c23.html', { 'form': form })
@@ -124,7 +124,7 @@ def Import(request):
     else:
         form = FileUploadForm()
         context = { "form" : form }
-        return render_to_response('c21.html', context, context_instance=RequestContext(request))
+        return render_to_response('c23_file_upload.html', context, context_instance=RequestContext(request))
 
 
 @login_required
@@ -216,7 +216,7 @@ def Statistics(request):
 #        "subindicator_four_one": subindicator_four_one,
 #        "subindicator_four_two": subindicator_four_two,
 #    }
-    return render_to_response('statistics.html', {}, context_instance=RequestContext(request))
+    return render_to_response('c23_statistics.html', {}, context_instance=RequestContext(request))
 
 def Template(request):
     model = (

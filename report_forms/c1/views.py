@@ -33,7 +33,7 @@ def Display(request):
                 added_by = request.user,
             )
             new_c1.save()
-            return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
+            return render_to_response('c1_filled_out.html', {}, context_instance=RequestContext(request))
         else:
             form = C1Form(request.POST)
             return render(request, 'c1.html', { 'form': form })
@@ -93,7 +93,7 @@ def Statistics(request):
     countable_case=uncountable_case=()
     cases = c1.objects.all()
     for case in cases:
-        if case.other_diagnoses.count():
+        if case.other_diagnoses.count() > 0:
             uncountable_case += (case,)
         else:
             countable_case += (case,)

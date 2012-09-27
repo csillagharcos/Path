@@ -17,6 +17,7 @@ class c1OtherDiagnose(models.Model):
     class Meta:
         verbose_name = _('Other Diagnose')
         verbose_name_plural = _('Other Diagnoses')
+        ordering = ['name']
 
 class c1(models.Model):
     patient_id                      = models.IntegerField(_('Patients ID'), unique=True)

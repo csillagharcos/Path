@@ -30,7 +30,7 @@ def Display(request):
                 added_by                        = request.user,
             )
             new_c31.save()
-            return render_to_response('filled_out.html', {}, context_instance=RequestContext(request))
+            return render_to_response('c31_filled_out.html', {}, context_instance=RequestContext(request))
         else:
             form = C31Form(request.POST)
             return render(request, 'c31.html', { 'form': form })
