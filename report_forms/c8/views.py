@@ -2,8 +2,9 @@
 from datetime import datetime, date
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from django.db.utils import IntegrityError
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.utils import simplejson
@@ -73,7 +74,7 @@ def Import(request):
                 new_c8.save()
             except IntegrityError:
                 pass
-        return HttpResponse(simplejson.dumps({"value" : "okay."}), mimetype="application/json")
+        return HttpResponseRedirect(reverse('c8_stat'))
     else:
         form = FileUploadForm()
         context = { "form" : form }

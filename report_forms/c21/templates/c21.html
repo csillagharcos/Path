@@ -31,8 +31,8 @@
             addSuffix($(".size"), 'kg')
             addSuffix($(".milligramm"), 'mg')
 
-            $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true })
-            $(".datepicker").datepicker({ dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true })
+            $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, yearRange: "1900:c" })
+            $(".datepicker").datepicker({ dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, yearRange: "1900:c" })
         })
         $('form').submit(function(ev){
             $(".size, .milligramm").each(function(){

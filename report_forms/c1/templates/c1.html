@@ -37,8 +37,8 @@ $(document).ready(function(){
     $('form').submit(function(ev){
         $("#id_weight_of_the_newborn").val($("#id_weight_of_the_newborn").val().replace(" g",""))
     })
-    $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true })
-    $(".datepicker").datepicker({ dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true })
+    $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, yearRange: "1900:c" })
+    $(".datepicker").datepicker({ dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, yearRange: "1900:c" })
 })
 
 </script>

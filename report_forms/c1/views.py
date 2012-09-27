@@ -4,6 +4,7 @@ from py_compile import PyCompileError
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.urlresolvers import reverse
 from django.db.utils import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, render
@@ -80,7 +81,7 @@ def Import(request):
                 new_c1.save()
             except IntegrityError:
                 exists += (line.patient_id,)
-        return HttpResponseRedirect('/reportforms/')
+        return HttpResponseRedirect(reverse('c1_stat'))
     else:
         form = FileUploadForm()
         context = { "form" : form }
