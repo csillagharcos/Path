@@ -129,9 +129,9 @@ def Statistics(request):
             elif age >= 35:
                 numerator[5] += 1                                           #subindicator 3.3
             ''' Subindicator 4 '''
-            if not case.number_of_prev_deliveries:
+            if case.number_of_prev_deliveries == 1:
                 numerator[6] += 1                                           #subindicator 4.1
-            else:
+            elif case.number_of_prev_deliveries >= 2:
                 numerator[7] += 1                                           #subindicator 4.2
 
     ''' Counting '''
