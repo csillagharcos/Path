@@ -41,9 +41,9 @@ PRINCIPAL_DIAG_CODE_C = (
     )
 
 PENICILIN_ALLERGY_CHOICES = (
-    ('1', _('Immediate')),
-    ('2', _('Other')),
-    ('3', _('No Information'))
+    (1, _('Immediate')),
+    (2, _('Other')),
+    (3, _('No Information'))
     )
 
 ROUTE_OF_ADMIN_CHOICES = (

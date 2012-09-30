@@ -18,16 +18,58 @@
 {% endblock header %}
 
 {% block content %}
-    {% trans "Overall:" %} {{ overall }}<br />
-    {% trans "Removed:" %} {{ removed }}<br />
-    {% trans "Counted:" %} {{ counted }}<br />
-    <br />
-    {% trans "C-section rate:" %} {{ indicator_one }}%<br />
-    {% trans "Rate of planned C-section:" %} {{ subindicator_one }}%<br />
-    {% trans "Rate of acute C-section:" %} {{ subindicator_two }}%<br />
-    {% trans "Rate of c-section by the mother's age is less than 20:" %} {{ subindicator_three_one }}%<br />
-    {% trans "Rate of c-section by the mother's age is between 20-35:" %} {{ subindicator_three_two }}%<br />
-    {% trans "Rate of c-section by the mother's age is more than 35:" %} {{ subindicator_three_three }}%<br />
-    {% trans "Rate of acute C-section by the previous number of deliveries first delivery:" %} {{ subindicator_four_one }}%<br />
-    {% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries:" %} {{ subindicator_four_two }}%<br />
+    <table class="statistics">
+        <tr>
+            <td>{% trans "Overall:" %}</td>
+            <td>{{ overall }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Removed:" %}</td>
+            <td>{{ removed }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Counted:" %}</td>
+            <td>{{ counted }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Indicator one:" %}</td>
+            <td>{{ one|floatformat:"2" }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Indicator two a:" %}</td>
+            <td>{{ twoa|floatformat:"2" }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Indicator two b:" %}</td>
+            <td>{{ twob|floatformat:"2" }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Indicator three:" %}</td>
+            <td>{{ three|floatformat:"2" }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Indicator four:" %}</td>
+            <td>{{ four|floatformat:"2" }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Indicator five:" %}</td>
+            <td>{{ five|floatformat:"2" }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Indicator six:" %}</td>
+            <td>{{ six|floatformat:"2" }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Indicator seven:" %}</td>
+            <td>{{ seven|floatformat:"2" }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Indicator eight:" %}</td>
+            <td>{{ eight|floatformat:"2" }}%</td>
+        </tr>
+        <tr>
+            <td>{% trans "Indicator nine:" %}</td>
+            <td>{{ nine|floatformat:"2" }}%</td>
+        </tr>
+    </table>
 {% endblock content %}

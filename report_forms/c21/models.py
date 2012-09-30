@@ -30,7 +30,7 @@ class c21(models.Model):
     procedure_planned               = models.IntegerField(_('Is the surgical procedure planned?'), max_length=1, choices=YES_NO_CHOICES, default=1)
     patient_allergy                 = models.IntegerField(_('Is patient allergic to any antibiotics suggested in the protocol?'), max_length=1, choices=YES_NO_CHOICES, default=0)
     generic_name_of_drug            = models.CharField(_('Generic name of antibiotic drug'), max_length=255, null=True, blank=True)
-    penicilin_allergy               = models.IntegerField(_('In case of allergy to penicillin, scale of severity?'), choices=PENICILIN_ALLERGY_CHOICES, default=1)
+    penicilin_allergy               = models.IntegerField(_('In case of allergy to penicillin, scale of severity?'), max_length=1, choices=PENICILIN_ALLERGY_CHOICES, default=1)
     preoperative_infection          = models.IntegerField(_('Has patient preoperative infection?'), max_length=1, choices=YES_NO_CHOICES, default=0)
     type_of_infection               = models.CharField(_('Type of infection'), max_length=255, null=True, blank=True)
     surgical_incision               = models.DateTimeField(_('Date of surgical incision'))

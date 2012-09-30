@@ -11,7 +11,7 @@ from django.template import RequestContext
 from django.utils import simplejson
 from report_forms.c23.forms import C23Form, FileUploadForm
 from report_forms.c23.models import c23, c23CSV, Medicine
-from report_forms.tools import parseFloat, parseInt, csvDump
+from report_forms.tools import parseFloat, parseInt, csvDump, calculate_age
 from django.utils.translation import ugettext_lazy as _
 
 @login_required
@@ -129,93 +129,128 @@ def Import(request):
 @login_required
 def Statistics(request):
     ''' Query '''
-#    countable_case=uncountable_case=()
-#    cases = c1.objects.all()
-#    for case in cases:
-#        if case.other_diagnoses.count():
-#            uncountable_case += (case,)
-#        else:
-#            countable_case += (case,)
-#
+    accepted_diagnose_codes = ("S70.0", "S70.1", "S70.2")
+    countable_case=uncountable_case=()
+    cases = c23.objects.all()
+    medicines = Medicine.objects.all()
+    for case in cases:
+        if case.principal_diagnoses_code in accepted_diagnose_codes and case.procedure_planned and calculate_age(case.date_of_birth) >= 18 and not case.preoperative_infection and not case.generic_name_of_drug in medicines:
+            countable_case += (case,)
+        else:
+            uncountable_case += (case,)
+
     ''' Working '''
-#    numerator = map(float,[0,0,0,0,0,0,0,0])
-#    agedenominator = [0,0,0]
-#    previousdenominator = [0,0]
-#    for case in countable_case:
-#        age = calculate_age(case.date_of_birth)
-#        if age < 20:
-#            agedenominator[0] += 1
-#        elif 20 <= age <= 35:
-#            agedenominator[1] += 1
-#        elif age < 35:
-#            agedenominator[2] += 1
-#        if not case.number_of_prev_deliveries:
-#            previousdenominator[0] += 1
-#        else:
-#            previousdenominator[1] += 1
-#        if case.drg_code == "671A" or case.drg_code == "671B":
-#            numerator[0] += 1                                               #indicator 1
-#            if not case.the_c_section:
-#                numerator[1] += 1                                           #subindicator 1
-#            else:
-#                numerator[2] += 1                                           #subindicator 2
-#            ''' Subindicator 3 '''
-#            if age < 20:
-#                numerator[3] += 1                                           #subindicator 3.1
-#            elif 20 <= age <= 35:
-#                numerator[4] += 1                                           #subindicator 3.2
-#            elif age > 35:
-#                numerator[5] += 1                                           #subindicator 3.3
-#            ''' Subindicator 4 '''
-#            if not case.number_of_prev_deliveries:
-#                numerator[6] += 1                                           #subindicator 4.1
-#            else:
-#                numerator[7] += 1                                           #subindicator 4.2
-#
+    indicator_one = indicator_twoa = indicator_twob = indicator_three = indicator_four = indicator_five = indicator_six = indicator_seven = indicator_eight = indicator_nine = 0
+    for case in countable_case:
+        indicator_tracker = 0
+        try: first_med_dose = Medicine.objects.get(name = case.name_of_first_dose).dose
+        except: first_med_dose = -1
+        try: second_med_dose = Medicine.objects.get(name = case.name_of_second_dose).dose
+        except: second_med_dose = -1
+        try: first_med_doseUnder = Medicine.objects.get(name = case.name_of_first_dose).doseUnder
+        except: first_med_doseUnder = -1
+        try: second_med_doseUnder = Medicine.objects.get(name = case.name_of_second_dose).doseUnder
+        except: second_med_doseUnder = -1
+        #indicator one
+        if case.name_of_first_dose in medicines and case.name_of_second_dose in medicines:
+            if case.name_of_first_dose.name == "Cefazolin" or case.name_of_first_dose.name == "Cefuroxim" or case.name_of_first_dose.name == "Vancomycin":
+                indicator_one += 1
+                indicator_tracker += 1
+            elif case.name_of_second_dose.name == "Cefazolin" or case.name_of_second_dose.name == "Cefuroxim" or case.name_of_second_dose.name == "Cefuroxim":
+                indicator_one += 1
+                indicator_tracker += 1
+
+        #indicator two A
+        if first_med_dose == case.first_dose and second_med_dose == case.second_dose:
+            indicator_twoa += 1
+            indicator_tracker += 1
+
+        #indicator two B
+        if case.weight_of_patient > 60:
+            if first_med_dose == case.first_dose and second_med_dose == case.second_dose:
+                indicator_twob += 1
+                indicator_tracker += 1
+        else:
+            if first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose:
+                indicator_twob += 1
+                indicator_tracker += 1
+
+        #indicator three
+        if case.route_of_admin == 1:
+            indicator_three += 1
+            indicator_tracker += 1
+
+        #indicator four
+        try:
+            if (case.surgical_incision - case.date_of_first_dose).seconds <= 3600:
+                indicator_four += 1
+                indicator_tracker += 1
+        except:
+            pass
+
+        #indicator five
+        try:
+            if (case.date_of_wound_close - case.date_of_last_dose).seconds <= 86400:
+                indicator_five += 1
+            #indicator seven
+            else:
+                indicator_seven += 1
+        except:
+            indicator_seven += 1
+
+        #indicator six
+        if not indicator_tracker == 4:
+            indicator_six += 1
+
+        #indicator eight
+        if not case.antibiotic_given:
+            indicator_eight += 1
+
+        #indicator nine
+        if case.date_of_first_dose == case.date_of_last_dose and case.total_dose_in_24h == case.first_dose + case.second_dose:
+            indicator_nine += 1
+
+
+    print indicator_nine
     ''' Counting '''
-#    indicator_one               = numerator[0] / len(countable_case)     * 100
-#    subindicator_one            = numerator[1] / len(countable_case)     * 100
-#    subindicator_two            = numerator[2] / len(countable_case)     * 100
-#    try:
-#        subindicator_three_one  = numerator[3] / agedenominator[0]   * 100
-#    except ZeroDivisionError:
-#        subindicator_three_one  = 0
-#
-#    try:
-#        subindicator_three_two  = numerator[4] / agedenominator[1]   * 100
-#    except ZeroDivisionError:
-#        subindicator_three_two  = 0
-#
-#    try:
-#        subindicator_three_three= numerator[5] / agedenominator[2]   * 100
-#    except ZeroDivisionError:
-#        subindicator_three_three= 0
-#
-#    try:
-#        subindicator_four_one   = numerator[6] / previousdenominator[0] * 100
-#    except ZeroDivisionError:
-#        subindicator_four_one   = 0
-#
-#    try:
-#        subindicator_four_two   = numerator[7] / previousdenominator[1] * 100
-#    except ZeroDivisionError:
-#        subindicator_four_two   = 0
-#
+    try: one = float(indicator_one) / len(countable_case) * 100
+    except: one = 0
+    try: twoa = float(indicator_twoa) / len(countable_case) * 100
+    except: twoa = 0
+    try: twob = float(indicator_twob) / len(countable_case) * 100
+    except: twob = 0
+    try: three = float(indicator_three) / len(countable_case) * 100
+    except: three = 0
+    try: four = float(indicator_four) / len(countable_case) * 100
+    except: four = 0
+    try: five = float(indicator_five) / len(countable_case) * 100
+    except: five = 0
+    try: six = float(indicator_six) / len(countable_case) * 100
+    except: six = 0
+    try: seven = float(indicator_seven) / len(countable_case) * 100
+    except: seven = 0
+    try: eight = float(indicator_eight) / len(countable_case) * 100
+    except: eight = 0
+    try: nine = float(indicator_nine) / len(countable_case) * 100
+    except: nine = 0
+
     ''' Displaying '''
-#    context = {
-#        "overall": len(cases),
-#        "removed": len(uncountable_case),
-#        "counted": len(countable_case),
-#        "indicator_one": indicator_one,
-#        "subindicator_one": subindicator_one,
-#        "subindicator_two": subindicator_two,
-#        "subindicator_three_one": subindicator_three_one,
-#        "subindicator_three_two": subindicator_three_two,
-#        "subindicator_three_three": subindicator_three_three,
-#        "subindicator_four_one": subindicator_four_one,
-#        "subindicator_four_two": subindicator_four_two,
-#    }
-    return render_to_response('c23_statistics.html', {}, context_instance=RequestContext(request))
+    context = {
+        "overall": len(cases),
+        "removed": len(uncountable_case),
+        "counted": len(countable_case),
+        "one": one,
+        "twoa": twoa,
+        "twob": twob,
+        "three": three,
+        "four": four,
+        "five": five,
+        "six": six,
+        "seven": seven,
+        "eight": eight,
+        "nine": nine,
+        }
+    return render_to_response('c23_statistics.html', context, context_instance=RequestContext(request))
 
 def Template(request):
     model = (
