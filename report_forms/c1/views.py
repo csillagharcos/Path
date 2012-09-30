@@ -111,9 +111,9 @@ def Statistics(request):
             agedenominator[1] += 1
         elif age < 35:
             agedenominator[2] += 1
-        if not case.number_of_prev_deliveries:
+        if case.number_of_prev_deliveries == 1:
             previousdenominator[0] += 1
-        else:
+        elif case.number_of_prev_deliveries >= 2:
             previousdenominator[1] += 1
         if case.drg_code == "671A" or case.drg_code == "671B":
             numerator[0] += 1                                               #indicator 1

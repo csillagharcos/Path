@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-26 17:43+0200\n"
-"PO-Revision-Date: 2012-09-26 17:46\n"
+"PO-Revision-Date: 2012-09-30 16:46\n"
 "Last-Translator:   <t@a.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -546,7 +546,7 @@ msgstr "Császármetszések aránya az anya fiatalabb, mint 20 év:"
 #: report_forms/c23/templates/c23_statistics.html:14
 #: report_forms/c24/templates/c24_statistics.html:14
 msgid "Rate of c-section by the mother's age is between 20-35:"
-msgstr "Császármetszések aránya az anya fiatalabb 20 és 35 év közt van:"
+msgstr "Császármetszések aránya az anya 20 és 35 év közt van:"
 
 #: report_forms/c1/templates/c1_statistics.html:40
 #: report_forms/c21/templates/c21_statistics.html:15
