@@ -217,7 +217,8 @@ select[multiple="multiple"] {
     border-radius: 2px; }
 
 table.statistics {
-  margin: 0 auto; }
+  margin: 0 auto;
+  max-width: 750px; }
   table.statistics td {
     text-align: left; }
   table.statistics td:last-child {

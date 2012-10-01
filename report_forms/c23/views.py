@@ -140,7 +140,7 @@ def Statistics(request):
             uncountable_case += (case,)
 
     ''' Working '''
-    indicator_one = indicator_twoa = indicator_twob = indicator_three = indicator_four = indicator_five = indicator_six = indicator_seven = indicator_eight = indicator_nine = 0
+    indicator_one = indicator_twoa = indicator_twob = indicator_three = indicator_four = indicator_five = indicator_six = indicator_seven = indicator_eight = indicator_nine = indicator_ten = 0
     for case in countable_case:
         indicator_tracker = 0
         try: first_med_dose = Medicine.objects.get(name = case.name_of_first_dose).dose
@@ -169,11 +169,9 @@ def Statistics(request):
         if case.weight_of_patient > 60:
             if first_med_dose == case.first_dose and second_med_dose == case.second_dose:
                 indicator_twob += 1
-                indicator_tracker += 1
         else:
             if first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose:
                 indicator_twob += 1
-                indicator_tracker += 1
 
         #indicator three
         if case.route_of_admin == 1:
@@ -187,6 +185,10 @@ def Statistics(request):
                 indicator_tracker += 1
         except:
             pass
+
+        #indicator ten
+        if not indicator_tracker == 4:
+            indicator_ten += 1
 
         #indicator five
         try:
@@ -233,6 +235,8 @@ def Statistics(request):
     except: eight = 0
     try: nine = float(indicator_nine) / len(countable_case) * 100
     except: nine = 0
+    try: ten = float(indicator_ten) / len(countable_case) * 100
+    except: ten = 0
 
     ''' Displaying '''
     context = {
@@ -249,6 +253,7 @@ def Statistics(request):
         "seven": seven,
         "eight": eight,
         "nine": nine,
+        "ten": ten,
         }
     return render_to_response('c23_statistics.html', context, context_instance=RequestContext(request))
 
