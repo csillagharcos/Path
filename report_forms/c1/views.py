@@ -45,7 +45,7 @@ def Display(request):
 @login_required
 def Import(request):
     if request.method == "POST":
-        exists=()
+        exists=errors=()
         try:
             csv_file = request.FILES['file']
             imported_csv = c1CSV.import_data(data=csv_file)
@@ -81,6 +81,10 @@ def Import(request):
                 new_c1.save()
             except IntegrityError:
                 exists += (line.patient_id,)
+            except:
+                errors += (line.patient_id,)
+        if exists or errors:
+            return render_to_response('c1_error.html', {'exists': exists, 'errors': errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c1_stat'))
     else:
         form = FileUploadForm()
