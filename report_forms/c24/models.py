@@ -90,5 +90,4 @@ class c24CSV(CsvModel):
     class Meta:
         delimiter = ";"
 
-admin.site.register(c24)
 admin.site.register(Medicine)

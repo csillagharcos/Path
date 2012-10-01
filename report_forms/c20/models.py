@@ -49,5 +49,3 @@ class c20CSV(CsvModel):
 
     class Meta:
         delimiter = ";"
-
-admin.site.register(c20)
