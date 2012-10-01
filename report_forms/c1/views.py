@@ -105,11 +105,11 @@ def Statistics(request):
     previousdenominator = [0,0]
     for case in countable_case:
         age = calculate_age(case.date_of_birth)
-        if age < 20:
+        if age <= 20:
             agedenominator[0] += 1
-        elif 20 <= age <= 35:
+        elif 20 < age < 35:
             agedenominator[1] += 1
-        elif age < 35:
+        elif age >= 35:
             agedenominator[2] += 1
         if case.number_of_prev_deliveries == 0:
             previousdenominator[0] += 1
@@ -122,11 +122,11 @@ def Statistics(request):
             else:
                 numerator[2] += 1                                           #subindicator 2
             ''' Subindicator 3 '''
-            if age < 20:
+            if age <= 20:
                 numerator[3] += 1                                           #subindicator 3.1
-            elif 20 <= age <= 35:
+            elif 20 < age < 35:
                 numerator[4] += 1                                           #subindicator 3.2
-            elif age > 35:
+            elif age >= 35:
                 numerator[5] += 1                                           #subindicator 3.3
             ''' Subindicator 4 '''
             if case.number_of_prev_deliveries == 0:
