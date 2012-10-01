@@ -38,5 +38,3 @@ class c31CSV(CsvModel):
 
     class Meta:
         delimiter = ";"
-
-admin.site.register(c31)
