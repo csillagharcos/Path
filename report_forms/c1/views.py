@@ -111,7 +111,7 @@ def Statistics(request):
             agedenominator[1] += 1
         elif age < 35:
             agedenominator[2] += 1
-        if case.number_of_prev_deliveries == 1:
+        if case.number_of_prev_deliveries == 0:
             previousdenominator[0] += 1
         elif case.number_of_prev_deliveries >= 2:
             previousdenominator[1] += 1
@@ -122,14 +122,14 @@ def Statistics(request):
             else:
                 numerator[2] += 1                                           #subindicator 2
             ''' Subindicator 3 '''
-            if age <= 20:
+            if age < 20:
                 numerator[3] += 1                                           #subindicator 3.1
-            elif 20 < age < 35:
+            elif 20 <= age <= 35:
                 numerator[4] += 1                                           #subindicator 3.2
-            elif age >= 35:
+            elif age > 35:
                 numerator[5] += 1                                           #subindicator 3.3
             ''' Subindicator 4 '''
-            if case.number_of_prev_deliveries == 1:
+            if case.number_of_prev_deliveries == 0:
                 numerator[6] += 1                                           #subindicator 4.1
             elif case.number_of_prev_deliveries >= 2:
                 numerator[7] += 1                                           #subindicator 4.2
