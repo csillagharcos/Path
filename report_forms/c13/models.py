@@ -37,5 +37,4 @@ class c13(models.Model):
         verbose_name = _('Needle stick injury')
         verbose_name_plural = _('Needle stick injuries')
 
-admin.site.register(c13)
 admin.site.register(joblist)
