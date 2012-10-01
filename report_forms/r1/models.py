@@ -166,5 +166,3 @@ class r1CSV(CsvModel):
 
     class Meta:
         delimiter = ";"
-
-admin.site.register(r1)

@@ -47,5 +47,3 @@ class c8CSV(CsvModel):
     drg                             = CharField()
     class Meta:
         delimiter = ";"
-
-admin.site.register(c8)
