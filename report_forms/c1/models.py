@@ -60,5 +60,4 @@ class c1CSV(CsvModel):
     class Meta:
         delimiter = ";"
 
-admin.site.register(c1)
 admin.site.register(c1OtherDiagnose)
