@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-01 13:06+0200\n"
+"POT-Creation-Date: 2012-10-01 13:21+0200\n"
 "PO-Revision-Date: 2012-10-01 13:09\n"
 "Last-Translator:   <t@a.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Translated-Using: django-rosetta 0.6.8\n"
 
@@ -39,16 +39,67 @@ msgstr "Jelszó"
 msgid ""
 "\n"
 "        <p>Program: Eva Belicza Dr., Judit Lám Dr., Erika Takács</p>\n"
-"        <p>The PATH project by the World Health Organization Regional Office for Europe launched in 2003. The PATH to hospital quality improvement support benchmarking tools (Performance Assessment Tool for quality improvement in Hospitals), which helps hospitals work to assess the results, review, and to the results starting quality improvement activity to other hospitals the practical experience of using.</p>\n"
-"        <p>The PATH system goes beyond the traditional economic versus performance, clinical effectiveness of professional-type differentiation, and develop a comprehensive perspective, which includes both clinical effectiveness, efficiency, labor orientation of the reactive control, safety and patient centeredness. The PATH is not just a hospital performance measurement tools, but also focus on the interpretation of the results. The network within the hospital carried out a comparative analysis (benchmarking) will help the hospitals to learn about best practices. The PATH provides support for the initial stages of organizational benchmarking hospitals, sheltered environment for the measurement of culture.</p>\n"
-"        <p>The PATH provides four main components of the hospitals: a theoretical framework to evaluate performance, the necessary tools (such as indicators and guides), custom reports, and a national network. The first two components of the WHO Regional Office for Europe provides, while the latter two are adapted to local conditions in the country co-ordinators provide. The indicators include, for example, the current mortality rates, operating room utilization, employee smoking prevalence. In Hungary, the networking features direct contact with representatives of the participating hospitals, and two or three months of work under discussion, participants will discuss the data collection, processing and interpretation of results, dilemmas and experiences.</p></div>\n"
+"        <p>The PATH project by the World Health Organization Regional Office "
+"for Europe launched in 2003. The PATH to hospital quality improvement "
+"support benchmarking tools (Performance Assessment Tool for quality "
+"improvement in Hospitals), which helps hospitals work to assess the results, "
+"review, and to the results starting quality improvement activity to other "
+"hospitals the practical experience of using.</p>\n"
+"        <p>The PATH system goes beyond the traditional economic versus "
+"performance, clinical effectiveness of professional-type differentiation, "
+"and develop a comprehensive perspective, which includes both clinical "
+"effectiveness, efficiency, labor orientation of the reactive control, safety "
+"and patient centeredness. The PATH is not just a hospital performance "
+"measurement tools, but also focus on the interpretation of the results. The "
+"network within the hospital carried out a comparative analysis "
+"(benchmarking) will help the hospitals to learn about best practices. The "
+"PATH provides support for the initial stages of organizational benchmarking "
+"hospitals, sheltered environment for the measurement of culture.</p>\n"
+"        <p>The PATH provides four main components of the hospitals: a "
+"theoretical framework to evaluate performance, the necessary tools (such as "
+"indicators and guides), custom reports, and a national network. The first "
+"two components of the WHO Regional Office for Europe provides, while the "
+"latter two are adapted to local conditions in the country co-ordinators "
+"provide. The indicators include, for example, the current mortality rates, "
+"operating room utilization, employee smoking prevalence. In Hungary, the "
+"networking features direct contact with representatives of the participating "
+"hospitals, and two or three months of work under discussion, participants "
+"will discuss the data collection, processing and interpretation of results, "
+"dilemmas and experiences.</p></div>\n"
 "    "
 msgstr ""
 "\n"
 "<p>Programvezető: Dr. Belicza Éva, Dr. Lám Judit, Takács Erika</p>\n"
-"<p>A PATH projektet az Egészségügyi Világszervezet Európai Regionális Irodája indította el 2003-ban. A PATH a kórházi minőségfejlesztést támogató teljesítményértékelő eszközrendszer (Performance Assessment Tool for quality improvement in Hospitals), amely segítséget nyújt a kórházak számára a munkájuk értékeléséhez, az eredményeik felülvizsgálatához, és ahhoz, hogy az eredményekből kiindulva minőségfejlesztési tevékenységet végezzenek más kórházak gyakorlati tapasztalatait is felhasználva.</p>\n"
-"<p>A PATH rendszere túlmutat a hagyományos, gazdasági teljesítmény vs. klinikai eredményesség típusú szakmai felosztáson, és egy olyan átfogó nézőpontot alakít ki, amely egyaránt magában foglalja a klinikai eredményességet, a hatékonyságot, a munkaerő-orientáltságot, a reagáló irányítást, a biztonságot és a betegközpontúságot. A PATH nem csupán egy kórházi teljesítményt mérő eszközrendszer, hanem az eredmények értelmezésére is hangsúlyt helyez. A hálózaton belül működő kórházakkal végzett összehasonlító elemzés (benchmarking) révén segítséget nyújt a kórházaknak a legjobban bevált gyakorlat megismerésében. A PATH támogatást nyújt a szervezeti teljesítményértékelés bevezető szakaszában lévő kórházaknak, védett környezetet kínál a mérési kultúra kialakításához.</p>\n"
-"<p>A PATH négy főbb alkotóelemet kínál a kórházak számára: elméleti keretet a teljesítmény értékeléséhez, az ehhez szükséges eszközrendszert (indikátorok és kézikönyvek formájában), egyéni beszámolókat és egy nemzeti szintű hálózatot. Az első két alkotóelemet a WHO Európai Regionális Irodája nyújtja, míg az utóbbi kettőt a helyi viszonyokhoz igazítva az ország-koordinátorok szolgáltatják. A jelenlegi indikátorok között szerepelnek például halálozási arányok, műtőkihasználtság, dolgozói dohányzási prevalencia. A magyarországi hálózatépítésre a közvetlen kapcsolattartás jellemző a résztvevő kórházak képviselőivel, valamint két-három havonta munkamegbeszélés keretében a résztvevők megvitatják az adatgyűjtéssel, -feldolgozással és az eredmények értelmezésével kapcsolatos dilemmákat, tapasztalatokat.</p></div>"
+"<p>A PATH projektet az Egészségügyi Világszervezet Európai Regionális "
+"Irodája indította el 2003-ban. A PATH a kórházi minőségfejlesztést támogató "
+"teljesítményértékelő eszközrendszer (Performance Assessment Tool for quality "
+"improvement in Hospitals), amely segítséget nyújt a kórházak számára a "
+"munkájuk értékeléséhez, az eredményeik felülvizsgálatához, és ahhoz, hogy az "
+"eredményekből kiindulva minőségfejlesztési tevékenységet végezzenek más "
+"kórházak gyakorlati tapasztalatait is felhasználva.</p>\n"
+"<p>A PATH rendszere túlmutat a hagyományos, gazdasági teljesítmény vs. "
+"klinikai eredményesség típusú szakmai felosztáson, és egy olyan átfogó "
+"nézőpontot alakít ki, amely egyaránt magában foglalja a klinikai "
+"eredményességet, a hatékonyságot, a munkaerő-orientáltságot, a reagáló "
+"irányítást, a biztonságot és a betegközpontúságot. A PATH nem csupán egy "
+"kórházi teljesítményt mérő eszközrendszer, hanem az eredmények értelmezésére "
+"is hangsúlyt helyez. A hálózaton belül működő kórházakkal végzett "
+"összehasonlító elemzés (benchmarking) révén segítséget nyújt a kórházaknak a "
+"legjobban bevált gyakorlat megismerésében. A PATH támogatást nyújt a "
+"szervezeti teljesítményértékelés bevezető szakaszában lévő kórházaknak, "
+"védett környezetet kínál a mérési kultúra kialakításához.</p>\n"
+"<p>A PATH négy főbb alkotóelemet kínál a kórházak számára: elméleti keretet "
+"a teljesítmény értékeléséhez, az ehhez szükséges eszközrendszert "
+"(indikátorok és kézikönyvek formájában), egyéni beszámolókat és egy nemzeti "
+"szintű hálózatot. Az első két alkotóelemet a WHO Európai Regionális Irodája "
+"nyújtja, míg az utóbbi kettőt a helyi viszonyokhoz igazítva az ország-"
+"koordinátorok szolgáltatják. A jelenlegi indikátorok között szerepelnek "
+"például halálozási arányok, műtőkihasználtság, dolgozói dohányzási "
+"prevalencia. A magyarországi hálózatépítésre a közvetlen kapcsolattartás "
+"jellemző a résztvevő kórházak képviselőivel, valamint két-három havonta "
+"munkamegbeszélés keretében a résztvevők megvitatják az adatgyűjtéssel, -"
+"feldolgozással és az eredmények értelmezésével kapcsolatos dilemmákat, "
+"tapasztalatokat.</p></div>"
 
 #: pathstatic/templates/index.html:11
 msgid "PATH international website"
@@ -304,9 +355,9 @@ msgstr "Egyéb diagnózisok"
 #: report_forms/c20/models.py:13 report_forms/c20/views.py:138
 #: report_forms/c21/forms.py:14 report_forms/c21/models.py:26
 #: report_forms/c21/views.py:265 report_forms/c23/forms.py:15
-#: report_forms/c23/models.py:27 report_forms/c23/views.py:259
+#: report_forms/c23/models.py:27 report_forms/c23/views.py:264
 #: report_forms/c24/forms.py:15 report_forms/c24/models.py:26
-#: report_forms/c24/views.py:262 report_forms/c31/forms.py:7
+#: report_forms/c24/views.py:267 report_forms/c31/forms.py:7
 #: report_forms/c31/models.py:13 report_forms/c31/views.py:121
 #: report_forms/c32/forms.py:7 report_forms/c32/models.py:13
 #: report_forms/c32/views.py:120 report_forms/c8/forms.py:7
@@ -368,8 +419,8 @@ msgstr "Betegazonosító"
 #: report_forms/c1/models.py:24 report_forms/c1/views.py:186
 #: report_forms/c20/models.py:11 report_forms/c20/views.py:136
 #: report_forms/c21/models.py:24 report_forms/c21/views.py:263
-#: report_forms/c23/models.py:25 report_forms/c23/views.py:257
-#: report_forms/c24/models.py:24 report_forms/c24/views.py:260
+#: report_forms/c23/models.py:25 report_forms/c23/views.py:262
+#: report_forms/c24/models.py:24 report_forms/c24/views.py:265
 #: report_forms/c31/models.py:12 report_forms/c31/views.py:120
 #: report_forms/c32/models.py:12 report_forms/c32/views.py:119
 #: report_forms/c8/models.py:12 report_forms/c8/views.py:346
@@ -396,8 +447,8 @@ msgstr "Az újszülött súlya"
 #: report_forms/c1/models.py:31 report_forms/c1/views.py:194
 msgid "Mother illnes or risk"
 msgstr ""
-"Van-e az anyának olyan betegsége, kockázata, amely esetében a hüvelyi szülés"
-" súlyos állapotromlást idézett volna elő (testi deformitás, súlyos "
+"Van-e az anyának olyan betegsége, kockázata, amely esetében a hüvelyi szülés "
+"súlyos állapotromlást idézett volna elő (testi deformitás, súlyos "
 "belgyógyászati kórkép, placenta preavia, retina leválás kockázata stb…)?"
 
 #: report_forms/c1/models.py:32 report_forms/c1/views.py:195
@@ -1024,8 +1075,8 @@ msgstr ""
 
 #: report_forms/c13/models.py:29 report_forms/c13/views.py:76
 msgid ""
-"Total number of contracted working hours for the data at the end of the year"
-" /day(employee+ entrepreneur)"
+"Total number of contracted working hours for the data at the end of the "
+"year /day(employee+ entrepreneur)"
 msgstr ""
 "az év végi adatban megadott dolgozói létszámhoz tartozó szerződött napi "
 "óraszám (alkalmazott+vállalkozó)"
@@ -1066,8 +1117,8 @@ msgstr "Az elbocsátás dátuma"
 
 #: report_forms/c20/models.py:12 report_forms/c20/views.py:137
 #: report_forms/c21/models.py:25 report_forms/c21/views.py:264
-#: report_forms/c23/models.py:26 report_forms/c23/views.py:258
-#: report_forms/c24/models.py:25 report_forms/c24/views.py:261
+#: report_forms/c23/models.py:26 report_forms/c23/views.py:263
+#: report_forms/c24/models.py:25 report_forms/c24/views.py:266
 msgid "Hospital registration number"
 msgstr "Kórházi regisztrációs szám"
 
@@ -1155,89 +1206,89 @@ msgstr ""
 
 #: report_forms/c21/forms.py:7 report_forms/c21/models.py:33
 #: report_forms/c21/views.py:272 report_forms/c23/forms.py:8
-#: report_forms/c23/models.py:35 report_forms/c23/views.py:267
+#: report_forms/c23/models.py:35 report_forms/c23/views.py:272
 #: report_forms/c24/forms.py:8 report_forms/c24/models.py:33
-#: report_forms/c24/views.py:269
+#: report_forms/c24/views.py:274
 msgid "In case of allergy to penicillin, scale of severity?"
 msgstr "Penicilin allergia esetén annak súlyossága"
 
 #: report_forms/c21/forms.py:8 report_forms/c21/models.py:44
 #: report_forms/c21/views.py:284 report_forms/c23/forms.py:9
-#: report_forms/c23/models.py:46 report_forms/c23/views.py:279
+#: report_forms/c23/models.py:46 report_forms/c23/views.py:284
 #: report_forms/c24/forms.py:9 report_forms/c24/models.py:44
-#: report_forms/c24/views.py:281
+#: report_forms/c24/views.py:286
 msgid "Route of administration of first dose"
 msgstr "Első dózis beadási módja"
 
 #: report_forms/c21/forms.py:10 report_forms/c21/models.py:48
 #: report_forms/c21/views.py:290 report_forms/c23/forms.py:11
-#: report_forms/c23/models.py:50 report_forms/c23/views.py:285
+#: report_forms/c23/models.py:50 report_forms/c23/views.py:290
 #: report_forms/c24/forms.py:11 report_forms/c24/models.py:48
-#: report_forms/c24/views.py:287
+#: report_forms/c24/views.py:292
 msgid "Date of surgical wound closure"
 msgstr "A műtéti seb zárásának dátuma"
 
 #: report_forms/c21/forms.py:11 report_forms/c21/models.py:45
 #: report_forms/c21/views.py:285 report_forms/c23/forms.py:12
-#: report_forms/c23/models.py:47 report_forms/c23/views.py:280
+#: report_forms/c23/models.py:47 report_forms/c23/views.py:285
 #: report_forms/c24/forms.py:12 report_forms/c24/models.py:45
-#: report_forms/c24/views.py:282
+#: report_forms/c24/views.py:287
 msgid "Date of first dose"
 msgstr "Első dózis beadási dátuma"
 
 #: report_forms/c21/forms.py:12 report_forms/c21/models.py:36
 #: report_forms/c21/views.py:275 report_forms/c23/forms.py:13
-#: report_forms/c23/models.py:38 report_forms/c23/views.py:270
+#: report_forms/c23/models.py:38 report_forms/c23/views.py:275
 #: report_forms/c24/forms.py:13 report_forms/c24/models.py:36
-#: report_forms/c24/views.py:272
+#: report_forms/c24/views.py:277
 msgid "Date of surgical incision"
 msgstr "A műtéti bemetszés időpontja"
 
 #: report_forms/c21/forms.py:13 report_forms/c21/models.py:47
 #: report_forms/c21/views.py:288 report_forms/c23/forms.py:14
-#: report_forms/c23/models.py:49 report_forms/c23/views.py:283
+#: report_forms/c23/models.py:49 report_forms/c23/views.py:288
 #: report_forms/c24/forms.py:14 report_forms/c24/models.py:47
-#: report_forms/c24/views.py:285
+#: report_forms/c24/views.py:290
 msgid "Date of last dose"
 msgstr "Utolsó dózis beadási dátuma"
 
 #: report_forms/c21/forms.py:16 report_forms/c21/models.py:27
 #: report_forms/c21/views.py:266 report_forms/c23/forms.py:17
-#: report_forms/c23/models.py:28 report_forms/c23/views.py:260
+#: report_forms/c23/models.py:28 report_forms/c23/views.py:265
 #: report_forms/c24/forms.py:17 report_forms/c24/models.py:27
-#: report_forms/c24/views.py:263
+#: report_forms/c24/views.py:268
 msgid "Weight of patient"
 msgstr "A beteg testtömege"
 
 #: report_forms/c21/forms.py:18 report_forms/c21/models.py:39
 #: report_forms/c21/views.py:281 report_forms/c23/forms.py:19
-#: report_forms/c23/models.py:41 report_forms/c23/views.py:276
+#: report_forms/c23/models.py:41 report_forms/c23/views.py:281
 #: report_forms/c24/forms.py:19 report_forms/c24/models.py:39
-#: report_forms/c24/views.py:278
+#: report_forms/c24/views.py:283
 msgid "First dose"
 msgstr "Első dózis"
 
 #: report_forms/c21/forms.py:19 report_forms/c21/models.py:41
 #: report_forms/c21/views.py:282 report_forms/c23/forms.py:20
-#: report_forms/c23/models.py:43 report_forms/c23/views.py:277
+#: report_forms/c23/models.py:43 report_forms/c23/views.py:282
 #: report_forms/c24/forms.py:20 report_forms/c24/models.py:41
-#: report_forms/c24/views.py:279
+#: report_forms/c24/views.py:284
 msgid "Second dose"
 msgstr "Második dózis"
 
 #: report_forms/c21/forms.py:20 report_forms/c21/models.py:43
 #: report_forms/c21/views.py:283 report_forms/c23/forms.py:21
-#: report_forms/c23/models.py:45 report_forms/c23/views.py:278
+#: report_forms/c23/models.py:45 report_forms/c23/views.py:283
 #: report_forms/c24/forms.py:21 report_forms/c24/models.py:43
-#: report_forms/c24/views.py:280
+#: report_forms/c24/views.py:285
 msgid "Other dose"
 msgstr "Egyéb dózis"
 
 #: report_forms/c21/forms.py:21 report_forms/c21/models.py:46
 #: report_forms/c21/views.py:287 report_forms/c23/forms.py:22
-#: report_forms/c23/models.py:48 report_forms/c23/views.py:282
+#: report_forms/c23/models.py:48 report_forms/c23/views.py:287
 #: report_forms/c24/forms.py:22 report_forms/c24/models.py:46
-#: report_forms/c24/views.py:284
+#: report_forms/c24/views.py:289
 msgid "Total doses in 24 hours"
 msgstr "24 órán belüli összdózis"
 
@@ -1272,68 +1323,68 @@ msgid "Medicines"
 msgstr "Gyógyszerek"
 
 #: report_forms/c21/models.py:28 report_forms/c21/views.py:267
-#: report_forms/c23/models.py:29 report_forms/c23/views.py:261
-#: report_forms/c24/models.py:28 report_forms/c24/views.py:264
+#: report_forms/c23/models.py:29 report_forms/c23/views.py:266
+#: report_forms/c24/models.py:28 report_forms/c24/views.py:269
 msgid "Principal diagnosis code (ICD-10 or DRG)"
 msgstr "Fődiagnózis kód (BNO10)"
 
 #: report_forms/c21/models.py:29 report_forms/c21/views.py:268
-#: report_forms/c23/models.py:31 report_forms/c23/views.py:263
-#: report_forms/c24/models.py:29 report_forms/c24/views.py:265
+#: report_forms/c23/models.py:31 report_forms/c23/views.py:268
+#: report_forms/c24/models.py:29 report_forms/c24/views.py:270
 msgid "Principal procedure code"
 msgstr "Fődiagnózis miatt végzett műtéti beavatkozás kódja"
 
 #: report_forms/c21/models.py:30 report_forms/c21/views.py:269
-#: report_forms/c23/models.py:32 report_forms/c23/views.py:264
-#: report_forms/c24/models.py:30 report_forms/c24/views.py:266
+#: report_forms/c23/models.py:32 report_forms/c23/views.py:269
+#: report_forms/c24/models.py:30 report_forms/c24/views.py:271
 msgid "Is the surgical procedure planned?"
 msgstr "A műtéti beavatkozás tervezett?"
 
 #: report_forms/c21/models.py:31 report_forms/c21/views.py:270
-#: report_forms/c23/models.py:33 report_forms/c23/views.py:265
-#: report_forms/c24/models.py:31 report_forms/c24/views.py:267
+#: report_forms/c23/models.py:33 report_forms/c23/views.py:270
+#: report_forms/c24/models.py:31 report_forms/c24/views.py:272
 msgid "Is patient allergic to any antibiotics suggested in the protocol?"
 msgstr "A beteg allergiás a protokollban valamelyik antibiotikumra?"
 
 #: report_forms/c21/models.py:32 report_forms/c21/views.py:271
-#: report_forms/c23/models.py:34 report_forms/c23/views.py:266
-#: report_forms/c24/models.py:32 report_forms/c24/views.py:268
+#: report_forms/c23/models.py:34 report_forms/c23/views.py:271
+#: report_forms/c24/models.py:32 report_forms/c24/views.py:273
 msgid "Generic name of antibiotic drug"
 msgstr "Hatóanyag amelyre a beteg allergiás"
 
 #: report_forms/c21/models.py:34 report_forms/c21/views.py:273
-#: report_forms/c23/models.py:36 report_forms/c23/views.py:268
-#: report_forms/c24/models.py:34 report_forms/c24/views.py:270
+#: report_forms/c23/models.py:36 report_forms/c23/views.py:273
+#: report_forms/c24/models.py:34 report_forms/c24/views.py:275
 msgid "Has patient preoperative infection?"
 msgstr "Van-e a betegnek műtétet megelőző fertőzése?"
 
 #: report_forms/c21/models.py:35 report_forms/c21/views.py:274
-#: report_forms/c23/models.py:37 report_forms/c23/views.py:269
-#: report_forms/c24/models.py:35 report_forms/c24/views.py:271
+#: report_forms/c23/models.py:37 report_forms/c23/views.py:274
+#: report_forms/c24/models.py:35 report_forms/c24/views.py:276
 msgid "Type of infection"
 msgstr "Fertőzés típusa"
 
 #: report_forms/c21/models.py:37 report_forms/c21/views.py:277
-#: report_forms/c23/models.py:39 report_forms/c23/views.py:272
-#: report_forms/c24/models.py:37 report_forms/c24/views.py:274
+#: report_forms/c23/models.py:39 report_forms/c23/views.py:277
+#: report_forms/c24/models.py:37 report_forms/c24/views.py:279
 msgid "Prophylactic antibiotic given?"
 msgstr "Profilaktikus antibiotikumot adtak?"
 
 #: report_forms/c21/models.py:38 report_forms/c21/views.py:278
-#: report_forms/c23/models.py:40 report_forms/c23/views.py:273
-#: report_forms/c24/models.py:38 report_forms/c24/views.py:275
+#: report_forms/c23/models.py:40 report_forms/c23/views.py:278
+#: report_forms/c24/models.py:38 report_forms/c24/views.py:280
 msgid "Name of first dose"
 msgstr "Első hatóanyag neve"
 
 #: report_forms/c21/models.py:40 report_forms/c21/views.py:279
-#: report_forms/c23/models.py:42 report_forms/c23/views.py:274
-#: report_forms/c24/models.py:40 report_forms/c24/views.py:276
+#: report_forms/c23/models.py:42 report_forms/c23/views.py:279
+#: report_forms/c24/models.py:40 report_forms/c24/views.py:281
 msgid "Name of second dose"
 msgstr "Második hatóanyag neve"
 
 #: report_forms/c21/models.py:42 report_forms/c21/views.py:280
-#: report_forms/c23/models.py:44 report_forms/c23/views.py:275
-#: report_forms/c24/models.py:42 report_forms/c24/views.py:277
+#: report_forms/c23/models.py:44 report_forms/c23/views.py:280
+#: report_forms/c24/models.py:42 report_forms/c24/views.py:282
 msgid "Name of other dose"
 msgstr "Egyéb hatóanyag neve"
 
@@ -1345,23 +1396,23 @@ msgstr "Tervezett colorectalis daganat műtét"
 msgid "Planned surgery for colorectal cancers"
 msgstr "Tervezett colorectalis daganat műtétek"
 
-#: report_forms/c21/views.py:276 report_forms/c23/views.py:271
-#: report_forms/c24/views.py:273
+#: report_forms/c21/views.py:276 report_forms/c23/views.py:276
+#: report_forms/c24/views.py:278
 msgid "Time of surgical incision"
 msgstr "A műtéti bemetszés ideje"
 
-#: report_forms/c21/views.py:286 report_forms/c23/views.py:281
-#: report_forms/c24/views.py:283
+#: report_forms/c21/views.py:286 report_forms/c23/views.py:286
+#: report_forms/c24/views.py:288
 msgid "Time of first dose"
 msgstr "Első dózis beadási ideje"
 
-#: report_forms/c21/views.py:289 report_forms/c23/views.py:284
-#: report_forms/c24/views.py:286
+#: report_forms/c21/views.py:289 report_forms/c23/views.py:289
+#: report_forms/c24/views.py:291
 msgid "Time of last dose"
 msgstr "Utolsó dózis beadási ideje"
 
-#: report_forms/c21/views.py:291 report_forms/c23/views.py:286
-#: report_forms/c24/views.py:288
+#: report_forms/c21/views.py:291 report_forms/c23/views.py:291
+#: report_forms/c24/views.py:293
 msgid "Time of surgical wound closure"
 msgstr "A műtéti seb zárásának ideje"
 
@@ -1375,26 +1426,38 @@ msgid ""
 msgstr "C.2.1. Tervezett colorectalis daganat műtét"
 
 #: report_forms/c21/templates/c21_statistics.html:35
+#: report_forms/c23/templates/c23_statistics.html:35
+#: report_forms/c24/templates/c24_statistics.html:35
 msgid "Appropriate antibiotic drug:"
 msgstr "Megfelelő dózis:"
 
 #: report_forms/c21/templates/c21_statistics.html:39
+#: report_forms/c23/templates/c23_statistics.html:39
+#: report_forms/c24/templates/c24_statistics.html:39
 msgid "Appropriate dose:"
 msgstr "Megfelelő hatóanyag:"
 
 #: report_forms/c21/templates/c21_statistics.html:43
+#: report_forms/c23/templates/c23_statistics.html:43
+#: report_forms/c24/templates/c24_statistics.html:43
 msgid "Appropriate dose with weight:"
 msgstr "Megfelelő dózis a beteg testtömegét figyelembe véve:"
 
 #: report_forms/c21/templates/c21_statistics.html:47
+#: report_forms/c23/templates/c23_statistics.html:47
+#: report_forms/c24/templates/c24_statistics.html:47
 msgid "Appropriate route of administration: intravenous administration:"
 msgstr "Megfelelő adagolási mód:"
 
 #: report_forms/c21/templates/c21_statistics.html:51
+#: report_forms/c23/templates/c23_statistics.html:51
+#: report_forms/c24/templates/c24_statistics.html:51
 msgid "Appropriate timing, within one hour of surgical wound incision:"
 msgstr "Megfelelő időzítés bemetszés előtt:"
 
 #: report_forms/c21/templates/c21_statistics.html:55
+#: report_forms/c23/templates/c23_statistics.html:55
+#: report_forms/c24/templates/c24_statistics.html:55
 msgid ""
 "Appropriate timing: (discontinued within 24 hours after surgical wound "
 "closure – or documentation of appropriate clinical indication for "
@@ -1402,30 +1465,40 @@ msgid ""
 msgstr "Megfelelő időzítés utolsó AB dózis:"
 
 #: report_forms/c21/templates/c21_statistics.html:59
+#: report_forms/c23/templates/c23_statistics.html:59
+#: report_forms/c24/templates/c24_statistics.html:59
 msgid "Full compliance with criteria 1-5:"
 msgstr "I-V kritériumnak való megfelelőség:"
 
 #: report_forms/c21/templates/c21_statistics.html:63
+#: report_forms/c23/templates/c23_statistics.html:63
+#: report_forms/c24/templates/c24_statistics.html:63
 #, python-format
 msgid "% of misuse:"
 msgstr "Téves alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:67
+#: report_forms/c23/templates/c23_statistics.html:67
+#: report_forms/c24/templates/c24_statistics.html:67
 #, python-format
 msgid "% of overuse:"
 msgstr "Túlzott alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:71
+#: report_forms/c23/templates/c23_statistics.html:71
+#: report_forms/c24/templates/c24_statistics.html:71
 #, python-format
 msgid "% of underuse:"
 msgstr "Hiányos alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:75
+#: report_forms/c23/templates/c23_statistics.html:75
+#: report_forms/c24/templates/c24_statistics.html:75
 #, python-format
 msgid "% of single shot treatment:"
 msgstr "Egylövetű kezelés"
 
-#: report_forms/c23/models.py:30 report_forms/c23/views.py:262
+#: report_forms/c23/models.py:30 report_forms/c23/views.py:267
 msgid "Other principal diagnosis code (ICD-10 or DRG)"
 msgstr "Egyéb fődiagnózis kód (BNO10)"
 
@@ -1440,56 +1513,6 @@ msgstr "Tervezett csípőprotézis műtét"
 #: report_forms/templates/list_of_report_forms.html:36
 msgid "C.2.3. Prophylactic antibiotic use - Hip replacement"
 msgstr "C.2.3. Csípőprotézis"
-
-#: report_forms/c23/templates/c23_statistics.html:35
-#: report_forms/c24/templates/c24_statistics.html:35
-msgid "Indicator one:"
-msgstr ""
-
-#: report_forms/c23/templates/c23_statistics.html:39
-#: report_forms/c24/templates/c24_statistics.html:39
-msgid "Indicator two a:"
-msgstr ""
-
-#: report_forms/c23/templates/c23_statistics.html:43
-#: report_forms/c24/templates/c24_statistics.html:43
-msgid "Indicator two b:"
-msgstr ""
-
-#: report_forms/c23/templates/c23_statistics.html:47
-#: report_forms/c24/templates/c24_statistics.html:47
-msgid "Indicator three:"
-msgstr ""
-
-#: report_forms/c23/templates/c23_statistics.html:51
-#: report_forms/c24/templates/c24_statistics.html:51
-msgid "Indicator four:"
-msgstr ""
-
-#: report_forms/c23/templates/c23_statistics.html:55
-#: report_forms/c24/templates/c24_statistics.html:55
-msgid "Indicator five:"
-msgstr ""
-
-#: report_forms/c23/templates/c23_statistics.html:59
-#: report_forms/c24/templates/c24_statistics.html:59
-msgid "Indicator six:"
-msgstr ""
-
-#: report_forms/c23/templates/c23_statistics.html:63
-#: report_forms/c24/templates/c24_statistics.html:63
-msgid "Indicator seven:"
-msgstr ""
-
-#: report_forms/c23/templates/c23_statistics.html:67
-#: report_forms/c24/templates/c24_statistics.html:67
-msgid "Indicator eight:"
-msgstr ""
-
-#: report_forms/c23/templates/c23_statistics.html:71
-#: report_forms/c24/templates/c24_statistics.html:71
-msgid "Indicator nine:"
-msgstr ""
 
 #: report_forms/c24/models.py:56 report_forms/c24/models.py:57
 msgid "Planned surgery for hysterectomy"
@@ -1658,8 +1681,7 @@ msgid ""
 msgstr "Átlag ápolási idő az első műtéti beavatkozástól az elbocsátásig"
 
 #: report_forms/c8/templates/c8_statistics.html:53
-msgid ""
-"Median length of stay from the first surgical procedure until discharge"
+msgid "Median length of stay from the first surgical procedure until discharge"
 msgstr "Medián ápolási idő az első műtéti beavatkozástól az elbocsátásig"
 
 #: report_forms/r1/forms.py:8 report_forms/r1/models.py:16
@@ -1713,8 +1735,7 @@ msgstr "ASIA impairment score felmérés ideje"
 #: report_forms/r1/models.py:39 report_forms/r1/models.py:74
 #: report_forms/r1/views.py:330 report_forms/r1/views.py:364
 msgid ""
-"Standard neurological classification of spinal cord injury date of "
-"assessment"
+"Standard neurological classification of spinal cord injury date of assessment"
 msgstr ""
 "Standard neurological classification of spinal cord injury felmérés ideje"
 
@@ -1917,8 +1938,8 @@ msgstr ""
 #: report_forms/r1/templates/r1_statistics.html:30
 msgid ""
 "Percentage of patients who have documented functional assessment at "
-"admission to an inpatient unit for rehabilitation program within 48 hours of"
-" admission"
+"admission to an inpatient unit for rehabilitation program within 48 hours of "
+"admission"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon a felvételt követő 48 órán belül megtörtént"
@@ -1926,8 +1947,8 @@ msgstr ""
 #: report_forms/r1/templates/r1_statistics.html:34
 msgid ""
 "Percentage of patients who have documented functional assessment at "
-"admission to an inpatient unit for rehabilitation program within 72 hours of"
-" admission"
+"admission to an inpatient unit for rehabilitation program within 72 hours of "
+"admission"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon a felvételt követő 72 napon belül megtörtént"
@@ -1938,24 +1959,24 @@ msgstr "Funkcionális állapotfelmérés elbocsájtás előtt"
 
 #: report_forms/r1/templates/r1_statistics.html:44
 msgid ""
-"Percentage of patients who have documented evidence of functional assessment"
-" in 3 days prior to discharge"
+"Percentage of patients who have documented evidence of functional assessment "
+"in 3 days prior to discharge"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon az elbocsájtást megelőző 3 napon belül megtörtént"
 
 #: report_forms/r1/templates/r1_statistics.html:48
 msgid ""
-"Percentage of patients who have documented evidence of functional assessment"
-" in 1 days prior to discharge"
+"Percentage of patients who have documented evidence of functional assessment "
+"in 1 days prior to discharge"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon az elbocsájtást megelőző 1 napon belül megtörtént"
 
 #: report_forms/r1/templates/r1_statistics.html:52
 msgid ""
-"Percentage of patients who have documented evidence of functional assessment"
-" in 2 days prior to discharge"
+"Percentage of patients who have documented evidence of functional assessment "
+"in 2 days prior to discharge"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon az elbocsájtást megelőző 2 napon belül megtörtént"
@@ -1969,8 +1990,7 @@ msgid ""
 "Percentage of those patients whose rehabilitation program interrupted "
 "unexpectedly"
 msgstr ""
-"Azon betegek aránya, akiknek a rehabilitációs programja váratlanul "
-"megszakadt"
+"Azon betegek aránya, akiknek a rehabilitációs programja váratlanul megszakadt"
 
 #: report_forms/r1/templates/r1_statistics.html:66
 msgid ""
@@ -2033,7 +2053,8 @@ msgstr "Egyetemek"
 #~ msgid ""
 #~ "Standard neurological classification of spinal cord injury  value/score"
 #~ msgstr ""
-#~ "Standard neurological classification of spinal cord injury eredmény/pontszám"
+#~ "Standard neurological classification of spinal cord injury eredmény/"
+#~ "pontszám"
 
 #~ msgid "Logo for the Path project"
 #~ msgstr "Path project logója"
