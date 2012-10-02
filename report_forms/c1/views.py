@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, date
-from py_compile import PyCompileError
+from datetime import datetime
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.db.utils import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from django.utils import simplejson, translation
 from report_forms.c1.forms import C1Form, FileUploadForm
 from report_forms.c1.models import c1, c1CSV, c1OtherDiagnose
 from report_forms.tools import calculate_age, csvDump
