@@ -27,7 +27,7 @@ class c1(models.Model):
     number_of_prev_deliveries       = models.IntegerField(_('Number of previous deliveries'))
     number_of_prev_deliveries_by_c  = models.IntegerField(_('Number of earlier deliveries by c-section'), default=0)
     the_c_section                   = models.IntegerField(_('The c-section'), max_length=1, choices=C_SECTION_CHOICES, default=0)
-    weight_of_the_newborn           = models.FloatField(_('Weight of newborn'))
+    weight_of_the_newborn           = models.FloatField(_('Weight of newborn (g)'))
     mother_illness                  = models.IntegerField(_('Mother illnes or risk'), max_length=1, choices=YES_NO_CHOICES, default=0)
     specify_mother_illness          = models.CharField(_('Specify'), max_length=255, null=True, blank=True)
     drg_code                        = models.CharField(_('DRG Code'), max_length=4, choices=DRG_CODES_CHOICES, default='', null=True, blank=True)

@@ -24,7 +24,7 @@ class c21(models.Model):
     case_id                         = models.IntegerField(_('Case ID'))
     hospital_registration_number    = models.CharField(_('Hospital registration number'), max_length=50)
     date_of_birth                   = models.DateField(_('Date of birth'))
-    weight_of_patient               = models.IntegerField(_('Weight of patient'))
+    weight_of_patient               = models.IntegerField(_('Weight of patient (kg)'))
     principal_diagnoses_code        = models.CharField(_('Principal diagnosis code (ICD-10 or DRG)'), max_length=5, choices=PRINCIPAL_DIAG_CODE_C, default='')
     principal_procedure_code        = models.CharField(_('Principal procedure code'), max_length=10)
     procedure_planned               = models.IntegerField(_('Is the surgical procedure planned?'), max_length=1, choices=YES_NO_CHOICES, default=1)
