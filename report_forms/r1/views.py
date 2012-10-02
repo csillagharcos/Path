@@ -338,6 +338,7 @@ def Template(request):
         _('Other value/score'),
         _('Patient discharge status'),
         _('Discharge'),
+        _('If unplanned, the reason'),
         _('Date of discharge'),
         _('FIM applied at discharge'),
         _('FIM date of assessment'),
