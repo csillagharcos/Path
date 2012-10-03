@@ -1,6 +1,7 @@
 import csv
 from datetime import date
 from django.http import HttpResponse
+from unidecode import unidecode
 
 def calculate_age(born, today = date.today()):
     try:
@@ -29,11 +30,10 @@ def parseFloat(integer):
 def csvDump(model, name = "excelfile"):
     response = HttpResponse(mimetype='text/csv')
     response['Content-Disposition'] = 'attachment; filename='+name+'.csv'
-    response['Content-Type'] = 'text/csv; charset=utf-8'
     writer = csv.writer(response, delimiter=';')
     row = []
     for mo in model:
-        row.append(mo.encode('utf8'))
+        row.append(unidecode(mo))
     writer.writerow(row)
     return response
 
