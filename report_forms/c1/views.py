@@ -44,14 +44,16 @@ def Display(request):
 def Import(request):
     if request.method == "POST":
         exists=errors=()
+        first = True
         try:
             csv_file = request.FILES['file']
             imported_csv = c1CSV.import_data(data=csv_file)
-        except UnicodeDecodeError:
-            return render_to_response('error.html', {"message": _("You probably forgot to delete the first row of the csv file, please recheck.") }, context_instance=RequestContext(request))
         except CsvDataException:
             return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
         for line in imported_csv:
+            if first:
+                first = False
+                continue
             try:
                 parsed_diagnoses=()
                 print parsed_diagnoses
