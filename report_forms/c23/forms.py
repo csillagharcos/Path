@@ -16,9 +16,9 @@ class C23Form(ModelForm):
     ''' kg '''
     weight_of_patient       = forms.IntegerField(label=_('Weight of patient (kg)'), widget=forms.TextInput(attrs={'class':'size'}))
     ''' mg '''
-    first_dose              = forms.FloatField(label=_('First dose'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
-    second_dose             = forms.FloatField(label=_('Second dose'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
-    other_dose              = forms.FloatField(label=_('Other dose'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
+    first_dose              = forms.FloatField(label=_('First dose of first antibiotic drug'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
+    second_dose             = forms.FloatField(label=_('Second dose of first antibiotic drug'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
+    other_dose              = forms.FloatField(label=_('Other dose of first antibiotic drug'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
     total_dose_in_24h       = forms.FloatField(label=_('Total doses in 24 hours'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
 
     def clean(self):
