@@ -55,7 +55,7 @@ def Import(request):
                 first = False
                 continue
             try:
-                if datetime.strptime(line.date_of_birth, "%Y-%m-%d") > datetime.strptime(line.date_of_delivery+' '+line.time_of_delivery, "%Y-%m-%d %H:%M"):
+                if datetime.strptime(line.date_of_birth, "%Y-%m-%d") > datetime.strptime(line.date_of_delivery, "%Y-%m-%d"):
                     raise DateException(_("Born after date of delivery!"))
                 new_c1 = c1.objects.create( patient_id=parseInt(line.patient_id),
                                             case_id=parseInt(line.case_id),
@@ -110,7 +110,7 @@ def Statistics(request):
     agedenominator = [0,0,0]
     previousdenominator = [0,0]
     for case in countable_case:
-        age = calculate_age(case.date_of_birth, case.date_of_delivery)
+        age = calculate_age(case.date_of_birth, case.date_of_delivery.date())
         if age <= 20:
             agedenominator[0] += 1
         elif 20 < age < 35:

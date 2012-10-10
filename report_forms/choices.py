@@ -51,7 +51,6 @@ ROUTE_OF_ADMIN_CHOICES = (
     (2, _('IM')),
     (3, _('SC')),
     (4, _('Other')),
-    (5, _('PO')),
     )
 
 PRINCIPAL_DIAG_CODE_S = (
