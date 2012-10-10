@@ -21,6 +21,26 @@ class C23Form(ModelForm):
     other_dose              = forms.FloatField(label=_('Other dose'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
     total_dose_in_24h       = forms.FloatField(label=_('Total doses in 24 hours'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
 
+    def clean(self):
+        cleaned_data = super(C23Form, self).clean()
+        surgical_incision = cleaned_data.get("surgical_incision")
+        date_of_wound_close = cleaned_data.get("date_of_wound_close")
+        date_of_last_dose = cleaned_data.get("date_of_last_dose")
+        date_of_first_dose = cleaned_data.get("date_of_first_dose")
+
+        if date_of_first_dose >= date_of_last_dose:
+            self._errors["date_of_first_dose"] = self.error_class([_("Date of last dose happened before date of first dose!")])
+            self._errors["date_of_last_dose"] = self.error_class([_("Date of last dose happened before date of first dose!")])
+            del cleaned_data["date_of_first_dose"]
+            del cleaned_data["date_of_last_dose"]
+
+        if surgical_incision > date_of_wound_close:
+            self._errors["surgical_incision"] = self.error_class([_("Can't close the wound before the incision!")])
+            self._errors["date_of_wound_close"] = self.error_class([_("Can't close the wound before the incision!")])
+            del cleaned_data["surgical_incision"]
+            del cleaned_data["date_of_wound_close"]
+
+        return cleaned_data
 
     class Meta:
         model = c23

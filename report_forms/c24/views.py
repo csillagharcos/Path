@@ -11,7 +11,7 @@ from django.template import RequestContext
 from django.utils import simplejson
 from report_forms.c24.forms import C24Form, FileUploadForm
 from report_forms.c24.models import c24, c24CSV, Medicine
-from report_forms.tools import parseInt, parseFloat, csvDump, calculate_age
+from report_forms.tools import parseInt, parseFloat, csvDump, calculate_age, DateException
 from django.utils.translation import ugettext_lazy as _
 
 @login_required
@@ -59,7 +59,7 @@ def Display(request):
 @login_required
 def Import(request):
     if request.method == "POST":
-        exists=()
+        date_errors=errors=exists=()
         try:
             csv_file = request.FILES['file']
             imported_csv = c24CSV.import_data(data=csv_file)
@@ -81,6 +81,10 @@ def Import(request):
                 except ValueError: dold = None
                 try: dowc =datetime.strptime(line.date_of_wound_close+" "+line.time_of_wound_close, "%Y-%m-%d %H:%M")
                 except ValueError: dowc = None
+                if dofd >= dold and dofd is not None and dold is not None:
+                    raise DateException(_("Date of last dose happened before date of first dose!"))
+                if si > dowc and si is not None and dowc is not None:
+                    raise DateException(_("Can't close the wound before the incision!"))
                 if not parseInt(line.penicilin_allergy):
                     pa = 1
                 else:
@@ -116,7 +120,13 @@ def Import(request):
                 )
                 new_c24.save()
             except IntegrityError:
-                pass
+                exists += (line.patient_id,)
+            except DateException, (inst):
+                date_errors += (line.patient_id,)
+            except:
+                errors += (line.patient_id,)
+        if exists or errors:
+            return render_to_response('c21_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c24_stat'))
     else:
         form = FileUploadForm()
