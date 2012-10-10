@@ -10,7 +10,7 @@ from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from report_forms.c1.forms import C1Form, FileUploadForm
 from report_forms.c1.models import c1, c1CSV, c1OtherDiagnose
-from report_forms.tools import calculate_age, csvDump, DateException
+from report_forms.tools import calculate_age, csvDump, DateException, parseInt, parseFloat
 from django.utils.translation import ugettext_lazy as _
 
 @login_required
@@ -57,15 +57,15 @@ def Import(request):
             try:
                 if datetime.strptime(line.date_of_birth, "%Y-%m-%d") > datetime.strptime(line.date_of_delivery+' '+line.time_of_delivery, "%Y-%m-%d %H:%M"):
                     raise DateException(_("Born after date of delivery!"))
-                new_c1 = c1.objects.create( patient_id=line.patient_id,
-                                            case_id=line.case_id,
+                new_c1 = c1.objects.create( patient_id=parseInt(line.patient_id),
+                                            case_id=parseInt(line.case_id),
                                             date_of_birth=datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
                                             date_of_delivery=datetime.strptime(line.date_of_delivery+' '+line.time_of_delivery, "%Y-%m-%d %H:%M"),
-                                            number_of_prev_deliveries = line.number_of_prev_deliveries,
-                                            number_of_prev_deliveries_by_c = line.number_of_prev_deliveries_by_c,
-                                            the_c_section = line.the_c_section,
-                                            weight_of_the_newborn = line.weight_of_the_newborn,
-                                            mother_illness = line.mother_illness,
+                                            number_of_prev_deliveries = parseInt(line.number_of_prev_deliveries),
+                                            number_of_prev_deliveries_by_c = parseInt(line.number_of_prev_deliveries_by_c),
+                                            the_c_section = parseInt(line.the_c_section),
+                                            weight_of_the_newborn = parseFloat(line.weight_of_the_newborn),
+                                            mother_illness = parseInt(line.mother_illness),
                                             specify_mother_illness = line.specify_mother_illness,
                                             drg_code = line.drg_code,
                                             added_by = request.user,

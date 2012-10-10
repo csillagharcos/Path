@@ -43,16 +43,16 @@ class c1(models.Model):
         verbose_name_plural = _('C-Section Rates')
 
 class c1CSV(CsvModel):
-    patient_id                      = IntegerField()        #A
-    case_id                         = IntegerField()        #B
+    patient_id                      = CharField()        #A
+    case_id                         = CharField()        #B
     date_of_birth                   = CharField()           #C
     date_of_delivery                = CharField()           #D
     time_of_delivery                = CharField()           #E
-    number_of_prev_deliveries       = IntegerField()        #F
-    number_of_prev_deliveries_by_c  = IntegerField()        #G
-    the_c_section                   = IntegerField()        #H
-    weight_of_the_newborn           = FloatField()          #I
-    mother_illness                  = IntegerField()        #J
+    number_of_prev_deliveries       = CharField()        #F
+    number_of_prev_deliveries_by_c  = CharField()        #G
+    the_c_section                   = CharField()        #H
+    weight_of_the_newborn           = CharField()          #I
+    mother_illness                  = CharField()        #J
     specify_mother_illness          = CharField()           #K
     drg_code                        = CharField()           #L
     other_diagnoses                 = CharField()           #M
