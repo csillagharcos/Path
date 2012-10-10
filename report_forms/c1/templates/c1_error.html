@@ -36,4 +36,12 @@
         {% endfor %}
         <br />
     {% endif %}
+    {% if date_errors %}
+        {% trans "The following Patient IDs contains date errors:" %}
+        <br />
+        {% for date_error in date_errors %}
+            {{ date_error }}{% if not forloop.last %}, {% endif %}{% if forloop.counter|divisibleby:"5" %}<br />{% endif %}
+        {% endfor %}
+        <br />
+    {% endif %}
 {% endblock content %}

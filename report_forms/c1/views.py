@@ -10,7 +10,7 @@ from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from report_forms.c1.forms import C1Form, FileUploadForm
 from report_forms.c1.models import c1, c1CSV, c1OtherDiagnose
-from report_forms.tools import calculate_age, csvDump
+from report_forms.tools import calculate_age, csvDump, DateException
 from django.utils.translation import ugettext_lazy as _
 
 @login_required
@@ -43,7 +43,7 @@ def Display(request):
 @login_required
 def Import(request):
     if request.method == "POST":
-        exists=errors=()
+        date_errors=exists=errors=()
         first = True
         try:
             csv_file = request.FILES['file']
@@ -55,8 +55,8 @@ def Import(request):
                 first = False
                 continue
             try:
-                parsed_diagnoses=()
-                print parsed_diagnoses
+                if datetime.strptime(line.date_of_birth, "%Y-%m-%d") > datetime.strptime(line.date_of_delivery+' '+line.time_of_delivery, "%Y-%m-%d %H:%M"):
+                    raise DateException(_("Born after date of delivery!"))
                 new_c1 = c1.objects.create( patient_id=line.patient_id,
                                             case_id=line.case_id,
                                             date_of_birth=datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
@@ -81,10 +81,12 @@ def Import(request):
                 new_c1.save()
             except IntegrityError:
                 exists += (line.patient_id,)
+            except DateException, (inst):
+                date_errors += (line.patient_id,)
             except:
                 errors += (line.patient_id,)
         if exists or errors:
-            return render_to_response('c1_error.html', {'exists': exists, 'errors': errors}, context_instance=RequestContext(request))
+            return render_to_response('c1_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c1_stat'))
     else:
         form = FileUploadForm()
@@ -108,16 +110,16 @@ def Statistics(request):
     agedenominator = [0,0,0]
     previousdenominator = [0,0]
     for case in countable_case:
-        age = calculate_age(case.date_of_birth)
+        age = calculate_age(case.date_of_birth, case.date_of_delivery)
         if age <= 20:
             agedenominator[0] += 1
         elif 20 < age < 35:
             agedenominator[1] += 1
         elif age >= 35:
             agedenominator[2] += 1
-        if case.number_of_prev_deliveries == 0:
+        if not case.number_of_prev_deliveries:
             previousdenominator[0] += 1
-        elif case.number_of_prev_deliveries >= 2:
+        elif case.number_of_prev_deliveries >= 1:
             previousdenominator[1] += 1
         if case.drg_code == "671A" or case.drg_code == "671B":
             numerator[0] += 1                                               #indicator 1

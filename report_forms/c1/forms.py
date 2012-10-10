@@ -8,9 +8,21 @@ class C1Form(ModelForm):
     date_of_birth     = forms.DateTimeField(label=_('Date of birth'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
     date_of_delivery  = forms.DateTimeField(label=_('Date and time of delivery'), widget=forms.TextInput(attrs={'class':'datetimepicker', 'placeholder':_('(yyyy-mm-dd hh:mm)')}))
 
+    def clean(self):
+        cleaned_data = super(C1Form, self).clean()
+        date_of_birth = cleaned_data.get("date_of_birth")
+        date_of_delivery = cleaned_data.get("date_of_delivery")
+        if date_of_birth > date_of_delivery:
+            self._errors["date_of_birth"] = self.error_class([_("Born after date of delivery!")])
+            self._errors["date_of_delivery"] = self.error_class([_("Born after date of delivery!")])
+            del cleaned_data["date_of_birth"]
+        return cleaned_data
+
     class Meta:
         model = c1
         exclude = ('added_by')
+
+
 
 class FileUploadForm(forms.Form):
     file  = forms.FileField()

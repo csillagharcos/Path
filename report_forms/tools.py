@@ -26,6 +26,11 @@ def parseFloat(integer):
     except ValueError:
         return None
 
+class DateException(Exception):
+    def __init__(self, value):
+        self.parameter = value
+    def __str__(self):
+        return repr(self.parameter)
 
 def csvDump(model, name = "excelfile"):
     response = HttpResponse(mimetype='text/csv')
