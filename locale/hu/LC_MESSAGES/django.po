@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-10 14:20+0200\n"
+"POT-Creation-Date: 2012-10-10 14:25+0200\n"
 "PO-Revision-Date: 2012-10-10 13:07\n"
 "Last-Translator:   <t@a.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1506,28 +1506,33 @@ msgstr "A beteg testtömege"
 
 #: report_forms/c21/views.py:286 report_forms/c23/views.py:286
 #: report_forms/c24/views.py:288
+#, fuzzy
 msgid "Time of surgical incision"
-msgstr "A műtéti bemetszés ideje"
+msgstr "A műtéti bemetszés időpontja"
 
 #: report_forms/c21/views.py:288 report_forms/c23/views.py:288
 #: report_forms/c24/views.py:290
+#, fuzzy
 msgid "Name of first dose"
-msgstr "Első hatóanyag neve"
+msgstr "Első dózis beadási ideje"
 
 #: report_forms/c21/views.py:289 report_forms/c23/views.py:289
 #: report_forms/c24/views.py:291
+#, fuzzy
 msgid "Name of second dose"
-msgstr "Második hatóanyag neve"
+msgstr "Második dózis"
 
 #: report_forms/c21/views.py:290 report_forms/c23/views.py:290
 #: report_forms/c24/views.py:292
+#, fuzzy
 msgid "Name of other dose"
-msgstr "Egyéb hatóanyag neve"
+msgstr "Utolsó dózis beadási ideje"
 
 #: report_forms/c21/views.py:291 report_forms/c23/views.py:291
 #: report_forms/c24/views.py:293
+#, fuzzy
 msgid "First dose"
-msgstr "Első dózis"
+msgstr "Első dózis beadási dátuma"
 
 #: report_forms/c21/views.py:292 report_forms/c23/views.py:292
 #: report_forms/c24/views.py:294
@@ -1612,28 +1617,28 @@ msgstr "I-V kritériumnak való megfelelőség:"
 #: report_forms/c21/templates/c21_statistics.html:63
 #: report_forms/c23/templates/c23_statistics.html:63
 #: report_forms/c24/templates/c24_statistics.html:63
-#, python-format
+#, fuzzy, python-format
 msgid "% of misuse:"
 msgstr "Téves alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:67
 #: report_forms/c23/templates/c23_statistics.html:67
 #: report_forms/c24/templates/c24_statistics.html:67
-#, python-format
+#, fuzzy, python-format
 msgid "% of overuse:"
 msgstr "Túlzott alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:71
 #: report_forms/c23/templates/c23_statistics.html:71
 #: report_forms/c24/templates/c24_statistics.html:71
-#, python-format
+#, fuzzy, python-format
 msgid "% of underuse:"
 msgstr "Hiányos alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:75
 #: report_forms/c23/templates/c23_statistics.html:75
 #: report_forms/c24/templates/c24_statistics.html:75
-#, python-format
+#, fuzzy, python-format
 msgid "% of single shot treatment:"
 msgstr "Egylövetű kezelés"
 
