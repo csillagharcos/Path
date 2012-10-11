@@ -32,8 +32,8 @@ class c20(models.Model):
         verbose_name_plural = _('AMI patients prescribed aspirin at discharge')
 
 class c20CSV(CsvModel):
-    patient_id                      = IntegerField()
-    case_id                         = IntegerField()
+    case_id                         = CharField()
+    hospital_registration_number    = CharField()
     date_of_birth                   = CharField()
     diagnosis_code                  = CharField()
     type_of_unit                    = CharField()
