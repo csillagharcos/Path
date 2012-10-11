@@ -22,7 +22,7 @@ def Display(request):
             new_c21 = c21.objects.create(
                 case_id                         = form.cleaned_data['case_id'],
                 hospital_registration_number    = form.cleaned_data['hospital_registration_number'],
-                date_of_birth                   = datetime.strptime(form.cleaned_data['date_of_birth'], "%Y-%m-%d"),
+                date_of_birth                   = form.cleaned_data['date_of_birth'],
                 weight_of_patient               = form.cleaned_data['weight_of_patient'],
                 principal_diagnoses_code        = form.cleaned_data['principal_diagnoses_code'],
                 principal_procedure_code        = form.cleaned_data['principal_procedure_code'],
@@ -32,7 +32,7 @@ def Display(request):
                 penicilin_allergy               = form.cleaned_data['penicilin_allergy'],
                 preoperative_infection          = form.cleaned_data['preoperative_infection'],
                 type_of_infection               = form.cleaned_data['type_of_infection'],
-                surgical_incision               = datetime.strptime(form.cleaned_data['surgical_incision'], "%Y-%m-%d %H:%M:%S"),
+                surgical_incision               = form.cleaned_data['surgical_incision'],
                 antibiotic_given                = form.cleaned_data['antibiotic_given'],
                 name_of_first_dose              = form.cleaned_data['name_of_first_dose'],
                 first_dose                      = form.cleaned_data['first_dose'],
@@ -41,20 +41,20 @@ def Display(request):
                 name_of_other_dose              = form.cleaned_data['name_of_other_dose'],
                 other_dose                      = form.cleaned_data['other_dose'],
                 route_of_admin                  = form.cleaned_data['route_of_admin'],
-                date_of_first_dose              = datetime.strptime(form.cleaned_data['date_of_first_dose'], "%Y-%m-%d %H:%M:%S"),
+                date_of_first_dose              = form.cleaned_data['date_of_first_dose'],
                 total_dose_in_24h               = form.cleaned_data['total_dose_in_24h'],
-                date_of_last_dose               = datetime.strptime(form.cleaned_data['date_of_last_dose'], "%Y-%m-%d %H:%M:%S"),
-                date_of_wound_close             = datetime.strptime(form.cleaned_data['date_of_wound_close'], "%Y-%m-%d %H:%M:%S"),
+                date_of_last_dose               = form.cleaned_data['date_of_last_dose'],
+                date_of_wound_close             = form.cleaned_data['date_of_wound_close'],
                 added_by                        = request.user,
             )
             new_c21.save()
             return render_to_response('c21_filled_out.html', {}, context_instance=RequestContext(request))
         else:
             form = C21Form(request.POST)
-            return render(request, 'c21.html', { 'form': form })
+            return render(request, 'c21.html', { 'form': form, 'medicines': Medicine.objects.all() })
 
     form = C21Form()
-    return render(request, 'c21.html', { 'form': form })
+    return render(request, 'c21.html', { 'form': form, 'medicines': Medicine.objects.all() })
 
 @login_required
 def Import(request):
@@ -69,10 +69,6 @@ def Import(request):
             return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
         for line in imported_csv:
             try:
-                try: first_dose_name = Medicine.objects.get(name = line.name_of_first_dose)
-                except ObjectDoesNotExist: first_dose_name = None
-                try: second_dose_name = Medicine.objects.get(name = line.name_of_second_dose)
-                except ObjectDoesNotExist: second_dose_name = None
                 try: si = datetime.strptime(line.surgical_incision+" "+line.surgical_incision_time, "%Y-%m-%d %H:%M")
                 except ValueError: si = None
                 try: dofd = datetime.strptime(line.date_of_first_dose+" "+line.time_of_first_dose, "%Y-%m-%d %H:%M")
@@ -105,8 +101,8 @@ def Import(request):
                     type_of_infection               = line.type_of_infection,
                     surgical_incision               = si,
                     antibiotic_given                = parseInt(line.antibiotic_given),
-                    name_of_first_dose              = first_dose_name,
-                    name_of_second_dose             = second_dose_name,
+                    name_of_first_dose              = line.name_of_first_dose,
+                    name_of_second_dose             = line.name_of_second_dose,
                     name_of_other_dose              = line.name_of_other_dose,
                     first_dose                      = parseFloat(line.first_dose),
                     second_dose                     = parseFloat(line.second_dose),
@@ -139,7 +135,9 @@ def Statistics(request):
     accepted_diagnose_codes = ("C18", "C19", "C20", "C20.0", "C20.1", "C20.2", "C20.8")
     countable_case=uncountable_case=()
     cases = c21.objects.all()
-    medicines = Medicine.objects.all()
+    medicines=()
+    for medicine in Medicine.objects.all():
+        medicines += (medicine.name,)
     for case in cases:
         if case.principal_diagnoses_code in accepted_diagnose_codes and case.procedure_planned and calculate_age(case.date_of_birth) >= 18 and not case.preoperative_infection and not case.generic_name_of_drug in medicines:
             countable_case += (case,)
@@ -160,13 +158,13 @@ def Statistics(request):
         except: second_med_doseUnder = -1
         #indicator one
         if case.name_of_first_dose in medicines and case.name_of_second_dose in medicines:
-            if (case.name_of_first_dose.name == "Cefazolin" or case.name_of_first_dose.name == "Cefotaxim" or case.name_of_first_dose.name == "Cefuroxim" or case.name_of_first_dose.name == "Ceftriaxon") and (case.name_of_second_dose.name == "Metronidazol" or case.name_of_second_dose.name == "Clindamycin"):
+            if (case.name_of_first_dose == "Cefazolin" or case.name_of_first_dose== "Cefotaxim" or case.name_of_first_dose== "Cefuroxim" or case.name_of_first_dose== "Ceftriaxon") and (case.name_of_second_dose== "Metronidazol" or case.name_of_second_dose== "Clindamycin"):
                 indicator_one += 1
                 indicator_tracker += 1
-            elif (case.name_of_second_dose.name == "Cefazolin" or case.name_of_second_dose.name == "Cefotaxim" or case.name_of_second_dose.name == "Cefuroxim" or case.name_of_second_dose.name == "Ceftriaxon") and (case.name_of_first_dose.name == "Metronidazol" or case.name_of_first_dose.name == "Clindamycin"):
+            elif (case.name_of_second_dose== "Cefazolin" or case.name_of_second_dose== "Cefotaxim" or case.name_of_second_dose== "Cefuroxim" or case.name_of_second_dose== "Ceftriaxon") and (case.name_of_first_dose== "Metronidazol" or case.name_of_first_dose== "Clindamycin"):
                 indicator_one += 1
                 indicator_tracker += 1
-            elif case.name_of_first_dose.name == "Ertapenem" or case.name_of_second_dose == "Ertapenem":
+            elif case.name_of_first_dose== "Ertapenem" or case.name_of_second_dose == "Ertapenem":
                 indicator_one += 1
                 indicator_tracker += 1
 
@@ -223,8 +221,6 @@ def Statistics(request):
         if case.date_of_first_dose == case.date_of_last_dose and case.total_dose_in_24h == case.first_dose + case.second_dose:
             indicator_nine += 1
 
-
-    print indicator_nine
     ''' Counting '''
     try: one = float(indicator_one) / len(countable_case) * 100
     except: one = 0

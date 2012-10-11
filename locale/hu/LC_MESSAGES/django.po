@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-10 14:25+0200\n"
-"PO-Revision-Date: 2012-10-10 13:07\n"
+"PO-Revision-Date: 2012-10-10 14:30\n"
 "Last-Translator:   <t@a.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Translated-Using: django-rosetta 0.6.8\n"
 
@@ -39,67 +39,16 @@ msgstr "Jelszó"
 msgid ""
 "\n"
 "        <p>Program: Eva Belicza Dr., Judit Lám Dr., Erika Takács</p>\n"
-"        <p>The PATH project by the World Health Organization Regional Office "
-"for Europe launched in 2003. The PATH to hospital quality improvement "
-"support benchmarking tools (Performance Assessment Tool for quality "
-"improvement in Hospitals), which helps hospitals work to assess the results, "
-"review, and to the results starting quality improvement activity to other "
-"hospitals the practical experience of using.</p>\n"
-"        <p>The PATH system goes beyond the traditional economic versus "
-"performance, clinical effectiveness of professional-type differentiation, "
-"and develop a comprehensive perspective, which includes both clinical "
-"effectiveness, efficiency, labor orientation of the reactive control, safety "
-"and patient centeredness. The PATH is not just a hospital performance "
-"measurement tools, but also focus on the interpretation of the results. The "
-"network within the hospital carried out a comparative analysis "
-"(benchmarking) will help the hospitals to learn about best practices. The "
-"PATH provides support for the initial stages of organizational benchmarking "
-"hospitals, sheltered environment for the measurement of culture.</p>\n"
-"        <p>The PATH provides four main components of the hospitals: a "
-"theoretical framework to evaluate performance, the necessary tools (such as "
-"indicators and guides), custom reports, and a national network. The first "
-"two components of the WHO Regional Office for Europe provides, while the "
-"latter two are adapted to local conditions in the country co-ordinators "
-"provide. The indicators include, for example, the current mortality rates, "
-"operating room utilization, employee smoking prevalence. In Hungary, the "
-"networking features direct contact with representatives of the participating "
-"hospitals, and two or three months of work under discussion, participants "
-"will discuss the data collection, processing and interpretation of results, "
-"dilemmas and experiences.</p></div>\n"
+"        <p>The PATH project by the World Health Organization Regional Office for Europe launched in 2003. The PATH to hospital quality improvement support benchmarking tools (Performance Assessment Tool for quality improvement in Hospitals), which helps hospitals work to assess the results, review, and to the results starting quality improvement activity to other hospitals the practical experience of using.</p>\n"
+"        <p>The PATH system goes beyond the traditional economic versus performance, clinical effectiveness of professional-type differentiation, and develop a comprehensive perspective, which includes both clinical effectiveness, efficiency, labor orientation of the reactive control, safety and patient centeredness. The PATH is not just a hospital performance measurement tools, but also focus on the interpretation of the results. The network within the hospital carried out a comparative analysis (benchmarking) will help the hospitals to learn about best practices. The PATH provides support for the initial stages of organizational benchmarking hospitals, sheltered environment for the measurement of culture.</p>\n"
+"        <p>The PATH provides four main components of the hospitals: a theoretical framework to evaluate performance, the necessary tools (such as indicators and guides), custom reports, and a national network. The first two components of the WHO Regional Office for Europe provides, while the latter two are adapted to local conditions in the country co-ordinators provide. The indicators include, for example, the current mortality rates, operating room utilization, employee smoking prevalence. In Hungary, the networking features direct contact with representatives of the participating hospitals, and two or three months of work under discussion, participants will discuss the data collection, processing and interpretation of results, dilemmas and experiences.</p></div>\n"
 "    "
 msgstr ""
 "\n"
 "<p>Programvezető: Dr. Belicza Éva, Dr. Lám Judit, Takács Erika</p>\n"
-"<p>A PATH projektet az Egészségügyi Világszervezet Európai Regionális "
-"Irodája indította el 2003-ban. A PATH a kórházi minőségfejlesztést támogató "
-"teljesítményértékelő eszközrendszer (Performance Assessment Tool for quality "
-"improvement in Hospitals), amely segítséget nyújt a kórházak számára a "
-"munkájuk értékeléséhez, az eredményeik felülvizsgálatához, és ahhoz, hogy az "
-"eredményekből kiindulva minőségfejlesztési tevékenységet végezzenek más "
-"kórházak gyakorlati tapasztalatait is felhasználva.</p>\n"
-"<p>A PATH rendszere túlmutat a hagyományos, gazdasági teljesítmény vs. "
-"klinikai eredményesség típusú szakmai felosztáson, és egy olyan átfogó "
-"nézőpontot alakít ki, amely egyaránt magában foglalja a klinikai "
-"eredményességet, a hatékonyságot, a munkaerő-orientáltságot, a reagáló "
-"irányítást, a biztonságot és a betegközpontúságot. A PATH nem csupán egy "
-"kórházi teljesítményt mérő eszközrendszer, hanem az eredmények értelmezésére "
-"is hangsúlyt helyez. A hálózaton belül működő kórházakkal végzett "
-"összehasonlító elemzés (benchmarking) révén segítséget nyújt a kórházaknak a "
-"legjobban bevált gyakorlat megismerésében. A PATH támogatást nyújt a "
-"szervezeti teljesítményértékelés bevezető szakaszában lévő kórházaknak, "
-"védett környezetet kínál a mérési kultúra kialakításához.</p>\n"
-"<p>A PATH négy főbb alkotóelemet kínál a kórházak számára: elméleti keretet "
-"a teljesítmény értékeléséhez, az ehhez szükséges eszközrendszert "
-"(indikátorok és kézikönyvek formájában), egyéni beszámolókat és egy nemzeti "
-"szintű hálózatot. Az első két alkotóelemet a WHO Európai Regionális Irodája "
-"nyújtja, míg az utóbbi kettőt a helyi viszonyokhoz igazítva az ország-"
-"koordinátorok szolgáltatják. A jelenlegi indikátorok között szerepelnek "
-"például halálozási arányok, műtőkihasználtság, dolgozói dohányzási "
-"prevalencia. A magyarországi hálózatépítésre a közvetlen kapcsolattartás "
-"jellemző a résztvevő kórházak képviselőivel, valamint két-három havonta "
-"munkamegbeszélés keretében a résztvevők megvitatják az adatgyűjtéssel, -"
-"feldolgozással és az eredmények értelmezésével kapcsolatos dilemmákat, "
-"tapasztalatokat.</p></div>"
+"<p>A PATH projektet az Egészségügyi Világszervezet Európai Regionális Irodája indította el 2003-ban. A PATH a kórházi minőségfejlesztést támogató teljesítményértékelő eszközrendszer (Performance Assessment Tool for quality improvement in Hospitals), amely segítséget nyújt a kórházak számára a munkájuk értékeléséhez, az eredményeik felülvizsgálatához, és ahhoz, hogy az eredményekből kiindulva minőségfejlesztési tevékenységet végezzenek más kórházak gyakorlati tapasztalatait is felhasználva.</p>\n"
+"<p>A PATH rendszere túlmutat a hagyományos, gazdasági teljesítmény vs. klinikai eredményesség típusú szakmai felosztáson, és egy olyan átfogó nézőpontot alakít ki, amely egyaránt magában foglalja a klinikai eredményességet, a hatékonyságot, a munkaerő-orientáltságot, a reagáló irányítást, a biztonságot és a betegközpontúságot. A PATH nem csupán egy kórházi teljesítményt mérő eszközrendszer, hanem az eredmények értelmezésére is hangsúlyt helyez. A hálózaton belül működő kórházakkal végzett összehasonlító elemzés (benchmarking) révén segítséget nyújt a kórházaknak a legjobban bevált gyakorlat megismerésében. A PATH támogatást nyújt a szervezeti teljesítményértékelés bevezető szakaszában lévő kórházaknak, védett környezetet kínál a mérési kultúra kialakításához.</p>\n"
+"<p>A PATH négy főbb alkotóelemet kínál a kórházak számára: elméleti keretet a teljesítmény értékeléséhez, az ehhez szükséges eszközrendszert (indikátorok és kézikönyvek formájában), egyéni beszámolókat és egy nemzeti szintű hálózatot. Az első két alkotóelemet a WHO Európai Regionális Irodája nyújtja, míg az utóbbi kettőt a helyi viszonyokhoz igazítva az ország-koordinátorok szolgáltatják. A jelenlegi indikátorok között szerepelnek például halálozási arányok, műtőkihasználtság, dolgozói dohányzási prevalencia. A magyarországi hálózatépítésre a közvetlen kapcsolattartás jellemző a résztvevő kórházak képviselőivel, valamint két-három havonta munkamegbeszélés keretében a résztvevők megvitatják az adatgyűjtéssel, -feldolgozással és az eredmények értelmezésével kapcsolatos dilemmákat, tapasztalatokat.</p></div>"
 
 #: pathstatic/templates/index.html:11
 msgid "PATH international website"
@@ -452,8 +401,8 @@ msgstr "Újszülött súlya (g)"
 #: report_forms/c1/models.py:31 report_forms/c1/views.py:200
 msgid "Mother illnes or risk"
 msgstr ""
-"Van-e az anyának olyan betegsége, kockázata, amely esetében a hüvelyi szülés "
-"súlyos állapotromlást idézett volna elő (testi deformitás, súlyos "
+"Van-e az anyának olyan betegsége, kockázata, amely esetében a hüvelyi szülés"
+" súlyos állapotromlást idézett volna elő (testi deformitás, súlyos "
 "belgyógyászati kórkép, placenta preavia, retina leválás kockázata stb…)?"
 
 #: report_forms/c1/models.py:32 report_forms/c1/views.py:201
@@ -1141,8 +1090,8 @@ msgstr ""
 
 #: report_forms/c13/models.py:29 report_forms/c13/views.py:76
 msgid ""
-"Total number of contracted working hours for the data at the end of the "
-"year /day(employee+ entrepreneur)"
+"Total number of contracted working hours for the data at the end of the year"
+" /day(employee+ entrepreneur)"
 msgstr ""
 "az év végi adatban megadott dolgozói létszámhoz tartozó szerződött napi "
 "óraszám (alkalmazott+vállalkozó)"
@@ -1353,15 +1302,13 @@ msgstr "Első hatóanyag első dózisa"
 
 #: report_forms/c21/forms.py:19 report_forms/c23/forms.py:20
 #: report_forms/c24/forms.py:20
-#, fuzzy
 msgid "Second dose of first antibiotic drug"
-msgstr "Első hatóanyag első dózisa"
+msgstr "Második hatóanyag első dózisa"
 
 #: report_forms/c21/forms.py:20 report_forms/c23/forms.py:21
 #: report_forms/c24/forms.py:21
-#, fuzzy
 msgid "Other dose of first antibiotic drug"
-msgstr "Első hatóanyag első dózisa"
+msgstr "Egyéb hatóanyag első dózisa"
 
 #: report_forms/c21/forms.py:21 report_forms/c21/models.py:46
 #: report_forms/c21/views.py:297 report_forms/c23/forms.py:22
@@ -1384,9 +1331,8 @@ msgstr "Az utolsó dózis beadása az első dózis beadása előtt történt!"
 #: report_forms/c23/forms.py:39 report_forms/c23/views.py:88
 #: report_forms/c24/forms.py:38 report_forms/c24/forms.py:39
 #: report_forms/c24/views.py:87
-#, fuzzy
 msgid "Can't close the wound before the incision!"
-msgstr "Nem operálhatták meg, felvétel előtt!"
+msgstr "Nem zárhatták be a sebet, műtés előtt!"
 
 #: report_forms/c21/models.py:11 report_forms/c23/models.py:12
 #: report_forms/c24/models.py:11
@@ -1506,33 +1452,28 @@ msgstr "A beteg testtömege"
 
 #: report_forms/c21/views.py:286 report_forms/c23/views.py:286
 #: report_forms/c24/views.py:288
-#, fuzzy
 msgid "Time of surgical incision"
 msgstr "A műtéti bemetszés időpontja"
 
 #: report_forms/c21/views.py:288 report_forms/c23/views.py:288
 #: report_forms/c24/views.py:290
-#, fuzzy
 msgid "Name of first dose"
-msgstr "Első dózis beadási ideje"
+msgstr "Első dózis neve"
 
 #: report_forms/c21/views.py:289 report_forms/c23/views.py:289
 #: report_forms/c24/views.py:291
-#, fuzzy
 msgid "Name of second dose"
-msgstr "Második dózis"
+msgstr "Második dózis neve"
 
 #: report_forms/c21/views.py:290 report_forms/c23/views.py:290
 #: report_forms/c24/views.py:292
-#, fuzzy
 msgid "Name of other dose"
-msgstr "Utolsó dózis beadási ideje"
+msgstr "Egyéb dózis neve"
 
 #: report_forms/c21/views.py:291 report_forms/c23/views.py:291
 #: report_forms/c24/views.py:293
-#, fuzzy
 msgid "First dose"
-msgstr "Első dózis beadási dátuma"
+msgstr "Első dózis"
 
 #: report_forms/c21/views.py:292 report_forms/c23/views.py:292
 #: report_forms/c24/views.py:294
@@ -1617,28 +1558,28 @@ msgstr "I-V kritériumnak való megfelelőség:"
 #: report_forms/c21/templates/c21_statistics.html:63
 #: report_forms/c23/templates/c23_statistics.html:63
 #: report_forms/c24/templates/c24_statistics.html:63
-#, fuzzy, python-format
+#, python-format
 msgid "% of misuse:"
 msgstr "Téves alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:67
 #: report_forms/c23/templates/c23_statistics.html:67
 #: report_forms/c24/templates/c24_statistics.html:67
-#, fuzzy, python-format
+#, python-format
 msgid "% of overuse:"
 msgstr "Túlzott alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:71
 #: report_forms/c23/templates/c23_statistics.html:71
 #: report_forms/c24/templates/c24_statistics.html:71
-#, fuzzy, python-format
+#, python-format
 msgid "% of underuse:"
 msgstr "Hiányos alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:75
 #: report_forms/c23/templates/c23_statistics.html:75
 #: report_forms/c24/templates/c24_statistics.html:75
-#, fuzzy, python-format
+#, python-format
 msgid "% of single shot treatment:"
 msgstr "Egylövetű kezelés"
 
@@ -1846,7 +1787,8 @@ msgid ""
 msgstr "Átlag ápolási idő az első műtéti beavatkozástól az elbocsátásig"
 
 #: report_forms/c8/templates/c8_statistics.html:53
-msgid "Median length of stay from the first surgical procedure until discharge"
+msgid ""
+"Median length of stay from the first surgical procedure until discharge"
 msgstr "Medián ápolási idő az első műtéti beavatkozástól az elbocsátásig"
 
 #: report_forms/r1/forms.py:8 report_forms/r1/models.py:16
@@ -1900,7 +1842,8 @@ msgstr "ASIA impairment score felmérés ideje"
 #: report_forms/r1/models.py:39 report_forms/r1/models.py:74
 #: report_forms/r1/views.py:330 report_forms/r1/views.py:365
 msgid ""
-"Standard neurological classification of spinal cord injury date of assessment"
+"Standard neurological classification of spinal cord injury date of "
+"assessment"
 msgstr ""
 "Standard neurological classification of spinal cord injury felmérés ideje"
 
@@ -2103,8 +2046,8 @@ msgstr ""
 #: report_forms/r1/templates/r1_statistics.html:30
 msgid ""
 "Percentage of patients who have documented functional assessment at "
-"admission to an inpatient unit for rehabilitation program within 48 hours of "
-"admission"
+"admission to an inpatient unit for rehabilitation program within 48 hours of"
+" admission"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon a felvételt követő 48 órán belül megtörtént"
@@ -2112,8 +2055,8 @@ msgstr ""
 #: report_forms/r1/templates/r1_statistics.html:34
 msgid ""
 "Percentage of patients who have documented functional assessment at "
-"admission to an inpatient unit for rehabilitation program within 72 hours of "
-"admission"
+"admission to an inpatient unit for rehabilitation program within 72 hours of"
+" admission"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon a felvételt követő 72 napon belül megtörtént"
@@ -2124,24 +2067,24 @@ msgstr "Funkcionális állapotfelmérés elbocsájtás előtt"
 
 #: report_forms/r1/templates/r1_statistics.html:44
 msgid ""
-"Percentage of patients who have documented evidence of functional assessment "
-"in 3 days prior to discharge"
+"Percentage of patients who have documented evidence of functional assessment"
+" in 3 days prior to discharge"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon az elbocsájtást megelőző 3 napon belül megtörtént"
 
 #: report_forms/r1/templates/r1_statistics.html:48
 msgid ""
-"Percentage of patients who have documented evidence of functional assessment "
-"in 1 days prior to discharge"
+"Percentage of patients who have documented evidence of functional assessment"
+" in 1 days prior to discharge"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon az elbocsájtást megelőző 1 napon belül megtörtént"
 
 #: report_forms/r1/templates/r1_statistics.html:52
 msgid ""
-"Percentage of patients who have documented evidence of functional assessment "
-"in 2 days prior to discharge"
+"Percentage of patients who have documented evidence of functional assessment"
+" in 2 days prior to discharge"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon az elbocsájtást megelőző 2 napon belül megtörtént"
@@ -2155,7 +2098,8 @@ msgid ""
 "Percentage of those patients whose rehabilitation program interrupted "
 "unexpectedly"
 msgstr ""
-"Azon betegek aránya, akiknek a rehabilitációs programja váratlanul megszakadt"
+"Azon betegek aránya, akiknek a rehabilitációs programja váratlanul "
+"megszakadt"
 
 #: report_forms/r1/templates/r1_statistics.html:66
 msgid ""
@@ -2227,8 +2171,7 @@ msgstr "Egyetemek"
 #~ msgid ""
 #~ "Standard neurological classification of spinal cord injury  value/score"
 #~ msgstr ""
-#~ "Standard neurological classification of spinal cord injury eredmény/"
-#~ "pontszám"
+#~ "Standard neurological classification of spinal cord injury eredmény/pontszám"
 
 #~ msgid "Logo for the Path project"
 #~ msgstr "Path project logója"

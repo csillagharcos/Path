@@ -16,11 +16,21 @@
         </table>
     </div>
 {% endblock header %}
-
 {% block js %}
     <script src="{{ STATIC_URL }}js/jquery.tooltip.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+            var MedicineOptions = [
+                {% for medicine in medicines %}
+                    "{{ medicine }}"{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            ]
+            $("#id_name_of_first_dose").autocomplete({
+                source: MedicineOptions
+            })
+            $("#id_name_of_second_dose").autocomplete({
+                source: MedicineOptions
+            })
             $(".jq_tool").tooltip()
             hideElements($('#id_antibiotic_given'), 'tr:nth-last-child(1)')
             showNextTwo($('#id_patient_allergy'))
