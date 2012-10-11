@@ -13,12 +13,64 @@ class hungarianJoblist(ModelChoiceField):
 
 class C13Form(ModelForm):
     job =   englishJoblist(queryset=joblist.objects.all(), label=_('Job'))
+
+    def clean(self):
+        cleaned_data = super(C13Form, self).clean()
+        staff_beginning = cleaned_data.get("staff_beginning")
+        staff_end = cleaned_data.get("staff_end")
+        working_hours_beginning = cleaned_data.get("working_hours_beginning")
+        working_hours_end = cleaned_data.get("working_hours_end")
+
+        if not staff_beginning:
+            self._errors["staff_beginning"] = self.error_class([_("Can't be zero!")])
+            del cleaned_data["staff_beginning"]
+
+        if not staff_end:
+            self._errors["staff_end"] = self.error_class([_("Can't be zero!")])
+            del cleaned_data["staff_end"]
+
+        if not working_hours_beginning:
+            self._errors["working_hours_beginning"] = self.error_class([_("Can't be zero!")])
+            del cleaned_data["working_hours_beginning"]
+
+        if not working_hours_end:
+            self._errors["working_hours_end"] = self.error_class([_("Can't be zero!")])
+            del cleaned_data["working_hours_end"]
+
+        return cleaned_data
+
     class Meta:
         model = c13
         exclude = ('added_by')
 
 class C13Form_hungarian(ModelForm):
     job =   hungarianJoblist(queryset=joblist.objects.all(), label=_('Job'))
+
+    def clean(self):
+        cleaned_data = super(C13Form, self).clean()
+        staff_beginning = cleaned_data.get("staff_beginning")
+        staff_end = cleaned_data.get("staff_end")
+        working_hours_beginning = cleaned_data.get("working_hours_beginning")
+        working_hours_end = cleaned_data.get("working_hours_end")
+
+        if not staff_beginning:
+            self._errors["staff_beginning"] = self.error_class([_("Can't be zero!")])
+            del cleaned_data["staff_beginning"]
+
+        if not staff_end:
+            self._errors["staff_end"] = self.error_class([_("Can't be zero!")])
+            del cleaned_data["staff_end"]
+
+        if not working_hours_beginning:
+            self._errors["working_hours_beginning"] = self.error_class([_("Can't be zero!")])
+            del cleaned_data["working_hours_beginning"]
+
+        if not working_hours_end:
+            self._errors["working_hours_end"] = self.error_class([_("Can't be zero!")])
+            del cleaned_data["working_hours_end"]
+
+        return cleaned_data
+
     class Meta:
         model = c13
         exclude = ('added_by')

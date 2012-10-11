@@ -32,8 +32,8 @@ class c8(models.Model):
         verbose_name_plural = _('Length of Stays')
 
 class c8CSV(CsvModel):
-    patient_id                      = IntegerField()
-    case_id                         = IntegerField()
+    patient_id                      = CharField()
+    case_id                         = CharField()
     date_of_birth                   = CharField()
     date_of_admission               = CharField()
     patient_admission_status        = CharField()

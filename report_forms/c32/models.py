@@ -27,8 +27,8 @@ class c32(models.Model):
         verbose_name_plural = _('30-day in-hospital mortality of patients admitted with Stroke')
 
 class c32CSV(CsvModel):
-    patient_id                      = IntegerField()
-    case_id                         = IntegerField()
+    patient_id                      = CharField()
+    case_id                         = CharField()
     date_of_birth                   = CharField()
     date_of_admission               = CharField()
     patient_admission_status        = CharField()

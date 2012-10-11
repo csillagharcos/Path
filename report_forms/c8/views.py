@@ -11,7 +11,7 @@ from django.utils import simplejson
 from report_forms.c8.forms import C8Form, FileUploadForm
 from report_forms.c8.models import c8, c8CSV
 from django.utils.translation import ugettext_lazy as _
-from report_forms.tools import parseInt, csvDump, calculate_age, median
+from report_forms.tools import parseInt, csvDump, calculate_age, median, DateException
 
 @login_required
 def Display(request):
@@ -46,25 +46,42 @@ def Display(request):
 @login_required
 def Import(request):
     if request.method == "POST":
+        date_errors=exists=errors=()
+        first = True
         try:
             csv_file = request.FILES['file']
             imported_csv = c8CSV.import_data(data=csv_file)
-        except UnicodeDecodeError:
-            return render_to_response('error.html', {"message": _("You probably forgot to delete the first row of the csv file, please recheck.") }, context_instance=RequestContext(request))
         except CsvDataException:
             return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
         for line in imported_csv:
+            if first:
+                first = False
+                continue
             try:
+                try: dob = datetime.strptime(line.date_of_birth, "%Y-%m-%d")
+                except: dob = None
+                try: doa = datetime.strptime(line.date_of_admission, "%Y-%m-%d")
+                except: doa = None
+                try: dosp = datetime.strptime(line.date_of_surgical_procedure, "%Y-%m-%d")
+                except: dosp = None
+                try: dod = datetime.strptime(line.date_of_discharge, "%Y-%m-%d")
+                except: dod = None
+                if dob > doa:
+                    raise DateException(_("Can't be born after admission!"))
+                if dosp < doa:
+                    raise DateException(_("Can't be operated before admission!"))
+                if dosp > dod:
+                    raise DateException(_("Can't be operated after discharge!"))
                 new_c8 = c8.objects.create(
                                             patient_id                      = parseInt(line.patient_id),
                                             case_id                         = parseInt(line.case_id),
-                                            date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
-                                            date_of_admission               = datetime.strptime(line.date_of_admission, "%Y-%m-%d"),
+                                            date_of_birth                   = dob,
+                                            date_of_admission               = doa,
                                             patient_admission_status        = parseInt(line.patient_admission_status),
                                             type_of_admission               = parseInt(line.type_of_admission),
                                             was_surgical_procedure          = parseInt(line.was_surgical_procedure),
-                                            date_of_surgical_procedure      = datetime.strptime(line.date_of_surgical_procedure, "%Y-%m-%d"),
-                                            date_of_discharge               = datetime.strptime(line.date_of_discharge, "%Y-%m-%d"),
+                                            date_of_surgical_procedure      = dosp,
+                                            date_of_discharge               = dod,
                                             patient_discharge_status        = parseInt(line.patient_discharge_status),
                                             diagnosis_group                 = parseInt(line.diagnosis_group),
                                             icd                             = line.icd,
@@ -73,7 +90,13 @@ def Import(request):
                 )
                 new_c8.save()
             except IntegrityError:
-                pass
+                exists += (line.patient_id,)
+            except DateException, (inst):
+                date_errors += (line.patient_id,)
+            except:
+                errors += (line.patient_id,)
+        if exists or errors:
+            return render_to_response('c8_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c8_stat'))
     else:
         form = FileUploadForm()

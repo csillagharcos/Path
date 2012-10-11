@@ -59,6 +59,10 @@ def Import(request):
                 first = False
                 continue
             try:
+                if datetime.strptime(line.date_of_birth, "%Y-%m-%d") > datetime.strptime(line.date_of_discharge, "%Y-%m-%d"):
+                    raise DateException(_("Can't born after discharge!"))
+                if parseInt(line.patient_allergic_aspirin) and not parseInt(line.aspirin_intolerance):
+                    raise DateException(_("Aspirin contradiction should be yes, since patient is allergic to aspirin!"))
                 new_c20 = c20.objects.create(
                                             case_id                         = parseInt(line.case_id),
                                             hospital_registration_number    = parseInt(line.hospital_registration_number),
@@ -80,10 +84,10 @@ def Import(request):
                 exists += (line.patient_id,)
             except DateException, (inst):
                 date_errors += (line.patient_id,)
-#            except:
-#                errors += (line.patient_id,)
+            except:
+                errors += (line.patient_id,)
         if exists or errors:
-            return render_to_response('c1_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
+            return render_to_response('c20_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c20_stat'))
     else:
         form = FileUploadForm()

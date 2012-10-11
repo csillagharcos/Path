@@ -11,7 +11,7 @@ from django.utils import simplejson
 from report_forms.c32.forms import C32Form, FileUploadForm
 from report_forms.c32.models import c32, c32CSV
 from django.utils.translation import ugettext_lazy as _
-from report_forms.tools import calculate_age, parseInt, csvDump
+from report_forms.tools import calculate_age, parseInt, csvDump, DateException
 
 @login_required
 def Display(request):
@@ -41,14 +41,21 @@ def Display(request):
 @login_required
 def Import(request):
     if request.method == "POST":
+        date_errors=exists=errors=()
+        first = True
         try:
             csv_file = request.FILES['file']
             imported_csv = c32CSV.import_data(data=csv_file)
-        except UnicodeDecodeError:
-            return render_to_response('error.html', {"message": _("You probably forgot to delete the first row of the csv file, please recheck.") }, context_instance=RequestContext(request))
         except CsvDataException:
             return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
         for line in imported_csv:
+            if first:
+                first = False
+                continue
+            if datetime.strptime(line.date_of_birth, "%Y-%m-%d") > datetime.strptime(line.date_of_admission, "%Y-%m-%d"):
+                raise DateException(_("Can't be born after admission!"))
+            if datetime.strptime(line.date_of_discharge, "%Y-%m-%d") < datetime.strptime(line.date_of_admission, "%Y-%m-%d"):
+                raise DateException(_("Can't be discharged before admission!!"))
             try:
                 new_c32 = c32.objects.create(
                                             patient_id                      = parseInt(line.patient_id),
@@ -63,7 +70,13 @@ def Import(request):
                 )
                 new_c32.save()
             except IntegrityError:
-                pass
+                exists += (line.patient_id,)
+            except DateException, (inst):
+                date_errors += (line.patient_id,)
+            except:
+                errors += (line.patient_id,)
+        if exists or errors:
+            return render_to_response('c32_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c32_stat'))
     else:
         form = FileUploadForm()
