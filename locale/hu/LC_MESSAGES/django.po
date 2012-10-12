@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-10 14:25+0200\n"
-"PO-Revision-Date: 2012-10-10 14:30\n"
-"Last-Translator:   <t@a.com>\n"
+"POT-Creation-Date: 2012-10-12 13:34+0200\n"
+"PO-Revision-Date: 2012-10-12 13:34\n"
+"Last-Translator: Richard Hajdu <richard.hajdu@webdevil.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,8 +64,8 @@ msgstr "Bejelentkezés"
 
 #: personel/models.py:9 report_forms/c1/models.py:36
 #: report_forms/c13/models.py:31 report_forms/c20/models.py:25
-#: report_forms/c21/models.py:50 report_forms/c23/models.py:52
-#: report_forms/c24/models.py:50 report_forms/c31/models.py:20
+#: report_forms/c21/models.py:48 report_forms/c23/models.py:50
+#: report_forms/c24/models.py:48 report_forms/c31/models.py:20
 #: report_forms/c32/models.py:20 report_forms/c8/models.py:25
 #: report_forms/r1/models.py:84
 msgid "User"
@@ -178,47 +178,47 @@ msgid "Emergency care"
 msgstr "Egyéb sürgősségi ellátás"
 
 #: report_forms/choices.py:106 report_forms/choices.py:119
-#: report_forms/c8/views.py:323
+#: report_forms/c8/views.py:346
 msgid "Stroke"
 msgstr "Stroke"
 
 #: report_forms/choices.py:107 report_forms/choices.py:125
-#: report_forms/c8/views.py:324
+#: report_forms/c8/views.py:347
 msgid "Hospital acquired pneumonia"
 msgstr "Közösségben szerzett tüdőgyulladás"
 
 #: report_forms/choices.py:108 report_forms/choices.py:132
-#: report_forms/c8/views.py:325
+#: report_forms/c8/views.py:348
 msgid "Hip fracture"
 msgstr "Combnyaktörés"
 
 #: report_forms/choices.py:109 report_forms/choices.py:144
-#: report_forms/c8/views.py:326
+#: report_forms/c8/views.py:349
 msgid "CABG"
 msgstr "Bypass (CABG)"
 
 #: report_forms/choices.py:110 report_forms/choices.py:153
-#: report_forms/c8/views.py:327
+#: report_forms/c8/views.py:350
 msgid "Knee arthroscopy"
 msgstr "Térd artroszkópia"
 
 #: report_forms/choices.py:111 report_forms/choices.py:137
-#: report_forms/choices.py:157 report_forms/c8/views.py:328
+#: report_forms/choices.py:157 report_forms/c8/views.py:351
 msgid "Inguinal hernia"
 msgstr "Lágyéksérv"
 
 #: report_forms/choices.py:112 report_forms/choices.py:162
-#: report_forms/c8/views.py:329
+#: report_forms/c8/views.py:352
 msgid "Tonsillectomy and/or adenoidectomy"
 msgstr "Mandula és/vagy orrmandula mütét"
 
 #: report_forms/choices.py:113 report_forms/choices.py:165
-#: report_forms/c8/views.py:330
+#: report_forms/c8/views.py:353
 msgid "Cholecystectomy"
 msgstr "Epehólyag-eltávolítás"
 
 #: report_forms/choices.py:114 report_forms/choices.py:170
-#: report_forms/c8/views.py:331
+#: report_forms/c8/views.py:354
 msgid "Varicose veins - stripping and ligation"
 msgstr "Visszér-műtét - lehántolás és lekötés"
 
@@ -297,16 +297,16 @@ msgstr "Egyéb diagnózisok"
 
 #: report_forms/c1/forms.py:8 report_forms/c1/models.py:25
 #: report_forms/c1/views.py:193 report_forms/c20/forms.py:7
-#: report_forms/c20/models.py:13 report_forms/c20/views.py:138
+#: report_forms/c20/models.py:13 report_forms/c20/views.py:151
 #: report_forms/c21/forms.py:14 report_forms/c21/models.py:26
-#: report_forms/c21/views.py:275 report_forms/c23/forms.py:15
-#: report_forms/c23/models.py:27 report_forms/c23/views.py:274
+#: report_forms/c21/views.py:271 report_forms/c23/forms.py:15
+#: report_forms/c23/models.py:27 report_forms/c23/views.py:272
 #: report_forms/c24/forms.py:15 report_forms/c24/models.py:26
-#: report_forms/c24/views.py:277 report_forms/c31/forms.py:7
-#: report_forms/c31/models.py:13 report_forms/c31/views.py:121
+#: report_forms/c24/views.py:275 report_forms/c31/forms.py:7
+#: report_forms/c31/models.py:13 report_forms/c31/views.py:134
 #: report_forms/c32/forms.py:7 report_forms/c32/models.py:13
-#: report_forms/c32/views.py:120 report_forms/c8/forms.py:7
-#: report_forms/c8/models.py:13 report_forms/c8/views.py:347
+#: report_forms/c32/views.py:133 report_forms/c8/forms.py:7
+#: report_forms/c8/models.py:13 report_forms/c8/views.py:370
 #: report_forms/r1/forms.py:7 report_forms/r1/models.py:13
 #: report_forms/r1/views.py:304
 msgid "Date of birth"
@@ -363,21 +363,25 @@ msgid "Other Diagnoses"
 msgstr "Egyéb Diagnózisok"
 
 #: report_forms/c1/models.py:23 report_forms/c1/views.py:191
-#: report_forms/c31/models.py:11 report_forms/c31/views.py:119
-#: report_forms/c32/models.py:11 report_forms/c32/views.py:118
-#: report_forms/c8/models.py:11 report_forms/c8/views.py:345
+#: report_forms/c31/models.py:11 report_forms/c31/views.py:132
+#: report_forms/c32/models.py:11 report_forms/c32/views.py:131
+#: report_forms/c8/models.py:11 report_forms/c8/views.py:368
 #: report_forms/r1/models.py:11 report_forms/r1/views.py:302
 msgid "Patients ID"
 msgstr "Betegazonosító"
 
 #: report_forms/c1/models.py:24 report_forms/c1/views.py:192
-#: report_forms/c20/models.py:11 report_forms/c20/views.py:136
-#: report_forms/c21/models.py:24 report_forms/c21/views.py:273
-#: report_forms/c23/models.py:25 report_forms/c23/views.py:272
-#: report_forms/c24/models.py:24 report_forms/c24/views.py:275
-#: report_forms/c31/models.py:12 report_forms/c31/views.py:120
-#: report_forms/c32/models.py:12 report_forms/c32/views.py:119
-#: report_forms/c8/models.py:12 report_forms/c8/views.py:346
+#: report_forms/c1/templates/c1_error.html:44 report_forms/c20/models.py:11
+#: report_forms/c20/views.py:149 report_forms/c20/templates/c20_error.html:43
+#: report_forms/c21/models.py:24 report_forms/c21/views.py:269
+#: report_forms/c21/templates/c21_error.html:43 report_forms/c23/models.py:25
+#: report_forms/c23/views.py:270 report_forms/c23/templates/c23_error.html:43
+#: report_forms/c24/models.py:24 report_forms/c24/views.py:273
+#: report_forms/c24/templates/c24_error.html:43 report_forms/c31/models.py:12
+#: report_forms/c31/views.py:133 report_forms/c31/templates/c31_error.html:43
+#: report_forms/c32/models.py:12 report_forms/c32/views.py:132
+#: report_forms/c32/templates/c32_error.html:43 report_forms/c8/models.py:12
+#: report_forms/c8/views.py:369 report_forms/c8/templates/c8_error.html:43
 #: report_forms/r1/models.py:12 report_forms/r1/views.py:303
 msgid "Case ID"
 msgstr "Esetazonosító"
@@ -422,8 +426,8 @@ msgid "C-Section Rates"
 msgstr "Császármetszés arányok"
 
 #: report_forms/c1/views.py:52 report_forms/c20/views.py:56
-#: report_forms/c21/views.py:69 report_forms/c23/views.py:70
-#: report_forms/c24/views.py:69 report_forms/c31/views.py:51
+#: report_forms/c21/views.py:68 report_forms/c23/views.py:69
+#: report_forms/c24/views.py:68 report_forms/c31/views.py:51
 #: report_forms/c32/views.py:50 report_forms/c8/views.py:55
 #: report_forms/r1/views.py:114
 msgid "You are not using the Template csv. The number of fields is different."
@@ -461,6 +465,7 @@ msgstr "C.1. Császármetszések aránya"
 #: report_forms/c13/templates/c13_filled_out.html:8
 #: report_forms/c13/templates/c13_statistics.html:8
 #: report_forms/c20/templates/c20.html:8
+#: report_forms/c20/templates/c20_error.html:7
 #: report_forms/c20/templates/c20_file_upload.html:7
 #: report_forms/c20/templates/c20_filled_out.html:7
 #: report_forms/c20/templates/c20_statistics.html:7
@@ -480,14 +485,17 @@ msgstr "C.1. Császármetszések aránya"
 #: report_forms/c24/templates/c24_filled_out.html:7
 #: report_forms/c24/templates/c24_statistics.html:7
 #: report_forms/c31/templates/c31.html:7
+#: report_forms/c31/templates/c31_error.html:7
 #: report_forms/c31/templates/c31_file_upload.html:7
 #: report_forms/c31/templates/c31_filled_out.html:7
 #: report_forms/c31/templates/c31_statistics.html:7
 #: report_forms/c32/templates/c32.html:7
+#: report_forms/c32/templates/c32_error.html:7
 #: report_forms/c32/templates/c32_file_upload.html:7
 #: report_forms/c32/templates/c32_filled_out.html:7
 #: report_forms/c32/templates/c32_statistics.html:7
 #: report_forms/c8/templates/c8.html:7
+#: report_forms/c8/templates/c8_error.html:7
 #: report_forms/c8/templates/c8_file_upload.html:7
 #: report_forms/c8/templates/c8_filled_out.html:7
 #: report_forms/c8/templates/c8_statistics.html:7
@@ -507,6 +515,7 @@ msgstr "Jelentési lapok"
 #: report_forms/c13/templates/c13_filled_out.html:9
 #: report_forms/c13/templates/c13_statistics.html:9
 #: report_forms/c20/templates/c20.html:9
+#: report_forms/c20/templates/c20_error.html:8
 #: report_forms/c20/templates/c20_file_upload.html:8
 #: report_forms/c20/templates/c20_filled_out.html:8
 #: report_forms/c20/templates/c20_statistics.html:8
@@ -526,14 +535,17 @@ msgstr "Jelentési lapok"
 #: report_forms/c24/templates/c24_filled_out.html:8
 #: report_forms/c24/templates/c24_statistics.html:8
 #: report_forms/c31/templates/c31.html:8
+#: report_forms/c31/templates/c31_error.html:8
 #: report_forms/c31/templates/c31_file_upload.html:8
 #: report_forms/c31/templates/c31_filled_out.html:8
 #: report_forms/c31/templates/c31_statistics.html:8
 #: report_forms/c32/templates/c32.html:8
+#: report_forms/c32/templates/c32_error.html:8
 #: report_forms/c32/templates/c32_file_upload.html:8
 #: report_forms/c32/templates/c32_filled_out.html:8
 #: report_forms/c32/templates/c32_statistics.html:8
 #: report_forms/c8/templates/c8.html:8
+#: report_forms/c8/templates/c8_error.html:8
 #: report_forms/c8/templates/c8_file_upload.html:8
 #: report_forms/c8/templates/c8_filled_out.html:8
 #: report_forms/c8/templates/c8_statistics.html:8
@@ -564,6 +576,7 @@ msgstr "Űrlap"
 #: report_forms/c13/templates/c13_filled_out.html:10
 #: report_forms/c13/templates/c13_statistics.html:10
 #: report_forms/c20/templates/c20.html:10
+#: report_forms/c20/templates/c20_error.html:9
 #: report_forms/c20/templates/c20_file_upload.html:9
 #: report_forms/c20/templates/c20_filled_out.html:9
 #: report_forms/c20/templates/c20_statistics.html:9
@@ -583,14 +596,17 @@ msgstr "Űrlap"
 #: report_forms/c24/templates/c24_filled_out.html:9
 #: report_forms/c24/templates/c24_statistics.html:9
 #: report_forms/c31/templates/c31.html:9
+#: report_forms/c31/templates/c31_error.html:9
 #: report_forms/c31/templates/c31_file_upload.html:9
 #: report_forms/c31/templates/c31_filled_out.html:9
 #: report_forms/c31/templates/c31_statistics.html:9
 #: report_forms/c32/templates/c32.html:9
+#: report_forms/c32/templates/c32_error.html:9
 #: report_forms/c32/templates/c32_file_upload.html:9
 #: report_forms/c32/templates/c32_filled_out.html:9
 #: report_forms/c32/templates/c32_statistics.html:9
 #: report_forms/c8/templates/c8.html:9
+#: report_forms/c8/templates/c8_error.html:9
 #: report_forms/c8/templates/c8_file_upload.html:9
 #: report_forms/c8/templates/c8_filled_out.html:9
 #: report_forms/c8/templates/c8_statistics.html:9
@@ -621,6 +637,7 @@ msgstr "Statisztika"
 #: report_forms/c13/templates/c13_filled_out.html:11
 #: report_forms/c13/templates/c13_statistics.html:11
 #: report_forms/c20/templates/c20.html:11
+#: report_forms/c20/templates/c20_error.html:10
 #: report_forms/c20/templates/c20_file_upload.html:10
 #: report_forms/c20/templates/c20_filled_out.html:10
 #: report_forms/c20/templates/c20_statistics.html:10
@@ -640,14 +657,17 @@ msgstr "Statisztika"
 #: report_forms/c24/templates/c24_filled_out.html:10
 #: report_forms/c24/templates/c24_statistics.html:10
 #: report_forms/c31/templates/c31.html:10
+#: report_forms/c31/templates/c31_error.html:10
 #: report_forms/c31/templates/c31_file_upload.html:10
 #: report_forms/c31/templates/c31_filled_out.html:10
 #: report_forms/c31/templates/c31_statistics.html:10
 #: report_forms/c32/templates/c32.html:10
+#: report_forms/c32/templates/c32_error.html:10
 #: report_forms/c32/templates/c32_file_upload.html:10
 #: report_forms/c32/templates/c32_filled_out.html:10
 #: report_forms/c32/templates/c32_statistics.html:10
 #: report_forms/c8/templates/c8.html:10
+#: report_forms/c8/templates/c8_error.html:10
 #: report_forms/c8/templates/c8_file_upload.html:10
 #: report_forms/c8/templates/c8_filled_out.html:10
 #: report_forms/c8/templates/c8_statistics.html:10
@@ -678,6 +698,7 @@ msgstr "Importálás"
 #: report_forms/c13/templates/c13_filled_out.html:12
 #: report_forms/c13/templates/c13_statistics.html:12
 #: report_forms/c20/templates/c20.html:12
+#: report_forms/c20/templates/c20_error.html:11
 #: report_forms/c20/templates/c20_file_upload.html:11
 #: report_forms/c20/templates/c20_filled_out.html:11
 #: report_forms/c20/templates/c20_statistics.html:11
@@ -697,14 +718,17 @@ msgstr "Importálás"
 #: report_forms/c24/templates/c24_filled_out.html:11
 #: report_forms/c24/templates/c24_statistics.html:11
 #: report_forms/c31/templates/c31.html:11
+#: report_forms/c31/templates/c31_error.html:11
 #: report_forms/c31/templates/c31_file_upload.html:11
 #: report_forms/c31/templates/c31_filled_out.html:11
 #: report_forms/c31/templates/c31_statistics.html:11
 #: report_forms/c32/templates/c32.html:11
+#: report_forms/c32/templates/c32_error.html:11
 #: report_forms/c32/templates/c32_file_upload.html:11
 #: report_forms/c32/templates/c32_filled_out.html:11
 #: report_forms/c32/templates/c32_statistics.html:11
 #: report_forms/c8/templates/c8.html:11
+#: report_forms/c8/templates/c8_error.html:11
 #: report_forms/c8/templates/c8_file_upload.html:11
 #: report_forms/c8/templates/c8_filled_out.html:11
 #: report_forms/c8/templates/c8_statistics.html:11
@@ -735,6 +759,7 @@ msgstr "Sablon"
 #: report_forms/c13/templates/c13_filled_out.html:13
 #: report_forms/c13/templates/c13_statistics.html:13
 #: report_forms/c20/templates/c20.html:13
+#: report_forms/c20/templates/c20_error.html:12
 #: report_forms/c20/templates/c20_file_upload.html:12
 #: report_forms/c20/templates/c20_filled_out.html:12
 #: report_forms/c20/templates/c20_statistics.html:12
@@ -754,14 +779,17 @@ msgstr "Sablon"
 #: report_forms/c24/templates/c24_filled_out.html:12
 #: report_forms/c24/templates/c24_statistics.html:12
 #: report_forms/c31/templates/c31.html:12
+#: report_forms/c31/templates/c31_error.html:12
 #: report_forms/c31/templates/c31_file_upload.html:12
 #: report_forms/c31/templates/c31_filled_out.html:12
 #: report_forms/c31/templates/c31_statistics.html:12
 #: report_forms/c32/templates/c32.html:12
+#: report_forms/c32/templates/c32_error.html:12
 #: report_forms/c32/templates/c32_file_upload.html:12
 #: report_forms/c32/templates/c32_filled_out.html:12
 #: report_forms/c32/templates/c32_statistics.html:12
 #: report_forms/c8/templates/c8.html:12
+#: report_forms/c8/templates/c8_error.html:12
 #: report_forms/c8/templates/c8_file_upload.html:12
 #: report_forms/c8/templates/c8_filled_out.html:12
 #: report_forms/c8/templates/c8_statistics.html:12
@@ -792,6 +820,7 @@ msgstr "Adatgyűjtő lapok"
 #: report_forms/c13/templates/c13_filled_out.html:14
 #: report_forms/c13/templates/c13_statistics.html:14
 #: report_forms/c20/templates/c20.html:14
+#: report_forms/c20/templates/c20_error.html:13
 #: report_forms/c20/templates/c20_file_upload.html:13
 #: report_forms/c20/templates/c20_filled_out.html:13
 #: report_forms/c20/templates/c20_statistics.html:13
@@ -811,14 +840,17 @@ msgstr "Adatgyűjtő lapok"
 #: report_forms/c24/templates/c24_filled_out.html:13
 #: report_forms/c24/templates/c24_statistics.html:13
 #: report_forms/c31/templates/c31.html:13
+#: report_forms/c31/templates/c31_error.html:13
 #: report_forms/c31/templates/c31_file_upload.html:13
 #: report_forms/c31/templates/c31_filled_out.html:13
 #: report_forms/c31/templates/c31_statistics.html:13
 #: report_forms/c32/templates/c32.html:13
+#: report_forms/c32/templates/c32_error.html:13
 #: report_forms/c32/templates/c32_file_upload.html:13
 #: report_forms/c32/templates/c32_filled_out.html:13
 #: report_forms/c32/templates/c32_statistics.html:13
 #: report_forms/c8/templates/c8.html:13
+#: report_forms/c8/templates/c8_error.html:13
 #: report_forms/c8/templates/c8_file_upload.html:13
 #: report_forms/c8/templates/c8_filled_out.html:13
 #: report_forms/c8/templates/c8_statistics.html:13
@@ -849,6 +881,7 @@ msgstr "Adatjelentő tábla"
 #: report_forms/c13/templates/c13_filled_out.html:15
 #: report_forms/c13/templates/c13_statistics.html:15
 #: report_forms/c20/templates/c20.html:15
+#: report_forms/c20/templates/c20_error.html:14
 #: report_forms/c20/templates/c20_file_upload.html:14
 #: report_forms/c20/templates/c20_filled_out.html:14
 #: report_forms/c20/templates/c20_statistics.html:14
@@ -868,14 +901,17 @@ msgstr "Adatjelentő tábla"
 #: report_forms/c24/templates/c24_filled_out.html:14
 #: report_forms/c24/templates/c24_statistics.html:14
 #: report_forms/c31/templates/c31.html:14
+#: report_forms/c31/templates/c31_error.html:14
 #: report_forms/c31/templates/c31_file_upload.html:14
 #: report_forms/c31/templates/c31_filled_out.html:14
 #: report_forms/c31/templates/c31_statistics.html:14
 #: report_forms/c32/templates/c32.html:14
+#: report_forms/c32/templates/c32_error.html:14
 #: report_forms/c32/templates/c32_file_upload.html:14
 #: report_forms/c32/templates/c32_filled_out.html:14
 #: report_forms/c32/templates/c32_statistics.html:14
 #: report_forms/c8/templates/c8.html:14
+#: report_forms/c8/templates/c8_error.html:14
 #: report_forms/c8/templates/c8_file_upload.html:14
 #: report_forms/c8/templates/c8_filled_out.html:14
 #: report_forms/c8/templates/c8_statistics.html:14
@@ -898,32 +934,51 @@ msgid "Short indicator description"
 msgstr "Rövidített indikátor leírások"
 
 #: report_forms/c1/templates/c1_error.html:22
+#: report_forms/c20/templates/c20_error.html:21
 #: report_forms/c21/templates/c21_error.html:21
 #: report_forms/c23/templates/c23_error.html:21
 #: report_forms/c24/templates/c24_error.html:21
+#: report_forms/c31/templates/c31_error.html:21
+#: report_forms/c32/templates/c32_error.html:21
+#: report_forms/c8/templates/c8_error.html:21
 msgid "An error has happened!"
 msgstr "Hiba történt!"
 
 #: report_forms/c1/templates/c1_error.html:24
-#: report_forms/c21/templates/c21_error.html:23
-#: report_forms/c23/templates/c23_error.html:23
-#: report_forms/c24/templates/c24_error.html:23
+#: report_forms/c31/templates/c31_error.html:23
+#: report_forms/c32/templates/c32_error.html:23
+#: report_forms/c8/templates/c8_error.html:23
 msgid "The following Patient IDs are already exists:"
 msgstr "A következő Betegazonosítók már léteznek:"
 
 #: report_forms/c1/templates/c1_error.html:32
-#: report_forms/c21/templates/c21_error.html:31
-#: report_forms/c23/templates/c23_error.html:31
-#: report_forms/c24/templates/c24_error.html:31
+#: report_forms/c31/templates/c31_error.html:31
+#: report_forms/c32/templates/c32_error.html:31
+#: report_forms/c8/templates/c8_error.html:31
 msgid "The following Patient IDs contains error:"
 msgstr "A következő Betegazonosítók hibát tartalmaznak:"
 
 #: report_forms/c1/templates/c1_error.html:40
+#: report_forms/c20/templates/c20_error.html:39
 #: report_forms/c21/templates/c21_error.html:39
 #: report_forms/c23/templates/c23_error.html:39
 #: report_forms/c24/templates/c24_error.html:39
-msgid "The following Patient IDs contains date errors:"
-msgstr "A következő Betegazonosítók dátum hibát tartalmaznak:"
+#: report_forms/c31/templates/c31_error.html:39
+#: report_forms/c32/templates/c32_error.html:39
+#: report_forms/c8/templates/c8_error.html:39
+msgid "The following Case IDs contains date errors:"
+msgstr "A következő Esetazonosítók dátum hibát tartalmaznak:"
+
+#: report_forms/c1/templates/c1_error.html:45
+#: report_forms/c20/templates/c20_error.html:44
+#: report_forms/c21/templates/c21_error.html:44
+#: report_forms/c23/templates/c23_error.html:44
+#: report_forms/c24/templates/c24_error.html:44
+#: report_forms/c31/templates/c31_error.html:44
+#: report_forms/c32/templates/c32_error.html:44
+#: report_forms/c8/templates/c8_error.html:44
+msgid "Error message"
+msgstr "Hibaüzenet"
 
 #: report_forms/c1/templates/c1_file_upload.html:22
 #: report_forms/c20/templates/c20_file_upload.html:21
@@ -1125,66 +1180,67 @@ msgstr ""
 "tűszúrások száma"
 
 #: report_forms/c20/forms.py:8 report_forms/c20/models.py:23
-#: report_forms/c20/views.py:148 report_forms/r1/forms.py:19
+#: report_forms/c20/views.py:161 report_forms/r1/forms.py:19
 #: report_forms/r1/models.py:51 report_forms/r1/views.py:342
 msgid "Date of discharge"
 msgstr "Az elbocsátás dátuma"
 
 #: report_forms/c20/forms.py:17 report_forms/c20/forms.py:18
+#: report_forms/c20/views.py:63
 msgid "Can't born after discharge!"
 msgstr "Nem küldhették el előbb, mint amikor született!"
 
-#: report_forms/c20/forms.py:23
+#: report_forms/c20/forms.py:23 report_forms/c20/views.py:65
 msgid ""
 "Aspirin contradiction should be yes, since patient is allergic to aspirin!"
 msgstr ""
 "Aszpirin kontraindikációnak igennek kellene lennie, mivel a beteg allergiás "
 "az Aszpirinre!"
 
-#: report_forms/c20/models.py:12 report_forms/c20/views.py:137
-#: report_forms/c21/models.py:25 report_forms/c21/views.py:274
-#: report_forms/c23/models.py:26 report_forms/c23/views.py:273
-#: report_forms/c24/models.py:25 report_forms/c24/views.py:276
+#: report_forms/c20/models.py:12 report_forms/c20/views.py:150
+#: report_forms/c21/models.py:25 report_forms/c21/views.py:270
+#: report_forms/c23/models.py:26 report_forms/c23/views.py:271
+#: report_forms/c24/models.py:25 report_forms/c24/views.py:274
 msgid "Hospital registration number"
 msgstr "Kórházi regisztrációs szám"
 
-#: report_forms/c20/models.py:14 report_forms/c20/views.py:139
+#: report_forms/c20/models.py:14 report_forms/c20/views.py:152
 msgid "Principal diagnosis code (ICD-10)"
 msgstr "Fődiagnózis (BNO10)"
 
-#: report_forms/c20/models.py:15 report_forms/c20/views.py:140
+#: report_forms/c20/models.py:15 report_forms/c20/views.py:153
 msgid "Type of unit"
 msgstr "Osztály típusa"
 
-#: report_forms/c20/models.py:16 report_forms/c20/views.py:141
+#: report_forms/c20/models.py:16 report_forms/c20/views.py:154
 msgid "Patient allergic to aspirin?"
 msgstr "A beteg allergiás-e az aszpirinre?"
 
-#: report_forms/c20/models.py:17 report_forms/c20/views.py:142
+#: report_forms/c20/models.py:17 report_forms/c20/views.py:155
 msgid "Is there a known contraindication or intolerance of aspirin?"
 msgstr "Ismert az aszpirin kontraindikáció vagy intolerancia?"
 
-#: report_forms/c20/models.py:18 report_forms/c20/views.py:143
+#: report_forms/c20/models.py:18 report_forms/c20/views.py:156
 msgid "Type of discharge"
 msgstr "A beteg további sorsa"
 
-#: report_forms/c20/models.py:19 report_forms/c20/views.py:144
+#: report_forms/c20/models.py:19 report_forms/c20/views.py:157
 #: report_forms/r1/models.py:15 report_forms/r1/views.py:306
 msgid "If other"
 msgstr "Ha egyéb"
 
-#: report_forms/c20/models.py:20 report_forms/c20/views.py:145
+#: report_forms/c20/models.py:20 report_forms/c20/views.py:158
 msgid ""
 "Is there a known objection/refusal to take aspirin-containing medication?"
 msgstr ""
 "Ismert-e tiltakozás/elutasítás az aszpirin tartalmú készítmények szedésével "
 "szemben?"
 
-#: report_forms/c20/models.py:21 report_forms/c20/views.py:146
+#: report_forms/c20/models.py:21 report_forms/c20/views.py:159
 msgid "Was patient prescribed at discharge to take aspirin?"
 msgstr "A betegnek távozáskor elrendelték az aszpirin szedését?"
 
-#: report_forms/c20/models.py:22 report_forms/c20/views.py:147
+#: report_forms/c20/models.py:22 report_forms/c20/views.py:160
 msgid ""
 "Was patient prescribed to take other (non-aspirin-containing) platelet "
 "aggregation inhibitor therapy?"
@@ -1200,23 +1256,28 @@ msgstr "AMI-val kezelt beteg elbocsátása"
 msgid "AMI patients prescribed aspirin at discharge"
 msgstr "AMI-val kezelt betegek elbocsátása"
 
-#: report_forms/c20/views.py:54 report_forms/c21/views.py:67
-#: report_forms/c23/views.py:68 report_forms/c24/views.py:67
-#: report_forms/c31/views.py:49 report_forms/c32/views.py:48
-#: report_forms/c8/views.py:53 report_forms/r1/views.py:112
-msgid ""
-"You probably forgot to delete the first row of the csv file, please recheck."
-msgstr ""
-"Valószínűleg elfelejtetted kitörölni az első sort a csv fájlból, kérlek "
-"ellenőrizd."
-
 #: report_forms/c20/templates/c20.html:4
+#: report_forms/c20/templates/c20_error.html:3
 #: report_forms/c20/templates/c20_file_upload.html:3
 #: report_forms/c20/templates/c20_filled_out.html:3
 #: report_forms/c20/templates/c20_statistics.html:3
 #: report_forms/templates/list_of_report_forms.html:96
 msgid "C.20. AMI patients prescribed aspirin at discharge"
 msgstr "C.20. AMI-val kezelt betegek elbocsátása"
+
+#: report_forms/c20/templates/c20_error.html:23
+#: report_forms/c21/templates/c21_error.html:23
+#: report_forms/c23/templates/c23_error.html:23
+#: report_forms/c24/templates/c24_error.html:23
+msgid "The following Case IDs are already exists:"
+msgstr "A következő Esetazonosítók már léteznek:"
+
+#: report_forms/c20/templates/c20_error.html:31
+#: report_forms/c21/templates/c21_error.html:31
+#: report_forms/c23/templates/c23_error.html:31
+#: report_forms/c24/templates/c24_error.html:31
+msgid "The following Case IDs contains error:"
+msgstr "A következő Esetazonosítók hibát tartalmaznak:"
 
 #: report_forms/c20/templates/c20_statistics.html:35
 msgid "Patient prescribed at discharge to take aspirin:"
@@ -1241,50 +1302,50 @@ msgstr ""
 "egyéb thrombocyta aggregációgátló th-t:"
 
 #: report_forms/c21/forms.py:7 report_forms/c21/models.py:33
-#: report_forms/c21/views.py:282 report_forms/c23/forms.py:8
-#: report_forms/c23/models.py:35 report_forms/c23/views.py:282
+#: report_forms/c21/views.py:278 report_forms/c23/forms.py:8
+#: report_forms/c23/models.py:35 report_forms/c23/views.py:280
 #: report_forms/c24/forms.py:8 report_forms/c24/models.py:33
-#: report_forms/c24/views.py:284
+#: report_forms/c24/views.py:282
 msgid "In case of allergy to penicillin, scale of severity?"
 msgstr "Penicilin allergia esetén annak súlyossága"
 
-#: report_forms/c21/forms.py:8 report_forms/c21/models.py:44
-#: report_forms/c21/views.py:294 report_forms/c23/forms.py:9
-#: report_forms/c23/models.py:46 report_forms/c23/views.py:294
-#: report_forms/c24/forms.py:9 report_forms/c24/models.py:44
-#: report_forms/c24/views.py:296
+#: report_forms/c21/forms.py:8 report_forms/c21/models.py:42
+#: report_forms/c21/views.py:288 report_forms/c23/forms.py:9
+#: report_forms/c23/models.py:44 report_forms/c23/views.py:290
+#: report_forms/c24/forms.py:9 report_forms/c24/models.py:42
+#: report_forms/c24/views.py:292
 msgid "Route of administration of first dose"
 msgstr "Első dózis beadási módja"
 
-#: report_forms/c21/forms.py:10 report_forms/c21/models.py:48
-#: report_forms/c21/views.py:300 report_forms/c23/forms.py:11
-#: report_forms/c23/models.py:50 report_forms/c23/views.py:300
-#: report_forms/c24/forms.py:11 report_forms/c24/models.py:48
-#: report_forms/c24/views.py:302
+#: report_forms/c21/forms.py:10 report_forms/c21/models.py:46
+#: report_forms/c21/views.py:294 report_forms/c23/forms.py:11
+#: report_forms/c23/models.py:48 report_forms/c23/views.py:296
+#: report_forms/c24/forms.py:11 report_forms/c24/models.py:46
+#: report_forms/c24/views.py:298
 msgid "Date of surgical wound closure"
 msgstr "A műtéti seb zárásának dátuma"
 
-#: report_forms/c21/forms.py:11 report_forms/c21/models.py:45
-#: report_forms/c21/views.py:295 report_forms/c23/forms.py:12
-#: report_forms/c23/models.py:47 report_forms/c23/views.py:295
-#: report_forms/c24/forms.py:12 report_forms/c24/models.py:45
-#: report_forms/c24/views.py:297
+#: report_forms/c21/forms.py:11 report_forms/c21/models.py:43
+#: report_forms/c21/views.py:289 report_forms/c23/forms.py:12
+#: report_forms/c23/models.py:45 report_forms/c23/views.py:291
+#: report_forms/c24/forms.py:12 report_forms/c24/models.py:43
+#: report_forms/c24/views.py:293
 msgid "Date of first dose"
 msgstr "Első dózis beadási dátuma"
 
 #: report_forms/c21/forms.py:12 report_forms/c21/models.py:36
-#: report_forms/c21/views.py:285 report_forms/c23/forms.py:13
-#: report_forms/c23/models.py:38 report_forms/c23/views.py:285
+#: report_forms/c21/views.py:281 report_forms/c23/forms.py:13
+#: report_forms/c23/models.py:38 report_forms/c23/views.py:283
 #: report_forms/c24/forms.py:13 report_forms/c24/models.py:36
-#: report_forms/c24/views.py:287
+#: report_forms/c24/views.py:285
 msgid "Date of surgical incision"
 msgstr "A műtéti bemetszés időpontja"
 
-#: report_forms/c21/forms.py:13 report_forms/c21/models.py:47
-#: report_forms/c21/views.py:298 report_forms/c23/forms.py:14
-#: report_forms/c23/models.py:49 report_forms/c23/views.py:298
-#: report_forms/c24/forms.py:14 report_forms/c24/models.py:47
-#: report_forms/c24/views.py:300
+#: report_forms/c21/forms.py:13 report_forms/c21/models.py:45
+#: report_forms/c21/views.py:292 report_forms/c23/forms.py:14
+#: report_forms/c23/models.py:47 report_forms/c23/views.py:294
+#: report_forms/c24/forms.py:14 report_forms/c24/models.py:45
+#: report_forms/c24/views.py:296
 msgid "Date of last dose"
 msgstr "Utolsó dózis beadási dátuma"
 
@@ -1305,32 +1366,27 @@ msgstr "Első hatóanyag első dózisa"
 msgid "Second dose of first antibiotic drug"
 msgstr "Második hatóanyag első dózisa"
 
-#: report_forms/c21/forms.py:20 report_forms/c23/forms.py:21
-#: report_forms/c24/forms.py:21
-msgid "Other dose of first antibiotic drug"
-msgstr "Egyéb hatóanyag első dózisa"
-
-#: report_forms/c21/forms.py:21 report_forms/c21/models.py:46
-#: report_forms/c21/views.py:297 report_forms/c23/forms.py:22
-#: report_forms/c23/models.py:48 report_forms/c23/views.py:297
-#: report_forms/c24/forms.py:22 report_forms/c24/models.py:46
-#: report_forms/c24/views.py:299
+#: report_forms/c21/forms.py:20 report_forms/c21/models.py:44
+#: report_forms/c21/views.py:291 report_forms/c23/forms.py:21
+#: report_forms/c23/models.py:46 report_forms/c23/views.py:293
+#: report_forms/c24/forms.py:21 report_forms/c24/models.py:44
+#: report_forms/c24/views.py:295
 msgid "Total doses in 24 hours"
 msgstr "24 órán belüli összdózis"
 
-#: report_forms/c21/forms.py:31 report_forms/c21/forms.py:32
-#: report_forms/c21/views.py:85 report_forms/c23/forms.py:32
-#: report_forms/c23/forms.py:33 report_forms/c23/views.py:86
-#: report_forms/c24/forms.py:32 report_forms/c24/forms.py:33
-#: report_forms/c24/views.py:85
+#: report_forms/c21/forms.py:30 report_forms/c21/forms.py:31
+#: report_forms/c21/views.py:83 report_forms/c23/forms.py:31
+#: report_forms/c23/forms.py:32 report_forms/c23/views.py:84
+#: report_forms/c24/forms.py:31 report_forms/c24/forms.py:32
+#: report_forms/c24/views.py:83
 msgid "Date of last dose happened before date of first dose!"
 msgstr "Az utolsó dózis beadása az első dózis beadása előtt történt!"
 
-#: report_forms/c21/forms.py:37 report_forms/c21/forms.py:38
-#: report_forms/c21/views.py:87 report_forms/c23/forms.py:38
-#: report_forms/c23/forms.py:39 report_forms/c23/views.py:88
-#: report_forms/c24/forms.py:38 report_forms/c24/forms.py:39
-#: report_forms/c24/views.py:87
+#: report_forms/c21/forms.py:36 report_forms/c21/forms.py:37
+#: report_forms/c21/views.py:85 report_forms/c23/forms.py:37
+#: report_forms/c23/forms.py:38 report_forms/c23/views.py:86
+#: report_forms/c24/forms.py:37 report_forms/c24/forms.py:38
+#: report_forms/c24/views.py:85
 msgid "Can't close the wound before the incision!"
 msgstr "Nem zárhatták be a sebet, műtés előtt!"
 
@@ -1364,51 +1420,51 @@ msgstr "Gyógyszer"
 msgid "Medicines"
 msgstr "Gyógyszerek"
 
-#: report_forms/c21/models.py:28 report_forms/c21/views.py:277
-#: report_forms/c23/models.py:29 report_forms/c23/views.py:276
-#: report_forms/c24/models.py:28 report_forms/c24/views.py:279
+#: report_forms/c21/models.py:28 report_forms/c21/views.py:273
+#: report_forms/c23/models.py:29 report_forms/c23/views.py:274
+#: report_forms/c24/models.py:28 report_forms/c24/views.py:277
 msgid "Principal diagnosis code (ICD-10 or DRG)"
 msgstr "Fődiagnózis kód (BNO10)"
 
-#: report_forms/c21/models.py:29 report_forms/c21/views.py:278
-#: report_forms/c23/models.py:31 report_forms/c23/views.py:278
-#: report_forms/c24/models.py:29 report_forms/c24/views.py:280
+#: report_forms/c21/models.py:29 report_forms/c21/views.py:274
+#: report_forms/c23/models.py:31 report_forms/c23/views.py:276
+#: report_forms/c24/models.py:29 report_forms/c24/views.py:278
 msgid "Principal procedure code"
 msgstr "Fődiagnózis miatt végzett műtéti beavatkozás kódja"
 
-#: report_forms/c21/models.py:30 report_forms/c21/views.py:279
-#: report_forms/c23/models.py:32 report_forms/c23/views.py:279
-#: report_forms/c24/models.py:30 report_forms/c24/views.py:281
+#: report_forms/c21/models.py:30 report_forms/c21/views.py:275
+#: report_forms/c23/models.py:32 report_forms/c23/views.py:277
+#: report_forms/c24/models.py:30 report_forms/c24/views.py:279
 msgid "Is the surgical procedure planned?"
 msgstr "A műtéti beavatkozás tervezett?"
 
-#: report_forms/c21/models.py:31 report_forms/c21/views.py:280
-#: report_forms/c23/models.py:33 report_forms/c23/views.py:280
-#: report_forms/c24/models.py:31 report_forms/c24/views.py:282
+#: report_forms/c21/models.py:31 report_forms/c21/views.py:276
+#: report_forms/c23/models.py:33 report_forms/c23/views.py:278
+#: report_forms/c24/models.py:31 report_forms/c24/views.py:280
 msgid "Is patient allergic to any antibiotics suggested in the protocol?"
 msgstr "A beteg allergiás a protokollban valamelyik antibiotikumra?"
 
-#: report_forms/c21/models.py:32 report_forms/c21/views.py:281
-#: report_forms/c23/models.py:34 report_forms/c23/views.py:281
-#: report_forms/c24/models.py:32 report_forms/c24/views.py:283
+#: report_forms/c21/models.py:32 report_forms/c21/views.py:277
+#: report_forms/c23/models.py:34 report_forms/c23/views.py:279
+#: report_forms/c24/models.py:32 report_forms/c24/views.py:281
 msgid "Generic name of antibiotic drug"
 msgstr "Hatóanyag amelyre a beteg allergiás"
 
-#: report_forms/c21/models.py:34 report_forms/c21/views.py:283
-#: report_forms/c23/models.py:36 report_forms/c23/views.py:283
-#: report_forms/c24/models.py:34 report_forms/c24/views.py:285
+#: report_forms/c21/models.py:34 report_forms/c21/views.py:279
+#: report_forms/c23/models.py:36 report_forms/c23/views.py:281
+#: report_forms/c24/models.py:34 report_forms/c24/views.py:283
 msgid "Has patient preoperative infection?"
 msgstr "Van-e a betegnek műtétet megelőző fertőzése?"
 
-#: report_forms/c21/models.py:35 report_forms/c21/views.py:284
-#: report_forms/c23/models.py:37 report_forms/c23/views.py:284
-#: report_forms/c24/models.py:35 report_forms/c24/views.py:286
+#: report_forms/c21/models.py:35 report_forms/c21/views.py:280
+#: report_forms/c23/models.py:37 report_forms/c23/views.py:282
+#: report_forms/c24/models.py:35 report_forms/c24/views.py:284
 msgid "Type of infection"
 msgstr "Fertőzés típusa"
 
-#: report_forms/c21/models.py:37 report_forms/c21/views.py:287
-#: report_forms/c23/models.py:39 report_forms/c23/views.py:287
-#: report_forms/c24/models.py:37 report_forms/c24/views.py:289
+#: report_forms/c21/models.py:37 report_forms/c21/views.py:283
+#: report_forms/c23/models.py:39 report_forms/c23/views.py:285
+#: report_forms/c24/models.py:37 report_forms/c24/views.py:287
 msgid "Prophylactic antibiotic given?"
 msgstr "Profilaktikus antibiotikumot adtak?"
 
@@ -1427,76 +1483,64 @@ msgstr "Második hatóanyag neve"
 msgid "First dose of second antibiotic drug"
 msgstr "Második hatóanyag első dózisa"
 
-#: report_forms/c21/models.py:42 report_forms/c23/models.py:44
-#: report_forms/c24/models.py:42
-msgid "Name of antibiotic drug"
-msgstr "Egyéb hatóanyag neve"
-
-#: report_forms/c21/models.py:43 report_forms/c23/models.py:45
-#: report_forms/c24/models.py:43
-msgid "First dose of other antibiotic drug"
-msgstr "Egyéb hatóanyag első dózisa"
-
-#: report_forms/c21/models.py:56
+#: report_forms/c21/models.py:54
 msgid "Planned surgery for colorectal cancer"
 msgstr "Tervezett colorectalis daganat műtét"
 
-#: report_forms/c21/models.py:57
+#: report_forms/c21/models.py:55
 msgid "Planned surgery for colorectal cancers"
 msgstr "Tervezett colorectalis daganat műtétek"
 
-#: report_forms/c21/views.py:276 report_forms/c23/views.py:275
-#: report_forms/c24/views.py:278
+#: report_forms/c21/views.py:66 report_forms/c23/views.py:67
+#: report_forms/c24/views.py:66 report_forms/r1/views.py:112
+msgid ""
+"You probably forgot to delete the first row of the csv file, please recheck."
+msgstr ""
+"Valószínűleg elfelejtetted kitörölni az első sort a csv fájlból, kérlek "
+"ellenőrizd."
+
+#: report_forms/c21/views.py:272 report_forms/c23/views.py:273
+#: report_forms/c24/views.py:276
 msgid "Weight of patient"
 msgstr "A beteg testtömege"
 
-#: report_forms/c21/views.py:286 report_forms/c23/views.py:286
-#: report_forms/c24/views.py:288
+#: report_forms/c21/views.py:282 report_forms/c23/views.py:284
+#: report_forms/c24/views.py:286
 msgid "Time of surgical incision"
 msgstr "A műtéti bemetszés időpontja"
 
-#: report_forms/c21/views.py:288 report_forms/c23/views.py:288
-#: report_forms/c24/views.py:290
+#: report_forms/c21/views.py:284 report_forms/c23/views.py:286
+#: report_forms/c24/views.py:288
 msgid "Name of first dose"
 msgstr "Első dózis neve"
 
-#: report_forms/c21/views.py:289 report_forms/c23/views.py:289
-#: report_forms/c24/views.py:291
+#: report_forms/c21/views.py:285 report_forms/c23/views.py:287
+#: report_forms/c24/views.py:289
 msgid "Name of second dose"
 msgstr "Második dózis neve"
 
-#: report_forms/c21/views.py:290 report_forms/c23/views.py:290
-#: report_forms/c24/views.py:292
-msgid "Name of other dose"
-msgstr "Egyéb dózis neve"
-
-#: report_forms/c21/views.py:291 report_forms/c23/views.py:291
-#: report_forms/c24/views.py:293
+#: report_forms/c21/views.py:286 report_forms/c23/views.py:288
+#: report_forms/c24/views.py:290
 msgid "First dose"
 msgstr "Első dózis"
 
-#: report_forms/c21/views.py:292 report_forms/c23/views.py:292
-#: report_forms/c24/views.py:294
+#: report_forms/c21/views.py:287 report_forms/c23/views.py:289
+#: report_forms/c24/views.py:291
 msgid "Second dose"
 msgstr "Második dózis"
 
-#: report_forms/c21/views.py:293 report_forms/c23/views.py:293
-#: report_forms/c24/views.py:295
-msgid "Other dose"
-msgstr "Egyéb dózis"
-
-#: report_forms/c21/views.py:296 report_forms/c23/views.py:296
-#: report_forms/c24/views.py:298
+#: report_forms/c21/views.py:290 report_forms/c23/views.py:292
+#: report_forms/c24/views.py:294
 msgid "Time of first dose"
 msgstr "Első dózis beadási ideje"
 
-#: report_forms/c21/views.py:299 report_forms/c23/views.py:299
-#: report_forms/c24/views.py:301
+#: report_forms/c21/views.py:293 report_forms/c23/views.py:295
+#: report_forms/c24/views.py:297
 msgid "Time of last dose"
 msgstr "Utolsó dózis beadási ideje"
 
-#: report_forms/c21/views.py:301 report_forms/c23/views.py:301
-#: report_forms/c24/views.py:303
+#: report_forms/c21/views.py:295 report_forms/c23/views.py:297
+#: report_forms/c24/views.py:299
 msgid "Time of surgical wound closure"
 msgstr "A műtéti seb zárásának ideje"
 
@@ -1583,11 +1627,11 @@ msgstr "Hiányos alkalmazás"
 msgid "% of single shot treatment:"
 msgstr "Egylövetű kezelés"
 
-#: report_forms/c23/models.py:30 report_forms/c23/views.py:277
+#: report_forms/c23/models.py:30 report_forms/c23/views.py:275
 msgid "Other principal diagnosis code (ICD-10 or DRG)"
 msgstr "Egyéb fődiagnózis kód (BNO10)"
 
-#: report_forms/c23/models.py:58 report_forms/c23/models.py:59
+#: report_forms/c23/models.py:56 report_forms/c23/models.py:57
 msgid "Planned surgery for hip replacement"
 msgstr "Tervezett csípőprotézis műtét"
 
@@ -1600,7 +1644,7 @@ msgstr "Tervezett csípőprotézis műtét"
 msgid "C.2.3. Prophylactic antibiotic use - Hip replacement"
 msgstr "C.2.3. Csípőprotézis"
 
-#: report_forms/c24/models.py:56 report_forms/c24/models.py:57
+#: report_forms/c24/models.py:54 report_forms/c24/models.py:55
 msgid "Planned surgery for hysterectomy"
 msgstr "Tervezett méheltávolítás műtét"
 
@@ -1614,24 +1658,26 @@ msgid "C.2.4. Prophylactic antibiotic use - Hysterectomy"
 msgstr "C.2.4. Méheltávolítás"
 
 #: report_forms/c31/forms.py:8 report_forms/c31/models.py:14
-#: report_forms/c31/views.py:122 report_forms/c32/forms.py:8
-#: report_forms/c32/models.py:14 report_forms/c32/views.py:121
+#: report_forms/c31/views.py:135 report_forms/c32/forms.py:8
+#: report_forms/c32/models.py:14 report_forms/c32/views.py:134
 #: report_forms/c8/forms.py:8 report_forms/c8/models.py:14
-#: report_forms/c8/views.py:348
+#: report_forms/c8/views.py:371
 msgid "Date of hospital admission"
 msgstr "Kórházi felvétel dátuma"
 
 #: report_forms/c31/forms.py:9 report_forms/c31/models.py:16
-#: report_forms/c31/views.py:124 report_forms/c32/forms.py:9
-#: report_forms/c32/models.py:16 report_forms/c32/views.py:123
+#: report_forms/c31/views.py:137 report_forms/c32/forms.py:9
+#: report_forms/c32/models.py:16 report_forms/c32/views.py:136
 #: report_forms/c8/forms.py:9 report_forms/c8/models.py:19
-#: report_forms/c8/views.py:353
+#: report_forms/c8/views.py:376
 msgid "Date of hospital discharge"
 msgstr "Kórházi elbocsátás dátuma"
 
 #: report_forms/c31/forms.py:18 report_forms/c31/forms.py:19
-#: report_forms/c32/forms.py:18 report_forms/c32/forms.py:19
+#: report_forms/c31/views.py:57 report_forms/c32/forms.py:18
+#: report_forms/c32/forms.py:19 report_forms/c32/views.py:56
 #: report_forms/c8/forms.py:20 report_forms/c8/forms.py:21
+#: report_forms/c8/views.py:70
 msgid "Can't be born after admission!"
 msgstr "Nem vehették fel előbb, mint amikor született!"
 
@@ -1640,21 +1686,21 @@ msgstr "Nem vehették fel előbb, mint amikor született!"
 msgid "Can't be discharged before admission!"
 msgstr "Nem küldhetik el előbb, mint a felvétel ideje!"
 
-#: report_forms/c31/models.py:15 report_forms/c31/views.py:123
-#: report_forms/c32/models.py:15 report_forms/c32/views.py:122
-#: report_forms/c8/models.py:15 report_forms/c8/views.py:349
+#: report_forms/c31/models.py:15 report_forms/c31/views.py:136
+#: report_forms/c32/models.py:15 report_forms/c32/views.py:135
+#: report_forms/c8/models.py:15 report_forms/c8/views.py:372
 msgid "Patient admission status"
 msgstr "A beteg felvételének jellege"
 
-#: report_forms/c31/models.py:17 report_forms/c31/views.py:125
-#: report_forms/c32/models.py:17 report_forms/c32/views.py:124
-#: report_forms/c8/models.py:20 report_forms/c8/views.py:354
+#: report_forms/c31/models.py:17 report_forms/c31/views.py:138
+#: report_forms/c32/models.py:17 report_forms/c32/views.py:137
+#: report_forms/c8/models.py:20 report_forms/c8/views.py:377
 #: report_forms/r1/models.py:48 report_forms/r1/views.py:339
 msgid "Patient discharge status"
 msgstr "A beteg további sorsa a kórházi távozáskor"
 
-#: report_forms/c31/models.py:18 report_forms/c31/views.py:126
-#: report_forms/c32/models.py:18 report_forms/c32/views.py:125
+#: report_forms/c31/models.py:18 report_forms/c31/views.py:139
+#: report_forms/c32/models.py:18 report_forms/c32/views.py:138
 msgid "ICD-10 at that departmental admission"
 msgstr "A diagnózis kódja (BNO)"
 
@@ -1666,7 +1712,12 @@ msgstr "AMI halálozás"
 msgid "30-day in-hospital mortality of patients admitted with AMI"
 msgstr "AMI halálozások"
 
+#: report_forms/c31/views.py:59 report_forms/c32/views.py:58
+msgid "Can't be discharged before admission!!"
+msgstr "Nem küldhetik el előbb, mint a felvétel ideje!"
+
 #: report_forms/c31/templates/c31.html:3
+#: report_forms/c31/templates/c31_error.html:3
 #: report_forms/c31/templates/c31_file_upload.html:3
 #: report_forms/c31/templates/c31_filled_out.html:3
 #: report_forms/c31/templates/c31_statistics.html:3
@@ -1699,6 +1750,7 @@ msgid "30-day in-hospital mortality of patients admitted with Stroke"
 msgstr "Stroke halálozások"
 
 #: report_forms/c32/templates/c32.html:3
+#: report_forms/c32/templates/c32_error.html:3
 #: report_forms/c32/templates/c32_file_upload.html:3
 #: report_forms/c32/templates/c32_filled_out.html:3
 #: report_forms/c32/templates/c32_statistics.html:3
@@ -1708,35 +1760,37 @@ msgid ""
 msgstr "C.3.2. Stroke halálozás"
 
 #: report_forms/c8/forms.py:10 report_forms/c8/models.py:18
-#: report_forms/c8/views.py:352
+#: report_forms/c8/views.py:375
 msgid "Date of first surgical procedure"
 msgstr "Első sebészeti beavatkozás dátuma"
 
 #: report_forms/c8/forms.py:26 report_forms/c8/forms.py:27
+#: report_forms/c8/views.py:72
 msgid "Can't be operated before admission!"
 msgstr "Nem operálhatták meg, felvétel előtt!"
 
 #: report_forms/c8/forms.py:32 report_forms/c8/forms.py:33
+#: report_forms/c8/views.py:74
 msgid "Can't be operated after discharge!"
 msgstr "Nem operálhatták meg, elküldés után!"
 
-#: report_forms/c8/models.py:16 report_forms/c8/views.py:350
+#: report_forms/c8/models.py:16 report_forms/c8/views.py:373
 msgid "Type of admission"
 msgstr "A felvétel tipusa"
 
-#: report_forms/c8/models.py:17 report_forms/c8/views.py:351
+#: report_forms/c8/models.py:17 report_forms/c8/views.py:374
 msgid "Was surgical procedure?"
 msgstr "Történt sebészeti beavatkozás?"
 
-#: report_forms/c8/models.py:21 report_forms/c8/views.py:355
+#: report_forms/c8/models.py:21 report_forms/c8/views.py:378
 msgid "Diagnosis group"
 msgstr "Diagnózis csoport megnevezése"
 
-#: report_forms/c8/models.py:22 report_forms/c8/views.py:356
+#: report_forms/c8/models.py:22 report_forms/c8/views.py:379
 msgid "Diagnosis code: ICD-10"
 msgstr "Diagnózis kódja: BNO"
 
-#: report_forms/c8/models.py:23 report_forms/c8/views.py:357
+#: report_forms/c8/models.py:23 report_forms/c8/views.py:380
 msgid "Diagnosis code: DRG"
 msgstr "Diagnózis kódja: HBCs"
 
@@ -1749,6 +1803,7 @@ msgid "Length of Stays"
 msgstr "Ápolási idők"
 
 #: report_forms/c8/templates/c8.html:3
+#: report_forms/c8/templates/c8_error.html:3
 #: report_forms/c8/templates/c8_file_upload.html:3
 #: report_forms/c8/templates/c8_filled_out.html:3
 #: report_forms/c8/templates/c8_statistics.html:3
@@ -2149,6 +2204,21 @@ msgstr "bejelentkezés"
 #: university/models.py:15
 msgid "Universities"
 msgstr "Egyetemek"
+
+#~ msgid "Other dose of first antibiotic drug"
+#~ msgstr "Egyéb hatóanyag első dózisa"
+
+#~ msgid "Name of antibiotic drug"
+#~ msgstr "Egyéb hatóanyag neve"
+
+#~ msgid "First dose of other antibiotic drug"
+#~ msgstr "Egyéb hatóanyag első dózisa"
+
+#~ msgid "Name of other dose"
+#~ msgstr "Egyéb dózis neve"
+
+#~ msgid "Other dose"
+#~ msgstr "Egyéb dózis"
 
 #~ msgid "PO"
 #~ msgstr "PO"

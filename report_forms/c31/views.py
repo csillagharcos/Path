@@ -56,7 +56,7 @@ def Import(request):
             if datetime.strptime(line.date_of_birth, "%Y-%m-%d") > datetime.strptime(line.date_of_admission, "%Y-%m-%d"):
                 raise DateException(_("Can't be born after admission!"))
             if datetime.strptime(line.date_of_discharge, "%Y-%m-%d") < datetime.strptime(line.date_of_admission, "%Y-%m-%d"):
-                raise DateException(_("Can't be discharged before admission!!"))
+                raise DateException(_("Can't be discharged before admission!"))
             try:
                 new_c31 = c31.objects.create(
                                             patient_id                      = parseInt(line.patient_id),
