@@ -104,7 +104,7 @@ def Statistics(request):
                 subindicator_two_2 += 1
             if not case.patient_admission_status:
                 subindicator_one += 1
-                if (case.date_of_discharge - case.date_of_admission).days > 30:
+                if (case.date_of_discharge - case.date_of_admission).days <= 30:
                     subindicator_one_30 += 1
 
     ''' Counting '''
