@@ -47,9 +47,9 @@ def Statistics(request):
             job_name = case.job.job_hungarian
         else:
             job_name = case.job.job_english
-        try: first = float(case.needlestick_injuries / (case.staff_beginning + case.staff_end)/2) *100
+        try: first = float(float(case.needlestick_injuries) / (float(case.staff_beginning) + float(case.staff_end))/2*100)
         except: first = 0
-        try: second = float(case.needlestick_injuries / ((case.working_hours_beginning + case.working_hours_end)*0.5)/8) *100
+        try: second = float(float(case.needlestick_injuries) / ((float(case.working_hours_beginning) + float(case.working_hours_end))*0.5 / 8) *100)
         except: second = 0
         group.append([
                   job_name,
