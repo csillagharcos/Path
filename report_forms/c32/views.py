@@ -71,8 +71,8 @@ def Import(request):
                 new_c32.save()
             except IntegrityError:
                 exists += (line.patient_id,)
-            except DateException, (inst):
-                date_errors += (line.patient_id,)
+            except DateException, (instance):
+                date_errors += ((line.case_id,instance.parameter),)
             except:
                 errors += (line.patient_id,)
         if exists or errors:

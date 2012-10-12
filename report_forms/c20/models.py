@@ -8,7 +8,7 @@ from csvImporter.model import CsvModel
 from report_forms.choices import AMI_CHOICES, TYPE_OF_UNIT, YES_NO_CHOICES, TYPE_OF_DISCHARGE
 
 class c20(models.Model):
-    case_id                         = models.IntegerField(_('Case ID'))
+    case_id                         = models.IntegerField(_('Case ID'), unique=True)
     hospital_registration_number    = models.CharField(_('Hospital registration number'), max_length=50)
     date_of_birth                   = models.DateField(_('Date of birth'))
     diagnosis_code                  = models.CharField(_('Principal diagnosis code (ICD-10)'), max_length=3, choices=AMI_CHOICES, default="")

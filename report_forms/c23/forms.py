@@ -27,7 +27,7 @@ class C23Form(ModelForm):
         date_of_last_dose = cleaned_data.get("date_of_last_dose")
         date_of_first_dose = cleaned_data.get("date_of_first_dose")
 
-        if date_of_first_dose >= date_of_last_dose:
+        if date_of_first_dose > date_of_last_dose:
             self._errors["date_of_first_dose"] = self.error_class([_("Date of last dose happened before date of first dose!")])
             self._errors["date_of_last_dose"] = self.error_class([_("Date of last dose happened before date of first dose!")])
             del cleaned_data["date_of_first_dose"]

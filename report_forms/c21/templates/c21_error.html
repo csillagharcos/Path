@@ -20,7 +20,7 @@
 {% block content %}
     <span class="error_message_warning">{% trans "An error has happened!" %}</span><br />
     {% if exists %}
-        {% trans "The following Patient IDs are already exists:" %}
+        {% trans "The following Case IDs are already exists:" %}
         <br />
         {% for exist in exists %}
             {{ exist }}{% if not forloop.last %}, {% endif %}{% if forloop.counter|divisibleby:"5" %}<br />{% endif %}
@@ -28,7 +28,7 @@
         <br />
     {% endif %}
     {% if errors %}
-        {% trans "The following Patient IDs contains error:" %}
+        {% trans "The following Case IDs contains error:" %}
         <br />
         {% for error in errors %}
             {{ error }}{% if not forloop.last %}, {% endif %}{% if forloop.counter|divisibleby:"5" %}<br />{% endif %}
@@ -36,11 +36,20 @@
         <br />
     {% endif %}
     {% if date_errors %}
-        {% trans "The following Patient IDs contains date errors:" %}
+        {% trans "The following Case IDs contains date errors:" %}
         <br />
-        {% for date_error in date_errors %}
-            {{ date_error }}{% if not forloop.last %}, {% endif %}{% if forloop.counter|divisibleby:"5" %}<br />{% endif %}
+        <table style="margin: 0 auto; width: 50%">
+            <tr style="font-weight: bold;">
+                <td style="width: 20%">{% trans "Case ID" %}</td>
+                <td style="width: 80%">{% trans "Error message" %}</td>
+            </tr>
+            {% for date_error in date_errors %}
+          <tr>
+              <td>{{ date_error.0 }}</td>
+              <td>{{ date_error.1 }}</td>
+          </tr>
         {% endfor %}
+        </table>
         <br />
     {% endif %}
 {% endblock content %}

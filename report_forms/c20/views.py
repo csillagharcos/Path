@@ -82,8 +82,8 @@ def Import(request):
                 new_c20.save()
             except IntegrityError:
                 exists += (line.case_id,)
-            except DateException, (inst):
-                date_errors += (line.case_id,)
+            except DateException, (instance):
+                date_errors += ((line.case_id,instance.parameter),)
             except:
                 errors += (line.case_id,)
         if exists or errors:

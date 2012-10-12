@@ -59,6 +59,7 @@ def Display(request):
 def Import(request):
     if request.method == "POST":
         date_errors=errors=exists=()
+        first = True
         try:
             csv_file = request.FILES['file']
             imported_csv = c23CSV.import_data(data=csv_file)
@@ -67,6 +68,9 @@ def Import(request):
         except CsvDataException:
             return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
         for line in imported_csv:
+            if first:
+                first = False
+                continue
             try:
                 try: si = datetime.strptime(line.surgical_incision+" "+line.surgical_incision_time, "%Y-%m-%d %H:%M")
                 except ValueError: si = None
@@ -76,7 +80,7 @@ def Import(request):
                 except ValueError: dold = None
                 try: dowc =datetime.strptime(line.date_of_wound_close+" "+line.time_of_wound_close, "%Y-%m-%d %H:%M")
                 except ValueError: dowc = None
-                if dofd >= dold and dofd is not None and dold is not None:
+                if dofd > dold and dofd is not None and dold is not None:
                     raise DateException(_("Date of last dose happened before date of first dose!"))
                 if si > dowc and si is not None and dowc is not None:
                     raise DateException(_("Can't close the wound before the incision!"))
@@ -115,8 +119,8 @@ def Import(request):
                 new_c23.save()
             except IntegrityError:
                 exists += (line.case_id,)
-            except DateException, (inst):
-                date_errors += (line.case_id,)
+            except DateException, (instance):
+                date_errors += ((line.case_id,instance.parameter),)
             except:
                 errors += (line.case_id,)
         if exists or errors:

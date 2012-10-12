@@ -22,7 +22,7 @@ class Medicine(models.Model):
         verbose_name_plural = _('Medicines')
 
 class c23(models.Model):
-    case_id                         = models.IntegerField(_('Case ID'))
+    case_id                         = models.IntegerField(_('Case ID'), unique=True)
     hospital_registration_number    = models.CharField(_('Hospital registration number'), max_length=50)
     date_of_birth                   = models.DateField(_('Date of birth'))
     weight_of_patient               = models.IntegerField(_('Weight of patient (kg)'))
