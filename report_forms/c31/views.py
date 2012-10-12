@@ -109,13 +109,12 @@ def Statistics(request):
                     subindicator_one_30 += 1
 
     ''' Counting '''
-    try: indicator_one = float( indicator_one_numerator / len(cases) ) * 100
+    try: indicator_one = float( indicator_one_numerator ) / len(cases) * 100
     except ZeroDivisionError: indicator_one = 0
-    try: subindicator_one = float( subindicator_one / subindicator_one_30 ) * 100
+    try: subindicator_one = float( subindicator_one ) / float( subindicator_one_30 ) * 100
     except ZeroDivisionError: subindicator_one = 0
-    try: subindicator_two = float( subindicator_two_2 / len(cases) ) * 100
+    try: subindicator_two = float( subindicator_two_2 ) / len(cases) * 100
     except ZeroDivisionError: subindicator_two = 0
-
     ''' Displaying '''
     context = {
         "overall": len(cases),
