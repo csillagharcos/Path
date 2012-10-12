@@ -81,11 +81,11 @@ def Import(request):
                 )
                 new_c20.save()
             except IntegrityError:
-                exists += (line.patient_id,)
+                exists += (line.case_id,)
             except DateException, (inst):
-                date_errors += (line.patient_id,)
+                date_errors += (line.case_id,)
             except:
-                errors += (line.patient_id,)
+                errors += (line.case_id,)
         if exists or errors:
             return render_to_response('c20_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c20_stat'))
