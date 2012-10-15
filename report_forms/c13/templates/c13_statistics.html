@@ -44,7 +44,7 @@
     <script src="{{ STATIC_URL }}js/jqplot.pointLabels.min.js"></script>
     <script style="text/javascript">
         $(document).ready(function(){
-            var plot1 = $.jqplot('avg', [[{% for job in jobs %}{{ job.1 }}{% if not forloop.last %},{% endif %}{% endfor %}]], {
+            var plot1 = $.jqplot('avg', [[{% for job in jobs %}{% localize off %}{{ job.1 }}{% endlocalize %}{% if not forloop.last %},{% endif %}{% endfor %}]], {
                 title: "{% trans "Number of needle stick injuries to 100 workers (average number)" %}",
                 seriesDefaults:{
                     renderer:$.jqplot.BarRenderer,
