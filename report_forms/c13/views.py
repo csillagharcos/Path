@@ -56,7 +56,6 @@ def Statistics(request):
                   first,
                   second,
         ])
-
     context = {
         "overall": len(cases),
         "removed": len(uncountable_case),

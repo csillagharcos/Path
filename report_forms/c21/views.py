@@ -149,36 +149,40 @@ def Statistics(request):
     for case in countable_case:
         indicator_tracker = 0
         try: first_med_dose = Medicine.objects.get(name = case.name_of_first_dose).dose
-        except: first_med_dose = -1
+        except: first_med_dose = 0
         try: second_med_dose = Medicine.objects.get(name = case.name_of_second_dose).dose
-        except: second_med_dose = -1
+        except: second_med_dose = 0
         try: first_med_doseUnder = Medicine.objects.get(name = case.name_of_first_dose).doseUnder
-        except: first_med_doseUnder = -1
+        except: first_med_doseUnder = 0
         try: second_med_doseUnder = Medicine.objects.get(name = case.name_of_second_dose).doseUnder
-        except: second_med_doseUnder = -1
+        except: second_med_doseUnder = 0
         #indicator one
+        acceptable = False
         if case.name_of_first_dose in medicines and case.name_of_second_dose in medicines:
             if (case.name_of_first_dose == "Cefazolin" or case.name_of_first_dose== "Cefotaxim" or case.name_of_first_dose== "Cefuroxim" or case.name_of_first_dose== "Ceftriaxon") and (case.name_of_second_dose== "Metronidazol" or case.name_of_second_dose== "Clindamycin"):
                 indicator_one += 1
                 indicator_tracker += 1
+                acceptable = True
             elif (case.name_of_second_dose== "Cefazolin" or case.name_of_second_dose== "Cefotaxim" or case.name_of_second_dose== "Cefuroxim" or case.name_of_second_dose== "Ceftriaxon") and (case.name_of_first_dose== "Metronidazol" or case.name_of_first_dose== "Clindamycin"):
                 indicator_one += 1
                 indicator_tracker += 1
+                acceptable = True
             elif case.name_of_first_dose== "Ertapenem" or case.name_of_second_dose == "Ertapenem":
                 indicator_one += 1
                 indicator_tracker += 1
+                acceptable = True
 
         #indicator two A
-        if first_med_dose == case.first_dose and second_med_dose == case.second_dose:
+        if first_med_dose == case.first_dose and second_med_dose == case.second_dose and acceptable:
             indicator_twoa += 1
             indicator_tracker += 1
 
         #indicator two B
         if case.weight_of_patient > 60:
-            if first_med_dose == case.first_dose and second_med_dose == case.second_dose:
+            if first_med_dose == case.first_dose and second_med_dose == case.second_dose and acceptable:
                 indicator_twob += 1
         else:
-            if first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose:
+            if first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose and acceptable:
                 indicator_twob += 1
 
         #indicator three
@@ -218,7 +222,11 @@ def Statistics(request):
             indicator_eight += 1
 
         #indicator nine
-        if case.date_of_first_dose == case.date_of_last_dose and case.first_dose is not None and case.second_dose is not None and case.total_dose_in_24h == case.first_dose + case.second_dose:
+        if case.first_dose is None: fd = 0
+        else: fd = case.first_dose
+        if case.second_dose is None: sd = 0
+        else: sd = case.second_dose
+        if case.date_of_first_dose == case.date_of_last_dose and case.total_dose_in_24h == fd + sd:
             indicator_nine += 1
 
     ''' Counting '''
