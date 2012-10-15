@@ -217,7 +217,7 @@ def Statistics(request):
             indicator_eight += 1
 
         #indicator nine
-        if case.date_of_first_dose == case.date_of_last_dose and case.total_dose_in_24h == case.first_dose + case.second_dose:
+        if case.date_of_first_dose == case.date_of_last_dose and case.first_dose is not None and case.second_dose is not None and case.total_dose_in_24h == case.first_dose + case.second_dose:
             indicator_nine += 1
 
 
