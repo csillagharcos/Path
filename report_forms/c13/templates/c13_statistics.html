@@ -56,7 +56,7 @@
                         ticks: [{% for job in jobs %}"{{ job.0 }}"{% if not forloop.last %},{% endif %}{% endfor %}]
                     },
                     yaxis: {
-                        tickOptions: {formatString: '%d'}
+                        tickOptions: {formatString: '%.2f'}
                     }
                 }
             });
