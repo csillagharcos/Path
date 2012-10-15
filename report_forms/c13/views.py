@@ -13,7 +13,6 @@ def Display(request):
     if request.method == "POST":
         form = C13Form(request.POST)
         if form.is_valid():
-            print '111'
             new_c13 = c13.objects.create(
                 job                             = form.cleaned_data['job'],
                 year                            = form.cleaned_data['year'],
@@ -47,7 +46,7 @@ def Statistics(request):
             job_name = case.job.job_hungarian
         else:
             job_name = case.job.job_english
-        try: first = float(float(case.needlestick_injuries) / (float(case.staff_beginning) + float(case.staff_end))/2*100)
+        try: first = float(float(case.needlestick_injuries) / ((float(case.staff_beginning) + float(case.staff_end))/2)*100)
         except: first = 0
         try: second = float(float(case.needlestick_injuries) / ((float(case.working_hours_beginning) + float(case.working_hours_end))*0.5 / 8) *100)
         except: second = 0
