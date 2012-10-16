@@ -88,6 +88,7 @@ def Import(request):
 @login_required
 def Statistics(request):
     ''' Query '''
+    indicator_one_numerator = subindicator_one_30 = subindicator_two_2 = subindicator_one = 0
     countable_case=uncountable_case=()
     cases = c31.objects.all()
     for case in cases:
@@ -97,7 +98,6 @@ def Statistics(request):
             countable_case += (case,)
 
     ''' Working '''
-    indicator_one_numerator = subindicator_one_30 = subindicator_two_2 = subindicator_one = 0
     for case in countable_case:
         if case.patient_discharge_status == 2 and (case.date_of_discharge - case.date_of_admission).days <= 30:
             indicator_one_numerator += 1
@@ -105,7 +105,7 @@ def Statistics(request):
             subindicator_one += 1
         if not case.patient_admission_status and (case.patient_discharge_status == 0 or case.patient_discharge_status == 2):
             subindicator_one_30 += 1
-        if case.patient_discharge_status == 2 and (case.date_of_discharge - case.date_of_admission).days <= 30:
+        if case.patient_discharge_status == 2 and (case.date_of_discharge - case.date_of_admission).days <= 2:
             subindicator_two_2 += 1
 
     ''' Counting '''

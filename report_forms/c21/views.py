@@ -199,7 +199,7 @@ def Statistics(request):
             pass
 
         #indicator ten
-        if not indicator_tracker == 4:
+        if indicator_tracker == 4:
             indicator_ten += 1
 
         #indicator five
@@ -226,6 +226,7 @@ def Statistics(request):
         else: fd = case.first_dose
         if case.second_dose is None: sd = 0
         else: sd = case.second_dose
+        print str(case.total_dose_in_24h) + " = " + str(fd) + " + " + str(sd)
         if case.date_of_first_dose == case.date_of_last_dose and case.total_dose_in_24h == fd + sd:
             indicator_nine += 1
 
