@@ -87,6 +87,7 @@ def Import(request):
 @login_required
 def Statistics(request):
     ''' Query '''
+    indicator_one_numerator = subindicator_one_30 = subindicator_two_2 = subindicator_one = 0
     countable_case=uncountable_case=()
     cases = c32.objects.all()
     for case in cases:
