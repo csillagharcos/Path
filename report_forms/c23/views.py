@@ -198,7 +198,7 @@ def Statistics(request):
             pass
 
         #indicator ten
-        if not indicator_tracker == 4:
+        if indicator_tracker == 4:
             indicator_ten += 1
 
         #indicator five
