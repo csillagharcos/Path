@@ -198,10 +198,6 @@ def Statistics(request):
         except:
             pass
 
-        #indicator ten
-        if indicator_tracker == 4:
-            indicator_ten += 1
-
         #indicator five
         try:
             if (case.date_of_wound_close - case.date_of_last_dose).seconds <= 86400:
@@ -214,8 +210,10 @@ def Statistics(request):
             indicator_seven += 1
 
         #indicator six
-        if not indicator_tracker == 5:
+        if indicator_tracker < 5:
             indicator_six += 1
+        else:
+            indicator_ten += 1
 
         #indicator eight
         if not case.antibiotic_given:
