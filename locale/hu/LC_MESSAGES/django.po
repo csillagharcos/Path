@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-12 13:34+0200\n"
-"PO-Revision-Date: 2012-10-12 13:34\n"
+"PO-Revision-Date: 2012-10-16 15:06\n"
 "Last-Translator: Richard Hajdu <richard.hajdu@webdevil.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1558,13 +1558,13 @@ msgstr "C.2.1. Tervezett colorectalis daganat műtét"
 #: report_forms/c23/templates/c23_statistics.html:35
 #: report_forms/c24/templates/c24_statistics.html:35
 msgid "Appropriate antibiotic drug:"
-msgstr "Megfelelő dózis:"
+msgstr "Megfelelő hatóanyag:"
 
 #: report_forms/c21/templates/c21_statistics.html:39
 #: report_forms/c23/templates/c23_statistics.html:39
 #: report_forms/c24/templates/c24_statistics.html:39
 msgid "Appropriate dose:"
-msgstr "Megfelelő hatóanyag:"
+msgstr "Megfelelő dózis:"
 
 #: report_forms/c21/templates/c21_statistics.html:43
 #: report_forms/c23/templates/c23_statistics.html:43
