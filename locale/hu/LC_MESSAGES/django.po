@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-12 13:34+0200\n"
-"PO-Revision-Date: 2012-10-16 15:06\n"
-"Last-Translator: Richard Hajdu <richard.hajdu@webdevil.hu>\n"
+"PO-Revision-Date: 2012-10-17 14:19\n"
+"Last-Translator:   <tuskone16@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1424,7 +1424,7 @@ msgstr "Gyógyszerek"
 #: report_forms/c23/models.py:29 report_forms/c23/views.py:274
 #: report_forms/c24/models.py:28 report_forms/c24/views.py:277
 msgid "Principal diagnosis code (ICD-10 or DRG)"
-msgstr "Fődiagnózis kód (BNO10)"
+msgstr "Fődiagnózis kód (BNO10 vagy HBCS)"
 
 #: report_forms/c21/models.py:29 report_forms/c21/views.py:274
 #: report_forms/c23/models.py:31 report_forms/c23/views.py:276
@@ -1629,7 +1629,7 @@ msgstr "Egylövetű kezelés"
 
 #: report_forms/c23/models.py:30 report_forms/c23/views.py:275
 msgid "Other principal diagnosis code (ICD-10 or DRG)"
-msgstr "Egyéb fődiagnózis kód (BNO10)"
+msgstr "Egyéb fődiagnózis kód (BNO10 vagy HBCS)"
 
 #: report_forms/c23/models.py:56 report_forms/c23/models.py:57
 msgid "Planned surgery for hip replacement"
@@ -1792,7 +1792,7 @@ msgstr "Diagnózis kódja: BNO"
 
 #: report_forms/c8/models.py:23 report_forms/c8/views.py:380
 msgid "Diagnosis code: DRG"
-msgstr "Diagnózis kódja: HBCs"
+msgstr "Diagnózis kódja: HBCS"
 
 #: report_forms/c8/models.py:31
 msgid "Length of Stay"

@@ -89,6 +89,10 @@ def Import(request):
                 else:
                     pa = parseInt(line.penicilin_allergy)
 
+#                accepted_diagnose_codes = ("S70.0", "S70.1", "S70.2")
+#                if not line.principal_diagnoses_code in accepted_diagnose_codes:
+#                    raise DateException(_("There is no diagnoses code for this record!"))
+
                 new_c23 = c23.objects.create(
                     case_id                         = parseInt(line.case_id),
                     hospital_registration_number    = line.hospital_registration_number,

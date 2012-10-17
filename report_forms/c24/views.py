@@ -231,7 +231,7 @@ def Statistics(request):
             indicator_nine += 1
 
 
-    print indicator_nine
+    print magical_variable
     ''' Counting '''
     try: one = float(indicator_one) / len(countable_case) * 100
     except: one = 0
