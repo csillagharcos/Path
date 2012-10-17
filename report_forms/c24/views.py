@@ -57,7 +57,7 @@ def Display(request):
 @login_required
 def Import(request):
     if request.method == "POST":
-        date_errors=errors=exists=()
+        date_errors=errors=()
         first = True
         try:
             csv_file = request.FILES['file']

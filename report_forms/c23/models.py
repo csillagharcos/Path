@@ -27,7 +27,6 @@ class c23(models.Model):
     date_of_birth                   = models.DateField(_('Date of birth'))
     weight_of_patient               = models.IntegerField(_('Weight of patient (kg)'))
     principal_diagnoses_code        = models.CharField(_('Principal diagnosis code (ICD-10 or DRG)'), max_length=5, choices=PRINCIPAL_DIAG_CODE_S, default='')
-    principal_diagnoses_code_other  = models.CharField(_('Other principal diagnosis code (ICD-10 or DRG)'), max_length=10, null=True, blank=True)
     principal_procedure_code        = models.CharField(_('Principal procedure code'), max_length=10)
     procedure_planned               = models.IntegerField(_('Is the surgical procedure planned?'), max_length=1, choices=YES_NO_CHOICES, default=1)
     patient_allergy                 = models.IntegerField(_('Is patient allergic to any antibiotics suggested in the protocol?'), max_length=1, choices=YES_NO_CHOICES, default=0)

@@ -26,7 +26,6 @@ def Display(request):
                 weight_of_patient               = form.cleaned_data['weight_of_patient'],
                 principal_diagnoses_code        = form.cleaned_data['principal_diagnoses_code'],
                 principal_procedure_code        = form.cleaned_data['principal_procedure_code'],
-                principal_diagnoses_code_other  = form.cleaned_data['principal_diagnoses_code_other'],
                 procedure_planned               = form.cleaned_data['procedure_planned'],
                 patient_allergy                 = form.cleaned_data['patient_allergy'],
                 generic_name_of_drug            = form.cleaned_data['generic_name_of_drug'],
@@ -58,7 +57,7 @@ def Display(request):
 @login_required
 def Import(request):
     if request.method == "POST":
-        date_errors=errors=exists=()
+        date_errors=errors=()
         first = True
         try:
             csv_file = request.FILES['file']
@@ -93,9 +92,9 @@ def Import(request):
                 else:
                     pa = parseInt(line.penicilin_allergy)
 
-#                accepted_diagnose_codes = ("S70.0", "S70.1", "S70.2")
-#                if not line.principal_diagnoses_code in accepted_diagnose_codes:
-#                    raise DateException(_("There is no diagnoses code for this record!"))
+                accepted_diagnose_codes = ("371A", "371B", "371C", "371H", "371K", "372A", "372C", "372M", "372N", "372X", "372Y")
+                if not line.principal_diagnoses_code in accepted_diagnose_codes:
+                    raise DateException(_("There is no diagnoses code for this record!"))
 
                 new_c23 = c23.objects.create(
                     case_id                         = parseInt(line.case_id),
@@ -103,7 +102,6 @@ def Import(request):
                     date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
                     weight_of_patient               = parseInt(line.weight_of_patient),
                     principal_diagnoses_code        = line.principal_diagnoses_code,
-                    principal_diagnoses_code_other  = line.principal_diagnoses_code_other,
                     principal_procedure_code        = line.principal_procedure_code,
                     procedure_planned               = parseInt(line.procedure_planned),
                     patient_allergy                 = parseInt(line.patient_allergy),
@@ -143,7 +141,7 @@ def Import(request):
 @login_required
 def Statistics(request):
     ''' Query '''
-    accepted_diagnose_codes = ("S70.0", "S70.1", "S70.2")
+    accepted_diagnose_codes = ("371A", "371B", "371C", "371H", "371K", "372A", "372C", "372M", "372N", "372X", "372Y")
     countable_case=uncountable_case=()
     cases = c23.objects.all()
     medicines=()
@@ -285,7 +283,6 @@ def Template(request):
         _('Date of birth'),
         _('Weight of patient'),
         _('Principal diagnosis code (ICD-10 or DRG)'),
-        _('Other principal diagnosis code (ICD-10 or DRG)'),
         _('Principal procedure code'),
         _('Is the surgical procedure planned?'),
         _('Is patient allergic to any antibiotics suggested in the protocol?'),
