@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from _sqlite3 import IntegrityError
 from datetime import datetime, date
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
+from django.db.utils import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
@@ -72,13 +72,17 @@ def Import(request):
                 continue
             try:
                 try: si = datetime.strptime(line.surgical_incision+" "+line.surgical_incision_time, "%Y-%m-%d %H:%M")
-                except ValueError: si = None
+#                except ValueError: si = None
+                except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 try: dofd = datetime.strptime(line.date_of_first_dose+" "+line.time_of_first_dose, "%Y-%m-%d %H:%M")
-                except ValueError: dofd = None
+#                except ValueError: dofd = None
+                except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 try: dold =datetime.strptime(line.date_of_last_dose+" "+line.time_of_last_dose, "%Y-%m-%d %H:%M")
-                except ValueError: dold = None
+#                except ValueError: dold = None
+                except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 try: dowc =datetime.strptime(line.date_of_wound_close+" "+line.time_of_wound_close, "%Y-%m-%d %H:%M")
-                except ValueError: dowc = None
+#                except ValueError: dowc = None
+                except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 if dofd > dold and dofd is not None and dold is not None:
                     raise DateException(_("Date of last dose happened before date of first dose!"))
                 if si > dowc and si is not None and dowc is not None:
@@ -116,13 +120,13 @@ def Import(request):
                 )
                 new_c24.save()
             except IntegrityError:
-                exists += (line.case_id,)
+                date_errors += ((line.case_id,_("This case is already in the database!")),)
             except DateException, (instance):
                 date_errors += ((line.case_id,instance.parameter),)
             except:
                 errors += (line.case_id,)
-        if exists or errors:
-            return render_to_response('c24_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
+        if errors or date_errors:
+            return render_to_response('c24_error.html', {'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c24_stat'))
     else:
         form = FileUploadForm()
@@ -177,7 +181,7 @@ def Statistics(request):
                 acceptable = True
 
         #indicator two A
-        if first_med_dose == case.first_dose and second_med_dose == case.second_dose and acceptable:
+        if (first_med_dose == case.first_dose and second_med_dose == case.second_dose) or (first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose) and acceptable:
             indicator_twoa += 1
             indicator_tracker += 1
 
@@ -231,7 +235,6 @@ def Statistics(request):
             indicator_nine += 1
 
 
-    print magical_variable
     ''' Counting '''
     try: one = float(indicator_one) / len(countable_case) * 100
     except: one = 0
