@@ -61,7 +61,6 @@ class c23CSV(CsvModel):
     date_of_birth                   = CharField()
     weight_of_patient               = CharField()
     principal_diagnoses_code        = CharField()
-    principal_diagnoses_code_other  = CharField()
     principal_procedure_code        = CharField()
     procedure_planned               = CharField()
     patient_allergy                 = CharField()
