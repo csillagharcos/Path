@@ -92,8 +92,7 @@ def Import(request):
                 else:
                     pa = parseInt(line.penicilin_allergy)
 
-                accepted_diagnose_codes = ("371A", "371B", "371C", "371H", "371K", "372A", "372C", "372M", "372N", "372X", "372Y")
-                if not line.principal_diagnoses_code in accepted_diagnose_codes:
+                if not line.principal_diagnoses_code:
                     raise DateException(_("There is no diagnoses code for this record!"))
 
                 new_c23 = c23.objects.create(
