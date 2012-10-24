@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, date
+from datetime import datetime
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.db.utils import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from django.utils import simplejson
 from report_forms.c23.forms import C23Form, FileUploadForm
 from report_forms.c23.models import c23, c23CSV, Medicine
 from report_forms.tools import parseFloat, parseInt, csvDump, calculate_age, DateException
 from django.utils.translation import ugettext_lazy as _
+from unidecode import unidecode
 
 @login_required
 def Display(request):
@@ -107,7 +106,7 @@ def Import(request):
                     generic_name_of_drug            = line.generic_name_of_drug,
                     penicilin_allergy               = pa,
                     preoperative_infection          = parseInt(line.preoperative_infection),
-                    type_of_infection               = line.type_of_infection,
+                    type_of_infection               = unidecode(line.type_of_infection),
                     surgical_incision               = si,
                     antibiotic_given                = parseInt(line.antibiotic_given),
                     name_of_first_dose              = line.name_of_first_dose,
@@ -123,10 +122,13 @@ def Import(request):
                 )
                 new_c23.save()
             except IntegrityError:
-                date_errors += ((line.case_id,_("This case is already in the database!")),)
+                if not parseInt(line.weight_of_patient):
+                    date_errors += ((line.case_id,_("Weight of the patient can't be null!")),)
+                else:
+                    date_errors += ((line.case_id,_("This case is already in the database!")),)
             except DateException, (instance):
                 date_errors += ((line.case_id,instance.parameter),)
-            except:
+            except CsvDataException:
                 errors += (line.case_id,)
         if date_errors or errors:
             return render_to_response('c23_error.html', {'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
@@ -166,7 +168,7 @@ def Statistics(request):
         except: second_med_doseUnder = 0
         #indicator one
         acceptable = False
-        if case.name_of_first_dose in medicines and case.name_of_second_dose in medicines:
+        if case.name_of_first_dose in medicines or case.name_of_second_dose in medicines:
             if case.name_of_first_dose == "Cefazolin" or case.name_of_first_dose == "Cefuroxim" or case.name_of_first_dose == "Vancomycin":
                 indicator_one += 1
                 indicator_tracker += 1
@@ -177,16 +179,16 @@ def Statistics(request):
                 acceptable = True
 
         #indicator two A
-        if (first_med_dose == case.first_dose and second_med_dose == case.second_dose) or (first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose) and acceptable:
+        if (first_med_dose == case.first_dose or second_med_dose == case.second_dose or (first_med_dose == case.first_dose and second_med_dose == case.second_dose) or (first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose)) and acceptable:
             indicator_twoa += 1
             indicator_tracker += 1
 
         #indicator two B
         if case.weight_of_patient > 60:
-            if first_med_dose == case.first_dose and second_med_dose == case.second_dose and acceptable:
+            if (first_med_dose == case.first_dose or second_med_dose == case.second_dose) and acceptable:
                 indicator_twob += 1
         else:
-            if first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose and acceptable:
+            if (first_med_doseUnder == case.first_dose or second_med_doseUnder == case.second_dose) and acceptable:
                 indicator_twob += 1
 
         #indicator three
