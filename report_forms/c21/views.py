@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, date
+from datetime import datetime
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.db.utils import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from django.utils import simplejson
 from report_forms.c21.forms import C21Form, FileUploadForm
 from report_forms.c21.models import c21, c21CSV, Medicine
 from report_forms.tools import parseInt, parseFloat, csvDump, calculate_age, DateException
@@ -72,16 +70,12 @@ def Import(request):
                 continue
             try:
                 try: si = datetime.strptime(line.surgical_incision+" "+line.surgical_incision_time, "%Y-%m-%d %H:%M")
-#                except ValueError: si = None
                 except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 try: dofd = datetime.strptime(line.date_of_first_dose+" "+line.time_of_first_dose, "%Y-%m-%d %H:%M")
-#                except ValueError: dofd = None
                 except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 try: dold =datetime.strptime(line.date_of_last_dose+" "+line.time_of_last_dose, "%Y-%m-%d %H:%M")
-#                except ValueError: dold = None
                 except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 try: dowc =datetime.strptime(line.date_of_wound_close+" "+line.time_of_wound_close, "%Y-%m-%d %H:%M")
-#                except ValueError: dowc = None
                 except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 if dofd > dold and dofd is not None and dold is not None:
                     raise DateException(_("Date of last dose happened before date of first dose!"))
@@ -141,6 +135,7 @@ def Statistics(request):
     countable_case=uncountable_case=()
     cases = c21.objects.all()
     medicines=()
+    a = b = c = d = ""
     for medicine in Medicine.objects.all():
         medicines += (medicine.name,)
     for case in cases:
@@ -181,6 +176,8 @@ def Statistics(request):
         if (first_med_dose == case.first_dose and second_med_dose == case.second_dose) or (first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose) and acceptable:
             indicator_twoa += 1
             indicator_tracker += 1
+        else:
+            a += str(case.case_id)+", "
 
         #indicator two B
         if case.weight_of_patient > 60:
@@ -217,6 +214,7 @@ def Statistics(request):
         #indicator six
         if indicator_tracker < 5:
             indicator_six += 1
+            b += str(case.case_id)+", "
         else:
             indicator_ten += 1
 
@@ -231,6 +229,8 @@ def Statistics(request):
         else: sd = case.second_dose
         if case.date_of_first_dose == case.date_of_last_dose and case.total_dose_in_24h == fd + sd:
             indicator_nine += 1
+        else:
+            c += str(case.case_id)+", "
 
     ''' Counting '''
     try: one = float(indicator_one) / len(countable_case) * 100
@@ -272,6 +272,9 @@ def Statistics(request):
         "eight": eight,
         "nine": nine,
         "ten": ten,
+        "a": a,
+        "b": b,
+        "c": c,
     }
     return render_to_response('c21_statistics.html', context, context_instance=RequestContext(request))
 

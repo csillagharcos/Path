@@ -282,7 +282,7 @@ def Template(request):
         _('Date of birth'),
         _('Weight of patient'),
         _('Principal procedure code'),
-        _('Principal diagnosis code (ICD-10 or DRG)'),
+        _('Principal diagnosis code (DRG)'),
         _('Is the surgical procedure planned?'),
         _('Is patient allergic to any antibiotics suggested in the protocol?'),
         _('Generic name of antibiotic drug'),
