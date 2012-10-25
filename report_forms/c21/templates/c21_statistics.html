@@ -39,10 +39,6 @@
             <td>{% trans "Appropriate dose:" %}</td>
             <td>{{ twoa|floatformat:"2" }}%</td>
         </tr>
-        <tr style="color: red">
-            <td>Nem megfelelő dózisúak:</td>
-            <td>{{ a }}</td>
-        </tr>
         <tr>
             <td>{% trans "Appropriate dose with weight:" %}</td>
             <td>{{ twob|floatformat:"2" }}%</td>
@@ -62,10 +58,6 @@
         <tr>
             <td>{% trans "Full compliance with criteria 1-5:" %}</td>
             <td>{{ ten|floatformat:"2" }}%</td>
-        </tr>
-        <tr style="color: red">
-            <td>Nem megfelelő 1-5:</td>
-            <td>{{ b }}</td>
         </tr>
         <tr>
             <td>{% trans "% of misuse:" %}</td>
