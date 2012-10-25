@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, date
+from datetime import datetime
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.db.utils import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from django.utils import simplejson
 from report_forms.c24.forms import C24Form, FileUploadForm
 from report_forms.c24.models import c24, c24CSV, Medicine
 from report_forms.tools import parseInt, parseFloat, csvDump, calculate_age, DateException
@@ -186,7 +184,7 @@ def Statistics(request):
             indicator_tracker += 1
 
         #indicator two B
-        if case.weight_of_patient > 60:
+        if case.weight_of_patient >= 60:
             if first_med_dose == case.first_dose and second_med_dose == case.second_dose and acceptable:
                 indicator_twob += 1
         else:
