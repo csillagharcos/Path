@@ -43,6 +43,10 @@
             <td>{% trans "Appropriate dose with weight:" %}</td>
             <td>{{ twob|floatformat:"2" }}%</td>
         </tr>
+        <tr style="color:red">
+            <td>Suly alapjan nem megfelelo</td>
+            <td>{{ a }}</td>
+        </tr>
         <tr>
             <td>{% trans "Appropriate route of administration: intravenous administration:" %}</td>
             <td>{{ three|floatformat:"2" }}%</td>
@@ -74,6 +78,10 @@
         <tr>
             <td>{% trans "% of single shot treatment:" %}</td>
             <td>{{ nine|floatformat:"2" }}%</td>
+        </tr>
+        <tr style="color:red">
+            <td>Nem egylovetu</td>
+            <td>{{ b }}</td>
         </tr>
     </table>
 {% endblock content %}
