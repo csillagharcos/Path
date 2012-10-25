@@ -59,19 +59,23 @@ def Import(request):
                 continue
             try:
                 try: dob = datetime.strptime(line.date_of_birth, "%Y-%m-%d")
-                except: dob = None
+                except: raise DateException(_("Date field is empty!"))
                 try: doa = datetime.strptime(line.date_of_admission, "%Y-%m-%d")
-                except: doa = None
+                except: raise DateException(_("Date field is empty!"))
                 try: dosp = datetime.strptime(line.date_of_surgical_procedure, "%Y-%m-%d")
-                except: dosp = None
+                except: raise DateException(_("Date field is empty!"))
                 try: dod = datetime.strptime(line.date_of_discharge, "%Y-%m-%d")
-                except: dod = None
+                except: raise DateException(_("Date field is empty!"))
                 if dob > doa:
                     raise DateException(_("Can't be born after admission!"))
                 if dosp < doa:
                     raise DateException(_("Can't be operated before admission!"))
                 if dosp > dod:
                     raise DateException(_("Can't be operated after discharge!"))
+                try: dg = parseInt(line.diagnosis_group)
+                except: raise DateException(_("This does not contain a number"))
+                if ((dg == 0 or dg == 1 or dg == 2 or dg == 5) and not line.icd) or ((dg == 3 or dg == 4 or dg == 5 or dg == 6 or dg == 7 or dg == 8) and not line.drg):
+                    raise DateException(_("Diagnosis group does not match ICD or DRG code."))
                 new_c8 = c8.objects.create(
                                             patient_id                      = parseInt(line.patient_id),
                                             case_id                         = parseInt(line.case_id),
@@ -114,8 +118,6 @@ def Statistics(request):
             uncountable_case += (case,)
         else:
             countable_case += (case,)
-
-
 
     ''' Working '''
     s_days = hap_days = hf_days = cabg_days = ka_days = ih_days = taa_days = c_days = v_days = ()

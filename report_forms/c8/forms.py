@@ -12,15 +12,27 @@ class C8Form(ModelForm):
     def clean(self):
         cleaned_data = super(C8Form, self).clean()
         date_of_birth = cleaned_data.get("date_of_birth")
+        dg = cleaned_data.get("diagnosis_group")
+        drg = cleaned_data.get("drg")
+        icd = cleaned_data.get("icd")
         date_of_admission = cleaned_data.get("date_of_admission")
         date_of_discharge = cleaned_data.get("date_of_discharge")
         date_of_surgical_procedure = cleaned_data.get("date_of_surgical_procedure")
+
+        if (dg == 3 or dg == 4 or dg == 5 or dg == 6 or dg == 7 or dg == 8) and not drg:
+            self._errors["drg"] = self.error_class([_("Diagnosis group is not for DRG!")])
+            del cleaned_data["drg"]
+
+        if (dg == 0 or dg == 1 or dg == 2 or dg == 5) and not icd:
+            self._errors["icd"] = self.error_class([_("Diagnosis group is not for ICD!")])
+            del cleaned_data["icd"]
 
         if date_of_birth > date_of_admission:
             self._errors["date_of_birth"] = self.error_class([_("Can't be born after admission!")])
             self._errors["date_of_admission"] = self.error_class([_("Can't be born after admission!")])
             del cleaned_data["date_of_birth"]
             del cleaned_data["date_of_admission"]
+
 
         if date_of_surgical_procedure < date_of_admission:
             self._errors["date_of_surgical_procedure"] = self.error_class([_("Can't be operated before admission!")])

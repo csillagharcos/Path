@@ -25,7 +25,9 @@ $(document).ready(function(){
     showNext($('#id_was_surgical_procedure'), 1);
     $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, yearRange: "1900:c" })
     $(".datepicker").datepicker({ dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, yearRange: "1900:c" })
-})
 
+    $("#id_drg option:first").remove();
+    $("#id_icd option:first").remove();
+})
 </script>
 {% endblock js %}
