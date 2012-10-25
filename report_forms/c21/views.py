@@ -135,6 +135,7 @@ def Statistics(request):
     countable_case=uncountable_case=()
     cases = c21.objects.all()
     medicines=()
+    a = b = c = ""
     for medicine in Medicine.objects.all():
         medicines += (medicine.name,)
     for case in cases:
@@ -175,6 +176,8 @@ def Statistics(request):
         if (first_med_dose == case.first_dose and second_med_dose == case.second_dose) or (first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose) and acceptable:
             indicator_twoa += 1
             indicator_tracker += 1
+        else:
+            a += str(case.case_id)+", "
 
         #indicator two B
         if case.weight_of_patient >= 60:
@@ -211,6 +214,7 @@ def Statistics(request):
         #indicator six
         if indicator_tracker < 5:
             indicator_six += 1
+            b += str(case.case_id)+", "
         else:
             indicator_ten += 1
 
@@ -225,6 +229,8 @@ def Statistics(request):
         else: sd = case.second_dose
         if case.date_of_first_dose == case.date_of_last_dose and case.total_dose_in_24h == fd + sd:
             indicator_nine += 1
+        else:
+            c += str(case.case_id)+", "
 
     ''' Counting '''
     try: one = float(indicator_one) / len(countable_case) * 100
@@ -266,6 +272,9 @@ def Statistics(request):
         "eight": eight,
         "nine": nine,
         "ten": ten,
+        "a": a,
+        "b": b,
+        "c": c,
     }
     return render_to_response('c21_statistics.html', context, context_instance=RequestContext(request))
 
