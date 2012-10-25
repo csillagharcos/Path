@@ -129,49 +129,49 @@ def Statistics(request):
             if case.was_surgical_procedure == 1:
                 sd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
                 sde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
-        elif case.case.diagnosis_group == 1: #Hospital acquired pneumonia
+        elif case.diagnosis_group == 1: #Hospital acquired pneumonia
             hap_days += ((case.date_of_discharge - case.date_of_admission).days,)
             hap_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
                 hapd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
                 hapde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
-        elif case.case.diagnosis_group == 2: #Hip fracture
+        elif case.diagnosis_group == 2: #Hip fracture
             hf_days += ((case.date_of_discharge - case.date_of_admission).days,)
             hf_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
                 hfd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
                 hfde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
-        elif case.case.diagnosis_group == 3: #CABG
+        elif case.diagnosis_group == 3: #CABG
             cabg_days += ((case.date_of_discharge - case.date_of_admission).days,)
             cabg_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
                 cabgd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
                 cabgde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
-        elif case.case.diagnosis_group == 4: #Knee arthroscopy
+        elif case.diagnosis_group == 4: #Knee arthroscopy
             ka_days += ((case.date_of_discharge - case.date_of_admission).days,)
             ka_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
                 kad_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
                 kade_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
-        elif case.case.diagnosis_group == 5: #Inguinal hernia
+        elif case.diagnosis_group == 5: #Inguinal hernia
             ih_days += ((case.date_of_discharge - case.date_of_admission).days,)
             ih_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
                 ihd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
                 ihde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
-        elif case.case.diagnosis_group == 6: #Tonsillectomy and/or adenoidectomy
+        elif case.diagnosis_group == 6: #Tonsillectomy and/or adenoidectomy
             taa_days += ((case.date_of_discharge - case.date_of_admission).days,)
             taa_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
                 taad_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
                 taade_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
-        elif case.case.diagnosis_group == 7: #Cholecystectomy
+        elif case.diagnosis_group == 7: #Cholecystectomy
             c_days += ((case.date_of_discharge - case.date_of_admission).days,)
             c_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
                 cd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
                 cde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
-        elif case.case.diagnosis_group == 8: #Varicose veins - stripping and ligation
+        elif case.diagnosis_group == 8: #Varicose veins - stripping and ligation
             v_days += ((case.date_of_discharge - case.date_of_admission).days,)
             v_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
