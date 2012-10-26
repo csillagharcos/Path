@@ -100,17 +100,18 @@ def Statistics(request):
     countable_case=uncountable_case=()
     cases = c20.objects.all()
     for case in cases:
+        error=False
         if not case.diagnosis_code == "I21" and not case.diagnosis_code == "I22":
             uncountable_case += (case,)
-            break
-        if calculate_age(case.date_of_birth) < 15:
+            error = True
+        if calculate_age(case.date_of_birth) < 15 and not error:
             uncountable_case += (case,)
-            break
-        if case.type_of_discharge == 1 or case.type_of_discharge == 3 or case.type_of_discharge == 4 or case.patient_allergic_aspirin == 1 or case.aspirin_intolerance == 1 or case.aspirin_refusal == 1:
+            error = True
+        if (case.type_of_discharge == 1 or case.type_of_discharge == 3 or case.type_of_discharge == 4 or case.patient_allergic_aspirin == 1 or case.aspirin_intolerance == 1 or case.aspirin_refusal == 1) and not error:
             uncountable_case += (case,)
-            break
-        countable_case += (case,)
-
+            error = True
+        if not error:
+            countable_case += (case,)
 
     cindicator_one = cindicator_two = cindicator_three = 0
     indicator_one = indicator_two = indicator_three = 0
@@ -118,17 +119,20 @@ def Statistics(request):
     for case in countable_case:
         if case.aspirin_at_discharge == 1:
             cindicator_one += 1
-        elif case.non_aspirin_platelet == 1:
+        if case.non_aspirin_platelet == 1:
             cindicator_two += 1
         if case.aspirin_at_discharge == 1 or case.non_aspirin_platelet == 1:
             cindicator_three += 1
 
+    print cindicator_one
+    print cindicator_two
+    print cindicator_three
     ''' Counting '''
-    try: indicator_one = cindicator_one / len(countable_case) * 100
+    try: indicator_one = float(cindicator_one) / len(countable_case) * 100
     except: indicator_one = 0
-    try: indicator_two = float(cindicator_two / len(countable_case) * 100)
+    try: indicator_two = float(cindicator_two) / len(countable_case) * 100
     except: indicator_one = 0
-    try: indicator_three = float(cindicator_three / len(countable_case) * 100)
+    try: indicator_three = float(cindicator_three) / len(countable_case) * 100
     except: indicator_one = 0
 
     ''' Displaying '''
