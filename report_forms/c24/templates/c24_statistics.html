@@ -35,13 +35,25 @@
             <td>{% trans "Appropriate antibiotic drug:" %}</td>
             <td>{{ one|floatformat:"2" }}%</td>
         </tr>
+        <tr style="color: red;">
+            <td>nem:</td>
+            <td>{{ a }}</td>
+        </tr>
         <tr>
             <td>{% trans "Appropriate dose:" %}</td>
             <td>{{ twoa|floatformat:"2" }}%</td>
         </tr>
+        <tr style="color: red;">
+            <td>nem:</td>
+            <td>{{ b }}</td>
+        </tr>
         <tr>
             <td>{% trans "Appropriate dose with weight:" %}</td>
             <td>{{ twob|floatformat:"2" }}%</td>
+        </tr>
+        <tr style="color: red;">
+            <td>nem:</td>
+            <td>{{ c }}</td>
         </tr>
         <tr>
             <td>{% trans "Appropriate route of administration: intravenous administration:" %}</td>
