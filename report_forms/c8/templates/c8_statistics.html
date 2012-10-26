@@ -31,27 +31,27 @@
             </tr>
             <tr>
                 <td>{% trans "Average length of stay" %}</td>
-                <td>{{ data.3 }} {% trans "days" %}</td>
+                <td>{{ data.3|floatformat:"2" }} {% trans "days" %}</td>
             </tr>
             <tr>
                 <td>{% trans "Median length of stay" %}</td>
-                <td>{{ data.4 }} {% trans "days" %}</td>
+                <td>{{ data.4|floatformat:"2" }} {% trans "days" %}</td>
             </tr>
             <tr>
                 <td>{% trans "Average length of stay until the first surgical procedure" %}</td>
-                <td>{{ data.5 }} {% trans "days" %}</td>
+                <td>{{ data.5|floatformat:"2" }} {% trans "days" %}</td>
             </tr>
             <tr>
                 <td>{% trans "Median length of stay until the first surgical procedure" %}</td>
-                <td>{{ data.6 }} {% trans "days" %}</td>
+                <td>{{ data.6|floatformat:"2" }} {% trans "days" %}</td>
             </tr>
             <tr>
                 <td>{% trans "Average length of stay from the first surgical procedure until discharge" %}</td>
-                <td>{{ data.7 }} {% trans "days" %}</td>
+                <td>{{ data.7|floatformat:"2" }} {% trans "days" %}</td>
             </tr>
             <tr>
                 <td>{% trans "Median length of stay from the first surgical procedure until discharge" %}</td>
-                <td>{{ data.8 }} {% trans "days" %}</td>
+                <td>{{ data.8|floatformat:"2" }} {% trans "days" %}</td>
             </tr>
         </table>
         {% endif %}
