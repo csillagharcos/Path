@@ -124,9 +124,6 @@ def Statistics(request):
         if case.aspirin_at_discharge == 1 or case.non_aspirin_platelet == 1:
             cindicator_three += 1
 
-    print cindicator_one
-    print cindicator_two
-    print cindicator_three
     ''' Counting '''
     try: indicator_one = float(cindicator_one) / len(countable_case) * 100
     except: indicator_one = 0
