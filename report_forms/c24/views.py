@@ -193,12 +193,14 @@ def Statistics(request):
 
         #indicator two B
         if case.weight_of_patient >= 60:
-            if (first_med_dose == case.first_dose or second_med_dose == case.second_dose) and acceptable:
+            if first_med_dose == case.first_dose and (second_med_dose == case.second_dose or case.second_dose is None) and acceptable:
                 indicator_twob += 1
             else:
+                print case.second_dose
+                print second_med_doseUnder
                 c += str(case.case_id)+", "
         else:
-            if (first_med_doseUnder == case.first_dose or second_med_doseUnder == case.second_dose) and acceptable:
+            if (first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose) and acceptable:
                 indicator_twob += 1
             else:
                 c += str(case.case_id)+", "
