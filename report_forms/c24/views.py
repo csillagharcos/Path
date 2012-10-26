@@ -70,16 +70,12 @@ def Import(request):
                 continue
             try:
                 try: si = datetime.strptime(line.surgical_incision+" "+line.surgical_incision_time, "%Y-%m-%d %H:%M")
-#                except ValueError: si = None
                 except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 try: dofd = datetime.strptime(line.date_of_first_dose+" "+line.time_of_first_dose, "%Y-%m-%d %H:%M")
-#                except ValueError: dofd = None
                 except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 try: dold =datetime.strptime(line.date_of_last_dose+" "+line.time_of_last_dose, "%Y-%m-%d %H:%M")
-#                except ValueError: dold = None
                 except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 try: dowc =datetime.strptime(line.date_of_wound_close+" "+line.time_of_wound_close, "%Y-%m-%d %H:%M")
-#                except ValueError: dowc = None
                 except ValueError: raise DateException(_("Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."))
                 if dofd > dold and dofd is not None and dold is not None:
                     raise DateException(_("Date of last dose happened before date of first dose!"))
@@ -161,7 +157,7 @@ def Statistics(request):
         except: second_med_doseUnder = 0
         #indicator one
         acceptable = False
-        if case.name_of_first_dose in medicines and case.name_of_second_dose in medicines:
+        if case.name_of_first_dose in medicines or case.name_of_second_dose in medicines:
             if (case.name_of_first_dose == "Cefazolin" or case.name_of_first_dose == "Cefuroxim" or case.name_of_first_dose == "Cefotaxim" or case.name_of_first_dose == "Ceftriaxon") and (case.name_of_second_dose == "Metronidazol" or case.name_of_second_dose == "Clindamycin"):
                 indicator_one += 1
                 indicator_tracker += 1
@@ -183,13 +179,13 @@ def Statistics(request):
 
         #indicator two A
         if case.weight_of_patient >= 60:
-            if first_med_dose == case.first_dose and second_med_dose == case.second_dose and acceptable:
+            if (first_med_dose == case.first_dose or second_med_dose == case.second_dose) and acceptable:
                 indicator_twoa += 1
                 indicator_tracker += 1
             else:
                 b += str(case.case_id)+", "
         elif case.weight_of_patient < 60:
-            if (first_med_dose == case.first_dose and second_med_dose == case.second_dose) or (first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose) and acceptable:
+            if (first_med_dose == case.first_dose or second_med_dose == case.second_dose) or (first_med_doseUnder == case.first_dose or second_med_doseUnder == case.second_dose) and acceptable:
                 indicator_twoa += 1
                 indicator_tracker += 1
             else:
@@ -197,12 +193,12 @@ def Statistics(request):
 
         #indicator two B
         if case.weight_of_patient >= 60:
-            if first_med_dose == case.first_dose and second_med_dose == case.second_dose and acceptable:
+            if (first_med_dose == case.first_dose or second_med_dose == case.second_dose) and acceptable:
                 indicator_twob += 1
             else:
                 c += str(case.case_id)+", "
         else:
-            if first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose and acceptable:
+            if (first_med_doseUnder == case.first_dose or second_med_doseUnder == case.second_dose) and acceptable:
                 indicator_twob += 1
             else:
                 c += str(case.case_id)+", "
