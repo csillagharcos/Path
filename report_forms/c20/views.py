@@ -101,17 +101,18 @@ def Statistics(request):
     countable_case=uncountable_case=()
     cases = c20.objects.all()
     for case in cases:
-        print case.diagnosis_code
+        error = False
         if not case.diagnosis_code == "I21" and not case.diagnosis_code == "I22":
             uncountable_case += (case,)
-            continue
+            error = True
         if calculate_age(case.date_of_birth) < 15:
             uncountable_case += (case,)
-            continue
+            error = True
         if case.type_of_discharge == 1 or case.type_of_discharge == 3 or case.type_of_discharge == 4 or case.patient_allergic_aspirin == 1 or case.aspirin_intolerance == 1 or case.aspirin_refusal == 1:
             uncountable_case += (case,)
-            continue
-        countable_case += (case,)
+            error = True
+        if not error:
+            countable_case += (case,)
 
 
     cindicator_one = cindicator_two = cindicator_three = 0
