@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, date
+from datetime import datetime
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.db.utils import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from django.utils import simplejson
 from report_forms.c8.forms import C8Form, FileUploadForm
 from report_forms.c8.models import c8, c8CSV
 from django.utils.translation import ugettext_lazy as _
