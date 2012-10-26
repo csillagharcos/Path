@@ -120,7 +120,7 @@ def Statistics(request):
             cindicator_one += 1
         elif case.non_aspirin_platelet == 1:
             cindicator_two += 1
-        if case.aspirin_at_discharge or case.non_aspirin_platelet == 1:
+        if case.aspirin_at_discharge == 1 or case.non_aspirin_platelet == 1:
             cindicator_three += 1
 
     ''' Counting '''
