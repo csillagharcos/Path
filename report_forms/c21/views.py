@@ -173,11 +173,18 @@ def Statistics(request):
                 acceptable = True
 
         #indicator two A
-        if (first_med_dose == case.first_dose and second_med_dose == case.second_dose) or (first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose) and acceptable:
-            indicator_twoa += 1
-            indicator_tracker += 1
-        else:
-            a += str(case.case_id)+", "
+        if case.weight_of_patient >= 60:
+            if first_med_dose == case.first_dose and second_med_dose == case.second_dose and acceptable:
+                indicator_twoa += 1
+                indicator_tracker += 1
+            else:
+                a += str(case.case_id)+", "
+        elif case.weight_of_patient < 60:
+            if (first_med_dose == case.first_dose and second_med_dose == case.second_dose) or (first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose) and acceptable:
+                indicator_twoa += 1
+                indicator_tracker += 1
+            else:
+                a += str(case.case_id)+", "
 
         #indicator two B
         if case.weight_of_patient >= 60:
