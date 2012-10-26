@@ -104,13 +104,13 @@ def Statistics(request):
         print case.diagnosis_code
         if not case.diagnosis_code == "I21" and not case.diagnosis_code == "I22":
             uncountable_case += (case,)
-            break
+            continue
         if calculate_age(case.date_of_birth) < 15:
             uncountable_case += (case,)
-            break
+            continue
         if case.type_of_discharge == 1 or case.type_of_discharge == 3 or case.type_of_discharge == 4 or case.patient_allergic_aspirin == 1 or case.aspirin_intolerance == 1 or case.aspirin_refusal == 1:
             uncountable_case += (case,)
-            break
+            continue
         countable_case += (case,)
 
 
@@ -126,9 +126,9 @@ def Statistics(request):
             cindicator_three += 1
 
     ''' Counting '''
-    try: indicator_one   = cindicator_one   / len(countable_case) * 100
+    try: indicator_one = cindicator_one / len(countable_case) * 100
     except: indicator_one = 0
-    try: indicator_two   = float(cindicator_two   / len(countable_case) * 100)
+    try: indicator_two = float(cindicator_two / len(countable_case) * 100)
     except: indicator_one = 0
     try: indicator_three = float(cindicator_three / len(countable_case) * 100)
     except: indicator_one = 0
