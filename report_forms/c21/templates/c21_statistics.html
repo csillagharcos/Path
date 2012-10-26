@@ -39,10 +39,6 @@
             <td>{% trans "Appropriate dose:" %}</td>
             <td>{{ twoa|floatformat:"2" }}%</td>
         </tr>
-        <tr style="color: red">
-            <td>Nem megfelelő dózis</td>
-            <td>{{ a }}</td>
-        </tr>
         <tr>
             <td>{% trans "Appropriate dose with weight:" %}</td>
             <td>{{ twob|floatformat:"2" }}%</td>
@@ -67,10 +63,6 @@
             <td>{% trans "% of misuse:" %}</td>
             <td>{{ six|floatformat:"2" }}%</td>
         </tr>
-        <tr style="color: red">
-            <td>Tévesek</td>
-            <td>{{ b }}</td>
-        </tr>
         <tr>
             <td>{% trans "% of overuse:" %}</td>
             <td>{{ seven|floatformat:"2" }}%</td>
@@ -82,10 +74,6 @@
         <tr>
             <td>{% trans "% of single shot treatment:" %}</td>
             <td>{{ nine|floatformat:"2" }}%</td>
-        </tr>
-        <tr style="color: red">
-            <td>Nem egylövetű</td>
-            <td>{{ c }}</td>
         </tr>
     </table>
 {% endblock content %}
