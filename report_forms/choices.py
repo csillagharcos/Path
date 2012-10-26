@@ -185,11 +185,11 @@ TYPE_OF_UNIT = (
 )
 
 TYPE_OF_DISCHARGE = (
-    (1, _('Transfer to another inpatient hospital')),
-    (2, _('Discharge to home, social home')),
-    (3, _('Patient left hospital against medical advice')),
-    (4, _('In-hospital death')),
-    (0, _('Other')),
+    (0, _('Transfer to another inpatient hospital')),
+    (1, _('Discharge to home, social home')),
+    (2, _('Patient left hospital against medical advice')),
+    (3, _('In-hospital death')),
+    (4, _('Other')),
 )
 
 FIELD_OF_REHAB = (
