@@ -185,15 +185,15 @@ def Statistics(request):
     except: s_first_date = 0
     try: s_last_date = sorted(s_dates, reverse=True)[0]
     except: s_last_date = 0
-    try: s_avg = float(sum(s_days) / len(s_days))
+    try: s_avg = float(sum(s_days)) / len(s_days)
     except: s_avg = 0
     try: s_med = median(s_days)
     except: s_med = 0
-    try: sd_avg = float(sum(sd_days) / len(sd_days))
+    try: sd_avg = float(sum(sd_days)) / len(sd_days)
     except: sd_avg = 0
     try: sd_med = median(sd_days)
     except: sd_med = 0
-    try: sde_avg = float(sum(sde_days) / len(sde_days))
+    try: sde_avg = float(sum(sde_days)) / len(sde_days)
     except: sde_avg = 0
     try: sde_med = median(sde_days)
     except: sde_med = 0
@@ -203,15 +203,15 @@ def Statistics(request):
     except: hap_first_date = 0
     try: hap_last_date = sorted(hap_dates, reverse=True)[0]
     except: hap_last_date = 0
-    try: hap_avg = float(sum(hap_days) / len(hap_days))
+    try: hap_avg = float(sum(hap_days)) / len(hap_days)
     except: hap_avg = 0
     try: hap_med = median(hap_days)
     except: hap_med = 0
-    try: hapd_avg = float(sum(hapd_days) / len(hapd_days))
+    try: hapd_avg = float(sum(hapd_days)) / len(hapd_days)
     except: hapd_avg = 0
     try: hapd_med = median(hapd_days)
     except: hapd_med = 0
-    try: hapde_avg = float(sum(hapde_days) / len(hapde_days))
+    try: hapde_avg = float(sum(hapde_days)) / len(hapde_days)
     except: hapde_avg = 0
     try: hapde_med = median(hapde_days)
     except: hapde_med = 0
@@ -221,15 +221,15 @@ def Statistics(request):
     except: hf_first_date = 0
     try: hf_last_date = sorted(hf_dates, reverse=True)[0]
     except: hf_last_date = 0
-    try: hf_avg = float(sum(hf_days) / len(hf_days))
+    try: hf_avg = float(sum(hf_days)) / len(hf_days)
     except: hf_avg = 0
     try: hf_med = median(hf_days)
     except: hf_med = 0
-    try: hfd_avg = float(sum(hfd_days) / len(hfd_days))
+    try: hfd_avg = float(sum(hfd_days)) / len(hfd_days)
     except: hfd_avg = 0
     try: hfd_med = median(hfd_days)
     except: hfd_med = 0
-    try: hfde_avg = float(sum(hfde_days) / len(hfde_days))
+    try: hfde_avg = float(sum(hfde_days)) / len(hfde_days)
     except: hfde_avg = 0
     try: hfde_med = median(hfde_days)
     except: hfde_med = 0
@@ -239,15 +239,15 @@ def Statistics(request):
     except: cabg_first_date = 0
     try: cabg_last_date = sorted(cabg_dates, reverse=True)[0]
     except: cabg_last_date = 0
-    try: cabg_avg = float(sum(cabg_days) / len(cabg_days))
+    try: cabg_avg = float(sum(cabg_days)) / len(cabg_days)
     except: cabg_avg = 0
     try: cabg_med = median(cabg_days)
     except: cabg_med = 0
-    try: cabgd_avg = float(sum(cabgd_days) / len(cabgd_days))
+    try: cabgd_avg = float(sum(cabgd_days)) / len(cabgd_days)
     except: cabgd_avg = 0
     try: cabgd_med = median(cabgd_days)
     except: cabgd_med = 0
-    try: cabgde_avg = float(sum(cabgde_days) / len(cabgde_days))
+    try: cabgde_avg = float(sum(cabgde_days)) / len(cabgde_days)
     except: cabgde_avg = 0
     try: cabgde_med = median(cabgde_days)
     except: cabgde_med = 0
@@ -257,15 +257,15 @@ def Statistics(request):
     except: ka_first_date = 0
     try: ka_last_date = sorted(ka_dates, reverse=True)[0]
     except: ka_last_date = 0
-    try: ka_avg = float(sum(ka_days) / len(ka_days))
+    try: ka_avg = float(sum(ka_days)) / len(ka_days)
     except: ka_avg = 0
     try: ka_med = median(ka_days)
     except: ka_med = 0
-    try: kad_avg = float(sum(kad_days) / len(kad_days))
+    try: kad_avg = float(sum(kad_days)) / len(kad_days)
     except: kad_avg = 0
     try: kad_med = median(kad_days)
     except: kad_med = 0
-    try: kade_avg = float(sum(kade_days) / len(kade_days))
+    try: kade_avg = float(sum(kade_days)) / len(kade_days)
     except: kade_avg = 0
     try: kade_med = median(kade_days)
     except: kade_med = 0
@@ -275,15 +275,15 @@ def Statistics(request):
     except: ih_first_date = 0
     try: ih_last_date = sorted(ih_dates, reverse=True)[0]
     except: ih_last_date = 0
-    try: ih_avg = float(sum(ih_days) / len(ih_days))
+    try: ih_avg = float(sum(ih_days)) / len(ih_days)
     except: ih_avg = 0
     try: ih_med = median(ih_days)
     except: ih_med = 0
-    try: ihd_avg = float(sum(ihd_days) / len(ihd_days))
+    try: ihd_avg = float(sum(ihd_days)) / len(ihd_days)
     except: ihd_avg = 0
     try: ihd_med = median(ihd_days)
     except: ihd_med = 0
-    try: ihde_avg = float(sum(ihde_days) / len(ihde_days))
+    try: ihde_avg = float(sum(ihde_days)) / len(ihde_days)
     except: ihde_avg = 0
     try: ihde_med = median(ihde_days)
     except: ihde_med = 0
@@ -293,15 +293,15 @@ def Statistics(request):
     except: taa_first_date = 0
     try: taa_last_date = sorted(taa_dates, reverse=True)[0]
     except: taa_last_date = 0
-    try: taa_avg = float(sum(taa_days) / len(taa_days))
+    try: taa_avg = float(sum(taa_days)) / len(taa_days)
     except: taa_avg = 0
     try: taa_med = median(taa_days)
     except: taa_med = 0
-    try: taad_avg = float(sum(taad_days) / len(taad_days))
+    try: taad_avg = float(sum(taad_days)) / len(taad_days)
     except: taad_avg = 0
     try: taad_med = median(taad_days)
     except: taad_med = 0
-    try: taade_avg = float(sum(taade_days) / len(taade_days))
+    try: taade_avg = float(sum(taade_days)) / len(taade_days)
     except: taade_avg = 0
     try: taade_med = median(taade_days)
     except: taade_med = 0
@@ -311,15 +311,15 @@ def Statistics(request):
     except: c_first_date = 0
     try: c_last_date = sorted(c_dates, reverse=True)[0]
     except: c_last_date = 0
-    try: c_avg = float(sum(c_days) / len(c_days))
+    try: c_avg = float(sum(c_days)) / len(c_days)
     except: c_avg = 0
     try: c_med = median(c_days)
     except: c_med = 0
-    try: cd_avg = float(sum(cd_days) / len(cd_days))
+    try: cd_avg = float(sum(cd_days)) / len(cd_days)
     except: cd_avg = 0
     try: cd_med = median(cd_days)
     except: cd_med = 0
-    try: cde_avg = float(sum(cde_days) / len(cde_days))
+    try: cde_avg = float(sum(cde_days)) / len(cde_days)
     except: cde_avg = 0
     try: cde_med = median(cde_days)
     except: cde_med = 0
@@ -329,15 +329,15 @@ def Statistics(request):
     except: v_first_date = 0
     try: v_last_date = sorted(v_dates, reverse=True)[0]
     except: v_last_date = 0
-    try: v_avg = float(sum(v_days) / len(v_days))
+    try: v_avg = float(sum(v_days)) / len(v_days)
     except: v_avg = 0
     try: v_med = median(v_days)
     except: v_med = 0
-    try: vd_avg = float(sum(vd_days) / len(vd_days))
+    try: vd_avg = float(sum(vd_days)) / len(vd_days)
     except: vd_avg = 0
     try: vd_med = median(vd_days)
     except: vd_med = 0
-    try: vde_avg = float(sum(vde_days) / len(vde_days))
+    try: vde_avg = float(sum(vde_days)) / len(vde_days)
     except: vde_avg = 0
     try: vde_med = median(vde_days)
     except: vde_med = 0
