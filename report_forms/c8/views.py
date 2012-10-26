@@ -129,56 +129,56 @@ def Statistics(request):
             s_days += ((case.date_of_discharge - case.date_of_admission).days+1,)
             s_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
-                sd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
-                sde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
+                sd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days+1,)
+                sde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days+1,)
         elif case.diagnosis_group == 1: #Hospital acquired pneumonia
             hap_days += ((case.date_of_discharge - case.date_of_admission).days+1,)
             hap_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
-                hapd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
-                hapde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
+                hapd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days+1,)
+                hapde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days+1,)
         elif case.diagnosis_group == 2: #Hip fracture
             hf_days += ((case.date_of_discharge - case.date_of_admission).days+1,)
             hf_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
-                hfd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
-                hfde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
+                hfd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days+1,)
+                hfde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days+1,)
         elif case.diagnosis_group == 3: #CABG
             cabg_days += ((case.date_of_discharge - case.date_of_admission).days+1,)
             cabg_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
-                cabgd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
-                cabgde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
+                cabgd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days+1,)
+                cabgde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days+1,)
         elif case.diagnosis_group == 4: #Knee arthroscopy
             ka_days += ((case.date_of_discharge - case.date_of_admission).days+1,)
             ka_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
-                kad_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
-                kade_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
+                kad_days += ((case.date_of_surgical_procedure - case.date_of_admission).days+1,)
+                kade_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days+1,)
         elif case.diagnosis_group == 5: #Inguinal hernia
             ih_days += ((case.date_of_discharge - case.date_of_admission).days+1,)
             ih_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
-                ihd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
-                ihde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
+                ihd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days+1,)
+                ihde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days+1,)
         elif case.diagnosis_group == 6: #Tonsillectomy and/or adenoidectomy
             taa_days += ((case.date_of_discharge - case.date_of_admission).days+1,)
             taa_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
-                taad_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
-                taade_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
+                taad_days += ((case.date_of_surgical_procedure - case.date_of_admission).days+1,)
+                taade_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days+1,)
         elif case.diagnosis_group == 7: #Cholecystectomy
             c_days += ((case.date_of_discharge - case.date_of_admission).days+1,)
             c_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
-                cd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
-                cde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
+                cd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days+1,)
+                cde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days+1,)
         elif case.diagnosis_group == 8: #Varicose veins - stripping and ligation
             v_days += ((case.date_of_discharge - case.date_of_admission).days+1,)
             v_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:
-                vd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days,)
-                vde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days,)
+                vd_days += ((case.date_of_surgical_procedure - case.date_of_admission).days+1,)
+                vde_days += ((case.date_of_discharge - case.date_of_surgical_procedure).days+1,)
 
     ''' Stroke '''
     try: s_first_date = sorted(s_dates)[0]
