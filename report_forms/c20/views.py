@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, date
+from datetime import datetime
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.db.utils import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from django.utils import simplejson
 from report_forms.c20.forms import C20Form, FileUploadForm
 from report_forms.c20.models import c20, c20CSV
 from django.utils.translation import ugettext_lazy as _
 from report_forms.tools import parseInt, csvDump, calculate_age, DateException
+from unidecode import unidecode
 
 @login_required
 def Display(request):
@@ -72,7 +71,7 @@ def Import(request):
                                             patient_allergic_aspirin        = parseInt(line.patient_allergic_aspirin),
                                             aspirin_intolerance             = parseInt(line.aspirin_intolerance),
                                             type_of_discharge               = parseInt(line.type_of_discharge),
-                                            type_of_discharge_empty         = line.type_of_discharge_empty,
+                                            type_of_discharge_empty         = unidecode(line.type_of_discharge_empty),
                                             aspirin_refusal                 = parseInt(line.aspirin_refusal),
                                             aspirin_at_discharge            = parseInt(line.aspirin_at_discharge),
                                             non_aspirin_platelet            = parseInt(line.non_aspirin_platelet),
@@ -101,18 +100,16 @@ def Statistics(request):
     countable_case=uncountable_case=()
     cases = c20.objects.all()
     for case in cases:
-        error = False
         if not case.diagnosis_code == "I21" and not case.diagnosis_code == "I22":
             uncountable_case += (case,)
-            error = True
+            break
         if calculate_age(case.date_of_birth) < 15:
             uncountable_case += (case,)
-            error = True
-        if case.type_of_discharge == 0 or case.type_of_discharge == 2 or case.type_of_discharge == 3 or case.patient_allergic_aspirin == 1 or case.aspirin_intolerance == 1 or case.aspirin_refusal == 1:
+            break
+        if case.type_of_discharge == 1 or case.type_of_discharge == 3 or case.type_of_discharge == 4 or case.patient_allergic_aspirin == 1 or case.aspirin_intolerance == 1 or case.aspirin_refusal == 1:
             uncountable_case += (case,)
-            error = True
-        if not error:
-            countable_case += (case,)
+            break
+        countable_case += (case,)
 
 
     cindicator_one = cindicator_two = cindicator_three = 0
