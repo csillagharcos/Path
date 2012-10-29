@@ -324,74 +324,74 @@ def Statistics(request):
     r1b_first_indicator = r1b_second_indicator = r1b_third_indicator = 0
     r2_first_indicator = r2_second_indicator = r2_third_indicator = r2_fourth_indicator = 0
     for case in r1a_countable_case:
-        try: fima7 = (case.FIM_date_of_assess - case.date_of_admission).days < 7
+        try: fima7 = (case.FIM_date_of_assess - case.date_of_admission).days+1 < 7
         except: fima7 = False
-        try: fima2 = (case.FIM_date_of_assess - case.date_of_admission).days < 2
+        try: fima2 = (case.FIM_date_of_assess - case.date_of_admission).days+1 < 2
         except: fima2 = False
-        try: fima3 = (case.FIM_date_of_assess - case.date_of_admission).days < 3
+        try: fima3 = (case.FIM_date_of_assess - case.date_of_admission).days+1 < 3
         except: fima3 = False
         
-        try: bia7 = (case.BI_date_of_assess - case.date_of_admission).days < 7
+        try: bia7 = (case.BI_date_of_assess - case.date_of_admission).days+1 < 7
         except: bia7 = False
-        try: bia2 = (case.BI_date_of_assess - case.date_of_admission).days < 2
+        try: bia2 = (case.BI_date_of_assess - case.date_of_admission).days+1 < 2
         except: bia2 = False
-        try: bia3 = (case.BI_date_of_assess - case.date_of_admission).days < 3
+        try: bia3 = (case.BI_date_of_assess - case.date_of_admission).days+1 < 3
         except: bia3 = False
         
-        try: smwta7 = (case.SMWT_date_of_assess - case.date_of_admission).days < 7
+        try: smwta7 = (case.SMWT_date_of_assess - case.date_of_admission).days+1 < 7
         except: smwta7 = False
-        try: smwta2 = (case.SMWT_date_of_assess - case.date_of_admission).days < 2
+        try: smwta2 = (case.SMWT_date_of_assess - case.date_of_admission).days+1 < 2
         except: smwta2 = False
-        try: smwta3 = (case.SMWT_date_of_assess - case.date_of_admission).days < 3
+        try: smwta3 = (case.SMWT_date_of_assess - case.date_of_admission).days+1 < 3
         except: smwta3 = False
         
-        try: sfa7 = (case.SF_date_of_assess - case.date_of_admission).days < 7
+        try: sfa7 = (case.SF_date_of_assess - case.date_of_admission).days+1 < 7
         except: sfa7 = False
-        try: sfa2 = (case.SF_date_of_assess - case.date_of_admission).days < 2
+        try: sfa2 = (case.SF_date_of_assess - case.date_of_admission).days+1 < 2
         except: sfa2 = False
-        try: sfa3 = (case.SF_date_of_assess - case.date_of_admission).days < 3
+        try: sfa3 = (case.SF_date_of_assess - case.date_of_admission).days+1 < 3
         except: sfa3 = False
         
-        try: sata7 = (case.SAT_date_of_assess - case.date_of_admission).days < 7
+        try: sata7 = (case.SAT_date_of_assess - case.date_of_admission).days+1 < 7
         except: sata7 = False
-        try: sata2 = (case.SAT_date_of_assess - case.date_of_admission).days < 2
+        try: sata2 = (case.SAT_date_of_assess - case.date_of_admission).days+1 < 2
         except: sata2 = False
-        try: sata3 = (case.SAT_date_of_assess - case.date_of_admission).days < 3
+        try: sata3 = (case.SAT_date_of_assess - case.date_of_admission).days+1 < 3
         except: sata3 = False
         
-        try: feva7 = (case.FEV_date_of_assess - case.date_of_admission).days < 7
+        try: feva7 = (case.FEV_date_of_assess - case.date_of_admission).days+1 < 7
         except: feva7 = False
-        try: feva2 = (case.FEV_date_of_assess - case.date_of_admission).days < 2
+        try: feva2 = (case.FEV_date_of_assess - case.date_of_admission).days+1 < 2
         except: feva2 = False
-        try: feva3 = (case.FEV_date_of_assess - case.date_of_admission).days < 3
+        try: feva3 = (case.FEV_date_of_assess - case.date_of_admission).days+1 < 3
         except: feva3 = False
         
-        try: aia7 = (case.AI_date_of_assess - case.date_of_admission).days < 7
+        try: aia7 = (case.AI_date_of_assess - case.date_of_admission).days+1 < 7
         except: aia7 = False
-        try: aia2 = (case.AI_date_of_assess - case.date_of_admission).days < 2
+        try: aia2 = (case.AI_date_of_assess - case.date_of_admission).days+1 < 2
         except: aia2 = False
-        try: aia3 = (case.AI_date_of_assess - case.date_of_admission).days < 3
+        try: aia3 = (case.AI_date_of_assess - case.date_of_admission).days+1 < 3
         except: aia3 = False
         
-        try: snca7 = (case.SNC_date_of_assess - case.date_of_admission).days < 7
+        try: snca7 = (case.SNC_date_of_assess - case.date_of_admission).days+1 < 7
         except: snca7 = False
-        try: snca2 = (case.SNC_date_of_assess - case.date_of_admission).days < 2
+        try: snca2 = (case.SNC_date_of_assess - case.date_of_admission).days+1 < 2
         except: snca2 = False
-        try: snca3 = (case.SNC_date_of_assess - case.date_of_admission).days < 3
+        try: snca3 = (case.SNC_date_of_assess - case.date_of_admission).days+1 < 3
         except: snca3 = False
         
-        try: scia7 = (case.SCI_date_of_assess - case.date_of_admission).days < 7
+        try: scia7 = (case.SCI_date_of_assess - case.date_of_admission).days+1 < 7
         except: scia7 = False
-        try: scia2 = (case.SCI_date_of_assess - case.date_of_admission).days < 2
+        try: scia2 = (case.SCI_date_of_assess - case.date_of_admission).days+1 < 2
         except: scia2 = False
-        try: scia3 = (case.SCI_date_of_assess - case.date_of_admission).days < 3
+        try: scia3 = (case.SCI_date_of_assess - case.date_of_admission).days+1 < 3
         except: scia3 = False
         
-        try: oa7 = (case.Other_date_of_assess - case.date_of_admission).days < 7
+        try: oa7 = (case.Other_date_of_assess - case.date_of_admission).days+1 < 7
         except: oa7 = False
-        try: oa2 = (case.Other_date_of_assess - case.date_of_admission).days < 2
+        try: oa2 = (case.Other_date_of_assess - case.date_of_admission).days+1 < 2
         except: oa2 = False
-        try: oa3 = (case.Other_date_of_assess - case.date_of_admission).days < 3
+        try: oa3 = (case.Other_date_of_assess - case.date_of_admission).days+1 < 3
         except: oa3 = False
 
         if fima7 or bia7 or smwta7 or sfa7 or sata7 or feva7 or aia7 or snca7 or scia7 or oa7:
@@ -402,74 +402,74 @@ def Statistics(request):
             r1a_third_indicator += 1
 
     for case in r1b_countable_case:
-        try: fimd4 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days < 4
+        try: fimd4 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days+1 < 4
         except: fimd4 = False
-        try: fimd2 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days < 2
+        try: fimd2 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days+1 < 2
         except: fimd2 = False
-        try: fimd3 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days < 3
+        try: fimd3 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days+1 < 3
         except: fimd3 = False
 
-        try: bid4 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days < 4
+        try: bid4 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days+1 < 4
         except: bid4 = False
-        try: bid2 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days < 2
+        try: bid2 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days+1 < 2
         except: bid2 = False
-        try: bid3 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days < 3
+        try: bid3 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days+1 < 3
         except: bid3 = False
 
-        try: smwtd4 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days < 4
+        try: smwtd4 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days+1 < 4
         except: smwtd4 = False
-        try: smwtd2 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days < 2
+        try: smwtd2 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days+1 < 2
         except: smwtd2 = False
-        try: smwtd3 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days < 3
+        try: smwtd3 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days+1 < 3
         except: smwtd3 = False
 
-        try: sfd4 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days < 4
+        try: sfd4 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days+1 < 4
         except: sfd4 = False
-        try: sfd2 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days < 2
+        try: sfd2 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days+1 < 2
         except: sfd2 = False
-        try: sfd3 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days < 3
+        try: sfd3 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days+1 < 3
         except: sfd3 = False
 
-        try: satd4 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days < 4
+        try: satd4 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days+1 < 4
         except: satd4 = False
-        try: satd2 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days < 2
+        try: satd2 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days+1 < 2
         except: satd2 = False
-        try: satd3 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days < 3
+        try: satd3 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days+1 < 3
         except: satd3 = False
 
-        try: fevd4 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days < 4
+        try: fevd4 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days+1 < 4
         except: fevd4 = False
-        try: fevd2 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days < 2
+        try: fevd2 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days+1 < 2
         except: fevd2 = False
-        try: fevd3 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days < 3
+        try: fevd3 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days+1 < 3
         except: fevd3 = False
 
-        try: aid4 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days < 4
+        try: aid4 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days+1 < 4
         except: aid4 = False
-        try: aid2 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days < 2
+        try: aid2 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days+1 < 2
         except: aid2 = False
-        try: aid3 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days < 3
+        try: aid3 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days+1 < 3
         except: aid3 = False
 
-        try: sncd4 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days < 4
+        try: sncd4 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days+1 < 4
         except: sncd4 = False
-        try: sncd2 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days < 2
+        try: sncd2 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days+1 < 2
         except: sncd2 = False
-        try: sncd3 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days < 3
+        try: sncd3 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days+1 < 3
         except: sncd3 = False
 
-        try: scid4 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days < 4
+        try: scid4 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days+1 < 4
         except: scid4 = False
-        try: scid2 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days < 2
+        try: scid2 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days+1 < 2
         except: scid2 = False
-        try: scid3 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days < 3
+        try: scid3 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days+1 < 3
         except: scid3 = False
 
-        try: od4 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days < 4
+        try: od4 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days+1 < 4
         except: od4 = False
-        try: od2 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days < 2
+        try: od2 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days+1 < 2
         except: od2 = False
-        try: od3 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days < 3
+        try: od3 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days+1 < 3
         except: od3 = False
         
         if fimd4 or bid4 or smwtd4 or sfd4 or satd4 or fevd4 or aid4 or sncd4 or scid4 or od4:
