@@ -62,9 +62,9 @@ def Import(request):
                     raise DateException(_("Can't born after discharge!"))
                 if parseInt(line.patient_allergic_aspirin) and not parseInt(line.aspirin_intolerance):
                     raise DateException(_("Aspirin contradiction should be yes, since patient is allergic to aspirin!"))
-                if line.diagnosis_code.contains('I21'):
+                if line.diagnosis_code.find('I21'):
                     dc = "I21"
-                elif line.diagnosis_code.contains('I22'):
+                elif line.diagnosis_code.find('I22'):
                     dc = "I22"
                 else:
                     raise DateException(_("Diagnosis code not acceptable!"))
