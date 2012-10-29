@@ -3,14 +3,12 @@ from datetime import datetime
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from django.db.utils import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from django.utils import simplejson
 from report_forms.r1.forms import r1Form, FileUploadForm
 from report_forms.r1.models import r1, r1CSV
-from report_forms.tools import parseFloat, parseInt, csvDump
+from report_forms.tools import parseFloat, parseInt, csvDump, DateException
 from django.utils.translation import ugettext_lazy as _
 
 @login_required
@@ -163,6 +161,54 @@ def Import(request):
             except: scid = None
             try: od = datetime.strptime(line.Other_date_of_assess_discharge, "%Y-%m-%d")
             except: od = None
+
+            if dob > doa:
+                raise DateException(_("Can't be born after admission!"))
+            if doa > dod:
+                raise DateException(_("Can't be born after admission!"))
+
+            if (fima and fima > dod) or (fima and fima < doa):
+                raise DateException(_("FIM assessment can't be after discharge!"))
+            if (bia and bia > dod) or (bia and bia < doa):
+                raise DateException(_("Barthel index assessment can't be after discharge!"))
+            if (smwta and smwta > dod) or (smwta and smwta < doa):
+                raise DateException(_("6 minutes walk test assessment can't be after discharge!"))
+            if (sfa and sfa > dod) or (sfa and sfa < doa):
+                raise DateException(_("SF-36 assessment can't be after discharge!"))
+            if (sata and sata > dod) or (sata and sata < doa):
+                raise DateException(_("SAT assessment can't be after discharge!"))
+            if (feva and feva > dod) or (feva and feva < doa):
+                raise DateException(_("FEV-1 assessment can't be after discharge!"))
+            if (aia and aia > dod) or (aia and aia < doa):
+                raise DateException(_("ASIA impairment assessment can't be after discharge!"))
+            if (snca and snca > dod) or (snca and snca < doa):
+                raise DateException(_("Standard neurological classification of spinal cord injury assessment can't be after discharge!"))
+            if (scia and scia > dod) or (scia and scia < doa):
+                raise DateException(_("Spinal Cord Independence Measure assessment can't be after discharge!"))
+            if (oa and oa > dod) or (oa and oa < doa):
+                raise DateException(_("Other assessment can't be after discharge!"))
+            
+            if (fimd and fimd > dod) or (fimd and fimd < doa):
+                raise DateException(_("FIM assessment at discharge can't be after discharge!"))
+            if (bid and bid > dod) or (bid and bid < doa):
+                raise DateException(_("Barthel index assessment at discharge can't be after discharge!"))
+            if (smwtd and smwtd > dod) or (smwtd and smwtd < doa):
+                raise DateException(_("6 minutes walk test assessment at discharge can't be after discharge!"))
+            if (sfd and sfd > dod) or (sfd and sfd < doa):
+                raise DateException(_("SF-36 assessment at discharge can't be after discharge!"))
+            if (satd and satd > dod) or (satd and satd < doa):
+                raise DateException(_("SAT assessment at discharge can't be after discharge!"))
+            if (fevd and fevd > dod) or (fevd and fevd < doa):
+                raise DateException(_("FEV-1 assessment at discharge can't be after discharge!"))
+            if (aid and aid > dod) or (aid and aid < doa):
+                raise DateException(_("ASIA impairment assessment at discharge can't be after discharge!"))
+            if (sncd and sncd > dod) or (sncd and sncd < doa):
+                raise DateException(_("Standard neurological classification of spinal cord injury assessment at discharge can't be after discharge!"))
+            if (scid and scid > dod) or (scid and scid < doa):
+                raise DateException(_("Spinal Cord Independence Measure assessment at discharge can't be after discharge!"))
+            if (od and od > dod) or (od and od < doa):
+                raise DateException(_("Other assessment at discharge can't be after discharge!"))
+            
             if parseInt(line.Other_applied_discharge) is None:
                 oad = 0
             else:
