@@ -64,7 +64,7 @@ def Import(request):
                     raise DateException(_("Aspirin contradiction should be yes, since patient is allergic to aspirin!"))
                 new_c20 = c20.objects.create(
                                             case_id                         = parseInt(line.case_id),
-                                            hospital_registration_number    = parseInt(line.hospital_registration_number),
+                                            hospital_registration_number    = line.hospital_registration_number,
                                             date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
                                             diagnosis_code                  = line.diagnosis_code,
                                             type_of_unit                    = parseInt(line.type_of_unit),
@@ -79,12 +79,12 @@ def Import(request):
                                             added_by                        = request.user,
                 )
                 new_c20.save()
-            except IntegrityError:
-                exists += (line.case_id,)
+#            except IntegrityError:
+#                exists += (line.case_id,)
             except DateException, (instance):
                 date_errors += ((line.case_id,instance.parameter),)
-            except:
-                errors += (line.case_id,)
+#            except:
+#                errors += (line.case_id,)
         if exists or errors:
             return render_to_response('c20_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c20_stat'))
@@ -99,6 +99,7 @@ def Statistics(request):
     ''' Query '''
     countable_case=uncountable_case=()
     cases = c20.objects.all()
+    a=""
     for case in cases:
         error=False
         if not case.diagnosis_code == "I21" and not case.diagnosis_code == "I22":
@@ -123,6 +124,8 @@ def Statistics(request):
             cindicator_two += 1
         if case.aspirin_at_discharge == 1 or case.non_aspirin_platelet == 1:
             cindicator_three += 1
+    for case in uncountable_case:
+        a += str(case.case_id)+", "
 
     ''' Counting '''
     try: indicator_one = float(cindicator_one) / len(countable_case) * 100
@@ -140,6 +143,7 @@ def Statistics(request):
         "indicator_one": indicator_one,
         "indicator_two": indicator_two,
         "indicator_three": indicator_three,
+        "a": a,
     }
     return render_to_response('c20_statistics.html', context, context_instance=RequestContext(request))
 
