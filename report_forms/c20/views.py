@@ -62,11 +62,17 @@ def Import(request):
                     raise DateException(_("Can't born after discharge!"))
                 if parseInt(line.patient_allergic_aspirin) and not parseInt(line.aspirin_intolerance):
                     raise DateException(_("Aspirin contradiction should be yes, since patient is allergic to aspirin!"))
+                if line.diagnosis_code.contains('I21'):
+                    dc = "I21"
+                elif line.diagnosis_code.contains('I22'):
+                    dc = "I22"
+                else:
+                    raise DateException(_("Diagnosis code not acceptable!"))
                 new_c20 = c20.objects.create(
                                             case_id                         = parseInt(line.case_id),
                                             hospital_registration_number    = line.hospital_registration_number,
                                             date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
-                                            diagnosis_code                  = line.diagnosis_code,
+                                            diagnosis_code                  = dc,
                                             type_of_unit                    = parseInt(line.type_of_unit),
                                             patient_allergic_aspirin        = parseInt(line.patient_allergic_aspirin),
                                             aspirin_intolerance             = parseInt(line.aspirin_intolerance),
@@ -79,12 +85,12 @@ def Import(request):
                                             added_by                        = request.user,
                 )
                 new_c20.save()
-#            except IntegrityError:
-#                exists += (line.case_id,)
+            except IntegrityError:
+                exists += (line.case_id,)
             except DateException, (instance):
                 date_errors += ((line.case_id,instance.parameter),)
-#            except:
-#                errors += (line.case_id,)
+            except:
+                errors += (line.case_id,)
         if exists or errors:
             return render_to_response('c20_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c20_stat'))
@@ -108,7 +114,7 @@ def Statistics(request):
         if calculate_age(case.date_of_birth) < 15 and not error:
             uncountable_case += (case,)
             error = True
-        if (case.type_of_discharge == 1 or case.type_of_discharge == 3 or case.type_of_discharge == 4 or case.patient_allergic_aspirin == 1 or case.aspirin_intolerance == 1 or case.aspirin_refusal == 1) and not error:
+        if (case.type_of_discharge == 0 or case.type_of_discharge == 2 or case.type_of_discharge == 3 or case.patient_allergic_aspirin == 1 or case.aspirin_intolerance == 1 or case.aspirin_refusal == 1) and not error:
             uncountable_case += (case,)
             error = True
         if not error:
