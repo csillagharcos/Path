@@ -306,9 +306,9 @@ def Statistics(request):
     cases = r1.objects.all()
     for case in cases:
         if case.patient_discharge_status == 1 and case.discharge == 0:
-            r2_countable_case += (case,)
-        else:
             r2_uncountable_case += (case,)
+        else:
+            r2_countable_case += (case,)
         if (case.date_of_discharge - case.date_of_admission).days > 7:
             r1a_countable_case += (case,)
             r1b_countable_case += (case,)
@@ -480,7 +480,6 @@ def Statistics(request):
             r1b_third_indicator += 1
 
     for case in r2_countable_case:
-        print "hey"
         if case.discharge:
             r2_first_indicator += 1
             if case.if_unplanned == 1 or case.if_unplanned == 2 or case.if_unplanned == 3:
