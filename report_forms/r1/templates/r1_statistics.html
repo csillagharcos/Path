@@ -18,21 +18,35 @@
 {% endblock header %}
 
 {% block content %}
+    <table>
+        <tr>
+            <td>Kizárt</td>
+            <td>{% for item in r1aremoved_a %}{{ item }}, {% endfor %}</td>
+        </tr>
+        <tr>
+            <td>Kizárt</td>
+            <td>{% for item in r1bremoved_a %}{{ item }}, {% endfor %}</td>
+        </tr>
+        <tr>
+            <td>Kizárt</td>
+            <td>{% for item in r2removed_a %}{{ item }}, {% endfor %}</td>
+        </tr>
+    </table>
     <table class="los">
         <tr>
             <th colspan="2">{% trans "Functional assessment at admission" %}</th>
         </tr>
         <tr>
             <td>{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 7 days of admission" %}</td>
-            <td>{{ r1a1 }}%</td>
+            <td>{{ r1a1|floatformat:"2" }}%</td>
         </tr>
         <tr>
             <td>{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 48 hours of admission" %}</td>
-            <td>{{ r1a2 }}%</td>
+            <td>{{ r1a2|floatformat:"2" }}%</td>
         </tr>
         <tr>
             <td>{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 72 hours of admission" %}</td>
-            <td>{{ r1a3 }}%</td>
+            <td>{{ r1a3|floatformat:"2" }}%</td>
         </tr>
     </table>
 
@@ -42,15 +56,15 @@
         </tr>
         <tr>
             <td>{% trans "Percentage of patients who have documented evidence of functional assessment in 3 days prior to discharge" %}</td>
-            <td>{{ r1b1 }}%</td>
+            <td>{{ r1b1|floatformat:"2" }}%</td>
         </tr>
         <tr>
             <td>{% trans "Percentage of patients who have documented evidence of functional assessment in 1 days prior to discharge" %}</td>
-            <td>{{ r1b2 }}%</td>
+            <td>{{ r1b2|floatformat:"2" }}%</td>
         </tr>
         <tr>
             <td>{% trans "Percentage of patients who have documented evidence of functional assessment in 2 days prior to discharge" %}</td>
-            <td>{{ r1b3 }}%</td>
+            <td>{{ r1b3|floatformat:"2" }}%</td>
         </tr>
     </table>
 
@@ -60,19 +74,19 @@
         </tr>
         <tr>
             <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}</td>
-            <td>{{ r21 }}%</td>
+            <td>{{ r21|floatformat:"2" }}%</td>
         </tr>
         <tr>
             <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}</td>
-            <td>{{ r22 }}%</td>
+            <td>{{ r22|floatformat:"2" }}%</td>
         </tr>
         <tr>
             <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}</td>
-            <td>{{ r23 }}%</td>
+            <td>{{ r23|floatformat:"2" }}%</td>
         </tr>
         <tr>
             <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}</td>
-            <td>{{ r24 }}%</td>
+            <td>{{ r24|floatformat:"2" }}%</td>
         </tr>
     </table>
 {% endblock content %}

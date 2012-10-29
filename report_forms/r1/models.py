@@ -91,8 +91,8 @@ class r1(models.Model):
         verbose_name_plural = _('Indicators for rehabilitation hospitals and departments')
 
 class r1CSV(CsvModel):
-    patient_id                      = IntegerField()
-    case_id                         = IntegerField()
+    patient_id                      = CharField()
+    case_id                         = CharField()
     date_of_birth                   = CharField()
     field_of_rehab                  = CharField()
     field_of_rehab_other            = CharField()

@@ -108,89 +108,143 @@ def Import(request):
         try:
             csv_file = request.FILES['file']
             imported_csv = r1CSV.import_data(data=csv_file)
+            first = True
         except UnicodeDecodeError:
             return render_to_response('error.html', {"message": _("You probably forgot to delete the first row of the csv file, please recheck.") }, context_instance=RequestContext(request))
         except CsvDataException:
             return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
         for line in imported_csv:
+            if first:
+                first = False
+                continue
+            try: dob = datetime.strptime(line.date_of_birth, "%Y-%m-%d")
+            except: dob = None
+            try: doa = datetime.strptime(line.date_of_admission, "%Y-%m-%d")
+            except: doa = None
+            try: fima = datetime.strptime(line.FIM_date_of_assess, "%Y-%m-%d")
+            except: fima = None
+            try: bia = datetime.strptime(line.BI_date_of_assess, "%Y-%m-%d")
+            except: bia = None
+            try: smwta = datetime.strptime(line.SMWT_date_of_assess, "%Y-%m-%d")
+            except: smwta = None
+            try: sfa = datetime.strptime(line.SF_date_of_assess, "%Y-%m-%d")
+            except: sfa = None
+            try: sata = datetime.strptime(line.SAT_date_of_assess, "%Y-%m-%d")
+            except: sata = None
+            try: feva = datetime.strptime(line.FEV_date_of_assess, "%Y-%m-%d")
+            except: feva = None
+            try: aia = datetime.strptime(line.AI_date_of_assess, "%Y-%m-%d")
+            except: aia = None
+            try: snca = datetime.strptime(line.SNC_date_of_assess, "%Y-%m-%d")
+            except: snca = None
+            try: scia = datetime.strptime(line.SCI_date_of_assess, "%Y-%m-%d")
+            except: scia = None
+            try: oa = datetime.strptime(line.Other_date_of_assess, "%Y-%m-%d")
+            except: oa = None
+            try: dod = datetime.strptime(line.date_of_discharge, "%Y-%m-%d")
+            except: dod = None
+            try: fimd = datetime.strptime(line.FIM_date_of_assess_discharge, "%Y-%m-%d")
+            except: fimd = None
+            try: bid = datetime.strptime(line.BI_date_of_assess_discharge, "%Y-%m-%d")
+            except: bid = None
+            try: smwtd = datetime.strptime(line.SMWT_date_of_assess_discharge, "%Y-%m-%d")
+            except: smwtd = None
+            try: sfd = datetime.strptime(line.SF_date_of_assess_discharge, "%Y-%m-%d")
+            except: sfd = None
+            try: satd = datetime.strptime(line.SAT_date_of_assess_discharge, "%Y-%m-%d")
+            except: satd = None
+            try: fevd = datetime.strptime(line.FEV_date_of_assess_discharge, "%Y-%m-%d")
+            except: fevd = None
+            try: aid = datetime.strptime(line.AI_date_of_assess_discharge, "%Y-%m-%d")
+            except: aid = None
+            try: sncd = datetime.strptime(line.SNC_date_of_assess_discharge, "%Y-%m-%d")
+            except: sncd = None
+            try: scid = datetime.strptime(line.SCI_date_of_assess_discharge, "%Y-%m-%d")
+            except: scid = None
+            try: od = datetime.strptime(line.Other_date_of_assess_discharge, "%Y-%m-%d")
+            except: od = None
+            if parseInt(line.Other_applied_discharge) is None:
+                oad = 0
+            else:
+                oad = parseInt(line.Other_applied_discharge)
             try:
                 new_r1 = r1.objects.create(
-                                            patient_id                      = line.patient_id,
-                                            case_id                         = line.case_id,
-                                            date_of_birth                   = datetime.strptime(line.date_of_birth, "%Y-%m-%d"),
+                                            patient_id                      = parseInt(line.patient_id),
+                                            case_id                         = parseInt(line.case_id),
+                                            date_of_birth                   = dob,
                                             field_of_rehab                  = parseInt(line.field_of_rehab),
                                             field_of_rehab_other            = line.field_of_rehab_other,
-                                            date_of_admission               = datetime.strptime(line.date_of_admission, "%Y-%m-%d"),
+                                            date_of_admission               = doa,
                                             FIM_applied                     = parseInt(line.FIM_applied),
-                                            FIM_date_of_assess              = datetime.strptime(line.FIM_date_of_assess, "%Y-%m-%d"),
+                                            FIM_date_of_assess              = fima,
                                             FIM_score                       = parseFloat(line.FIM_score),
                                             BI_applied                      = parseInt(line.BI_applied),
-                                            BI_date_of_assess               = datetime.strptime(line.BI_date_of_assess, "%Y-%m-%d"),
+                                            BI_date_of_assess               = bia,
                                             BI_score                        = parseFloat(line.BI_score),
                                             SMWT_applied                    = parseInt(line.SMWT_applied),
-                                            SMWT_date_of_assess             = datetime.strptime(line.SMWT_date_of_assess, "%Y-%m-%d"),
+                                            SMWT_date_of_assess             = smwta,
                                             SMWT_score                      = parseFloat(line.SMWT_score),
                                             SF_applied                      = parseInt(line.SF_applied),
-                                            SF_date_of_assess               = datetime.strptime(line.SF_date_of_assess, "%Y-%m-%d"),
+                                            SF_date_of_assess               = sfa,
                                             SF_score                        = parseFloat(line.SF_score),
                                             SAT_applied                     = parseInt(line.SAT_applied),
-                                            SAT_date_of_assess              = datetime.strptime(line.SAT_date_of_assess, "%Y-%m-%d"),
+                                            SAT_date_of_assess              = sata,
                                             SAT_score                       = parseFloat(line.SAT_score),
                                             FEV_applied                     = parseInt(line.FEV_applied),
-                                            FEV_date_of_assess              = datetime.strptime(line.FEV_date_of_assess, "%Y-%m-%d"),
+                                            FEV_date_of_assess              = feva,
                                             FEV_score                       = parseFloat(line.FEV_score),
                                             AI_applied                      = parseInt(line.AI_applied),
-                                            AI_date_of_assess               = datetime.strptime(line.AI_date_of_assess, "%Y-%m-%d"),
+                                            AI_date_of_assess               = aia,
                                             AI_score                        = parseFloat(line.AI_score),
                                             SNC_applied                     = parseInt(line.SNC_applied),
-                                            SNC_date_of_assess              = datetime.strptime(line.SNC_date_of_assess, "%Y-%m-%d"),
+                                            SNC_date_of_assess              = snca,
                                             SNC_score                       = parseFloat(line.SNC_score),
                                             SCI_applied                     = parseInt(line.SCI_applied),
-                                            SCI_date_of_assess              = datetime.strptime(line.SCI_date_of_assess, "%Y-%m-%d"),
+                                            SCI_date_of_assess              = scia,
                                             SCI_score                       = parseFloat(line.SCI_score),
                                             Other_applied                   = parseInt(line.Other_applied),
-                                            Other_name_of                   = line.other_name_of,
-                                            Other_date_of_assess            = datetime.strptime(line.Other_date_of_assess, "%Y-%m-%d"),
+                                            Other_name_of                   = line.Other_name_of,
+                                            Other_date_of_assess            = oa,
                                             Other_score                     = parseFloat(line.Other_score),
                                             patient_discharge_status        = parseInt(line.patient_discharge_status),
                                             discharge                       = parseInt(line.discharge),
                                             if_unplanned                    = parseInt(line.if_unplanned),
-                                            date_of_discharge               = datetime.strptime(line.date_of_discharge, "%Y-%m-%d"),
+                                            date_of_discharge               = dod,
                                             FIM_applied_discharge           = parseInt(line.FIM_applied_discharge),
-                                            FIM_date_of_assess_discharge    = datetime.strptime(line.FIM_date_of_assess_discharge, "%Y-%m-%d"),
+                                            FIM_date_of_assess_discharge    = fimd,
                                             FIM_score_discharge             = parseFloat(line.FIM_score_discharge),
                                             BI_applied_discharge            = parseInt(line.BI_applied_discharge),
-                                            BI_date_of_assess_discharge     = datetime.strptime(line.BI_date_of_assess_discharge, "%Y-%m-%d"),
+                                            BI_date_of_assess_discharge     = bid,
                                             BI_score_discharge              = parseFloat(line.BI_score_discharge),
                                             SMWT_applied_discharge          = parseInt(line.SMWT_applied_discharge),
-                                            SMWT_date_of_assess_discharge   = datetime.strptime(line.SMWT_date_of_assess_discharge, "%Y-%m-%d"),
+                                            SMWT_date_of_assess_discharge   = smwtd,
                                             SMWT_score_discharge            = parseFloat(line.SMWT_score_discharge),
                                             SF_applied_discharge            = parseInt(line.SF_applied_discharge),
-                                            SF_date_of_assess_discharge     = datetime.strptime(line.SF_date_of_assess_discharge, "%Y-%m-%d"),
+                                            SF_date_of_assess_discharge     = sfd,
                                             SF_score_discharge              = parseFloat(line.SF_score_discharge),
                                             SAT_applied_discharge           = parseInt(line.SAT_applied_discharge),
-                                            SAT_date_of_assess_discharge    = datetime.strptime(line.SAT_date_of_assess_discharge, "%Y-%m-%d"),
+                                            SAT_date_of_assess_discharge    = satd,
                                             SAT_score_discharge             = parseFloat(line.SAT_score_discharge),
                                             FEV_applied_discharge           = parseInt(line.FEV_applied_discharge),
-                                            FEV_date_of_assess_discharge    = datetime.strptime(line.FEV_date_of_assess_discharge, "%Y-%m-%d"),
+                                            FEV_date_of_assess_discharge    = fevd,
                                             FEV_score_discharge             = parseFloat(line.FEV_score_discharge),
                                             AI_applied_discharge            = parseInt(line.AI_applied_discharge),
-                                            AI_date_of_assess_discharge     = datetime.strptime(line.AI_date_of_assess_discharge, "%Y-%m-%d"),
+                                            AI_date_of_assess_discharge     = aid,
                                             AI_score_discharge              = parseFloat(line.AI_score_discharge),
                                             SNC_applied_discharge           = parseInt(line.SNC_applied_discharge),
-                                            SNC_date_of_assess_discharge    = datetime.strptime(line.SNC_date_of_assess_discharge, "%Y-%m-%d"),
+                                            SNC_date_of_assess_discharge    = sncd,
                                             SNC_score_discharge             = parseFloat(line.SNC_score_discharge),
                                             SCI_applied_discharge           = parseInt(line.SCI_applied_discharge),
-                                            SCI_date_of_assess_discharge    = datetime.strptime(line.SCI_date_of_assess_discharge, "%Y-%m-%d"),
+                                            SCI_date_of_assess_discharge    = scid,
                                             SCI_score_discharge             = parseFloat(line.SCI_score_discharge),
-                                            Other_applied_discharge         = parseInt(line.Other_applied_discharge),
+                                            Other_applied_discharge         = oad,
                                             Other_name_of_discharge         = line.Other_name_of_discharge,
-                                            Other_date_of_assess_discharge  = datetime.strptime(line.Other_date_of_assess_discharge, "%Y-%m-%d"),
+                                            Other_date_of_assess_discharge  = od,
                                             Other_score_discharge           = parseFloat(line.Other_score_discharge),
                                             added_by                        = request.user,
                 )
                 new_r1.save()
-            except IntegrityError:
+            except CsvDataException:
                 pass
         return HttpResponseRedirect(reverse('r1_stat'))
     else:
@@ -224,22 +278,163 @@ def Statistics(request):
     r1b_first_indicator = r1b_second_indicator = r1b_third_indicator = 0
     r2_first_indicator = r2_second_indicator = r2_third_indicator = r2_fourth_indicator = 0
     for case in r1a_countable_case:
-        if (case.FIM_date_of_assess - case.date_of_admission).days < 7 or (case.BI_date_of_assess - case.date_of_admission).days < 7 or (case.SMWT_date_of_assess - case.date_of_admission).days < 7 or (case.SF_date_of_assess - case.date_of_admission).days < 7 or (case.SAT_date_of_assess - case.date_of_admission).days < 7 or (case.FEV_date_of_assess - case.date_of_admission).days < 7 or (case.AI_date_of_assess - case.date_of_admission).days < 7 or (case.SNC_date_of_assess - case.date_of_admission).days < 7 or (case.SCI_date_of_assess - case.date_of_admission).days < 7 or (case.Other_date_of_assess - case.date_of_admission).days < 7:
+        try: fima7 = (case.FIM_date_of_assess - case.date_of_admission).days < 7
+        except: fima7 = False
+        try: fima2 = (case.FIM_date_of_assess - case.date_of_admission).days < 2
+        except: fima2 = False
+        try: fima3 = (case.FIM_date_of_assess - case.date_of_admission).days < 3
+        except: fima3 = False
+        
+        try: bia7 = (case.BI_date_of_assess - case.date_of_admission).days < 7
+        except: bia7 = False
+        try: bia2 = (case.BI_date_of_assess - case.date_of_admission).days < 2
+        except: bia2 = False
+        try: bia3 = (case.BI_date_of_assess - case.date_of_admission).days < 3
+        except: bia3 = False
+        
+        try: smwta7 = (case.SMWT_date_of_assess - case.date_of_admission).days < 7
+        except: smwta7 = False
+        try: smwta2 = (case.SMWT_date_of_assess - case.date_of_admission).days < 2
+        except: smwta2 = False
+        try: smwta3 = (case.SMWT_date_of_assess - case.date_of_admission).days < 3
+        except: smwta3 = False
+        
+        try: sfa7 = (case.SF_date_of_assess - case.date_of_admission).days < 7
+        except: sfa7 = False
+        try: sfa2 = (case.SF_date_of_assess - case.date_of_admission).days < 2
+        except: sfa2 = False
+        try: sfa3 = (case.SF_date_of_assess - case.date_of_admission).days < 3
+        except: sfa3 = False
+        
+        try: sata7 = (case.SAT_date_of_assess - case.date_of_admission).days < 7
+        except: sata7 = False
+        try: sata2 = (case.SAT_date_of_assess - case.date_of_admission).days < 2
+        except: sata2 = False
+        try: sata3 = (case.SAT_date_of_assess - case.date_of_admission).days < 3
+        except: sata3 = False
+        
+        try: feva7 = (case.FEV_date_of_assess - case.date_of_admission).days < 7
+        except: feva7 = False
+        try: feva2 = (case.FEV_date_of_assess - case.date_of_admission).days < 2
+        except: feva2 = False
+        try: feva3 = (case.FEV_date_of_assess - case.date_of_admission).days < 3
+        except: feva3 = False
+        
+        try: aia7 = (case.AI_date_of_assess - case.date_of_admission).days < 7
+        except: aia7 = False
+        try: aia2 = (case.AI_date_of_assess - case.date_of_admission).days < 2
+        except: aia2 = False
+        try: aia3 = (case.AI_date_of_assess - case.date_of_admission).days < 3
+        except: aia3 = False
+        
+        try: snca7 = (case.SNC_date_of_assess - case.date_of_admission).days < 7
+        except: snca7 = False
+        try: snca2 = (case.SNC_date_of_assess - case.date_of_admission).days < 2
+        except: snca2 = False
+        try: snca3 = (case.SNC_date_of_assess - case.date_of_admission).days < 3
+        except: snca3 = False
+        
+        try: scia7 = (case.SCI_date_of_assess - case.date_of_admission).days < 7
+        except: scia7 = False
+        try: scia2 = (case.SCI_date_of_assess - case.date_of_admission).days < 2
+        except: scia2 = False
+        try: scia3 = (case.SCI_date_of_assess - case.date_of_admission).days < 3
+        except: scia3 = False
+        
+        try: oa7 = (case.Other_date_of_assess - case.date_of_admission).days < 7
+        except: oa7 = False
+        try: oa2 = (case.Other_date_of_assess - case.date_of_admission).days < 2
+        except: oa2 = False
+        try: oa3 = (case.Other_date_of_assess - case.date_of_admission).days < 3
+        except: oa3 = False
+
+        if fima7 or bia7 or smwta7 or sfa7 or sata7 or feva7 or aia7 or snca7 or scia7 or oa7:
             r1a_first_indicator += 1
-        if (case.FIM_date_of_assess - case.date_of_admission).days < 2 or (case.BI_date_of_assess - case.date_of_admission).days < 2 or (case.SMWT_date_of_assess - case.date_of_admission).days < 2 or (case.SF_date_of_assess - case.date_of_admission).days < 2 or (case.SAT_date_of_assess - case.date_of_admission).days < 2 or (case.FEV_date_of_assess - case.date_of_admission).days < 2 or (case.AI_date_of_assess - case.date_of_admission).days < 2 or (case.SNC_date_of_assess - case.date_of_admission).days < 2 or (case.SCI_date_of_assess - case.date_of_admission).days < 2 or (case.Other_date_of_assess - case.date_of_admission).days < 2:
+        if fima2 or bia2 or smwta2 or sfa2 or sata2 or feva2 or aia2 or snca2 or scia2 or oa2:
             r1a_second_indicator += 1
-        if (case.FIM_date_of_assess - case.date_of_admission).days < 3 or (case.BI_date_of_assess - case.date_of_admission).days < 3 or (case.SMWT_date_of_assess - case.date_of_admission).days < 3 or (case.SF_date_of_assess - case.date_of_admission).days < 3 or (case.SAT_date_of_assess - case.date_of_admission).days < 3 or (case.FEV_date_of_assess - case.date_of_admission).days < 3 or (case.AI_date_of_assess - case.date_of_admission).days < 3 or (case.SNC_date_of_assess - case.date_of_admission).days < 3 or (case.SCI_date_of_assess - case.date_of_admission).days < 3 or (case.Other_date_of_assess - case.date_of_admission).days < 3:
-            r1a_second_indicator += 1
+        if fima3 or bia3 or smwta3 or sfa3 or sata3 or feva3 or aia3 or snca3 or scia3 or oa3:
+            r1a_third_indicator += 1
 
     for case in r1b_countable_case:
-        if (case.FIM_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.BI_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.SMWT_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.SF_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.SAT_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.FEV_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.AI_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.SNC_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.SCI_date_of_assess_discharge - case.date_of_admission).days < 4 or (case.Other_date_of_assess_discharge - case.date_of_admission).days < 4:
-            r1a_first_indicator += 1
-        if (case.FIM_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.BI_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.SMWT_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.SF_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.SAT_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.FEV_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.AI_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.SNC_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.SCI_date_of_assess_discharge - case.date_of_admission).days < 2 or (case.Other_date_of_assess_discharge - case.date_of_admission).days < 2:
-            r1a_second_indicator += 1
-        if (case.FIM_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.BI_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.SMWT_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.SF_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.SAT_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.FEV_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.AI_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.SNC_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.SCI_date_of_assess_discharge - case.date_of_admission).days < 3 or (case.Other_date_of_assess_discharge - case.date_of_admission).days < 3:
-            r1a_second_indicator += 1
+        try: fimd4 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days < 4
+        except: fimd4 = False
+        try: fimd2 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days < 2
+        except: fimd2 = False
+        try: fimd3 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days < 3
+        except: fimd3 = False
+
+        try: bid4 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days < 4
+        except: bid4 = False
+        try: bid2 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days < 2
+        except: bid2 = False
+        try: bid3 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days < 3
+        except: bid3 = False
+
+        try: smwtd4 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days < 4
+        except: smwtd4 = False
+        try: smwtd2 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days < 2
+        except: smwtd2 = False
+        try: smwtd3 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days < 3
+        except: smwtd3 = False
+
+        try: sfd4 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days < 4
+        except: sfd4 = False
+        try: sfd2 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days < 2
+        except: sfd2 = False
+        try: sfd3 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days < 3
+        except: sfd3 = False
+
+        try: satd4 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days < 4
+        except: satd4 = False
+        try: satd2 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days < 2
+        except: satd2 = False
+        try: satd3 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days < 3
+        except: satd3 = False
+
+        try: fevd4 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days < 4
+        except: fevd4 = False
+        try: fevd2 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days < 2
+        except: fevd2 = False
+        try: fevd3 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days < 3
+        except: fevd3 = False
+
+        try: aid4 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days < 4
+        except: aid4 = False
+        try: aid2 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days < 2
+        except: aid2 = False
+        try: aid3 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days < 3
+        except: aid3 = False
+
+        try: sncd4 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days < 4
+        except: sncd4 = False
+        try: sncd2 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days < 2
+        except: sncd2 = False
+        try: sncd3 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days < 3
+        except: sncd3 = False
+
+        try: scid4 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days < 4
+        except: scid4 = False
+        try: scid2 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days < 2
+        except: scid2 = False
+        try: scid3 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days < 3
+        except: scid3 = False
+
+        try: od4 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days < 4
+        except: od4 = False
+        try: od2 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days < 2
+        except: od2 = False
+        try: od3 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days < 3
+        except: od3 = False
+        
+        if fimd4 or bid4 or smwtd4 or sfd4 or satd4 or fevd4 or aid4 or sncd4 or scid4 or od4:
+            r1b_first_indicator += 1
+        if fimd2 or bid2 or smwtd2 or sfd2 or satd2 or fevd2 or aid2 or sncd2 or scid2 or od2:
+            r1b_second_indicator += 1
+        if fimd3 or bid3 or smwtd3 or sfd3 or satd3 or fevd3 or aid3 or sncd3 or scid3 or od3:
+            r1b_third_indicator += 1
 
     for case in r2_countable_case:
+        print "hey"
         if case.discharge:
             r2_first_indicator += 1
             if case.if_unplanned == 1 or case.if_unplanned == 2 or case.if_unplanned == 3:
@@ -251,32 +446,35 @@ def Statistics(request):
 
     ''' Counting '''
 
-    try: r1a_first = r1a_first_indicator / len(r1a_countable_case) * 100
+    try: r1a_first = float(r1a_first_indicator) / len(r1a_countable_case) * 100
     except: r1a_first = 0
-    try: r1a_second = r1a_second_indicator / len(r1a_countable_case) * 100
+    try: r1a_second = float(r1a_second_indicator) / len(r1a_countable_case) * 100
     except: r1a_second = 0
-    try: r1a_third = r1a_third_indicator / len(r1a_countable_case) * 100
+    try: r1a_third = float(r1a_third_indicator) / len(r1a_countable_case) * 100
     except: r1a_third = 0
 
-    try: r1b_first = r1b_first_indicator / len(r1b_countable_case) * 100
+    try: r1b_first = float(r1b_first_indicator) / len(r1b_countable_case) * 100
     except: r1b_first = 0
-    try: r1b_second = r1b_second_indicator / len(r1b_countable_case) * 100
+    try: r1b_second = float(r1b_second_indicator) / len(r1b_countable_case) * 100
     except: r1b_second = 0
-    try: r1b_third = r1b_third_indicator / len(r1b_countable_case) * 100
+    try: r1b_third = float(r1b_third_indicator) / len(r1b_countable_case) * 100
     except: r1b_third = 0
 
-    try: r2_first = r2_first_indicator / len(r2_countable_case) * 100
+    try: r2_first = float(r2_first_indicator) / len(r2_countable_case) * 100
     except: r2_first = 0
-    try: r2_second = r2_second_indicator / len(r2_countable_case) * 100
+    try: r2_second = float(r2_second_indicator) / len(r2_countable_case) * 100
     except: r2_second = 0
-    try: r2_third = r2_third_indicator / len(r2_countable_case) * 100
+    try: r2_third = float(r2_third_indicator) / len(r2_countable_case) * 100
     except: r2_third = 0
-    try: r2_fourth = r2_fourth_indicator / len(r2_countable_case) * 100
+    try: r2_fourth = float(r2_fourth_indicator) / len(r2_countable_case) * 100
     except: r2_fourth = 0
 
 
     ''' Displaying '''
     context = {
+        "r1aremoved_a": r1a_uncountable_case,
+        "r1bremoved_a": r1b_uncountable_case,
+        "r2removed_a": r2_uncountable_case,
         "overall": len(cases),
         "r1aremoved": len(r1a_uncountable_case),
         "r1acounted": len(r1a_countable_case),
