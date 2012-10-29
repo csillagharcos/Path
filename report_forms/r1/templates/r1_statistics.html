@@ -18,20 +18,6 @@
 {% endblock header %}
 
 {% block content %}
-    <table>
-        <tr>
-            <td>Kizárt</td>
-            <td>{% for item in r1aremoved_a %}{{ item }}, {% endfor %}</td>
-        </tr>
-        <tr>
-            <td>Kizárt</td>
-            <td>{% for item in r1bremoved_a %}{{ item }}, {% endfor %}</td>
-        </tr>
-        <tr>
-            <td>Kizárt</td>
-            <td>{% for item in r2removed_a %}{{ item }}, {% endfor %}</td>
-        </tr>
-    </table>
     <table class="los">
         <tr>
             <th colspan="2">{% trans "Functional assessment at admission" %}</th>

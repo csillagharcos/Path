@@ -517,9 +517,6 @@ def Statistics(request):
 
     ''' Displaying '''
     context = {
-        "r1aremoved_a": r1a_uncountable_case,
-        "r1bremoved_a": r1b_uncountable_case,
-        "r2removed_a": r2_uncountable_case,
         "overall": len(cases),
         "r1aremoved": len(r1a_uncountable_case),
         "r1acounted": len(r1a_countable_case),
