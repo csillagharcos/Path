@@ -52,157 +52,159 @@ class r1Form(ModelForm):
         SCI_date_of_assess_discharge = cleaned_data.get("SCI_date_of_assess_discharge")
         Other_date_of_assess_discharge = cleaned_data.get("Other_date_of_assess_discharge")
 
-        if date_of_birth > date_of_admission:
+        if date_of_birth and date_of_admission and date_of_birth > date_of_admission:
             self._errors["date_of_birth"] = self.error_class([_("Can't be born after admission!")])
             self._errors["date_of_admission"] = self.error_class([_("Can't be born after admission!")])
             del cleaned_data["date_of_birth"]
             del cleaned_data["date_of_admission"]
 
-        if date_of_admission > date_of_discharge:
+        if date_of_admission and date_of_discharge and date_of_admission > date_of_discharge:
             self._errors["date_of_discharge"] = self.error_class([_("Can't be discharged before admission!")])
             self._errors["date_of_admission"] = self.error_class([_("Can't be discharged before admission!")])
             del cleaned_data["date_of_discharge"]
             del cleaned_data["date_of_admission"]
 
-        if FIM_date_of_assess and FIM_date_of_assess > date_of_discharge:
-            self._errors["FIM_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
-            del cleaned_data["FIM_date_of_assess"]
-        if FIM_date_of_assess and FIM_date_of_assess < date_of_admission:
-            self._errors["FIM_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
-            del cleaned_data["FIM_date_of_assess"]
+        if date_of_discharge and date_of_admission:
+            if FIM_date_of_assess and FIM_date_of_assess > date_of_discharge:
+                self._errors["FIM_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
+                del cleaned_data["FIM_date_of_assess"]
+            if FIM_date_of_assess and FIM_date_of_assess < date_of_admission:
+                self._errors["FIM_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
+                del cleaned_data["FIM_date_of_assess"]
 
-        if BI_date_of_assess and BI_date_of_assess > date_of_discharge:
-            self._errors["BI_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
-            del cleaned_data["BI_date_of_assess"]
-        if BI_date_of_assess and BI_date_of_assess < date_of_admission:
-            self._errors["BI_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
-            del cleaned_data["BI_date_of_assess"]
+            if BI_date_of_assess and BI_date_of_assess > date_of_discharge:
+                self._errors["BI_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
+                del cleaned_data["BI_date_of_assess"]
+            if BI_date_of_assess and BI_date_of_assess < date_of_admission:
+                self._errors["BI_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
+                del cleaned_data["BI_date_of_assess"]
 
-        if SMWT_date_of_assess and SMWT_date_of_assess > date_of_discharge:
-            self._errors["SMWT_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
-            del cleaned_data["SMWT_date_of_assess"]
-        if SMWT_date_of_assess and SMWT_date_of_assess < date_of_admission:
-            self._errors["SMWT_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
-            del cleaned_data["SMWT_date_of_assess"]
+            if SMWT_date_of_assess and SMWT_date_of_assess > date_of_discharge:
+                self._errors["SMWT_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
+                del cleaned_data["SMWT_date_of_assess"]
+            if SMWT_date_of_assess and SMWT_date_of_assess < date_of_admission:
+                self._errors["SMWT_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
+                del cleaned_data["SMWT_date_of_assess"]
 
-        if SF_date_of_assess and SF_date_of_assess > date_of_discharge:
-            self._errors["SF_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
-            del cleaned_data["SF_date_of_assess"]
-        if SF_date_of_assess and SF_date_of_assess < date_of_admission:
-            self._errors["SF_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
-            del cleaned_data["SF_date_of_assess"]
+            if SF_date_of_assess and SF_date_of_assess > date_of_discharge:
+                self._errors["SF_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
+                del cleaned_data["SF_date_of_assess"]
+            if SF_date_of_assess and SF_date_of_assess < date_of_admission:
+                self._errors["SF_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
+                del cleaned_data["SF_date_of_assess"]
 
-        if SAT_date_of_assess and SAT_date_of_assess > date_of_discharge:
-            self._errors["SAT_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
-            del cleaned_data["SAT_date_of_assess"]
-        if SAT_date_of_assess and SAT_date_of_assess < date_of_admission:
-            self._errors["SAT_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
-            del cleaned_data["SAT_date_of_assess"]
+            if SAT_date_of_assess and SAT_date_of_assess > date_of_discharge:
+                self._errors["SAT_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
+                del cleaned_data["SAT_date_of_assess"]
+            if SAT_date_of_assess and SAT_date_of_assess < date_of_admission:
+                self._errors["SAT_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
+                del cleaned_data["SAT_date_of_assess"]
 
-        if AI_date_of_assess and AI_date_of_assess > date_of_discharge:
-            self._errors["AI_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
-            del cleaned_data["AI_date_of_assess"]
-        if AI_date_of_assess and AI_date_of_assess < date_of_admission:
-            self._errors["AI_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
-            del cleaned_data["AI_date_of_assess"]
+            if AI_date_of_assess and AI_date_of_assess > date_of_discharge:
+                self._errors["AI_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
+                del cleaned_data["AI_date_of_assess"]
+            if AI_date_of_assess and AI_date_of_assess < date_of_admission:
+                self._errors["AI_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
+                del cleaned_data["AI_date_of_assess"]
 
-        if SNC_date_of_assess and SNC_date_of_assess > date_of_discharge:
-            self._errors["SNC_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
-            del cleaned_data["SNC_date_of_assess"]
-        if SNC_date_of_assess and SNC_date_of_assess < date_of_admission:
-            self._errors["SNC_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
-            del cleaned_data["SNC_date_of_assess"]
+            if SNC_date_of_assess and SNC_date_of_assess > date_of_discharge:
+                self._errors["SNC_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
+                del cleaned_data["SNC_date_of_assess"]
+            if SNC_date_of_assess and SNC_date_of_assess < date_of_admission:
+                self._errors["SNC_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
+                del cleaned_data["SNC_date_of_assess"]
 
-        if SCI_date_of_assess and SCI_date_of_assess > date_of_discharge:
-            self._errors["SCI_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
-            del cleaned_data["SCI_date_of_assess"]
-        if SCI_date_of_assess and SCI_date_of_assess < date_of_admission:
-            self._errors["SCI_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
-            del cleaned_data["SCI_date_of_assess"]
+            if SCI_date_of_assess and SCI_date_of_assess > date_of_discharge:
+                self._errors["SCI_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
+                del cleaned_data["SCI_date_of_assess"]
+            if SCI_date_of_assess and SCI_date_of_assess < date_of_admission:
+                self._errors["SCI_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
+                del cleaned_data["SCI_date_of_assess"]
 
-        if SCI_date_of_assess and SCI_date_of_assess > date_of_discharge:
-            self._errors["SCI_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
-            del cleaned_data["SCI_date_of_assess"]
-        if SCI_date_of_assess and SCI_date_of_assess < date_of_admission:
-            self._errors["SCI_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
-            del cleaned_data["SCI_date_of_assess"]
+            if SCI_date_of_assess and SCI_date_of_assess > date_of_discharge:
+                self._errors["SCI_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
+                del cleaned_data["SCI_date_of_assess"]
+            if SCI_date_of_assess and SCI_date_of_assess < date_of_admission:
+                self._errors["SCI_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
+                del cleaned_data["SCI_date_of_assess"]
 
-        if Other_date_of_assess and Other_date_of_assess > date_of_discharge:
-            self._errors["Other_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
-            del cleaned_data["Other_date_of_assess"]
-        if Other_date_of_assess and Other_date_of_assess < date_of_admission:
-            self._errors["Other_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
-            del cleaned_data["Other_date_of_assess"]
+            if Other_date_of_assess and Other_date_of_assess > date_of_discharge:
+                self._errors["Other_date_of_assess"] = self.error_class([_("Assessment can't be after discharge!")])
+                del cleaned_data["Other_date_of_assess"]
+            if Other_date_of_assess and Other_date_of_assess < date_of_admission:
+                self._errors["Other_date_of_assess"] = self.error_class([_("Assessment can't be before admission!")])
+                del cleaned_data["Other_date_of_assess"]
 
-        if FIM_date_of_assess_discharge and FIM_date_of_assess_discharge > date_of_discharge:
-            self._errors["FIM_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
-            del cleaned_data["FIM_date_of_assess_discharge"]
-        if FIM_date_of_assess_discharge and FIM_date_of_assess_discharge < date_of_admission:
-            self._errors["FIM_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
-            del cleaned_data["FIM_date_of_assess_discharge"]
+            if FIM_date_of_assess_discharge and FIM_date_of_assess_discharge > date_of_discharge:
+                self._errors["FIM_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
+                del cleaned_data["FIM_date_of_assess_discharge"]
+            if FIM_date_of_assess_discharge and FIM_date_of_assess_discharge < date_of_admission:
+                self._errors["FIM_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
+                del cleaned_data["FIM_date_of_assess_discharge"]
 
-        if BI_date_of_assess_discharge and BI_date_of_assess_discharge > date_of_discharge:
-            self._errors["BI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
-            del cleaned_data["BI_date_of_assess_discharge"]
-        if BI_date_of_assess_discharge and BI_date_of_assess_discharge < date_of_admission:
-            self._errors["BI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
-            del cleaned_data["BI_date_of_assess_discharge"]
+            if BI_date_of_assess_discharge and BI_date_of_assess_discharge > date_of_discharge:
+                self._errors["BI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
+                del cleaned_data["BI_date_of_assess_discharge"]
+            if BI_date_of_assess_discharge and BI_date_of_assess_discharge < date_of_admission:
+                self._errors["BI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
+                del cleaned_data["BI_date_of_assess_discharge"]
 
-        if SMWT_date_of_assess_discharge and SMWT_date_of_assess_discharge > date_of_discharge:
-            self._errors["SMWT_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
-            del cleaned_data["SMWT_date_of_assess_discharge"]
-        if SMWT_date_of_assess_discharge and SMWT_date_of_assess_discharge < date_of_admission:
-            self._errors["SMWT_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
-            del cleaned_data["SMWT_date_of_assess_discharge"]
+            if SMWT_date_of_assess_discharge and SMWT_date_of_assess_discharge > date_of_discharge:
+                self._errors["SMWT_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
+                del cleaned_data["SMWT_date_of_assess_discharge"]
+            if SMWT_date_of_assess_discharge and SMWT_date_of_assess_discharge < date_of_admission:
+                self._errors["SMWT_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
+                del cleaned_data["SMWT_date_of_assess_discharge"]
 
-        if SF_date_of_assess_discharge and SF_date_of_assess_discharge > date_of_discharge:
-            self._errors["SF_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
-            del cleaned_data["SF_date_of_assess_discharge"]
-        if SF_date_of_assess_discharge and SF_date_of_assess_discharge < date_of_admission:
-            self._errors["SF_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
-            del cleaned_data["SF_date_of_assess_discharge"]
+            if SF_date_of_assess_discharge and SF_date_of_assess_discharge > date_of_discharge:
+                self._errors["SF_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
+                del cleaned_data["SF_date_of_assess_discharge"]
+            if SF_date_of_assess_discharge and SF_date_of_assess_discharge < date_of_admission:
+                self._errors["SF_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
+                del cleaned_data["SF_date_of_assess_discharge"]
 
-        if SAT_date_of_assess_discharge and SAT_date_of_assess_discharge > date_of_discharge:
-            self._errors["SAT_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
-            del cleaned_data["SAT_date_of_assess_discharge"]
-        if SAT_date_of_assess_discharge and SAT_date_of_assess_discharge < date_of_admission:
-            self._errors["SAT_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
-            del cleaned_data["SAT_date_of_assess_discharge"]
+            if SAT_date_of_assess_discharge and SAT_date_of_assess_discharge > date_of_discharge:
+                self._errors["SAT_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
+                del cleaned_data["SAT_date_of_assess_discharge"]
+            if SAT_date_of_assess_discharge and SAT_date_of_assess_discharge < date_of_admission:
+                self._errors["SAT_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
+                del cleaned_data["SAT_date_of_assess_discharge"]
 
-        if AI_date_of_assess_discharge and AI_date_of_assess_discharge > date_of_discharge:
-            self._errors["AI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
-            del cleaned_data["AI_date_of_assess_discharge"]
-        if AI_date_of_assess_discharge and AI_date_of_assess_discharge < date_of_admission:
-            self._errors["AI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
-            del cleaned_data["AI_date_of_assess_discharge"]
+            if AI_date_of_assess_discharge and AI_date_of_assess_discharge > date_of_discharge:
+                self._errors["AI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
+                del cleaned_data["AI_date_of_assess_discharge"]
+            if AI_date_of_assess_discharge and AI_date_of_assess_discharge < date_of_admission:
+                self._errors["AI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
+                del cleaned_data["AI_date_of_assess_discharge"]
 
-        if SNC_date_of_assess_discharge and SNC_date_of_assess_discharge > date_of_discharge:
-            self._errors["SNC_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
-            del cleaned_data["SNC_date_of_assess_discharge"]
-        if SNC_date_of_assess_discharge and SNC_date_of_assess_discharge < date_of_admission:
-            self._errors["SNC_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
-            del cleaned_data["SNC_date_of_assess_discharge"]
+            if SNC_date_of_assess_discharge and SNC_date_of_assess_discharge > date_of_discharge:
+                self._errors["SNC_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
+                del cleaned_data["SNC_date_of_assess_discharge"]
+            if SNC_date_of_assess_discharge and SNC_date_of_assess_discharge < date_of_admission:
+                self._errors["SNC_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
+                del cleaned_data["SNC_date_of_assess_discharge"]
 
-        if SCI_date_of_assess_discharge and SCI_date_of_assess_discharge > date_of_discharge:
-            self._errors["SCI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
-            del cleaned_data["SCI_date_of_assess_discharge"]
-        if SCI_date_of_assess_discharge and SCI_date_of_assess_discharge < date_of_admission:
-            self._errors["SCI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
-            del cleaned_data["SCI_date_of_assess_discharge"]
+            if SCI_date_of_assess_discharge and SCI_date_of_assess_discharge > date_of_discharge:
+                self._errors["SCI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
+                del cleaned_data["SCI_date_of_assess_discharge"]
+            if SCI_date_of_assess_discharge and SCI_date_of_assess_discharge < date_of_admission:
+                self._errors["SCI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
+                del cleaned_data["SCI_date_of_assess_discharge"]
 
-        if SCI_date_of_assess_discharge and SCI_date_of_assess_discharge > date_of_discharge:
-            self._errors["SCI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
-            del cleaned_data["SCI_date_of_assess_discharge"]
-        if SCI_date_of_assess_discharge and SCI_date_of_assess_discharge < date_of_admission:
-            self._errors["SCI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
-            del cleaned_data["SCI_date_of_assess_discharge"]
+            if SCI_date_of_assess_discharge and SCI_date_of_assess_discharge > date_of_discharge:
+                self._errors["SCI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
+                del cleaned_data["SCI_date_of_assess_discharge"]
+            if SCI_date_of_assess_discharge and SCI_date_of_assess_discharge < date_of_admission:
+                self._errors["SCI_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
+                del cleaned_data["SCI_date_of_assess_discharge"]
 
-        if Other_date_of_assess_discharge and Other_date_of_assess_discharge > date_of_discharge:
-            self._errors["Other_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
-            del cleaned_data["Other_date_of_assess_discharge"]
-        if Other_date_of_assess_discharge and Other_date_of_assess_discharge < date_of_admission:
-            self._errors["Other_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
-            del cleaned_data["Other_date_of_assess_discharge"]
+            if Other_date_of_assess_discharge and Other_date_of_assess_discharge > date_of_discharge:
+                self._errors["Other_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be after discharge!")])
+                del cleaned_data["Other_date_of_assess_discharge"]
+            if Other_date_of_assess_discharge and Other_date_of_assess_discharge < date_of_admission:
+                self._errors["Other_date_of_assess_discharge"] = self.error_class([_("Assessment at discharge can't be before admission!")])
+                del cleaned_data["Other_date_of_assess_discharge"]
+
         return cleaned_data
 
     class Meta:
