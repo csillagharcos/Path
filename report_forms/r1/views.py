@@ -3,6 +3,7 @@ from datetime import datetime
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
@@ -103,117 +104,116 @@ def Display(request):
 @login_required
 def Import(request):
     if request.method == "POST":
+        date_errors=exists=errors=()
         try:
             csv_file = request.FILES['file']
             imported_csv = r1CSV.import_data(data=csv_file)
             first = True
-        except UnicodeDecodeError:
-            return render_to_response('error.html', {"message": _("You probably forgot to delete the first row of the csv file, please recheck.") }, context_instance=RequestContext(request))
         except CsvDataException:
             return render_to_response('error.html', {"message": _("You are not using the Template csv. The number of fields is different.") }, context_instance=RequestContext(request))
         for line in imported_csv:
             if first:
                 first = False
                 continue
-            try: dob = datetime.strptime(line.date_of_birth, "%Y-%m-%d")
-            except: dob = None
-            try: doa = datetime.strptime(line.date_of_admission, "%Y-%m-%d")
-            except: doa = None
-            try: fima = datetime.strptime(line.FIM_date_of_assess, "%Y-%m-%d")
-            except: fima = None
-            try: bia = datetime.strptime(line.BI_date_of_assess, "%Y-%m-%d")
-            except: bia = None
-            try: smwta = datetime.strptime(line.SMWT_date_of_assess, "%Y-%m-%d")
-            except: smwta = None
-            try: sfa = datetime.strptime(line.SF_date_of_assess, "%Y-%m-%d")
-            except: sfa = None
-            try: sata = datetime.strptime(line.SAT_date_of_assess, "%Y-%m-%d")
-            except: sata = None
-            try: feva = datetime.strptime(line.FEV_date_of_assess, "%Y-%m-%d")
-            except: feva = None
-            try: aia = datetime.strptime(line.AI_date_of_assess, "%Y-%m-%d")
-            except: aia = None
-            try: snca = datetime.strptime(line.SNC_date_of_assess, "%Y-%m-%d")
-            except: snca = None
-            try: scia = datetime.strptime(line.SCI_date_of_assess, "%Y-%m-%d")
-            except: scia = None
-            try: oa = datetime.strptime(line.Other_date_of_assess, "%Y-%m-%d")
-            except: oa = None
-            try: dod = datetime.strptime(line.date_of_discharge, "%Y-%m-%d")
-            except: dod = None
-            try: fimd = datetime.strptime(line.FIM_date_of_assess_discharge, "%Y-%m-%d")
-            except: fimd = None
-            try: bid = datetime.strptime(line.BI_date_of_assess_discharge, "%Y-%m-%d")
-            except: bid = None
-            try: smwtd = datetime.strptime(line.SMWT_date_of_assess_discharge, "%Y-%m-%d")
-            except: smwtd = None
-            try: sfd = datetime.strptime(line.SF_date_of_assess_discharge, "%Y-%m-%d")
-            except: sfd = None
-            try: satd = datetime.strptime(line.SAT_date_of_assess_discharge, "%Y-%m-%d")
-            except: satd = None
-            try: fevd = datetime.strptime(line.FEV_date_of_assess_discharge, "%Y-%m-%d")
-            except: fevd = None
-            try: aid = datetime.strptime(line.AI_date_of_assess_discharge, "%Y-%m-%d")
-            except: aid = None
-            try: sncd = datetime.strptime(line.SNC_date_of_assess_discharge, "%Y-%m-%d")
-            except: sncd = None
-            try: scid = datetime.strptime(line.SCI_date_of_assess_discharge, "%Y-%m-%d")
-            except: scid = None
-            try: od = datetime.strptime(line.Other_date_of_assess_discharge, "%Y-%m-%d")
-            except: od = None
-
-            if dob > doa:
-                raise DateException(_("Can't be born after admission!"))
-            if doa > dod:
-                raise DateException(_("Can't be born after admission!"))
-
-            if (fima and fima > dod) or (fima and fima < doa):
-                raise DateException(_("FIM assessment can't be after discharge!"))
-            if (bia and bia > dod) or (bia and bia < doa):
-                raise DateException(_("Barthel index assessment can't be after discharge!"))
-            if (smwta and smwta > dod) or (smwta and smwta < doa):
-                raise DateException(_("6 minutes walk test assessment can't be after discharge!"))
-            if (sfa and sfa > dod) or (sfa and sfa < doa):
-                raise DateException(_("SF-36 assessment can't be after discharge!"))
-            if (sata and sata > dod) or (sata and sata < doa):
-                raise DateException(_("SAT assessment can't be after discharge!"))
-            if (feva and feva > dod) or (feva and feva < doa):
-                raise DateException(_("FEV-1 assessment can't be after discharge!"))
-            if (aia and aia > dod) or (aia and aia < doa):
-                raise DateException(_("ASIA impairment assessment can't be after discharge!"))
-            if (snca and snca > dod) or (snca and snca < doa):
-                raise DateException(_("Standard neurological classification of spinal cord injury assessment can't be after discharge!"))
-            if (scia and scia > dod) or (scia and scia < doa):
-                raise DateException(_("Spinal Cord Independence Measure assessment can't be after discharge!"))
-            if (oa and oa > dod) or (oa and oa < doa):
-                raise DateException(_("Other assessment can't be after discharge!"))
-            
-            if (fimd and fimd > dod) or (fimd and fimd < doa):
-                raise DateException(_("FIM assessment at discharge can't be after discharge!"))
-            if (bid and bid > dod) or (bid and bid < doa):
-                raise DateException(_("Barthel index assessment at discharge can't be after discharge!"))
-            if (smwtd and smwtd > dod) or (smwtd and smwtd < doa):
-                raise DateException(_("6 minutes walk test assessment at discharge can't be after discharge!"))
-            if (sfd and sfd > dod) or (sfd and sfd < doa):
-                raise DateException(_("SF-36 assessment at discharge can't be after discharge!"))
-            if (satd and satd > dod) or (satd and satd < doa):
-                raise DateException(_("SAT assessment at discharge can't be after discharge!"))
-            if (fevd and fevd > dod) or (fevd and fevd < doa):
-                raise DateException(_("FEV-1 assessment at discharge can't be after discharge!"))
-            if (aid and aid > dod) or (aid and aid < doa):
-                raise DateException(_("ASIA impairment assessment at discharge can't be after discharge!"))
-            if (sncd and sncd > dod) or (sncd and sncd < doa):
-                raise DateException(_("Standard neurological classification of spinal cord injury assessment at discharge can't be after discharge!"))
-            if (scid and scid > dod) or (scid and scid < doa):
-                raise DateException(_("Spinal Cord Independence Measure assessment at discharge can't be after discharge!"))
-            if (od and od > dod) or (od and od < doa):
-                raise DateException(_("Other assessment at discharge can't be after discharge!"))
-            
-            if parseInt(line.Other_applied_discharge) is None:
-                oad = 0
-            else:
-                oad = parseInt(line.Other_applied_discharge)
             try:
+                try: dob = datetime.strptime(line.date_of_birth, "%Y-%m-%d")
+                except: dob = None
+                try: doa = datetime.strptime(line.date_of_admission, "%Y-%m-%d")
+                except: doa = None
+                try: fima = datetime.strptime(line.FIM_date_of_assess, "%Y-%m-%d")
+                except: fima = None
+                try: bia = datetime.strptime(line.BI_date_of_assess, "%Y-%m-%d")
+                except: bia = None
+                try: smwta = datetime.strptime(line.SMWT_date_of_assess, "%Y-%m-%d")
+                except: smwta = None
+                try: sfa = datetime.strptime(line.SF_date_of_assess, "%Y-%m-%d")
+                except: sfa = None
+                try: sata = datetime.strptime(line.SAT_date_of_assess, "%Y-%m-%d")
+                except: sata = None
+                try: feva = datetime.strptime(line.FEV_date_of_assess, "%Y-%m-%d")
+                except: feva = None
+                try: aia = datetime.strptime(line.AI_date_of_assess, "%Y-%m-%d")
+                except: aia = None
+                try: snca = datetime.strptime(line.SNC_date_of_assess, "%Y-%m-%d")
+                except: snca = None
+                try: scia = datetime.strptime(line.SCI_date_of_assess, "%Y-%m-%d")
+                except: scia = None
+                try: oa = datetime.strptime(line.Other_date_of_assess, "%Y-%m-%d")
+                except: oa = None
+                try: dod = datetime.strptime(line.date_of_discharge, "%Y-%m-%d")
+                except: dod = None
+                try: fimd = datetime.strptime(line.FIM_date_of_assess_discharge, "%Y-%m-%d")
+                except: fimd = None
+                try: bid = datetime.strptime(line.BI_date_of_assess_discharge, "%Y-%m-%d")
+                except: bid = None
+                try: smwtd = datetime.strptime(line.SMWT_date_of_assess_discharge, "%Y-%m-%d")
+                except: smwtd = None
+                try: sfd = datetime.strptime(line.SF_date_of_assess_discharge, "%Y-%m-%d")
+                except: sfd = None
+                try: satd = datetime.strptime(line.SAT_date_of_assess_discharge, "%Y-%m-%d")
+                except: satd = None
+                try: fevd = datetime.strptime(line.FEV_date_of_assess_discharge, "%Y-%m-%d")
+                except: fevd = None
+                try: aid = datetime.strptime(line.AI_date_of_assess_discharge, "%Y-%m-%d")
+                except: aid = None
+                try: sncd = datetime.strptime(line.SNC_date_of_assess_discharge, "%Y-%m-%d")
+                except: sncd = None
+                try: scid = datetime.strptime(line.SCI_date_of_assess_discharge, "%Y-%m-%d")
+                except: scid = None
+                try: od = datetime.strptime(line.Other_date_of_assess_discharge, "%Y-%m-%d")
+                except: od = None
+
+                if dob > doa:
+                    raise DateException(_("Can't be born after admission!"))
+                if doa > dod:
+                    raise DateException(_("Can't be born after admission!"))
+
+                if (fima and fima > dod) or (fima and fima < doa):
+                    raise DateException(_("FIM assessment can't be after discharge!"))
+                if (bia and bia > dod) or (bia and bia < doa):
+                    raise DateException(_("Barthel index assessment can't be after discharge!"))
+                if (smwta and smwta > dod) or (smwta and smwta < doa):
+                    raise DateException(_("6 minutes walk test assessment can't be after discharge!"))
+                if (sfa and sfa > dod) or (sfa and sfa < doa):
+                    raise DateException(_("SF-36 assessment can't be after discharge!"))
+                if (sata and sata > dod) or (sata and sata < doa):
+                    raise DateException(_("SAT assessment can't be after discharge!"))
+                if (feva and feva > dod) or (feva and feva < doa):
+                    raise DateException(_("FEV-1 assessment can't be after discharge!"))
+                if (aia and aia > dod) or (aia and aia < doa):
+                    raise DateException(_("ASIA impairment assessment can't be after discharge!"))
+                if (snca and snca > dod) or (snca and snca < doa):
+                    raise DateException(_("Standard neurological classification of spinal cord injury assessment can't be after discharge!"))
+                if (scia and scia > dod) or (scia and scia < doa):
+                    raise DateException(_("Spinal Cord Independence Measure assessment can't be after discharge!"))
+                if (oa and oa > dod) or (oa and oa < doa):
+                    raise DateException(_("Other assessment can't be after discharge!"))
+
+                if (fimd and fimd > dod) or (fimd and fimd < doa):
+                    raise DateException(_("FIM assessment at discharge can't be after discharge!"))
+                if (bid and bid > dod) or (bid and bid < doa):
+                    raise DateException(_("Barthel index assessment at discharge can't be after discharge!"))
+                if (smwtd and smwtd > dod) or (smwtd and smwtd < doa):
+                    raise DateException(_("6 minutes walk test assessment at discharge can't be after discharge!"))
+                if (sfd and sfd > dod) or (sfd and sfd < doa):
+                    raise DateException(_("SF-36 assessment at discharge can't be after discharge!"))
+                if (satd and satd > dod) or (satd and satd < doa):
+                    raise DateException(_("SAT assessment at discharge can't be after discharge!"))
+                if (fevd and fevd > dod) or (fevd and fevd < doa):
+                    raise DateException(_("FEV-1 assessment at discharge can't be after discharge!"))
+                if (aid and aid > dod) or (aid and aid < doa):
+                    raise DateException(_("ASIA impairment assessment at discharge can't be after discharge!"))
+                if (sncd and sncd > dod) or (sncd and sncd < doa):
+                    raise DateException(_("Standard neurological classification of spinal cord injury assessment at discharge can't be after discharge!"))
+                if (scid and scid > dod) or (scid and scid < doa):
+                    raise DateException(_("Spinal Cord Independence Measure assessment at discharge can't be after discharge!"))
+                if (od and od > dod) or (od and od < doa):
+                    raise DateException(_("Other assessment at discharge can't be after discharge!"))
+
+                if parseInt(line.Other_applied_discharge) is None:
+                    oad = 0
+                else:
+                    oad = parseInt(line.Other_applied_discharge)
                 new_r1 = r1.objects.create(
                                             patient_id                      = parseInt(line.patient_id),
                                             case_id                         = parseInt(line.case_id),
@@ -290,8 +290,14 @@ def Import(request):
                                             added_by                        = request.user,
                 )
                 new_r1.save()
-            except CsvDataException:
-                pass
+            except IntegrityError:
+                exists += (line.patient_id,)
+            except DateException, (instance):
+                date_errors += ((line.case_id,instance.parameter),)
+            except:
+                errors += (line.patient_id,)
+        if exists or errors:
+            return render_to_response('r1_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('r1_stat'))
     else:
         form = FileUploadForm()
