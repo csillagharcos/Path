@@ -320,6 +320,7 @@ def Statistics(request):
             r1b_uncountable_case += (case,)
 
     ''' Working '''
+    a = b = c = d = e = f = ""
     r1a_first_indicator = r1a_second_indicator = r1a_third_indicator = 0
     r1b_first_indicator = r1b_second_indicator = r1b_third_indicator = 0
     r2_first_indicator = r2_second_indicator = r2_third_indicator = r2_fourth_indicator = 0
@@ -396,88 +397,94 @@ def Statistics(request):
 
         if fima7 or bia7 or smwta7 or sfa7 or sata7 or feva7 or aia7 or snca7 or scia7 or oa7:
             r1a_first_indicator += 1
+            a += str(case.case_id)+", "
         if fima2 or bia2 or smwta2 or sfa2 or sata2 or feva2 or aia2 or snca2 or scia2 or oa2:
             r1a_second_indicator += 1
+            b += str(case.case_id)+", "
         if fima3 or bia3 or smwta3 or sfa3 or sata3 or feva3 or aia3 or snca3 or scia3 or oa3:
             r1a_third_indicator += 1
+            c += str(case.case_id)+", "
 
     for case in r1b_countable_case:
-        try: fimd4 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days+1 <= 4
+        try: fimd4 = (case.date_of_discharge - case.FIM_date_of_assess_discharge).days+1 <= 3
         except: fimd4 = False
-        try: fimd2 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days+1 <= 2
+        try: fimd2 = (case.date_of_discharge - case.FIM_date_of_assess_discharge).days+1 <= 1
         except: fimd2 = False
-        try: fimd3 = (case.FIM_date_of_assess_discharge - case.date_of_discharge).days+1 <= 3
+        try: fimd3 = (case.date_of_discharge - case.FIM_date_of_assess_discharge).days+1 <= 2
         except: fimd3 = False
 
-        try: bid4 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days+1 <= 4
+        try: bid4 = (case.date_of_discharge - case.BI_date_of_assess_discharge).days+1 <= 3
         except: bid4 = False
-        try: bid2 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days+1 <= 2
+        try: bid2 = (case.date_of_discharge - case.BI_date_of_assess_discharge).days+1 <= 1
         except: bid2 = False
-        try: bid3 = (case.BI_date_of_assess_discharge - case.date_of_discharge).days+1 <= 3
+        try: bid3 = (case.date_of_discharge - case.BI_date_of_assess_discharge).days+1 <= 2
         except: bid3 = False
 
-        try: smwtd4 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days+1 <= 4
+        try: smwtd4 = (case.date_of_discharge - case.SMWT_date_of_assess_discharge).days+1 <= 3
         except: smwtd4 = False
-        try: smwtd2 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days+1 <= 2
+        try: smwtd2 = (case.date_of_discharge - case.SMWT_date_of_assess_discharge).days+1 <= 1
         except: smwtd2 = False
-        try: smwtd3 = (case.SMWT_date_of_assess_discharge - case.date_of_discharge).days+1 <= 3
+        try: smwtd3 = (case.date_of_discharge - case.SMWT_date_of_assess_discharge).days+1 <= 2
         except: smwtd3 = False
 
-        try: sfd4 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days+1 <= 4
+        try: sfd4 = (case.date_of_discharge - case.SF_date_of_assess_discharge).days+1 <= 3
         except: sfd4 = False
-        try: sfd2 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days+1 <= 2
+        try: sfd2 = (case.date_of_discharge - case.SF_date_of_assess_discharge).days+1 <= 1
         except: sfd2 = False
-        try: sfd3 = (case.SF_date_of_assess_discharge - case.date_of_discharge).days+1 <= 3
+        try: sfd3 = (case.date_of_discharge - case.SF_date_of_assess_discharge).days+1 <= 2
         except: sfd3 = False
 
-        try: satd4 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days+1 <= 4
+        try: satd4 = (case.date_of_discharge - case.SAT_date_of_assess_discharge).days+1 <= 3
         except: satd4 = False
-        try: satd2 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days+1 <= 2
+        try: satd2 = (case.date_of_discharge - case.SAT_date_of_assess_discharge).days+1 <= 1
         except: satd2 = False
-        try: satd3 = (case.SAT_date_of_assess_discharge - case.date_of_discharge).days+1 <= 3
+        try: satd3 = (case.date_of_discharge - case.SAT_date_of_assess_discharge).days+1 <= 2
         except: satd3 = False
 
-        try: fevd4 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days+1 <= 4
+        try: fevd4 = (case.date_of_discharge - case.FEV_date_of_assess_discharge).days+1 <= 3
         except: fevd4 = False
-        try: fevd2 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days+1 <= 2
+        try: fevd2 = (case.date_of_discharge - case.FEV_date_of_assess_discharge).days+1 <= 1
         except: fevd2 = False
-        try: fevd3 = (case.FEV_date_of_assess_discharge - case.date_of_discharge).days+1 <= 3
+        try: fevd3 = (case.date_of_discharge - case.FEV_date_of_assess_discharge).days+1 <= 2
         except: fevd3 = False
 
-        try: aid4 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days+1 <= 4
+        try: aid4 = (case.date_of_discharge - case.AI_date_of_assess_discharge).days+1 <= 3
         except: aid4 = False
-        try: aid2 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days+1 <= 2
+        try: aid2 = (case.date_of_discharge - case.AI_date_of_assess_discharge).days+1 <= 1
         except: aid2 = False
-        try: aid3 = (case.AI_date_of_assess_discharge - case.date_of_discharge).days+1 <= 3
+        try: aid3 = (case.date_of_discharge - case.AI_date_of_assess_discharge).days+1 <= 2
         except: aid3 = False
 
-        try: sncd4 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days+1 <= 4
+        try: sncd4 = (case.date_of_discharge - case.SNC_date_of_assess_discharge).days+1 <= 3
         except: sncd4 = False
-        try: sncd2 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days+1 <= 2
+        try: sncd2 = (case.date_of_discharge - case.SNC_date_of_assess_discharge).days+1 <= 1
         except: sncd2 = False
-        try: sncd3 = (case.SNC_date_of_assess_discharge - case.date_of_discharge).days+1 <= 3
+        try: sncd3 = (case.date_of_discharge - case.SNC_date_of_assess_discharge).days+1 <= 2
         except: sncd3 = False
 
-        try: scid4 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days+1 <= 4
+        try: scid4 = (case.date_of_discharge - case.SCI_date_of_assess_discharge).days+1 <= 3
         except: scid4 = False
-        try: scid2 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days+1 <= 2
+        try: scid2 = (case.date_of_discharge - case.SCI_date_of_assess_discharge).days+1 <= 1
         except: scid2 = False
-        try: scid3 = (case.SCI_date_of_assess_discharge - case.date_of_discharge).days+1 <= 3
+        try: scid3 = (case.date_of_discharge - case.SCI_date_of_assess_discharge).days+1 <= 2
         except: scid3 = False
 
-        try: od4 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days+1 <= 4
+        try: od4 = (case.date_of_discharge - case.Other_date_of_assess_discharge).days+1 <= 3
         except: od4 = False
-        try: od2 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days+1 <= 2
+        try: od2 = (case.date_of_discharge - case.Other_date_of_assess_discharge).days+1 <= 1
         except: od2 = False
-        try: od3 = (case.Other_date_of_assess_discharge - case.date_of_discharge).days+1 <= 3
+        try: od3 = (case.date_of_discharge - case.Other_date_of_assess_discharge).days+1 <= 2
         except: od3 = False
         
         if fimd4 or bid4 or smwtd4 or sfd4 or satd4 or fevd4 or aid4 or sncd4 or scid4 or od4:
             r1b_first_indicator += 1
+            d += str(case.case_id)+", "
         if fimd2 or bid2 or smwtd2 or sfd2 or satd2 or fevd2 or aid2 or sncd2 or scid2 or od2:
             r1b_second_indicator += 1
+            e += str(case.case_id)+", "
         if fimd3 or bid3 or smwtd3 or sfd3 or satd3 or fevd3 or aid3 or sncd3 or scid3 or od3:
             r1b_third_indicator += 1
+            f += str(case.case_id)+", "
 
     for case in r2_countable_case:
         if case.discharge:
@@ -517,6 +524,18 @@ def Statistics(request):
 
     ''' Displaying '''
     context = {
+        "a": a,
+        "b": b,
+        "c": c,
+        "d": d,
+        "e": e,
+        "f": f,
+        "r1a1i": r1a_first_indicator,
+        "r1a2i": r1a_second_indicator,
+        "r1a3i": r1a_third_indicator,
+        "r1b1i": r1b_first_indicator,
+        "r1b2i": r1b_second_indicator,
+        "r1b3i": r1b_third_indicator,
         "overall": len(cases),
         "r1aremoved": len(r1a_uncountable_case),
         "r1acounted": len(r1a_countable_case),
