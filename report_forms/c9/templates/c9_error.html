@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block header %}
+    <div id="content_home">{% trans "C9. Operation and patient" %}</div>
+    <div id="content_helper">
+        <table>
+            <tr>
+                <td><a href="{% url report_forms %}"><img src="{{ STATIC_URL }}/images/white.appbar.arrow.left.png" title="{% trans "Report Forms" %}" /></a></td>
+                <td><a href="{% url c9_operation_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans "Operation form" %}" /></a> <a href="{% url c9_patient_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans "Patient form" %}" /></a></td>
+                <td><a href="{% url c9_stat %}"><img src="{{ STATIC_URL }}/images/white.appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+                <td><a href="{% url c9_import %}"><img src="{{ STATIC_URL }}/images/white.appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
+                <td><a href="{% url c9_operation_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Operation template" %}" /></a><a href="{% url c9_patient_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Patient template" %}" /></a></td>
+                <td><a href="{{ STATIC_URL }}documents/dcs/{{ LANGUAGE_CODE }}/c8.docx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.word.png" title="{% trans "Data collecting sheet" %}" /></a></td>
+                <td><a href="{{ STATIC_URL }}documents/drt/{{ LANGUAGE_CODE }}/c8.xlsx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></a></td>
+                <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/c8.docx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.word.png" title="{% trans "Short indicator description" %}" /></a></td>
+            </tr>
+        </table>
+    </div>
+{% endblock header %}
+{% block content %}
+    <span class="error_message_warning">{% trans "An error has happened!" %}</span><br />
+    {% if exists %}
+        {% trans "The following Patient IDs are already exists:" %}
+        <br />
+        {% for exist in exists %}
+            {{ exist }}{% if not forloop.last %}, {% endif %}{% if forloop.counter|divisibleby:"5" %}<br />{% endif %}
+        {% endfor %}
+        <br />
+    {% endif %}
+    {% if errors %}
+        {% trans "The following Patient IDs contains error:" %}
+        <br />
+        {% for error in errors %}
+            {{ error }}{% if not forloop.last %}, {% endif %}{% if forloop.counter|divisibleby:"5" %}<br />{% endif %}
+        {% endfor %}
+        <br />
+    {% endif %}
+    {% if date_errors %}
+        {% trans "The following Case IDs contains date errors:" %}
+        <br />
+        <table style="margin: 0 auto; width: 50%">
+            <tr style="font-weight: bold;">
+                <td style="width: 20%">{% trans "Case ID" %}</td>
+                <td style="width: 80%">{% trans "Error message" %}</td>
+            </tr>
+            {% for date_error in date_errors %}
+                <tr>
+                    <td>{{ date_error.0 }}</td>
+                    <td>{{ date_error.1 }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br />
+    {% endif %}
+{% endblock content %}

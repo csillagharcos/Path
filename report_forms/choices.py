@@ -212,3 +212,15 @@ IF_UNPLANNED_DISCHARGE = (
     (3, _('Acute needs of traumatology care')),
     (4, _('Decision of the patient or his/her family')),
 )
+
+TYPE_OF_OR = (
+    (1, _('Elective only')),
+    (2, _('Day surgery')),
+    (3, _('Emergency only')),
+    (4, _('Mixed (elective/emergency)')),
+)
+
+HYGIENE_CATEGORY = (
+    (1, _('Septic')),
+    (2, _('Aseptic')),
+)

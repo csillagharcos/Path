@@ -38,6 +38,13 @@ urlpatterns = patterns('',
     url(r'c8/statistics$', 'report_forms.c8.views.Statistics', name='c8_stat'),
     url(r'c8/template$', 'report_forms.c8.views.Template', name='c8_template'),
 
+    url(r'c9p$', 'report_forms.c9.views.Display_patient', name='c9_patient_display'),
+    url(r'c9o$', 'report_forms.c9.views.Display_operation', name='c9_operation_display'),
+    url(r'c9/import$', 'report_forms.c9.views.Import', name='c9_import'),
+    url(r'c9/statistics$', 'report_forms.c9.views.Statistics', name='c9_stat'),
+    url(r'c9/templateo$', 'report_forms.c9.views.operation_Template', name='c9_operation_template'),
+    url(r'c9/templatep$', 'report_forms.c9.views.patients_Template', name='c9_patient_template'),
+
     url(r'c13$', 'report_forms.c13.views.Display', name='c13_display'),
     url(r'c13/statistics$', 'report_forms.c13.views.Statistics', name='c13_stat'),
     url(r'c13/template$', 'report_forms.c13.views.Template', name='c13_template'),

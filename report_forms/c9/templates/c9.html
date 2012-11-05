@@ -1,0 +1,46 @@
+{% extends "form.html" %}
+{% load i18n %}
+{% block header %}
+    <div id="content_home">{% trans "C9. Operation and patient" %}</div>
+    <div id="content_helper">
+        <table>
+            <tr>
+                <td><a href="{% url report_forms %}"><img src="{{ STATIC_URL }}/images/white.appbar.arrow.left.png" title="{% trans "Report Forms" %}" /></a></td>
+                <td><a href="{% url c9_operation_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans "Operation form" %}" /></a> <a href="{% url c9_patient_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans "Patient form" %}" /></a></td>
+                <td><a href="{% url c9_stat %}"><img src="{{ STATIC_URL }}/images/white.appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+                <td><a href="{% url c9_import %}"><img src="{{ STATIC_URL }}/images/white.appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
+                <td><a href="{% url c9_operation_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Operation template" %}" /></a><a href="{% url c9_patient_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Patient template" %}" /></a></td>
+                <td><a href="{{ STATIC_URL }}documents/dcs/{{ LANGUAGE_CODE }}/c8.docx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.word.png" title="{% trans "Data collecting sheet" %}" /></a></td>
+                <td><a href="{{ STATIC_URL }}documents/drt/{{ LANGUAGE_CODE }}/c8.xlsx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></a></td>
+                <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/c8.docx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.word.png" title="{% trans "Short indicator description" %}" /></a></td>
+            </tr>
+        </table>
+    </div>
+{% endblock header %}
+
+{% block js %}
+<script src="{{ STATIC_URL }}js/jquery.tooltip.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".jq_tool").tooltip()
+    showNext($('#id_mother_illness'))
+
+    $("#id_weight_of_the_newborn").ready(function(){
+        $(this).val($(this).val().replace(" g",""))
+    }).focus(function(){
+        $(this).val($(this).val().replace(" g",""))
+    }).blur(function(){
+        $(this).val($(this).val() + " g")
+    })
+    $("#id_mother_illness").change(function(){showNext($(this))})
+    $('form').submit(function(ev){
+        $("#id_weight_of_the_newborn").val($("#id_weight_of_the_newborn").val().replace(" g",""))
+    })
+    $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, yearRange: "1900:c" })
+    $(".datepicker").datepicker({ dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, yearRange: "1900:c" })
+    $(".timepicker").timepicker({ timeFormat: "h:mm" })
+})
+
+</script>
+{% endblock js %}
