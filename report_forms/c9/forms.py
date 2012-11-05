@@ -13,12 +13,12 @@ class C9_patient_Form(ModelForm):
         exclude = ('added_by')
 
 class C9_operation_Form(ModelForm):
-    weekday_open_time   = forms.TimeField(label=_('Weekday normal time of opening'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
-    weekday_close_time   = forms.TimeField(label=_('Weekday normal time of closing'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
-    saturday_open_time   = forms.TimeField(label=_('Saturday normal time of opening'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
-    saturday_close_time   = forms.TimeField(label=_('Saturday normal time of closing'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
-    sunday_open_time   = forms.TimeField(label=_('Sunday/Holiday normal time of opening'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
-    sunday_close_time   = forms.TimeField(label=_('Sunday/Holiday normal time of closing'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
+    weekday_open_time    = forms.TimeField(label=_('Normal time of opening on weekdays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
+    weekday_close_time   = forms.TimeField(label=_('Normal time of closing on weekdays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
+    saturday_open_time   = forms.TimeField(label=_('Normal time of opening on saturdays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
+    saturday_close_time  = forms.TimeField(label=_('Normal time of closing on saturdays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
+    sunday_open_time     = forms.TimeField(label=_('Normal time of opening on sundays and holidays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
+    sunday_close_time    = forms.TimeField(label=_('Normal time of closing on sundays and holidays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
 
     class Meta:
         model = c9_operation
