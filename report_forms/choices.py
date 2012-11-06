@@ -224,3 +224,9 @@ HYGIENE_CATEGORY = (
     (1, _('Septic')),
     (2, _('Aseptic')),
 )
+
+TYPE_OF_DAY = (
+    (0,_('Weekday')),
+    (1,_('Saturday')),
+    (2,_('Sunday/holiday')),
+)

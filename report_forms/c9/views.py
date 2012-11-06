@@ -18,11 +18,16 @@ def Display_patient(request):
         form = C9_patient_Form(request.POST)
         if form.is_valid():
             new_c9 = c9_patient.objects.create(
+                central_operating_unit = form.cleaned_data['central_operating_unit'],
                 operating_unit = form.cleaned_data['operating_unit'],
                 date = form.cleaned_data['date'],
                 case_number = form.cleaned_data['case_number'],
                 patient_identifier = form.cleaned_data['patient_identifier'],
                 patient_arrive_time = form.cleaned_data['patient_arrive_time'],
+                anesthesia_start = form.cleaned_data['anesthesia_start'],
+                surgery_start = form.cleaned_data['surgery_start'],
+                surgery_end = form.cleaned_data['surgery_end'],
+                anesthesia_end = form.cleaned_data['anesthesia_end'],
                 patient_leave_time = form.cleaned_data['patient_leave_time'],
                 added_by = request.user,
             )
@@ -57,6 +62,8 @@ def Display_operation(request):
                 professional_field = form.cleaned_data['professional_field'],
                 preparatory_room = form.cleaned_data['preparatory_room'],
                 postoperative_room = form.cleaned_data['postoperative_room'],
+                observation_begins = form.cleaned_data['observation_begins'],
+                observation_ends = form.cleaned_data['observation_ends'],
                 added_by = request.user,
             )
             new_c9.save()
@@ -90,11 +97,16 @@ def Import(request):
                 continue
             try:
                 new_c9p = c9_patient.objects.create(
+                    central_operating_unit = line.central_operating_unit,
                     operating_unit = line.operating_unit,
                     date = datetime.strptime(line.date, "%Y-%m-%d"),
                     case_number = parseInt(line.case_number),
                     patient_identifier = line.patient_identifier,
                     patient_arrive_time = datetime.strptime(line.patient_arrive_time, "%H:%M"),
+                    anesthesia_start = datetime.strptime(line.anesthesia_start, "%H:%M"),
+                    surgery_start = datetime.strptime(line.surgery_start, "%H:%M"),
+                    surgery_end = datetime.strptime(line.surgery_end, "%H:%M"),
+                    anesthesia_end = datetime.strptime(line.anesthesia_end, "%H:%M"),
                     patient_leave_time = datetime.strptime(line.patient_leave_time, "%H:%M"),
                     added_by = request.user,
                 )
@@ -128,6 +140,9 @@ def Import(request):
                     professional_field = line.professional_field,
                     preparatory_room = parseInt(line.preparatory_room),
                     postoperative_room = parseInt(line.postoperative_room),
+                    observation_begins = datetime.strptime(line.observation_begins, "%Y-%m-%d"),
+                    observation_ends = datetime.strptime(line.observation_ends, "%Y-%m-%d"),
+
                     added_by = request.user,
                 )
                 new_c9o.save()
@@ -166,11 +181,16 @@ def Statistics(request):
 
 def patients_Template(request):
     model = (
-        _('Identifier of operating unit or operating rooms'),
+        _('Identifier of central operating unit'),
+        _('Identifier of OR'),
         _('Date'),
         _('Case number'),
         _('Patient identifier'),
         _('Time patient arrives to OR'),
+        _('Anesthesia start'),
+        _('Surgery start'),
+        _('Surgery end'),
+        _('Anesthesia end'),
         _('Time patient leaves OR'),
     )
     return csvDump(model, "c9_patients")
@@ -193,5 +213,7 @@ def operation_Template(request):
         _('Professional field'),
         _('Preparatory room'),
         _('Post-operative observatory room'),
+        _('Beginning of observational period'),
+        _('End of observational period'),
     )
     return csvDump(model, "c9_operation")

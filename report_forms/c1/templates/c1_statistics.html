@@ -19,6 +19,9 @@
 {% endblock header %}
 
 {% block content %}
+    {% if not_enough %}
+        {% trans "Sorry, you have less than 30 cases." %}
+    {% else %}
         <table class="statistics">
             <tr>
                 <td>{% trans "Overall:" %}</td>
@@ -65,6 +68,7 @@
                 <td>{{ subindicator_four_two|floatformat:"2" }}%</td>
             </tr>
         </table>
+    {% endif %}
 {% endblock content %}
 
 {% block js %}

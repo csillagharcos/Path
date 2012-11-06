@@ -2,12 +2,14 @@
 from datetime import datetime
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
+from personel.models import Personel
 from report_forms.c1.forms import C1Form, FileUploadForm
 from report_forms.c1.models import c1, c1CSV, c1OtherDiagnose
 from report_forms.tools import calculate_age, csvDump, DateException, parseInt, parseFloat
@@ -98,12 +100,15 @@ def Import(request):
 def Statistics(request):
     ''' Query '''
     countable_case=uncountable_case=()
-    cases = c1.objects.all()
+    cases = c1.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     for case in cases:
         if case.other_diagnoses.count() > 0:
             uncountable_case += (case,)
         else:
             countable_case += (case,)
+
+    if len(countable_case) < 30:
+        return render_to_response('c1_statistics.html', {"not_enough": True }, context_instance=RequestContext(request))
 
     ''' Working '''
     numerator = map(float,[0,0,0,0,0,0,0,0])
@@ -141,10 +146,12 @@ def Statistics(request):
                 numerator[7] += 1                                           #subindicator 4.2
 
     ''' Counting '''
-    indicator_one               = numerator[0] / len(countable_case)     * 100
-    subindicator_one            = numerator[1] / len(countable_case)     * 100
-    subindicator_two            = numerator[2] / len(countable_case)     * 100
-
+    try: indicator_one       = numerator[0] / len(countable_case)     * 100
+    except: indicator_one    = 0
+    try: subindicator_one    = numerator[1] / len(countable_case)     * 100
+    except: subindicator_one = 0
+    try: subindicator_two    = numerator[2] / len(countable_case)     * 100
+    except: subindicator_two = 0
     try:
         subindicator_three_one  = numerator[3] / agedenominator[0]   * 100
     except ZeroDivisionError:
