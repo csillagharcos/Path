@@ -11,6 +11,10 @@ class Personel(models.Model):
     country        = models.ForeignKey(Country, verbose_name=_('Country'))
 
     def __unicode__(self):
-        return self.workplace.university_name + " worker: " + self.user.get_full_name()
+        if self.user.get_full_name():
+            name = self.user.get_full_name()
+        else:
+            name = self.user.username
+        return name + " ("+self.workplace.university_name + ")"
 
 admin.site.register(Personel)
