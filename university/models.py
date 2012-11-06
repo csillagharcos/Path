@@ -9,7 +9,7 @@ class School(models.Model):
     country         = models.ForeignKey(Country, verbose_name=_('Country'))
 
     def __unicode__(self):
-        return self.codename
+        return self.university_name
 
     class Meta:
         verbose_name = _('Hospital')
