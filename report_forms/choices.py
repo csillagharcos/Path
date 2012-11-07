@@ -111,7 +111,7 @@ TYPE_OF_ADMISSION = (
 
 DIAGNOSES_GROUP_CHOICES = (
     (0, _('Stroke')),
-    (1, _('Hospital acquired pneumonia')),
+    (1, _('Community acquired pneumonia')),
     (2, _('Hip fracture')),
     (3, _('CABG')),
     (4, _('Knee arthroscopy')),
@@ -129,7 +129,7 @@ ICD10_CHOICES = (
         ('I63', 'I63'),
         ('I64', 'I64'),
         )),
-    (_('Hospital acquired pneumonia'), (
+    (_('Community acquired pneumonia'), (
         ('J13', 'J13'),
         ('J14', 'J14'),
         ('J15', 'J15'),
