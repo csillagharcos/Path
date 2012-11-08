@@ -104,7 +104,7 @@ def Import(request):
 def Statistics(request):
     ''' Query '''
     countable_case=uncountable_case=()
-    cases = c20.objects.all()
+    cases = c20.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     a=""
     for case in cases:
         error=False
@@ -130,8 +130,6 @@ def Statistics(request):
             cindicator_two += 1
         if case.aspirin_at_discharge == 1 or case.non_aspirin_platelet == 1:
             cindicator_three += 1
-    for case in uncountable_case:
-        a += str(case.case_id)+", "
 
     ''' Counting '''
     try: indicator_one = float(cindicator_one) / len(countable_case) * 100
@@ -149,7 +147,6 @@ def Statistics(request):
         "indicator_one": indicator_one,
         "indicator_two": indicator_two,
         "indicator_three": indicator_three,
-        "a": a,
     }
     return render_to_response('c20_statistics.html', context, context_instance=RequestContext(request))
 

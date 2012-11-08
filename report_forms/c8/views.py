@@ -111,7 +111,7 @@ def Import(request):
 def Statistics(request):
     ''' Query '''
     countable_case=uncountable_case=()
-    cases = c8.objects.all()
+    cases = c8.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     for case in cases:
         if calculate_age(case.date_of_birth, case.date_of_admission) <= 18 or case.patient_admission_status == 1 or case.type_of_admission == 1 or case.type_of_admission == 2 or case.patient_discharge_status == 1 or case.patient_discharge_status == 3:
             uncountable_case += (case,)

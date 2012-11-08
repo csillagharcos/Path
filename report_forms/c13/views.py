@@ -38,7 +38,7 @@ def Display(request):
 def Statistics(request):
     ''' Query '''
     countable_case=uncountable_case=()
-    cases = c13.objects.all()
+    cases = c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     group = []
     print
     for case in cases:

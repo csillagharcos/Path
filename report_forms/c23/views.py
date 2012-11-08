@@ -140,7 +140,7 @@ def Statistics(request):
     ''' Query '''
     accepted_diagnose_codes = ("371A", "371B", "371C", "371H", "371K", "372A", "372C", "372M", "372N", "372X", "372Y")
     countable_case=uncountable_case=()
-    cases = c23.objects.all()
+    cases = c23.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     medicines=()
     for medicine in Medicine.objects.all():
         medicines += (medicine.name,)

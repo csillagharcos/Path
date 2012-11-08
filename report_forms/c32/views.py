@@ -89,7 +89,7 @@ def Statistics(request):
     ''' Query '''
     indicator_one_numerator = subindicator_one_30 = subindicator_two_2 = subindicator_one = 0
     countable_case=uncountable_case=()
-    cases = c32.objects.all()
+    cases = c32.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     for case in cases:
         if calculate_age(case.date_of_birth, case.date_of_admission) < 18:
             uncountable_case += (case,)

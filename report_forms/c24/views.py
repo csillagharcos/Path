@@ -132,9 +132,8 @@ def Import(request):
 def Statistics(request):
     ''' Query '''
     countable_case=uncountable_case=()
-    cases = c24.objects.all()
+    cases = c24.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     medicines=()
-    a=b=c=""
     for medicine in Medicine.objects.all():
         medicines += (medicine.name,)
     for case in cases:
@@ -174,36 +173,24 @@ def Statistics(request):
                 indicator_one += 1
                 indicator_tracker += 1
                 acceptable = True
-        else:
-            a += str(case.case_id)+", "
 
         #indicator two A
         if case.weight_of_patient >= 60:
             if (first_med_dose == case.first_dose or second_med_dose == case.second_dose) and acceptable:
                 indicator_twoa += 1
                 indicator_tracker += 1
-            else:
-                b += str(case.case_id)+", "
         elif case.weight_of_patient < 60:
             if (first_med_dose == case.first_dose or second_med_dose == case.second_dose) or (first_med_doseUnder == case.first_dose or second_med_doseUnder == case.second_dose) and acceptable:
                 indicator_twoa += 1
                 indicator_tracker += 1
-            else:
-                b += str(case.case_id)+", "
 
         #indicator two B
         if case.weight_of_patient >= 60:
             if first_med_dose == case.first_dose and (second_med_dose == case.second_dose or case.second_dose is None) and acceptable:
                 indicator_twob += 1
-            else:
-                print case.second_dose
-                print second_med_doseUnder
-                c += str(case.case_id)+", "
         else:
             if (first_med_doseUnder == case.first_dose and second_med_doseUnder == case.second_dose) and acceptable:
                 indicator_twob += 1
-            else:
-                c += str(case.case_id)+", "
 
         #indicator three
         if case.route_of_admin == 1:
@@ -287,10 +274,6 @@ def Statistics(request):
         "eight": eight,
         "nine": nine,
         "ten": ten,
-        "a":a,
-        "b":b,
-        "c":c,
-
         }
     return render_to_response('c24_statistics.html', context, context_instance=RequestContext(request))
 

@@ -309,7 +309,7 @@ def Import(request):
 def Statistics(request):
     ''' Query '''
     r1a_countable_case=r1a_uncountable_case=r1b_countable_case=r1b_uncountable_case=r2_countable_case=r2_uncountable_case=()
-    cases = r1.objects.all()
+    cases = r1.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     for case in cases:
         if case.patient_discharge_status == 1 and case.discharge == 0:
             r2_uncountable_case += (case,)
