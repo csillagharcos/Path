@@ -252,6 +252,8 @@ table.los {
   table.los td {
     padding: 5px;
     border: 1px solid black; }
+    table.los td:first-child {
+      width: 70%; }
 
 .error_message_warning {
   font-size: 16px;

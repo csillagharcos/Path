@@ -19,54 +19,67 @@
 {% endblock header %}
 
 {% block content %}
-    Under development..
-{#        #}
-{#        <table class="statistics">#}
-{#            <tr>#}
-{#                <td>{% trans "Overall:" %}</td>#}
-{#                <td>{{ overall }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <td>{% trans "Removed:" %}</td>#}
-{#                <td>{{ removed }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <td>{% trans "Counted:" %}</td>#}
-{#                <td>{{ counted }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <td>{% trans "C-section rate:" %}</td>#}
-{#                <td>{{ indicator_one|floatformat:"2" }}%</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <td>{% trans "Rate of planned C-section:" %}</td>#}
-{#                <td>{{ subindicator_one|floatformat:"2" }}%</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <td>{% trans "Rate of acute C-section:" %}</td>#}
-{#                <td>{{ subindicator_two|floatformat:"2" }}%</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <td>{% trans "Rate of c-section by the mother's age is less than 20:" %}</td>#}
-{#                <td>{{ subindicator_three_one|floatformat:"2" }}%</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <td>{% trans "Rate of c-section by the mother's age is between 20-35:" %}</td>#}
-{#                <td>{{ subindicator_three_two|floatformat:"2" }}%</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <td>{% trans "Rate of c-section by the mother's age is more than 35:" %}</td>#}
-{#                <td>{{ subindicator_three_three|floatformat:"2" }}%</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <td>{% trans "Rate of acute C-section by the previous number of deliveries first delivery:" %}</td>#}
-{#                <td>{{ subindicator_four_one|floatformat:"2" }}%</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <td>{% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries:" %}</td>#}
-{#                <td>{{ subindicator_four_two|floatformat:"2" }}%</td>#}
-{#            </tr>#}
-{#        </table>#}
+        {% for operating_room in display_stats %}
+            <table class="los">
+                <thead>
+                    <tr>
+                        <th colspan="2">{{ operating_room.name }}</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>{% trans "Operating theatre performance:" %}</td>
+                    <td>{{ operating_room.mk|floatformat:"2" }}%</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Surgery performance:" %}</td>
+                    <td>{{ operating_room.mka|floatformat:"2" }}%</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Average time in OR:" %}</td>
+                    <td>{{ operating_room.amt }} {% trans 'minutes' %}</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Median time in OR:" %}</td>
+                    <td>{{ operating_room.mmt }} {% trans 'minutes' %}</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Average time of anesthesia:" %}</td>
+                    <td>{{ operating_room.aa }} {% trans 'minutes' %}</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Median time of anesthesia:" %}</td>
+                    <td>{{ operating_room.ma }} {% trans 'minutes' %}</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Average time of surgery:" %}</td>
+                    <td>{{ operating_room.ami }} {% trans 'minutes' %}</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Median time of surgery:" %}</td>
+                    <td>{{ operating_room.mmi }} {% trans 'minutes' %}</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Average time before surgery:" %}</td>
+                    <td>{{ operating_room.ame }} {% trans 'minutes' %}</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Median time before surgery:" %}</td>
+                    <td>{{ operating_room.mme }} {% trans 'minutes' %}</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Number of days with overtime:" %}</td>
+                    <td>{{ operating_room.tn }} {% trans 'days' %}</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Average time of overtime:" %}</td>
+                    <td>{{ operating_room.at }} {% trans 'minutes/days' %}</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Average time of overtime on days with overtime:" %}</td>
+                    <td>{{ operating_room.attn }} {% trans 'minutes' %}</td>
+                </tr>
+            </table>
+        {% endfor %}
 {% endblock content %}
 
 {% block js %}

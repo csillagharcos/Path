@@ -242,6 +242,9 @@ table.los{
   td{
     padding: 5px;
     border: 1px solid black;
+    &:first-child{
+      width: 70%;
+    }
   }
 }
 

@@ -48,3 +48,11 @@ def median(mylist):
     if not length % 2:
         return (sorts[length / 2] + sorts[length / 2 - 1]) / 2.0
     return sorts[length / 2]
+
+def getMinSec(flnumb):
+    minutes = int(flnumb)
+    seconds = int( (flnumb - minutes) * 60 )
+    if seconds == 0:
+        return str(minutes)
+    else:
+        return str(minutes) + ":" + str(seconds)
