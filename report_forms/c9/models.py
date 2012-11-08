@@ -10,7 +10,7 @@ class c9_patient(models.Model):
     central_operating_unit          = models.CharField(_('Identifier of central operating unit'), max_length=255)
     operating_unit                  = models.CharField(_('Identifier of operating unit or operating rooms'), max_length=255)
     date                            = models.DateField(_('Date'))
-    type_of_day                     = models.IntegerField(_('Type of OR'), max_length=1, default=0, choices=TYPE_OF_DAY)
+    type_of_day                     = models.IntegerField(_('Type of day'), max_length=1, default=0, choices=TYPE_OF_DAY)
     case_number                     = models.IntegerField(_('Case number'))
     patient_identifier              = models.CharField(_('Patient identifier'), max_length=255)
     patient_arrive_time             = models.TimeField(_('Time patient arrives to OR'))

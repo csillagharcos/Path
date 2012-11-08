@@ -326,6 +326,7 @@ def patients_Template(request):
         _('Identifier of central operating unit'),
         _('Identifier of OR'),
         _('Date'),
+        _('Type of day'),
         _('Case number'),
         _('Patient identifier'),
         _('Time patient arrives to OR'),
