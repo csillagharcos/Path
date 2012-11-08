@@ -122,11 +122,11 @@ def Import(request):
                 )
                 new_c9p.save()
             except IntegrityError:
-                exists += (line.case_number,)
+                exists += (line.patient_identifier,)
             except DateException, (instance):
-                date_errors += ((line.case_number,instance.parameter),)
+                date_errors += ((line.patient_identifier,instance.parameter),)
             except:
-                errors += (line.case_number,)
+                errors += (line.patient_identifier,)
         first = True
         for line in oimported_csv:
             if first:
@@ -159,7 +159,7 @@ def Import(request):
             except IntegrityError:
                 exists += (line.central_operating_unit,)
             except DateException, (instance):
-                date_errors += ((line.case_id,instance.parameter),)
+                date_errors += ((line.central_operating_unit,instance.parameter),)
             except:
                 errors += (line.central_operating_unit,)
         if exists or errors:
