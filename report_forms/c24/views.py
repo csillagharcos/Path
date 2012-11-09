@@ -9,7 +9,7 @@ from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from report_forms.c24.forms import C24Form, FileUploadForm
 from report_forms.c24.models import c24, c24CSV, Medicine
-from report_forms.tools import parseInt, parseFloat, csvDump, calculate_age, DateException
+from report_forms.tools import parseInt, parseFloat, csvDump, calculate_age, DateException, csvExport
 from django.utils.translation import ugettext_lazy as _
 
 @login_required
@@ -308,3 +308,71 @@ def Template(request):
         _('Time of surgical wound closure'),
         )
     return csvDump(model, "c24")
+
+@login_required
+def Export(request):
+    model = ((
+                 _('Case ID'),
+                 _('Hospital registration number'),
+                 _('Date of birth'),
+                 _('Weight of patient'),
+                 _('Principal diagnosis code (ICD-10 or DRG)'),
+                 _('Principal procedure code'),
+                 _('Is the surgical procedure planned?'),
+                 _('Is patient allergic to any antibiotics suggested in the protocol?'),
+                 _('Generic name of antibiotic drug'),
+                 _('In case of allergy to penicillin, scale of severity?'),
+                 _('Has patient preoperative infection?'),
+                 _('Type of infection'),
+                 _('Date of surgical incision'),
+                 _('Time of surgical incision'),
+                 _('Prophylactic antibiotic given?'),
+                 _('Name of first dose'),
+                 _('Name of second dose'),
+                 _('First dose'),
+                 _('Second dose'),
+                 _('Route of administration of first dose'),
+                 _('Date of first dose'),
+                 _('Time of first dose'),
+                 _('Total doses in 24 hours'),
+                 _('Date of last dose'),
+                 _('Time of last dose'),
+                 _('Date of surgical wound closure'),
+                 _('Time of surgical wound closure'),
+                 ),)
+    cases = c24.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
+    for case in cases:
+        si   = str(case.surgical_incision).split(' ')
+        dofd = str(case.date_of_first_dose).split(' ')
+        dold = str(case.date_of_last_dose).split(' ')
+        dswc = str(case.date_of_wound_close).split(' ')
+        model += ((
+                      str(case.case_id),
+                      str(case.hospital_registration_number),
+                      str(case.date_of_birth),
+                      str(case.weight_of_patient),
+                      str(case.principal_diagnoses_code),
+                      str(case.principal_procedure_code),
+                      str(case.procedure_planned),
+                      str(case.patient_allergy),
+                      str(case.generic_name_of_drug),
+                      str(case.penicilin_allergy),
+                      str(case.preoperative_infection),
+                      str(case.type_of_infection),
+                      str(si[0]),
+                      str(si[1])[:-3],
+                      str(case.antibiotic_given),
+                      str(case.name_of_first_dose),
+                      str(case.name_of_second_dose),
+                      str(case.first_dose),
+                      str(case.second_dose),
+                      str(case.route_of_admin),
+                      str(dofd[0]),
+                      str(dofd[1])[:-3],
+                      str(case.total_dose_in_24h),
+                      str(dold[0]),
+                      str(dold[1])[:-3],
+                      str(dswc[0]),
+                      str(dswc[1])[:-3],
+                      ),)
+    return csvExport(model, 'c24_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))

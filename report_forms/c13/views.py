@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.utils import translation
 from report_forms.c13.forms import C13Form, C13Form_hungarian
-from report_forms.c13.models import c13, joblist
+from report_forms.c13.models import c13
 from django.utils.translation import ugettext_lazy as _
 from report_forms.tools import csvDump
 

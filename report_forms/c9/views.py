@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.utils.datastructures import MultiValueDictKeyError
 from report_forms.c9.forms import C9_patient_Form, FileUploadForm, C9_operation_Form
 from report_forms.c9.models import c9_patient, c9_operation, c9_patientCSV, c9_operationCSV
-from report_forms.tools import csvDump, DateException, parseInt, getMinSec, median
+from report_forms.tools import csvDump, DateException, parseInt, getMinSec, median, csvExport
 from django.utils.translation import ugettext_lazy as _
 
 @login_required
@@ -383,3 +383,84 @@ def operation_Template(request):
         _('End of observational period'),
     )
     return csvDump(model, "c9_operation")
+
+@login_required
+def Exporto(request):
+    model = ((
+                 _('Identifier of central operating unit'),
+                 _('Identifier of OR'),
+                 _('Type of OR'),
+                 _('Normal time of opening on weekdays'),
+                 _('Normal time of closing on weekdays'),
+                 _('Weekday number of staffed days in the observed period'),
+                 _('Normal time of opening on saturdays'),
+                 _('Normal time of closing on saturdays'),
+                 _('Saturday number of staffed days in the observed period'),
+                 _('Normal time of opening on sundays and holidays'),
+                 _('Normal time of closing on sundays and holidays'),
+                 _('Sunday/Holiday number of staffed days in the observed period'),
+                 _('Hygiene category of OR'),
+                 _('Professional field'),
+                 _('Preparatory room'),
+                 _('Post-operative observatory room'),
+                 _('Beginning of observational period'),
+                 _('End of observational period'),
+                 ),)
+    cases = c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
+    for case in cases:
+        model += ((
+                      str(case.central_operating_unit),
+                      str(case.operating_unit),
+                      str(case.type_of_or),
+                      str(case.weekday_open_time)[:-3],
+                      str(case.weekday_close_time)[:-3],
+                      str(case.weekday_staffed_days),
+                      str(case.saturday_open_time)[:-3],
+                      str(case.saturday_close_time)[:-3],
+                      str(case.saturday_staffed_days),
+                      str(case.sunday_open_time)[:-3],
+                      str(case.sunday_close_time)[:-3],
+                      str(case.sunday_staffed_days),
+                      str(case.hygiene_category),
+                      str(case.professional_field),
+                      str(case.preparatory_room),
+                      str(case.postoperative_room),
+                      str(case.observation_begins),
+                      str(case.observation_ends),
+                      ),)
+    return csvExport(model, 'c9_operation_room_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
+
+@login_required
+def Exportp(request):
+    model = ((
+                 _('Identifier of central operating unit'),
+                 _('Identifier of OR'),
+                 _('Date'),
+                 _('Type of day'),
+                 _('Case number'),
+                 _('Patient identifier'),
+                 _('Time patient arrives to OR'),
+                 _('Anesthesia start'),
+                 _('Surgery start'),
+                 _('Surgery end'),
+                 _('Anesthesia end'),
+                 _('Time patient leaves OR'),
+                 ),)
+    cases = c9_patient.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
+    for case in cases:
+        model += ((
+                      str(case.central_operating_unit),
+                      str(case.operating_unit),
+                      str(case.date),
+                      str(case.type_of_day),
+                      str(case.case_number),
+                      str(case.patient_identifier),
+                      str(case.patient_arrive_time)[:-3],
+                      str(case.anesthesia_start)[:-3],
+                      str(case.surgery_start)[:-3],
+                      str(case.surgery_end)[:-3],
+                      str(case.anesthesia_end)[:-3],
+                      str(case.patient_leave_time)[:-3],
+                      ),)
+    return csvExport(model, 'c9_patient_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
+

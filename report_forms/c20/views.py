@@ -10,7 +10,7 @@ from django.template import RequestContext
 from report_forms.c20.forms import C20Form, FileUploadForm
 from report_forms.c20.models import c20, c20CSV
 from django.utils.translation import ugettext_lazy as _
-from report_forms.tools import parseInt, csvDump, calculate_age, DateException
+from report_forms.tools import parseInt, csvDump, calculate_age, DateException, csvExport
 from unidecode import unidecode
 
 @login_required
@@ -167,3 +167,39 @@ def Template(request):
         _('Date of discharge'),
         )
     return csvDump(model, "c20")
+
+@login_required
+def Export(request):
+    model = ((
+                 _('Case ID'),
+                 _('Hospital registration number'),
+                 _('Date of birth'),
+                 _('Principal diagnosis code (ICD-10)'),
+                 _('Type of unit'),
+                 _('Patient allergic to aspirin?'),
+                 _('Is there a known contraindication or intolerance of aspirin?'),
+                 _('Type of discharge'),
+                 _('If other'),
+                 _('Is there a known objection/refusal to take aspirin-containing medication?'),
+                 _('Was patient prescribed at discharge to take aspirin?'),
+                 _('Was patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy?'),
+                 _('Date of discharge'),
+                 ),)
+    cases = c20.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
+    for case in cases:
+        model += ((
+                      str(case.case_id),
+                      str(case.hospital_registration_number),
+                      str(case.date_of_birth),
+                      str(case.diagnosis_code),
+                      str(case.type_of_unit),
+                      str(case.patient_allergic_aspirin),
+                      str(case.aspirin_intolerance),
+                      str(case.type_of_discharge),
+                      str(case.type_of_discharge_empty),
+                      str(case.aspirin_refusal),
+                      str(case.aspirin_at_discharge),
+                      str(case.non_aspirin_platelet),
+                      str(case.date_of_discharge),
+                      ),)
+    return csvExport(model, 'c20_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))

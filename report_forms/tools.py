@@ -42,6 +42,18 @@ def csvDump(model, name = "excelfile"):
     writer.writerow(row)
     return response
 
+def csvExport(model, name = "excelexport"):
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename='+name+'.csv'
+    writer = csv.writer(response, delimiter=';')
+    for mo in model:
+        row = []
+        for field in mo:
+            row.append(unidecode(field))
+        writer.writerow(row)
+    return response
+
+
 def median(mylist):
     sorts = sorted(mylist)
     length = len(sorts)

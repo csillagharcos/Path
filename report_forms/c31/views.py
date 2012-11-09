@@ -12,7 +12,7 @@ from django.utils import simplejson
 from report_forms.c31.forms import C31Form, FileUploadForm
 from report_forms.c31.models import c31, c31CSV
 from django.utils.translation import ugettext_lazy as _
-from report_forms.tools import calculate_age, csvDump, parseInt, DateException
+from report_forms.tools import calculate_age, csvDump, parseInt, DateException, csvExport
 
 @login_required
 def Display(request):
@@ -138,3 +138,29 @@ def Template(request):
         _('ICD-10 at that departmental admission'),
         )
     return csvDump(model, "c31")
+
+@login_required
+def Export(request):
+    model = ((
+                 _('Patients ID'),
+                 _('Case ID'),
+                 _('Date of birth'),
+                 _('Date of hospital admission'),
+                 _('Patient admission status'),
+                 _('Date of hospital discharge'),
+                 _('Patient discharge status'),
+                 _('ICD-10 at that departmental admission'),
+                 ),)
+    cases = c31.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
+    for case in cases:
+        model += ((
+                      str(case.patient_id),
+                      str(case.case_id),
+                      str(case.date_of_birth),
+                      str(case.date_of_admission),
+                      str(case.patient_admission_status),
+                      str(case.date_of_discharge),
+                      str(case.patient_discharge_status),
+                      str(case.icd),
+                      ),)
+    return csvExport(model, 'c31_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))

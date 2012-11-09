@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
+import csv
 from datetime import datetime
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.db.utils import IntegrityError
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from personel.models import Personel
+from unidecode import unidecode
 from report_forms.c1.forms import C1Form, FileUploadForm
 from report_forms.c1.models import c1, c1CSV, c1OtherDiagnose
-from report_forms.tools import calculate_age, csvDump, DateException, parseInt, parseFloat
+from report_forms.tools import calculate_age, csvDump, DateException, parseInt, parseFloat, csvExport
 from django.utils.translation import ugettext_lazy as _
 
 @login_required
@@ -210,3 +210,29 @@ def Template(request):
         _('Other diagnoses'),
         )
     return csvDump(model, "c1")
+
+@login_required
+def Export(request):
+    model = ((
+        _('Patients ID'),
+        _('Case ID'),
+        _('Date of birth'),
+        _('Date of delivery'),
+        _('Time of delivery'),
+        _('Number of previous deliveries'),
+        _('Number of earlier deliveries by c-section'),
+        _('The c-section'),
+        _('Weight of newborn'),
+        _('Mother illnes or risk'),
+        _('Specify'),
+        _('DRG Code'),
+        _('Other diagnoses'),
+    ),)
+    cases = c1.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
+    for case in cases:
+        dob = str(case.date_of_delivery).split(' ')
+        od = ""
+        for other_diag in case.other_diagnoses.all():
+            od += str(other_diag.name)+","
+        model += ((str(case.patient_id), str(case.case_id), str(case.date_of_birth), str(dob[0]), str(dob[1])[:-3], str(case.number_of_prev_deliveries), str(case.number_of_prev_deliveries_by_c), str(case.the_c_section), str(case.weight_of_the_newborn), str(case.mother_illness), str(case.specify_mother_illness), str(case.drg_code), str(od)),)
+    return csvExport(model, 'c1_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))

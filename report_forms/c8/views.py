@@ -10,7 +10,7 @@ from django.template import RequestContext
 from report_forms.c8.forms import C8Form, FileUploadForm
 from report_forms.c8.models import c8, c8CSV
 from django.utils.translation import ugettext_lazy as _
-from report_forms.tools import parseInt, csvDump, calculate_age, median, DateException
+from report_forms.tools import parseInt, csvDump, calculate_age, median, DateException, csvExport
 
 @login_required
 def Display(request):
@@ -381,3 +381,39 @@ def Template(request):
         _('Diagnosis code: DRG'),
         )
     return csvDump(model, "c8")
+
+@login_required
+def Export(request):
+    model = ((
+                 _('Patients ID'),
+                 _('Case ID'),
+                 _('Date of birth'),
+                 _('Date of hospital admission'),
+                 _('Patient admission status'),
+                 _('Type of admission'),
+                 _('Was surgical procedure?'),
+                 _('Date of first surgical procedure'),
+                 _('Date of hospital discharge'),
+                 _('Patient discharge status'),
+                 _('Diagnosis group'),
+                 _('Diagnosis code: ICD-10'),
+                 _('Diagnosis code: DRG'),
+                 ),)
+    cases = c8.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
+    for case in cases:
+        model += ((
+                      str(case.patient_id),
+                      str(case.case_id),
+                      str(case.date_of_birth),
+                      str(case.date_of_admission),
+                      str(case.patient_admission_status),
+                      str(case.type_of_admission),
+                      str(case.was_surgical_procedure),
+                      str(case.date_of_surgical_procedure),
+                      str(case.date_of_discharge),
+                      str(case.patient_discharge_status),
+                      str(case.diagnosis_group),
+                      str(case.icd),
+                      str(case.drg),
+                      ),)
+    return csvExport(model, 'c8_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
