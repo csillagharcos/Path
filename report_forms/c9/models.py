@@ -23,7 +23,7 @@ class c9_patient(models.Model):
     added_by                        = models.ForeignKey(User, verbose_name=_('User'))
 
     def __unicode__(self):
-        return str(self.case_number)
+        return str(self.patient_identifier)
 
     class Meta:
         verbose_name = _('Patient')
@@ -35,13 +35,13 @@ class c9_operation(models.Model):
     type_of_or                      = models.IntegerField(_('Type of OR'), max_length=1, default=1, choices=TYPE_OF_OR)
     weekday_open_time               = models.TimeField(_('Normal time of opening on weekdays'))
     weekday_close_time              = models.TimeField(_('Normal time of closing on weekdays'))
-    weekday_staffed_days            = models.IntegerField(_('Weekday number of staffed days in the observed period'), null=True, blank=True)
+    weekday_staffed_days            = models.IntegerField(_('Weekday number of staffed days in the observed period'))
     saturday_open_time              = models.TimeField(_('Normal time of opening on saturdays'), null=True, blank=True)
     saturday_close_time             = models.TimeField(_('Normal time of closing on saturdays'), null=True, blank=True)
     saturday_staffed_days           = models.IntegerField(_('Saturday number of staffed days in the observed period'), null=True, blank=True)
     sunday_open_time                = models.TimeField(_('Normal time of opening on sundays and holidays'), null=True, blank=True)
     sunday_close_time               = models.TimeField(_('Normal time of closing on sundays and holidays'), null=True, blank=True)
-    sunday_staffed_days             = models.IntegerField(_('Sunday/Holiday number of staffed days in the observed period'))
+    sunday_staffed_days             = models.IntegerField(_('Sunday/Holiday number of staffed days in the observed period'), null=True, blank=True)
     hygiene_category                = models.IntegerField(_('Hygiene category of OR'), max_length=1, default=1, choices=HYGIENE_CATEGORY, null=True, blank=True)
     professional_field              = models.CharField(_('Professional field'), max_length=255, null=True, blank=True)
     preparatory_room                = models.IntegerField(_('Preparatory room'), max_length=1, choices=YES_NO_CHOICES, default=0)

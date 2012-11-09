@@ -7,6 +7,7 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
+from django.utils.datastructures import MultiValueDictKeyError
 from report_forms.c9.forms import C9_patient_Form, FileUploadForm, C9_operation_Form
 from report_forms.c9.models import c9_patient, c9_operation, c9_patientCSV, c9_operationCSV
 from report_forms.tools import csvDump, DateException, parseInt, getMinSec, median
@@ -80,89 +81,103 @@ def Display_operation(request):
 def Import(request):
     if request.method == "POST":
         date_errors=exists=errors=()
+        patients=operations=False
         first = True
         try:
             patients = request.FILES['patients']
             pimported_csv = c9_patientCSV.import_data(data=patients)
         except CsvDataException:
             return render_to_response('error.html', {"message": _("You are not using the Patients template csv. The number of fields is different.") }, context_instance=RequestContext(request))
+        except MultiValueDictKeyError:
+            pass
         try:
             operations = request.FILES['operation_room']
             oimported_csv = c9_operationCSV.import_data(data=operations)
         except CsvDataException:
             return render_to_response('error.html', {"message": _("You are not using the Operation template csv. The number of fields is different.") }, context_instance=RequestContext(request))
+        except MultiValueDictKeyError:
+            pass
+        if patients:
+            for line in pimported_csv:
+                if first:
+                    first = False
+                    continue
+                try:
+                    try: anst = datetime.strptime(line.anesthesia_start, "%H:%M")
+                    except: anst = None
+                    try: sst = datetime.strptime(line.surgery_start, "%H:%M")
+                    except: sst = None
+                    try: sen = datetime.strptime(line.surgery_end, "%H:%M")
+                    except: sen = None
+                    try: anen = datetime.strptime(line.anesthesia_end, "%H:%M")
+                    except: anen = None
+                    new_c9p = c9_patient.objects.create(
+                        central_operating_unit = line.central_operating_unit,
+                        operating_unit = line.operating_unit,
+                        date = datetime.strptime(line.date, "%Y-%m-%d"),
+                        type_of_day = parseInt(line.type_of_day),
+                        case_number = parseInt(line.case_number),
+                        patient_identifier = line.patient_identifier,
+                        patient_arrive_time = datetime.strptime(line.patient_arrive_time, "%H:%M"),
+                        anesthesia_start = anst,
+                        surgery_start = sst,
+                        surgery_end = sen,
+                        anesthesia_end = anen,
+                        patient_leave_time = datetime.strptime(line.patient_leave_time, "%H:%M"),
+                        added_by = request.user,
+                    )
+                    new_c9p.save()
+                except IntegrityError:
+                    exists += (line.patient_identifier,)
+                except DateException, (instance):
+                    date_errors += ((line.patient_identifier,instance.parameter),)
+                except:
+                    errors += (line.patient_identifier,)
+            first = True
+        if operations:
+            for line in oimported_csv:
+                if first:
+                    first = False
+                    continue
+                try: saot = datetime.strptime(line.saturday_open_time, "%H:%M")
+                except: saot = None
+                try: sact = datetime.strptime(line.saturday_close_time, "%H:%M")
+                except: sact = None
+                try: suot = datetime.strptime(line.sunday_open_time, "%H:%M")
+                except: suot = None
+                try: suct = datetime.strptime(line.sunday_close_time, "%H:%M")
+                except: suct = None
+                try:
+                    new_c9o = c9_operation.objects.create(
+                        central_operating_unit = line.central_operating_unit,
+                        operating_unit = line.operating_unit,
+                        type_of_or = parseInt(line.type_of_or),
+                        weekday_open_time = datetime.strptime(line.weekday_open_time, "%H:%M"),
+                        weekday_close_time = datetime.strptime(line.weekday_close_time, "%H:%M"),
+                        weekday_staffed_days = parseInt(line.weekday_staffed_days),
+                        saturday_open_time = saot,
+                        saturday_close_time = sact,
+                        saturday_staffed_days = parseInt(line.saturday_staffed_days),
+                        sunday_open_time = suot,
+                        sunday_close_time = suct,
+                        sunday_staffed_days = parseInt(line.sunday_staffed_days),
+                        hygiene_category = parseInt(line.hygiene_category),
+                        professional_field = line.professional_field,
+                        preparatory_room = parseInt(line.preparatory_room),
+                        postoperative_room = parseInt(line.postoperative_room),
+                        observation_begins = datetime.strptime(line.observation_begins, "%Y-%m-%d"),
+                        observation_ends = datetime.strptime(line.observation_ends, "%Y-%m-%d"),
 
-        for line in pimported_csv:
-            if first:
-                first = False
-                continue
-            try:
-                try: anst = datetime.strptime(line.anesthesia_start, "%H:%M")
-                except: anst = None
-                try: sst = datetime.strptime(line.surgery_start, "%H:%M")
-                except: sst = None
-                try: sen = datetime.strptime(line.surgery_end, "%H:%M")
-                except: sen = None
-                try: anen = datetime.strptime(line.anesthesia_end, "%H:%M")
-                except: anen = None
-                new_c9p = c9_patient.objects.create(
-                    central_operating_unit = line.central_operating_unit,
-                    operating_unit = line.operating_unit,
-                    date = datetime.strptime(line.date, "%Y-%m-%d"),
-                    type_of_day = parseInt(line.type_of_day),
-                    case_number = parseInt(line.case_number),
-                    patient_identifier = line.patient_identifier,
-                    patient_arrive_time = datetime.strptime(line.patient_arrive_time, "%H:%M"),
-                    anesthesia_start = anst,
-                    surgery_start = sst,
-                    surgery_end = sen,
-                    anesthesia_end = anen,
-                    patient_leave_time = datetime.strptime(line.patient_leave_time, "%H:%M"),
-                    added_by = request.user,
-                )
-                new_c9p.save()
-            except IntegrityError:
-                exists += (line.patient_identifier,)
-            except DateException, (instance):
-                date_errors += ((line.patient_identifier,instance.parameter),)
-            except:
-                errors += (line.patient_identifier,)
-        first = True
-        for line in oimported_csv:
-            if first:
-                first = False
-                continue
-            try:
-                new_c9o = c9_operation.objects.create(
-                    central_operating_unit = line.central_operating_unit,
-                    operating_unit = line.operating_unit,
-                    type_of_or = parseInt(line.type_of_or),
-                    weekday_open_time = datetime.strptime(line.weekday_open_time, "%H:%M"),
-                    weekday_close_time = datetime.strptime(line.weekday_close_time, "%H:%M"),
-                    weekday_staffed_days = parseInt(line.weekday_staffed_days),
-                    saturday_open_time = datetime.strptime(line.saturday_open_time, "%H:%M"),
-                    saturday_close_time = datetime.strptime(line.saturday_close_time, "%H:%M"),
-                    saturday_staffed_days = parseInt(line.saturday_staffed_days),
-                    sunday_open_time = datetime.strptime(line.sunday_open_time, "%H:%M"),
-                    sunday_close_time = datetime.strptime(line.sunday_close_time, "%H:%M"),
-                    sunday_staffed_days = parseInt(line.sunday_staffed_days),
-                    hygiene_category = parseInt(line.hygiene_category),
-                    professional_field = line.professional_field,
-                    preparatory_room = parseInt(line.preparatory_room),
-                    postoperative_room = parseInt(line.postoperative_room),
-                    observation_begins = datetime.strptime(line.observation_begins, "%Y-%m-%d"),
-                    observation_ends = datetime.strptime(line.observation_ends, "%Y-%m-%d"),
-
-                    added_by = request.user,
-                )
-                new_c9o.save()
-            except IntegrityError:
-                exists += (line.central_operating_unit+" "+line.operating_unit,)
-            except DateException, (instance):
-                date_errors += ((line.central_operating_unit+" "+line.operating_unit,instance.parameter),)
-            except:
-                errors += (line.central_operating_unit+" "+line.operating_unit,)
-        if exists or errors:
+                        added_by = request.user,
+                    )
+                    new_c9o.save()
+#                except IntegrityError:
+#                    exists += (line.central_operating_unit+" "+line.operating_unit,)
+                except DateException, (instance):
+                    date_errors += ((line.central_operating_unit+" "+line.operating_unit,instance.parameter),)
+#                except:
+#                    errors += (line.central_operating_unit+" "+line.operating_unit,)
+        if (date_errors or exists or errors) and (operations or patients):
             return render_to_response('c9_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c9_stat'))
     else:
@@ -179,6 +194,7 @@ def Statistics(request):
     i=0
     operation_cases = c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     for ocase in operation_cases:
+        missing_fields=()
         tn=mk2=number_of_cases=aa2=at1=at2=0
         mk1=aa1=mka1=ame1=()
         #operating rooms
@@ -190,9 +206,15 @@ def Statistics(request):
                 if pcase.type_of_day == 1:
                     current_close_time = ocase.saturday_close_time
                     current_open_time  = ocase.saturday_open_time
+                    if not current_close_time and not current_open_time:
+                        missing_fields = (pcase.patient_identifier,)
+                    break
                 elif pcase.type_of_day == 2:
                     current_close_time = ocase.sunday_close_time
                     current_open_time  = ocase.sunday_open_time
+                    if not current_close_time and not current_open_time:
+                        missing_fields = (pcase.patient_identifier,)
+                    break
                 else:
                     current_close_time = ocase.weekday_close_time
                     current_open_time  = ocase.weekday_open_time
@@ -230,6 +252,7 @@ def Statistics(request):
             'ame1': ame1,
             'at1': at1,
             'at2': at2,
+            'missing_fields' : missing_fields,
         },)
         i += 1
 
@@ -274,6 +297,7 @@ def Statistics(request):
             'mme' : mme,
             'at'  : at,
             'attn'  : attn,
+            'missing_fields' : operating_room['missing_fields'],
             },)
         i += 1
 
@@ -317,7 +341,6 @@ def Statistics(request):
         "removed": len(uncountable_case),
         "counted": len(countable_case),
         "display_stats": display_stats,
-
     }
     return render_to_response('c9_statistics.html', context, context_instance=RequestContext(request))
 

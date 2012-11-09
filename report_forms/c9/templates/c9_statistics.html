@@ -26,6 +26,12 @@
                         <th colspan="2">{{ operating_room.name }}</th>
                     </tr>
                 </thead>
+                {% if operating_room.missing_fields %}
+                <tr style="color: red">
+                    <td>{% trans "Patients operated while the OR was closed:" %}</td>
+                    <td>{% for field in operating_room.missing_fields %}{{ field }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                </tr>
+                {% endif %}
                 <tr>
                     <td>{% trans "Operating theatre performance:" %}</td>
                     <td>{{ operating_room.mk|floatformat:"2" }}%</td>

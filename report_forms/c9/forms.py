@@ -19,10 +19,10 @@ class C9_patient_Form(ModelForm):
 class C9_operation_Form(ModelForm):
     weekday_open_time    = forms.TimeField(label=_('Normal time of opening on weekdays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
     weekday_close_time   = forms.TimeField(label=_('Normal time of closing on weekdays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
-    saturday_open_time   = forms.TimeField(label=_('Normal time of opening on saturdays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
-    saturday_close_time  = forms.TimeField(label=_('Normal time of closing on saturdays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
-    sunday_open_time     = forms.TimeField(label=_('Normal time of opening on sundays and holidays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
-    sunday_close_time    = forms.TimeField(label=_('Normal time of closing on sundays and holidays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
+    saturday_open_time   = forms.TimeField(required= False, label=_('Normal time of opening on saturdays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
+    saturday_close_time  = forms.TimeField(required= False, label=_('Normal time of closing on saturdays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
+    sunday_open_time     = forms.TimeField(required= False, label=_('Normal time of opening on sundays and holidays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
+    sunday_close_time    = forms.TimeField(required= False, label=_('Normal time of closing on sundays and holidays'), widget=forms.TextInput(attrs={'class':'timepicker', 'placeholder':_('(hh:mm)')}))
     observation_begins   = forms.DateField(label=_('Beginning of observational period'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
     observation_ends     = forms.DateField(label=_('End of observational period'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
 
@@ -32,5 +32,5 @@ class C9_operation_Form(ModelForm):
 
 
 class FileUploadForm(forms.Form):
-    operation_room  = forms.FileField()
-    patients        = forms.FileField()
+    operation_room  = forms.FileField(required=False)
+    patients        = forms.FileField(required=False)
