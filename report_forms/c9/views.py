@@ -196,7 +196,8 @@ def Statistics(request):
     for ocase in operation_cases:
         missing_fields=()
         tn=mk2=number_of_cases=aa2=at1=at2=0
-        mk1=aa1=mka1=ame1=()
+        mk1=mk2=aa1=mka1=ame1=()
+        mk2len=mk1len=0
         #operating rooms
         patient_cases = c9_patient.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, central_operating_unit=ocase.central_operating_unit, operating_unit=ocase.operating_unit)
         for pcase in patient_cases:
@@ -237,7 +238,7 @@ def Statistics(request):
                     except: mk1 += (0,)
                     try: mka1 += ( (datetime.combine(datetime.today(), mka_surgery_end) - datetime.combine(datetime.today(), pcase.surgery_start)).seconds / 60,)
                     except: mka1 += (0,)
-                    try: mk2 += (datetime.combine(datetime.today(), current_close_time) - datetime.combine(datetime.today(), current_open_time)).seconds / 60
+                    try: mk2 += ( (datetime.combine(datetime.today(), current_close_time) - datetime.combine(datetime.today(), current_open_time)).seconds / 60,)
                     except: mk2 += 0
 
                 try:
@@ -251,7 +252,9 @@ def Statistics(request):
             "name":ocase.central_operating_unit+" "+ocase.operating_unit,
             "tn": tn,
             'mk1': mk1,
+            'mk1len': mk1len,
             "mk2": mk2,
+            "mk2len": mk2len,
             'mka1': mka1,
             'number_of_cases': number_of_cases,
             'aa1': aa1,
@@ -263,11 +266,11 @@ def Statistics(request):
         },)
         i += 1
 
-    ''' Working '''
+    ''' Working & Counting '''
     for operating_room in raw_surgery_data:
-        try: mk  = float(sum(operating_room['mk1'])) / operating_room['mk2'] * 100
+        try: mk  = float(sum(operating_room['mk1'])) / sum(operating_room['mk2']) * 100
         except: mk = 0
-        try: mka = float(sum(operating_room['mka1'])) / operating_room['mk2'] * 100
+        try: mka = float(sum(operating_room['mka1'])) / sum(operating_room['mk2']) * 100
         except: mka = 0
         try: amt = getMinSec( float(sum(operating_room['mk1'])) / operating_room['number_of_cases'] )
         except: amt = 0
@@ -293,6 +296,8 @@ def Statistics(request):
             'name': operating_room['name'],
             'tn'  : operating_room['tn'],
             'mk'  : mk,
+            'mk1': sum(operating_room['mk1']),
+            'mk2': sum(operating_room['mk2']),
             'mka' : mka,
             'amt' : amt,
             'mmt' : mmt,
@@ -307,42 +312,6 @@ def Statistics(request):
             'missing_fields' : operating_room['missing_fields'],
             },)
         i += 1
-
-    ''' Counting '''
-    mk1=0
-    mk2=0
-    mka1=0
-    mka2=0
-    amt1=0
-    aa1=0
-    ami1=0
-    ame1=0
-    esetszam=0
-    tn1=0
-    tn2=0
-    at1=0
-    at2=0
-    attn1=0
-    attn2=0
-    try: mk = float(mk1) / mk2
-    except: mk=0
-    try: mka = float(mka1) / mka2
-    except: mka=0
-    try: amt = float(amt1) / esetszam
-    except: amt=0
-    try: aa = float(aa1) / esetszam
-    except: aa=0
-    try: ami = float(ami1) / esetszam
-    except: ami=0
-    try: ame = float(ame1) / esetszam
-    except: ame=0
-    try: tn = float(tn1) / tn2
-    except: tn=0
-    try: at = float(at1) / at2
-    except: at=0
-    try: attn = float(attn1) / attn2
-    except: attn=0
-
     ''' Displaying '''
     context = {
         "removed": len(uncountable_case),
