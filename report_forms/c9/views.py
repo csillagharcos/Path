@@ -226,13 +226,19 @@ def Statistics(request):
                     at2 = (ocase.observation_ends - ocase.observation_begins).days
                 else:
                     patient_leave_time = pcase.patient_leave_time
+                if pcase.surgery_end > current_close_time:
+                    mka_surgery_end = current_close_time
+                else:
+                    mka_surgery_end = pcase.surgery_end
 
-                try: mk1 += ( (datetime.combine(datetime.today(), patient_leave_time) - datetime.combine(datetime.today(), pcase.patient_arrive_time)).seconds / 60,)
-                except: mk1 += (0,)
-                try: mka1 += ( (datetime.combine(datetime.today(), pcase.surgery_end) - datetime.combine(datetime.today(), pcase.surgery_start)).seconds / 60,)
-                except: mka1 += (0,)
-                try: mk2 += (datetime.combine(datetime.today(), current_close_time) - datetime.combine(datetime.today(), current_open_time)).seconds / 60
-                except: mk2 += 0
+                if pcase.patient_arrive_time > current_close_time:
+                    try: mk1 += ( (datetime.combine(datetime.today(), patient_leave_time) - datetime.combine(datetime.today(), pcase.patient_arrive_time)).seconds / 60,)
+                    except: mk1 += (0,)
+                    try: mka1 += ( (datetime.combine(datetime.today(), mka_surgery_end) - datetime.combine(datetime.today(), pcase.surgery_start)).seconds / 60,)
+                    except: mka1 += (0,)
+                    try: mk2 += (datetime.combine(datetime.today(), current_close_time) - datetime.combine(datetime.today(), current_open_time)).seconds / 60
+                    except: mk2 += 0
+
                 try:
                     aa1 += ((datetime.combine(datetime.today(), pcase.anesthesia_end) - datetime.combine(datetime.today(), pcase.anesthesia_start)).seconds / 60,)
                     aa2 += 1
