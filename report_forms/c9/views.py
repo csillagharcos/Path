@@ -226,11 +226,12 @@ def Statistics(request):
                     at2 = (ocase.observation_ends - ocase.observation_begins).days
                 else:
                     patient_leave_time = pcase.patient_leave_time
-                if pcase.surgery_end > current_close_time:
-                    mka_surgery_end = current_close_time
-                else:
-                    mka_surgery_end = pcase.surgery_end
-
+                try:
+                    if pcase.surgery_end > current_close_time:
+                        mka_surgery_end = current_close_time
+                    else:
+                        mka_surgery_end = pcase.surgery_end
+                except: mka_surgery_end = pcase.surgery_end
                 if pcase.patient_arrive_time > current_close_time:
                     try: mk1 += ( (datetime.combine(datetime.today(), patient_leave_time) - datetime.combine(datetime.today(), pcase.patient_arrive_time)).seconds / 60,)
                     except: mk1 += (0,)

@@ -19,6 +19,9 @@
 {% endblock header %}
 
 {% block content %}
+    {% if not_enough %}
+        {% trans "Sorry, you have less than 30 days of observation." %}
+    {% else %}
         {% for operating_room in display_stats %}
             <table class="los">
                 <thead>
@@ -86,26 +89,9 @@
                 </tr>
             </table>
         {% endfor %}
+    {% endif %}
 {% endblock content %}
 
 {% block js %}
     <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
-    <script style="text/javascript">
-    var DataForGraph = new Array(
-        ["{{ indicator_one|floatformat:"2" }}".replace(",","."), 'C-section rate','red'],
-        ["{{ subindicator_one|floatformat:"2" }}".replace(",","."),'Planned rate','green'],
-        ["{{ subindicator_two|floatformat:"2" }}".replace(",","."),'Acute rate','blue'],
-        ["{{ subindicator_three_one|floatformat:"2" }}".replace(",","."),"<20 rate",'cyan'],
-        ["{{ subindicator_three_two|floatformat:"2" }}".replace(",","."),"20-35 rate", 'black'],
-        ["{{ subindicator_three_three|floatformat:"2" }}".replace(",","."),">35 rate", 'gray'],
-        ["{{ subindicator_four_one|floatformat:"2" }}".replace(",","."),"prev delivery", 'gray'],
-        ["{{ subindicator_four_two|floatformat:"2" }}".replace(",","."),"c-sec delivery", 'gray']
-    );
-    $('.bargraph').jqBarGraph({
-                                data: DataForGraph,
-                                postfix: '%',
-                                width: 940,
-                                barSpace: 80
-    });
-    </script>
 {% endblock js %}
