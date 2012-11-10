@@ -237,7 +237,7 @@ def Statistics(request):
                     break
                 else:
                     current_close_time = ocase.weekday_close_time
-                    current_open_time  = ocase.weekday_open_time
+                    current_open_time = ocase.weekday_open_time
                 if current_close_time < pcase.patient_leave_time:
                     #overtime
                     tn += 1

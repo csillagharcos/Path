@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
@@ -6,7 +7,7 @@ from django.utils import translation
 from report_forms.c13.forms import C13Form, C13Form_hungarian
 from report_forms.c13.models import c13
 from django.utils.translation import ugettext_lazy as _
-from report_forms.tools import csvDump
+from report_forms.tools import csvDump, csvExport
 
 @login_required
 def Display(request):
@@ -74,3 +75,27 @@ def Template(request):
         _('Total number of contracted working hours for the data at the end of the year /day(employee+ entrepreneur)'),
         )
     return csvDump(model, "c13")
+
+@login_required
+def Export(request):
+    model = ((
+                 _('Job'),
+                 _('Observed year'),
+                 _('Number of needle stick injuries in the observed year'),
+                 _('Total number of hospital staff at the beginning of the year (1st January)'),
+                 _('Total number of hospital staff at the end of the year (31st December)'),
+                 _('Total number of contracted working hours for the data at the beginning of the year/day (employee+ entrepreneur)'),
+                 _('Total number of contracted working hours for the data at the end of the year /day(employee+ entrepreneur)'),
+                 ),)
+    cases = c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
+    for case in cases:
+        model += ((
+                      str(case.job),
+                      str(case.year),
+                      str(case.needlestick_injuries),
+                      str(case.staff_beginning),
+                      str(case.staff_end),
+                      str(case.working_hours_beginning),
+                      str(case.working_hours_end),
+                      ),)
+    return csvExport(model, 'c13_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))

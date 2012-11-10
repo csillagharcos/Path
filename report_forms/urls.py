@@ -55,6 +55,7 @@ urlpatterns = patterns('',
     url(r'c9/templatep$', 'report_forms.c9.views.patients_Template', name='c9_patient_template'),
 
     url(r'c13$', 'report_forms.c13.views.Display', name='c13_display'),
+    url(r'c13/export', 'report_forms.c13.views.Export', name='c13_export'),
     url(r'c13/statistics$', 'report_forms.c13.views.Statistics', name='c13_stat'),
     url(r'c13/template$', 'report_forms.c13.views.Template', name='c13_template'),
 
