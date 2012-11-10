@@ -105,7 +105,6 @@ def Statistics(request):
     ''' Query '''
     countable_case=uncountable_case=()
     cases = c20.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
-    a=""
     for case in cases:
         error=False
         if not case.diagnosis_code == "I21" and not case.diagnosis_code == "I22":
@@ -119,6 +118,9 @@ def Statistics(request):
             error = True
         if not error:
             countable_case += (case,)
+
+    if len(countable_case) < 30:
+        return render_to_response('c20_statistics.html', {"not_enough": True }, context_instance=RequestContext(request))
 
     cindicator_one = cindicator_two = cindicator_three = 0
     indicator_one = indicator_two = indicator_three = 0
