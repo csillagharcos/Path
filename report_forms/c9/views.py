@@ -194,28 +194,33 @@ def Statistics(request):
     i=0
     operation_cases = c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     for ocase in operation_cases:
-        missing_fields=()
-        tn=mk2=number_of_cases=aa2=at1=at2=0
-        mk1=mk2=aa1=mka1=ame1=()
-        mk2len=mk1len=0
+        pdateerrors=ordateerrors=missing_fields=()
+        tn=number_of_cases=aa2=at1=0
+        mk1=aa1=mka1=ame1=()
         #operating rooms
         patient_cases = c9_patient.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, central_operating_unit=ocase.central_operating_unit, operating_unit=ocase.operating_unit)
+        try: mk2_sat = (datetime.combine(datetime.today(), ocase.saturday_close_time) - datetime.combine(datetime.today(), ocase.saturday_open_time)).seconds * ocase.saturday_staffed_days / 60
+        except: mk2_sat = 0
+        try: mk2_sun = (datetime.combine(datetime.today(), ocase.sunday_close_time) - datetime.combine(datetime.today(), ocase.sunday_open_time)).seconds * ocase.sunday_staffed_days / 60
+        except: mk2_sun = 0
+        try: mk2_week = (datetime.combine(datetime.today(), ocase.weekday_close_time) - datetime.combine(datetime.today(), ocase.weekday_open_time)).seconds * ocase.weekday_staffed_days / 60
+        except: mk2_week = 0
+        mk2 = mk2_sat + mk2_sun + mk2_week
+
+        if not ocase.saturday_staffed_days:
+            ocase.saturday_staffed_days = 0
+        if not ocase.sunday_staffed_days:
+            ocase.sunday_staffed_days = 0
+        at2 = ocase.sunday_staffed_days + ocase.saturday_staffed_days + ocase.weekday_staffed_days
+        limit = (ocase.observation_ends - ocase.observation_begins).days
+        if ocase.observation_ends < ocase.observation_begins or ocase.saturday_open_time > ocase.saturday_close_time or ocase.sunday_open_time > ocase.sunday_close_time or ocase.weekday_open_time > ocase.weekday_close_time:
+            ordateerrors = (ocase.central_operating_unit+" "+ocase.operating_unit,)
         for pcase in patient_cases:
+            current_error = False
+            if not (pcase.surgery_end and pcase.surgery_start) or pcase.patient_arrive_time > pcase.surgery_start or pcase.surgery_start > pcase.surgery_end or pcase.surgery_end > pcase.patient_leave_time:
+                pdateerrors += (pcase.patient_identifier,)
+                current_error = True
             #operations in the same operating room
-            try: mk2_sat = (datetime.combine(datetime.today(), ocase.saturday_close_time) - datetime.combine(datetime.today(), ocase.saturday_open_time)).seconds * ocase.saturday_staffed_days / 60
-            except: mk2_sat = 0
-            try: mk2_sun = (datetime.combine(datetime.today(), ocase.sunday_close_time) - datetime.combine(datetime.today(), ocase.sunday_open_time)).seconds * ocase.sunday_staffed_days / 60
-            except: mk2_sun = 0
-            try: mk2_week = (datetime.combine(datetime.today(), ocase.weekday_close_time) - datetime.combine(datetime.today(), ocase.weekday_open_time)).seconds * ocase.weekday_staffed_days / 60
-            except: mk2_week = 0
-            mk2 = mk2_sat + mk2_sun + mk2_week
-
-            if not ocase.saturday_staffed_days:
-                ocase.saturday_staffed_days = 0
-            if not ocase.sunday_staffed_days:
-                ocase.sunday_staffed_days = 0
-            at2 = ocase.sunday_staffed_days + ocase.saturday_staffed_days + ocase.weekday_staffed_days
-
             if ocase.observation_begins <= pcase.date <= ocase.observation_ends:
                 #operations in the same operating room under observation
                 if pcase.type_of_day == 1:
@@ -251,21 +256,24 @@ def Statistics(request):
                     except: mk1 += (0,)
                     try: mka1 += ( (datetime.combine(datetime.today(), mka_surgery_end) - datetime.combine(datetime.today(), pcase.surgery_start)).seconds / 60,)
                     except: mka1 += (0,)
-
-                try:
-                    aa1 += ((datetime.combine(datetime.today(), pcase.anesthesia_end) - datetime.combine(datetime.today(), pcase.anesthesia_start)).seconds / 60,)
-                    aa2 += 1
-                except: aa1 += (0,)
-                try: ame1 += ((datetime.combine(datetime.today(), pcase.surgery_start) - datetime.combine(datetime.today(), pcase.patient_arrive_time)).seconds / 60,)
-                except: ame1 += (0,)
-                number_of_cases += 1
+                if not current_error:
+                    try:
+                        aa1 += ((datetime.combine(datetime.today(), pcase.anesthesia_end) - datetime.combine(datetime.today(), pcase.anesthesia_start)).seconds / 60,)
+                        aa2 += 1
+                    except: aa1 += (0,)
+                    try: ame1 += ((datetime.combine(datetime.today(), pcase.surgery_start) - datetime.combine(datetime.today(), pcase.patient_arrive_time)).seconds / 60,)
+                    except: ame1 += (0,)
+                    number_of_cases += 1
         raw_surgery_data += ({
             "name":ocase.central_operating_unit+" "+ocase.operating_unit,
+            'ordateerrors': ordateerrors,
+            'pdateerrors': pdateerrors,
             "tn": tn,
             'mk1': mk1,
             "mk2": mk2,
             'mka1': mka1,
             'number_of_cases': number_of_cases,
+            'limit': limit,
             'aa1': aa1,
             'aa2': aa2,
             'ame1': ame1,
@@ -305,8 +313,9 @@ def Statistics(request):
             'name': operating_room['name'],
             'tn'  : operating_room['tn'],
             'mk'  : mk,
-            'mk1': operating_room['mk1'],
-            'mk2': operating_room['mk2'],
+            'cases': operating_room['limit'],
+            'ordateerrors': operating_room['ordateerrors'],
+            'pdateerrors': operating_room['pdateerrors'],
             'mka' : mka,
             'amt' : amt,
             'mmt' : mmt,

@@ -97,6 +97,9 @@ def Statistics(request):
         else:
             countable_case += (case,)
 
+    if len(countable_case) < 60:
+        return render_to_response('c31_statistics.html', {"not_enough": True }, context_instance=RequestContext(request))
+
     ''' Working '''
     for case in countable_case:
         if case.patient_discharge_status == 2 and (case.date_of_discharge - case.date_of_admission).days <= 30:

@@ -118,13 +118,16 @@ def Statistics(request):
         else:
             countable_case += (case,)
 
+    if len(countable_case) < 60:
+        return render_to_response('c8_statistics.html', {"not_enough": True }, context_instance=RequestContext(request))
+
     ''' Working '''
     s_days = hap_days = hf_days = cabg_days = ka_days = ih_days = taa_days = c_days = v_days = ()
     sd_days = hapd_days = hfd_days = cabgd_days = kad_days = ihd_days = taad_days = cd_days = vd_days = ()
     sde_days = hapde_days = hfde_days = cabgde_days = kade_days = ihde_days = taade_days = cde_days = vde_days = ()
     s_dates = hap_dates = hf_dates = cabg_dates = ka_dates = ih_dates = taa_dates = c_dates = v_dates = ()
     for case in countable_case:
-        if not case.diagnosis_group:         #Stroke
+        if not case.diagnosis_group: #Stroke
             s_days += ((case.date_of_discharge - case.date_of_admission).days+1,)
             s_dates += (case.date_of_admission,)
             if case.was_surgical_procedure == 1:

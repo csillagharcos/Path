@@ -18,46 +18,48 @@
 {% endblock header %}
 
 {% block content %}
-    {% trans "Overall:" %} {{ overall }}<br />
-    {% trans "Excluded:" %} {{ removed }}<br />
-    {% trans "Counted:" %} {{ counted }}<br />
+    {% if not_enough %}
+        {% trans "Sorry, you have less than 60 cases." %}
+    {% else %}
+        {% trans "Overall:" %} {{ overall }}<br />
+        {% trans "Excluded:" %} {{ removed }}<br />
+        {% trans "Counted:" %} {{ counted }}<br />
 
-    {% for data in diagnosis %}
-        {% if data.9 %}
-        <table class="los">
-            <tr>
-                <th>{{ data.0 }}</th>
-                <th>{{ data.1 }} - {{ data.2 }}</th>
-            </tr>
-            <tr>
-                <td>{% trans "Average length of stay" %}</td>
-                <td>{{ data.3|floatformat:"2" }} {% trans "days" %}</td>
-            </tr>
-            <tr>
-                <td>{% trans "Median length of stay" %}</td>
-                <td>{{ data.4|floatformat:"2" }} {% trans "days" %}</td>
-            </tr>
-            <tr>
-                <td>{% trans "Average length of stay until the first surgical procedure" %}</td>
-                <td>{{ data.5|floatformat:"2" }} {% trans "days" %}</td>
-            </tr>
-            <tr>
-                <td>{% trans "Median length of stay until the first surgical procedure" %}</td>
-                <td>{{ data.6|floatformat:"2" }} {% trans "days" %}</td>
-            </tr>
-            <tr>
-                <td>{% trans "Average length of stay from the first surgical procedure until discharge" %}</td>
-                <td>{{ data.7|floatformat:"2" }} {% trans "days" %}</td>
-            </tr>
-            <tr>
-                <td>{% trans "Median length of stay from the first surgical procedure until discharge" %}</td>
-                <td>{{ data.8|floatformat:"2" }} {% trans "days" %}</td>
-            </tr>
-        </table>
-        {% endif %}
-    {% endfor %}
-
-
+        {% for data in diagnosis %}
+            {% if data.9 >= 60 %}
+                <table class="los">
+                    <tr>
+                        <th>{{ data.0 }}</th>
+                        <th>{{ data.1 }} - {{ data.2 }}</th>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Average length of stay" %}</td>
+                        <td>{{ data.3|floatformat:"2" }} {% trans "days" %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Median length of stay" %}</td>
+                        <td>{{ data.4|floatformat:"2" }} {% trans "days" %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Average length of stay until the first surgical procedure" %}</td>
+                        <td>{{ data.5|floatformat:"2" }} {% trans "days" %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Median length of stay until the first surgical procedure" %}</td>
+                        <td>{{ data.6|floatformat:"2" }} {% trans "days" %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Average length of stay from the first surgical procedure until discharge" %}</td>
+                        <td>{{ data.7|floatformat:"2" }} {% trans "days" %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Median length of stay from the first surgical procedure until discharge" %}</td>
+                        <td>{{ data.8|floatformat:"2" }} {% trans "days" %}</td>
+                    </tr>
+                </table>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 {% endblock content %}
 
 {% block js %}

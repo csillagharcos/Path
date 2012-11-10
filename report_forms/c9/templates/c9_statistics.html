@@ -20,74 +20,91 @@
 
 {% block content %}
     {% if not_enough %}
-        {% trans "Sorry, you have less than 30 days of observation." %}
     {% else %}
         {% for operating_room in display_stats %}
             <table class="los">
-                <thead>
-                    <tr>
-                        <th colspan="2">{{ operating_room.name }}</th>
-                    </tr>
-                </thead>
+            <thead>
+            <tr>
+                <th colspan="2">{{ operating_room.name }}</th>
+            </tr>
+            </thead>
                 {% if operating_room.missing_fields %}
-                <tr style="color: red">
-                    <td>{% trans "Patients operated while the OR was closed:" %}</td>
-                    <td>{% for field in operating_room.missing_fields %}{{ field }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
-                </tr>
+                    <tr style="color: red">
+                        <td>{% trans "Patients operated while the OR was closed:" %}</td>
+                        <td>{% for field in operating_room.missing_fields %}{{ field }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    </tr>
                 {% endif %}
-                <tr>
-                    <td>{% trans "Operating theatre performance:" %}</td>
-                    <td>{{ operating_room.mk|floatformat:"2" }}%</td>
+                {% if operating_room.pdateerrors %}
+                    <tr style="color: red">
+                        <td>{% trans "Patients date errors:" %}</td>
+                        <td>{% for field in operating_room.pdateerrors %}{{ field }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    </tr>
+                {% endif %}
+                {% if operating_room.cases < 30 and not operating_room.ordateerrors %}
+                <tr style="color: red">
+                    <td colspan="2">{% trans "Sorry, you have less than 30 days of observation." %}</td>
                 </tr>
-                <tr>
-                    <td>{% trans "Surgery performance:" %}</td>
-                    <td>{{ operating_room.mka|floatformat:"2" }}%</td>
-                </tr>
-                <tr>
-                    <td>{% trans "Average time in OR:" %}</td>
-                    <td>{{ operating_room.amt }} {% trans 'minutes' %}</td>
-                </tr>
-                <tr>
-                    <td>{% trans "Median time in OR:" %}</td>
-                    <td>{{ operating_room.mmt }} {% trans 'minutes' %}</td>
-                </tr>
-                <tr>
-                    <td>{% trans "Average time of anesthesia:" %}</td>
-                    <td>{{ operating_room.aa }} {% trans 'minutes' %}</td>
-                </tr>
-                <tr>
-                    <td>{% trans "Median time of anesthesia:" %}</td>
-                    <td>{{ operating_room.ma }} {% trans 'minutes' %}</td>
-                </tr>
-                <tr>
-                    <td>{% trans "Average time of surgery:" %}</td>
-                    <td>{{ operating_room.ami }} {% trans 'minutes' %}</td>
-                </tr>
-                <tr>
-                    <td>{% trans "Median time of surgery:" %}</td>
-                    <td>{{ operating_room.mmi }} {% trans 'minutes' %}</td>
-                </tr>
-                <tr>
-                    <td>{% trans "Average time before surgery:" %}</td>
-                    <td>{{ operating_room.ame }} {% trans 'minutes' %}</td>
-                </tr>
-                <tr>
-                    <td>{% trans "Median time before surgery:" %}</td>
-                    <td>{{ operating_room.mme }} {% trans 'minutes' %}</td>
-                </tr>
-                <tr>
-                    <td>{% trans "Number of days with overtime:" %}</td>
-                    <td>{{ operating_room.tn }} {% trans 'days' %}</td>
-                </tr>
-                <tr>
-                    <td>{% trans "Average time of overtime:" %}</td>
-                    <td>{{ operating_room.at }} {% trans 'minutes/days' %}</td>
-                </tr>
-                <tr>
-                    <td>{% trans "Average time of overtime on days with overtime:" %}</td>
-                    <td>{{ operating_room.attn }} {% trans 'minutes' %}</td>
-                </tr>
-            </table>
+            {% else %}
+                {% if operating_room.ordateerrors %}
+                    <tr style="color: red">
+                        <td colspan="2">{% trans "Sorry, but you have a date or time error with this OR." %}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>{% trans "Operating theatre performance:" %}</td>
+                        <td>{{ operating_room.mk|floatformat:"2" }}%</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Surgery performance:" %}</td>
+                        <td>{{ operating_room.mka|floatformat:"2" }}%</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Average time in OR:" %}</td>
+                        <td>{{ operating_room.amt }} {% trans 'minutes' %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Median time in OR:" %}</td>
+                        <td>{{ operating_room.mmt }} {% trans 'minutes' %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Average time of anesthesia:" %}</td>
+                        <td>{{ operating_room.aa }} {% trans 'minutes' %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Median time of anesthesia:" %}</td>
+                        <td>{{ operating_room.ma }} {% trans 'minutes' %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Average time of surgery:" %}</td>
+                        <td>{{ operating_room.ami }} {% trans 'minutes' %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Median time of surgery:" %}</td>
+                        <td>{{ operating_room.mmi }} {% trans 'minutes' %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Average time before surgery:" %}</td>
+                        <td>{{ operating_room.ame }} {% trans 'minutes' %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Median time before surgery:" %}</td>
+                        <td>{{ operating_room.mme }} {% trans 'minutes' %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Number of days with overtime:" %}</td>
+                        <td>{{ operating_room.tn }} {% trans 'days' %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Average time of overtime:" %}</td>
+                        <td>{{ operating_room.at }} {% trans 'minutes/days' %}</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans "Average time of overtime on days with overtime:" %}</td>
+                        <td>{{ operating_room.attn }} {% trans 'minutes' %}</td>
+                    </tr>
+                </table>
+                {% endif %}
+            {% endif %}
         {% endfor %}
     {% endif %}
 {% endblock content %}

@@ -18,34 +18,40 @@
 {% endblock header %}
 
 {% block content %}
-    {% trans "Overall:" %} {{ overall }}<br />
-    {% trans "Removed:" %} {{ removed }}<br />
-    {% trans "Counted:" %} {{ counted }}<br />
-    <br />
-    {% trans "Hospital mortality rate within 30 days:" %} {{ indicator_one|floatformat:"2" }}%<br />
-    {% trans "Hospital mortality rate within 30 days without transmissions:" %} {{ subindicator_one|floatformat:"2" }}%<br />
-    {% trans "Hospital mortality rate within 2 days:" %} {{ subindicator_two|floatformat:"2" }}%<br />
-    <br /><br />
-    <hr />
-    Grafikon tesztelés:
-    <hr />
-    <br /><br />
-    <div class="bargraph"></div>
+    {% if not_enough %}
+        {% trans "Sorry, you have less than 60 cases." %}
+    {% else %}
+        {% trans "Overall:" %} {{ overall }}<br />
+        {% trans "Removed:" %} {{ removed }}<br />
+        {% trans "Counted:" %} {{ counted }}<br />
+        <br />
+        {% trans "Hospital mortality rate within 30 days:" %} {{ indicator_one|floatformat:"2" }}%<br />
+        {% trans "Hospital mortality rate within 30 days without transmissions:" %} {{ subindicator_one|floatformat:"2" }}%<br />
+        {% trans "Hospital mortality rate within 2 days:" %} {{ subindicator_two|floatformat:"2" }}%<br />
+        <br /><br />
+        <hr />
+        Grafikon tesztelés:
+        <hr />
+        <br /><br />
+        <div class="bargraph"></div>
+    {% endif %}
 {% endblock content %}
 
 {% block js %}
-    <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
-    <script style="text/javascript">
-    var DataForGraph = new Array(
-        ["{{ indicator_one|floatformat:"2" }}".replace(",","."), '30 days','red'],
-        ["{{ subindicator_one|floatformat:"2" }}".replace(",","."),'30 days wo trans','green'],
-        ["{{ subindicator_two|floatformat:"2" }}".replace(",","."),'2 days','blue']
-    );
-    $('.bargraph').jqBarGraph({
-                                data: DataForGraph,
-                                postfix: '%',
-                                width: 940,
-                                barSpace: 80
-    });
-    </script>
+    {% if not not_enough %}
+        <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
+        <script style="text/javascript">
+        var DataForGraph = new Array(
+            ["{{ indicator_one|floatformat:"2" }}".replace(",","."), '30 days','red'],
+            ["{{ subindicator_one|floatformat:"2" }}".replace(",","."),'30 days wo trans','green'],
+            ["{{ subindicator_two|floatformat:"2" }}".replace(",","."),'2 days','blue']
+        );
+        $('.bargraph').jqBarGraph({
+                                    data: DataForGraph,
+                                    postfix: '%',
+                                    width: 940,
+                                    barSpace: 80
+        });
+        </script>
+    {% endif %}
 {% endblock js %}

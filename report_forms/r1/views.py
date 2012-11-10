@@ -326,7 +326,6 @@ def Statistics(request):
             r1b_uncountable_case += (case,)
 
     ''' Working '''
-    a = b = c = d = e = f = ""
     r1a_first_indicator = r1a_second_indicator = r1a_third_indicator = 0
     r1b_first_indicator = r1b_second_indicator = r1b_third_indicator = 0
     r2_first_indicator = r2_second_indicator = r2_third_indicator = r2_fourth_indicator = 0
