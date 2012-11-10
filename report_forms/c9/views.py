@@ -232,7 +232,7 @@ def Statistics(request):
                     else:
                         mka_surgery_end = pcase.surgery_end
                 except: mka_surgery_end = pcase.surgery_end
-                if pcase.patient_arrive_time > current_close_time:
+                if pcase.patient_arrive_time < current_close_time:
                     try: mk1 += ( (datetime.combine(datetime.today(), patient_leave_time) - datetime.combine(datetime.today(), pcase.patient_arrive_time)).seconds / 60,)
                     except: mk1 += (0,)
                     try: mka1 += ( (datetime.combine(datetime.today(), mka_surgery_end) - datetime.combine(datetime.today(), pcase.surgery_start)).seconds / 60,)
