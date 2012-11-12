@@ -171,12 +171,12 @@ def Import(request):
                         added_by = request.user,
                     )
                     new_c9o.save()
-#                except IntegrityError:
-#                    exists += (line.central_operating_unit+" "+line.operating_unit,)
+                except IntegrityError:
+                    exists += (line.central_operating_unit+" "+line.operating_unit,)
                 except DateException, (instance):
                     date_errors += ((line.central_operating_unit+" "+line.operating_unit,instance.parameter),)
-#                except:
-#                    errors += (line.central_operating_unit+" "+line.operating_unit,)
+                except:
+                    errors += (line.central_operating_unit+" "+line.operating_unit,)
         if (date_errors or exists or errors) and (operations or patients):
             return render_to_response('c9_error.html', {'exists': exists, 'errors': errors, 'date_errors': date_errors}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('c9_stat'))
