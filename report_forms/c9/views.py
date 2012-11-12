@@ -195,7 +195,7 @@ def Statistics(request):
     operation_cases = c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     for ocase in operation_cases:
         pdateerrors=ordateerrors=missing_fields=()
-        tn=number_of_cases=aa2=at1=0
+        tn=ame_ami_noc=number_of_cases=aa2=at1=0
         mk1=aa1=mka1=ame1=()
         #operating rooms
         patient_cases = c9_patient.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, central_operating_unit=ocase.central_operating_unit, operating_unit=ocase.operating_unit)
@@ -256,14 +256,18 @@ def Statistics(request):
                     except: mk1 += (0,)
                     try: mka1 += ( (datetime.combine(datetime.today(), mka_surgery_end) - datetime.combine(datetime.today(), pcase.surgery_start)).seconds / 60,)
                     except: mka1 += (0,)
+
+                try:
+                    aa1 += ((datetime.combine(datetime.today(), pcase.anesthesia_end) - datetime.combine(datetime.today(), pcase.anesthesia_start)).seconds / 60,)
+                    aa2 += 1
+                except: aa1 += (0,)
                 if not current_error:
-                    try:
-                        aa1 += ((datetime.combine(datetime.today(), pcase.anesthesia_end) - datetime.combine(datetime.today(), pcase.anesthesia_start)).seconds / 60,)
-                        aa2 += 1
-                    except: aa1 += (0,)
                     try: ame1 += ((datetime.combine(datetime.today(), pcase.surgery_start) - datetime.combine(datetime.today(), pcase.patient_arrive_time)).seconds / 60,)
                     except: ame1 += (0,)
-                    number_of_cases += 1
+                    try: ami1 += ( (datetime.combine(datetime.today(), mka_surgery_end) - datetime.combine(datetime.today(), pcase.surgery_start)).seconds / 60,)
+                    except: ami1 += (0,)
+                    ame_ami_noc += 1
+                number_of_cases += 1
         raw_surgery_data += ({
             "name":ocase.central_operating_unit+" "+ocase.operating_unit,
             'ordateerrors': ordateerrors,
@@ -273,6 +277,8 @@ def Statistics(request):
             "mk2": mk2,
             'mka1': mka1,
             'number_of_cases': number_of_cases,
+            'ame_ami_noc': ame_ami_noc,
+            'ami1': ami1,
             'limit': limit,
             'aa1': aa1,
             'aa2': aa2,
@@ -297,11 +303,11 @@ def Statistics(request):
         except: aa = 0
         try: ma = getMinSec( float(median(operating_room['aa1'])) )
         except: ma = 0
-        try: ami = getMinSec( float(sum(operating_room['mka1'])) / operating_room['number_of_cases'] )
+        try: ami = getMinSec( float(sum(operating_room['ami1'])) / operating_room['ame_ami_noc'] )
         except: ami = 0
-        try: mmi = getMinSec( float(median(operating_room['mka1'])) )
+        try: mmi = getMinSec( float(median(operating_room['ami1'])) )
         except: mmi = 0
-        try: ame = getMinSec( float(sum(operating_room['ame1'])) / operating_room['number_of_cases'] )
+        try: ame = getMinSec( float(sum(operating_room['ame1'])) / operating_room['ame_ami_noc'] )
         except: ame = 0
         try: mme = getMinSec( float(median(operating_room['ame1'])) )
         except: mme = 0
@@ -457,4 +463,3 @@ def Exportp(request):
                       str(case.patient_leave_time)[:-3],
                       ),)
     return csvExport(model, 'c9_patient_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
-
