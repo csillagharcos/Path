@@ -196,7 +196,7 @@ def Statistics(request):
     for ocase in operation_cases:
         pdateerrors=ordateerrors=missing_fields=()
         tn=ame_ami_noc=number_of_cases=aa2=at1=0
-        mk1=aa1=mka1=ame1=()
+        mk1=aa1=ami1=mka1=ame1=()
         #operating rooms
         patient_cases = c9_patient.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, central_operating_unit=ocase.central_operating_unit, operating_unit=ocase.operating_unit)
         try: mk2_sat = (datetime.combine(datetime.today(), ocase.saturday_close_time) - datetime.combine(datetime.today(), ocase.saturday_open_time)).seconds * ocase.saturday_staffed_days / 60
