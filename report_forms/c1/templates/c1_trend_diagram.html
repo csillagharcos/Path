@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block header %}
+    {% include "c1_header.html" %}
+{% endblock header %}
+
+{% block content %}
+    <table class="statistics">
+        <thead>
+            <tr>
+                <td>{% trans "Name of the indicator" %}</td>
+                <td>{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}</td>
+                <td>{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}</td>
+                {% if three %}<td>{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}</td>{% endif %}
+            </tr>
+        </thead>
+        <tr>
+            <td>{% trans "Overall:" %}</td>
+            <td>{{ one.overall }}</td>
+            <td>{{ two.overall }}</td>
+            {% if three %}<td>{{ three.overall }}</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Removed:" %}</td>
+            <td>{{ one.removed }}</td>
+            <td>{{ two.removed }}</td>
+            {% if three %}<td>{{ three.removed }}</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Counted:" %}</td>
+            <td>{{ one.counted }}</td>
+            <td>{{ two.counted }}</td>
+            {% if three %}<td>{{ three.counted }}</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "C-section rate:" %}</td>
+            <td>{{ one.indicator_one|floatformat:"2" }}%</td>
+            <td>{{ two.indicator_one|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.indicator_one|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Rate of planned C-section:" %}</td>
+            <td>{{ one.subindicator_one|floatformat:"2" }}%</td>
+            <td>{{ two.subindicator_one|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.subindicator_one|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Rate of acute C-section:" %}</td>
+            <td>{{ one.subindicator_two|floatformat:"2" }}%</td>
+            <td>{{ two.subindicator_two|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.subindicator_two|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Rate of c-section by the mother's age is less than 20:" %}</td>
+            <td>{{ one.subindicator_three_one|floatformat:"2" }}%</td>
+            <td>{{ two.subindicator_three_one|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.subindicator_three_one|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Rate of c-section by the mother's age is between 20-35:" %}</td>
+            <td>{{ one.subindicator_three_two|floatformat:"2" }}%</td>
+            <td>{{ two.subindicator_three_two|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.subindicator_three_two|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Rate of c-section by the mother's age is more than 35:" %}</td>
+            <td>{{ one.subindicator_three_three|floatformat:"2" }}%</td>
+            <td>{{ two.subindicator_three_three|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.subindicator_three_three|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Rate of acute C-section by the previous number of deliveries first delivery:" %}</td>
+            <td>{{ one.subindicator_four_one|floatformat:"2" }}%</td>
+            <td>{{ two.subindicator_four_one|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.subindicator_four_one|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries:" %}</td>
+            <td>{{ one.subindicator_four_two|floatformat:"2" }}%</td>
+            <td>{{ two.subindicator_four_two|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.subindicator_four_two|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+    </table>
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}

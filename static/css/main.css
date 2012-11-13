@@ -219,11 +219,19 @@ select[multiple="multiple"] {
 table.statistics {
   margin: 0 auto;
   max-width: 750px; }
+  table.statistics thead tr {
+    font-weight: bold;
+    color: gray; }
+    table.statistics thead tr td {
+      padding-bottom: 5px;
+      border-bottom: 1px solid black; }
   table.statistics td {
-    text-align: left; }
-  table.statistics td:last-child {
-    padding-left: 20px;
-    font-weight: bold; }
+    text-align: left;
+    padding-top: 5px; }
+  table.statistics td:not(:first-child) {
+    padding-left: 10px;
+    font-weight: bold;
+    text-align: center; }
 
 table.needle {
   margin: 0 auto; }

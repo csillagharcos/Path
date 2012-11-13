@@ -6,6 +6,7 @@
             <th>{% trans "Report" %}</th>
             <th>{% trans "Form" %}</th>
             <th>{% trans "Statistics" %}</th>
+            <th>{% trans "Trend" %}</th>
             <th>{% trans "Import" %}</th>
             <th>{% trans "Export" %}</th>
             <th>{% trans "Template" %}</th>
@@ -17,6 +18,7 @@
             <td>{% trans "C1. C-section rate" %}</td>
             <td><a href="{% url c1_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
             <td><a href="{% url c1_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+            <td><a href="{% url c1_trend %}"><img src="{{ STATIC_URL }}/images/gray.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url c1_import %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
             <td><a href="{% url c1_export %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Export" %}" /></a></td>
             <td><a href="{% url c1_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
@@ -28,6 +30,7 @@
             <td>{% trans "C.2.1. Prophylactic antibiotic use - Planned surgery for colorectal cancer" %}</td>
             <td><a href="{% url c21_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
             <td><a href="{% url c21_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+            <td><a href="{% url c21_trend %}"><img src="{{ STATIC_URL }}/images/gray.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url c21_import %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
             <td><a href="{% url c21_export %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Export" %}" /></a></td>
             <td><a href="{% url c21_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
@@ -39,6 +42,7 @@
             <td>{% trans "C.2.3. Prophylactic antibiotic use - Hip replacement" %}</td>
             <td><a href="{% url c23_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
             <td><a href="{% url c23_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+            <td><a href="{% url c23_trend %}"><img src="{{ STATIC_URL }}/images/gray.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url c23_import %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
             <td><a href="{% url c23_export %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Export" %}" /></a></td>
             <td><a href="{% url c23_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
@@ -50,6 +54,7 @@
             <td>{% trans "C.2.4. Prophylactic antibiotic use - Hysterectomy" %}</td>
             <td><a href="{% url c24_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
             <td><a href="{% url c24_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+            <td><a href="{% url c24_trend %}"><img src="{{ STATIC_URL }}/images/gray.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url c24_import %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
             <td><a href="{% url c24_export %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Export" %}" /></a></td>
             <td><a href="{% url c24_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
@@ -61,6 +66,7 @@
             <td>{% trans "C.3.1. 30-day in-hospital mortality of patients admitted with AMI" %}</td>
             <td><a href="{% url c31_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
             <td><a href="{% url c31_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+            <td><a href="{% url c31_trend %}"><img src="{{ STATIC_URL }}/images/gray.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url c31_import %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
             <td><a href="{% url c31_export %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Export" %}" /></a></td>
             <td><a href="{% url c31_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
@@ -72,6 +78,7 @@
             <td>{% trans "C.3.2. 30-day in-hospital mortality of patients admitted with acute stroke" %}</td>
             <td><a href="{% url c32_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
             <td><a href="{% url c32_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+            <td><a href="{% url c32_trend %}"><img src="{{ STATIC_URL }}/images/gray.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url c32_import %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
             <td><a href="{% url c32_export %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Export" %}" /></a></td>
             <td><a href="{% url c32_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
@@ -83,6 +90,7 @@
             <td>{% trans "C.8. Length of Stay" %}</td>
             <td><a href="{% url c8_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
             <td><a href="{% url c8_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+            <td><a href="{% url c8_trend %}"><img src="{{ STATIC_URL }}/images/gray.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url c8_import %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
             <td><a href="{% url c8_export %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Export" %}" /></a></td>
             <td><a href="{% url c8_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
@@ -94,6 +102,7 @@
             <td>{% trans "C.9. Operating theatre performance " %}</td>
             <td><a href="{% url c9_operation_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Operation form" %}" /></a> <a href="{% url c9_patient_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Patient form" %}" /></a></td>
             <td><a href="{% url c9_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+            <td><a href="{% url c9_trend %}"><img src="{{ STATIC_URL }}/images/gray.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url c9_import %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
             <td><a href="{% url c9_exporto %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Operation export" %}" /></a><a href="{% url c9_exportp %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Patient export" %}" /></a></td>
             <td><a href="{% url c9_operation_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Operation template" %}" /></a><a href="{% url c9_patient_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Patient template" %}" /></a></td>
@@ -105,6 +114,7 @@
             <td>{% trans "C.13. Needle stick injuries" %}</td>
             <td><a href="{% url c13_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
             <td><a href="{% url c13_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+            <td><a href="{% url c13_trend %}"><img src="{{ STATIC_URL }}/images/gray.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><img src="{{ STATIC_URL }}/images/gray.appbar.paperclip.png" title="{% trans "Import" %}" /></td>
             <td><a href="{% url c13_export %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Export" %}" /></a></td>
             <td><img src="{{ STATIC_URL }}/images/gray.appbar.page.excel.png" title="{% trans "Template" %}" /></td>
@@ -116,6 +126,7 @@
             <td>{% trans "C.20. AMI patients prescribed aspirin at discharge" %}</td>
             <td><a href="{% url c20_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
             <td><a href="{% url c20_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+            <td><a href="{% url c20_trend %}"><img src="{{ STATIC_URL }}/images/gray.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url c20_import %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
             <td><a href="{% url c20_export %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Export" %}" /></a></td>
             <td><a href="{% url c20_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
@@ -127,6 +138,7 @@
             <td>{% trans "R1. indicators for rehabilitation hospitals and departments" %}</td>
             <td><a href="{% url r1_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
             <td><a href="{% url r1_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
+            <td><a href="{% url r1_trend %}"><img src="{{ STATIC_URL }}/images/gray.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url r1_import %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
             <td><a href="{% url r1_export %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Export" %}" /></a></td>
             <td><a href="{% url r1_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
@@ -134,17 +146,5 @@
             <td><a href="{{ STATIC_URL }}documents/drt/{{ LANGUAGE_CODE }}/r1a.xls"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></a></td>
             <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/r1a.docx"><img src="{{ STATIC_URL }}/images/appbar.page.word.png" title="{% trans "Short indicator description" %}" /></a></td>
         </tr>
-{#        <tr>#}
-{#            <td>{% trans "Prophylactic antibiotc use – TUR, TURP" %}</td>#}
-{#        <td><a href="{% url c1_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>#}
-{#        <td><a href="{% url c1_display %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>#}
-{#        <td><a href="{% url c1_display %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>#}
-{#        </tr>#}
-{#        <tr>#}
-{#            <td>{% trans "Prophylactic antibiotc use – ÁLLANDÓ/IDEIGLENES PACEMAKER-BEÜLTETÉS, PACEMAKER-CSERE" %}</td>#}
-{#        <td><a href="{% url c1_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>#}
-{#        <td><a href="{% url c1_display %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>#}
-{#        <td><a href="{% url c1_display %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>#}
-{#        </tr>#}
     </table>
 {% endblock content %}

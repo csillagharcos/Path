@@ -37,32 +37,13 @@ def Display(request):
 
 @login_required
 def Statistics(request):
-    ''' Query '''
-    countable_case=uncountable_case=()
-    cases = c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
-    group = []
-    print
-    for case in cases:
-        if translation.get_language() == "hu":
-            job_name = case.job.job_hungarian
-        else:
-            job_name = case.job.job_english
-        try: first = float(float(case.needlestick_injuries) / ((float(case.staff_beginning) + float(case.staff_end))/2)*100)
-        except: first = 0
-        try: second = float(float(case.needlestick_injuries) / ((float(case.working_hours_beginning) + float(case.working_hours_end))*0.5 / 8) *100)
-        except: second = 0
-        group.append([
-                  job_name,
-                  first,
-                  second,
-        ])
-    context = {
-        "overall": len(cases),
-        "removed": len(uncountable_case),
-        "counted": len(countable_case),
-        "jobs" : group,
-    }
+    context = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace) )
     return render_to_response('c13_statistics.html', context, context_instance=RequestContext(request))
+
+def Trend(request):
+    if request.method == "POST":
+        context = CountStatistics(c1.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace) )
+    return render_to_response('c1_statistics.html', context, context_instance=RequestContext(request))
 
 def Template(request):
     model = (
@@ -99,3 +80,28 @@ def Export(request):
                       str(case.working_hours_end),
                       ),)
     return csvExport(model, 'c13_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
+
+def CountStatistics(cases):
+    countable_case=uncountable_case=()
+    group = []
+    print
+    for case in cases:
+        if translation.get_language() == "hu":
+            job_name = case.job.job_hungarian
+        else:
+            job_name = case.job.job_english
+        try: first = float(float(case.needlestick_injuries) / ((float(case.staff_beginning) + float(case.staff_end))/2)*100)
+        except: first = 0
+        try: second = float(float(case.needlestick_injuries) / ((float(case.working_hours_beginning) + float(case.working_hours_end))*0.5 / 8) *100)
+        except: second = 0
+        group.append([
+            job_name,
+            first,
+            second,
+            ])
+    context = {
+        "overall": len(cases),
+        "removed": len(uncountable_case),
+        "counted": len(countable_case),
+        "jobs" : group,
+        }
