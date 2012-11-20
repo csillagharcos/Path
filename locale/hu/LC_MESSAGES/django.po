@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-20 23:49+0100\n"
-"PO-Revision-Date: 2012-11-20 23:53\n"
+"POT-Creation-Date: 2012-11-21 00:11+0100\n"
+"PO-Revision-Date: 2012-11-21 00:12\n"
 "Last-Translator: Richard Hajdu <richard.hajdu@webdevil.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "Nemzetközi PATH honlap"
 msgid "Under development..."
 msgstr "Fejlesztés alatt."
 
-#: pathstatic/templates/login.html:11 templates/base.html:51
+#: pathstatic/templates/login.html:11 templates/base.html:52
 msgid "Login"
 msgstr "Bejelentkezés"
 
@@ -3170,9 +3170,31 @@ msgstr "kijelentkezés"
 msgid "login"
 msgstr "bejelentkezés"
 
-#: templates/base.html:55
+#: templates/base.html:51 templates/admin/login.html:38
+msgid "Forgot password"
+msgstr "Elfelejtett jelszó"
+
+#: templates/base.html:56
 msgid "Print"
 msgstr "Nyomtatás"
+
+#: templates/admin/login.html:17
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] "Kérlek javítsd ki a hibákat."
+msgstr[1] "Kérlek javítsd ki a hibát."
+
+#: templates/admin/login.html:33
+msgid "Username:"
+msgstr "Felhasználó:"
+
+#: templates/admin/login.html:37
+msgid "Password:"
+msgstr "Jelszó:"
+
+#: templates/admin/login.html:43
+msgid "Log in"
+msgstr "Bejelentkezés"
 
 #: university/models.py:7 university/models.py:15
 msgid "Hospital"

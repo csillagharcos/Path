@@ -35,7 +35,7 @@
   <div class="form-row">
     {% if not form.this_is_the_login_form.errors %}{{ form.password.errors }}{% endif %}
     <label for="id_password" class="required">{% trans 'Password:' %}</label> {{ form.password }}
-    <p style="margin-left:114px;"><a href="{% url password_reset %}">Forgot password?</a></p>
+    <p style="margin-left:114px;"><a href="{% url password_reset %}">{% trans "Forgot password" %}?</a></p>
     <input type="hidden" name="this_is_the_login_form" value="1" />
     <input type="hidden" name="next" value="{{ next }}" />
   </div>
