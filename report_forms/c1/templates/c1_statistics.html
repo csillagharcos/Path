@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n l10n %}
 {% block header %}
     {% include "c1_header.html" %}
 {% endblock header %}
@@ -22,59 +22,118 @@
                 <td>{{ counted }}</td>
             </tr>
             <tr>
-                <td>{% trans "C-section rate:" %}</td>
+                <td>{% trans "C-section rate" %}:</td>
                 <td>{{ indicator_one|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Rate of planned C-section:" %}</td>
+                <td>{% trans "Rate of planned C-section" %}:</td>
                 <td>{{ subindicator_one|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Rate of acute C-section:" %}</td>
+                <td>{% trans "Rate of acute C-section" %}:</td>
                 <td>{{ subindicator_two|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Rate of c-section by the mother's age is less than 20:" %}</td>
+                <td>{% trans "Rate of c-section by the mother's age is less than 20" %}:</td>
                 <td>{{ subindicator_three_one|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Rate of c-section by the mother's age is between 20-35:" %}</td>
+                <td>{% trans "Rate of c-section by the mother's age is between 20-35" %}:</td>
                 <td>{{ subindicator_three_two|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Rate of c-section by the mother's age is more than 35:" %}</td>
+                <td>{% trans "Rate of c-section by the mother's age is more than 35" %}:</td>
                 <td>{{ subindicator_three_three|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Rate of acute C-section by the previous number of deliveries first delivery:" %}</td>
+                <td>{% trans "Rate of acute C-section by the previous number of deliveries first delivery" %}:</td>
                 <td>{{ subindicator_four_one|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries:" %}</td>
+                <td>{% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries" %}:</td>
                 <td>{{ subindicator_four_two|floatformat:"2" }}%</td>
             </tr>
         </table>
+        <div id="graph1" style="margin-top: 20px; height: 150px;"></div>
+        <div id="graph2" style="margin-top: 20px; height: 150px;"></div>
+        <div id="graph3" style="margin-top: 20px; height: 150px;"></div>
     {% endif %}
 {% endblock content %}
 
 {% block js %}
-    <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
-    <script style="text/javascript">
-    var DataForGraph = new Array(
-        ["{{ indicator_one|floatformat:"2" }}".replace(",","."), 'C-section rate','red'],
-        ["{{ subindicator_one|floatformat:"2" }}".replace(",","."),'Planned rate','green'],
-        ["{{ subindicator_two|floatformat:"2" }}".replace(",","."),'Acute rate','blue'],
-        ["{{ subindicator_three_one|floatformat:"2" }}".replace(",","."),"<20 rate",'cyan'],
-        ["{{ subindicator_three_two|floatformat:"2" }}".replace(",","."),"20-35 rate", 'black'],
-        ["{{ subindicator_three_three|floatformat:"2" }}".replace(",","."),">35 rate", 'gray'],
-        ["{{ subindicator_four_one|floatformat:"2" }}".replace(",","."),"prev delivery", 'gray'],
-        ["{{ subindicator_four_two|floatformat:"2" }}".replace(",","."),"c-sec delivery", 'gray']
-    );
-    $('.bargraph').jqBarGraph({
-                                data: DataForGraph,
-                                postfix: '%',
-                                width: 940,
-                                barSpace: 80
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.pointLabels.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.highlighter.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        {% localize off %}
+            var first = [{{ indicator_one }}, {{ subindicator_one }}, {{ subindicator_two }}];
+            var second = [{{ subindicator_three_one }}, {{ subindicator_three_two }}, {{ subindicator_three_three }}];
+            var third = [{{ subindicator_four_one }}, {{ subindicator_four_two }}];
+        {% endlocalize %}
+        $.jqplot('graph1', [first], {
+            seriesDefaults: {renderer: $.jqplot.BarRenderer},
+            axes: {
+                xaxis:{
+                    renderer:$.jqplot.CategoryAxisRenderer,
+                    ticks:['{% trans "C-section rate" %}', '{% trans "Rate of planned C-section" %}', '{% trans "Rate of acute C-section" %}']
+                },
+                yaxis:{
+                    tickOptions: {
+                        formatString: '%.2f'
+                    },
+                    min: 0,
+                    max: 100}
+            },
+            highlighter: {
+                show: true,
+                tooltipAxes: 'y',
+                formatString: '%.2f%'
+            }
+        });
+        $.jqplot('graph2', [second], {
+            seriesDefaults: {renderer: $.jqplot.BarRenderer},
+            axes: {
+                xaxis:{
+                    renderer:$.jqplot.CategoryAxisRenderer,
+                    ticks:["{% trans "Rate of c-section by <br /> the mother's age is less than 20" %}", "{% trans "Rate of c-section by <br /> the mother's age is between 20-35" %}", "{% trans "Rate of c-section by <br /> the mother's age is more than 35" %}"]
+                },
+                yaxis:{
+                    tickOptions: {
+                        formatString: '%.2f'
+                    },
+                    min: 0,
+                    max: 100}
+            },
+            highlighter: {
+                show: true,
+                tooltipAxes: 'y',
+                formatString: '%.2f%'
+            }
+        });
+        $.jqplot('graph3', [third], {
+            seriesDefaults: {renderer: $.jqplot.BarRenderer},
+            axes: {
+                xaxis:{
+                    renderer:$.jqplot.CategoryAxisRenderer,
+                    ticks:["{% trans "Rate of acute C-section by <br /> the previous number of deliveries first delivery" %}", "{% trans "Rate of acute C-section by <br /> the previous number of deliveries first delivery one or more previous deliveries" %}"]
+                },
+                yaxis:{
+                    tickOptions: {
+                        formatString: '%.2f'
+                    },
+                    min: 0,
+                    max: 100}
+            },
+            highlighter: {
+                show: true,
+                tooltipAxes: 'y',
+                formatString: '%.2f%'
+            }
+        });
     });
+
     </script>
 {% endblock js %}

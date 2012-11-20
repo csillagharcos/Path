@@ -320,6 +320,8 @@ def Statistics(request):
             'tn'  : operating_room['tn'],
             'mk'  : mk,
             'cases': operating_room['limit'],
+            'test': len(operating_room['mk1']),
+            'test1': operating_room['mk1'],
             'ordateerrors': operating_room['ordateerrors'],
             'pdateerrors': operating_room['pdateerrors'],
             'mka' : mka,
