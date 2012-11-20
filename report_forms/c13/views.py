@@ -42,8 +42,8 @@ def Statistics(request):
 
 def Trend(request):
     if request.method == "POST":
-        context = CountStatistics(c1.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace) )
-    return render_to_response('c1_statistics.html', context, context_instance=RequestContext(request))
+        context = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace) )
+    return render_to_response('c13_statistics.html', context, context_instance=RequestContext(request))
 
 def Template(request):
     model = (
@@ -84,7 +84,6 @@ def Export(request):
 def CountStatistics(cases):
     countable_case=uncountable_case=()
     group = []
-    print
     for case in cases:
         if translation.get_language() == "hu":
             job_name = case.job.job_hungarian
@@ -105,3 +104,4 @@ def CountStatistics(cases):
         "counted": len(countable_case),
         "jobs" : group,
         }
+    return context

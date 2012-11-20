@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n l10n %}
 {% block header %}<div id="content_home">{% trans "R1. indicators for rehabilitation hospitals and departments" %}</div>
     <div id="content_helper">
         <table>
@@ -85,9 +85,64 @@
             </tr>
         </table>
     {% endif %}
+    <div id="graph1" style="margin-top: 20px; height: 700px"></div>
 {% endblock content %}
 
 {% block js %}
-    <script style="text/javascript">
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                var first = [
+                    {% if r1acounted >= 60 %}
+                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 7 days of admission" %}', {{ r1a1 }}],
+                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 2 days of admission" %}', {{ r1a2 }}],
+                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 3 days of admission" %}', {{ r1a3 }}],
+                    {% endif %}
+                    {% if r1bcounted >= 60 %}
+                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 3 days prior to discharge" %}', {{ r1b1 }}],
+                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 1 days prior to discharge" %}', {{ r1b2 }}],
+                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 2 days prior to discharge" %}', {{ r1b3 }}],
+                    {% endif %}
+                    {% if r2counted >= 60 %}
+                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}', {{ r21 }}],
+                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}', {{ r22 }}],
+                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}', {{ r23 }}],
+                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}', {{ r24 }}]
+                    {% endif %}
+                ];
+            {% endlocalize %}
+            $.jqplot('graph1', [first], {
+                seriesDefaults: {renderer: $.jqplot.BarRenderer},
+                axes: {
+                    xaxis:{
+                        renderer:$.jqplot.CategoryAxisRenderer,
+                        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+                        tickOptions: {
+                            angle: -30,
+                            labelPosition: 'end',
+                            fontSize: 8
+                        }
+                    },
+                    yaxis:{
+                        tickOptions: {
+                            formatString: '%.2f'
+                        },
+                        min: 0,
+                        max: 100}
+                },
+                highlighter: {
+                    show: true,
+                    tooltipAxes: 'y',
+                    formatString: '%.2f%'
+                }
+            });
+        });
     </script>
 {% endblock js %}

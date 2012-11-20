@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n l10n %}
 {% block header %}<div id="content_home">{% trans "C.20. AMI patients prescribed aspirin at discharge" %}</div>
     <div id="content_helper">
         <table>
@@ -35,34 +35,53 @@
                 <td>{{ counted }}</td>
             </tr>
             <tr>
-                <td>{% trans "Patient prescribed at discharge to take aspirin:" %}</td>
+                <td>{% trans "Patient prescribed at discharge to take aspirin" %}:</td>
                 <td>{{ indicator_one|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy:" %}</td>
+                <td>{% trans "Patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}:</td>
                 <td>{{ indicator_two|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Patient prescribed to take aspirin or other (non-aspirin-containing) platelet aggregation inhibitor therapy:" %}</td>
+                <td>{% trans "Patient prescribed to take aspirin or other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}:</td>
                 <td>{{ indicator_three|floatformat:"2" }}%</td>
             </tr>
         </table>
+        <div id="graph1" style="margin-top: 20px; height: 150px;"></div>
     {% endif %}
 {% endblock content %}
 
 {% block js %}
-    <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
-    <script style="text/javascript">
-    var DataForGraph = new Array(
-        ["{{ indicator_one|floatformat:"2" }}".replace(",","."), '30 days','red'],
-        ["{{ subindicator_one|floatformat:"2" }}".replace(",","."),'30 days wo trans','green'],
-        ["{{ subindicator_two|floatformat:"2" }}".replace(",","."),'2 days','blue']
-    );
-    $('.bargraph').jqBarGraph({
-                                data: DataForGraph,
-                                postfix: '%',
-                                width: 940,
-                                barSpace: 80
-    });
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.pointLabels.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                var first = [{{ indicator_one }}, {{ indicator_two }}, {{ indicator_three }}];
+            {% endlocalize %}
+            $.jqplot('graph1', [first], {
+                seriesDefaults: {renderer: $.jqplot.BarRenderer},
+                axes: {
+                    xaxis:{
+                        renderer:$.jqplot.CategoryAxisRenderer,
+                        ticks:['{% trans "Patient prescribed at<br />discharge to take aspirin" %}', '{% trans "Patient prescribed to take other<br />(non-aspirin-containing) platelet aggregation inhibitor therapy" %}', '{% trans "Patient prescribed to take aspirin or other<br />(non-aspirin-containing) platelet<br />aggregation inhibitor therapy" %}']
+                    },
+                    yaxis:{
+                        tickOptions: {
+                            formatString: '%.2f'
+                        },
+                        min: 0,
+                        max: 100}
+                },
+                highlighter: {
+                    show: true,
+                    tooltipAxes: 'y',
+                    formatString: '%.2f%'
+                }
+            });
+        });
     </script>
 {% endblock js %}

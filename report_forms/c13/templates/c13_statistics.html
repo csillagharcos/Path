@@ -39,12 +39,12 @@
 
 {% block js %}
     <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
-    <script src="{{ STATIC_URL }}js/jqplot.barRenderer.min.js"></script>
-    <script src="{{ STATIC_URL }}js/jqplot.categoryAxisRenderer.min.js"></script>
-    <script src="{{ STATIC_URL }}js/jqplot.pointLabels.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.pointLabels.min.js"></script>
     <script style="text/javascript">
         $(document).ready(function(){
-            var plot1 = $.jqplot('avg', [[{% for job in jobs %}{% localize off %}{{ job.1 }}{% endlocalize %}{% if not forloop.last %},{% endif %}{% endfor %}]], {
+            $.jqplot('avg', [[{% for job in jobs %}{% localize off %}{{ job.1 }}{% endlocalize %}{% if not forloop.last %},{% endif %}{% endfor %}]], {
                 title: "{% trans "Number of needle stick injuries to 100 workers (average number)" %}",
                 seriesDefaults:{
                     renderer:$.jqplot.BarRenderer,
@@ -61,7 +61,7 @@
                 }
             });
 
-            var plot2 = $.jqplot('fte', [[{% for job in jobs %}{% localize off %}{{ job.2 }}{% endlocalize %}{% if not forloop.last %},{% endif %}{% endfor %}]], {
+            $.jqplot('fte', [[{% for job in jobs %}{% localize off %}{{ job.2 }}{% endlocalize %}{% if not forloop.last %},{% endif %}{% endfor %}]], {
                 title: "{% trans "Number of needle stick injuries to 100 workers (FTE = full time equivalent)" %}",
                 seriesDefaults:{
                     renderer:$.jqplot.BarRenderer,

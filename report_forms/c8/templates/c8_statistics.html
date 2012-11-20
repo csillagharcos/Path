@@ -63,7 +63,53 @@
 {% endblock content %}
 
 {% block js %}
-    <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
-    <script style="text/javascript">
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                var first = [['{% trans "Appropriate antibiotic drug" %}', {{ one }}],
+                    ['{% trans "Appropriate dose" %}', {{ twoa }}],
+                    ['{% trans "Appropriate dose with weight" %}', {{ twob }}],
+                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ three }}],
+                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ four }}],
+                    ['{% trans "Appropriate timing:" %}', {{ five }}],
+                    ['{% trans "Full compliance with criteria 1-5" %}', {{ ten }}],
+                    ['{% trans "% of misuse" %}', {{ six }}],
+                    ['{% trans "% of overuse" %}', {{ seven }}],
+                    ['{% trans "% of underuse" %}', {{ eight }}],
+                    ['{% trans "% of single shot treatment" %}', {{ nine }}]];
+            {% endlocalize %}
+            $.jqplot('graph1', [first], {
+                seriesDefaults: {renderer: $.jqplot.BarRenderer},
+                axes: {
+                    xaxis:{
+                        renderer:$.jqplot.CategoryAxisRenderer,
+                        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+                        tickOptions: {
+                            angle: -30,
+                            labelPosition: 'end',
+                            fontSize: 8
+                        }
+                    },
+                    yaxis:{
+                        tickOptions: {
+                            formatString: '%.2f'
+                        },
+                        min: 0,
+                        max: 100}
+                },
+                highlighter: {
+                    show: true,
+                    tooltipAxes: 'y',
+                    formatString: '%.2f%'
+                }
+            });
+        });
     </script>
 {% endblock js %}

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n l10n %}
 {% block header %}<div id="content_home">{% trans "C.2.1. Prophylactic antibiotic use - Planned surgery for colorectal cancer" %}</div>
     <div id="content_helper">
         <table>
@@ -35,49 +35,102 @@
                 <td>{{ counted }}</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate antibiotic drug:" %}</td>
+                <td>{% trans "Appropriate antibiotic drug" %}:</td>
                 <td>{{ one|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate dose:" %}</td>
+                <td>{% trans "Appropriate dose" %}:</td>
                 <td>{{ twoa|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate dose with weight:" %}</td>
+                <td>{% trans "Appropriate dose with weight" %}:</td>
                 <td>{{ twob|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate route of administration: intravenous administration:" %}</td>
+                <td>{% trans "Appropriate route of administration: intravenous administration" %}:</td>
                 <td>{{ three|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate timing, within one hour of surgical wound incision:" %}</td>
+                <td>{% trans "Appropriate timing, within one hour of surgical wound incision" %}:</td>
                 <td>{{ four|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate timing: (discontinued within 24 hours after surgical wound closure – or documentation of appropriate clinical indication for continuation of treatment beyond 24 hours):" %}</td>
+                <td>{% trans "Appropriate timing: (discontinued within 24 hours after surgical wound closure – or documentation of appropriate clinical indication for continuation of treatment beyond 24 hours)" %}:</td>
                 <td>{{ five|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Full compliance with criteria 1-5:" %}</td>
+                <td>{% trans "Full compliance with criteria 1-5" %}:</td>
                 <td>{{ ten|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "% of misuse:" %}</td>
+                <td>{% trans "% of misuse" %}:</td>
                 <td>{{ six|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "% of overuse:" %}</td>
+                <td>{% trans "% of overuse" %}:</td>
                 <td>{{ seven|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "% of underuse:" %}</td>
+                <td>{% trans "% of underuse" %}:</td>
                 <td>{{ eight|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "% of single shot treatment:" %}</td>
+                <td>{% trans "% of single shot treatment" %}:</td>
                 <td>{{ nine|floatformat:"2" }}%</td>
             </tr>
         </table>
+        <div id="graph1" style="margin-top: 20px; height: 300px;"></div>
     {% endif %}
 {% endblock content %}
+
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                var first = [['{% trans "Appropriate antibiotic drug" %}', {{ one }}],
+                            ['{% trans "Appropriate dose" %}', {{ twoa }}],
+                            ['{% trans "Appropriate dose with weight" %}', {{ twob }}],
+                            ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ three }}],
+                            ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ four }}],
+                            ['{% trans "Appropriate timing:" %}', {{ five }}],
+                            ['{% trans "Full compliance with criteria 1-5" %}', {{ ten }}],
+                            ['{% trans "% of misuse" %}', {{ six }}],
+                            ['{% trans "% of overuse" %}', {{ seven }}],
+                            ['{% trans "% of underuse" %}', {{ eight }}],
+                            ['{% trans "% of single shot treatment" %}', {{ nine }}]];
+            {% endlocalize %}
+            $.jqplot('graph1', [first], {
+                seriesDefaults: {renderer: $.jqplot.BarRenderer},
+                axes: {
+                    xaxis:{
+                        renderer:$.jqplot.CategoryAxisRenderer,
+                        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+                        tickOptions: {
+                            angle: -30,
+                            labelPosition: 'end',
+                            fontSize: 8
+                        }
+                    },
+                    yaxis:{
+                        tickOptions: {
+                            formatString: '%.2f'
+                        },
+                        min: 0,
+                        max: 100}
+                },
+                highlighter: {
+                    show: true,
+                    tooltipAxes: 'y',
+                    formatString: '%.2f%'
+                }
+            });
+        });
+    </script>
+{% endblock js %}

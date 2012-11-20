@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n l10n %}
 {% block header %}<div id="content_home">{% trans "C.3.1. 30-day in-hospital mortality of patients admitted with AMI" %}</div>
     <div id="content_helper">
         <table>
@@ -21,37 +21,70 @@
     {% if not_enough %}
         {% trans "Sorry, you have less than 60 cases." %}
     {% else %}
-        {% trans "Overall:" %} {{ overall }}<br />
-        {% trans "Removed:" %} {{ removed }}<br />
-        {% trans "Counted:" %} {{ counted }}<br />
-        <br />
-        {% trans "Hospital mortality rate within 30 days:" %} {{ indicator_one|floatformat:"2" }}%<br />
-        {% trans "Hospital mortality rate within 30 days without transmissions:" %} {{ subindicator_one|floatformat:"2" }}%<br />
-        {% trans "Hospital mortality rate within 2 days:" %} {{ subindicator_two|floatformat:"2" }}%<br />
-        <br /><br />
-        <hr />
-        Grafikon tesztelés:
-        <hr />
-        <br /><br />
-        <div class="bargraph"></div>
+        <table class="statistics">
+            <tr>
+                <td>{% trans "Overall:" %}</td>
+                <td>{{ overall }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "Removed:" %}</td>
+                <td>{{ removed }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "Counted:" %}</td>
+                <td>{{ counted }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "Hospital mortality rate within 30 days" %}</td>
+                <td>{{ indicator_one|floatformat:"2" }}%</td>
+            </tr>
+            <tr>
+                <td>{% trans "Hospital mortality rate within 30 days without transmissions" %}</td>
+                <td>{{ subindicator_one|floatformat:"2" }}%</td>
+            </tr>
+            <tr>
+                <td>{% trans "Hospital mortality rate within 2 days" %}</td>
+                <td>{{ subindicator_two|floatformat:"2" }}%</td>
+            </tr>
+        </table>
+        <div id="graph1" style="margin-top: 20px; height: 150px;"></div>
     {% endif %}
 {% endblock content %}
 
 {% block js %}
-    {% if not not_enough %}
-        <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
-        <script style="text/javascript">
-        var DataForGraph = new Array(
-            ["{{ indicator_one|floatformat:"2" }}".replace(",","."), '30 days','red'],
-            ["{{ subindicator_one|floatformat:"2" }}".replace(",","."),'30 days wo trans','green'],
-            ["{{ subindicator_two|floatformat:"2" }}".replace(",","."),'2 days','blue']
-        );
-        $('.bargraph').jqBarGraph({
-                                    data: DataForGraph,
-                                    postfix: '%',
-                                    width: 940,
-                                    barSpace: 80
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                var first = [['{% trans "Hospital mortality rate within 30 days" %}', {{ indicator_one }}],
+                    ['{% trans "Hospital mortality rate within 30 days without transmissions" %}', {{ subindicator_one }}],
+                    ['{% trans "Hospital mortality rate within 2 days" %}', {{ subindicator_two }}]];
+            {% endlocalize %}
+            $.jqplot('graph1', [first], {
+                seriesDefaults: {renderer: $.jqplot.BarRenderer},
+                axes: {
+                    xaxis:{
+                        renderer:$.jqplot.CategoryAxisRenderer
+                    },
+                    yaxis:{
+                        tickOptions: {
+                            formatString: '%.2f'
+                        },
+                        min: 0,
+                        max: 100}
+                },
+                highlighter: {
+                    show: true,
+                    tooltipAxes: 'y',
+                    formatString: '%.2f%'
+                }
+            });
         });
-        </script>
-    {% endif %}
+    </script>
 {% endblock js %}
