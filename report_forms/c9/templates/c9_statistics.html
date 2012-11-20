@@ -60,35 +60,35 @@
                     </tr>
                     <tr>
                         <td>{% trans "Average time in OR" %}:</td>
-                        <td>{{ operating_room.amt }} {% trans 'minutes' %}</td>
+                        <td>{{ operating_room.amt }} {% trans 'hours' %}</td>
                     </tr>
                     <tr>
                         <td>{% trans "Median time in OR" %}:</td>
-                        <td>{{ operating_room.mmt }} {% trans 'minutes' %}</td>
+                        <td>{{ operating_room.mmt }} {% trans 'hours' %}</td>
                     </tr>
                     <tr>
                         <td>{% trans "Average time of anesthesia" %}:</td>
-                        <td>{{ operating_room.aa }} {% trans 'minutes' %}</td>
+                        <td>{{ operating_room.aa }} {% trans 'hours' %}</td>
                     </tr>
                     <tr>
                         <td>{% trans "Median time of anesthesia:" %}:</td>
-                        <td>{{ operating_room.ma }} {% trans 'minutes' %}</td>
+                        <td>{{ operating_room.ma }} {% trans 'hours' %}</td>
                     </tr>
                     <tr>
                         <td>{% trans "Average time of surgery" %}:</td>
-                        <td>{{ operating_room.ami }} {% trans 'minutes' %}</td>
+                        <td>{{ operating_room.ami }} {% trans 'hours' %}</td>
                     </tr>
                     <tr>
                         <td>{% trans "Median time of surgery" %}:</td>
-                        <td>{{ operating_room.mmi }} {% trans 'minutes' %}</td>
+                        <td>{{ operating_room.mmi }} {% trans 'hours' %}</td>
                     </tr>
                     <tr>
                         <td>{% trans "Average time before surgery" %}:</td>
-                        <td>{{ operating_room.ame }} {% trans 'minutes' %}</td>
+                        <td>{{ operating_room.ame }} {% trans 'hours' %}</td>
                     </tr>
                     <tr>
                         <td>{% trans "Median time before surgery" %}:</td>
-                        <td>{{ operating_room.mme }} {% trans 'minutes' %}</td>
+                        <td>{{ operating_room.mme }} {% trans 'hours' %}</td>
                     </tr>
                     <tr>
                         <td>{% trans "Number of days with overtime:" %}</td>
@@ -96,11 +96,11 @@
                     </tr>
                     <tr>
                         <td>{% trans "Average time of overtime:" %}</td>
-                        <td>{{ operating_room.at }} {% trans 'minutes/days' %}</td>
+                        <td>{{ operating_room.at }} {% trans 'hours/days' %}</td>
                     </tr>
                     <tr>
                         <td>{% trans "Average time of overtime on days with overtime:" %}</td>
-                        <td>{{ operating_room.attn }} {% trans 'minutes' %}</td>
+                        <td>{{ operating_room.attn }} {% trans 'hours' %}</td>
                     </tr>
                 </table>
                     <div id="{{ operating_room.slug }}" style="margin-top: 20px; height: 300px"></div>
@@ -130,7 +130,7 @@
                         ['{% trans "Average time of surgery" %}', '{{ operating_room.ami }}'],
                         ['{% trans "Median time of surgery" %}', '{{ operating_room.mmi }}'],
                         ['{% trans "Average time before surgery" %}', '{{ operating_room.ame }}'],
-                        ['{% trans "Median time before surgery" %}', '{{ operating_room.mme }}'],
+                        ['{% trans "Median time before surgery" %}', '{{ operating_room.mme }}']
                     ];
                 {% endlocalize %}
                 $.jqplot('{{ operating_room.slug }}', [{{ operating_room.slug }}], {
