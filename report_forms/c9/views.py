@@ -196,7 +196,7 @@ def Statistics(request):
     for ocase in operation_cases:
         pdateerrors=ordateerrors=missing_fields=()
         tn=ame_ami_noc=number_of_cases=aa2=at1=0
-        mk1=aa1=ami1=mka1=ame1=plusinfo=()
+        mk1=aa1=ami1=mka1=ame1=()
         #operating rooms
         patient_cases = c9_patient.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, central_operating_unit=ocase.central_operating_unit, operating_unit=ocase.operating_unit)
         try: mk2_sat = (datetime.combine(datetime.today(), ocase.saturday_close_time) - datetime.combine(datetime.today(), ocase.saturday_open_time)).seconds * ocase.saturday_staffed_days / 60
@@ -246,7 +246,7 @@ def Statistics(request):
                 else:
                     patient_leave_time = pcase.patient_leave_time
                 try:
-                    if pcase.surgery_end > current_close_time:
+                    if pcase.surgery_end > current_close_time > pcase.surgery_start:
                         mka_surgery_end = current_close_time
                     else:
                         mka_surgery_end = pcase.surgery_end
@@ -266,7 +266,6 @@ def Statistics(request):
                     except: ame1 += (0,)
                     try: ami1 += ( (datetime.combine(datetime.today(), mka_surgery_end) - datetime.combine(datetime.today(), pcase.surgery_start)).seconds / 60,)
                     except: ami1 += (0,)
-                    plusinfo += (str(ami1) + " -- " + str(pcase.patient_identifier),)
                     ame_ami_noc += 1
                 number_of_cases += 1
         raw_surgery_data += ({
@@ -277,7 +276,6 @@ def Statistics(request):
             'mk1': mk1,
             "mk2": mk2,
             'mka1': mka1,
-            'plusinfo': plusinfo,
             'number_of_cases': number_of_cases,
             'ame_ami_noc': ame_ami_noc,
             'ami1': ami1,
@@ -322,8 +320,6 @@ def Statistics(request):
             'tn'  : operating_room['tn'],
             'mk'  : mk,
             'cases': operating_room['limit'],
-            'test': operating_room['ame_ami_noc'],
-            'test1': operating_room['plusinfo'],
             'ordateerrors': operating_room['ordateerrors'],
             'pdateerrors': operating_room['pdateerrors'],
             'mka' : mka,

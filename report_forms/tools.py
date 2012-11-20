@@ -64,7 +64,9 @@ def median(mylist):
 def getMinSec(flnumb):
     minutes = int(flnumb)
     seconds = int( (flnumb - minutes) * 60 )
-    if seconds == 0:
+    if not seconds:
         return str(minutes)
+    elif len(str(seconds)) == 1:
+        return str(minutes) + ":0" + str(seconds)
     else:
         return str(minutes) + ":" + str(seconds)
