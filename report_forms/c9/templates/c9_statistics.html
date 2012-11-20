@@ -51,11 +51,11 @@
                     </tr>
                 {% else %}
                     <tr>
-                        <td>{% trans "Operating theatre performance:" %}</td>
+                        <td>{% trans "Operating theatre performance" %}:</td>
                         <td>{{ operating_room.mk|floatformat:"2" }}%</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Surgery performance:" %}</td>
+                        <td>{% trans "Surgery performance" %}:</td>
                         <td>{{ operating_room.mka|floatformat:"2" }}%</td>
                     </tr>
                     <tr>
@@ -71,7 +71,7 @@
                         <td>{{ operating_room.aa }} {% trans 'hours' %}</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Median time of anesthesia:" %}:</td>
+                        <td>{% trans "Median time of anesthesia" %}:</td>
                         <td>{{ operating_room.ma }} {% trans 'hours' %}</td>
                     </tr>
                     <tr>
@@ -91,15 +91,15 @@
                         <td>{{ operating_room.mme }} {% trans 'hours' %}</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Number of days with overtime:" %}</td>
+                        <td>{% trans "Number of days with overtime" %}:</td>
                         <td>{{ operating_room.tn }} {% trans 'days' %}</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Average time of overtime:" %}</td>
+                        <td>{% trans "Average time of overtime" %}:</td>
                         <td>{{ operating_room.at }} {% trans 'hours/days' %}</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Average time of overtime on days with overtime:" %}</td>
+                        <td>{% trans "Average time of overtime on days with overtime" %}:</td>
                         <td>{{ operating_room.attn }} {% trans 'hours' %}</td>
                     </tr>
                 </table>

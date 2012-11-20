@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-20 12:52+0100\n"
-"PO-Revision-Date: 2012-10-29 17:01\n"
-"Last-Translator:   <tuskone16@gmail.com>\n"
+"POT-Creation-Date: 2012-11-20 23:49+0100\n"
+"PO-Revision-Date: 2012-11-20 23:53\n"
+"Last-Translator: Richard Hajdu <richard.hajdu@webdevil.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Translated-Using: django-rosetta 0.6.8\n"
 
@@ -39,67 +39,16 @@ msgstr "Jelszó"
 msgid ""
 "\n"
 "        <p>Program: Eva Belicza Dr., Judit Lám Dr., Erika Takács</p>\n"
-"        <p>The PATH project by the World Health Organization Regional Office "
-"for Europe launched in 2003. The PATH to hospital quality improvement "
-"support benchmarking tools (Performance Assessment Tool for quality "
-"improvement in Hospitals), which helps hospitals work to assess the results, "
-"review, and to the results starting quality improvement activity to other "
-"hospitals the practical experience of using.</p>\n"
-"        <p>The PATH system goes beyond the traditional economic versus "
-"performance, clinical effectiveness of professional-type differentiation, "
-"and develop a comprehensive perspective, which includes both clinical "
-"effectiveness, efficiency, labor orientation of the reactive control, safety "
-"and patient centeredness. The PATH is not just a hospital performance "
-"measurement tools, but also focus on the interpretation of the results. The "
-"network within the hospital carried out a comparative analysis "
-"(benchmarking) will help the hospitals to learn about best practices. The "
-"PATH provides support for the initial stages of organizational benchmarking "
-"hospitals, sheltered environment for the measurement of culture.</p>\n"
-"        <p>The PATH provides four main components of the hospitals: a "
-"theoretical framework to evaluate performance, the necessary tools (such as "
-"indicators and guides), custom reports, and a national network. The first "
-"two components of the WHO Regional Office for Europe provides, while the "
-"latter two are adapted to local conditions in the country co-ordinators "
-"provide. The indicators include, for example, the current mortality rates, "
-"operating room utilization, employee smoking prevalence. In Hungary, the "
-"networking features direct contact with representatives of the participating "
-"hospitals, and two or three months of work under discussion, participants "
-"will discuss the data collection, processing and interpretation of results, "
-"dilemmas and experiences.</p></div>\n"
+"        <p>The PATH project by the World Health Organization Regional Office for Europe launched in 2003. The PATH to hospital quality improvement support benchmarking tools (Performance Assessment Tool for quality improvement in Hospitals), which helps hospitals work to assess the results, review, and to the results starting quality improvement activity to other hospitals the practical experience of using.</p>\n"
+"        <p>The PATH system goes beyond the traditional economic versus performance, clinical effectiveness of professional-type differentiation, and develop a comprehensive perspective, which includes both clinical effectiveness, efficiency, labor orientation of the reactive control, safety and patient centeredness. The PATH is not just a hospital performance measurement tools, but also focus on the interpretation of the results. The network within the hospital carried out a comparative analysis (benchmarking) will help the hospitals to learn about best practices. The PATH provides support for the initial stages of organizational benchmarking hospitals, sheltered environment for the measurement of culture.</p>\n"
+"        <p>The PATH provides four main components of the hospitals: a theoretical framework to evaluate performance, the necessary tools (such as indicators and guides), custom reports, and a national network. The first two components of the WHO Regional Office for Europe provides, while the latter two are adapted to local conditions in the country co-ordinators provide. The indicators include, for example, the current mortality rates, operating room utilization, employee smoking prevalence. In Hungary, the networking features direct contact with representatives of the participating hospitals, and two or three months of work under discussion, participants will discuss the data collection, processing and interpretation of results, dilemmas and experiences.</p></div>\n"
 "    "
 msgstr ""
 "\n"
 "<p>Programvezető: Dr. Belicza Éva, Dr. Lám Judit, Takács Erika</p>\n"
-"<p>A PATH projektet az Egészségügyi Világszervezet Európai Regionális "
-"Irodája indította el 2003-ban. A PATH a kórházi minőségfejlesztést támogató "
-"teljesítményértékelő eszközrendszer (Performance Assessment Tool for quality "
-"improvement in Hospitals), amely segítséget nyújt a kórházak számára a "
-"munkájuk értékeléséhez, az eredményeik felülvizsgálatához, és ahhoz, hogy az "
-"eredményekből kiindulva minőségfejlesztési tevékenységet végezzenek más "
-"kórházak gyakorlati tapasztalatait is felhasználva.</p>\n"
-"<p>A PATH rendszere túlmutat a hagyományos, gazdasági teljesítmény vs. "
-"klinikai eredményesség típusú szakmai felosztáson, és egy olyan átfogó "
-"nézőpontot alakít ki, amely egyaránt magában foglalja a klinikai "
-"eredményességet, a hatékonyságot, a munkaerő-orientáltságot, a reagáló "
-"irányítást, a biztonságot és a betegközpontúságot. A PATH nem csupán egy "
-"kórházi teljesítményt mérő eszközrendszer, hanem az eredmények értelmezésére "
-"is hangsúlyt helyez. A hálózaton belül működő kórházakkal végzett "
-"összehasonlító elemzés (benchmarking) révén segítséget nyújt a kórházaknak a "
-"legjobban bevált gyakorlat megismerésében. A PATH támogatást nyújt a "
-"szervezeti teljesítményértékelés bevezető szakaszában lévő kórházaknak, "
-"védett környezetet kínál a mérési kultúra kialakításához.</p>\n"
-"<p>A PATH négy főbb alkotóelemet kínál a kórházak számára: elméleti keretet "
-"a teljesítmény értékeléséhez, az ehhez szükséges eszközrendszert "
-"(indikátorok és kézikönyvek formájában), egyéni beszámolókat és egy nemzeti "
-"szintű hálózatot. Az első két alkotóelemet a WHO Európai Regionális Irodája "
-"nyújtja, míg az utóbbi kettőt a helyi viszonyokhoz igazítva az ország-"
-"koordinátorok szolgáltatják. A jelenlegi indikátorok között szerepelnek "
-"például halálozási arányok, műtőkihasználtság, dolgozói dohányzási "
-"prevalencia. A magyarországi hálózatépítésre a közvetlen kapcsolattartás "
-"jellemző a résztvevő kórházak képviselőivel, valamint két-három havonta "
-"munkamegbeszélés keretében a résztvevők megvitatják az adatgyűjtéssel, -"
-"feldolgozással és az eredmények értelmezésével kapcsolatos dilemmákat, "
-"tapasztalatokat.</p></div>"
+"<p>A PATH projektet az Egészségügyi Világszervezet Európai Regionális Irodája indította el 2003-ban. A PATH a kórházi minőségfejlesztést támogató teljesítményértékelő eszközrendszer (Performance Assessment Tool for quality improvement in Hospitals), amely segítséget nyújt a kórházak számára a munkájuk értékeléséhez, az eredményeik felülvizsgálatához, és ahhoz, hogy az eredményekből kiindulva minőségfejlesztési tevékenységet végezzenek más kórházak gyakorlati tapasztalatait is felhasználva.</p>\n"
+"<p>A PATH rendszere túlmutat a hagyományos, gazdasági teljesítmény vs. klinikai eredményesség típusú szakmai felosztáson, és egy olyan átfogó nézőpontot alakít ki, amely egyaránt magában foglalja a klinikai eredményességet, a hatékonyságot, a munkaerő-orientáltságot, a reagáló irányítást, a biztonságot és a betegközpontúságot. A PATH nem csupán egy kórházi teljesítményt mérő eszközrendszer, hanem az eredmények értelmezésére is hangsúlyt helyez. A hálózaton belül működő kórházakkal végzett összehasonlító elemzés (benchmarking) révén segítséget nyújt a kórházaknak a legjobban bevált gyakorlat megismerésében. A PATH támogatást nyújt a szervezeti teljesítményértékelés bevezető szakaszában lévő kórházaknak, védett környezetet kínál a mérési kultúra kialakításához.</p>\n"
+"<p>A PATH négy főbb alkotóelemet kínál a kórházak számára: elméleti keretet a teljesítmény értékeléséhez, az ehhez szükséges eszközrendszert (indikátorok és kézikönyvek formájában), egyéni beszámolókat és egy nemzeti szintű hálózatot. Az első két alkotóelemet a WHO Európai Regionális Irodája nyújtja, míg az utóbbi kettőt a helyi viszonyokhoz igazítva az ország-koordinátorok szolgáltatják. A jelenlegi indikátorok között szerepelnek például halálozási arányok, műtőkihasználtság, dolgozói dohányzási prevalencia. A magyarországi hálózatépítésre a közvetlen kapcsolattartás jellemző a résztvevő kórházak képviselőivel, valamint két-három havonta munkamegbeszélés keretében a résztvevők megvitatják az adatgyűjtéssel, -feldolgozással és az eredmények értelmezésével kapcsolatos dilemmákat, tapasztalatokat.</p></div>"
 
 #: pathstatic/templates/index.html:11
 msgid "PATH international website"
@@ -235,7 +184,6 @@ msgid "Stroke"
 msgstr "Stroke"
 
 #: report_forms/choices.py:114 report_forms/choices.py:132
-#, fuzzy
 msgid "Community acquired pneumonia"
 msgstr "Közösségben szerzett tüdőgyulladás"
 
@@ -344,40 +292,39 @@ msgstr "A beteg és/vagy családjának döntése"
 
 #: report_forms/choices.py:217
 msgid "Elective only"
-msgstr ""
+msgstr "Tervezett műtétek"
 
 #: report_forms/choices.py:218
 msgid "Day surgery"
-msgstr ""
+msgstr "Egynapos sebészet"
 
 #: report_forms/choices.py:219
-#, fuzzy
 msgid "Emergency only"
-msgstr "Egyéb sürgősségi ellátás"
+msgstr "Sürgősségi ellátás"
 
 #: report_forms/choices.py:220
 msgid "Mixed (elective/emergency)"
-msgstr ""
+msgstr "Vegyes műtő"
 
 #: report_forms/choices.py:224
 msgid "Septic"
-msgstr ""
+msgstr "Szeptikus"
 
 #: report_forms/choices.py:225
 msgid "Aseptic"
-msgstr ""
+msgstr "Aszeptikus"
 
 #: report_forms/choices.py:229
 msgid "Weekday"
-msgstr ""
+msgstr "Hétköznap"
 
 #: report_forms/choices.py:230
 msgid "Saturday"
-msgstr ""
+msgstr "Szombat"
 
 #: report_forms/choices.py:231
 msgid "Sunday/holiday"
-msgstr ""
+msgstr "Vasárnap/ünnepnap"
 
 #: report_forms/c1/admin.py:16 report_forms/c1/forms.py:7
 #: report_forms/c1/models.py:34 report_forms/c1/views.py:136
@@ -453,18 +400,16 @@ msgid "Born after date of delivery!"
 msgstr "Előbb szült, mint született!"
 
 #: report_forms/c1/forms.py:31 report_forms/c1/forms.py:32
-#, fuzzy
 msgid "First date"
-msgstr "Első dózis"
+msgstr "Első dátum"
 
 #: report_forms/c1/forms.py:33 report_forms/c1/forms.py:34
-#, fuzzy
 msgid "Second date"
-msgstr "Második dózis"
+msgstr "Második dátum"
 
 #: report_forms/c1/forms.py:35 report_forms/c1/forms.py:36
 msgid "Third date"
-msgstr ""
+msgstr "Harmadik dátum"
 
 #: report_forms/c1/models.py:18
 msgid "Other Diagnose"
@@ -530,8 +475,8 @@ msgstr "Újszülött súlya (g)"
 #: report_forms/c1/views.py:152
 msgid "Mother illnes or risk"
 msgstr ""
-"Van-e az anyának olyan betegsége, kockázata, amely esetében a hüvelyi szülés "
-"súlyos állapotromlást idézett volna elő (testi deformitás, súlyos "
+"Van-e az anyának olyan betegsége, kockázata, amely esetében a hüvelyi szülés"
+" súlyos állapotromlást idézett volna elő (testi deformitás, súlyos "
 "belgyógyászati kórkép, placenta preavia, retina leválás kockázata stb…)?"
 
 #: report_forms/c1/models.py:32 report_forms/c1/views.py:134
@@ -870,7 +815,7 @@ msgstr "Statisztika"
 #: report_forms/templates/list_of_report_forms.html:129
 #: report_forms/templates/list_of_report_forms.html:141
 msgid "Trend"
-msgstr ""
+msgstr "Trend"
 
 #: report_forms/c1/templates/c1_header.html:10
 #: report_forms/c13/templates/c13.html:11
@@ -948,9 +893,8 @@ msgstr "Importálás"
 #: report_forms/templates/list_of_report_forms.html:119
 #: report_forms/templates/list_of_report_forms.html:131
 #: report_forms/templates/list_of_report_forms.html:143
-#, fuzzy
 msgid "Export"
-msgstr "Importálás"
+msgstr "Exporálás"
 
 #: report_forms/c1/templates/c1_header.html:12
 #: report_forms/c13/templates/c13.html:12
@@ -1208,7 +1152,7 @@ msgstr "Rövidített indikátor leírások"
 #: report_forms/c23/templates/c23_statistics.html:22
 #: report_forms/c24/templates/c24_statistics.html:22
 msgid "Sorry, you have less than 30 cases."
-msgstr ""
+msgstr "Sajnálom, kevesebb mint 30 eset."
 
 #: report_forms/c1/templates/c1_statistics.html:13
 #: report_forms/c1/templates/c1_trend_diagram.html:18
@@ -1216,8 +1160,8 @@ msgstr ""
 #: report_forms/c21/templates/c21_statistics.html:26
 #: report_forms/c23/templates/c23_statistics.html:26
 #: report_forms/c24/templates/c24_statistics.html:26
-#: report_forms/c31/templates/c31_statistics.html:24
-#: report_forms/c32/templates/c32_statistics.html:24
+#: report_forms/c31/templates/c31_statistics.html:26
+#: report_forms/c32/templates/c32_statistics.html:26
 #: report_forms/c8/templates/c8_statistics.html:24
 msgid "Overall:"
 msgstr "Összesen:"
@@ -1228,8 +1172,8 @@ msgstr "Összesen:"
 #: report_forms/c21/templates/c21_statistics.html:30
 #: report_forms/c23/templates/c23_statistics.html:30
 #: report_forms/c24/templates/c24_statistics.html:30
-#: report_forms/c31/templates/c31_statistics.html:25
-#: report_forms/c32/templates/c32_statistics.html:25
+#: report_forms/c31/templates/c31_statistics.html:30
+#: report_forms/c32/templates/c32_statistics.html:30
 msgid "Removed:"
 msgstr "Eltávolítva:"
 
@@ -1239,49 +1183,112 @@ msgstr "Eltávolítva:"
 #: report_forms/c21/templates/c21_statistics.html:34
 #: report_forms/c23/templates/c23_statistics.html:34
 #: report_forms/c24/templates/c24_statistics.html:34
-#: report_forms/c31/templates/c31_statistics.html:26
-#: report_forms/c32/templates/c32_statistics.html:26
+#: report_forms/c31/templates/c31_statistics.html:34
+#: report_forms/c32/templates/c32_statistics.html:34
 #: report_forms/c8/templates/c8_statistics.html:26
 msgid "Counted:"
 msgstr "Beleszámolva:"
 
 #: report_forms/c1/templates/c1_statistics.html:25
+#: report_forms/c1/templates/c1_statistics.html:81
+msgid "C-section rate"
+msgstr "Császármetszés aránya"
+
+#: report_forms/c1/templates/c1_statistics.html:29
+#: report_forms/c1/templates/c1_statistics.html:81
+msgid "Rate of planned C-section"
+msgstr "Tervezett császármetszések aránya"
+
+#: report_forms/c1/templates/c1_statistics.html:33
+#: report_forms/c1/templates/c1_statistics.html:81
+msgid "Rate of acute C-section"
+msgstr "Sürgős császármetszések aránya"
+
+#: report_forms/c1/templates/c1_statistics.html:37
+msgid "Rate of c-section by the mother's age is less than 20"
+msgstr "Császármetszések aránya az anya fiatalabb, mint 20 év"
+
+#: report_forms/c1/templates/c1_statistics.html:41
+msgid "Rate of c-section by the mother's age is between 20-35"
+msgstr "Császármetszések aránya az anya 20 és 35 év közt van"
+
+#: report_forms/c1/templates/c1_statistics.html:45
+msgid "Rate of c-section by the mother's age is more than 35"
+msgstr "Császármetszések aránya az anya idősebb, mint 35 év"
+
+#: report_forms/c1/templates/c1_statistics.html:49
+msgid ""
+"Rate of acute C-section by the previous number of deliveries first delivery"
+msgstr "Császármetszések aránya a korábbi szülések száma alapján első szülés"
+
+#: report_forms/c1/templates/c1_statistics.html:53
+msgid ""
+"Rate of acute C-section by the previous number of deliveries first delivery "
+"one or more previous deliveries"
+msgstr ""
+"Császármetszések aránya a korábbi szülések száma alapján második vagy "
+"többedik szülés"
+
+#: report_forms/c1/templates/c1_statistics.html:101
+msgid "Rate of c-section by <br /> the mother's age is less than 20"
+msgstr "Császármetszések aránya <br /> az anya fiatalabb, mint 20 év"
+
+#: report_forms/c1/templates/c1_statistics.html:101
+msgid "Rate of c-section by <br /> the mother's age is between 20-35"
+msgstr "Császármetszések aránya <br /> az anya 20 és 35 év közt van"
+
+#: report_forms/c1/templates/c1_statistics.html:101
+msgid "Rate of c-section by <br /> the mother's age is more than 35"
+msgstr "Császármetszések aránya <br /> az anya idősebb, mint 35 év"
+
+#: report_forms/c1/templates/c1_statistics.html:121
+msgid ""
+"Rate of acute C-section by <br /> the previous number of deliveries first "
+"delivery"
+msgstr ""
+"Császármetszések aránya <br /> a korábbi szülések száma alapján első szülés"
+
+#: report_forms/c1/templates/c1_statistics.html:121
+msgid ""
+"Rate of acute C-section by <br /> the previous number of deliveries first "
+"delivery one or more previous deliveries"
+msgstr ""
+"Császármetszések aránya <br /> a korábbi szülések száma alapján második vagy"
+" többedik szülés"
+
+#: report_forms/c1/templates/c1_trend_diagram.html:11
+msgid "Name of the indicator"
+msgstr "Indikátor neve"
+
 #: report_forms/c1/templates/c1_trend_diagram.html:36
 msgid "C-section rate:"
 msgstr "Császármetszés aránya:"
 
-#: report_forms/c1/templates/c1_statistics.html:29
 #: report_forms/c1/templates/c1_trend_diagram.html:42
 msgid "Rate of planned C-section:"
 msgstr "Tervezett császármetszések aránya:"
 
-#: report_forms/c1/templates/c1_statistics.html:33
 #: report_forms/c1/templates/c1_trend_diagram.html:48
 msgid "Rate of acute C-section:"
 msgstr "Sürgős császármetszések aránya:"
 
-#: report_forms/c1/templates/c1_statistics.html:37
 #: report_forms/c1/templates/c1_trend_diagram.html:54
 msgid "Rate of c-section by the mother's age is less than 20:"
 msgstr "Császármetszések aránya az anya fiatalabb, mint 20 év:"
 
-#: report_forms/c1/templates/c1_statistics.html:41
 #: report_forms/c1/templates/c1_trend_diagram.html:60
 msgid "Rate of c-section by the mother's age is between 20-35:"
 msgstr "Császármetszések aránya az anya 20 és 35 év közt van:"
 
-#: report_forms/c1/templates/c1_statistics.html:45
 #: report_forms/c1/templates/c1_trend_diagram.html:66
 msgid "Rate of c-section by the mother's age is more than 35:"
 msgstr "Császármetszések aránya az anya idősebb, mint 35 év:"
 
-#: report_forms/c1/templates/c1_statistics.html:49
 #: report_forms/c1/templates/c1_trend_diagram.html:72
 msgid ""
 "Rate of acute C-section by the previous number of deliveries first delivery:"
 msgstr "Császármetszések aránya a korábbi szülések száma alapján első szülés:"
 
-#: report_forms/c1/templates/c1_statistics.html:53
 #: report_forms/c1/templates/c1_trend_diagram.html:78
 msgid ""
 "Rate of acute C-section by the previous number of deliveries first delivery "
@@ -1289,11 +1296,6 @@ msgid ""
 msgstr ""
 "Császármetszések aránya a korábbi szülések száma alapján második vagy "
 "többedik szülés:"
-
-#: report_forms/c1/templates/c1_trend_diagram.html:11
-#, fuzzy
-msgid "Name of the indicator"
-msgstr "Egyéb dózis neve"
 
 #: report_forms/c13/forms.py:15 report_forms/c13/forms.py:47
 #: report_forms/c13/models.py:19 report_forms/c13/models.py:23
@@ -1354,8 +1356,8 @@ msgstr ""
 #: report_forms/c13/models.py:29 report_forms/c13/views.py:56
 #: report_forms/c13/views.py:69
 msgid ""
-"Total number of contracted working hours for the data at the end of the "
-"year /day(employee+ entrepreneur)"
+"Total number of contracted working hours for the data at the end of the year"
+" /day(employee+ entrepreneur)"
 msgstr ""
 "az év végi adatban megadott dolgozói létszámhoz tartozó szerződött napi "
 "óraszám (alkalmazott+vállalkozó)"
@@ -1502,26 +1504,48 @@ msgid "The following Case IDs contains error:"
 msgstr "A következő Esetazonosítók hibát tartalmaznak:"
 
 #: report_forms/c20/templates/c20_statistics.html:38
-msgid "Patient prescribed at discharge to take aspirin:"
+msgid "Patient prescribed at discharge to take aspirin"
 msgstr ""
 "Azon betegek %-os aránya, akiknek távozáskor elrendelték az aszpirin "
-"szedését:"
+"szedését"
 
 #: report_forms/c20/templates/c20_statistics.html:42
 msgid ""
 "Patient prescribed to take other (non-aspirin-containing) platelet "
-"aggregation inhibitor therapy:"
+"aggregation inhibitor therapy"
 msgstr ""
 "Azon betegek %-os aránya, akiknek távozáskor elrendeltek egyéb thrombocyta "
-"aggregációgátló th-t:"
+"aggregációgátló th-t"
 
 #: report_forms/c20/templates/c20_statistics.html:46
 msgid ""
 "Patient prescribed to take aspirin or other (non-aspirin-containing) "
-"platelet aggregation inhibitor therapy:"
+"platelet aggregation inhibitor therapy"
 msgstr ""
 "Azon betegek %-os aránya, akiknek távozáskor elrendeltek aszpirint vagy "
-"egyéb thrombocyta aggregációgátló th-t:"
+"egyéb thrombocyta aggregációgátló th-t"
+
+#: report_forms/c20/templates/c20_statistics.html:70
+msgid "Patient prescribed at<br />discharge to take aspirin"
+msgstr ""
+"Azon betegek %-os aránya, akiknek <br /> távozáskor elrendelték az aszpirin "
+"szedését"
+
+#: report_forms/c20/templates/c20_statistics.html:70
+msgid ""
+"Patient prescribed to take other<br />(non-aspirin-containing) platelet "
+"aggregation inhibitor therapy"
+msgstr ""
+"Azon betegek %-os aránya, akiknek <br /> távozáskor elrendeltek egyéb "
+"thrombocyta aggregációgátló th-t"
+
+#: report_forms/c20/templates/c20_statistics.html:70
+msgid ""
+"Patient prescribed to take aspirin or other<br />(non-aspirin-containing) "
+"platelet<br />aggregation inhibitor therapy"
+msgstr ""
+"Azon betegek %-os aránya, akiknek <br /> távozáskor elrendeltek aszpirint "
+"vagy egyéb thrombocyta aggregációgátló th-t"
 
 #: report_forms/c21/forms.py:7 report_forms/c21/models.py:33
 #: report_forms/c21/views.py:291 report_forms/c21/views.py:324
@@ -1826,77 +1850,102 @@ msgid ""
 msgstr "C.2.1. Tervezett colorectalis daganat műtét"
 
 #: report_forms/c21/templates/c21_statistics.html:38
-#: report_forms/c23/templates/c23_statistics.html:38
-#: report_forms/c24/templates/c24_statistics.html:38
-msgid "Appropriate antibiotic drug:"
-msgstr "Megfelelő hatóanyag:"
+#: report_forms/c21/templates/c21_statistics.html:97
+#: report_forms/c23/templates/c23_statistics.html:97
+#: report_forms/c24/templates/c24_statistics.html:97
+#: report_forms/c8/templates/c8_statistics.html:76
+msgid "Appropriate antibiotic drug"
+msgstr "Megfelelő hatóanyag"
 
 #: report_forms/c21/templates/c21_statistics.html:42
-#: report_forms/c23/templates/c23_statistics.html:42
-#: report_forms/c24/templates/c24_statistics.html:42
-msgid "Appropriate dose:"
-msgstr "Megfelelő dózis:"
+#: report_forms/c21/templates/c21_statistics.html:98
+#: report_forms/c23/templates/c23_statistics.html:98
+#: report_forms/c24/templates/c24_statistics.html:98
+#: report_forms/c8/templates/c8_statistics.html:77
+msgid "Appropriate dose"
+msgstr "Megfelelő dózis"
 
 #: report_forms/c21/templates/c21_statistics.html:46
-#: report_forms/c23/templates/c23_statistics.html:46
-#: report_forms/c24/templates/c24_statistics.html:46
-msgid "Appropriate dose with weight:"
-msgstr "Megfelelő dózis a beteg testtömegét figyelembe véve:"
+#: report_forms/c21/templates/c21_statistics.html:99
+#: report_forms/c23/templates/c23_statistics.html:99
+#: report_forms/c24/templates/c24_statistics.html:99
+#: report_forms/c8/templates/c8_statistics.html:78
+msgid "Appropriate dose with weight"
+msgstr "Megfelelő dózis a beteg testtömegét figyelembe véve"
 
 #: report_forms/c21/templates/c21_statistics.html:50
-#: report_forms/c23/templates/c23_statistics.html:50
-#: report_forms/c24/templates/c24_statistics.html:50
-msgid "Appropriate route of administration: intravenous administration:"
-msgstr "Megfelelő adagolási mód:"
+#: report_forms/c21/templates/c21_statistics.html:100
+#: report_forms/c23/templates/c23_statistics.html:100
+#: report_forms/c24/templates/c24_statistics.html:100
+#: report_forms/c8/templates/c8_statistics.html:79
+msgid "Appropriate route of administration: intravenous administration"
+msgstr "Megfelelő adagolási mód"
 
 #: report_forms/c21/templates/c21_statistics.html:54
-#: report_forms/c23/templates/c23_statistics.html:54
-#: report_forms/c24/templates/c24_statistics.html:54
-msgid "Appropriate timing, within one hour of surgical wound incision:"
-msgstr "Megfelelő időzítés bemetszés előtt:"
+#: report_forms/c21/templates/c21_statistics.html:101
+#: report_forms/c23/templates/c23_statistics.html:101
+#: report_forms/c24/templates/c24_statistics.html:101
+#: report_forms/c8/templates/c8_statistics.html:80
+msgid "Appropriate timing, within one hour of surgical wound incision"
+msgstr "Megfelelő időzítés bemetszés előtt"
 
 #: report_forms/c21/templates/c21_statistics.html:58
-#: report_forms/c23/templates/c23_statistics.html:58
-#: report_forms/c24/templates/c24_statistics.html:58
 msgid ""
 "Appropriate timing: (discontinued within 24 hours after surgical wound "
 "closure – or documentation of appropriate clinical indication for "
-"continuation of treatment beyond 24 hours):"
-msgstr "Megfelelő időzítés utolsó AB dózis:"
+"continuation of treatment beyond 24 hours)"
+msgstr "Megfelelő időzítés utolsó AB dózis"
 
 #: report_forms/c21/templates/c21_statistics.html:62
-#: report_forms/c23/templates/c23_statistics.html:62
-#: report_forms/c24/templates/c24_statistics.html:62
-msgid "Full compliance with criteria 1-5:"
-msgstr "I-V kritériumnak való megfelelőség:"
+#: report_forms/c21/templates/c21_statistics.html:103
+#: report_forms/c23/templates/c23_statistics.html:103
+#: report_forms/c24/templates/c24_statistics.html:103
+#: report_forms/c8/templates/c8_statistics.html:82
+msgid "Full compliance with criteria 1-5"
+msgstr "I-V kritériumnak való megfelelőség"
 
 #: report_forms/c21/templates/c21_statistics.html:66
-#: report_forms/c23/templates/c23_statistics.html:66
-#: report_forms/c24/templates/c24_statistics.html:66
+#: report_forms/c21/templates/c21_statistics.html:104
+#: report_forms/c23/templates/c23_statistics.html:104
+#: report_forms/c24/templates/c24_statistics.html:104
+#: report_forms/c8/templates/c8_statistics.html:83
 #, python-format
-msgid "% of misuse:"
+msgid "% of misuse"
 msgstr "Téves alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:70
-#: report_forms/c23/templates/c23_statistics.html:70
-#: report_forms/c24/templates/c24_statistics.html:70
+#: report_forms/c21/templates/c21_statistics.html:105
+#: report_forms/c23/templates/c23_statistics.html:105
+#: report_forms/c24/templates/c24_statistics.html:105
+#: report_forms/c8/templates/c8_statistics.html:84
 #, python-format
-msgid "% of overuse:"
+msgid "% of overuse"
 msgstr "Túlzott alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:74
-#: report_forms/c23/templates/c23_statistics.html:74
-#: report_forms/c24/templates/c24_statistics.html:74
+#: report_forms/c21/templates/c21_statistics.html:106
+#: report_forms/c23/templates/c23_statistics.html:106
+#: report_forms/c24/templates/c24_statistics.html:106
+#: report_forms/c8/templates/c8_statistics.html:85
 #, python-format
-msgid "% of underuse:"
+msgid "% of underuse"
 msgstr "Hiányos alkalmazás"
 
 #: report_forms/c21/templates/c21_statistics.html:78
-#: report_forms/c23/templates/c23_statistics.html:78
-#: report_forms/c24/templates/c24_statistics.html:78
+#: report_forms/c21/templates/c21_statistics.html:107
+#: report_forms/c23/templates/c23_statistics.html:107
+#: report_forms/c24/templates/c24_statistics.html:107
+#: report_forms/c8/templates/c8_statistics.html:86
 #, python-format
-msgid "% of single shot treatment:"
+msgid "% of single shot treatment"
 msgstr "Egylövetű kezelés"
+
+#: report_forms/c21/templates/c21_statistics.html:102
+#: report_forms/c23/templates/c23_statistics.html:102
+#: report_forms/c24/templates/c24_statistics.html:102
+#: report_forms/c8/templates/c8_statistics.html:81
+msgid "Appropriate timing:"
+msgstr "Megfelelő időzítés:"
 
 #: report_forms/c23/models.py:30 report_forms/c23/views.py:289
 #: report_forms/c23/views.py:322
@@ -1919,6 +1968,68 @@ msgstr "A beteg testtömege nem lehet üres!"
 #: report_forms/templates/list_of_report_forms.html:42
 msgid "C.2.3. Prophylactic antibiotic use - Hip replacement"
 msgstr "C.2.3. Csípőprotézis"
+
+#: report_forms/c23/templates/c23_statistics.html:38
+#: report_forms/c24/templates/c24_statistics.html:38
+msgid "Appropriate antibiotic drug:"
+msgstr "Megfelelő hatóanyag:"
+
+#: report_forms/c23/templates/c23_statistics.html:42
+#: report_forms/c24/templates/c24_statistics.html:42
+msgid "Appropriate dose:"
+msgstr "Megfelelő dózis:"
+
+#: report_forms/c23/templates/c23_statistics.html:46
+#: report_forms/c24/templates/c24_statistics.html:46
+msgid "Appropriate dose with weight:"
+msgstr "Megfelelő dózis a beteg testtömegét figyelembe véve:"
+
+#: report_forms/c23/templates/c23_statistics.html:50
+#: report_forms/c24/templates/c24_statistics.html:50
+msgid "Appropriate route of administration: intravenous administration:"
+msgstr "Megfelelő adagolási mód:"
+
+#: report_forms/c23/templates/c23_statistics.html:54
+#: report_forms/c24/templates/c24_statistics.html:54
+msgid "Appropriate timing, within one hour of surgical wound incision:"
+msgstr "Megfelelő időzítés bemetszés előtt:"
+
+#: report_forms/c23/templates/c23_statistics.html:58
+#: report_forms/c24/templates/c24_statistics.html:58
+msgid ""
+"Appropriate timing: (discontinued within 24 hours after surgical wound "
+"closure – or documentation of appropriate clinical indication for "
+"continuation of treatment beyond 24 hours):"
+msgstr "Megfelelő időzítés utolsó AB dózis:"
+
+#: report_forms/c23/templates/c23_statistics.html:62
+#: report_forms/c24/templates/c24_statistics.html:62
+msgid "Full compliance with criteria 1-5:"
+msgstr "I-V kritériumnak való megfelelőség:"
+
+#: report_forms/c23/templates/c23_statistics.html:66
+#: report_forms/c24/templates/c24_statistics.html:66
+#, python-format
+msgid "% of misuse:"
+msgstr "Téves alkalmazás"
+
+#: report_forms/c23/templates/c23_statistics.html:70
+#: report_forms/c24/templates/c24_statistics.html:70
+#, python-format
+msgid "% of overuse:"
+msgstr "Túlzott alkalmazás"
+
+#: report_forms/c23/templates/c23_statistics.html:74
+#: report_forms/c24/templates/c24_statistics.html:74
+#, python-format
+msgid "% of underuse:"
+msgstr "Hiányos alkalmazás"
+
+#: report_forms/c23/templates/c23_statistics.html:78
+#: report_forms/c24/templates/c24_statistics.html:78
+#, python-format
+msgid "% of single shot treatment:"
+msgstr "Egylövetű kezelés"
 
 #: report_forms/c24/models.py:54 report_forms/c24/models.py:55
 msgid "Planned surgery for hysterectomy"
@@ -2012,22 +2123,28 @@ msgstr "C.3.1. AMI halálozás"
 #: report_forms/c32/templates/c32_statistics.html:22
 #: report_forms/c8/templates/c8_statistics.html:22
 msgid "Sorry, you have less than 60 cases."
-msgstr ""
+msgstr "Sajnálom, kevesebb mint 60 eset."
 
-#: report_forms/c31/templates/c31_statistics.html:28
-#: report_forms/c32/templates/c32_statistics.html:28
-msgid "Hospital mortality rate within 30 days:"
+#: report_forms/c31/templates/c31_statistics.html:38
+#: report_forms/c31/templates/c31_statistics.html:65
+#: report_forms/c32/templates/c32_statistics.html:38
+#: report_forms/c32/templates/c32_statistics.html:65
+msgid "Hospital mortality rate within 30 days"
 msgstr "Kórházi halálozás 30 napon belül"
 
-#: report_forms/c31/templates/c31_statistics.html:29
-#: report_forms/c32/templates/c32_statistics.html:29
-msgid "Hospital mortality rate within 30 days without transmissions:"
+#: report_forms/c31/templates/c31_statistics.html:42
+#: report_forms/c31/templates/c31_statistics.html:66
+#: report_forms/c32/templates/c32_statistics.html:42
+#: report_forms/c32/templates/c32_statistics.html:66
+msgid "Hospital mortality rate within 30 days without transmissions"
 msgstr ""
 "Kórházi halálozás 30 napon belül nem átvett és nem áthelyezett betegekre"
 
-#: report_forms/c31/templates/c31_statistics.html:30
-#: report_forms/c32/templates/c32_statistics.html:30
-msgid "Hospital mortality rate within 2 days:"
+#: report_forms/c31/templates/c31_statistics.html:46
+#: report_forms/c31/templates/c31_statistics.html:67
+#: report_forms/c32/templates/c32_statistics.html:46
+#: report_forms/c32/templates/c32_statistics.html:67
+msgid "Hospital mortality rate within 2 days"
 msgstr "Kórházi halálozás 2 napon belül"
 
 #: report_forms/c32/models.py:26
@@ -2166,18 +2283,19 @@ msgid ""
 msgstr "Átlag ápolási idő az első műtéti beavatkozástól az elbocsátásig"
 
 #: report_forms/c8/templates/c8_statistics.html:56
-msgid "Median length of stay from the first surgical procedure until discharge"
+msgid ""
+"Median length of stay from the first surgical procedure until discharge"
 msgstr "Medián ápolási idő az első műtéti beavatkozástól az elbocsátásig"
 
 #: report_forms/c9/forms.py:7 report_forms/c9/models.py:12
-#: report_forms/c9/views.py:351 report_forms/c9/views.py:438
+#: report_forms/c9/views.py:353 report_forms/c9/views.py:440
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
 #: report_forms/c9/forms.py:8 report_forms/c9/models.py:16
-#: report_forms/c9/views.py:355 report_forms/c9/views.py:442
+#: report_forms/c9/views.py:357 report_forms/c9/views.py:444
 msgid "Time patient arrives to OR"
-msgstr ""
+msgstr "Beteg műtőbe érkezési ideje"
 
 #: report_forms/c9/forms.py:8 report_forms/c9/forms.py:9
 #: report_forms/c9/forms.py:10 report_forms/c9/forms.py:11
@@ -2186,184 +2304,177 @@ msgstr ""
 #: report_forms/c9/forms.py:22 report_forms/c9/forms.py:23
 #: report_forms/c9/forms.py:24 report_forms/c9/forms.py:25
 msgid "(hh:mm)"
-msgstr ""
+msgstr "(óó:pp)"
 
 #: report_forms/c9/forms.py:9 report_forms/c9/models.py:17
-#: report_forms/c9/views.py:356 report_forms/c9/views.py:443
+#: report_forms/c9/views.py:358 report_forms/c9/views.py:445
 msgid "Anesthesia start"
-msgstr ""
+msgstr "Anesztézia kezdete"
 
 #: report_forms/c9/forms.py:10 report_forms/c9/models.py:18
-#: report_forms/c9/views.py:357 report_forms/c9/views.py:444
+#: report_forms/c9/views.py:359 report_forms/c9/views.py:446
 msgid "Surgery start"
-msgstr ""
+msgstr "Műtét kezdete"
 
 #: report_forms/c9/forms.py:11 report_forms/c9/models.py:19
-#: report_forms/c9/views.py:358 report_forms/c9/views.py:445
+#: report_forms/c9/views.py:360 report_forms/c9/views.py:447
 msgid "Surgery end"
-msgstr ""
+msgstr "Műtét vége"
 
 #: report_forms/c9/forms.py:12 report_forms/c9/models.py:20
-#: report_forms/c9/views.py:359 report_forms/c9/views.py:446
+#: report_forms/c9/views.py:361 report_forms/c9/views.py:448
 msgid "Anesthesia end"
-msgstr ""
+msgstr "Anesztézia vége"
 
 #: report_forms/c9/forms.py:13 report_forms/c9/models.py:21
-#: report_forms/c9/views.py:360 report_forms/c9/views.py:447
+#: report_forms/c9/views.py:362 report_forms/c9/views.py:449
 msgid "Time patient leaves OR"
-msgstr ""
+msgstr "Beteg műtőből távozási ideje"
 
 #: report_forms/c9/forms.py:20 report_forms/c9/models.py:36
-#: report_forms/c9/views.py:369 report_forms/c9/views.py:393
+#: report_forms/c9/views.py:371 report_forms/c9/views.py:395
 msgid "Normal time of opening on weekdays"
-msgstr ""
+msgstr "Hétvégi normál nyitási idő "
 
 #: report_forms/c9/forms.py:21 report_forms/c9/models.py:37
-#: report_forms/c9/views.py:370 report_forms/c9/views.py:394
+#: report_forms/c9/views.py:372 report_forms/c9/views.py:396
 msgid "Normal time of closing on weekdays"
-msgstr ""
+msgstr "Hétvégi normál zárási idő"
 
 #: report_forms/c9/forms.py:22 report_forms/c9/models.py:39
-#: report_forms/c9/views.py:372 report_forms/c9/views.py:396
+#: report_forms/c9/views.py:374 report_forms/c9/views.py:398
 msgid "Normal time of opening on saturdays"
-msgstr ""
+msgstr "Szombati normál nyitási idő "
 
 #: report_forms/c9/forms.py:23 report_forms/c9/models.py:40
-#: report_forms/c9/views.py:373 report_forms/c9/views.py:397
+#: report_forms/c9/views.py:375 report_forms/c9/views.py:399
 msgid "Normal time of closing on saturdays"
-msgstr ""
+msgstr "Szombati normál zárási idő"
 
 #: report_forms/c9/forms.py:24 report_forms/c9/models.py:42
-#: report_forms/c9/views.py:375 report_forms/c9/views.py:399
+#: report_forms/c9/views.py:377 report_forms/c9/views.py:401
 msgid "Normal time of opening on sundays and holidays"
-msgstr ""
+msgstr "Vasárnapi/ünnepi normál nyitási idő "
 
 #: report_forms/c9/forms.py:25 report_forms/c9/models.py:43
-#: report_forms/c9/views.py:376 report_forms/c9/views.py:400
+#: report_forms/c9/views.py:378 report_forms/c9/views.py:402
 msgid "Normal time of closing on sundays and holidays"
-msgstr ""
+msgstr "Vasárnapi/ünnepi normál zárási idő"
 
 #: report_forms/c9/forms.py:26 report_forms/c9/models.py:49
-#: report_forms/c9/views.py:382 report_forms/c9/views.py:406
+#: report_forms/c9/views.py:384 report_forms/c9/views.py:408
 msgid "Beginning of observational period"
-msgstr ""
+msgstr "Megfigyelés kezdete"
 
 #: report_forms/c9/forms.py:27 report_forms/c9/models.py:50
-#: report_forms/c9/views.py:383 report_forms/c9/views.py:407
+#: report_forms/c9/views.py:385 report_forms/c9/views.py:409
 msgid "End of observational period"
-msgstr ""
+msgstr "Megfigyelés vége"
 
 #: report_forms/c9/models.py:10 report_forms/c9/models.py:33
-#: report_forms/c9/views.py:349 report_forms/c9/views.py:366
-#: report_forms/c9/views.py:390 report_forms/c9/views.py:436
+#: report_forms/c9/views.py:351 report_forms/c9/views.py:368
+#: report_forms/c9/views.py:392 report_forms/c9/views.py:438
 msgid "Identifier of central operating unit"
-msgstr ""
+msgstr "Központi műtőblokk azonosítója"
 
 #: report_forms/c9/models.py:11
 msgid "Identifier of operating unit or operating rooms"
-msgstr ""
+msgstr "Műtő-helyiség azonosítója"
 
-#: report_forms/c9/models.py:13 report_forms/c9/views.py:352
-#: report_forms/c9/views.py:439
-#, fuzzy
-msgid "Type of day"
-msgstr "A beteg további sorsa"
-
-#: report_forms/c9/models.py:14 report_forms/c9/views.py:353
-#: report_forms/c9/views.py:440
-msgid "Case number"
-msgstr ""
-
-#: report_forms/c9/models.py:15 report_forms/c9/views.py:354
+#: report_forms/c9/models.py:13 report_forms/c9/views.py:354
 #: report_forms/c9/views.py:441
+msgid "Type of day"
+msgstr "Nap típusa"
+
+#: report_forms/c9/models.py:14 report_forms/c9/views.py:355
+#: report_forms/c9/views.py:442
+msgid "Case number"
+msgstr "Eset sorszáma"
+
+#: report_forms/c9/models.py:15 report_forms/c9/views.py:356
+#: report_forms/c9/views.py:443
 msgid "Patient identifier"
-msgstr ""
+msgstr "Betegazonosító"
 
 #: report_forms/c9/models.py:29
-#, fuzzy
 msgid "Patient"
-msgstr "Betegazonosító"
+msgstr "Beteg"
 
 #: report_forms/c9/models.py:30
-#, fuzzy
 msgid "Patients"
-msgstr "Betegazonosító"
+msgstr "Betegek"
 
-#: report_forms/c9/models.py:34 report_forms/c9/views.py:350
-#: report_forms/c9/views.py:367 report_forms/c9/views.py:391
-#: report_forms/c9/views.py:437
+#: report_forms/c9/models.py:34 report_forms/c9/views.py:352
+#: report_forms/c9/views.py:369 report_forms/c9/views.py:393
+#: report_forms/c9/views.py:439
 msgid "Identifier of OR"
-msgstr ""
+msgstr "Műtőazonosító"
 
-#: report_forms/c9/models.py:35 report_forms/c9/views.py:368
-#: report_forms/c9/views.py:392
-#, fuzzy
+#: report_forms/c9/models.py:35 report_forms/c9/views.py:370
+#: report_forms/c9/views.py:394
 msgid "Type of OR"
-msgstr "Osztály típusa"
+msgstr "Műtő típusa"
 
-#: report_forms/c9/models.py:38 report_forms/c9/views.py:371
-#: report_forms/c9/views.py:395
-#, fuzzy
+#: report_forms/c9/models.py:38 report_forms/c9/views.py:373
+#: report_forms/c9/views.py:397
 msgid "Weekday number of staffed days in the observed period"
-msgstr "Tűszúrásos sérülések száma a vizsgálat évében"
+msgstr "Hétköznapi működési napok száma a megfigyelési időszakban"
 
-#: report_forms/c9/models.py:41 report_forms/c9/views.py:374
-#: report_forms/c9/views.py:398
-#, fuzzy
+#: report_forms/c9/models.py:41 report_forms/c9/views.py:376
+#: report_forms/c9/views.py:400
 msgid "Saturday number of staffed days in the observed period"
-msgstr "Tűszúrásos sérülések száma a vizsgálat évében"
+msgstr "Szombati működési napok száma a megfigyelési időszakban"
 
-#: report_forms/c9/models.py:44 report_forms/c9/views.py:377
-#: report_forms/c9/views.py:401
-msgid "Sunday/Holiday number of staffed days in the observed period"
-msgstr ""
-
-#: report_forms/c9/models.py:45 report_forms/c9/views.py:378
-#: report_forms/c9/views.py:402
-msgid "Hygiene category of OR"
-msgstr ""
-
-#: report_forms/c9/models.py:46 report_forms/c9/views.py:379
+#: report_forms/c9/models.py:44 report_forms/c9/views.py:379
 #: report_forms/c9/views.py:403
-#, fuzzy
-msgid "Professional field"
-msgstr "Rehabilitáció szakterülete"
+msgid "Sunday/Holiday number of staffed days in the observed period"
+msgstr "Vasárnapi/Ünnepnapi működési napok száma a megfigyelési időszakban"
 
-#: report_forms/c9/models.py:47 report_forms/c9/views.py:380
+#: report_forms/c9/models.py:45 report_forms/c9/views.py:380
 #: report_forms/c9/views.py:404
-msgid "Preparatory room"
-msgstr ""
+msgid "Hygiene category of OR"
+msgstr "Higiéniai szempontú műtőkategória"
 
-#: report_forms/c9/models.py:48 report_forms/c9/views.py:381
+#: report_forms/c9/models.py:46 report_forms/c9/views.py:381
 #: report_forms/c9/views.py:405
+msgid "Professional field"
+msgstr "Szakterület"
+
+#: report_forms/c9/models.py:47 report_forms/c9/views.py:382
+#: report_forms/c9/views.py:406
+msgid "Preparatory room"
+msgstr "Kapcsolódó előkészítő"
+
+#: report_forms/c9/models.py:48 report_forms/c9/views.py:383
+#: report_forms/c9/views.py:407
 msgid "Post-operative observatory room"
-msgstr ""
+msgstr "Kapcsolódó ébredő"
 
 #: report_forms/c9/models.py:58
 msgid "Operation room"
-msgstr ""
+msgstr "Műtőterem"
 
 #: report_forms/c9/models.py:59
 msgid "Operation rooms"
-msgstr ""
+msgstr "Műtőtermek"
 
-#: report_forms/c9/views.py:90
-#, fuzzy
+#: report_forms/c9/views.py:91
 msgid ""
 "You are not using the Patients template csv. The number of fields is "
 "different."
-msgstr "Nem a megadott Sablon fájlt használod. Eltérő az oszlopok száma."
+msgstr ""
+"Nem a megadott Beteg Sablon fájlt használod. Eltérő az oszlopok száma."
 
-#: report_forms/c9/views.py:97
-#, fuzzy
+#: report_forms/c9/views.py:98
 msgid ""
 "You are not using the Operation template csv. The number of fields is "
 "different."
-msgstr "Nem a megadott Sablon fájlt használod. Eltérő az oszlopok száma."
+msgstr ""
+"Nem a megadott Osztály Sablon fájlt használod. Eltérő az oszlopok száma."
 
 #: report_forms/c9/templates/c9.html:4
 msgid "C9. Operating theatre performance"
-msgstr ""
+msgstr "C9. Központi műtők kihasználtsága"
 
 #: report_forms/c9/templates/c9.html:9
 #: report_forms/c9/templates/c9_error.html:9
@@ -2372,7 +2483,7 @@ msgstr ""
 #: report_forms/c9/templates/c9_statistics.html:9
 #: report_forms/templates/list_of_report_forms.html:103
 msgid "Operation form"
-msgstr ""
+msgstr "Osztály űrlap"
 
 #: report_forms/c9/templates/c9.html:9
 #: report_forms/c9/templates/c9_error.html:9
@@ -2380,9 +2491,8 @@ msgstr ""
 #: report_forms/c9/templates/c9_filled_out.html:9
 #: report_forms/c9/templates/c9_statistics.html:9
 #: report_forms/templates/list_of_report_forms.html:103
-#, fuzzy
 msgid "Patient form"
-msgstr "Betegazonosító"
+msgstr "Beteg Űrlap"
 
 #: report_forms/c9/templates/c9.html:12
 #: report_forms/c9/templates/c9_error.html:12
@@ -2391,7 +2501,7 @@ msgstr "Betegazonosító"
 #: report_forms/c9/templates/c9_statistics.html:12
 #: report_forms/templates/list_of_report_forms.html:108
 msgid "Operation template"
-msgstr ""
+msgstr "Osztály sablon"
 
 #: report_forms/c9/templates/c9.html:12
 #: report_forms/c9/templates/c9_error.html:12
@@ -2400,42 +2510,43 @@ msgstr ""
 #: report_forms/c9/templates/c9_statistics.html:12
 #: report_forms/templates/list_of_report_forms.html:108
 msgid "Patient template"
-msgstr ""
+msgstr "Beteg sablon"
 
 #: report_forms/c9/templates/c9_error.html:4
 #: report_forms/c9/templates/c9_file_upload.html:4
 #: report_forms/c9/templates/c9_filled_out.html:4
 #: report_forms/c9/templates/c9_statistics.html:4
 msgid "C9. Operating theatre performance "
-msgstr ""
+msgstr "C9. Központi műtők kihasználtsága"
 
 #: report_forms/c9/templates/c9_statistics.html:33
 msgid "Patients operated while the OR was closed:"
-msgstr ""
+msgstr "Betegek akiket akkor operáltak, amikor zárva volt a műtő:"
 
 #: report_forms/c9/templates/c9_statistics.html:39
 msgid "Patients date errors:"
-msgstr ""
+msgstr "Beteg dátumhibák"
 
 #: report_forms/c9/templates/c9_statistics.html:45
 msgid "Sorry, you have less than 30 days of observation."
-msgstr ""
+msgstr "Sajnálom, kevesebb mint 30 nap megfigyelési idő."
 
 #: report_forms/c9/templates/c9_statistics.html:50
 msgid "Sorry, but you have a date or time error with this OR."
-msgstr ""
+msgstr "Sajnálom, de dátumhibával rendelkezik ez a műtőterem."
 
 #: report_forms/c9/templates/c9_statistics.html:54
-msgid "Operating theatre performance:"
-msgstr ""
+msgid "Operating theatre performance"
+msgstr "Műtétikihasználtság"
 
 #: report_forms/c9/templates/c9_statistics.html:58
-msgid "Surgery performance:"
-msgstr ""
+msgid "Surgery performance"
+msgstr "Műtéti kihasználtsági arány"
 
 #: report_forms/c9/templates/c9_statistics.html:62
-msgid "Average time in OR:"
-msgstr ""
+#: report_forms/c9/templates/c9_statistics.html:126
+msgid "Average time in OR"
+msgstr "Átlagos műtőben töltött idő"
 
 #: report_forms/c9/templates/c9_statistics.html:63
 #: report_forms/c9/templates/c9_statistics.html:67
@@ -2446,57 +2557,59 @@ msgstr ""
 #: report_forms/c9/templates/c9_statistics.html:87
 #: report_forms/c9/templates/c9_statistics.html:91
 #: report_forms/c9/templates/c9_statistics.html:103
-msgid "minutes"
-msgstr ""
+msgid "hours"
+msgstr "óra"
 
 #: report_forms/c9/templates/c9_statistics.html:66
-msgid "Median time in OR:"
-msgstr ""
+#: report_forms/c9/templates/c9_statistics.html:127
+msgid "Median time in OR"
+msgstr "Medián műtőben töltött idő"
 
 #: report_forms/c9/templates/c9_statistics.html:70
-#, fuzzy
-msgid "Average time of anesthesia:"
-msgstr "Átlag ápolási idő"
+#: report_forms/c9/templates/c9_statistics.html:128
+msgid "Average time of anesthesia"
+msgstr "Átlagos anesztéziában töltött idő"
 
 #: report_forms/c9/templates/c9_statistics.html:74
-#, fuzzy
-msgid "Median time of anesthesia:"
-msgstr "Medián ápolási idő"
+#: report_forms/c9/templates/c9_statistics.html:129
+msgid "Median time of anesthesia"
+msgstr "Medián anesztéziában töltött idő"
 
 #: report_forms/c9/templates/c9_statistics.html:78
-#, fuzzy
-msgid "Average time of surgery:"
-msgstr "Átlag ápolási idő"
+#: report_forms/c9/templates/c9_statistics.html:130
+msgid "Average time of surgery"
+msgstr "Átlagos műtéti idő"
 
 #: report_forms/c9/templates/c9_statistics.html:82
-#, fuzzy
-msgid "Median time of surgery:"
-msgstr "Medián ápolási idő"
+#: report_forms/c9/templates/c9_statistics.html:131
+msgid "Median time of surgery"
+msgstr "Medián műtéti idő"
 
 #: report_forms/c9/templates/c9_statistics.html:86
-msgid "Average time before surgery:"
-msgstr ""
+#: report_forms/c9/templates/c9_statistics.html:132
+msgid "Average time before surgery"
+msgstr "Átlagos műtét előtti idő"
 
 #: report_forms/c9/templates/c9_statistics.html:90
-msgid "Median time before surgery:"
-msgstr ""
+#: report_forms/c9/templates/c9_statistics.html:133
+msgid "Median time before surgery"
+msgstr "Medián műtét előtti idő"
 
 #: report_forms/c9/templates/c9_statistics.html:94
-#, fuzzy
-msgid "Number of days with overtime:"
-msgstr "Ezt megelőző szülések száma"
+msgid "Number of days with overtime"
+msgstr "Túlórás napok száma"
 
 #: report_forms/c9/templates/c9_statistics.html:98
-msgid "Average time of overtime:"
-msgstr ""
+msgid "Average time of overtime"
+msgstr "Átlagos túlóra"
 
 #: report_forms/c9/templates/c9_statistics.html:99
-msgid "minutes/days"
-msgstr ""
+msgid "hours/days"
+msgstr "óra/nap"
 
 #: report_forms/c9/templates/c9_statistics.html:102
-msgid "Average time of overtime on days with overtime:"
-msgstr ""
+msgid "Average time of overtime on days with overtime"
+msgstr "Átlagos túlóra a túlórás napokon"
 
 #: report_forms/r1/forms.py:8 report_forms/r1/models.py:16
 #: report_forms/r1/views.py:553 report_forms/r1/views.py:631
@@ -2557,7 +2670,8 @@ msgstr "ASIA impairment score felmérés ideje"
 #: report_forms/r1/views.py:576 report_forms/r1/views.py:611
 #: report_forms/r1/views.py:654 report_forms/r1/views.py:689
 msgid ""
-"Standard neurological classification of spinal cord injury date of assessment"
+"Standard neurological classification of spinal cord injury date of "
+"assessment"
 msgstr ""
 "Standard neurological classification of spinal cord injury felmérés ideje"
 
@@ -2883,8 +2997,8 @@ msgid ""
 "Standard neurological classification of spinal cord injury assessment at "
 "discharge can't be after discharge!"
 msgstr ""
-"Standard neurological classification of spinal cord injury az elbocsájtáskor "
-"nem lehet az elbocsájtás után!"
+"Standard neurological classification of spinal cord injury az elbocsájtáskor"
+" nem lehet az elbocsájtás után!"
 
 #: report_forms/r1/views.py:209
 msgid ""
@@ -2908,13 +3022,14 @@ msgstr "R1. Indikátorok rehabilitációs szakkórházak és osztályok számár
 
 #: report_forms/r1/templates/r1_statistics.html:22
 msgid "Sorry, you have less than 60 cases for R1/A."
-msgstr ""
+msgstr "Sajnálom, de kevesebb mint 60 R1/A eset van."
 
 #: report_forms/r1/templates/r1_statistics.html:26
 msgid "Functional assessment at admission"
 msgstr "Funkcionális állapotfelmérés felvételkor"
 
 #: report_forms/r1/templates/r1_statistics.html:29
+#: report_forms/r1/templates/r1_statistics.html:104
 msgid ""
 "Percentage of patients who have documented functional assessment at "
 "admission to an inpatient unit for rehabilitation program within 7 days of "
@@ -2924,6 +3039,7 @@ msgstr ""
 "módon a felvételt követő 7 napon belül megtörtént"
 
 #: report_forms/r1/templates/r1_statistics.html:33
+#: report_forms/r1/templates/r1_statistics.html:105
 msgid ""
 "Percentage of patients who have documented functional assessment at "
 "admission to an inpatient unit for rehabilitation program within 2 days of "
@@ -2933,6 +3049,7 @@ msgstr ""
 "módon a felvételt követő 2 napon belül megtörtént"
 
 #: report_forms/r1/templates/r1_statistics.html:37
+#: report_forms/r1/templates/r1_statistics.html:106
 msgid ""
 "Percentage of patients who have documented functional assessment at "
 "admission to an inpatient unit for rehabilitation program within 3 days of "
@@ -2943,52 +3060,58 @@ msgstr ""
 
 #: report_forms/r1/templates/r1_statistics.html:43
 msgid "Sorry, you have less than 60 cases for R1/B."
-msgstr ""
+msgstr "Sajnálom, de kevesebb mint 60 R1/B eset van."
 
 #: report_forms/r1/templates/r1_statistics.html:47
 msgid "Functional assessment prior to discharge"
 msgstr "Funkcionális állapotfelmérés elbocsájtás előtt"
 
 #: report_forms/r1/templates/r1_statistics.html:50
+#: report_forms/r1/templates/r1_statistics.html:109
 msgid ""
-"Percentage of patients who have documented evidence of functional assessment "
-"in 3 days prior to discharge"
+"Percentage of patients who have documented evidence of functional assessment"
+" in 3 days prior to discharge"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon az elbocsájtást megelőző 3 napon belül megtörtént"
 
 #: report_forms/r1/templates/r1_statistics.html:54
+#: report_forms/r1/templates/r1_statistics.html:110
 msgid ""
-"Percentage of patients who have documented evidence of functional assessment "
-"in 1 days prior to discharge"
+"Percentage of patients who have documented evidence of functional assessment"
+" in 1 days prior to discharge"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon az elbocsájtást megelőző 1 napon belül megtörtént"
 
 #: report_forms/r1/templates/r1_statistics.html:58
+#: report_forms/r1/templates/r1_statistics.html:111
 msgid ""
-"Percentage of patients who have documented evidence of functional assessment "
-"in 2 days prior to discharge"
+"Percentage of patients who have documented evidence of functional assessment"
+" in 2 days prior to discharge"
 msgstr ""
 "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 "módon az elbocsájtást megelőző 2 napon belül megtörtént"
 
 #: report_forms/r1/templates/r1_statistics.html:64
 msgid "Sorry, you have less than 60 cases for R2."
-msgstr ""
+msgstr "Sajnálom, de kevesebb mint 60 R2 eset van."
 
 #: report_forms/r1/templates/r1_statistics.html:68
 msgid "Unplanned interruption to rehabilitation program"
 msgstr "Rehabilitációs program nem tervezett megszakítása"
 
 #: report_forms/r1/templates/r1_statistics.html:71
+#: report_forms/r1/templates/r1_statistics.html:114
 msgid ""
 "Percentage of those patients whose rehabilitation program interrupted "
 "unexpectedly"
 msgstr ""
-"Azon betegek aránya, akiknek a rehabilitációs programja váratlanul megszakadt"
+"Azon betegek aránya, akiknek a rehabilitációs programja váratlanul "
+"megszakadt"
 
 #: report_forms/r1/templates/r1_statistics.html:75
+#: report_forms/r1/templates/r1_statistics.html:115
 msgid ""
 "Percentage of those patients whose rehabilitation program interrupted "
 "unexpectedly because of an acute illness independent from the original "
@@ -2998,6 +3121,7 @@ msgstr ""
 "megszakadt az alapbetegségtől független akut megbetegedés miatt"
 
 #: report_forms/r1/templates/r1_statistics.html:79
+#: report_forms/r1/templates/r1_statistics.html:116
 msgid ""
 "Percentage of those patients whose rehabilitation program interrupted "
 "unexpectedly on the demand of patient/family"
@@ -3006,6 +3130,7 @@ msgstr ""
 "megszakadt a beteg/családja döntése miatt"
 
 #: report_forms/r1/templates/r1_statistics.html:83
+#: report_forms/r1/templates/r1_statistics.html:117
 msgid ""
 "Percentage of those patients whose rehabilitation program interrupted "
 "unexpectedly because of a complication of the original disease"
@@ -3019,16 +3144,15 @@ msgstr "Jelentési lap"
 
 #: report_forms/templates/list_of_report_forms.html:102
 msgid "C.9. Operating theatre performance "
-msgstr ""
+msgstr "C.9. Központi műtők kihasználtsága"
 
 #: report_forms/templates/list_of_report_forms.html:107
 msgid "Operation export"
-msgstr ""
+msgstr "Osztály exportálás"
 
 #: report_forms/templates/list_of_report_forms.html:107
-#, fuzzy
 msgid "Patient export"
-msgstr "Betegazonosító"
+msgstr "Beteg exporálás"
 
 #: templates/base.html:33
 msgid "Homepage"
@@ -3048,36 +3172,38 @@ msgstr "bejelentkezés"
 
 #: templates/base.html:55
 msgid "Print"
-msgstr ""
+msgstr "Nyomtatás"
 
 #: university/models.py:7 university/models.py:15
 msgid "Hospital"
-msgstr ""
+msgstr "Kórház"
 
 #: university/models.py:8
-#, fuzzy
 msgid "Codename"
-msgstr "Felhasználó"
+msgstr "Kódnév"
 
 #: university/models.py:16
 msgid "Hospitals"
-msgstr ""
+msgstr "Kórházak"
+
+#~ msgid "minutes"
+#~ msgstr "perc"
 
 #~ msgid "Universities"
 #~ msgstr "Egyetemek"
 
 #~ msgid ""
 #~ "Percentage of patients who have documented functional assessment at "
-#~ "admission to an inpatient unit for rehabilitation program within 48 hours "
-#~ "of admission"
+#~ "admission to an inpatient unit for rehabilitation program within 48 hours of"
+#~ " admission"
 #~ msgstr ""
 #~ "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 #~ "módon a felvételt követő 48 órán belül megtörtént"
 
 #~ msgid ""
 #~ "Percentage of patients who have documented functional assessment at "
-#~ "admission to an inpatient unit for rehabilitation program within 72 hours "
-#~ "of admission"
+#~ "admission to an inpatient unit for rehabilitation program within 72 hours of"
+#~ " admission"
 #~ msgstr ""
 #~ "Azon betegek aránya, akiknél a funkcionális állapotfelmérés dokumentált "
 #~ "módon a felvételt követő 72 napon belül megtörtént"
@@ -3121,8 +3247,7 @@ msgstr ""
 #~ msgid ""
 #~ "Standard neurological classification of spinal cord injury  value/score"
 #~ msgstr ""
-#~ "Standard neurological classification of spinal cord injury eredmény/"
-#~ "pontszám"
+#~ "Standard neurological classification of spinal cord injury eredmény/pontszám"
 
 #~ msgid "Logo for the Path project"
 #~ msgstr "Path project logója"
