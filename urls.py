@@ -5,6 +5,13 @@ from django.conf import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^admin/password_reset/$', 'django.contrib.auth.views.password_reset', name='password_reset'),
+    (r'^password_reset/done/$', 'django.contrib.auth.views.password_reset_done'),
+    (r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm'),
+    (r'^reset/done/$', 'django.contrib.auth.views.password_reset_complete'),
+)
+
+urlpatterns += patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^reportforms/', include('report_forms.urls'), name="report_forms"),
     url(r'^knowledgecenter', 'pathstatic.views.knowledge_center', name="knowledge_center"),
