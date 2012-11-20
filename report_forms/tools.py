@@ -1,4 +1,5 @@
 import csv
+import time
 from datetime import date
 from django.http import HttpResponse
 from unidecode import unidecode
@@ -62,11 +63,12 @@ def median(mylist):
     return sorts[length / 2]
 
 def getMinSec(flnumb):
-    minutes = int(flnumb)
-    seconds = int( (flnumb - minutes) * 60 )
-    if not seconds:
-        return str(minutes)
-    elif len(str(seconds)) == 1:
-        return str(minutes) + ":0" + str(seconds)
-    else:
-        return str(minutes) + ":" + str(seconds)
+    return time.strftime('%H:%M:%S', time.gmtime(flnumb*60))
+#    minutes = int(flnumb)
+#    seconds = int( (flnumb - minutes) * 60 )
+#    if not seconds:
+#        return str(minutes) + ":00"
+#    if len(str(seconds)) == 1:
+#        return str(minutes) + ":0" + str(seconds)
+#    else:
+#        return str(minutes) + ":" + str(seconds)

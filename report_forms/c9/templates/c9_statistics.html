@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n l10n %}
 {% block header %}
     <div id="content_home">{% trans "C9. Operating theatre performance " %}</div>
     <div id="content_helper">
@@ -59,35 +59,35 @@
                         <td>{{ operating_room.mka|floatformat:"2" }}%</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Average time in OR:" %}</td>
+                        <td>{% trans "Average time in OR" %}:</td>
                         <td>{{ operating_room.amt }} {% trans 'minutes' %}</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Median time in OR:" %}</td>
+                        <td>{% trans "Median time in OR" %}:</td>
                         <td>{{ operating_room.mmt }} {% trans 'minutes' %}</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Average time of anesthesia:" %}</td>
+                        <td>{% trans "Average time of anesthesia" %}:</td>
                         <td>{{ operating_room.aa }} {% trans 'minutes' %}</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Median time of anesthesia:" %}</td>
+                        <td>{% trans "Median time of anesthesia:" %}:</td>
                         <td>{{ operating_room.ma }} {% trans 'minutes' %}</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Average time of surgery:" %}</td>
+                        <td>{% trans "Average time of surgery" %}:</td>
                         <td>{{ operating_room.ami }} {% trans 'minutes' %}</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Median time of surgery:" %}</td>
+                        <td>{% trans "Median time of surgery" %}:</td>
                         <td>{{ operating_room.mmi }} {% trans 'minutes' %}</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Average time before surgery:" %}</td>
+                        <td>{% trans "Average time before surgery" %}:</td>
                         <td>{{ operating_room.ame }} {% trans 'minutes' %}</td>
                     </tr>
                     <tr>
-                        <td>{% trans "Median time before surgery:" %}</td>
+                        <td>{% trans "Median time before surgery" %}:</td>
                         <td>{{ operating_room.mme }} {% trans 'minutes' %}</td>
                     </tr>
                     <tr>
@@ -103,6 +103,7 @@
                         <td>{{ operating_room.attn }} {% trans 'minutes' %}</td>
                     </tr>
                 </table>
+                    <div id="{{ operating_room.slug }}" style="margin-top: 20px; height: 300px"></div>
                 {% endif %}
             {% endif %}
         {% endfor %}
@@ -110,5 +111,56 @@
 {% endblock content %}
 
 {% block js %}
-    <script src="{{ STATIC_URL }}js/jquery.bargraph.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.dateAxisRenderer.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% for operating_room in display_stats %}
+                {% localize off %}
+                    var {{ operating_room.slug }} = [
+                        ['{% trans "Average time in OR" %}', '{{ operating_room.amt }}'],
+                        ['{% trans "Median time in OR" %}', '{{ operating_room.mmt }}'],
+                        ['{% trans "Average time of anesthesia" %}', '{{ operating_room.aa }}'],
+                        ['{% trans "Median time of anesthesia" %}', '{{ operating_room.ma }}'],
+                        ['{% trans "Average time of surgery" %}', '{{ operating_room.ami }}'],
+                        ['{% trans "Median time of surgery" %}', '{{ operating_room.mmi }}'],
+                        ['{% trans "Average time before surgery" %}', '{{ operating_room.ame }}'],
+                        ['{% trans "Median time before surgery" %}', '{{ operating_room.mme }}'],
+                    ];
+                {% endlocalize %}
+                $.jqplot('{{ operating_room.slug }}', [{{ operating_room.slug }}], {
+                    title: '{{ operating_room.name }}',
+                    seriesDefaults: {renderer: $.jqplot.BarRenderer},
+                    axes: {
+                        xaxis:{
+                            renderer:$.jqplot.CategoryAxisRenderer,
+                            tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+                            tickOptions: {
+                                angle: -30,
+                                labelPosition: 'end',
+                                fontSize: 8
+                            }
+                        },
+                        yaxis:{
+                            renderer:$.jqplot.DateAxisRenderer,
+                            ticks: ['00:00:00', '01:00:00', '02:00:00', '03:00:00'],
+                            tickOptions:{
+                                formatString: '%T'
+                            }
+                        }
+                    },
+                    highlighter: {
+                        show: true,
+                        tooltipAxes: 'y',
+                        formatString: '<span class="font-size: 12px">%s</span>'
+                    }
+                });
+            {% endfor %}
+        });
+    </script>
 {% endblock js %}

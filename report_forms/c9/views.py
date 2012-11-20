@@ -7,6 +7,7 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
+from django.template.defaultfilters import slugify
 from django.utils.datastructures import MultiValueDictKeyError
 from report_forms.c9.forms import C9_patient_Form, FileUploadForm, C9_operation_Form
 from report_forms.c9.models import c9_patient, c9_operation, c9_patientCSV, c9_operationCSV
@@ -317,6 +318,7 @@ def Statistics(request):
         except: attn = 0
         display_stats += ({
             'name': operating_room['name'],
+            'slug': "slug_"+slugify(operating_room['name']).replace('-',''),
             'tn'  : operating_room['tn'],
             'mk'  : mk,
             'cases': operating_room['limit'],
