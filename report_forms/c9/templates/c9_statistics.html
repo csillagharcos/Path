@@ -60,7 +60,7 @@
                     </tr>
                     <tr>
                         <td>test</td>
-                        <td>{{ operating_room.test1 }}</td>
+                        <td>{% for t in operating_room.test1 %}{{ t }}, {% endfor %}</td>
                     </tr>
                     <tr>
                         <td>{% trans "Surgery performance:" %}</td>
