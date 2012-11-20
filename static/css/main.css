@@ -162,6 +162,7 @@ a {
   #report_forms th {
     font-weight: bold; }
   #report_forms td {
+    vertical-align: top;
     padding: 0 20px 10px 0; }
     #report_forms td img {
       margin: 0 auto;
@@ -170,7 +171,8 @@ a {
     #report_forms td:first-child {
       width: 95%;
       text-align: left;
-      vertical-align: middle; }
+      vertical-align: top;
+      padding-top: 8px; }
 
 .report_form {
   margin: 0 auto; }

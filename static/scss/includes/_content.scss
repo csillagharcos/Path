@@ -131,6 +131,7 @@ a{
     font-weight: bold;
   }
   td{
+    vertical-align: top;
     padding: 0 20px 10px 0;
     img{
       margin: 0 auto;
@@ -140,7 +141,8 @@ a{
     &:first-child{
       width: 95%;
       text-align: left;
-      vertical-align: middle;
+      vertical-align: top;
+      padding-top: 8px;
     }
   }
 }
