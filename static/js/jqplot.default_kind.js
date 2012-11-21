@@ -1,5 +1,5 @@
-var jqplot_percent = {
-    seriesDefaults: {renderer: $.jqplot.BarRenderer},
+jqplot_percent = {
+    seriesDefaults: { renderer: $.jqplot.BarRenderer },
     axes: {
         xaxis:{
             renderer:$.jqplot.CategoryAxisRenderer,
