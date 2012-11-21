@@ -44,8 +44,7 @@
                         <td>{{ data.8|floatformat:"2" }} {% trans "days" %}</td>
                     </tr>
                 </table>
-                {# TODO SLUGIFY diagname or something, to create graph slugs. #}
-                <div id="graph1" style="margin-top: 20px; height: 150px;"></div>
+                <div id="graph{{ forloop.counter }}" style="margin-top: 20px; height: 300px;"></div>
             {% endif %}
         {% endfor %}
     {% endif %}
@@ -62,20 +61,23 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            {% localize off %}
-                var first = [['{% trans "Appropriate antibiotic drug" %}', {{ one }}],
-                    ['{% trans "Appropriate dose" %}', {{ twoa }}],
-                    ['{% trans "Appropriate dose with weight" %}', {{ twob }}],
-                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ three }}],
-                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ four }}],
-                    ['{% trans "Appropriate timing:" %}', {{ five }}],
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ ten }}],
-                    ['{% trans "% of misuse" %}', {{ six }}],
-                    ['{% trans "% of overuse" %}', {{ seven }}],
-                    ['{% trans "% of underuse" %}', {{ eight }}],
-                    ['{% trans "% of single shot treatment" %}', {{ nine }}]];
-            {% endlocalize %}
-            $.jqplot('graph1', [first], jqplot_percent);
+            {% for data in diagnosis %}
+                {% if data.9 >= 60 %}
+                    {% localize off %}
+                        var data{{ forloop.counter }} = [
+                            ['{% trans "Average length of stay" %}', {{ data.3 }}],
+                            ['{% trans "Median length of stay" %}', {{ data.4 }}],
+                            ['{% trans "Average length of stay until the first surgical procedure" %}', {{ data.5 }}],
+                            ['{% trans "Median length of stay until the first surgical procedure" %}', {{ data.6 }}],
+                            ['{% trans "Average length of stay from the first surgical procedure until discharge" %}', {{ data.7 }}],
+                            ['{% trans "Median length of stay from the first surgical procedure until discharge" %}', {{ data.8 }}]
+                        ];
+                    {% endlocalize %}
+                    jqplot_days.axes.yaxis.tickOptions.formatString = "%.2f"
+                    jqplot_days.highlighter.formatString = '<span class="font-size: 12px">%.2f {% trans "days" %}</span>'
+                    $.jqplot('graph{{ forloop.counter }}', [data{{ forloop.counter }}], jqplot_days);
+                {% endif %}
+            {% endfor %}
         });
     </script>
 {% endblock js %}

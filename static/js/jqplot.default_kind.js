@@ -49,3 +49,29 @@ var jqplot_time = {
         formatString: '<span class="font-size: 12px">%s</span>'
     }
 }
+
+var jqplot_days = {
+    seriesDefaults: {renderer: $.jqplot.BarRenderer},
+    axes: {
+        xaxis:{
+            renderer:$.jqplot.CategoryAxisRenderer,
+            tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+            tickOptions: {
+                angle: -30,
+                labelPosition: 'end',
+                fontSize: 10
+            }
+        },
+        yaxis:{
+            ticks: [0,5,10,15,20,25,30],
+            tickOptions:{
+                formatString: '%.2f'
+            }
+        }
+    },
+    highlighter: {
+        show: true,
+        tooltipAxes: 'y',
+        formatString: '<span class="font-size: 12px">%.2f</span>'
+    }
+}
