@@ -7,7 +7,7 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from report_forms.c21.forms import C21Form, FileUploadForm
+from report_forms.c21.forms import C21Form, FileUploadForm, TrendForm
 from report_forms.c21.models import c21, c21CSV, Medicine
 from report_forms.tools import parseInt, parseFloat, csvDump, calculate_age, DateException, csvExport
 from django.utils.translation import ugettext_lazy as _
@@ -130,10 +130,132 @@ def Import(request):
 
 @login_required
 def Statistics(request):
+    context = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace))
+    return render_to_response('c21_statistics.html', context, context_instance=RequestContext(request))
+
+@login_required
+def Trend(request):
+    if request.method == "POST":
+        form = TrendForm(request.POST)
+        if form.is_valid():
+            interval_one = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date1a'], surgical_incision__lte = form.cleaned_data['date1b'] ), False )
+            interval_two = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date2a'], surgical_incision__lte = form.cleaned_data['date2b'] ), False )
+            if form.cleaned_data['date3a'] and form.cleaned_data['date3b']:
+                interval_three = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date3a'], surgical_incision__lte = form.cleaned_data['date3b'] ), False )
+            else:
+                interval_three = False
+            return render_to_response('c21_trend_diagram.html', { 'one': interval_one, 'two': interval_two, 'three': interval_three, 'form': form.cleaned_data }, context_instance=RequestContext(request))
+        else:
+            form = TrendForm(request.POST)
+            return render(request, 'c21_trend.html', { 'form': form })
+    else:
+        form = TrendForm()
+        return render(request, 'c21_trend.html', { 'form': form })
+
+def Template(request):
+    model = (
+        _('Case ID'),
+        _('Hospital registration number'),
+        _('Date of birth'),
+        _('Weight of patient'),
+        _('Principal diagnosis code (ICD-10 or DRG)'),
+        _('Principal procedure code'),
+        _('Is the surgical procedure planned?'),
+        _('Is patient allergic to any antibiotics suggested in the protocol?'),
+        _('Generic name of antibiotic drug'),
+        _('In case of allergy to penicillin, scale of severity?'),
+        _('Has patient preoperative infection?'),
+        _('Type of infection'),
+        _('Date of surgical incision'),
+        _('Time of surgical incision'),
+        _('Prophylactic antibiotic given?'),
+        _('Name of first dose'),
+        _('Name of second dose'),
+        _('First dose'),
+        _('Second dose'),
+        _('Route of administration of first dose'),
+        _('Date of first dose'),
+        _('Time of first dose'),
+        _('Total doses in 24 hours'),
+        _('Date of last dose'),
+        _('Time of last dose'),
+        _('Date of surgical wound closure'),
+        _('Time of surgical wound closure'),
+        )
+    return csvDump(model, "c21")
+
+@login_required
+def Export(request):
+    model = ((
+                 _('Case ID'),
+                 _('Hospital registration number'),
+                 _('Date of birth'),
+                 _('Weight of patient'),
+                 _('Principal diagnosis code (ICD-10 or DRG)'),
+                 _('Principal procedure code'),
+                 _('Is the surgical procedure planned?'),
+                 _('Is patient allergic to any antibiotics suggested in the protocol?'),
+                 _('Generic name of antibiotic drug'),
+                 _('In case of allergy to penicillin, scale of severity?'),
+                 _('Has patient preoperative infection?'),
+                 _('Type of infection'),
+                 _('Date of surgical incision'),
+                 _('Time of surgical incision'),
+                 _('Prophylactic antibiotic given?'),
+                 _('Name of first dose'),
+                 _('Name of second dose'),
+                 _('First dose'),
+                 _('Second dose'),
+                 _('Route of administration of first dose'),
+                 _('Date of first dose'),
+                 _('Time of first dose'),
+                 _('Total doses in 24 hours'),
+                 _('Date of last dose'),
+                 _('Time of last dose'),
+                 _('Date of surgical wound closure'),
+                 _('Time of surgical wound closure'),
+                 ),)
+    cases = c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
+    for case in cases:
+        si   = str(case.surgical_incision).split(' ')
+        dofd = str(case.date_of_first_dose).split(' ')
+        dold = str(case.date_of_last_dose).split(' ')
+        dswc = str(case.date_of_wound_close).split(' ')
+        model += ((
+                      str(case.case_id),
+                      str(case.hospital_registration_number),
+                      str(case.date_of_birth),
+                      str(case.weight_of_patient),
+                      str(case.principal_diagnoses_code),
+                      str(case.principal_procedure_code),
+                      str(case.procedure_planned),
+                      str(case.patient_allergy),
+                      str(case.generic_name_of_drug),
+                      str(case.penicilin_allergy),
+                      str(case.preoperative_infection),
+                      str(case.type_of_infection),
+                      str(si[0]),
+                      str(si[1])[:-3],
+                      str(case.antibiotic_given),
+                      str(case.name_of_first_dose),
+                      str(case.name_of_second_dose),
+                      str(case.first_dose),
+                      str(case.second_dose),
+                      str(case.route_of_admin),
+                      str(dofd[0]),
+                      str(dofd[1])[:-3],
+                      str(case.total_dose_in_24h),
+                      str(dold[0]),
+                      str(dold[1])[:-3],
+                      str(dswc[0]),
+                      str(dswc[1])[:-3],
+                      ),)
+    return csvExport(model, 'c21_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
+
+def CountStatistics(cases, notView=True):
     ''' Query '''
     accepted_diagnose_codes = ("C18", "C19", "C20", "C20.0", "C20.1", "C20.2", "C20.8")
     countable_case=uncountable_case=()
-    cases = c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     medicines=()
     for medicine in Medicine.objects.all():
         medicines += (medicine.name,)
@@ -143,8 +265,8 @@ def Statistics(request):
         else:
             uncountable_case += (case,)
 
-    if len(countable_case) < 30:
-        return render_to_response('c21_statistics.html', {"not_enough": True }, context_instance=RequestContext(request))
+    if len(countable_case) < 30 and notView:
+        return render_to_response('c21_statistics.html', {"not_enough": True })
 
     ''' Working '''
     indicator_one = indicator_twoa = indicator_twob = indicator_three = indicator_four = indicator_five = indicator_six = indicator_seven = indicator_eight = indicator_nine = indicator_ten = 0
@@ -274,105 +396,5 @@ def Statistics(request):
         "eight": eight,
         "nine": nine,
         "ten": ten,
-    }
-    return render_to_response('c21_statistics.html', context, context_instance=RequestContext(request))
-
-def Template(request):
-    model = (
-        _('Case ID'),
-        _('Hospital registration number'),
-        _('Date of birth'),
-        _('Weight of patient'),
-        _('Principal diagnosis code (ICD-10 or DRG)'),
-        _('Principal procedure code'),
-        _('Is the surgical procedure planned?'),
-        _('Is patient allergic to any antibiotics suggested in the protocol?'),
-        _('Generic name of antibiotic drug'),
-        _('In case of allergy to penicillin, scale of severity?'),
-        _('Has patient preoperative infection?'),
-        _('Type of infection'),
-        _('Date of surgical incision'),
-        _('Time of surgical incision'),
-        _('Prophylactic antibiotic given?'),
-        _('Name of first dose'),
-        _('Name of second dose'),
-        _('First dose'),
-        _('Second dose'),
-        _('Route of administration of first dose'),
-        _('Date of first dose'),
-        _('Time of first dose'),
-        _('Total doses in 24 hours'),
-        _('Date of last dose'),
-        _('Time of last dose'),
-        _('Date of surgical wound closure'),
-        _('Time of surgical wound closure'),
-        )
-    return csvDump(model, "c21")
-
-@login_required
-def Export(request):
-    model = ((
-                 _('Case ID'),
-                 _('Hospital registration number'),
-                 _('Date of birth'),
-                 _('Weight of patient'),
-                 _('Principal diagnosis code (ICD-10 or DRG)'),
-                 _('Principal procedure code'),
-                 _('Is the surgical procedure planned?'),
-                 _('Is patient allergic to any antibiotics suggested in the protocol?'),
-                 _('Generic name of antibiotic drug'),
-                 _('In case of allergy to penicillin, scale of severity?'),
-                 _('Has patient preoperative infection?'),
-                 _('Type of infection'),
-                 _('Date of surgical incision'),
-                 _('Time of surgical incision'),
-                 _('Prophylactic antibiotic given?'),
-                 _('Name of first dose'),
-                 _('Name of second dose'),
-                 _('First dose'),
-                 _('Second dose'),
-                 _('Route of administration of first dose'),
-                 _('Date of first dose'),
-                 _('Time of first dose'),
-                 _('Total doses in 24 hours'),
-                 _('Date of last dose'),
-                 _('Time of last dose'),
-                 _('Date of surgical wound closure'),
-                 _('Time of surgical wound closure'),
-                 ),)
-    cases = c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
-    for case in cases:
-        si   = str(case.surgical_incision).split(' ')
-        dofd = str(case.date_of_first_dose).split(' ')
-        dold = str(case.date_of_last_dose).split(' ')
-        dswc = str(case.date_of_wound_close).split(' ')
-        model += ((
-                      str(case.case_id),
-                      str(case.hospital_registration_number),
-                      str(case.date_of_birth),
-                      str(case.weight_of_patient),
-                      str(case.principal_diagnoses_code),
-                      str(case.principal_procedure_code),
-                      str(case.procedure_planned),
-                      str(case.patient_allergy),
-                      str(case.generic_name_of_drug),
-                      str(case.penicilin_allergy),
-                      str(case.preoperative_infection),
-                      str(case.type_of_infection),
-                      str(si[0]),
-                      str(si[1])[:-3],
-                      str(case.antibiotic_given),
-                      str(case.name_of_first_dose),
-                      str(case.name_of_second_dose),
-                      str(case.first_dose),
-                      str(case.second_dose),
-                      str(case.route_of_admin),
-                      str(dofd[0]),
-                      str(dofd[1])[:-3],
-                      str(case.total_dose_in_24h),
-                      str(dold[0]),
-                      str(dold[1])[:-3],
-                      str(dswc[0]),
-                      str(dswc[1])[:-3],
-                      ),)
-    return csvExport(model, 'c21_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
+        }
+    return context
