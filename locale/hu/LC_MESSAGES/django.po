@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-21 00:11+0100\n"
-"PO-Revision-Date: 2012-11-21 00:12\n"
+"PO-Revision-Date: 2012-11-21 10:39\n"
 "Last-Translator: Richard Hajdu <richard.hajdu@webdevil.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2541,7 +2541,7 @@ msgstr "Műtétikihasználtság"
 
 #: report_forms/c9/templates/c9_statistics.html:58
 msgid "Surgery performance"
-msgstr "Műtéti kihasználtsági arány"
+msgstr "Műtőkihasználtsági arány"
 
 #: report_forms/c9/templates/c9_statistics.html:62
 #: report_forms/c9/templates/c9_statistics.html:126

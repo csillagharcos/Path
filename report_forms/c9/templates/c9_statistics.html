@@ -103,7 +103,9 @@
                         <td>{{ operating_room.attn }} {% trans 'hours' %}</td>
                     </tr>
                 </table>
-                    <div id="{{ operating_room.slug }}" style="margin-top: 20px; height: 300px"></div>
+                    <div id="{{ operating_room.slug }}_1" style="margin-top: 20px; height: 150px"></div>
+                    <div id="{{ operating_room.slug }}_2" style="margin-top: 20px; height: 300px"></div>
+                    <div id="{{ operating_room.slug }}_3" style="margin-top: 20px; height: 150px"></div>
                 {% endif %}
             {% endif %}
         {% endfor %}
@@ -120,46 +122,82 @@
     <script src="{{ STATIC_URL }}js/plugins/jqplot.dateAxisRenderer.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+            var jqplot_options = {
+                title: '{{ operating_room.name }}',
+                seriesDefaults: {renderer: $.jqplot.BarRenderer},
+                axes: {
+                    xaxis:{
+                        renderer:$.jqplot.CategoryAxisRenderer,
+                        tickRenderer: $.jqplot.CanvasAxisTickRenderer
+                    },
+                    yaxis:{
+                        min: 0,
+                        max: 100,
+                        tickOptions: {
+                            formatString: '%.2f'
+                        }
+                    }
+                },
+                highlighter: {
+                    show: true,
+                    tooltipAxes: 'y',
+                    formatString: '<span class="font-size: 12px">%.2f%</span>'
+                }
+            }
+
+            var jqplot_options_time = {
+                title: '{{ operating_room.name }}',
+                seriesDefaults: {renderer: $.jqplot.BarRenderer},
+                axes: {
+                    xaxis:{
+                        renderer:$.jqplot.CategoryAxisRenderer,
+                        tickRenderer: $.jqplot.CanvasAxisTickRenderer
+                    },
+                    yaxis:{
+                        renderer:$.jqplot.DateAxisRenderer,
+                        ticks: ['00:00:00', '00:30:00', '01:00:00', '01:30:00', '02:00:00', '02:30:00', '03:00:00'],
+                        tickOptions:{
+                            formatString: '%T'
+                        }
+                    }
+                },
+                highlighter: {
+                    show: true,
+                    tooltipAxes: 'y',
+                    formatString: '<span class="font-size: 12px">%s</span>'
+                }
+            }
             {% for operating_room in display_stats %}
                 {% localize off %}
-                    var {{ operating_room.slug }} = [
-                        ['{% trans "Average time in OR" %}', '{{ operating_room.amt }}'],
-                        ['{% trans "Median time in OR" %}', '{{ operating_room.mmt }}'],
-                        ['{% trans "Average time of anesthesia" %}', '{{ operating_room.aa }}'],
-                        ['{% trans "Median time of anesthesia" %}', '{{ operating_room.ma }}'],
-                        ['{% trans "Average time of surgery" %}', '{{ operating_room.ami }}'],
-                        ['{% trans "Median time of surgery" %}', '{{ operating_room.mmi }}'],
-                        ['{% trans "Average time before surgery" %}', '{{ operating_room.ame }}'],
-                        ['{% trans "Median time before surgery" %}', '{{ operating_room.mme }}']
+                    var {{ operating_room.slug }}_1 = [
+                        ['{% trans "Operating theatre performance" %}', {{ operating_room.mk|floatformat:"2" }}],
+                        ['{% trans "Surgery performance" %}', {{ operating_room.mka|floatformat:"2" }}]
+                    ];
+                    var {{ operating_room.slug }}_2 = [
+                            ['{% trans "Average time in OR" %}', '{{ operating_room.amt }}'],
+                            ['{% trans "Median time in OR" %}', '{{ operating_room.mmt }}'],
+                            ['{% trans "Average time of anesthesia" %}', '{{ operating_room.aa }}'],
+                            ['{% trans "Median time of anesthesia" %}', '{{ operating_room.ma }}'],
+                            ['{% trans "Average time of surgery" %}', '{{ operating_room.ami }}'],
+                            ['{% trans "Median time of surgery" %}', '{{ operating_room.mmi }}'],
+                            ['{% trans "Average time before surgery" %}', '{{ operating_room.ame }}'],
+                            ['{% trans "Median time before surgery" %}', '{{ operating_room.mme }}']
+                        ];
+                    var {{ operating_room.slug }}_3 = [
+                        ['{% trans "Average time of overtime" %}', '{{ operating_room.at }}'],
+                        ['{% trans "Average time of overtime on days with overtime" %}', '{{ operating_room.attn }}']
                     ];
                 {% endlocalize %}
-                $.jqplot('{{ operating_room.slug }}', [{{ operating_room.slug }}], {
-                    title: '{{ operating_room.name }}',
-                    seriesDefaults: {renderer: $.jqplot.BarRenderer},
-                    axes: {
-                        xaxis:{
-                            renderer:$.jqplot.CategoryAxisRenderer,
-                            tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
-                            tickOptions: {
-                                angle: -30,
-                                labelPosition: 'end',
-                                fontSize: 8
-                            }
-                        },
-                        yaxis:{
-                            renderer:$.jqplot.DateAxisRenderer,
-                            ticks: ['00:00:00', '01:00:00', '02:00:00', '03:00:00'],
-                            tickOptions:{
-                                formatString: '%T'
-                            }
-                        }
-                    },
-                    highlighter: {
-                        show: true,
-                        tooltipAxes: 'y',
-                        formatString: '<span class="font-size: 12px">%s</span>'
-                    }
-                });
+
+                $.jqplot('{{ operating_room.slug }}_1', [{{ operating_room.slug }}_1], jqplot_options);
+                jqplot_options_time.axes.xaxis.tickOptions = {
+                    angle: -30,
+                    labelPosition: 'end',
+                    fontSize: 8
+                }
+                $.jqplot('{{ operating_room.slug }}_2', [{{ operating_room.slug }}_2], jqplot_options_time);
+                jqplot_options_time.axes.xaxis.tickOptions = ""
+                $.jqplot('{{ operating_room.slug }}_3', [{{ operating_room.slug }}_3], jqplot_options_time);
             {% endfor %}
         });
     </script>
