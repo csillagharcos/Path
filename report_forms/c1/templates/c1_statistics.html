@@ -66,73 +66,27 @@
     <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
     <script src="{{ STATIC_URL }}js/plugins/jqplot.pointLabels.min.js"></script>
     <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
         {% localize off %}
-            var first = [{{ indicator_one }}, {{ subindicator_one }}, {{ subindicator_two }}];
-            var second = [{{ subindicator_three_one }}, {{ subindicator_three_two }}, {{ subindicator_three_three }}];
-            var third = [{{ subindicator_four_one }}, {{ subindicator_four_two }}];
+            var first = [
+                ['{% trans "C-section rate" %}', {{ indicator_one }}],
+                ['{% trans "Rate of planned C-section" %}', {{ subindicator_one }}],
+                ['{% trans "Rate of acute C-section" %}', {{ subindicator_two }}]
+            ];
+            var second = [
+                ["{% trans "Rate of c-section by the mother's age is less than 20" %}", {{ subindicator_three_one }}],
+                ["{% trans "Rate of c-section by the mother's age is between 20-35" %}", {{ subindicator_three_two }}],
+                ["{% trans "Rate of c-section by the mother's age is more than 35" %}", {{ subindicator_three_three }}]
+            ];
+            var third = [
+                ['{% trans "Rate of acute C-section by the previous number of deliveries first delivery" %}', {{ subindicator_four_one }}],
+                ['{% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries" %}', {{ subindicator_four_two }}]];
         {% endlocalize %}
-        $.jqplot('graph1', [first], {
-            seriesDefaults: {renderer: $.jqplot.BarRenderer},
-            axes: {
-                xaxis:{
-                    renderer:$.jqplot.CategoryAxisRenderer,
-                    ticks:['{% trans "C-section rate" %}', '{% trans "Rate of planned C-section" %}', '{% trans "Rate of acute C-section" %}']
-                },
-                yaxis:{
-                    tickOptions: {
-                        formatString: '%.2f'
-                    },
-                    min: 0,
-                    max: 100}
-            },
-            highlighter: {
-                show: true,
-                tooltipAxes: 'y',
-                formatString: '%.2f%'
-            }
-        });
-        $.jqplot('graph2', [second], {
-            seriesDefaults: {renderer: $.jqplot.BarRenderer},
-            axes: {
-                xaxis:{
-                    renderer:$.jqplot.CategoryAxisRenderer,
-                    ticks:["{% trans "Rate of c-section by <br /> the mother's age is less than 20" %}", "{% trans "Rate of c-section by <br /> the mother's age is between 20-35" %}", "{% trans "Rate of c-section by <br /> the mother's age is more than 35" %}"]
-                },
-                yaxis:{
-                    tickOptions: {
-                        formatString: '%.2f'
-                    },
-                    min: 0,
-                    max: 100}
-            },
-            highlighter: {
-                show: true,
-                tooltipAxes: 'y',
-                formatString: '%.2f%'
-            }
-        });
-        $.jqplot('graph3', [third], {
-            seriesDefaults: {renderer: $.jqplot.BarRenderer},
-            axes: {
-                xaxis:{
-                    renderer:$.jqplot.CategoryAxisRenderer,
-                    ticks:["{% trans "Rate of acute C-section by <br /> the previous number of deliveries first delivery" %}", "{% trans "Rate of acute C-section by <br /> the previous number of deliveries first delivery one or more previous deliveries" %}"]
-                },
-                yaxis:{
-                    tickOptions: {
-                        formatString: '%.2f'
-                    },
-                    min: 0,
-                    max: 100}
-            },
-            highlighter: {
-                show: true,
-                tooltipAxes: 'y',
-                formatString: '%.2f%'
-            }
-        });
+        $.jqplot('graph1', [first], jqplot_percent);
+        $.jqplot('graph2', [second], jqplot_percent);
+        $.jqplot('graph3', [third], jqplot_percent);
     });
     </script>
 {% endblock js %}

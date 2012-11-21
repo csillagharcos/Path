@@ -1,21 +1,7 @@
 {% extends "base.html" %}
 {% load i18n l10n %}
 {% block header %}
-    <div id="content_home">{% trans "C9. Operating theatre performance " %}</div>
-    <div id="content_helper">
-        <table>
-            <tr>
-                <td><a href="{% url report_forms %}"><img src="{{ STATIC_URL }}/images/white.appbar.arrow.left.png" title="{% trans "Report Forms" %}" /></a></td>
-                <td><a href="{% url c9_operation_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans "Operation form" %}" /></a> <a href="{% url c9_patient_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans "Patient form" %}" /></a></td>
-                <td><a href="{% url c9_stat %}"><img src="{{ STATIC_URL }}/images/white.appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
-                <td><a href="{% url c9_import %}"><img src="{{ STATIC_URL }}/images/white.appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
-                <td><a href="{% url c9_operation_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Operation template" %}" /></a><a href="{% url c9_patient_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Patient template" %}" /></a></td>
-                <td><a href="{{ STATIC_URL }}documents/dcs/{{ LANGUAGE_CODE }}/c8.docx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.word.png" title="{% trans "Data collecting sheet" %}" /></a></td>
-                <td><a href="{{ STATIC_URL }}documents/drt/{{ LANGUAGE_CODE }}/c8.xlsx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></a></td>
-                <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/c8.docx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.word.png" title="{% trans "Short indicator description" %}" /></a></td>
-            </tr>
-        </table>
-    </div>
+    {% include "c9_header.html" %}
 {% endblock header %}
 
 {% block content %}
@@ -103,7 +89,7 @@
                         <td>{{ operating_room.attn }} {% trans 'hours' %}</td>
                     </tr>
                 </table>
-                    <div id="{{ operating_room.slug }}_1" style="margin-top: 20px; height: 150px"></div>
+                    <div id="{{ operating_room.slug }}_1" style="margin-top: 20px; height: 200px"></div>
                     <div id="{{ operating_room.slug }}_2" style="margin-top: 20px; height: 300px"></div>
                     <div id="{{ operating_room.slug }}_3" style="margin-top: 20px; height: 150px"></div>
                 {% endif %}
@@ -120,53 +106,9 @@
     <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
     <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
     <script src="{{ STATIC_URL }}js/plugins/jqplot.dateAxisRenderer.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            var jqplot_options = {
-                title: '{{ operating_room.name }}',
-                seriesDefaults: {renderer: $.jqplot.BarRenderer},
-                axes: {
-                    xaxis:{
-                        renderer:$.jqplot.CategoryAxisRenderer,
-                        tickRenderer: $.jqplot.CanvasAxisTickRenderer
-                    },
-                    yaxis:{
-                        min: 0,
-                        max: 100,
-                        tickOptions: {
-                            formatString: '%.2f'
-                        }
-                    }
-                },
-                highlighter: {
-                    show: true,
-                    tooltipAxes: 'y',
-                    formatString: '<span class="font-size: 12px">%.2f%</span>'
-                }
-            }
-
-            var jqplot_options_time = {
-                title: '{{ operating_room.name }}',
-                seriesDefaults: {renderer: $.jqplot.BarRenderer},
-                axes: {
-                    xaxis:{
-                        renderer:$.jqplot.CategoryAxisRenderer,
-                        tickRenderer: $.jqplot.CanvasAxisTickRenderer
-                    },
-                    yaxis:{
-                        renderer:$.jqplot.DateAxisRenderer,
-                        ticks: ['00:00:00', '00:30:00', '01:00:00', '01:30:00', '02:00:00', '02:30:00', '03:00:00'],
-                        tickOptions:{
-                            formatString: '%T'
-                        }
-                    }
-                },
-                highlighter: {
-                    show: true,
-                    tooltipAxes: 'y',
-                    formatString: '<span class="font-size: 12px">%s</span>'
-                }
-            }
             {% for operating_room in display_stats %}
                 {% localize off %}
                     var {{ operating_room.slug }}_1 = [
@@ -188,16 +130,12 @@
                         ['{% trans "Average time of overtime on days with overtime" %}', '{{ operating_room.attn }}']
                     ];
                 {% endlocalize %}
-
-                $.jqplot('{{ operating_room.slug }}_1', [{{ operating_room.slug }}_1], jqplot_options);
-                jqplot_options_time.axes.xaxis.tickOptions = {
-                    angle: -30,
-                    labelPosition: 'end',
-                    fontSize: 8
-                }
-                $.jqplot('{{ operating_room.slug }}_2', [{{ operating_room.slug }}_2], jqplot_options_time);
-                jqplot_options_time.axes.xaxis.tickOptions = ""
-                $.jqplot('{{ operating_room.slug }}_3', [{{ operating_room.slug }}_3], jqplot_options_time);
+                jqplot_percent.title = jqplot_time.title = "{{ operating_room.name }}"
+                $.jqplot('{{ operating_room.slug }}_1', [{{ operating_room.slug }}_1], jqplot_percent);
+                jqplot_time.axes.xaxis.tickOptions.angle = -30
+                $.jqplot('{{ operating_room.slug }}_2', [{{ operating_room.slug }}_2], jqplot_time);
+                jqplot_time.axes.xaxis.tickOptions.angle = 0
+                $.jqplot('{{ operating_room.slug }}_3', [{{ operating_room.slug }}_3], jqplot_time);
             {% endfor %}
         });
     </script>

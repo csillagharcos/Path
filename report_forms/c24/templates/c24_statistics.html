@@ -1,20 +1,7 @@
 {% extends "base.html" %}
 {% load i18n l10n %}
-{% block header %}<div id="content_home">{% trans "C.2.4. Prophylactic antibiotic use - Hysterectomy" %}</div>
-    <div id="content_helper">
-        <table>
-            <tr>
-                <td><a href="{% url report_forms %}"><img src="{{ STATIC_URL }}/images/white.appbar.arrow.left.png" title="{% trans "Report Forms" %}" /></a></td>
-                <td><a href="{% url c24_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
-                <td><a href="{% url c24_stat %}"><img src="{{ STATIC_URL }}/images/white.appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
-                <td><a href="{% url c24_import %}"><img src="{{ STATIC_URL }}/images/white.appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
-                <td><a href="{% url c24_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
-                <td><a href="{{ STATIC_URL }}documents/dcs/{{ LANGUAGE_CODE }}/c24.docx"><img src="{{ STATIC_URL }}/images/white.appbar.page.word.png" title="{% trans "Data collecting sheet" %}" /></a></td>
-                <td><a href="{{ STATIC_URL }}documents/drt/{{ LANGUAGE_CODE }}/c2.xlsx"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></a></td>
-                <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/c24.docx"><img src="{{ STATIC_URL }}/images/white.appbar.page.word.png" title="{% trans "Short indicator description" %}" /></a></td>
-            </tr>
-        </table>
-    </div>
+{% block header %}
+    {% include "c24_header.html" %}
 {% endblock header %}
 
 {% block content %}
@@ -90,6 +77,7 @@
     <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
     <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
     <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function(){
@@ -106,31 +94,8 @@
                     ['{% trans "% of underuse" %}', {{ eight }}],
                     ['{% trans "% of single shot treatment" %}', {{ nine }}]];
             {% endlocalize %}
-            $.jqplot('graph1', [first], {
-                seriesDefaults: {renderer: $.jqplot.BarRenderer},
-                axes: {
-                    xaxis:{
-                        renderer:$.jqplot.CategoryAxisRenderer,
-                        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
-                        tickOptions: {
-                            angle: -30,
-                            labelPosition: 'end',
-                            fontSize: 8
-                        }
-                    },
-                    yaxis:{
-                        tickOptions: {
-                            formatString: '%.2f'
-                        },
-                        min: 0,
-                        max: 100}
-                },
-                highlighter: {
-                    show: true,
-                    tooltipAxes: 'y',
-                    formatString: '%.2f%'
-                }
-            });
+            jqplot_percent.axes.xaxis.tickOptions.angle = -30
+            $.jqplot('graph1', [first], jqplot_percent);
         });
     </script>
 {% endblock js %}

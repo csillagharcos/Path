@@ -1,21 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block header %}
-    <div id="content_home">{% trans "C.13. Needle stick injuries" %}</div>
-    <div id="content_helper">
-        <table>
-            <tr>
-                <td><a href="{% url report_forms %}"><img src="{{ STATIC_URL }}/images/white.appbar.arrow.left.png" title="{% trans "Report Forms" %}" /></a></td>
-                <td><a href="{% url c13_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans "Form" %}" /></a></td>
-                <td><a href="{% url c13_stat %}"><img src="{{ STATIC_URL }}/images/white.appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
-                <td><img src="{{ STATIC_URL }}/images/gray.appbar.paperclip.png" title="{% trans "Import" %}" /></td>
-                <td><a href="{% url c13_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
-                <td><a href="{{ STATIC_URL }}documents/dcs/{{ LANGUAGE_CODE }}/c13.docx"><img src="{{ STATIC_URL }}/images/white.appbar.page.word.png" title="{% trans "Data collecting sheet" %}" /></a></td>
-                <td><img src="{{ STATIC_URL }}/images/gray.appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></td>
-                <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/c13.docx"><img src="{{ STATIC_URL }}/images/white.appbar.page.word.png" title="{% trans "Short indicator description" %}" /></a></td>
-            </tr>
-        </table>
-    </div>
+    {% include "c13_header.html" %}
 {% endblock header %}
 
 {% block content %}
