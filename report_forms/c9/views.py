@@ -9,7 +9,7 @@ from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.utils.datastructures import MultiValueDictKeyError
-from report_forms.c9.forms import C9_patient_Form, FileUploadForm, C9_operation_Form
+from report_forms.c9.forms import C9_patient_Form, FileUploadForm, C9_operation_Form, TrendForm
 from report_forms.c9.models import c9_patient, c9_operation, c9_patientCSV, c9_operationCSV
 from report_forms.tools import csvDump, DateException, parseInt, getMinSec, median, csvExport
 from django.utils.translation import ugettext_lazy as _
@@ -193,7 +193,22 @@ def Statistics(request):
 
 @login_required
 def Trend(request):
-    pass
+    if request.method == "POST":
+        form = TrendForm(request.POST)
+        if form.is_valid():
+            interval_one = CountStatistics(c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), request.user.get_profile().workplace, form.cleaned_data['date1a'], form.cleaned_data['date1b'] )
+            interval_two = CountStatistics(c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), request.user.get_profile().workplace, form.cleaned_data['date2a'], form.cleaned_data['date2b'] )
+            if form.cleaned_data['date3a'] and form.cleaned_data['date3b']:
+                interval_three = CountStatistics(c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), form.cleaned_data['date3a'], form.cleaned_data['date3b'], False )
+            else:
+                interval_three = False
+            return render_to_response('c9_trend_diagram.html', { 'one': interval_one, 'two': interval_two, 'three': interval_three, 'form': form.cleaned_data }, context_instance=RequestContext(request))
+        else:
+            form = TrendForm(request.POST)
+            return render(request, 'c9_trend.html', { 'form': form })
+    else:
+        form = TrendForm()
+        return render(request, 'c9_trend.html', { 'form': form })
 
 def patients_Template(request):
     model = (
@@ -315,7 +330,7 @@ def Exportp(request):
                       ),)
     return csvExport(model, 'c9_patient_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
 
-def CountStatistics(operation_cases, workplace, notView=True):
+def CountStatistics(operation_cases, workplace, startDate = False, endDate = False):
     ''' Query '''
     countable_case=uncountable_case=()
     raw_surgery_data=display_stats=()
@@ -325,7 +340,10 @@ def CountStatistics(operation_cases, workplace, notView=True):
         tn=ame_ami_noc=number_of_cases=aa2=at1=0
         mk1=aa1=ami1=mka1=ame1=()
         #operating rooms
-        patient_cases = c9_patient.objects.filter(added_by__personel__workplace = workplace, central_operating_unit=ocase.central_operating_unit, operating_unit=ocase.operating_unit)
+        if startDate and endDate:
+            patient_cases = c9_patient.objects.filter(added_by__personel__workplace = workplace, central_operating_unit=ocase.central_operating_unit, operating_unit=ocase.operating_unit, date__gte = startDate, date__lte = endDate)
+        else:
+            patient_cases = c9_patient.objects.filter(added_by__personel__workplace = workplace, central_operating_unit=ocase.central_operating_unit, operating_unit=ocase.operating_unit)
         try: mk2_sat = (datetime.combine(datetime.today(), ocase.saturday_close_time) - datetime.combine(datetime.today(), ocase.saturday_open_time)).seconds * ocase.saturday_staffed_days / 60
         except: mk2_sat = 0
         try: mk2_sun = (datetime.combine(datetime.today(), ocase.sunday_close_time) - datetime.combine(datetime.today(), ocase.sunday_open_time)).seconds * ocase.sunday_staffed_days / 60

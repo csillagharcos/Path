@@ -7,7 +7,7 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from report_forms.c8.forms import C8Form, FileUploadForm
+from report_forms.c8.forms import C8Form, FileUploadForm, TrendForm
 from report_forms.c8.models import c8, c8CSV
 from django.utils.translation import ugettext_lazy as _
 from report_forms.tools import parseInt, csvDump, calculate_age, median, DateException, csvExport
@@ -113,7 +113,24 @@ def Statistics(request):
 
 @login_required
 def Trend(request):
-    pass
+    if request.method == "POST":
+        form = TrendForm(request.POST)
+        if form.is_valid():
+            interval_one = CountStatistics(c8.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, date_of_admission__gte = form.cleaned_data['date1a'], date_of_admission__lte = form.cleaned_data['date1b'] ), False )
+            interval_two = CountStatistics(c8.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, date_of_admission__gte = form.cleaned_data['date2a'], date_of_admission__lte = form.cleaned_data['date2b'] ), False )
+            if form.cleaned_data['date3a'] and form.cleaned_data['date3b']:
+                interval_three = CountStatistics(c8.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, date_of_admission__gte = form.cleaned_data['date3a'], date_of_admission__lte = form.cleaned_data['date3b'] ), False )
+                context = ZipThat(interval_one, interval_two, form.cleaned_data, interval_three)
+            else:
+                interval_three = False
+                context = ZipThat(interval_one, interval_two,form.cleaned_data)
+            return render_to_response('c8_trend_diagram.html', context, context_instance=RequestContext(request))
+        else:
+            form = TrendForm(request.POST)
+            return render(request, 'c8_trend.html', { 'form': form })
+    else:
+        form = TrendForm()
+        return render(request, 'c8_trend.html', { 'form': form })
 
 def Template(request):
     model = (
@@ -424,3 +441,53 @@ def CountStatistics(cases, notView=True):
         "diagnosis": diagnosis
     }
     return context
+
+def ZipThat(one,two,formStuff,three=False):
+    diagnosis = []
+    if three:
+        for i in range(len(one['diagnosis'][0])-1):
+            diagnosis += [
+                {
+                    'name': one['diagnosis'][i][0],
+                    'startdate': [one['diagnosis'][i][1], two['diagnosis'][i][1], three['diagnosis'][i][1]],
+                    'enddate': [one['diagnosis'][i][2], two['diagnosis'][i][2], three['diagnosis'][i][2]],
+                    'avg': [one['diagnosis'][i][3], two['diagnosis'][i][3], three['diagnosis'][i][3]],
+                    'med': [one['diagnosis'][i][4], two['diagnosis'][i][4], three['diagnosis'][i][4]],
+                    'davg': [one['diagnosis'][i][5], two['diagnosis'][i][5], three['diagnosis'][i][5]],
+                    'dmed': [one['diagnosis'][i][6], two['diagnosis'][i][6], three['diagnosis'][i][6]],
+                    'deavg': [one['diagnosis'][i][7], two['diagnosis'][i][7], three['diagnosis'][i][7]],
+                    'demed': [one['diagnosis'][i][8], two['diagnosis'][i][8], three['diagnosis'][i][8]],
+                    'len': [one['diagnosis'][i][9], two['diagnosis'][i][9], three['diagnosis'][i][9]]
+                },
+            ]
+        ZippedThat = {
+            'overall': [ one['overall'], two['overall'], three['overall'] ],
+            'removed': [ one['removed'], two['removed'], three['removed'] ],
+            'counted': [ one['counted'], two['counted'], three['counted'] ],
+            'diagnosis': diagnosis,
+            'formdata': formStuff,
+            }
+    else:
+        for i in range(len(one['diagnosis'][0])-1):
+            diagnosis += [
+                    {
+                    'name': one['diagnosis'][i][0],
+                    'startdate': [one['diagnosis'][i][1], two['diagnosis'][i][1]],
+                    'enddate': [one['diagnosis'][i][2], two['diagnosis'][i][2]],
+                    'avg': [one['diagnosis'][i][3], two['diagnosis'][i][3]],
+                    'med': [one['diagnosis'][i][4], two['diagnosis'][i][4]],
+                    'davg': [one['diagnosis'][i][5], two['diagnosis'][i][5]],
+                    'dmed': [one['diagnosis'][i][6], two['diagnosis'][i][6]],
+                    'deavg': [one['diagnosis'][i][7], two['diagnosis'][i][7]],
+                    'demed': [one['diagnosis'][i][8], two['diagnosis'][i][8]],
+                    'len': [one['diagnosis'][i][9], two['diagnosis'][i][9]]
+                },
+            ]
+        ZippedThat = {
+            'overall': [ one['overall'], two['overall'] ],
+            'removed': [ one['removed'], two['removed'] ],
+            'counted': [ one['counted'], two['counted'] ],
+            'diagnosis': diagnosis,
+            'formdata': formStuff,
+        }
+    return ZippedThat

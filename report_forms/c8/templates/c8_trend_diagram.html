@@ -7,99 +7,82 @@
 {% block content %}
     <table class="statistics">
         <thead>
-            <tr>
-                <td>{% trans "Name of the indicator" %}</td>
-                <td>{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}</td>
-                <td>{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}</td>
-                {% if three %}<td>{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}</td>{% endif %}
-            </tr>
-        </thead>
         <tr>
-            <td>{% trans "Overall:" %}</td>
-            <td>{{ one.overall }}</td>
-            <td>{{ two.overall }}</td>
-            {% if three %}<td>{{ three.overall }}</td>{% endif %}
+            <td>{% trans "Name of the indicator" %}</td>
+            <td>{{ formdata.date1a|date:"Y-m-d" }} - {{ formdata.date1b|date:"Y-m-d" }}</td>
+            <td>{{ formdata.date2a|date:"Y-m-d" }} - {{ formdata.date2b|date:"Y-m-d" }}</td>
+            {% if overall.2 %}<td>{{ formdata.date3a|date:"Y-m-d" }} - {{ formdata.date3b|date:"Y-m-d" }}</td>{% endif %}
         </tr>
         <tr>
-            <td>{% trans "Removed:" %}</td>
-            <td>{{ one.removed }}</td>
-            <td>{{ two.removed }}</td>
-            {% if three %}<td>{{ three.removed }}</td>{% endif %}
+            <td>{% trans "Overall:" %}</td>
+            <td>{{ overall.0 }}</td>
+            <td>{{ overall.1 }}</td>
+            {% if overall.2 %}<td>{{ overall.2 }}</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Excluded:" %}</td>
+            <td>{{ removed.0 }}</td>
+            <td>{{ removed.1 }}</td>
+            {% if overall.2 %}<td>{{ removed.2 }}</td>{% endif %}
         </tr>
         <tr>
             <td>{% trans "Counted:" %}</td>
-            <td>{{ one.counted }}</td>
-            <td>{{ two.counted }}</td>
-            {% if three %}<td>{{ three.counted }}</td>{% endif %}
+            <td>{{ counted.0 }}</td>
+            <td>{{ counted.1 }}</td>
+            {% if overall.2 %}<td>{{ counted.2 }}</td>{% endif %}
         </tr>
-        <tr>
-            <td>{% trans "Appropriate antibiotic drug" %}:</td>
-            <td>{{ one.one|floatformat:"2" }}%</td>
-            <td>{{ two.one|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.one|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Appropriate dose" %}:</td>
-            <td>{{ one.twoa|floatformat:"2" }}%</td>
-            <td>{{ two.twoa|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.twoa|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Appropriate dose with weight" %}:</td>
-            <td>{{ one.twob|floatformat:"2" }}%</td>
-            <td>{{ two.twob|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.twob|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Appropriate route of administration: intravenous administration" %}:</td>
-            <td>{{ one.three|floatformat:"2" }}%</td>
-            <td>{{ two.three|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.three|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Appropriate timing, within one hour of surgical wound incision" %}:</td>
-            <td>{{ one.four|floatformat:"2" }}%</td>
-            <td>{{ two.four|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.four|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Appropriate timing" %}:</td>
-            <td>{{ one.five|floatformat:"2" }}%</td>
-            <td>{{ two.five|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.five|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Full compliance with criteria 1-5" %}:</td>
-            <td>{{ one.ten|floatformat:"2" }}%</td>
-            <td>{{ two.ten|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.ten|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "% of misuse" %}:</td>
-            <td>{{ one.six|floatformat:"2" }}%</td>
-            <td>{{ two.six|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.six|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "% of overuse" %}:</td>
-            <td>{{ one.seven|floatformat:"2" }}%</td>
-            <td>{{ two.seven|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.seven|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "% of underuse" %}:</td>
-            <td>{{ one.eight|floatformat:"2" }}%</td>
-            <td>{{ two.eight|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.eight|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "% of single shot treatment" %}:</td>
-            <td>{{ one.nine|floatformat:"2" }}%</td>
-            <td>{{ two.nine|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.nine|floatformat:"2" }}%</td>{% endif %}
-        </tr>
+        </thead>
     </table>
-    <div id="graph1" style="margin-top: 20px; height: 300px;"></div>
+    <br /><hr /><br />
+    {% for data in diagnosis %}
+        {% if data.len.0 >= 60 or data.len.1 >= 60 or data.len.2 >= 60 %}
+            <table class="los longer">
+                <tr>
+                    <th>{{ data.name }}</th>
+                    <th>{{ data.startdate.0 }} - {{ data.enddate.0 }}</th>
+                    <th>{{ data.startdate.1 }} - {{ data.enddate.1 }}</th>
+                    {% if data.len.2 %}<th>{{ data.startdate.2 }} - {{ data.enddate.2 }}</th>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Average length of stay" %}</td>
+                    <td>{{ data.avg.0|floatformat:"2" }} {% trans "days" %}</td>
+                    <td>{{ data.avg.1|floatformat:"2" }} {% trans "days" %}</td>
+                    {% if data.len.2 %}<td>{{ data.avg.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Median length of stay" %}</td>
+                    <td>{{ data.med.0|floatformat:"2" }} {% trans "days" %}</td>
+                    <td>{{ data.med.1|floatformat:"2" }} {% trans "days" %}</td>
+                    {% if data.len.2 %}<td>{{ data.med.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Average length of stay until the first surgical procedure" %}</td>
+                    <td>{{ data.davg.0|floatformat:"2" }} {% trans "days" %}</td>
+                    <td>{{ data.davg.1|floatformat:"2" }} {% trans "days" %}</td>
+                    {% if data.len.2 %}<td>{{ data.davg.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Median length of stay until the first surgical procedure" %}</td>
+                    <td>{{ data.dmed.0|floatformat:"2" }} {% trans "days" %}</td>
+                    <td>{{ data.dmed.1|floatformat:"2" }} {% trans "days" %}</td>
+                    {% if data.len.2 %}<td>{{ data.dmed.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Average length of stay from the first surgical procedure until discharge" %}</td>
+                    <td>{{ data.deavg.0|floatformat:"2" }} {% trans "days" %}</td>
+                    <td>{{ data.deavg.1|floatformat:"2" }} {% trans "days" %}</td>
+                    {% if data.len.2 %}<td>{{ data.deavg.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Median length of stay from the first surgical procedure until discharge" %}</td>
+                    <td>{{ data.demed.0|floatformat:"2" }} {% trans "days" %}</td>
+                    <td>{{ data.demed.1|floatformat:"2" }} {% trans "days" %}</td>
+                    {% if data.len.2 %}<td>{{ data.demed.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                </tr>
+            </table>
+            <div id="graph{{ forloop.counter }}" style="margin-top: 20px; height: 300px;"></div>
+        {% endif %}
+    {% endfor %}
 {% endblock content %}
 
 {% block js %}
@@ -110,53 +93,45 @@
     <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
     <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
     <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function(){
-            {% localize off %}
-                var first1 = [
-                    ['{% trans "Appropriate antibiotic drug" %}', {{ one.one }}],
-                    ['{% trans "Appropriate dose" %}', {{ one.twoa }}],
-                    ['{% trans "Appropriate dose with weight" %}', {{ one.twob }}],
-                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ one.three }}],
-                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ one.four }}],
-                    ['{% trans "Appropriate timing:" %}', {{ one.five }}],
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ one.ten }}],
-                    ['{% trans "% of misuse" %}', {{ one.six }}],
-                    ['{% trans "% of overuse" %}', {{ one.seven }}],
-                    ['{% trans "% of underuse" %}', {{ one.eight }}],
-                    ['{% trans "% of single shot treatment" %}', {{ one.nine }}]
-                ];
-                var first2 = [
-                    ['{% trans "Appropriate antibiotic drug" %}', {{ two.one }}],
-                    ['{% trans "Appropriate dose" %}', {{ two.twoa }}],
-                    ['{% trans "Appropriate dose with weight" %}', {{ two.twob }}],
-                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ two.three }}],
-                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ two.four }}],
-                    ['{% trans "Appropriate timing:" %}', {{ two.five }}],
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ two.ten }}],
-                    ['{% trans "% of misuse" %}', {{ two.six }}],
-                    ['{% trans "% of overuse" %}', {{ two.seven }}],
-                    ['{% trans "% of underuse" %}', {{ two.eight }}],
-                    ['{% trans "% of single shot treatment" %}', {{ two.nine }}]
-                ];
-                var first3 = [
-                    ['{% trans "Appropriate antibiotic drug" %}', {{ three.one }}],
-                    ['{% trans "Appropriate dose" %}', {{ three.twoa }}],
-                    ['{% trans "Appropriate dose with weight" %}', {{ three.twob }}],
-                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ three.three }}],
-                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ three.four }}],
-                    ['{% trans "Appropriate timing:" %}', {{ three.five }}],
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ three.ten }}],
-                    ['{% trans "% of misuse" %}', {{ three.six }}],
-                    ['{% trans "% of overuse" %}', {{ three.seven }}],
-                    ['{% trans "% of underuse" %}', {{ three.eight }}],
-                    ['{% trans "% of single shot treatment" %}', {{ three.nine }}]
-                ];
-            {% endlocalize %}
-            jqplot_percent.legend = { show: true }
-            jqplot_percent.series = [{ label: '{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}' },{ label: '{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}' },{ label: '{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}' }]
-            jqplot_percent.axes.xaxis.tickOptions.angle = -30
-            $.jqplot('graph1', [first1,first2{% if three %},first3{% endif %}], jqplot_percent);
+            {% for data in diagnosis %}
+                {% if data.len.0 >= 60 or data.len.1 >= 60 or data.len.2 >= 60 %}
+                    {% localize off %}
+                        var data{{ forloop.counter }}1 = [
+                            ['{% trans "Average length of stay" %}', {{ data.avg.0 }}],
+                            ['{% trans "Median length of stay" %}', {{ data.med.0 }}],
+                            ['{% trans "Average length of stay until the first surgical procedure" %}', {{ data.davg.0 }}],
+                            ['{% trans "Median length of stay until the first surgical procedure" %}', {{ data.dmed.0 }}],
+                            ['{% trans "Average length of stay from the first surgical procedure until discharge" %}', {{ data.deavg.0 }}],
+                            ['{% trans "Median length of stay from the first surgical procedure until discharge" %}', {{ data.demed.0 }}]
+                        ];
+                        var data{{ forloop.counter }}2 = [
+                            ['{% trans "Average length of stay" %}', {{ data.avg.1 }}],
+                            ['{% trans "Median length of stay" %}', {{ data.med.1 }}],
+                            ['{% trans "Average length of stay until the first surgical procedure" %}', {{ data.davg.1 }}],
+                            ['{% trans "Median length of stay until the first surgical procedure" %}', {{ data.dmed.1 }}],
+                            ['{% trans "Average length of stay from the first surgical procedure until discharge" %}', {{ data.deavg.1 }}],
+                            ['{% trans "Median length of stay from the first surgical procedure until discharge" %}', {{ data.demed.1 }}]
+                        ];
+                        {% if data.len.2 %}
+                        var data{{ forloop.counter }}3 = [
+                            ['{% trans "Average length of stay" %}', {{ data.avg.2 }}],
+                            ['{% trans "Median length of stay" %}', {{ data.med.2 }}],
+                            ['{% trans "Average length of stay until the first surgical procedure" %}', {{ data.davg.2 }}],
+                            ['{% trans "Median length of stay until the first surgical procedure" %}', {{ data.dmed.2 }}],
+                            ['{% trans "Average length of stay from the first surgical procedure until discharge" %}', {{ data.deavg.2 }}],
+                            ['{% trans "Median length of stay from the first surgical procedure until discharge" %}', {{ data.demed.2 }}]
+                        ];
+                        {% endif %}
+                    {% endlocalize %}
+                    jqplot_days.title = '{{ data.name }}'
+                    jqplot_days.axes.yaxis.tickOptions.formatString = "%.2f"
+                    jqplot_days.highlighter.formatString = '<span class="font-size: 12px">%.2f {% trans "days" %}</span>'
+                    $.jqplot('graph{{ forloop.counter }}', [data{{ forloop.counter }}1,data{{ forloop.counter }}2{% if data.len.2 %},data{{ forloop.counter }}3{% endif %}], jqplot_days);
+                {% endif %}
+            {% endfor %}
         });
     </script>
 {% endblock js %}

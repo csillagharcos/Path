@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block header %}
+    {% include "c9_header.html" %}
+{% endblock header %}
+
+{% block content %}
+    <form action="" method="POST">
+        <table class="report_form">
+            {% csrf_token %}
+            <tr{% if form.date1a.errors %} class="error"{% endif %}{% if form.date1b.errors %} class="error"{% endif %}>
+                <td{% if form.date1a.errors %} class="jq_tool" title='{{ form.date1a.errors }}'{% endif %}>{{ form.date1a.label }}</td>
+                <td{% if form.date1b.errors %} class="jq_tool" title='{{ form.date1b.errors }}'{% endif %}>{{ form.date1a }} {{ form.date1b }}</td>
+            </tr>
+            <tr{% if form.date2a.errors %} class="error"{% endif %}{% if form.date2b.errors %} class="error"{% endif %}>
+                <td{% if form.date2a.errors %} class="jq_tool" title='{{ form.date2a.errors }}'{% endif %}>{{ form.date2a.label }}</td>
+                <td{% if form.date2b.errors %} class="jq_tool" title='{{ form.date2b.errors }}'{% endif %}>{{ form.date2a }} {{ form.date2b }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.date3a.label }}</td>
+                <td>{{ form.date3a }} {{ form.date3b }}</td>
+            </tr>
+        </table>
+        <input type="submit" value="{% trans "Submit" %}">
+    </form>
+{% endblock content %}
+
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.tooltip.min.js"></script>
+    <script type="text/javascript">
+        $(".jq_tool").tooltip()
+        $(document).ready(function(){
+            $(".datetimepicker").datetimepicker({ timeFormat: "h:mm", dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, yearRange: "1900:c" })
+            $(".datepicker").datepicker({ dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, yearRange: "1900:c" })
+        })
+    </script>
+{% endblock js %}

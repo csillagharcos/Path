@@ -265,6 +265,9 @@ table.los {
     table.los td:first-child {
       width: 70%; }
 
+table.longer td:first-child {
+  width: 50%; }
+
 .error_message_warning {
   font-size: 16px;
   color: red; }
