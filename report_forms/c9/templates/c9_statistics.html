@@ -5,7 +5,8 @@
 {% endblock header %}
 
 {% block content %}
-    {% if not_enough %}
+    {% if not display_stats %}
+        {% trans "Sorry, you don't have any OR." %}
     {% else %}
         {% for operating_room in display_stats %}
             <table class="los">

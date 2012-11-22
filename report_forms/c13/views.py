@@ -41,9 +41,7 @@ def Statistics(request):
     return render_to_response('c13_statistics.html', context, context_instance=RequestContext(request))
 
 def Trend(request):
-    if request.method == "POST":
-        context = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace) )
-    return render_to_response('c13_statistics.html', context, context_instance=RequestContext(request))
+    pass
 
 def Template(request):
     model = (

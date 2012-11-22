@@ -106,20 +106,79 @@ def Import(request):
         context = { "form" : form }
         return render_to_response('c8_file_upload.html', context, context_instance=RequestContext(request))
 
-
 @login_required
 def Statistics(request):
+    context = CountStatistics(c8.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace))
+    return render_to_response('c8_statistics.html', context, context_instance=RequestContext(request))
+
+@login_required
+def Trend(request):
+    pass
+
+def Template(request):
+    model = (
+        _('Patients ID'),
+        _('Case ID'),
+        _('Date of birth'),
+        _('Date of hospital admission'),
+        _('Patient admission status'),
+        _('Type of admission'),
+        _('Was surgical procedure?'),
+        _('Date of first surgical procedure'),
+        _('Date of hospital discharge'),
+        _('Patient discharge status'),
+        _('Diagnosis group'),
+        _('Diagnosis code: ICD-10'),
+        _('Diagnosis code: DRG'),
+        )
+    return csvDump(model, "c8")
+
+@login_required
+def Export(request):
+    model = ((
+                 _('Patients ID'),
+                 _('Case ID'),
+                 _('Date of birth'),
+                 _('Date of hospital admission'),
+                 _('Patient admission status'),
+                 _('Type of admission'),
+                 _('Was surgical procedure?'),
+                 _('Date of first surgical procedure'),
+                 _('Date of hospital discharge'),
+                 _('Patient discharge status'),
+                 _('Diagnosis group'),
+                 _('Diagnosis code: ICD-10'),
+                 _('Diagnosis code: DRG'),
+                 ),)
+    cases = c8.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
+    for case in cases:
+        model += ((
+                      str(case.patient_id),
+                      str(case.case_id),
+                      str(case.date_of_birth),
+                      str(case.date_of_admission),
+                      str(case.patient_admission_status),
+                      str(case.type_of_admission),
+                      str(case.was_surgical_procedure),
+                      str(case.date_of_surgical_procedure),
+                      str(case.date_of_discharge),
+                      str(case.patient_discharge_status),
+                      str(case.diagnosis_group),
+                      str(case.icd),
+                      str(case.drg),
+                      ),)
+    return csvExport(model, 'c8_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
+
+def CountStatistics(cases, notView=True):
     ''' Query '''
     countable_case=uncountable_case=()
-    cases = c8.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
     for case in cases:
         if calculate_age(case.date_of_birth, case.date_of_admission) <= 18 or case.patient_admission_status == 1 or case.type_of_admission == 1 or case.type_of_admission == 2 or case.patient_discharge_status == 1 or case.patient_discharge_status == 3:
             uncountable_case += (case,)
         else:
             countable_case += (case,)
-
-    if len(countable_case) < 60:
-        return render_to_response('c8_statistics.html', {"not_enough": True }, context_instance=RequestContext(request))
+    if len(countable_case) < 60 and notView:
+        return render_to_response('c8_statistics.html', { "not_enough": True })
 
     ''' Working '''
     s_days = hap_days = hf_days = cabg_days = ka_days = ih_days = taa_days = c_days = v_days = ()
@@ -235,7 +294,7 @@ def Statistics(request):
     except: hfde_avg = 0
     try: hfde_med = median(hfde_days)
     except: hfde_med = 0
-    
+
     ''' CABG '''
     try: cabg_first_date = sorted(cabg_dates)[0]
     except: cabg_first_date = 0
@@ -253,7 +312,7 @@ def Statistics(request):
     except: cabgde_avg = 0
     try: cabgde_med = median(cabgde_days)
     except: cabgde_med = 0
-    
+
     ''' Knee arthroscopy '''
     try: ka_first_date = sorted(ka_dates)[0]
     except: ka_first_date = 0
@@ -289,7 +348,7 @@ def Statistics(request):
     except: ihde_avg = 0
     try: ihde_med = median(ihde_days)
     except: ihde_med = 0
-    
+
     ''' Tonsillectomy and/or adenoidectomy '''
     try: taa_first_date = sorted(taa_dates)[0]
     except: taa_first_date = 0
@@ -357,7 +416,6 @@ def Statistics(request):
         (_('Cholecystectomy'), c_first_date, c_last_date, c_avg, c_med, cd_avg, cd_med, cde_avg, cde_med, len(c_days)),
         (_('Varicose veins - stripping and ligation'), v_first_date, v_last_date, v_avg, v_med, vd_avg, vd_med, vde_avg, vde_med, len(v_days)),
         )
-    quantity = (2,0,0,0,0,0,0,0,0)
     ''' Displaying '''
     context = {
         "overall": len(cases),
@@ -365,58 +423,4 @@ def Statistics(request):
         "counted": len(countable_case),
         "diagnosis": diagnosis
     }
-    return render_to_response('c8_statistics.html', context, context_instance=RequestContext(request))
-
-def Template(request):
-    model = (
-        _('Patients ID'),
-        _('Case ID'),
-        _('Date of birth'),
-        _('Date of hospital admission'),
-        _('Patient admission status'),
-        _('Type of admission'),
-        _('Was surgical procedure?'),
-        _('Date of first surgical procedure'),
-        _('Date of hospital discharge'),
-        _('Patient discharge status'),
-        _('Diagnosis group'),
-        _('Diagnosis code: ICD-10'),
-        _('Diagnosis code: DRG'),
-        )
-    return csvDump(model, "c8")
-
-@login_required
-def Export(request):
-    model = ((
-                 _('Patients ID'),
-                 _('Case ID'),
-                 _('Date of birth'),
-                 _('Date of hospital admission'),
-                 _('Patient admission status'),
-                 _('Type of admission'),
-                 _('Was surgical procedure?'),
-                 _('Date of first surgical procedure'),
-                 _('Date of hospital discharge'),
-                 _('Patient discharge status'),
-                 _('Diagnosis group'),
-                 _('Diagnosis code: ICD-10'),
-                 _('Diagnosis code: DRG'),
-                 ),)
-    cases = c8.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
-    for case in cases:
-        model += ((
-                      str(case.patient_id),
-                      str(case.case_id),
-                      str(case.date_of_birth),
-                      str(case.date_of_admission),
-                      str(case.patient_admission_status),
-                      str(case.type_of_admission),
-                      str(case.was_surgical_procedure),
-                      str(case.date_of_surgical_procedure),
-                      str(case.date_of_discharge),
-                      str(case.patient_discharge_status),
-                      str(case.diagnosis_group),
-                      str(case.icd),
-                      str(case.drg),
-                      ),)
-    return csvExport(model, 'c8_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
+    return context

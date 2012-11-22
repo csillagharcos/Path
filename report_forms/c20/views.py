@@ -99,58 +99,14 @@ def Import(request):
         context = { "form" : form }
         return render_to_response('c20_file_upload.html', context, context_instance=RequestContext(request))
 
-
 @login_required
 def Statistics(request):
-    ''' Query '''
-    countable_case=uncountable_case=()
-    cases = c20.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
-    for case in cases:
-        error=False
-        if not case.diagnosis_code == "I21" and not case.diagnosis_code == "I22":
-            uncountable_case += (case,)
-            error = True
-        if calculate_age(case.date_of_birth) < 15 and not error:
-            uncountable_case += (case,)
-            error = True
-        if (case.type_of_discharge == 0 or case.type_of_discharge == 2 or case.type_of_discharge == 3 or case.patient_allergic_aspirin == 1 or case.aspirin_intolerance == 1 or case.aspirin_refusal == 1) and not error:
-            uncountable_case += (case,)
-            error = True
-        if not error:
-            countable_case += (case,)
-
-    if len(countable_case) < 30:
-        return render_to_response('c20_statistics.html', {"not_enough": True }, context_instance=RequestContext(request))
-
-    cindicator_one = cindicator_two = cindicator_three = 0
-    indicator_one = indicator_two = indicator_three = 0
-    ''' Working '''
-    for case in countable_case:
-        if case.aspirin_at_discharge == 1:
-            cindicator_one += 1
-        if case.non_aspirin_platelet == 1:
-            cindicator_two += 1
-        if case.aspirin_at_discharge == 1 or case.non_aspirin_platelet == 1:
-            cindicator_three += 1
-
-    ''' Counting '''
-    try: indicator_one = float(cindicator_one) / len(countable_case) * 100
-    except: indicator_one = 0
-    try: indicator_two = float(cindicator_two) / len(countable_case) * 100
-    except: indicator_one = 0
-    try: indicator_three = float(cindicator_three) / len(countable_case) * 100
-    except: indicator_one = 0
-
-    ''' Displaying '''
-    context = {
-        "overall": len(cases),
-        "removed": len(uncountable_case),
-        "counted": len(countable_case),
-        "indicator_one": indicator_one,
-        "indicator_two": indicator_two,
-        "indicator_three": indicator_three,
-    }
+    context = CountStatistics(c20.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace))
     return render_to_response('c20_statistics.html', context, context_instance=RequestContext(request))
+
+@login_required
+def Trend(request):
+    pass
 
 def Template(request):
     model = (
@@ -205,3 +161,53 @@ def Export(request):
                       str(case.date_of_discharge),
                       ),)
     return csvExport(model, 'c20_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
+
+def CountStatistics(cases, notView = True):
+    ''' Query '''
+    countable_case=uncountable_case=()
+    for case in cases:
+        error=False
+        if not case.diagnosis_code == "I21" and not case.diagnosis_code == "I22":
+            uncountable_case += (case,)
+            error = True
+        if calculate_age(case.date_of_birth) < 15 and not error:
+            uncountable_case += (case,)
+            error = True
+        if (case.type_of_discharge == 0 or case.type_of_discharge == 2 or case.type_of_discharge == 3 or case.patient_allergic_aspirin == 1 or case.aspirin_intolerance == 1 or case.aspirin_refusal == 1) and not error:
+            uncountable_case += (case,)
+            error = True
+        if not error:
+            countable_case += (case,)
+
+    if len(countable_case) < 30 and notView:
+        return render_to_response('c20_statistics.html', {"not_enough": True })
+
+    cindicator_one = cindicator_two = cindicator_three = 0
+    indicator_one = indicator_two = indicator_three = 0
+    ''' Working '''
+    for case in countable_case:
+        if case.aspirin_at_discharge == 1:
+            cindicator_one += 1
+        if case.non_aspirin_platelet == 1:
+            cindicator_two += 1
+        if case.aspirin_at_discharge == 1 or case.non_aspirin_platelet == 1:
+            cindicator_three += 1
+
+    ''' Counting '''
+    try: indicator_one = float(cindicator_one) / len(countable_case) * 100
+    except: indicator_one = 0
+    try: indicator_two = float(cindicator_two) / len(countable_case) * 100
+    except: indicator_one = 0
+    try: indicator_three = float(cindicator_three) / len(countable_case) * 100
+    except: indicator_one = 0
+
+    ''' Displaying '''
+    context = {
+        "overall": len(cases),
+        "removed": len(uncountable_case),
+        "counted": len(countable_case),
+        "indicator_one": indicator_one,
+        "indicator_two": indicator_two,
+        "indicator_three": indicator_three,
+        }
+    return context
