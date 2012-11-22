@@ -199,10 +199,12 @@ def Trend(request):
             interval_one = CountStatistics(c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), request.user.get_profile().workplace, form.cleaned_data['date1a'], form.cleaned_data['date1b'] )
             interval_two = CountStatistics(c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), request.user.get_profile().workplace, form.cleaned_data['date2a'], form.cleaned_data['date2b'] )
             if form.cleaned_data['date3a'] and form.cleaned_data['date3b']:
-                interval_three = CountStatistics(c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), form.cleaned_data['date3a'], form.cleaned_data['date3b'], False )
+                interval_three = CountStatistics(c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), request.user.get_profile().workplace, form.cleaned_data['date3a'], form.cleaned_data['date3b'] )
+                context = ZipThat(interval_one, interval_two, form.cleaned_data, interval_three)
             else:
                 interval_three = False
-            return render_to_response('c9_trend_diagram.html', { 'one': interval_one, 'two': interval_two, 'three': interval_three, 'form': form.cleaned_data }, context_instance=RequestContext(request))
+                context = ZipThat(interval_one, interval_two,form.cleaned_data)
+            return render_to_response('c9_trend_diagram.html', context, context_instance=RequestContext(request))
         else:
             form = TrendForm(request.POST)
             return render(request, 'c9_trend.html', { 'form': form })
@@ -489,3 +491,59 @@ def CountStatistics(operation_cases, workplace, startDate = False, endDate = Fal
         "display_stats": display_stats,
         }
     return context
+
+def ZipThat(one,two,formStuff,three = False):
+    display_stats = []
+    if three:
+        for i in range(len(one['display_stats'])):
+            display_stats += [
+                    {
+                    'name': one['display_stats'][i]['name'],
+                    'slug': [one['display_stats'][i]['slug'], two['display_stats'][i]['slug'], three['display_stats'][i]['slug']],
+                    'tn': [one['display_stats'][i]['tn'], two['display_stats'][i]['tn'], three['display_stats'][i]['tn']],
+                    'mk': [one['display_stats'][i]['mk'], two['display_stats'][i]['mk'], three['display_stats'][i]['mk']],
+                    'cases': [one['display_stats'][i]['cases'], two['display_stats'][i]['cases'], three['display_stats'][i]['cases']],
+                    'mka': [one['display_stats'][i]['mka'], two['display_stats'][i]['mka'], three['display_stats'][i]['mka']],
+                    'amt': [one['display_stats'][i]['amt'], two['display_stats'][i]['amt'], three['display_stats'][i]['amt']],
+                    'mmt': [one['display_stats'][i]['mmt'], two['display_stats'][i]['mmt'], three['display_stats'][i]['mmt']],
+                    'aa': [one['display_stats'][i]['aa'], two['display_stats'][i]['aa'], three['display_stats'][i]['aa']],
+                    'ma': [one['display_stats'][i]['ma'], two['display_stats'][i]['ma'], three['display_stats'][i]['ma']],
+                    'ami': [one['display_stats'][i]['ami'], two['display_stats'][i]['ami'], three['display_stats'][i]['ami']],
+                    'mmi': [one['display_stats'][i]['mmi'], two['display_stats'][i]['mmi'], three['display_stats'][i]['mmi']],
+                    'ame': [one['display_stats'][i]['ame'], two['display_stats'][i]['ame'], three['display_stats'][i]['ame']],
+                    'mme': [one['display_stats'][i]['mme'], two['display_stats'][i]['mme'], three['display_stats'][i]['mme']],
+                    'at': [one['display_stats'][i]['at'], two['display_stats'][i]['at'], three['display_stats'][i]['at']],
+                    'attn': [one['display_stats'][i]['attn'], two['display_stats'][i]['attn'], three['display_stats'][i]['attn']]
+                },
+            ]
+        ZippedThat = {
+            'display_stats': display_stats,
+            'formdata': formStuff,
+        }
+    else:
+        for i in range(len(one['display_stats'])):
+            display_stats += [
+                    {
+                    'name': one['display_stats'][i]['name'],
+                    'slug': [one['display_stats'][i]['slug'], two['display_stats'][i]['slug']],
+                    'tn': [one['display_stats'][i]['tn'], two['display_stats'][i]['tn']],
+                    'mk': [one['display_stats'][i]['mk'], two['display_stats'][i]['mk']],
+                    'cases': [one['display_stats'][i]['cases'], two['display_stats'][i]['cases']],
+                    'mka': [one['display_stats'][i]['mka'], two['display_stats'][i]['mka']],
+                    'amt': [one['display_stats'][i]['amt'], two['display_stats'][i]['amt']],
+                    'mmt': [one['display_stats'][i]['mmt'], two['display_stats'][i]['mmt']],
+                    'aa': [one['display_stats'][i]['aa'], two['display_stats'][i]['aa']],
+                    'ma': [one['display_stats'][i]['ma'], two['display_stats'][i]['ma']],
+                    'ami': [one['display_stats'][i]['ami'], two['display_stats'][i]['ami']],
+                    'mmi': [one['display_stats'][i]['mmi'], two['display_stats'][i]['mmi']],
+                    'ame': [one['display_stats'][i]['ame'], two['display_stats'][i]['ame']],
+                    'mme': [one['display_stats'][i]['mme'], two['display_stats'][i]['mme']],
+                    'at': [one['display_stats'][i]['at'], two['display_stats'][i]['at']],
+                    'attn': [one['display_stats'][i]['attn'], two['display_stats'][i]['attn']]
+                },
+            ]
+        ZippedThat = {
+            'display_stats': display_stats,
+            'formdata': formStuff,
+        }
+    return ZippedThat

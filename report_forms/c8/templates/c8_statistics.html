@@ -73,10 +73,9 @@
                             ['{% trans "Median length of stay from the first surgical procedure until discharge" %}', {{ data.8 }}]
                         ];
                     {% endlocalize %}
+                    jqplot_days.title = '{{ data.0 }}'
                     jqplot_days.axes.yaxis.tickOptions.formatString = "%.2f"
                     jqplot_days.highlighter.formatString = '<span class="font-size: 12px">%.2f {% trans "days" %}</span>'
-                    jqplot_days.legend = { show: true }
-                    jqplot_days.series = [{ label: '{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}' },{ label: '{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}' },{ label: '{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}' }]
                     $.jqplot('graph{{ forloop.counter }}', [data{{ forloop.counter }}], jqplot_days);
                 {% endif %}
             {% endfor %}

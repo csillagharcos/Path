@@ -126,6 +126,8 @@
                         ];
                         {% endif %}
                     {% endlocalize %}
+                    jqplot_days.legend = { show: true }
+                    jqplot_days.series = [{ label: '{{ formdata.date1a|date:"Y-m-d" }} - {{ formdata.date1b|date:"Y-m-d" }}' },{ label: '{{ formdata.date2a|date:"Y-m-d" }} - {{ formdata.date2b|date:"Y-m-d" }}' },{ label: '{{ formdata.date3a|date:"Y-m-d" }} - {{ formdata.date3b|date:"Y-m-d" }}' }]
                     jqplot_days.title = '{{ data.name }}'
                     jqplot_days.axes.yaxis.tickOptions.formatString = "%.2f"
                     jqplot_days.highlighter.formatString = '<span class="font-size: 12px">%.2f {% trans "days" %}</span>'
