@@ -82,18 +82,22 @@
     <script type="text/javascript">
         $(document).ready(function(){
             {% localize off %}
-                var first = [['{% trans "Appropriate antibiotic drug" %}', {{ one }}],
+                var first = [
+                    ['{% trans "Full compliance with criteria 1-5" %}', {{ ten }}],
+                    ['{% trans "Appropriate antibiotic drug" %}', {{ one }}],
                     ['{% trans "Appropriate dose" %}', {{ twoa }}],
                     ['{% trans "Appropriate dose with weight" %}', {{ twob }}],
                     ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ three }}],
                     ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ four }}],
                     ['{% trans "Appropriate timing:" %}', {{ five }}],
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ ten }}],
                     ['{% trans "% of misuse" %}', {{ six }}],
                     ['{% trans "% of overuse" %}', {{ seven }}],
                     ['{% trans "% of underuse" %}', {{ eight }}],
-                    ['{% trans "% of single shot treatment" %}', {{ nine }}]];
+                    ['{% trans "% of single shot treatment" %}', {{ nine }}]
+                ];
             {% endlocalize %}
+            jqplot_percent.seriesDefaults.rendererOptions = { varyBarColor : true }
+            jqplot_percent.seriesColors = ["red", "#027997", "#027997", "#027997", "#027997", "#027997", "#027997", "#027997", "#027997", "#027997", "#027997"]
             jqplot_percent.axes.xaxis.tickOptions.angle = -30
             $.jqplot('graph1', [first], jqplot_percent);
         });
