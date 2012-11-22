@@ -73,6 +73,8 @@
         </table>
     {% endif %}
     <div id="graph1" style="margin-top: 20px; height: 700px"></div>
+    <div id="graph2" style="margin-top: 20px; height: 700px"></div>
+    <div id="graph3" style="margin-top: 20px; height: 700px"></div>
 {% endblock content %}
 
 {% block js %}
@@ -93,11 +95,15 @@
                         ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 2 days of admission" %}', {{ r1a2 }}],
                         ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 3 days of admission" %}', {{ r1a3 }}],
                     {% endif %}
+                ];
+                var second = [
                     {% if r1bcounted >= 60 %}
                         ['{% trans "Percentage of patients who have documented evidence of functional assessment in 3 days prior to discharge" %}', {{ r1b1 }}],
                         ['{% trans "Percentage of patients who have documented evidence of functional assessment in 1 days prior to discharge" %}', {{ r1b2 }}],
                         ['{% trans "Percentage of patients who have documented evidence of functional assessment in 2 days prior to discharge" %}', {{ r1b3 }}],
                     {% endif %}
+                    ];
+                var third = [
                     {% if r2counted >= 60 %}
                         ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}', {{ r21 }}],
                         ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}', {{ r22 }}],
@@ -108,6 +114,8 @@
             {% endlocalize %}
             jqplot_percent.axes.xaxis.tickOptions.angle = -30
             $.jqplot('graph1', [first], jqplot_percent);
+            $.jqplot('graph2', [second], jqplot_percent);
+            $.jqplot('graph3', [third], jqplot_percent);
         });
     </script>
 {% endblock js %}
