@@ -250,6 +250,11 @@ table.needle {
     padding: 5px;
     border: 1px solid black; }
 
+table.shorter td {
+  width: 10%; }
+  table.shorter td:first-child {
+    width: 25%; }
+
 table.los {
   width: 900px;
   margin: 10px auto; }

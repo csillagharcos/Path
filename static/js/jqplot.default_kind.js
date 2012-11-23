@@ -10,6 +10,7 @@ jqplot_percent = {
             }
         },
         yaxis:{
+            label: "%",
             ticks: [0,25,50,75,100],
             tickOptions: {
                 formatString: '%.2f'

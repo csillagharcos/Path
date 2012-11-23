@@ -5,158 +5,90 @@
 {% endblock header %}
 
 {% block content %}
-    <table class="statistics">
-        <thead>
+    <table class="needle shorter">
+        <tr>
+            <th rowspan="2">{% trans "Job" %}</th>
+            <th colspan="{% if formdata.date3a %}3{% else %}2{% endif %}">{% trans "Number of needle stick injuries to 100 workers (average number)" %}</th>
+            <th colspan="{% if formdata.date3a %}3{% else %}2{% endif %}">{% trans "Number of needle stick injuries to 100 workers (FTE = full time equivalent)" %}</th>
+        </tr>
+        <tr>
+            <th>{{ formdata.date1a }} - {{ formdata.date1b }}</th>
+            <th>{{ formdata.date2a }} - {{ formdata.date2b }}</th>
+            {% if formdata.date3a %}<th>{{ formdata.date3a }} - {{ formdata.date3b }}</th>{% endif %}
+            <th>{{ formdata.date1a }} - {{ formdata.date1b }}</th>
+            <th>{{ formdata.date2a }} - {{ formdata.date2b }}</th>
+            {% if formdata.date3a %}<th>{{ formdata.date3a }} - {{ formdata.date3b }}</th>{% endif %}
+        </tr>
+        {% for job in jobs %}
             <tr>
-                <td>{% trans "Name of the indicator" %}</td>
-                <td>{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}</td>
-                <td>{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}</td>
-                {% if three %}<td>{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}</td>{% endif %}
+                <td>{{ job.name }}</td>
+                <td>{{ job.first.0|floatformat:"2" }}</td>
+                <td>{{ job.first.1|floatformat:"2" }}</td>
+                {% if formdata.date3a %}<td>{{ job.first.2|floatformat:"2" }}</td>{% endif %}
+                <td>{{ job.second.0|floatformat:"2" }}</td>
+                <td>{{ job.second.1|floatformat:"2" }}</td>
+                {% if formdata.date3a %}<td>{{ job.second.2|floatformat:"2" }}</td>{% endif %}
             </tr>
-        </thead>
-        <tr>
-            <td>{% trans "Overall:" %}</td>
-            <td>{{ one.overall }}</td>
-            <td>{{ two.overall }}</td>
-            {% if three %}<td>{{ three.overall }}</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Removed:" %}</td>
-            <td>{{ one.removed }}</td>
-            <td>{{ two.removed }}</td>
-            {% if three %}<td>{{ three.removed }}</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Counted:" %}</td>
-            <td>{{ one.counted }}</td>
-            <td>{{ two.counted }}</td>
-            {% if three %}<td>{{ three.counted }}</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Appropriate antibiotic drug" %}:</td>
-            <td>{{ one.one|floatformat:"2" }}%</td>
-            <td>{{ two.one|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.one|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Appropriate dose" %}:</td>
-            <td>{{ one.twoa|floatformat:"2" }}%</td>
-            <td>{{ two.twoa|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.twoa|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Appropriate dose with weight" %}:</td>
-            <td>{{ one.twob|floatformat:"2" }}%</td>
-            <td>{{ two.twob|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.twob|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Appropriate route of administration: intravenous administration" %}:</td>
-            <td>{{ one.three|floatformat:"2" }}%</td>
-            <td>{{ two.three|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.three|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Appropriate timing, within one hour of surgical wound incision" %}:</td>
-            <td>{{ one.four|floatformat:"2" }}%</td>
-            <td>{{ two.four|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.four|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Appropriate timing" %}:</td>
-            <td>{{ one.five|floatformat:"2" }}%</td>
-            <td>{{ two.five|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.five|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Full compliance with criteria 1-5" %}:</td>
-            <td>{{ one.ten|floatformat:"2" }}%</td>
-            <td>{{ two.ten|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.ten|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "% of misuse" %}:</td>
-            <td>{{ one.six|floatformat:"2" }}%</td>
-            <td>{{ two.six|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.six|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "% of overuse" %}:</td>
-            <td>{{ one.seven|floatformat:"2" }}%</td>
-            <td>{{ two.seven|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.seven|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "% of underuse" %}:</td>
-            <td>{{ one.eight|floatformat:"2" }}%</td>
-            <td>{{ two.eight|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.eight|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "% of single shot treatment" %}:</td>
-            <td>{{ one.nine|floatformat:"2" }}%</td>
-            <td>{{ two.nine|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.nine|floatformat:"2" }}%</td>{% endif %}
-        </tr>
+        {% endfor %}
     </table>
-    <div id="graph1" style="margin-top: 20px; height: 300px;"></div>
+    <div id="avg" style="margin-top: 20px; height: 200px;"></div>
+    <div id="fte" style="margin-top: 20px; height: 200px;"></div>
 {% endblock content %}
 
 {% block js %}
     <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
     <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
-    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
-    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
     <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.pointLabels.min.js"></script>
     <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
     <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
-    <script type="text/javascript">
+    <script style="text/javascript">
         $(document).ready(function(){
             {% localize off %}
                 var first1 = [
-                    ['{% trans "Appropriate antibiotic drug" %}', {{ one.one }}],
-                    ['{% trans "Appropriate dose" %}', {{ one.twoa }}],
-                    ['{% trans "Appropriate dose with weight" %}', {{ one.twob }}],
-                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ one.three }}],
-                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ one.four }}],
-                    ['{% trans "Appropriate timing:" %}', {{ one.five }}],
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ one.ten }}],
-                    ['{% trans "% of misuse" %}', {{ one.six }}],
-                    ['{% trans "% of overuse" %}', {{ one.seven }}],
-                    ['{% trans "% of underuse" %}', {{ one.eight }}],
-                    ['{% trans "% of single shot treatment" %}', {{ one.nine }}]
+                    {% for job in jobs %}
+                        ["{{ job.name }}", {{ job.first.0 }}],
+                    {% endfor %}
                 ];
                 var first2 = [
-                    ['{% trans "Appropriate antibiotic drug" %}', {{ two.one }}],
-                    ['{% trans "Appropriate dose" %}', {{ two.twoa }}],
-                    ['{% trans "Appropriate dose with weight" %}', {{ two.twob }}],
-                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ two.three }}],
-                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ two.four }}],
-                    ['{% trans "Appropriate timing:" %}', {{ two.five }}],
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ two.ten }}],
-                    ['{% trans "% of misuse" %}', {{ two.six }}],
-                    ['{% trans "% of overuse" %}', {{ two.seven }}],
-                    ['{% trans "% of underuse" %}', {{ two.eight }}],
-                    ['{% trans "% of single shot treatment" %}', {{ two.nine }}]
+                    {% for job in jobs %}
+                        ["{{ job.name }}", {{ job.first.1 }}],
+                    {% endfor %}
                 ];
-                var first3 = [
-                    ['{% trans "Appropriate antibiotic drug" %}', {{ three.one }}],
-                    ['{% trans "Appropriate dose" %}', {{ three.twoa }}],
-                    ['{% trans "Appropriate dose with weight" %}', {{ three.twob }}],
-                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ three.three }}],
-                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ three.four }}],
-                    ['{% trans "Appropriate timing:" %}', {{ three.five }}],
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ three.ten }}],
-                    ['{% trans "% of misuse" %}', {{ three.six }}],
-                    ['{% trans "% of overuse" %}', {{ three.seven }}],
-                    ['{% trans "% of underuse" %}', {{ three.eight }}],
-                    ['{% trans "% of single shot treatment" %}', {{ three.nine }}]
+                {% if formdata.date3a %}
+                    var first3 = [
+                        {% for job in jobs %}
+                            ["{{ job.name }}", {{ job.first.2 }}],
+                        {% endfor %}
+                    ];
+                {% endif %}
+                var second1 = [
+                    {% for job in jobs %}
+                        ["{{ job.name }}", {{ job.second.0 }}],
+                    {% endfor %}
                 ];
+                var second2 = [
+                    {% for job in jobs %}
+                        ["{{ job.name }}", {{ job.second.1 }}],
+                    {% endfor %}
+                ];
+                {% if formdata.date3a %}
+                    var second3 = [
+                        {% for job in jobs %}
+                            ["{{ job.name }}", {{ job.second.2 }}],
+                        {% endfor %}
+                    ];
+                {% endif %}
             {% endlocalize %}
-            jqplot_percent.legend = { show: true }
-            jqplot_percent.series = [{ label: '{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}' },{ label: '{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}' },{ label: '{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}' }]
-            jqplot_percent.axes.xaxis.tickOptions.angle = -30
-            $.jqplot('graph1', [first1,first2{% if three %},first3{% endif %}], jqplot_percent);
+            jqplot_percent.axes.yaxis.label = ""
+            jqplot_percent.title = "{% trans "Number of needle stick injuries to 100 workers (average number)" %}"
+            jqplot_percent.axes.yaxis.ticks = ""
+            jqplot_percent.highlighter.formatString = "%.2f"
+            $.jqplot('avg', [first1,first2{% if formdata.date3a %},first3{% endif %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Number of needle stick injuries to 100 workers (FTE = full time equivalent)" %}"
+            $.jqplot('fte', [second1,second2{% if formdata.date3a %},second3{% endif %}], jqplot_percent);
         });
     </script>
 {% endblock js %}

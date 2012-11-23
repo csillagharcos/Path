@@ -44,13 +44,15 @@ def Trend(request):
     if request.method == "POST":
         form = TrendForm(request.POST)
         if form.is_valid():
-            interval_one = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date1a'], surgical_incision__lte = form.cleaned_data['date1b'] ), False )
-            interval_two = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date2a'], surgical_incision__lte = form.cleaned_data['date2b'] ), False )
+            interval_one = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, year__gte = form.cleaned_data['date1a'], year__lte = form.cleaned_data['date1b'] ) )
+            interval_two = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, year__gte = form.cleaned_data['date2a'], year__lte = form.cleaned_data['date2b'] ) )
             if form.cleaned_data['date3a'] and form.cleaned_data['date3b']:
-                interval_three = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date3a'], surgical_incision__lte = form.cleaned_data['date3b'] ), False )
+                interval_three = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, year__gte = form.cleaned_data['date3a'], year__lte = form.cleaned_data['date3b'] ) )
+                context = ZipThat(interval_one, interval_two, form.cleaned_data, interval_three)
             else:
                 interval_three = False
-            return render_to_response('c13_trend_diagram.html', { 'one': interval_one, 'two': interval_two, 'three': interval_three, 'form': form.cleaned_data }, context_instance=RequestContext(request))
+                context = ZipThat(interval_one, interval_two, form.cleaned_data)
+            return render_to_response('c13_trend_diagram.html', context, context_instance=RequestContext(request))
         else:
             form = TrendForm(request.POST)
             return render(request, 'c13_trend.html', { 'form': form })
@@ -118,3 +120,40 @@ def CountStatistics(cases):
         "jobs" : group,
         }
     return context
+
+def ZipThat(one,two,formStuff,three=False):
+    jobs = []
+    print len(one['jobs'][0])
+    if three:
+        for i in range(len(one['jobs'][0])-1):
+            jobs += [
+                    {
+                    'name': one['jobs'][i][0],
+                    'first': [one['jobs'][i][1], two['jobs'][i][1], three['jobs'][i][1]],
+                    'second': [one['jobs'][i][2], two['jobs'][i][2], three['jobs'][i][2]]
+                },
+            ]
+        ZippedThat = {
+            'overall': [ one['overall'], two['overall'], three['overall'] ],
+            'removed': [ one['removed'], two['removed'], three['removed'] ],
+            'counted': [ one['counted'], two['counted'], three['counted'] ],
+            'jobs': jobs,
+            'formdata': formStuff,
+            }
+    else:
+        for i in range(len(one['jobs'][0])-1):
+            jobs += [
+                    {
+                    'name': one['jobs'][i][0],
+                    'first': [one['jobs'][i][1], two['jobs'][i][1]],
+                    'second': [one['jobs'][i][2], two['jobs'][i][2]]
+                },
+            ]
+        ZippedThat = {
+            'overall': [ one['overall'], two['overall'] ],
+            'removed': [ one['removed'], two['removed'] ],
+            'counted': [ one['counted'], two['counted'] ],
+            'jobs': jobs,
+            'formdata': formStuff,
+            }
+    return ZippedThat

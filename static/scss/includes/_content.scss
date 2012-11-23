@@ -243,6 +243,15 @@ table.needle{
   }
 }
 
+table.shorter{
+  td{
+    width: 10%;
+    &:first-child{
+      width: 25%;
+    }
+  }
+}
+
 table.los{
   width: 900px;
   margin: 10px auto;
