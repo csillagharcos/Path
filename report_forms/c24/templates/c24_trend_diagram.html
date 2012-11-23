@@ -33,43 +33,43 @@
             {% if three %}<td>{{ three.counted }}</td>{% endif %}
         </tr>
         <tr>
-            <td>{% trans "Appropriate antibiotic drug" %}:</td>
+            <td>{% trans "I. criterion: Appropriate antibiotic drug" %}:</td>
             <td>{{ one.one|floatformat:"2" }}%</td>
             <td>{{ two.one|floatformat:"2" }}%</td>
             {% if three %}<td>{{ three.one|floatformat:"2" }}%</td>{% endif %}
         </tr>
         <tr>
-            <td>{% trans "Appropriate dose" %}:</td>
+            <td>{% trans "II. criterion: Appropriate dose" %}:</td>
             <td>{{ one.twoa|floatformat:"2" }}%</td>
             <td>{{ two.twoa|floatformat:"2" }}%</td>
             {% if three %}<td>{{ three.twoa|floatformat:"2" }}%</td>{% endif %}
         </tr>
         <tr>
-            <td>{% trans "Appropriate dose with weight" %}:</td>
+            <td>{% trans "II/b criterion: Appropriate dose with weight" %}:</td>
             <td>{{ one.twob|floatformat:"2" }}%</td>
             <td>{{ two.twob|floatformat:"2" }}%</td>
             {% if three %}<td>{{ three.twob|floatformat:"2" }}%</td>{% endif %}
         </tr>
         <tr>
-            <td>{% trans "Appropriate route of administration: intravenous administration" %}:</td>
+            <td>{% trans "III. criterion: Appropriate route of administration: intravenous administration" %}:</td>
             <td>{{ one.three|floatformat:"2" }}%</td>
             <td>{{ two.three|floatformat:"2" }}%</td>
             {% if three %}<td>{{ three.three|floatformat:"2" }}%</td>{% endif %}
         </tr>
         <tr>
-            <td>{% trans "Appropriate timing, within one hour of surgical wound incision" %}:</td>
+            <td>{% trans "IV. criterion: Appropriate timing, within one hour of surgical wound incision" %}:</td>
             <td>{{ one.four|floatformat:"2" }}%</td>
             <td>{{ two.four|floatformat:"2" }}%</td>
             {% if three %}<td>{{ three.four|floatformat:"2" }}%</td>{% endif %}
         </tr>
         <tr>
-            <td>{% trans "Appropriate timing" %}:</td>
+            <td>{% trans "V. criterion: Appropriate timing" %}:</td>
             <td>{{ one.five|floatformat:"2" }}%</td>
             <td>{{ two.five|floatformat:"2" }}%</td>
             {% if three %}<td>{{ three.five|floatformat:"2" }}%</td>{% endif %}
         </tr>
         <tr>
-            <td>{% trans "Full compliance with criteria 1-5" %}:</td>
+            <td>{% trans "Full compliance with criteria I-V" %}:</td>
             <td>{{ one.ten|floatformat:"2" }}%</td>
             <td>{{ two.ten|floatformat:"2" }}%</td>
             {% if three %}<td>{{ three.ten|floatformat:"2" }}%</td>{% endif %}
@@ -114,39 +114,39 @@
         $(document).ready(function(){
             {% localize off %}
                 var first1 = [
-                    ['{% trans "Appropriate antibiotic drug" %}', {{ one.one }}],
-                    ['{% trans "Appropriate dose" %}', {{ one.twoa }}],
-                    ['{% trans "Appropriate dose with weight" %}', {{ one.twob }}],
-                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ one.three }}],
-                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ one.four }}],
-                    ['{% trans "Appropriate timing:" %}', {{ one.five }}],
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ one.ten }}],
+                    ['{% trans "Full compliance with criteria I-V" %}', {{ one.ten }}],
+                    ['{% trans "I. criterion" %}', {{ one.one }}],
+                    ['{% trans "II. criterion" %}', {{ one.twoa }}],
+                    ['{% trans "II/b criterion" %}', {{ one.twob }}],
+                    ['{% trans "III. criterion" %}', {{ one.three }}],
+                    ['{% trans "IV. criterion" %}', {{ one.four }}],
+                    ['{% trans "V. criterion" %}', {{ one.five }}],
                     ['{% trans "% of misuse" %}', {{ one.six }}],
                     ['{% trans "% of overuse" %}', {{ one.seven }}],
                     ['{% trans "% of underuse" %}', {{ one.eight }}],
                     ['{% trans "% of single shot treatment" %}', {{ one.nine }}]
                 ];
                 var first2 = [
-                    ['{% trans "Appropriate antibiotic drug" %}', {{ two.one }}],
-                    ['{% trans "Appropriate dose" %}', {{ two.twoa }}],
-                    ['{% trans "Appropriate dose with weight" %}', {{ two.twob }}],
-                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ two.three }}],
-                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ two.four }}],
-                    ['{% trans "Appropriate timing:" %}', {{ two.five }}],
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ two.ten }}],
+                    ['{% trans "Full compliance with criteria I-V" %}', {{ one.ten }}],
+                    ['{% trans "I. criterion" %}', {{ two.one }}],
+                    ['{% trans "II. criterion" %}', {{ two.twoa }}],
+                    ['{% trans "II/b criterion" %}', {{ two.twob }}],
+                    ['{% trans "III. criterion" %}', {{ two.three }}],
+                    ['{% trans "IV. criterion" %}', {{ two.four }}],
+                    ['{% trans "V. criterion" %}', {{ two.five }}],
                     ['{% trans "% of misuse" %}', {{ two.six }}],
                     ['{% trans "% of overuse" %}', {{ two.seven }}],
                     ['{% trans "% of underuse" %}', {{ two.eight }}],
                     ['{% trans "% of single shot treatment" %}', {{ two.nine }}]
                 ];
                 var first3 = [
-                    ['{% trans "Appropriate antibiotic drug" %}', {{ three.one }}],
-                    ['{% trans "Appropriate dose" %}', {{ three.twoa }}],
-                    ['{% trans "Appropriate dose with weight" %}', {{ three.twob }}],
-                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ three.three }}],
-                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ three.four }}],
-                    ['{% trans "Appropriate timing:" %}', {{ three.five }}],
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ three.ten }}],
+                    ['{% trans "Full compliance with criteria I-V" %}', {{ three.ten }}],
+                    ['{% trans "I. criterion" %}', {{ three.one }}],
+                    ['{% trans "II. criterion" %}', {{ three.twoa }}],
+                    ['{% trans "II/b criterion" %}', {{ three.twob }}],
+                    ['{% trans "III. criterion" %}', {{ three.three }}],
+                    ['{% trans "IV. criterion" %}', {{ three.four }}],
+                    ['{% trans "V. criterion" %}', {{ three.five }}],
                     ['{% trans "% of misuse" %}', {{ three.six }}],
                     ['{% trans "% of overuse" %}', {{ three.seven }}],
                     ['{% trans "% of underuse" %}', {{ three.eight }}],

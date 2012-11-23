@@ -50,10 +50,11 @@
     <script type="text/javascript">
         $(document).ready(function(){
             {% localize off %}
-                var first = [['{% trans "Hospital mortality rate within 30 days" %}', {{ indicator_one }}],
-                    ['{% trans "Hospital mortality rate within 30 days without transmissions" %}', {{ subindicator_one }}],
-                    ['{% trans "Hospital mortality rate within 2 days" %}', {{ subindicator_two }}]];
+                var first = [['{% trans "within 30 days" %}', {{ indicator_one }}],
+                    ['{% trans "within 30 days without trasmissions" %}', {{ subindicator_one }}],
+                    ['{% trans "within 2 days" %}', {{ subindicator_two }}]];
             {% endlocalize %}
+            jqplot_percent.title = "{% trans "Stroke hopsital mortality" %}"
             $.jqplot('graph1', [first], jqplot_percent);
         });
     </script>

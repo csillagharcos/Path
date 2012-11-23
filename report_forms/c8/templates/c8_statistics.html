@@ -65,17 +65,18 @@
                 {% if data.9 >= 60 %}
                     {% localize off %}
                         var data{{ forloop.counter }} = [
-                            ['{% trans "Average length of stay" %}', {{ data.3 }}],
-                            ['{% trans "Median length of stay" %}', {{ data.4 }}],
-                            ['{% trans "Average length of stay until the first surgical procedure" %}', {{ data.5 }}],
-                            ['{% trans "Median length of stay until the first surgical procedure" %}', {{ data.6 }}],
-                            ['{% trans "Average length of stay from the first surgical procedure until discharge" %}', {{ data.7 }}],
-                            ['{% trans "Median length of stay from the first surgical procedure until discharge" %}', {{ data.8 }}]
+                            ['{% trans "Average" %}', {{ data.3 }}],
+                            ['{% trans "Median" %}', {{ data.4 }}],
+                            ['{% trans "Average until the first surgical procedure" %}', {{ data.5 }}],
+                            ['{% trans "Median until the first surgical procedure" %}', {{ data.6 }}],
+                            ['{% trans "Average from the first surgical procedure until discharge" %}', {{ data.7 }}],
+                            ['{% trans "Median from the first surgical procedure until discharge" %}', {{ data.8 }}]
                         ];
                     {% endlocalize %}
                     jqplot_days.title = '{{ data.0 }}'
                     jqplot_days.axes.yaxis.tickOptions.formatString = "%.2f"
                     jqplot_days.highlighter.formatString = '<span class="font-size: 12px">%.2f {% trans "days" %}</span>'
+                    jqplot_percent.title = "{% trans "Length of stay" %}"
                     $.jqplot('graph{{ forloop.counter }}', [data{{ forloop.counter }}], jqplot_days);
                 {% endif %}
             {% endfor %}

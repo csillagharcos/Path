@@ -66,19 +66,20 @@
     <script type="text/javascript">
         $(document).ready(function(){
             {% localize off %}
-                var first1 = [['{% trans "Hospital mortality rate within 30 days" %}', {{ one.indicator_one }}],
-                    ['{% trans "Hospital mortality rate within 30 days without transmissions" %}', {{ one.subindicator_one }}],
-                    ['{% trans "Hospital mortality rate within 2 days" %}', {{ one.subindicator_two }}]];
-                var first2 = [['{% trans "Hospital mortality rate within 30 days" %}', {{ two.indicator_one }}],
-                    ['{% trans "Hospital mortality rate within 30 days without transmissions" %}', {{ two.subindicator_one }}],
-                    ['{% trans "Hospital mortality rate within 2 days" %}', {{ two.subindicator_two }}]];
-                var first3 = [['{% trans "Hospital mortality rate within 30 days" %}', {{ three.indicator_one }}],
-                    ['{% trans "Hospital mortality rate within 30 days without transmissions" %}', {{ three.subindicator_one }}],
-                    ['{% trans "Hospital mortality rate within 2 days" %}', {{ three.subindicator_two }}]];
+                var first1 = [['{% trans "within 30 days" %}', {{ one.indicator_one }}],
+                    ['{% trans "within 30 days without transmissions" %}', {{ one.subindicator_one }}],
+                    ['{% trans "within 2 days" %}', {{ one.subindicator_two }}]];
+                var first2 = [['{% trans "within 30 days" %}', {{ two.indicator_one }}],
+                    ['{% trans "within 30 days without transmissions" %}', {{ two.subindicator_one }}],
+                    ['{% trans "within 2 days" %}', {{ two.subindicator_two }}]];
+                var first3 = [['{% trans "within 30 days" %}', {{ three.indicator_one }}],
+                    ['{% trans "within 30 days without transmissions" %}', {{ three.subindicator_one }}],
+                    ['{% trans "within 2 days" %}', {{ three.subindicator_two }}]];
             {% endlocalize %}
             jqplot_percent.legend = { show: true }
             jqplot_percent.series = [{ label: '{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}' },{ label: '{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}' },{ label: '{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}' }]
-            $.jqplot('graph1', [first1,first2,first3], jqplot_percent);
+            jqplot_percent.title = "{% trans "Stroke hopsital mortality" %}"
+            $.jqplot('graph1', [first1,first2{% if three %},first3{% endif %}], jqplot_percent);
         });
     </script>
 {% endblock js %}

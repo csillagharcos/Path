@@ -72,9 +72,9 @@
             </tr>
         </table>
     {% endif %}
-    <div id="graph1" style="margin-top: 20px; height: 700px"></div>
-    <div id="graph2" style="margin-top: 20px; height: 700px"></div>
-    <div id="graph3" style="margin-top: 20px; height: 700px"></div>
+    <div id="graph1" style="margin-top: 20px; height: 200px"></div>
+    <div id="graph2" style="margin-top: 20px; height: 200px"></div>
+    <div id="graph3" style="margin-top: 20px; height: 200px"></div>
 {% endblock content %}
 
 {% block js %}
@@ -91,30 +91,32 @@
             {% localize off %}
                 var first = [
                     {% if r1acounted >= 60 %}
-                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 7 days of admission" %}', {{ r1a1 }}],
-                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 2 days of admission" %}', {{ r1a2 }}],
-                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 3 days of admission" %}', {{ r1a3 }}],
+                        ['{% trans "in 7 days" %}', {{ r1a1 }}],
+                        ['{% trans "in 2 days" %}', {{ r1a2 }}],
+                        ['{% trans "in 3 days" %}', {{ r1a3 }}],
                     {% endif %}
                 ];
                 var second = [
                     {% if r1bcounted >= 60 %}
-                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 3 days prior to discharge" %}', {{ r1b1 }}],
-                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 1 days prior to discharge" %}', {{ r1b2 }}],
-                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 2 days prior to discharge" %}', {{ r1b3 }}],
+                        ['{% trans "in 3 days" %}', {{ r1b1 }}],
+                        ['{% trans "in 1 days" %}', {{ r1b2 }}],
+                        ['{% trans "in 2 days" %}', {{ r1b3 }}],
                     {% endif %}
                     ];
                 var third = [
                     {% if r2counted >= 60 %}
-                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}', {{ r21 }}],
-                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}', {{ r22 }}],
-                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}', {{ r23 }}],
-                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}', {{ r24 }}]
+                        ['{% trans "total" %}', {{ r21 }}],
+                        ['{% trans "due to acute illness" %}', {{ r22 }}],
+                        ['{% trans "due to patient/ family demand" %}', {{ r23 }}],
+                        ['{% trans "due to complications of the original disease" %}', {{ r24 }}]
                     {% endif %}
                 ];
             {% endlocalize %}
-            jqplot_percent.axes.xaxis.tickOptions.angle = -30
+            jqplot_percent.title = "{% trans "Percentage of patients who have documented functional assessment at admission to rehabilitation" %}"
             $.jqplot('graph1', [first], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of patients who have documented evidence of functional assessment prior to discharge" %}"
             $.jqplot('graph2', [second], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}"
             $.jqplot('graph3', [third], jqplot_percent);
         });
     </script>

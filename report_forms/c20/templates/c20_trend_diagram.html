@@ -66,23 +66,24 @@
         $(document).ready(function(){
             {% localize off %}
                 var first1 = [
-                    ['{% trans "Patient prescribed at discharge to take aspirin" %}', {{ one.indicator_one }}],
-                    ['{% trans "Patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ one.indicator_two }}],
-                    ['{% trans "Patient prescribed to take aspirin or other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ one.indicator_three }}]
+                    ['{% trans "Aspirin" %}', {{ one.indicator_one }}],
+                    ['{% trans "Other platelet aggregation inibitor th" %}', {{ one.indicator_two }}],
+                    ['{% trans "Aspirin or other platelet aggregation th" %}', {{ one.indicator_three }}]
                 ];
                 var first2 = [
-                    ['{% trans "Patient prescribed at discharge to take aspirin" %}', {{ two.indicator_one }}],
-                    ['{% trans "Patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ two.indicator_two }}],
-                    ['{% trans "Patient prescribed to take aspirin or other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ two.indicator_three }}]
+                    ['{% trans "Aspirin" %}', {{ two.indicator_one }}],
+                    ['{% trans "Other platelet aggregation inibitor th" %}', {{ two.indicator_two }}],
+                    ['{% trans "Aspirin or other platelet aggregation th" %}', {{ two.indicator_three }}]
                 ];
                 var first3 = [
-                    ['{% trans "Patient prescribed at discharge to take aspirin" %}', {{ three.indicator_one }}],
-                    ['{% trans "Patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ three.indicator_two }}],
-                    ['{% trans "Patient prescribed to take aspirin or other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ three.indicator_three }}]
+                    ['{% trans "Aspirin" %}', {{ three.indicator_one }}],
+                    ['{% trans "Other platelet aggregation inibitor th" %}', {{ three.indicator_two }}],
+                    ['{% trans "Aspirin or other platelet aggregation th" %}', {{ three.indicator_three }}]
                 ];
             {% endlocalize %}
             jqplot_percent.legend = { show: true }
             jqplot_percent.series = [{ label: '{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}' },{ label: '{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}' },{ label: '{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}' }]
+            jqplot_percent.title = "{% trans "Rate of patients prescribed to take platelet aggregation inhibitor therapy medication" %}"
             $.jqplot('graph1', [first1,first2{% if three %},first3{% endif %}], jqplot_percent);
         });
     </script>

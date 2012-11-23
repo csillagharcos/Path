@@ -71,21 +71,24 @@
     $(document).ready(function(){
         {% localize off %}
             var first = [
-                ['{% trans "C-section rate" %}', {{ indicator_one }}],
-                ['{% trans "Rate of planned C-section" %}', {{ subindicator_one }}],
-                ['{% trans "Rate of acute C-section" %}', {{ subindicator_two }}]
+                ['{% trans "Total" %}', {{ indicator_one }}],
+                ['{% trans "Planned" %}', {{ subindicator_one }}],
+                ['{% trans "Acute" %}', {{ subindicator_two }}]
             ];
             var second = [
-                ["{% trans "Rate of c-section by the mother's age is less than 20" %}", {{ subindicator_three_one }}],
-                ["{% trans "Rate of c-section by the mother's age is between 20-35" %}", {{ subindicator_three_two }}],
-                ["{% trans "Rate of c-section by the mother's age is more than 35" %}", {{ subindicator_three_three }}]
+                ["{% trans "Mother younger than 20" %}", {{ subindicator_three_one }}],
+                ["{% trans "Mother between 20 and 35" %}", {{ subindicator_three_two }}],
+                ["{% trans "Mother older than 35" %}", {{ subindicator_three_three }}]
             ];
             var third = [
-                ['{% trans "Rate of acute C-section by the previous number of deliveries first delivery" %}', {{ subindicator_four_one }}],
-                ['{% trans "Rate of acute C-section by the previous number of deliveries first delivery one or more previous deliveries" %}', {{ subindicator_four_two }}]];
+                ['{% trans "First delivery" %}', {{ subindicator_four_one }}],
+                ['{% trans "One or more previous deliveries" %}', {{ subindicator_four_two }}]];
         {% endlocalize %}
+        jqplot_percent.title = "{% trans "C-section rate" %}"
         $.jqplot('graph1', [first], jqplot_percent);
+        jqplot_percent.title = "{% trans "Rate of C-section by the mother’s age" %}"
         $.jqplot('graph2', [second], jqplot_percent);
+        jqplot_percent.title = "{% trans "Rate of C-section by the previous number of deliveries" %}"
         $.jqplot('graph3', [third], jqplot_percent);
     });
     </script>

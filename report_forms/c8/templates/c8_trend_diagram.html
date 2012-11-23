@@ -100,29 +100,29 @@
                 {% if data.len.0 >= 60 or data.len.1 >= 60 or data.len.2 >= 60 %}
                     {% localize off %}
                         var data{{ forloop.counter }}1 = [
-                            ['{% trans "Average length of stay" %}', {{ data.avg.0 }}],
-                            ['{% trans "Median length of stay" %}', {{ data.med.0 }}],
-                            ['{% trans "Average length of stay until the first surgical procedure" %}', {{ data.davg.0 }}],
-                            ['{% trans "Median length of stay until the first surgical procedure" %}', {{ data.dmed.0 }}],
-                            ['{% trans "Average length of stay from the first surgical procedure until discharge" %}', {{ data.deavg.0 }}],
-                            ['{% trans "Median length of stay from the first surgical procedure until discharge" %}', {{ data.demed.0 }}]
+                            ['{% trans "Average " %}', {{ data.avg.0 }}],
+                            ['{% trans "Median " %}', {{ data.med.0 }}],
+                            ['{% trans "Average until the first surgical procedure" %}', {{ data.davg.0 }}],
+                            ['{% trans "Median until the first surgical procedure" %}', {{ data.dmed.0 }}],
+                            ['{% trans "Average from the first surgical procedure until discharge" %}', {{ data.deavg.0 }}],
+                            ['{% trans "Median from the first surgical procedure until discharge" %}', {{ data.demed.0 }}]
                         ];
                         var data{{ forloop.counter }}2 = [
-                            ['{% trans "Average length of stay" %}', {{ data.avg.1 }}],
-                            ['{% trans "Median length of stay" %}', {{ data.med.1 }}],
-                            ['{% trans "Average length of stay until the first surgical procedure" %}', {{ data.davg.1 }}],
-                            ['{% trans "Median length of stay until the first surgical procedure" %}', {{ data.dmed.1 }}],
-                            ['{% trans "Average length of stay from the first surgical procedure until discharge" %}', {{ data.deavg.1 }}],
-                            ['{% trans "Median length of stay from the first surgical procedure until discharge" %}', {{ data.demed.1 }}]
+                            ['{% trans "Average " %}', {{ data.avg.1 }}],
+                            ['{% trans "Median " %}', {{ data.med.1 }}],
+                            ['{% trans "Average until the first surgical procedure" %}', {{ data.davg.1 }}],
+                            ['{% trans "Median until the first surgical procedure" %}', {{ data.dmed.1 }}],
+                            ['{% trans "Average from the first surgical procedure until discharge" %}', {{ data.deavg.1 }}],
+                            ['{% trans "Median from the first surgical procedure until discharge" %}', {{ data.demed.1 }}]
                         ];
                         {% if data.len.2 %}
                         var data{{ forloop.counter }}3 = [
-                            ['{% trans "Average length of stay" %}', {{ data.avg.2 }}],
-                            ['{% trans "Median length of stay" %}', {{ data.med.2 }}],
-                            ['{% trans "Average length of stay until the first surgical procedure" %}', {{ data.davg.2 }}],
-                            ['{% trans "Median length of stay until the first surgical procedure" %}', {{ data.dmed.2 }}],
-                            ['{% trans "Average length of stay from the first surgical procedure until discharge" %}', {{ data.deavg.2 }}],
-                            ['{% trans "Median length of stay from the first surgical procedure until discharge" %}', {{ data.demed.2 }}]
+                            ['{% trans "Average " %}', {{ data.avg.2 }}],
+                            ['{% trans "Median " %}', {{ data.med.2 }}],
+                            ['{% trans "Average until the first surgical procedure" %}', {{ data.davg.2 }}],
+                            ['{% trans "Median until the first surgical procedure" %}', {{ data.dmed.2 }}],
+                            ['{% trans "Average from the first surgical procedure until discharge" %}', {{ data.deavg.2 }}],
+                            ['{% trans "Median from the first surgical procedure until discharge" %}', {{ data.demed.2 }}]
                         ];
                         {% endif %}
                     {% endlocalize %}
@@ -131,6 +131,7 @@
                     jqplot_days.title = '{{ data.name }}'
                     jqplot_days.axes.yaxis.tickOptions.formatString = "%.2f"
                     jqplot_days.highlighter.formatString = '<span class="font-size: 12px">%.2f {% trans "days" %}</span>'
+                    jqplot_percent.title = "{% trans "Length of stay" %}"
                     $.jqplot('graph{{ forloop.counter }}', [data{{ forloop.counter }}1,data{{ forloop.counter }}2{% if data.len.2 %},data{{ forloop.counter }}3{% endif %}], jqplot_days);
                 {% endif %}
             {% endfor %}

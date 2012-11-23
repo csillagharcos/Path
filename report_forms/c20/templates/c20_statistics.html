@@ -49,11 +49,12 @@
         $(document).ready(function(){
             {% localize off %}
                 var first = [
-                    ['{% trans "Patient prescribed at<br />discharge to take aspirin" %}', {{ indicator_one }}],
-                    ['{% trans "Patient prescribed to take other<br />(non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ indicator_two }}],
-                    ['{% trans "Patient prescribed to take aspirin or other<br />(non-aspirin-containing) platelet<br />aggregation inhibitor therapy" %}', {{ indicator_three }}]
+                    ['{% trans "Aspirin" %}', {{ indicator_one }}],
+                    ['{% trans "Other platelet aggregation inibitor th" %}', {{ indicator_two }}],
+                    ['{% trans "Aspirin or other platelet aggregation th" %}', {{ indicator_three }}]
                 ];
             {% endlocalize %}
+            jqplot_percent.title = "{% trans "Rate of patients prescribed to take platelet aggregation inhibitor therapy medication" %}"
             $.jqplot('graph1', [first], jqplot_percent);
         });
     </script>

@@ -22,31 +22,31 @@
                 <td>{{ counted }}</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate antibiotic drug:" %}</td>
+                <td>{% trans "I. criterion: Appropriate antibiotic drug" %}:</td>
                 <td>{{ one|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate dose:" %}</td>
+                <td>{% trans "II. criterion: Appropriate dose" %}:</td>
                 <td>{{ twoa|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate dose with weight:" %}</td>
+                <td>{% trans "II/b criterion: Appropriate dose with weight" %}:</td>
                 <td>{{ twob|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate route of administration: intravenous administration:" %}</td>
+                <td>{% trans "III. criterion: Appropriate route of administration: intravenous administration" %}:</td>
                 <td>{{ three|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate timing, within one hour of surgical wound incision:" %}</td>
+                <td>{% trans "IV. criterion: Appropriate timing, within one hour of surgical wound incision" %}:</td>
                 <td>{{ four|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Appropriate timing: (discontinued within 24 hours after surgical wound closure – or documentation of appropriate clinical indication for continuation of treatment beyond 24 hours):" %}</td>
+                <td>{% trans "V. criterion: Appropriate timing: (discontinued within 24 hours after surgical wound closure – or documentation of appropriate clinical indication for continuation of treatment beyond 24 hours)" %}:</td>
                 <td>{{ five|floatformat:"2" }}%</td>
             </tr>
             <tr>
-                <td>{% trans "Full compliance with criteria 1-5:" %}</td>
+                <td>{% trans "Full compliance with criteria I-V" %}:</td>
                 <td>{{ ten|floatformat:"2" }}%</td>
             </tr>
             <tr>
@@ -83,13 +83,13 @@
         $(document).ready(function(){
             {% localize off %}
                 var first = [
-                    ['{% trans "Full compliance with criteria 1-5" %}', {{ ten }}],
-                    ['{% trans "Appropriate antibiotic drug" %}', {{ one }}],
-                    ['{% trans "Appropriate dose" %}', {{ twoa }}],
-                    ['{% trans "Appropriate dose with weight" %}', {{ twob }}],
-                    ['{% trans "Appropriate route of administration: intravenous administration" %}', {{ three }}],
-                    ['{% trans "Appropriate timing, within one hour of surgical wound incision" %}', {{ four }}],
-                    ['{% trans "Appropriate timing:" %}', {{ five }}],
+                    ['{% trans "Full compliance with criteria I-V" %}', {{ ten }}],
+                    ['{% trans "I. criterion" %}', {{ one }}],
+                    ['{% trans "II. criterion" %}', {{ twoa }}],
+                    ['{% trans "II/b criterion" %}', {{ twob }}],
+                    ['{% trans "III. criterion" %}', {{ three }}],
+                    ['{% trans "IV. criterion" %}', {{ four }}],
+                    ['{% trans "V. criterion" %}', {{ five }}],
                     ['{% trans "% of misuse" %}', {{ six }}],
                     ['{% trans "% of overuse" %}', {{ seven }}],
                     ['{% trans "% of underuse" %}', {{ eight }}],

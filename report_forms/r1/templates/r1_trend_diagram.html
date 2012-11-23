@@ -91,9 +91,9 @@
             {% if three %}<td>{{ three.r24|floatformat:"2" }}%</td>{% endif %}
         </tr>
     </table>
-    <div id="graph1" style="margin-top: 20px; height: 700px;"></div>
-    <div id="graph2" style="margin-top: 20px; height: 700px;"></div>
-    <div id="graph3" style="margin-top: 20px; height: 700px;"></div>
+    <div id="graph1" style="margin-top: 20px; height: 200px;"></div>
+    <div id="graph2" style="margin-top: 20px; height: 200px;"></div>
+    <div id="graph3" style="margin-top: 20px; height: 200px;"></div>
 {% endblock content %}
 
 {% block js %}
@@ -109,63 +109,65 @@
         $(document).ready(function(){
             {% localize off %}
                 var first1 = [
-                    ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 7 days of admission" %}', {{ one.r1a1 }}],
-                    ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 2 days of admission" %}', {{ one.r1a2 }}],
-                    ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 3 days of admission" %}', {{ one.r1a3 }}]
+                    ['{% trans "in 7 days" %}', {{ one.r1a1 }}],
+                    ['{% trans "in 2 days" %}', {{ one.r1a2 }}],
+                    ['{% trans "in 3 days" %}', {{ one.r1a3 }}]
                 ];
                 var first2 = [
-                    ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 7 days of admission" %}', {{ two.r1a1 }}],
-                    ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 2 days of admission" %}', {{ two.r1a2 }}],
-                    ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 3 days of admission" %}', {{ two.r1a3 }}]
+                    ['{% trans "in 7 days" %}', {{ two.r1a1 }}],
+                    ['{% trans "in 2 days" %}', {{ two.r1a2 }}],
+                    ['{% trans "in 3 days" %}', {{ two.r1a3 }}]
                 ];
                 {% if three %}
                     var first3 = [
-                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 7 days of admission" %}', {{ three.r1a1 }}],
-                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 2 days of admission" %}', {{ three.r1a2 }}],
-                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 3 days of admission" %}', {{ three.r1a3 }}]
+                        ['{% trans "in 7 days" %}', {{ three.r1a1 }}],
+                        ['{% trans "in 2 days" %}', {{ three.r1a2 }}],
+                        ['{% trans "in 3 days" %}', {{ three.r1a3 }}]
                     ];
                 {% endif %}
                 var second1 = [
-                    ['{% trans "Percentage of patients who have documented evidence of functional assessment in 3 days prior to discharge" %}', {{ one.r1b1 }}],
-                    ['{% trans "Percentage of patients who have documented evidence of functional assessment in 1 days prior to discharge" %}', {{ one.r1b2 }}],
-                    ['{% trans "Percentage of patients who have documented evidence of functional assessment in 2 days prior to discharge" %}', {{ one.r1b3 }}]
+                    ['{% trans "in 3 days" %}', {{ one.r1b1 }}],
+                    ['{% trans "in 1 days" %}', {{ one.r1b2 }}],
+                    ['{% trans "in 2 days" %}', {{ one.r1b3 }}]
                 ];
                 var second2 = [
-                    ['{% trans "Percentage of patients who have documented evidence of functional assessment in 3 days prior to discharge" %}', {{ two.r1b1 }}],
-                    ['{% trans "Percentage of patients who have documented evidence of functional assessment in 1 days prior to discharge" %}', {{ two.r1b2 }}],
-                    ['{% trans "Percentage of patients who have documented evidence of functional assessment in 2 days prior to discharge" %}', {{ two.r1b3 }}]
+                    ['{% trans "in 3 days" %}', {{ two.r1b1 }}],
+                    ['{% trans "in 1 days" %}', {{ two.r1b2 }}],
+                    ['{% trans "in 2 days" %}', {{ two.r1b3 }}]
                 ];
                 {% if three %}
                     var second3 = [
-                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 3 days prior to discharge" %}', {{ three.r1b1 }}],
-                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 1 days prior to discharge" %}', {{ three.r1b2 }}],
-                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 2 days prior to discharge" %}', {{ three.r1b3 }}]
+                        ['{% trans "in 3 days" %}', {{ three.r1b1 }}],
+                        ['{% trans "in 1 days" %}', {{ three.r1b2 }}],
+                        ['{% trans "in 2 days" %}', {{ three.r1b3 }}]
                     ];
                 {% endif %}
                 var third1 = [
-                    ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}', {{ one.r21 }}],
-                    ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}', {{ one.r22 }}],
-                    ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}', {{ one.r23 }}],
-                    ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}', {{ one.r24 }}]
+                    ['{% trans "total" %}', {{ one.r21 }}],
+                    ['{% trans "due to acute illness" %}', {{ one.r22 }}],
+                    ['{% trans "due to patient/ family demand" %}', {{ one.r23 }}],
+                    ['{% trans "due to complications of the original disease" %}', {{ one.r24 }}]
                 ];
                 var third2 = [
-                    ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}', {{ two.r21 }}],
-                    ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}', {{ two.r22 }}],
-                    ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}', {{ two.r23 }}],
-                    ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}', {{ two.r24 }}]
+                    ['{% trans "total" %}', {{ two.r21 }}],
+                    ['{% trans "due to acute illness" %}', {{ two.r22 }}],
+                    ['{% trans "due to patient/ family demand" %}', {{ two.r23 }}],
+                    ['{% trans "due to complications of the original disease" %}', {{ two.r24 }}]
                 ];
                 {% if three %}
                     var third3 = [
-                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}', {{ three.r21 }}],
-                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}', {{ three.r22 }}],
-                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}', {{ three.r23 }}],
-                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}', {{ three.r24 }}]
+                        ['{% trans "total" %}', {{ three.r21 }}],
+                        ['{% trans "due to acute illness" %}', {{ three.r22 }}],
+                        ['{% trans "due to patient/ family demand" %}', {{ three.r23 }}],
+                        ['{% trans "due to complications of the original disease" %}', {{ three.r24 }}]
                     ];
                 {% endif %}
             {% endlocalize %}
-            jqplot_percent.axes.xaxis.tickOptions.angle = -30
+            jqplot_percent.title = "{% trans "Percentage of patients who have documented functional assessment at admission to rehabilitation" %}"
             $.jqplot('graph1', [first1,first2{% if three %},first3{% endif %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of patients who have documented evidence of functional assessment prior to discharge" %}"
             $.jqplot('graph2', [second1,second2{% if three %},second3{% endif %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}"
             $.jqplot('graph3', [third1,third2{% if three %},third3{% endif %}], jqplot_percent);
         });
     </script>
