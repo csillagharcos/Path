@@ -7,7 +7,7 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from report_forms.c20.forms import C20Form, FileUploadForm
+from report_forms.c20.forms import C20Form, FileUploadForm, TrendForm
 from report_forms.c20.models import c20, c20CSV
 from django.utils.translation import ugettext_lazy as _
 from report_forms.tools import parseInt, csvDump, calculate_age, DateException, csvExport
@@ -106,7 +106,22 @@ def Statistics(request):
 
 @login_required
 def Trend(request):
-    pass
+    if request.method == "POST":
+        form = TrendForm(request.POST)
+        if form.is_valid():
+            interval_one = CountStatistics(c20.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, date_of_discharge__gte = form.cleaned_data['date1a'], date_of_discharge__lte = form.cleaned_data['date1b'] ), False )
+            interval_two = CountStatistics(c20.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, date_of_discharge__gte = form.cleaned_data['date2a'], date_of_discharge__lte = form.cleaned_data['date2b'] ), False )
+            if form.cleaned_data['date3a'] and form.cleaned_data['date3b']:
+                interval_three = CountStatistics(c20.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, date_of_discharge__gte = form.cleaned_data['date3a'], date_of_discharge__lte = form.cleaned_data['date3b'] ), False )
+            else:
+                interval_three = False
+            return render_to_response('c20_trend_diagram.html', { 'one': interval_one, 'two': interval_two, 'three': interval_three, 'form': form.cleaned_data }, context_instance=RequestContext(request))
+        else:
+            form = TrendForm(request.POST)
+            return render(request, 'c20_trend.html', { 'form': form })
+    else:
+        form = TrendForm()
+        return render(request, 'c20_trend.html', { 'form': form })
 
 def Template(request):
     model = (

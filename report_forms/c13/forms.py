@@ -80,9 +80,9 @@ class FileUploadForm(forms.Form):
     file  = forms.FileField()
 
 class TrendForm(forms.Form):
-    date1a = forms.DateTimeField(label=_('First date'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
-    date1b = forms.DateTimeField(label=_('First date'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
-    date2a = forms.DateTimeField(label=_('Second date'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
-    date2b = forms.DateTimeField(label=_('Second date'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
-    date3a = forms.DateTimeField(required=False,label=_('Third date'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
-    date3b = forms.DateTimeField(required=False,label=_('Third date'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
+    date1a = forms.IntegerField(label=_('First date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
+    date1b = forms.IntegerField(label=_('First date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
+    date2a = forms.IntegerField(label=_('Second date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
+    date2b = forms.IntegerField(label=_('Second date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
+    date3a = forms.IntegerField(required=False,label=_('Third date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
+    date3b = forms.IntegerField(required=False,label=_('Third date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))

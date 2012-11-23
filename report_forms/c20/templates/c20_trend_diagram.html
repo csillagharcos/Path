@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load i18n l10n %}
+{% block header %}
+    {% include "c20_header.html" %}
+{% endblock header %}
+
+{% block content %}
+    <table class="statistics">
+        <thead>
+            <tr>
+                <td>{% trans "Name of the indicator" %}</td>
+                <td>{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}</td>
+                <td>{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}</td>
+                {% if three %}<td>{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}</td>{% endif %}
+            </tr>
+        </thead>
+        <tr>
+            <td>{% trans "Overall:" %}</td>
+            <td>{{ one.overall }}</td>
+            <td>{{ two.overall }}</td>
+            {% if three %}<td>{{ three.overall }}</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Removed:" %}</td>
+            <td>{{ one.removed }}</td>
+            <td>{{ two.removed }}</td>
+            {% if three %}<td>{{ three.removed }}</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Counted:" %}</td>
+            <td>{{ one.counted }}</td>
+            <td>{{ two.counted }}</td>
+            {% if three %}<td>{{ three.counted }}</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Patient prescribed at discharge to take aspirin" %}:</td>
+            <td>{{ one.indicator_one|floatformat:"2" }}%</td>
+            <td>{{ two.indicator_one|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.indicator_one|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}:</td>
+            <td>{{ one.indicator_two|floatformat:"2" }}%</td>
+            <td>{{ two.indicator_two|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.indicator_two|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Patient prescribed to take aspirin or other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}:</td>
+            <td>{{ one.indicator_three|floatformat:"2" }}%</td>
+            <td>{{ two.indicator_three|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.indicator_three|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+    </table>
+    <div id="graph1" style="margin-top: 20px; height: 300px;"></div>
+{% endblock content %}
+
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                var first1 = [
+                    ['{% trans "Patient prescribed at discharge to take aspirin" %}', {{ one.indicator_one }}],
+                    ['{% trans "Patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ one.indicator_two }}],
+                    ['{% trans "Patient prescribed to take aspirin or other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ one.indicator_three }}]
+                ];
+                var first2 = [
+                    ['{% trans "Patient prescribed at discharge to take aspirin" %}', {{ two.indicator_one }}],
+                    ['{% trans "Patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ two.indicator_two }}],
+                    ['{% trans "Patient prescribed to take aspirin or other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ two.indicator_three }}]
+                ];
+                var first3 = [
+                    ['{% trans "Patient prescribed at discharge to take aspirin" %}', {{ three.indicator_one }}],
+                    ['{% trans "Patient prescribed to take other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ three.indicator_two }}],
+                    ['{% trans "Patient prescribed to take aspirin or other (non-aspirin-containing) platelet aggregation inhibitor therapy" %}', {{ three.indicator_three }}]
+                ];
+            {% endlocalize %}
+            jqplot_percent.legend = { show: true }
+            jqplot_percent.series = [{ label: '{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}' },{ label: '{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}' },{ label: '{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}' }]
+            $.jqplot('graph1', [first1,first2{% if three %},first3{% endif %}], jqplot_percent);
+        });
+    </script>
+{% endblock js %}
