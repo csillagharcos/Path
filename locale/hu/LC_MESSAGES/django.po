@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-23 13:41+0100\n"
-"PO-Revision-Date: 2012-11-23 13:59\n"
+"PO-Revision-Date: 2012-11-23 14:01\n"
 "Last-Translator: Richard Hajdu <richard.hajdu@webdevil.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2621,7 +2621,7 @@ msgstr "Sajnálom, de dátumhibával rendelkezik ez a műtőterem."
 #: report_forms/c9/templates/c9_trend_diagram.html:120
 #: report_forms/c9/templates/c9_trend_diagram.html:125
 msgid "Operating theatre performance"
-msgstr "Műtétikihasználtság"
+msgstr "Műtőkihasználtság"
 
 #: report_forms/c9/templates/c9_statistics.html:45
 #: report_forms/c9/templates/c9_statistics.html:117
