@@ -44,10 +44,10 @@ def Trend(request):
     if request.method == "POST":
         form = TrendForm(request.POST)
         if form.is_valid():
-            interval_one = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, year__gte = form.cleaned_data['date1a'], year__lte = form.cleaned_data['date1b'] ) )
-            interval_two = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, year__gte = form.cleaned_data['date2a'], year__lte = form.cleaned_data['date2b'] ) )
-            if form.cleaned_data['date3a'] and form.cleaned_data['date3b']:
-                interval_three = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, year__gte = form.cleaned_data['date3a'], year__lte = form.cleaned_data['date3b'] ) )
+            interval_one = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, year = form.cleaned_data['date1a']) )
+            interval_two = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, year = form.cleaned_data['date2a']) )
+            if form.cleaned_data['date3a']:
+                interval_three = CountStatistics(c13.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, year = form.cleaned_data['date3a']) )
                 context = ZipThat(interval_one, interval_two, form.cleaned_data, interval_three)
             else:
                 interval_three = False
@@ -123,16 +123,43 @@ def CountStatistics(cases):
 
 def ZipThat(one,two,formStuff,three=False):
     jobs = []
-    print len(one['jobs'][0])
     if three:
-        for i in range(len(one['jobs'][0])-1):
+        for i in range(len(one['jobs'])):
             jobs += [
                     {
                     'name': one['jobs'][i][0],
-                    'first': [one['jobs'][i][1], two['jobs'][i][1], three['jobs'][i][1]],
-                    'second': [one['jobs'][i][2], two['jobs'][i][2], three['jobs'][i][2]]
-                },
-            ]
+                    'first': [one['jobs'][i][1],0,0],
+                    'second': [one['jobs'][i][2],0,0]
+                    },
+                ]
+        for i in range(len(two['jobs'])):
+            setup = False
+            for job in jobs:
+                if job['name'] == two['jobs'][i][0]:
+                    job['first'][1] = two['jobs'][i][1]
+                    job['second'][1] = two['jobs'][i][2]
+                    setup = True
+                    break
+            if setup is False:
+                jobs += [{
+                    'name': two['jobs'][i][0],
+                    'first': [0,two['jobs'][i][1],0],
+                    'second': [0,two['jobs'][i][2],0]
+                },]
+        for i in range(len(three['jobs'])):
+            setup = False
+            for job in jobs:
+                if job['name'] == three['jobs'][i][0]:
+                    job['first'][2] = three['jobs'][i][1]
+                    job['second'][2] = three['jobs'][i][2]
+                    setup = True
+                    break
+            if setup is False:
+                jobs += [{
+                    'name': three['jobs'][i][0],
+                    'first': [0,0,three['jobs'][i][1]],
+                    'second': [0,0,three['jobs'][i][2]]
+                },]
         ZippedThat = {
             'overall': [ one['overall'], two['overall'], three['overall'] ],
             'removed': [ one['removed'], two['removed'], three['removed'] ],
@@ -140,6 +167,7 @@ def ZipThat(one,two,formStuff,three=False):
             'jobs': jobs,
             'formdata': formStuff,
             }
+
     else:
         for i in range(len(one['jobs'][0])-1):
             jobs += [

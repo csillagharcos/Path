@@ -81,8 +81,5 @@ class FileUploadForm(forms.Form):
 
 class TrendForm(forms.Form):
     date1a = forms.IntegerField(label=_('First date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
-    date1b = forms.IntegerField(label=_('First date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
     date2a = forms.IntegerField(label=_('Second date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
-    date2b = forms.IntegerField(label=_('Second date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
     date3a = forms.IntegerField(required=False,label=_('Third date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
-    date3b = forms.IntegerField(required=False,label=_('Third date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))

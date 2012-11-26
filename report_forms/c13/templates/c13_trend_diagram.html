@@ -12,12 +12,12 @@
             <th colspan="{% if formdata.date3a %}3{% else %}2{% endif %}">{% trans "Number of needle stick injuries to 100 workers (FTE = full time equivalent)" %}</th>
         </tr>
         <tr>
-            <th>{{ formdata.date1a }} - {{ formdata.date1b }}</th>
-            <th>{{ formdata.date2a }} - {{ formdata.date2b }}</th>
-            {% if formdata.date3a %}<th>{{ formdata.date3a }} - {{ formdata.date3b }}</th>{% endif %}
-            <th>{{ formdata.date1a }} - {{ formdata.date1b }}</th>
-            <th>{{ formdata.date2a }} - {{ formdata.date2b }}</th>
-            {% if formdata.date3a %}<th>{{ formdata.date3a }} - {{ formdata.date3b }}</th>{% endif %}
+            <th>{{ formdata.date1a }}</th>
+            <th>{{ formdata.date2a }}</th>
+            {% if formdata.date3a %}<th>{{ formdata.date3a }}</th>{% endif %}
+            <th>{{ formdata.date1a }}</th>
+            <th>{{ formdata.date2a }}</th>
+            {% if formdata.date3a %}<th>{{ formdata.date3a }}</th>{% endif %}
         </tr>
         {% for job in jobs %}
             <tr>
