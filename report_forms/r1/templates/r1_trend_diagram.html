@@ -58,42 +58,8 @@
             {% if three %}<td>{{ three.r1b3|floatformat:"2" }}%</td>{% endif %}
         </tr>
     </table>
-
-    <table class="los">
-        <tr>
-            <th>{% trans "Unplanned interruption to rehabilitation program" %}</th>
-            <th>{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}</th>
-            <th>{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}</th>
-            {% if three %}<th>{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}</th>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}</td>
-            <td>{{ one.r21|floatformat:"2" }}%</td>
-            <td>{{ two.r21|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.r21|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}</td>
-            <td>{{ one.r22|floatformat:"2" }}%</td>
-            <td>{{ two.r22|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.r22|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}</td>
-            <td>{{ one.r23|floatformat:"2" }}%</td>
-            <td>{{ two.r23|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.r23|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-        <tr>
-            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}</td>
-            <td>{{ one.r24|floatformat:"2" }}%</td>
-            <td>{{ two.r24|floatformat:"2" }}%</td>
-            {% if three %}<td>{{ three.r24|floatformat:"2" }}%</td>{% endif %}
-        </tr>
-    </table>
     <div id="graph1" style="margin-top: 20px; height: 200px;"></div>
     <div id="graph2" style="margin-top: 20px; height: 200px;"></div>
-    <div id="graph3" style="margin-top: 20px; height: 200px;"></div>
 {% endblock content %}
 
 {% block js %}
@@ -142,33 +108,11 @@
                         ['{% trans "in 2 days" %}', {{ three.r1b3 }}]
                     ];
                 {% endif %}
-                var third1 = [
-                    ['{% trans "total" %}', {{ one.r21 }}],
-                    ['{% trans "due to acute illness" %}', {{ one.r22 }}],
-                    ['{% trans "due to patient/ family demand" %}', {{ one.r23 }}],
-                    ['{% trans "due to complications of the original disease" %}', {{ one.r24 }}]
-                ];
-                var third2 = [
-                    ['{% trans "total" %}', {{ two.r21 }}],
-                    ['{% trans "due to acute illness" %}', {{ two.r22 }}],
-                    ['{% trans "due to patient/ family demand" %}', {{ two.r23 }}],
-                    ['{% trans "due to complications of the original disease" %}', {{ two.r24 }}]
-                ];
-                {% if three %}
-                    var third3 = [
-                        ['{% trans "total" %}', {{ three.r21 }}],
-                        ['{% trans "due to acute illness" %}', {{ three.r22 }}],
-                        ['{% trans "due to patient/ family demand" %}', {{ three.r23 }}],
-                        ['{% trans "due to complications of the original disease" %}', {{ three.r24 }}]
-                    ];
-                {% endif %}
             {% endlocalize %}
             jqplot_percent.title = "{% trans "Percentage of patients who have documented functional assessment at admission to rehabilitation" %}"
             $.jqplot('graph1', [first1,first2{% if three %},first3{% endif %}], jqplot_percent);
             jqplot_percent.title = "{% trans "Percentage of patients who have documented evidence of functional assessment prior to discharge" %}"
             $.jqplot('graph2', [second1,second2{% if three %},second3{% endif %}], jqplot_percent);
-            jqplot_percent.title = "{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}"
-            $.jqplot('graph3', [third1,third2{% if three %},third3{% endif %}], jqplot_percent);
         });
     </script>
 {% endblock js %}

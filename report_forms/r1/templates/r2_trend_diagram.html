@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load i18n l10n %}
+{% block header %}
+    {% include "r1_header.html" %}
+{% endblock header %}
+
+{% block content %}
+    <table class="los">
+        <tr>
+            <th>{% trans "Unplanned interruption to rehabilitation program" %}</th>
+            <th>{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}</th>
+            <th>{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}</th>
+            {% if three %}<th>{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}</th>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}</td>
+            <td>{{ one.r21|floatformat:"2" }}%</td>
+            <td>{{ two.r21|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.r21|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}</td>
+            <td>{{ one.r22|floatformat:"2" }}%</td>
+            <td>{{ two.r22|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.r22|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}</td>
+            <td>{{ one.r23|floatformat:"2" }}%</td>
+            <td>{{ two.r23|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.r23|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}</td>
+            <td>{{ one.r24|floatformat:"2" }}%</td>
+            <td>{{ two.r24|floatformat:"2" }}%</td>
+            {% if three %}<td>{{ three.r24|floatformat:"2" }}%</td>{% endif %}
+        </tr>
+    </table>
+    <div id="graph3" style="margin-top: 20px; height: 200px;"></div>
+{% endblock content %}
+
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                var third1 = [
+                    ['{% trans "total" %}', {{ one.r21 }}],
+                    ['{% trans "due to acute illness" %}', {{ one.r22 }}],
+                    ['{% trans "due to patient/ family demand" %}', {{ one.r23 }}],
+                    ['{% trans "due to complications of the original disease" %}', {{ one.r24 }}]
+                ];
+                var third2 = [
+                    ['{% trans "total" %}', {{ two.r21 }}],
+                    ['{% trans "due to acute illness" %}', {{ two.r22 }}],
+                    ['{% trans "due to patient/ family demand" %}', {{ two.r23 }}],
+                    ['{% trans "due to complications of the original disease" %}', {{ two.r24 }}]
+                ];
+                {% if three %}
+                    var third3 = [
+                        ['{% trans "total" %}', {{ three.r21 }}],
+                        ['{% trans "due to acute illness" %}', {{ three.r22 }}],
+                        ['{% trans "due to patient/ family demand" %}', {{ three.r23 }}],
+                        ['{% trans "due to complications of the original disease" %}', {{ three.r24 }}]
+                    ];
+                {% endif %}
+            {% endlocalize %}
+            jqplot_percent.title = "{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}"
+            $.jqplot('graph3', [third1,third2{% if three %},third3{% endif %}], jqplot_percent);
+        });
+    </script>
+{% endblock js %}

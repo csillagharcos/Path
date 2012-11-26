@@ -79,7 +79,8 @@ urlpatterns = patterns('',
     url(r'r1/import$', 'report_forms.r1.views.Import', name='r1_import'),
     url(r'r1/export', 'report_forms.r1.views.Export', name='r1_export'),
     url(r'r1/statistics$', 'report_forms.r1.views.Statistics', name='r1_stat'),
-    url(r'r1/trend$', 'report_forms.r1.views.Trend', name='r1_trend'),
+    url(r'r1/trend$', 'report_forms.r1.views.Trendr1', name='r1_trend'),
+    url(r'r2/trend$', 'report_forms.r1.views.Trendr2', name='r2_trend'),
     url(r'r1/template$', 'report_forms.r1.views.Template', name='r1_template'),
 
 )
