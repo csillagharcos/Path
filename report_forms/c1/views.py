@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import csv
-from datetime import datetime
+from datetime import datetime, timedelta
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
@@ -10,10 +10,11 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from unidecode import unidecode
-from report_forms.c1.forms import C1Form, FileUploadForm, TrendForm
+from report_forms.c1.forms import C1Form, FileUploadForm, TrendForm, AnonymStatForm
 from report_forms.c1.models import c1, c1CSV, c1OtherDiagnose
 from report_forms.tools import calculate_age, csvDump, DateException, parseInt, parseFloat, csvExport
 from django.utils.translation import ugettext_lazy as _
+from university.models import School
 
 @login_required
 def Display(request):
@@ -95,6 +96,36 @@ def Import(request):
         context = { "form" : form }
         return render_to_response('c1_file_upload.html', context, context_instance=RequestContext(request))
 
+@login_required
+def AnonymStatistics(request):
+    if request.method == "POST":
+        form = AnonymStatForm(request.POST)
+        statistics = []
+        if form.is_valid():
+            start = form.cleaned_data['endDate'] - timedelta(days=365)
+            end = form.cleaned_data['endDate']
+            workplaces = School.objects.all()
+            for workplace in workplaces:
+                exists = False
+                statistics += [{
+                    "name" : workplace.codename,
+                    "statistics" : CountStatistics(c1.objects.filter(added_by__personel__workplace = workplace, date_of_delivery__gte = start, date_of_delivery__lte = end ), False )
+                }]
+                for statistic in statistics:
+                    if statistic['name'] == workplace.country.printable_name:
+                        exists = True
+
+                if not exists:
+                    statistics += [{
+                        "name" : workplace.country.printable_name,
+                        "statistics": CountStatistics(c1.objects.filter(added_by__personel__workplace__country = workplace.country, date_of_delivery__gte = start, date_of_delivery__lte = end ), False )
+                    }]
+            return render_to_response('c1_anon.html', {'statistics': statistics}, context_instance=RequestContext(request))
+        else:
+            form = AnonymStatForm(request.POST)
+            return render(request, 'c1.html', { 'form': form,'benchmarking': True })
+    form = AnonymStatForm()
+    return render(request, 'c1.html', { 'form': form,'benchmarking': True })
 
 @login_required
 def Statistics(request):

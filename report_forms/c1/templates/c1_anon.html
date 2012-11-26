@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load i18n l10n %}
+{% block header %}
+    {% include "c1_header.html" %}
+{% endblock header %}
+
+{% block content %}
+
+    {% for stat in statistics %}
+        {{ stat.name }}
+        {{ stat.statistics.indicator_one }}
+    {% endfor %}
+
+
+{#    #}
+{#    <table class="statistics">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <td>{% trans "Name of the indicator" %}</td>#}
+{#                <td>{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}</td>#}
+{#                <td>{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}</td>#}
+{#                {% if three %}<td>{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}</td>{% endif %}#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tr>#}
+{#            <td>{% trans "Overall:" %}</td>#}
+{#            <td>{{ one.overall }}</td>#}
+{#            <td>{{ two.overall }}</td>#}
+{#            {% if three %}<td>{{ three.overall }}</td>{% endif %}#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>{% trans "Removed:" %}</td>#}
+{#            <td>{{ one.removed }}</td>#}
+{#            <td>{{ two.removed }}</td>#}
+{#            {% if three %}<td>{{ three.removed }}</td>{% endif %}#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>{% trans "Counted:" %}</td>#}
+{#            <td>{{ one.counted }}</td>#}
+{#            <td>{{ two.counted }}</td>#}
+{#            {% if three %}<td>{{ three.counted }}</td>{% endif %}#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>{% trans "C-section rate:" %}</td>#}
+{#            <td>{{ one.indicator_one|floatformat:"2" }}%</td>#}
+{#            <td>{{ two.indicator_one|floatformat:"2" }}%</td>#}
+{#            {% if three %}<td>{{ three.indicator_one|floatformat:"2" }}%</td>{% endif %}#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>{% trans "Rate of planned C-section:" %}</td>#}
+{#            <td>{{ one.subindicator_one|floatformat:"2" }}%</td>#}
+{#            <td>{{ two.subindicator_one|floatformat:"2" }}%</td>#}
+{#            {% if three %}<td>{{ three.subindicator_one|floatformat:"2" }}%</td>{% endif %}#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>{% trans "Rate of acute C-section:" %}</td>#}
+{#            <td>{{ one.subindicator_two|floatformat:"2" }}%</td>#}
+{#            <td>{{ two.subindicator_two|floatformat:"2" }}%</td>#}
+{#            {% if three %}<td>{{ three.subindicator_two|floatformat:"2" }}%</td>{% endif %}#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>{% trans "Rate of c-section by the mother's age is less than 20:" %}</td>#}
+{#            <td>{{ one.subindicator_three_one|floatformat:"2" }}%</td>#}
+{#            <td>{{ two.subindicator_three_one|floatformat:"2" }}%</td>#}
+{#            {% if three %}<td>{{ three.subindicator_three_one|floatformat:"2" }}%</td>{% endif %}#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>{% trans "Rate of c-section by the mother's age is between 20-35:" %}</td>#}
+{#            <td>{{ one.subindicator_three_two|floatformat:"2" }}%</td>#}
+{#            <td>{{ two.subindicator_three_two|floatformat:"2" }}%</td>#}
+{#            {% if three %}<td>{{ three.subindicator_three_two|floatformat:"2" }}%</td>{% endif %}#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>{% trans "Rate of c-section by the mother's age is more than 35:" %}</td>#}
+{#            <td>{{ one.subindicator_three_three|floatformat:"2" }}%</td>#}
+{#            <td>{{ two.subindicator_three_three|floatformat:"2" }}%</td>#}
+{#            {% if three %}<td>{{ three.subindicator_three_three|floatformat:"2" }}%</td>{% endif %}#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>{% trans "Rate of acute C-section by the previous number of deliveries first delivery:" %}</td>#}
+{#            <td>{{ one.subindicator_four_one|floatformat:"2" }}%</td>#}
+{#            <td>{{ two.subindicator_four_one|floatformat:"2" }}%</td>#}
+{#            {% if three %}<td>{{ three.subindicator_four_one|floatformat:"2" }}%</td>{% endif %}#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>{% trans "Rate of acute C-section by the previous number of deliveries One or more previous deliveries:" %}</td>#}
+{#            <td>{{ one.subindicator_four_two|floatformat:"2" }}%</td>#}
+{#            <td>{{ two.subindicator_four_two|floatformat:"2" }}%</td>#}
+{#            {% if three %}<td>{{ three.subindicator_four_two|floatformat:"2" }}%</td>{% endif %}#}
+{#        </tr>#}
+{#    </table>#}
+{#    <div id="graph1" style="margin-top: 20px; height: 150px;"></div>#}
+{#    <div id="graph2" style="margin-top: 20px; height: 150px;"></div>#}
+{#    <div id="graph3" style="margin-top: 20px; height: 150px;"></div>#}
+{% endblock content %}
+
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.pointLabels.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                var first1 = [
+                    ['{% trans "Total" %}', {{ one.indicator_one }}],
+                    ['{% trans "Planned" %}', {{ one.subindicator_one }}],
+                    ['{% trans "Acute" %}', {{ one.subindicator_two }}]
+                ];
+                var first2 = [
+                    ['{% trans "Total" %}', {{ two.indicator_one }}],
+                    ['{% trans "Planned" %}', {{ two.subindicator_one }}],
+                    ['{% trans "Acute" %}', {{ two.subindicator_two }}]
+                ];
+                var first3 = [
+                    ['{% trans "Total" %}', {{ three.indicator_one }}],
+                    ['{% trans "Planned" %}', {{ three.subindicator_one }}],
+                    ['{% trans "Acute" %}', {{ three.subindicator_two }}]
+                ];
+                var second1 = [
+                    ["{% trans "Mother younger than 20" %}", {{ one.subindicator_three_one }}],
+                    ["{% trans "Mother between 20 and 35" %}", {{ one.subindicator_three_two }}],
+                    ["{% trans "Mother older than 35" %}", {{ one.subindicator_three_three }}]
+                ];
+                var second2 = [
+                    ["{% trans "Mother younger than 20" %}", {{ two.subindicator_three_one }}],
+                    ["{% trans "Mother between 20 and 35" %}", {{ two.subindicator_three_two }}],
+                    ["{% trans "Mother older than 35" %}", {{ two.subindicator_three_three }}]
+                ];
+                var second3 = [
+                    ["{% trans "Mother younger than 20" %}", {{ three.subindicator_three_one }}],
+                    ["{% trans "Mother between 20 and 35" %}", {{ three.subindicator_three_two }}],
+                    ["{% trans "Mother older than 35" %}", {{ three.subindicator_three_three }}]
+                ];
+                var third1 = [
+                    ['{% trans "First delivery" %}', {{ one.subindicator_four_one }}],
+                    ['{% trans "One or more previous deliveries" %}', {{ one.subindicator_four_two }}]
+                ];
+                var third2 = [
+                    ['{% trans "First delivery" %}', {{ two.subindicator_four_one }}],
+                    ['{% trans "One or more previous deliveries" %}', {{ two.subindicator_four_two }}]
+                ];
+                var third3 = [
+                    ['{% trans "First delivery" %}', {{ three.subindicator_four_one }}],
+                    ['{% trans "One or more previous deliveries" %}', {{ three.subindicator_four_two }}]
+                ];
+            {% endlocalize %}
+            jqplot_percent.legend = { show: true }
+            jqplot_percent.series = [{ label: '{{ form.date1a|date:"Y-m-d" }} - {{ form.date1b|date:"Y-m-d" }}' },{ label: '{{ form.date2a|date:"Y-m-d" }} - {{ form.date2b|date:"Y-m-d" }}' },{ label: '{{ form.date3a|date:"Y-m-d" }} - {{ form.date3b|date:"Y-m-d" }}' }]
+            jqplot_percent.title = "{% trans "C-section rate" %}"
+            $.jqplot('graph1', [first1,first2{% if three %},first3{% endif %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Rate of C-section by the mother’s age" %}"
+            $.jqplot('graph2', [second1,second2{% if three %},second3{% endif %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Rate of C-section by the previous number of deliveries" %}"
+            $.jqplot('graph3', [third1,third2{% if three %},third3{% endif %}], jqplot_percent);
+        });
+    </script>
+{% endblock js %}

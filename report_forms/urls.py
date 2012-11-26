@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     url(r'c1/export', 'report_forms.c1.views.Export', name='c1_export'),
     url(r'c1/statistics$', 'report_forms.c1.views.Statistics', name='c1_stat'),
     url(r'c1/trend$', 'report_forms.c1.views.Trend', name='c1_trend'),
+    url(r'c1/benchmarking$', 'report_forms.c1.views.AnonymStatistics', name='c1_anon'),
     url(r'c1/template$', 'report_forms.c1.views.Template', name='c1_template'),
 
     url(r'c21$', 'report_forms.c21.views.Display', name='c21_display'),

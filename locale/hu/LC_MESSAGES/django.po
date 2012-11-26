@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-26 11:24+0100\n"
-"PO-Revision-Date: 2012-11-26 11:28\n"
+"POT-Creation-Date: 2012-11-26 11:39+0100\n"
+"PO-Revision-Date: 2012-11-26 11:40\n"
 "Last-Translator: Richard Hajdu <richard.hajdu@webdevil.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -333,13 +333,13 @@ msgid "Sunday/holiday"
 msgstr "Vasárnap/ünnepnap"
 
 #: report_forms/c1/admin.py:16 report_forms/c1/forms.py:7
-#: report_forms/c1/models.py:34 report_forms/c1/views.py:136
-#: report_forms/c1/views.py:155
+#: report_forms/c1/models.py:34 report_forms/c1/views.py:147
+#: report_forms/c1/views.py:166
 msgid "Other diagnoses"
 msgstr "Egyéb diagnózisok"
 
 #: report_forms/c1/forms.py:8 report_forms/c1/models.py:25
-#: report_forms/c1/views.py:126 report_forms/c1/views.py:145
+#: report_forms/c1/views.py:137 report_forms/c1/views.py:156
 #: report_forms/c20/forms.py:7 report_forms/c20/models.py:13
 #: report_forms/c20/views.py:130 report_forms/c20/views.py:149
 #: report_forms/c21/forms.py:14 report_forms/c21/models.py:26
@@ -362,54 +362,55 @@ msgstr "Születési idő"
 #: report_forms/c1/forms.py:8 report_forms/c1/forms.py:31
 #: report_forms/c1/forms.py:32 report_forms/c1/forms.py:33
 #: report_forms/c1/forms.py:34 report_forms/c1/forms.py:35
-#: report_forms/c1/forms.py:36 report_forms/c20/forms.py:7
-#: report_forms/c20/forms.py:8 report_forms/c20/forms.py:36
-#: report_forms/c20/forms.py:37 report_forms/c20/forms.py:38
-#: report_forms/c20/forms.py:39 report_forms/c20/forms.py:40
-#: report_forms/c20/forms.py:41 report_forms/c21/forms.py:14
-#: report_forms/c21/forms.py:51 report_forms/c21/forms.py:52
-#: report_forms/c21/forms.py:53 report_forms/c21/forms.py:54
-#: report_forms/c21/forms.py:55 report_forms/c21/forms.py:56
-#: report_forms/c23/forms.py:15 report_forms/c23/forms.py:52
-#: report_forms/c23/forms.py:53 report_forms/c23/forms.py:54
-#: report_forms/c23/forms.py:55 report_forms/c23/forms.py:56
-#: report_forms/c23/forms.py:57 report_forms/c24/forms.py:15
-#: report_forms/c24/forms.py:52 report_forms/c24/forms.py:53
-#: report_forms/c24/forms.py:54 report_forms/c24/forms.py:55
-#: report_forms/c24/forms.py:56 report_forms/c24/forms.py:57
-#: report_forms/c31/forms.py:7 report_forms/c31/forms.py:8
-#: report_forms/c31/forms.py:9 report_forms/c31/forms.py:39
-#: report_forms/c31/forms.py:40 report_forms/c31/forms.py:41
-#: report_forms/c31/forms.py:42 report_forms/c31/forms.py:43
-#: report_forms/c31/forms.py:44 report_forms/c32/forms.py:7
-#: report_forms/c32/forms.py:8 report_forms/c32/forms.py:9
-#: report_forms/c32/forms.py:39 report_forms/c32/forms.py:40
-#: report_forms/c32/forms.py:41 report_forms/c32/forms.py:42
-#: report_forms/c32/forms.py:43 report_forms/c32/forms.py:44
-#: report_forms/c8/forms.py:7 report_forms/c8/forms.py:8
-#: report_forms/c8/forms.py:9 report_forms/c8/forms.py:10
-#: report_forms/c8/forms.py:59 report_forms/c8/forms.py:60
-#: report_forms/c8/forms.py:61 report_forms/c8/forms.py:62
-#: report_forms/c8/forms.py:63 report_forms/c8/forms.py:64
-#: report_forms/c9/forms.py:7 report_forms/c9/forms.py:26
-#: report_forms/c9/forms.py:27 report_forms/c9/forms.py:39
-#: report_forms/c9/forms.py:40 report_forms/c9/forms.py:41
-#: report_forms/c9/forms.py:42 report_forms/c9/forms.py:43
-#: report_forms/c9/forms.py:44 report_forms/r1/forms.py:7
-#: report_forms/r1/forms.py:8 report_forms/r1/forms.py:9
-#: report_forms/r1/forms.py:10 report_forms/r1/forms.py:11
-#: report_forms/r1/forms.py:12 report_forms/r1/forms.py:13
-#: report_forms/r1/forms.py:14 report_forms/r1/forms.py:15
-#: report_forms/r1/forms.py:16 report_forms/r1/forms.py:17
-#: report_forms/r1/forms.py:18 report_forms/r1/forms.py:19
-#: report_forms/r1/forms.py:20 report_forms/r1/forms.py:21
-#: report_forms/r1/forms.py:22 report_forms/r1/forms.py:23
-#: report_forms/r1/forms.py:24 report_forms/r1/forms.py:25
-#: report_forms/r1/forms.py:26 report_forms/r1/forms.py:27
-#: report_forms/r1/forms.py:28 report_forms/r1/forms.py:29
-#: report_forms/r1/forms.py:218 report_forms/r1/forms.py:219
-#: report_forms/r1/forms.py:220 report_forms/r1/forms.py:221
-#: report_forms/r1/forms.py:222 report_forms/r1/forms.py:223
+#: report_forms/c1/forms.py:36 report_forms/c1/forms.py:39
+#: report_forms/c20/forms.py:7 report_forms/c20/forms.py:8
+#: report_forms/c20/forms.py:36 report_forms/c20/forms.py:37
+#: report_forms/c20/forms.py:38 report_forms/c20/forms.py:39
+#: report_forms/c20/forms.py:40 report_forms/c20/forms.py:41
+#: report_forms/c21/forms.py:14 report_forms/c21/forms.py:51
+#: report_forms/c21/forms.py:52 report_forms/c21/forms.py:53
+#: report_forms/c21/forms.py:54 report_forms/c21/forms.py:55
+#: report_forms/c21/forms.py:56 report_forms/c23/forms.py:15
+#: report_forms/c23/forms.py:52 report_forms/c23/forms.py:53
+#: report_forms/c23/forms.py:54 report_forms/c23/forms.py:55
+#: report_forms/c23/forms.py:56 report_forms/c23/forms.py:57
+#: report_forms/c24/forms.py:15 report_forms/c24/forms.py:52
+#: report_forms/c24/forms.py:53 report_forms/c24/forms.py:54
+#: report_forms/c24/forms.py:55 report_forms/c24/forms.py:56
+#: report_forms/c24/forms.py:57 report_forms/c31/forms.py:7
+#: report_forms/c31/forms.py:8 report_forms/c31/forms.py:9
+#: report_forms/c31/forms.py:39 report_forms/c31/forms.py:40
+#: report_forms/c31/forms.py:41 report_forms/c31/forms.py:42
+#: report_forms/c31/forms.py:43 report_forms/c31/forms.py:44
+#: report_forms/c32/forms.py:7 report_forms/c32/forms.py:8
+#: report_forms/c32/forms.py:9 report_forms/c32/forms.py:39
+#: report_forms/c32/forms.py:40 report_forms/c32/forms.py:41
+#: report_forms/c32/forms.py:42 report_forms/c32/forms.py:43
+#: report_forms/c32/forms.py:44 report_forms/c8/forms.py:7
+#: report_forms/c8/forms.py:8 report_forms/c8/forms.py:9
+#: report_forms/c8/forms.py:10 report_forms/c8/forms.py:59
+#: report_forms/c8/forms.py:60 report_forms/c8/forms.py:61
+#: report_forms/c8/forms.py:62 report_forms/c8/forms.py:63
+#: report_forms/c8/forms.py:64 report_forms/c9/forms.py:7
+#: report_forms/c9/forms.py:26 report_forms/c9/forms.py:27
+#: report_forms/c9/forms.py:39 report_forms/c9/forms.py:40
+#: report_forms/c9/forms.py:41 report_forms/c9/forms.py:42
+#: report_forms/c9/forms.py:43 report_forms/c9/forms.py:44
+#: report_forms/r1/forms.py:7 report_forms/r1/forms.py:8
+#: report_forms/r1/forms.py:9 report_forms/r1/forms.py:10
+#: report_forms/r1/forms.py:11 report_forms/r1/forms.py:12
+#: report_forms/r1/forms.py:13 report_forms/r1/forms.py:14
+#: report_forms/r1/forms.py:15 report_forms/r1/forms.py:16
+#: report_forms/r1/forms.py:17 report_forms/r1/forms.py:18
+#: report_forms/r1/forms.py:19 report_forms/r1/forms.py:20
+#: report_forms/r1/forms.py:21 report_forms/r1/forms.py:22
+#: report_forms/r1/forms.py:23 report_forms/r1/forms.py:24
+#: report_forms/r1/forms.py:25 report_forms/r1/forms.py:26
+#: report_forms/r1/forms.py:27 report_forms/r1/forms.py:28
+#: report_forms/r1/forms.py:29 report_forms/r1/forms.py:218
+#: report_forms/r1/forms.py:219 report_forms/r1/forms.py:220
+#: report_forms/r1/forms.py:221 report_forms/r1/forms.py:222
+#: report_forms/r1/forms.py:223
 msgid "(yyyy-mm-dd)"
 msgstr "(éééé-hh-nn)"
 
@@ -474,6 +475,12 @@ msgstr "Második dátum"
 msgid "Third date"
 msgstr "Harmadik dátum"
 
+#: report_forms/c1/forms.py:39 report_forms/c9/forms.py:7
+#: report_forms/c9/models.py:12 report_forms/c9/views.py:219
+#: report_forms/c9/views.py:306
+msgid "Date"
+msgstr "Dátum"
+
 #: report_forms/c1/models.py:18
 msgid "Other Diagnose"
 msgstr "Egyéb Diagnózis"
@@ -482,8 +489,8 @@ msgstr "Egyéb Diagnózis"
 msgid "Other Diagnoses"
 msgstr "Egyéb Diagnózisok"
 
-#: report_forms/c1/models.py:23 report_forms/c1/views.py:124
-#: report_forms/c1/views.py:143 report_forms/c31/models.py:11
+#: report_forms/c1/models.py:23 report_forms/c1/views.py:135
+#: report_forms/c1/views.py:154 report_forms/c31/models.py:11
 #: report_forms/c31/views.py:114 report_forms/c31/views.py:128
 #: report_forms/c32/models.py:11 report_forms/c32/views.py:113
 #: report_forms/c32/views.py:127 report_forms/c8/models.py:11
@@ -493,8 +500,8 @@ msgstr "Egyéb Diagnózisok"
 msgid "Patients ID"
 msgstr "Betegazonosító"
 
-#: report_forms/c1/models.py:24 report_forms/c1/views.py:125
-#: report_forms/c1/views.py:144 report_forms/c1/templates/c1_error.html:30
+#: report_forms/c1/models.py:24 report_forms/c1/views.py:136
+#: report_forms/c1/views.py:155 report_forms/c1/templates/c1_error.html:30
 #: report_forms/c20/models.py:11 report_forms/c20/views.py:128
 #: report_forms/c20/views.py:147 report_forms/c20/templates/c20_error.html:30
 #: report_forms/c21/models.py:24 report_forms/c21/views.py:157
@@ -515,18 +522,18 @@ msgstr "Betegazonosító"
 msgid "Case ID"
 msgstr "Esetazonosító"
 
-#: report_forms/c1/models.py:27 report_forms/c1/views.py:129
-#: report_forms/c1/views.py:148
+#: report_forms/c1/models.py:27 report_forms/c1/views.py:140
+#: report_forms/c1/views.py:159
 msgid "Number of previous deliveries"
 msgstr "Ezt megelőző szülések száma"
 
-#: report_forms/c1/models.py:28 report_forms/c1/views.py:130
-#: report_forms/c1/views.py:149
+#: report_forms/c1/models.py:28 report_forms/c1/views.py:141
+#: report_forms/c1/views.py:160
 msgid "Number of earlier deliveries by c-section"
 msgstr "Korábbi császármetszéssel végződő szülések száma"
 
-#: report_forms/c1/models.py:29 report_forms/c1/views.py:131
-#: report_forms/c1/views.py:150
+#: report_forms/c1/models.py:29 report_forms/c1/views.py:142
+#: report_forms/c1/views.py:161
 msgid "The c-section"
 msgstr "A császármetszés"
 
@@ -534,21 +541,21 @@ msgstr "A császármetszés"
 msgid "Weight of newborn (g)"
 msgstr "Újszülött súlya (g)"
 
-#: report_forms/c1/models.py:31 report_forms/c1/views.py:133
-#: report_forms/c1/views.py:152
+#: report_forms/c1/models.py:31 report_forms/c1/views.py:144
+#: report_forms/c1/views.py:163
 msgid "Mother illnes or risk"
 msgstr ""
 "Van-e az anyának olyan betegsége, kockázata, amely esetében a hüvelyi szülés"
 " súlyos állapotromlást idézett volna elő (testi deformitás, súlyos "
 "belgyógyászati kórkép, placenta preavia, retina leválás kockázata stb…)?"
 
-#: report_forms/c1/models.py:32 report_forms/c1/views.py:134
-#: report_forms/c1/views.py:153
+#: report_forms/c1/models.py:32 report_forms/c1/views.py:145
+#: report_forms/c1/views.py:164
 msgid "Specify"
 msgstr "Éspedig"
 
-#: report_forms/c1/models.py:33 report_forms/c1/views.py:135
-#: report_forms/c1/views.py:154
+#: report_forms/c1/models.py:33 report_forms/c1/views.py:146
+#: report_forms/c1/views.py:165
 msgid "DRG Code"
 msgstr "HBCS kód"
 
@@ -568,15 +575,15 @@ msgstr "Császármetszés arányok"
 msgid "You are not using the Template csv. The number of fields is different."
 msgstr "Nem a megadott Sablon fájlt használod. Eltérő az oszlopok száma."
 
-#: report_forms/c1/views.py:127 report_forms/c1/views.py:146
+#: report_forms/c1/views.py:138 report_forms/c1/views.py:157
 msgid "Date of delivery"
 msgstr "Szülés dátuma"
 
-#: report_forms/c1/views.py:128 report_forms/c1/views.py:147
+#: report_forms/c1/views.py:139 report_forms/c1/views.py:158
 msgid "Time of delivery"
 msgstr "Szülés ideje"
 
-#: report_forms/c1/views.py:132 report_forms/c1/views.py:151
+#: report_forms/c1/views.py:143 report_forms/c1/views.py:162
 msgid "Weight of newborn"
 msgstr "Újszülött súlya"
 
@@ -675,7 +682,7 @@ msgstr ""
 #: report_forms/r1/templates/r1_file_upload.html:14
 #: report_forms/r1/templates/r1_trend.html:24
 #: report_forms/templates/file_upload.html:12
-#: report_forms/templates/form.html:10
+#: report_forms/templates/form.html:14
 msgid "Submit"
 msgstr "Elküld"
 
@@ -2372,11 +2379,6 @@ msgstr "Átlag"
 msgid "Median "
 msgstr "Medián"
 
-#: report_forms/c9/forms.py:7 report_forms/c9/models.py:12
-#: report_forms/c9/views.py:219 report_forms/c9/views.py:306
-msgid "Date"
-msgstr "Dátum"
-
 #: report_forms/c9/forms.py:8 report_forms/c9/models.py:16
 #: report_forms/c9/views.py:223 report_forms/c9/views.py:310
 msgid "Time patient arrives to OR"
@@ -3388,6 +3390,15 @@ msgstr ""
 "Azon betegek aránya, akiknél történt funkcionális állapotfelmérés az "
 "elbocsátást megelőzően"
 
+#: report_forms/templates/form.html:6
+msgid ""
+"Please, define a date up to which we perform the benchmarking between the "
+"participating hospitals, for one year before the selected date."
+msgstr ""
+"Kérjük, válasszon egy dátumot, amelytől visszamenőleg 1 éves időtartamra "
+"végezzük el az indikátor adatgyűjtésében résztvevő kórházak "
+"összehasonlítását."
+
 #: report_forms/templates/list_of_report_forms.html:6
 msgid "Report"
 msgstr "Jelentési lap"
@@ -3404,8 +3415,8 @@ msgstr "Jelentési lap"
 #: report_forms/templates/list_of_report_forms.html:127
 #: report_forms/templates/list_of_report_forms.html:140
 #: report_forms/templates/list_of_report_forms.html:153
-msgid "Anonymus statistics"
-msgstr "Anonim statisztika"
+msgid "Benchmarking"
+msgstr "Benchmarking"
 
 #: report_forms/templates/list_of_report_forms.html:110
 msgid "C.9. Operating theatre performance "
@@ -3464,6 +3475,9 @@ msgstr "Kódnév"
 #: university/models.py:16
 msgid "Hospitals"
 msgstr "Kórházak"
+
+#~ msgid "Anonymus statistics"
+#~ msgstr "Anonim statisztika"
 
 #~ msgid "Rate of c-section by <br /> the mother's age is less than 20"
 #~ msgstr "Császármetszések aránya <br /> az anya fiatalabb, mint 20 év"
