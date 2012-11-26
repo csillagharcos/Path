@@ -169,7 +169,7 @@ def ZipThat(one,two,formStuff,three=False):
             }
 
     else:
-        for i in range(len(one['jobs'][0])-1):
+        for i in range(len(one['jobs'])):
             for i in range(len(one['jobs'])):
                 jobs += [
                         {
