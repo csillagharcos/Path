@@ -170,13 +170,28 @@ def ZipThat(one,two,formStuff,three=False):
 
     else:
         for i in range(len(one['jobs'][0])-1):
-            jobs += [
-                    {
-                    'name': one['jobs'][i][0],
-                    'first': [one['jobs'][i][1], two['jobs'][i][1]],
-                    'second': [one['jobs'][i][2], two['jobs'][i][2]]
-                },
-            ]
+            for i in range(len(one['jobs'])):
+                jobs += [
+                        {
+                        'name': one['jobs'][i][0],
+                        'first': [one['jobs'][i][1],0],
+                        'second': [one['jobs'][i][2],0]
+                    },
+                ]
+        for i in range(len(two['jobs'])):
+            setup = False
+            for job in jobs:
+                if job['name'] == two['jobs'][i][0]:
+                    job['first'][1] = two['jobs'][i][1]
+                    job['second'][1] = two['jobs'][i][2]
+                    setup = True
+                    break
+            if setup is False:
+                jobs += [{
+                    'name': two['jobs'][i][0],
+                    'first': [0,two['jobs'][i][1]],
+                    'second': [0,two['jobs'][i][2]]
+                },]
         ZippedThat = {
             'overall': [ one['overall'], two['overall'] ],
             'removed': [ one['removed'], two['removed'] ],
