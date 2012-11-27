@@ -114,7 +114,7 @@ def AnonymStatistics(request):
                         "name" : workplace.codename,
                         "statistics" : stat
                     }]
-            statistics = SortAndAddCountryAverage(statistics, start, end)
+            statistics = SortAndAddCountryAverage(statistics, start, end, request.user)
             return render_to_response('c1_anon.html', {'statistics': statistics}, context_instance=RequestContext(request))
         else:
             form = AnonymStatForm(request.POST)
@@ -284,7 +284,7 @@ def CountStatistics(cases, notView=True):
         }
     return context
 
-def SortAndAddCountryAverage(statistics, start, end):
+def SortAndAddCountryAverage(statistics, start, end, user):
     statistics = sorted(statistics, key=lambda x: x['name'])
     hospitals = []
     countryStat = []
@@ -312,8 +312,32 @@ def SortAndAddCountryAverage(statistics, start, end):
             'name': name,
             'statistics': stat
         },]
-
     combined_results = countryStat + statistics
+    ci = wi = 0
+    coi = woi = None
+    yourCountry = yourHospital = [{},]
+
+    for result in combined_results:
+        if user.get_profile().workplace.country.printable_name == result['name']:
+            coi = ci
+        ci += 1
+    if coi is not None:
+        yourCountry = combined_results.pop(coi)
+
+    for result in combined_results:
+        if user.get_profile().workplace.codename == result['name']:
+            woi = wi
+        wi += 1
+    if woi is not None:
+        yourHospital =  combined_results.pop(woi)
+
+    if coi is not None and woi is not None:
+        combined_results = [yourCountry,] + [yourHospital,] + combined_results
+    elif coi is not None:
+        combined_results = [yourCountry,] + combined_results
+    elif woi is not None:
+        combined_results = [yourHospital,] + combined_results
+
     return combined_results
 
 
