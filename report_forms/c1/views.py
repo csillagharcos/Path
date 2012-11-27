@@ -5,6 +5,7 @@ from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
+from django.db.models.query import QuerySet
 from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, render
@@ -107,19 +108,13 @@ def AnonymStatistics(request):
             workplaces = School.objects.all()
             for workplace in workplaces:
                 exists = False
-                statistics += [{
-                    "name" : workplace.codename,
-                    "statistics" : CountStatistics(c1.objects.filter(added_by__personel__workplace = workplace, date_of_delivery__gte = start, date_of_delivery__lte = end ), False )
-                }]
-                for statistic in statistics:
-                    if statistic['name'] == workplace.country.printable_name:
-                        exists = True
-
-                if not exists:
+                stat = CountStatistics(c1.objects.filter(added_by__personel__workplace = workplace, date_of_delivery__gte = start, date_of_delivery__lte = end ), False )
+                if stat['counted'] >= 30:
                     statistics += [{
-                        "name" : workplace.country.printable_name,
-                        "statistics": CountStatistics(c1.objects.filter(added_by__personel__workplace__country = workplace.country, date_of_delivery__gte = start, date_of_delivery__lte = end ), False )
+                        "name" : workplace.codename,
+                        "statistics" : stat
                     }]
+            statistics = SortAndAddCountryAverage(statistics, start, end)
             return render_to_response('c1_anon.html', {'statistics': statistics}, context_instance=RequestContext(request))
         else:
             form = AnonymStatForm(request.POST)
@@ -132,6 +127,7 @@ def Statistics(request):
     context = CountStatistics(c1.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace) )
     return render_to_response('c1_statistics.html', context, context_instance=RequestContext(request))
 
+@login_required
 def Trend(request):
     if request.method == "POST":
         form = TrendForm(request.POST)
@@ -193,7 +189,6 @@ def Export(request):
             od += str(other_diag.name)+","
         model += ((str(case.patient_id), str(case.case_id), str(case.date_of_birth), str(dob[0]), str(dob[1])[:-3], str(case.number_of_prev_deliveries), str(case.number_of_prev_deliveries_by_c), str(case.the_c_section), str(case.weight_of_the_newborn), str(case.mother_illness), str(case.specify_mother_illness), str(case.drg_code), str(od)),)
     return csvExport(model, 'c1_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
-
 
 def CountStatistics(cases, notView=True):
     countable_case=uncountable_case=()
@@ -288,3 +283,37 @@ def CountStatistics(cases, notView=True):
         "subindicator_four_two": subindicator_four_two,
         }
     return context
+
+def SortAndAddCountryAverage(statistics, start, end):
+    statistics = sorted(statistics, key=lambda x: x['name'])
+    hospitals = []
+    countryStat = []
+    for workplace in statistics:
+        foundCountry = False
+        hospital = School.objects.get(codename=workplace['name'])
+        if not hospitals:
+            hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
+        else:
+            for hos in hospitals:
+                if hos['country'] == hospital.country.printable_name:
+                    hos['hospitals'] += [hospital.codename,]
+                    foundCountry = True
+                    break
+            if not foundCountry:
+                hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
+
+    for country in hospitals:
+        query = c1.objects.none()
+        name = country['country']
+        for hospit in country['hospitals']:
+            query = query | c1.objects.filter(added_by__personel__workplace__codename = hospit, date_of_delivery__gte = start, date_of_delivery__lte = end )
+        stat = CountStatistics(query, False)
+        countryStat += [{
+            'name': name,
+            'statistics': stat
+        },]
+
+    combined_results = countryStat + statistics
+    return combined_results
+
+
