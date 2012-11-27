@@ -109,11 +109,11 @@ def AnonymStatistics(request):
             for workplace in workplaces:
                 exists = False
                 stat = CountStatistics(c1.objects.filter(added_by__personel__workplace = workplace, date_of_delivery__gte = start, date_of_delivery__lte = end ), False )
-                if stat['counted'] >= 30:
-                    statistics += [{
-                        "name" : workplace.codename,
-                        "statistics" : stat
-                    }]
+#                if stat['counted'] >= 30:
+                statistics += [{
+                    "name" : workplace.codename,
+                    "statistics" : stat
+                }]
             statistics = SortAndAddCountryAverage(statistics, start, end, request.user)
             return render_to_response('c1_anon.html', {'statistics': statistics}, context_instance=RequestContext(request))
         else:
@@ -288,6 +288,9 @@ def SortAndAddCountryAverage(statistics, start, end, user):
     statistics = sorted(statistics, key=lambda x: x['name'])
     hospitals = []
     countryStat = []
+    statis = []
+    overall = removed = counted = indicator_one = 0
+    subindicator_one = subindicator_two = subindicator_three_one = subindicator_three_two = subindicator_three_three = subindicator_four_one = subindicator_four_two = 0
     for workplace in statistics:
         foundCountry = False
         hospital = School.objects.get(codename=workplace['name'])
@@ -306,8 +309,35 @@ def SortAndAddCountryAverage(statistics, start, end, user):
         query = c1.objects.none()
         name = country['country']
         for hospit in country['hospitals']:
-            query = query | c1.objects.filter(added_by__personel__workplace__codename = hospit, date_of_delivery__gte = start, date_of_delivery__lte = end )
-        stat = CountStatistics(query, False)
+            query = c1.objects.filter(added_by__personel__workplace__codename = hospit, date_of_delivery__gte = start, date_of_delivery__lte = end )
+            statis += [CountStatistics(query, False),]
+        for stat in statis:
+            overall += stat['overall']
+            removed += stat['removed']
+            counted += stat['counted']
+            indicator_one += stat['indicator_one']
+            subindicator_one += stat['subindicator_one']
+            subindicator_two += stat['subindicator_two']
+            subindicator_three_one += stat['subindicator_three_one']
+            subindicator_three_two += stat['subindicator_three_two']
+            subindicator_three_three += stat['subindicator_three_three']
+            subindicator_four_one += stat['subindicator_four_one']
+            subindicator_four_two += stat['subindicator_four_two']
+        counter = len(statis)
+        stat = {
+            "overall": overall,
+            "removed": removed,
+            "counted": counted,
+            "indicator_one": (indicator_one/counter),
+            "subindicator_one": (subindicator_one/counter),
+            "subindicator_two": (subindicator_two/counter),
+            "subindicator_three_one": (subindicator_three_one/counter),
+            "subindicator_three_two": (subindicator_three_two/counter),
+            "subindicator_three_three": (subindicator_three_three/counter),
+            "subindicator_four_one": (subindicator_four_one/counter),
+            "subindicator_four_two": (subindicator_four_two/counter)
+        }
+
         countryStat += [{
             'name': name,
             'statistics': stat
