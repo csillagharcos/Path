@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load i18n l10n %}
+{% block header %}
+    {% include "c32_header.html" %}
+{% endblock header %}
+
+{% block content %}
+    <table class="statistics">
+        <thead>
+            <tr>
+                <td>{% trans "Name of the indicator" %}</td>
+                {% for stat in statistics %}
+                    <td style="color: {% if user.get_profile.workplace.codename == stat.name %}red{% else %}{% if user.get_profile.workplace.country.printable_name == stat.name %}orange{% else %}#027997{% endif %}{% endif %}">{{ stat.name }}</td>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tr>
+            <td>{% trans "Overall:" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.overall }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Removed:" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.removed }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Counted:" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.counted }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Hospital mortality rate within 30 days" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.indicator_one|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Hospital mortality rate within 30 days without transmissions" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.subindicator_one|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Hospital mortality rate within 2 days" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.subindicator_two|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+    </table>
+    <div id="graph1" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph2" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph3" style="margin-top: 20px; height: 300px;"></div>
+{% endblock content %}
+
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                {% for stat in statistics %}
+                    var first{{ forloop.counter }} = [
+                        ['{% trans "Hospital mortality rate within 30 days" %}', {{ one.indicator_one }}]
+                    ];
+                    var second{{ forloop.counter }} = [
+                        ['{% trans "Hospital mortality rate within 30 days without transmissions" %}', {{ two.indicator_one }}]
+                    ];
+                    var third{{ forloop.counter }} = [
+                        ['{% trans "Hospital mortality rate within 2 days" %}', {{ three.indicator_one }}]
+                    ];
+                {% endfor %}
+            {% endlocalize %}
+            jqplot_percent.legend = { show: true }
+            jqplot_percent.series = [{% for stat in statistics %}{ label: '{{ stat.name }}' }, {% endfor %}]
+            jqplot_percent.seriesColors = [{% for stat in statistics %}{% if user.get_profile.workplace.codename == stat.name %}"red",{% else %}{% if user.get_profile.workplace.country.printable_name == stat.name %}"orange",{% else %}'#027997',{% endif %}{% endif %}{% endfor %}]
+            jqplot_percent.title = "{% trans "Hospital mortality rate within 30 days" %}"
+            $.jqplot('graph1', [{% for stat in statistics %}first{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Hospital mortality rate within 30 days without transmissions" %}"
+            $.jqplot('graph2', [{% for stat in statistics %}second{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Hospital mortality rate within 2 days" %}"
+            $.jqplot('graph3', [{% for stat in statistics %}third{{ forloop.counter }},{% endfor %}], jqplot_percent);
+        });
+    </script>
+{% endblock js %}

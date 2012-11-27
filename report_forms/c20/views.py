@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
+from datetime import datetime, timedelta
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -7,11 +7,12 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from report_forms.c20.forms import C20Form, FileUploadForm, TrendForm
+from report_forms.c20.forms import C20Form, FileUploadForm, TrendForm, AnonymStatForm
 from report_forms.c20.models import c20, c20CSV
 from django.utils.translation import ugettext_lazy as _
 from report_forms.tools import parseInt, csvDump, calculate_age, DateException, csvExport
 from unidecode import unidecode
+from university.models import School
 
 @login_required
 def Display(request):
@@ -226,3 +227,101 @@ def CountStatistics(cases, notView = True):
         "indicator_three": indicator_three,
         }
     return context
+
+@login_required
+def AnonymStatistics(request):
+    if request.method == "POST":
+        form = AnonymStatForm(request.POST)
+        statistics = []
+        if form.is_valid():
+            start = form.cleaned_data['endDate'] - timedelta(days=365)
+            end = form.cleaned_data['endDate']
+            workplaces = School.objects.all()
+            for workplace in workplaces:
+                stat = CountStatistics(c20.objects.filter(added_by__personel__workplace = workplace, date_of_discharge__gte = start, date_of_discharge__lte = end ), False )
+#                if stat['counted'] >= 30:
+                statistics += [{
+                    "name" : workplace.codename,
+                    "statistics" : stat
+                }]
+            statistics = SortAndAddCountryAverage(statistics, start, end, request.user)
+            return render_to_response('c20_anon.html', {'statistics': statistics}, context_instance=RequestContext(request))
+        else:
+            form = AnonymStatForm(request.POST)
+            return render(request, 'c20.html', { 'form': form,'benchmarking': True })
+    form = AnonymStatForm()
+    return render(request, 'c20.html', { 'form': form,'benchmarking': True })
+
+def SortAndAddCountryAverage(statistics, start, end, user):
+    statistics = sorted(statistics, key=lambda x: x['name'])
+    hospitals = []
+    countryStat = []
+    statis = []
+    overall = removed = counted = indicator_one = indicator_two = indicator_three = 0
+    for workplace in statistics:
+        foundCountry = False
+        hospital = School.objects.get(codename=workplace['name'])
+        if not hospitals:
+            hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
+        else:
+            for hos in hospitals:
+                if hos['country'] == hospital.country.printable_name:
+                    hos['hospitals'] += [hospital.codename,]
+                    foundCountry = True
+                    break
+            if not foundCountry:
+                hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
+
+    for country in hospitals:
+        name = country['country']
+        for hospit in country['hospitals']:
+            query = c20.objects.filter(added_by__personel__workplace__codename = hospit, date_of_discharge__gte = start, date_of_discharge__lte = end )
+            statis += [CountStatistics(query, False),]
+        for stat in statis:
+            overall += stat['overall']
+            removed += stat['removed']
+            counted += stat['counted']
+            indicator_one += stat['indicator_one']
+            indicator_two += stat['indicator_two']
+            indicator_three += stat['indicator_three']
+        counter = len(statis)
+        stat = {
+            "overall": overall,
+            "removed": removed,
+            "counted": counted,
+            "indicator_one": (indicator_one/counter),
+            "indicator_two": (indicator_two/counter),
+            "indicator_three": (indicator_three/counter),
+        }
+
+        countryStat += [{
+            'name': name,
+            'statistics': stat
+        },]
+    combined_results = countryStat + statistics
+    ci = wi = 0
+    coi = woi = None
+    yourCountry = yourHospital = [{},]
+
+    for result in combined_results:
+        if user.get_profile().workplace.country.printable_name == result['name']:
+            coi = ci
+        ci += 1
+    if coi is not None:
+        yourCountry = combined_results.pop(coi)
+
+    for result in combined_results:
+        if user.get_profile().workplace.codename == result['name']:
+            woi = wi
+        wi += 1
+    if woi is not None:
+        yourHospital =  combined_results.pop(woi)
+
+    if coi is not None and woi is not None:
+        combined_results = [yourCountry,] + [yourHospital,] + combined_results
+    elif coi is not None:
+        combined_results = [yourCountry,] + combined_results
+    elif woi is not None:
+        combined_results = [yourHospital,] + combined_results
+
+    return combined_results

@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% load i18n l10n %}
+{% block header %}
+    {% include "c24_header.html" %}
+{% endblock header %}
+
+{% block content %}
+    <table class="statistics">
+        <thead>
+            <tr>
+                <td>{% trans "Name of the indicator" %}</td>
+                {% for stat in statistics %}
+                    <td style="color: {% if user.get_profile.workplace.codename == stat.name %}red{% else %}{% if user.get_profile.workplace.country.printable_name == stat.name %}orange{% else %}#027997{% endif %}{% endif %}">{{ stat.name }}</td>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tr>
+            <td>{% trans "Overall:" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.overall }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Removed:" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.removed }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Counted:" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.counted }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "I. criterion: Appropriate antibiotic drug" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.one|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "II. criterion: Appropriate dose" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.twoa|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "II/b criterion: Appropriate dose with weight" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.twob|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "III. criterion: Appropriate route of administration: intravenous administration" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.three|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "IV. criterion: Appropriate timing, within one hour of surgical wound incision" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.four|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "V. criterion: Appropriate timing" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.five|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Full compliance with criteria I-V" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.ten|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "% of misuse" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.six|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "% of overuse" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.seven|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "% of underuse" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.eight|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "% of single shot treatment" %}:</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.nine|floatformat:"2" }}%</td>
+            {% endfor %}
+        </tr>
+    </table>
+    <div id="graph1" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph2a" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph2b" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph3" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph4" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph5" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph10" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph6" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph7" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph8" style="margin-top: 20px; height: 300px;"></div>
+    <div id="graph9" style="margin-top: 20px; height: 300px;"></div>
+{% endblock content %}
+
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                {% for stat in statistics %}
+                    var first{{ forloop.counter }} = [
+                        ['{% trans "I. criterion: Appropriate antibiotic drug" %}', {{ stat.statistics.one }}]
+                    ];
+                    var twoa{{ forloop.counter }} = [
+                        ['{% trans "II. criterion: Appropriate dose" %}', {{ stat.statistics.twoa }}]
+                    ];
+                    var twob{{ forloop.counter }} = [
+                        ['{% trans "II/b criterion: Appropriate dose with weight" %}', {{ stat.statistics.twob }}]
+                    ];
+                    var three{{ forloop.counter }} = [
+                        ['{% trans "III. criterion: Appropriate route of administration: intravenous administration" %}', {{ stat.statistics.three }}]
+                    ];
+                    var four{{ forloop.counter }} = [
+                        ['{% trans "IV. criterion: Appropriate timing, within one hour of surgical wound incision" %}', {{ stat.statistics.four }}]
+                    ];
+                    var five{{ forloop.counter }} = [
+                        ['{% trans "V. criterion: Appropriate timing" %}', {{ stat.statistics.five }}]
+                    ];
+                    var six{{ forloop.counter }} = [
+                        ['{% trans "% of misuse" %}', {{ stat.statistics.six }}]
+                    ];
+                    var seven{{ forloop.counter }} = [
+                        ['{% trans "% of overuse" %}', {{ stat.statistics.seven }}]
+                    ];
+                    var eight{{ forloop.counter }} = [
+                        ['{% trans "% of underuse" %}', {{ stat.statistics.eight }}]
+                    ];
+                    var nine{{ forloop.counter }} = [
+                        ['{% trans "% of single shot treatment" %}', {{ stat.statistics.nine }}]
+                    ];
+                    var ten{{ forloop.counter }} = [
+                        ['{% trans "Full compliance with criteria I-V" %}', {{ stat.statistics.ten }}]
+                    ];
+                {% endfor %}
+            {% endlocalize %}
+            jqplot_percent.legend = { show: true }
+            jqplot_percent.series = [{% for stat in statistics %}{ label: '{{ stat.name }}' }, {% endfor %}]
+            jqplot_percent.seriesColors = [{% for stat in statistics %}{% if user.get_profile.workplace.codename == stat.name %}"red",{% else %}{% if user.get_profile.workplace.country.printable_name == stat.name %}"orange",{% else %}'#027997',{% endif %}{% endif %}{% endfor %}]
+            jqplot_percent.title = "{% trans "I. criterion: Appropriate antibiotic drug" %}"
+            $.jqplot('graph1', [{% for stat in statistics %}first{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "II. criterion: Appropriate dose" %}"
+            $.jqplot('graph2a', [{% for stat in statistics %}twoa{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "II/b criterion: Appropriate dose with weight" %}"
+            $.jqplot('graph2b', [{% for stat in statistics %}twob{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "III. criterion: Appropriate route of administration: intravenous administration" %}"
+            $.jqplot('graph3', [{% for stat in statistics %}three{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "IV. criterion: Appropriate timing, within one hour of surgical wound incision" %}"
+            $.jqplot('graph4', [{% for stat in statistics %}four{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "V. criterion: Appropriate timing" %}"
+            $.jqplot('graph5', [{% for stat in statistics %}five{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "% of misuse" %}"
+            $.jqplot('graph6', [{% for stat in statistics %}six{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "% of overuse" %}"
+            $.jqplot('graph7', [{% for stat in statistics %}seven{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "% of underuse" %}"
+            $.jqplot('graph8', [{% for stat in statistics %}eight{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "% of single shot treatment" %}"
+            $.jqplot('graph9', [{% for stat in statistics %}nine{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Full compliance with criteria I-V" %}"
+            $.jqplot('graph10', [{% for stat in statistics %}ten{{ forloop.counter }},{% endfor %}], jqplot_percent);
+        });
+    </script>
+{% endblock js %}

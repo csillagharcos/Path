@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% load i18n l10n %}
+{% block header %}
+    {% include "r1_header.html" %}
+{% endblock header %}
+
+{% block content %}
+        <table class="los">
+            <tr>
+                <th>{% trans "Functional assessment at admission" %}</th>
+                {% for stat in statistics %}
+                    <th style="color: {% if user.get_profile.workplace.codename == stat.name %}red{% else %}{% if user.get_profile.workplace.country.printable_name == stat.name %}orange{% else %}#027997{% endif %}{% endif %}">{{ stat.name }}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 7 days of admission" %}</td>
+                {% for stat in statistics %}
+                    <td>{{ stat.statistics.r1a1|floatformat:"2" }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 2 days of admission" %}</td>
+                {% for stat in statistics %}
+                    <td>{{ stat.statistics.r1a2|floatformat:"2" }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 3 days of admission" %}</td>
+                {% for stat in statistics %}
+                    <td>{{ stat.statistics.r1a3|floatformat:"2" }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+
+    <table class="los">
+        <tr>
+            <th>{% trans "Functional assessment prior to discharge" %}</th>
+            {% for stat in statistics %}
+                <th style="color: {% if user.get_profile.workplace.codename == stat.name %}red{% else %}{% if user.get_profile.workplace.country.printable_name == stat.name %}orange{% else %}#027997{% endif %}{% endif %}">{{ stat.name }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of patients who have documented evidence of functional assessment in 3 days prior to discharge" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.r1b1|floatformat:"2" }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of patients who have documented evidence of functional assessment in 1 days prior to discharge" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.r1b2|floatformat:"2" }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of patients who have documented evidence of functional assessment in 2 days prior to discharge" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.r1b3|floatformat:"2" }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+
+    <table class="los">
+        <tr>
+            <th>{% trans "Unplanned interruption to rehabilitation program" %}</th>
+            {% for stat in statistics %}
+                <th style="color: {% if user.get_profile.workplace.codename == stat.name %}red{% else %}{% if user.get_profile.workplace.country.printable_name == stat.name %}orange{% else %}#027997{% endif %}{% endif %}">{{ stat.name }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.r21|floatformat:"2" }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.r22|floatformat:"2" }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.r23|floatformat:"2" }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}</td>
+            {% for stat in statistics %}
+                <td>{{ stat.statistics.r24|floatformat:"2" }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+
+    <div id="graph1" style="margin-top: 20px; height: 200px;"></div>
+    <div id="graph2" style="margin-top: 20px; height: 200px;"></div>
+    <div id="graph3" style="margin-top: 20px; height: 200px;"></div>
+    <div id="graph4" style="margin-top: 20px; height: 200px;"></div>
+    <div id="graph5" style="margin-top: 20px; height: 200px;"></div>
+    <div id="graph6" style="margin-top: 20px; height: 200px;"></div>
+    <div id="graph7" style="margin-top: 20px; height: 200px;"></div>
+    <div id="graph8" style="margin-top: 20px; height: 200px;"></div>
+    <div id="graph9" style="margin-top: 20px; height: 200px;"></div>
+    <div id="graph10" style="margin-top: 20px; height: 200px;"></div>
+{% endblock content %}
+
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                {% for stat in statistics %}
+                    var first{{ forloop.counter }} = [
+                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 7 days of admission" %}', {{ stat.statistics.r1a1 }}]
+                    ];
+                    var second{{ forloop.counter }} = [
+                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 2 days of admission" %}', {{ stat.statistics.r1a2 }}]
+                    ];
+                    var third{{ forloop.counter }} = [
+                        ['{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 3 days of admission" %}', {{ stat.statistics.r1a3 }}]
+                    ];
+                    var fourth{{ forloop.counter }} = [
+                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 3 days prior to discharge" %}', {{ stat.statistics.r1b1 }}]
+                    ];
+                    var fifth{{ forloop.counter }} = [
+                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 1 days prior to discharge" %}', {{ stat.statistics.r1b2 }}]
+                    ];
+                    var sixth{{ forloop.counter }} = [
+                        ['{% trans "Percentage of patients who have documented evidence of functional assessment in 2 days prior to discharge" %}', {{ stat.statistics.r1b3 }}]
+                    ];
+                    var seventh{{ forloop.counter }} = [
+                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}', {{ stat.statistics.r21 }}]
+                    ];
+                    var eighth{{ forloop.counter }} = [
+                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}', {{ stat.statistics.r22 }}]
+                    ];
+                    var nineth{{ forloop.counter }} = [
+                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}', {{ stat.statistics.r23 }}]
+                    ];
+                    var tenth{{ forloop.counter }} = [
+                        ['{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}', {{ stat.statistics.r24 }}]
+                    ];
+                {% endfor %}
+            {% endlocalize %}
+            jqplot_percent.legend = { show: true }
+            jqplot_percent.series = [{% for stat in statistics %}{ label: '{{ stat.name }}' }, {% endfor %}]
+            jqplot_percent.seriesColors = [{% for stat in statistics %}{% if user.get_profile.workplace.codename == stat.name %}"red",{% else %}{% if user.get_profile.workplace.country.printable_name == stat.name %}"orange",{% else %}'#027997',{% endif %}{% endif %}{% endfor %}]
+            jqplot_percent.title = "{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 7 days of admission" %}"
+            $.jqplot('graph1', [{% for stat in statistics %}first{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 2 days of admission" %}"
+            $.jqplot('graph2', [{% for stat in statistics %}second{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of patients who have documented functional assessment at admission to an inpatient unit for rehabilitation program within 3 days of admission" %}"
+            $.jqplot('graph3', [{% for stat in statistics %}third{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of patients who have documented evidence of functional assessment in 3 days prior to discharge" %}"
+            $.jqplot('graph4', [{% for stat in statistics %}fourth{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of patients who have documented evidence of functional assessment in 1 days prior to discharge" %}"
+            $.jqplot('graph5', [{% for stat in statistics %}fifth{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of patients who have documented evidence of functional assessment in 2 days prior to discharge" %}"
+            $.jqplot('graph6', [{% for stat in statistics %}sixth{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly" %}"
+            $.jqplot('graph7', [{% for stat in statistics %}seventh{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of an acute illness independent from the original disease" %}"
+            $.jqplot('graph8', [{% for stat in statistics %}eighth{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly on the demand of patient/family" %}"
+            $.jqplot('graph9', [{% for stat in statistics %}nineth{{ forloop.counter }},{% endfor %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Percentage of those patients whose rehabilitation program interrupted unexpectedly because of a complication of the original disease" %}"
+            $.jqplot('graph10', [{% for stat in statistics %}tenth{{ forloop.counter }},{% endfor %}], jqplot_percent);
+        });
+    </script>
+{% endblock js %}
