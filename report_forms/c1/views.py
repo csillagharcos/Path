@@ -98,31 +98,6 @@ def Import(request):
         return render_to_response('c1_file_upload.html', context, context_instance=RequestContext(request))
 
 @login_required
-def AnonymStatistics(request):
-    if request.method == "POST":
-        form = AnonymStatForm(request.POST)
-        statistics = []
-        if form.is_valid():
-            start = form.cleaned_data['endDate'] - timedelta(days=365)
-            end = form.cleaned_data['endDate']
-            workplaces = School.objects.all()
-            for workplace in workplaces:
-                exists = False
-                stat = CountStatistics(c1.objects.filter(added_by__personel__workplace = workplace, date_of_delivery__gte = start, date_of_delivery__lte = end ), False )
-#                if stat['counted'] >= 30:
-                statistics += [{
-                    "name" : workplace.codename,
-                    "statistics" : stat
-                }]
-            statistics = SortAndAddCountryAverage(statistics, start, end, request.user)
-            return render_to_response('c1_anon.html', {'statistics': statistics}, context_instance=RequestContext(request))
-        else:
-            form = AnonymStatForm(request.POST)
-            return render(request, 'c1.html', { 'form': form,'benchmarking': True })
-    form = AnonymStatForm()
-    return render(request, 'c1.html', { 'form': form,'benchmarking': True })
-
-@login_required
 def Statistics(request):
     context = CountStatistics(c1.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace) )
     return render_to_response('c1_statistics.html', context, context_instance=RequestContext(request))
@@ -284,6 +259,30 @@ def CountStatistics(cases, notView=True):
         }
     return context
 
+@login_required
+def AnonymStatistics(request):
+    if request.method == "POST":
+        form = AnonymStatForm(request.POST)
+        statistics = []
+        if form.is_valid():
+            start = form.cleaned_data['endDate'] - timedelta(days=365)
+            end = form.cleaned_data['endDate']
+            workplaces = School.objects.all()
+            for workplace in workplaces:
+                stat = CountStatistics(c1.objects.filter(added_by__personel__workplace = workplace, date_of_delivery__gte = start, date_of_delivery__lte = end ), False )
+                if stat['counted'] >= 30:
+                    statistics += [{
+                        "name" : workplace.codename,
+                        "statistics" : stat
+                    }]
+            statistics = SortAndAddCountryAverage(statistics, start, end, request.user)
+            return render_to_response('c1_anon.html', {'statistics': statistics}, context_instance=RequestContext(request))
+        else:
+            form = AnonymStatForm(request.POST)
+            return render(request, 'c1.html', { 'form': form,'benchmarking': True })
+    form = AnonymStatForm()
+    return render(request, 'c1.html', { 'form': form,'benchmarking': True })
+
 def SortAndAddCountryAverage(statistics, start, end, user):
     statistics = sorted(statistics, key=lambda x: x['name'])
     hospitals = []
@@ -306,7 +305,6 @@ def SortAndAddCountryAverage(statistics, start, end, user):
                 hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
 
     for country in hospitals:
-        query = c1.objects.none()
         name = country['country']
         for hospit in country['hospitals']:
             query = c1.objects.filter(added_by__personel__workplace__codename = hospit, date_of_delivery__gte = start, date_of_delivery__lte = end )
@@ -369,5 +367,3 @@ def SortAndAddCountryAverage(statistics, start, end, user):
         combined_results = [yourHospital,] + combined_results
 
     return combined_results
-
-
