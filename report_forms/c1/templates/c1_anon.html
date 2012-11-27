@@ -121,19 +121,19 @@
 
                 {% for stat in statistics %}
                     var fourth{{ forloop.counter }} = [
-                        ['{% trans "Rate of c-section by the mother's age is less than 20" %}', {{ stat.statistics.subindicator_three_one }}]
+                        ["{% trans "Rate of c-section by the mother's age is less than 20" %}", {{ stat.statistics.subindicator_three_one }}]
                     ];
                 {% endfor %}
 
                 {% for stat in statistics %}
                     var fifth{{ forloop.counter }} = [
-                        ['{% trans "Rate of c-section by the mother's age is between 20-35" %}', {{ stat.statistics.subindicator_three_two }}]
+                        ["{% trans "Rate of c-section by the mother's age is between 20-35" %}", {{ stat.statistics.subindicator_three_two }}]
                     ];
                 {% endfor %}
 
                 {% for stat in statistics %}
                     var sixth{{ forloop.counter }} = [
-                        ['{% trans "Rate of c-section by the mother's age is more than 35" %}', {{ stat.statistics.subindicator_three_three }}]
+                        ["{% trans "Rate of c-section by the mother's age is more than 35" %}", {{ stat.statistics.subindicator_three_three }}]
                     ];
                 {% endfor %}
 
