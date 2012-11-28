@@ -153,7 +153,7 @@ def CountStatistics(cases, notView=True):
     indicator_one_numerator = subindicator_one_30 = subindicator_two_2 = subindicator_one = 0
     countable_case=uncountable_case=()
     for case in cases:
-        if calculate_age(case.date_of_birth, case.date_of_admission) < 18:
+        if calculate_age(case.date_of_birth, case.date_of_admission) < 18 and (case.icd == "I61" or case.icd == "I62" or case.icd == "I63" or case.icd == "I64"):
             uncountable_case += (case,)
         else:
             countable_case += (case,)

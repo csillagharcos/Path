@@ -193,9 +193,17 @@ def CountStatistics(cases, notView=True):
         if calculate_age(case.date_of_birth, case.date_of_admission) <= 18 or case.patient_admission_status == 1 or case.type_of_admission == 1 or case.type_of_admission == 2 or case.patient_discharge_status == 1 or case.patient_discharge_status == 3:
             uncountable_case += (case,)
         else:
-            countable_case += (case,)
-    if len(countable_case) < 60 and notView:
-        return render_to_response('c8_statistics.html', { "not_enough": True })
+            if (case.diagnosis_group == 0 and (case.icd == "I61" or case.icd == "I62" or case.icd == "I63" or case.icd == "I64")) or (case.diagnosis_group == 1 and (case.icd == "J13" or case.icd == "J14" or case.icd == "J15" or case.icd == "J18" or case.icd == "A48.1")) or (case.diagnosis_group == 2 and (case.icd == "S72.0" or case.icd == "S72.1" or case.icd == "S72.2")) or (case.diagnosis_group == 3 and (case.drg == "177A" or case.drg == "177B" or case.drg == "177C" or case.drg == "177D" or case.drg == "190A" or case.drg == "192A" or case.drg == "192B")) or (case.diagnosis_group == 4 and (case.drg == "398A" or case.drg == "398B")) or (case.diagnosis_group == 5 and (case.icd == "K40" or case.drg == "281B" or case.drg == "282A" or case.drg == "282B")) or (case.diagnosis_group == 6 and case.drg == "097A") or (case.diagnosis_group == 7 and (case.drg == "344" or case.drg == "345" or case.drg == "369Z")) or (case.diagnosis_group == 8 and case.drg == "2030"):
+                countable_case += (case,)
+            else:
+                print case.diagnosis_group
+                print case.icd
+                print case.drg
+                print "----------------------------"
+                uncountable_case += (case,)
+
+#    if len(countable_case) < 60 and notView:
+#        return render_to_response('c8_statistics.html', { "not_enough": True })
 
     ''' Working '''
     s_days = hap_days = hf_days = cabg_days = ka_days = ih_days = taa_days = c_days = v_days = ()

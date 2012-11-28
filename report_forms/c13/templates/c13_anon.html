@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load i18n l10n %}
+{% block header %}
+    {% include "c13_header.html" %}
+{% endblock header %}
+
+{% block content %}
+    <table class="needle shorter">
+        <tr>
+            <th rowspan="2">{% trans "Job" %}</th>
+            <th colspan="{% if formdata.date3a %}3{% else %}2{% endif %}">{% trans "Number of needle stick injuries to 100 workers (average number)" %}</th>
+            <th colspan="{% if formdata.date3a %}3{% else %}2{% endif %}">{% trans "Number of needle stick injuries to 100 workers (FTE = full time equivalent)" %}</th>
+        </tr>
+        <tr>
+            <th>{{ formdata.date1a }}</th>
+            <th>{{ formdata.date2a }}</th>
+            {% if formdata.date3a %}<th>{{ formdata.date3a }}</th>{% endif %}
+            <th>{{ formdata.date1a }}</th>
+            <th>{{ formdata.date2a }}</th>
+            {% if formdata.date3a %}<th>{{ formdata.date3a }}</th>{% endif %}
+        </tr>
+        {% for job in jobs %}
+            <tr>
+                <td>{{ job.name }}</td>
+                <td>{{ job.first.0|floatformat:"2" }}</td>
+                <td>{{ job.first.1|floatformat:"2" }}</td>
+                {% if formdata.date3a %}<td>{{ job.first.2|floatformat:"2" }}</td>{% endif %}
+                <td>{{ job.second.0|floatformat:"2" }}</td>
+                <td>{{ job.second.1|floatformat:"2" }}</td>
+                {% if formdata.date3a %}<td>{{ job.second.2|floatformat:"2" }}</td>{% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+    <div id="avg" style="margin-top: 20px; height: 200px;"></div>
+    <div id="fte" style="margin-top: 20px; height: 200px;"></div>
+{% endblock content %}
+
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.pointLabels.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
+    <script style="text/javascript">
+        $(document).ready(function(){
+            {% localize off %}
+                var first1 = [
+                    {% for job in jobs %}
+                        ["{{ job.name }}", {{ job.first.0 }}],
+                    {% endfor %}
+                ];
+                var first2 = [
+                    {% for job in jobs %}
+                        ["{{ job.name }}", {{ job.first.1 }}],
+                    {% endfor %}
+                ];
+                {% if formdata.date3a %}
+                    var first3 = [
+                        {% for job in jobs %}
+                            ["{{ job.name }}", {{ job.first.2 }}],
+                        {% endfor %}
+                    ];
+                {% endif %}
+                var second1 = [
+                    {% for job in jobs %}
+                        ["{{ job.name }}", {{ job.second.0 }}],
+                    {% endfor %}
+                ];
+                var second2 = [
+                    {% for job in jobs %}
+                        ["{{ job.name }}", {{ job.second.1 }}],
+                    {% endfor %}
+                ];
+                {% if formdata.date3a %}
+                    var second3 = [
+                        {% for job in jobs %}
+                            ["{{ job.name }}", {{ job.second.2 }}],
+                        {% endfor %}
+                    ];
+                {% endif %}
+            {% endlocalize %}
+            jqplot_percent.axes.yaxis.label = ""
+            jqplot_percent.title = "{% trans "Number of needle stick injuries to 100 workers (average number)" %}"
+            jqplot_percent.axes.yaxis.ticks = ""
+            jqplot_percent.highlighter.formatString = "%.2f"
+            $.jqplot('avg', [first1,first2{% if formdata.date3a %},first3{% endif %}], jqplot_percent);
+            jqplot_percent.title = "{% trans "Number of needle stick injuries to 100 workers (FTE = full time equivalent)" %}"
+            $.jqplot('fte', [second1,second2{% if formdata.date3a %},second3{% endif %}], jqplot_percent);
+        });
+    </script>
+{% endblock js %}
