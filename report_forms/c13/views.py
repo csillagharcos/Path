@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.utils import translation
-from report_forms.c13.forms import C13Form, C13Form_hungarian, TrendForm
+from report_forms.c13.forms import C13Form, C13Form_hungarian, TrendForm, AnonymStatForm
 from report_forms.c13.models import c13
 from django.utils.translation import ugettext_lazy as _
 from report_forms.tools import csvDump, csvExport
+from university.models import School
 
 @login_required
 def Display(request):
@@ -200,3 +201,144 @@ def ZipThat(one,two,formStuff,three=False):
             'formdata': formStuff,
             }
     return ZippedThat
+
+def ZipForAnon(stats):
+    name = []
+    stuff = ["Nurse", 0, 100, 300, 100, 400, 500]
+    first = True
+    jobs = []
+    item_codes = {}
+    i = 0
+    for stat in stats:
+        item_codes[stat['name']] = i
+        i += 1
+
+    for stat in stats:
+        name += [stat['name'],]
+        for job in stat['statistics']['jobs']:
+            if first:
+                job_list_to_add = [job[0], job[1],]
+                for i in range(len(stats)-1):
+                    job_list_to_add += [0,]
+                job_list_to_add += [job[2],]
+                for i in range(len(stats)-1):
+                    job_list_to_add += [0,]
+                jobs += [job_list_to_add,]
+                first = False
+            else:
+                for job_list in jobs:
+                    if job_list[0] == job[0]:
+                        first_in_table = item_codes[stat['name']] + 1
+                        second_in_table = item_codes[stat['name']] + 1 + len(stats)
+                        job_list[first_in_table] = job[1]
+                        job_list[second_in_table] = job[2]
+                        break
+                    else:
+                        job_list_to_add = [job[0]]
+                        for i in range(len(stats)*2):
+                            job_list_to_add += [0,]
+                        jobs += [job_list_to_add,]
+        names = name + name
+    return {
+        'name': names,
+        'jobs': jobs
+    }
+
+@login_required
+def AnonymStatistics(request):
+    if request.method == "POST":
+        form = AnonymStatForm(request.POST)
+        statistics = []
+        if form.is_valid():
+            start = form.cleaned_data['endDate']
+            workplaces = School.objects.all()
+            for workplace in workplaces:
+                stat = CountStatistics(c13.objects.filter(added_by__personel__workplace = workplace, year = start ))
+                if stat['overall']:
+                    statistics += [{
+                        "name" : workplace.codename,
+                        "statistics" : stat
+                    }]
+            statistics = SortAndAddCountryAverage(statistics, start, request.user)
+            return render_to_response('c13_anon.html', {'statistics': ZipForAnon(statistics), 'graph': statistics}, context_instance=RequestContext(request))
+        else:
+            form = AnonymStatForm(request.POST)
+            return render(request, 'c13.html', { 'form': form,'benchmarking': True })
+    form = AnonymStatForm()
+    return render(request, 'c13.html', { 'form': form,'benchmarking': True })
+
+def SortAndAddCountryAverage(statistics, start, user):
+    statistics = sorted(statistics, key=lambda x: x['name'])
+    hospitals = []
+    countryStat = []
+    statis = []
+    jobs = []
+    overall = removed = counted = 0
+    for workplace in statistics:
+        foundCountry = False
+        hospital = School.objects.get(codename=workplace['name'])
+        if not hospitals:
+            hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
+        else:
+            for hos in hospitals:
+                if hos['country'] == hospital.country.printable_name:
+                    hos['hospitals'] += [hospital.codename,]
+                    foundCountry = True
+                    break
+            if not foundCountry:
+                hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
+
+    for country in hospitals:
+        name = country['country']
+        for hospit in country['hospitals']:
+            query = c13.objects.filter(added_by__personel__workplace__codename = hospit, year = start )
+            statis += [CountStatistics(query),]
+        for stat in statis:
+            overall += stat['overall']
+            removed += stat['removed']
+            counted += stat['counted']
+            first = second = counter = 0
+            for job in stat['jobs']:
+                jobname = job[0]
+                first += job[1]
+                second += job[2]
+                counter += 1
+            if counter:
+                jobs += [[jobname, (first/counter), (second/counter), counter],]
+        stat = {
+            "overall": overall,
+            "removed": removed,
+            "counted": counted,
+            "jobs": jobs
+        }
+        countryStat += [{
+            'name': name,
+            'statistics': stat
+        },]
+    combined_results = countryStat + statistics
+    ci = wi = 0
+    coi = woi = None
+    yourCountry = yourHospital = [{},]
+
+    for result in combined_results:
+        if user.get_profile().workplace.country.printable_name == result['name']:
+            coi = ci
+        ci += 1
+    if coi is not None:
+        yourCountry = combined_results.pop(coi)
+
+    for result in combined_results:
+        if user.get_profile().workplace.codename == result['name']:
+            woi = wi
+        wi += 1
+    if woi is not None:
+        yourHospital =  combined_results.pop(woi)
+
+    if coi is not None and woi is not None:
+        combined_results = [yourCountry,] + [yourHospital,] + combined_results
+    elif coi is not None:
+        combined_results = [yourCountry,] + combined_results
+    elif woi is not None:
+        combined_results = [yourHospital,] + combined_results
+
+    return combined_results

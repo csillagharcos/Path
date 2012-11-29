@@ -83,3 +83,6 @@ class TrendForm(forms.Form):
     date1a = forms.IntegerField(label=_('First date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
     date2a = forms.IntegerField(label=_('Second date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
     date3a = forms.IntegerField(required=False,label=_('Third date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
+
+class AnonymStatForm(forms.Form):
+    endDate = forms.IntegerField(label=_('Date'), widget=forms.TextInput(attrs={'placeholder':_('(yyyy)')}))
