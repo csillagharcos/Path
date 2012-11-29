@@ -117,7 +117,7 @@
             <td><a href="{% url c9_operation_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Operation template" %}" /></a><a href="{% url c9_patient_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Patient template" %}" /></a></td>
             <td><img src="{{ STATIC_URL }}/images/gray.appbar.page.word.png" title="{% trans "Data collecting sheet" %}" /></td>
             <td><img src="{{ STATIC_URL }}/images/gray.appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></td>
-            <td><img src="{{ STATIC_URL }}/images/gray.appbar.page.word.png" title="{% trans "Short indicator description" %}" /></td>
+            <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/c9.docx"><img src="{{ STATIC_URL }}/images/appbar.page.word.png" title="{% trans "Short indicator description" %}" /></a></td>
         </tr>
         <tr>
             <td>{% trans "C.13. Needle stick injuries" %}</td>
@@ -156,7 +156,7 @@
             <td><a href="{% url r1_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
             <td><a href="{{ STATIC_URL }}documents/dcs/{{ LANGUAGE_CODE }}/r1a.docx"><img src="{{ STATIC_URL }}/images/appbar.page.word.png" title="{% trans "Data collecting sheet" %}" /></a></td>
             <td><a href="{{ STATIC_URL }}documents/drt/{{ LANGUAGE_CODE }}/r1a.xls"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></a></td>
-            <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/r1a.docx"><img src="{{ STATIC_URL }}/images/appbar.page.word.png" title="{% trans "Short indicator description" %}" /></a></td>
+            <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/r1.docx"><img src="{{ STATIC_URL }}/images/appbar.page.word.png" title="{% trans "R1 Short indicator description" %}" /></a><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/r2.docx"><img src="{{ STATIC_URL }}/images/appbar.page.word.png" title="{% trans "R2 Short indicator description" %}" /></a></td>
         </tr>
     </table>
 {% endblock content %}
