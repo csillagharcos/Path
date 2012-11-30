@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
+from datetime import datetime, timedelta
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -7,10 +7,11 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from report_forms.c8.forms import C8Form, FileUploadForm, TrendForm
+from report_forms.c8.forms import C8Form, FileUploadForm, TrendForm, AnonymStatForm
 from report_forms.c8.models import c8, c8CSV
 from django.utils.translation import ugettext_lazy as _
 from report_forms.tools import parseInt, csvDump, calculate_age, median, DateException, csvExport
+from university.models import School
 
 @login_required
 def Display(request):
@@ -430,17 +431,17 @@ def CountStatistics(cases, notView=True):
 
 
     ''' Counting '''
-    diagnosis = (
-        (_('Stroke'), s_first_date, s_last_date, s_avg, s_med, sd_avg, sd_med, sde_avg, sde_med, len(s_days) ),
-        (_('Hospital acquired pneumonia'), hap_first_date, hap_last_date, hap_avg, hap_med, hapd_avg, hapd_med, hapde_avg, hapde_med, len(hap_days)),
-        (_('Hip fracture'), hf_first_date, hf_last_date, hf_avg, hf_med, hfd_avg, hfd_med, hfde_avg, hfde_med, len(hf_days)),
-        (_('CABG'), cabg_first_date, cabg_last_date, cabg_avg, cabg_med, cabgd_avg, cabgd_med, cabgde_avg, cabgde_med, len(cabg_days)),
-        (_('Knee arthroscopy'), ka_first_date, ka_last_date, ka_avg, ka_med, kad_avg, kad_med, kade_avg, kade_med, len(ka_days)),
-        (_('Inguinal hernia'), ih_first_date, ih_last_date, ih_avg, ih_med, ihd_avg, ihd_med, ihde_avg, ihde_med, len(ih_days)),
-        (_('Tonsillectomy and/or adenoidectomy'), taa_first_date, taa_last_date, taa_avg, taa_med, taad_avg, taad_med, taade_avg, taade_med, len(taa_days)),
-        (_('Cholecystectomy'), c_first_date, c_last_date, c_avg, c_med, cd_avg, cd_med, cde_avg, cde_med, len(c_days)),
-        (_('Varicose veins - stripping and ligation'), v_first_date, v_last_date, v_avg, v_med, vd_avg, vd_med, vde_avg, vde_med, len(v_days)),
-        )
+    diagnosis = [
+        [_('Stroke'), s_first_date, s_last_date, s_avg, s_med, sd_avg, sd_med, sde_avg, sde_med, len(s_days)],
+        [_('Hospital acquired pneumonia'), hap_first_date, hap_last_date, hap_avg, hap_med, hapd_avg, hapd_med, hapde_avg, hapde_med, len(hap_days)],
+        [_('Hip fracture'), hf_first_date, hf_last_date, hf_avg, hf_med, hfd_avg, hfd_med, hfde_avg, hfde_med, len(hf_days)],
+        [_('CABG'), cabg_first_date, cabg_last_date, cabg_avg, cabg_med, cabgd_avg, cabgd_med, cabgde_avg, cabgde_med, len(cabg_days)],
+        [_('Knee arthroscopy'), ka_first_date, ka_last_date, ka_avg, ka_med, kad_avg, kad_med, kade_avg, kade_med, len(ka_days)],
+        [_('Inguinal hernia'), ih_first_date, ih_last_date, ih_avg, ih_med, ihd_avg, ihd_med, ihde_avg, ihde_med, len(ih_days)],
+        [_('Tonsillectomy and/or adenoidectomy'), taa_first_date, taa_last_date, taa_avg, taa_med, taad_avg, taad_med, taade_avg, taade_med, len(taa_days)],
+        [_('Cholecystectomy'), c_first_date, c_last_date, c_avg, c_med, cd_avg, cd_med, cde_avg, cde_med, len(c_days)],
+        [_('Varicose veins - stripping and ligation'), v_first_date, v_last_date, v_avg, v_med, vd_avg, vd_med, vde_avg, vde_med, len(v_days)],
+    ]
     ''' Displaying '''
     context = {
         "overall": len(cases),
@@ -499,3 +500,338 @@ def ZipThat(one,two,formStuff,three=False):
             'formdata': formStuff,
         }
     return ZippedThat
+
+@login_required
+def AnonymStatistics(request):
+    if request.method == "POST":
+        form = AnonymStatForm(request.POST)
+        statistics = []
+        if form.is_valid():
+            start = form.cleaned_data['endDate'] - timedelta(days=365)
+            end = form.cleaned_data['endDate']
+            workplaces = School.objects.all()
+            for workplace in workplaces:
+                stat = CountStatistics(c8.objects.filter(added_by__personel__workplace = workplace, date_of_admission__gte = start, date_of_admission__lte = end ), False )
+                statistics += [{
+                    "name" : workplace.codename,
+                    "statistics" : stat
+                }]
+            statistics = SortAndAddCountryAverage(statistics, start, end, request.user)
+            return render_to_response('c8_anon.html', {'statistics': ZipForAnon(statistics)}, context_instance=RequestContext(request))
+        else:
+            form = AnonymStatForm(request.POST)
+            return render(request, 'c8.html', { 'form': form,'benchmarking': True })
+    form = AnonymStatForm()
+    return render(request, 'c8.html', { 'form': form,'benchmarking': True })
+
+def ZipForAnon(statistics):
+    name = ['random']
+    for stat in statistics:
+        for st in stat['statistics']['diagnosis']:
+            name += [st[0],]
+            for n in name:
+                print n
+                if n == st[0]:
+                    print "heil maria!"
+def SortAndAddCountryAverage(statistics, start, end, user):
+    statistics = sorted(statistics, key=lambda x: x['name'])
+    hospitals = []
+    countryStat = []
+    statis = []
+    overall = removed = counted = 0
+    stroke = []
+    hap = []
+    hf = []
+    cabg = []
+    ka = []
+    ih = []
+    taa = []
+    cho = []
+    vvsal = []
+    for workplace in statistics:
+        foundCountry = False
+        hospital = School.objects.get(codename=workplace['name'])
+        if not hospitals:
+            hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
+        else:
+            for hos in hospitals:
+                if hos['country'] == hospital.country.printable_name:
+                    hos['hospitals'] += [hospital.codename,]
+                    foundCountry = True
+                    break
+            if not foundCountry:
+                hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
+
+    for country in hospitals:
+        name = country['country']
+        for hospit in country['hospitals']:
+            query = c8.objects.filter(added_by__personel__workplace__codename = hospit, date_of_admission__gte = start, date_of_admission__lte = end )
+            statis += [CountStatistics(query, False),]
+        for stat in statis:
+            overall += stat['overall']
+            removed += stat['removed']
+            counted += stat['counted']
+            stroke += [stat['diagnosis'][0],]
+            hap += [stat['diagnosis'][1],]
+            hf += [stat['diagnosis'][2],]
+            cabg += [stat['diagnosis'][3],]
+            ka += [stat['diagnosis'][4],]
+            ih += [stat['diagnosis'][5],]
+            taa += [stat['diagnosis'][6],]
+            cho += [stat['diagnosis'][7],]
+            vvsal += [stat['diagnosis'][8],]
+        first_date = last_date = False
+        avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
+        diag_name = ""
+        for s in stroke:
+            diag_name = s[0]
+            if not first_date:
+                first_date = s[1]
+            if first_date < s[1]:
+                first_date = s[1]
+            if not last_date:
+                last_date = s[2]
+            if last_date > s[2]:
+                last_date = s[2]
+            avg += s[3]
+            med += s[4]
+            davg += s[5]
+            dmed += s[6]
+            deavg += s[7]
+            demed += s[8]
+            dbszam += s[9]
+            if s[9] > 0:
+                counter += 1
+        if not counter:
+            counter = 1
+        stroke_final = [diag_name, first_date, last_date, (avg/counter), (med/counter), (davg/counter), (dmed/counter), (deavg/counter), (demed/counter), dbszam]
+        first_date = last_date = False
+        avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
+        for s in hap:
+            diag_name = s[0]
+            if not first_date:
+                first_date = s[1]
+            if first_date < s[1]:
+                first_date = s[1]
+            if not last_date:
+                last_date = s[2]
+            if last_date > s[2]:
+                last_date = s[2]
+            avg += s[3]
+            med += s[4]
+            davg += s[5]
+            dmed += s[6]
+            deavg += s[7]
+            demed += s[8]
+            dbszam += s[9]
+            if s[9] > 0:
+                counter += 1
+        if not counter:
+            counter = 1
+        hap_final = [diag_name, first_date, last_date, (avg/counter), (med/counter), (davg/counter), (dmed/counter), (deavg/counter), (demed/counter), dbszam]
+        first_date = last_date = False
+        avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
+        for s in hf:
+            diag_name = s[0]
+            if not first_date:
+                first_date = s[1]
+            if first_date < s[1]:
+                first_date = s[1]
+            if not last_date:
+                last_date = s[2]
+            if last_date > s[2]:
+                last_date = s[2]
+            avg += s[3]
+            med += s[4]
+            davg += s[5]
+            dmed += s[6]
+            deavg += s[7]
+            demed += s[8]
+            dbszam += s[9]
+            if s[9] > 0:
+                counter += 1
+        if not counter:
+            counter = 1
+        hf_final = [diag_name, first_date, last_date, (avg/counter), (med/counter), (davg/counter), (dmed/counter), (deavg/counter), (demed/counter), dbszam]
+        first_date = last_date = False
+        avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
+        for s in cabg:
+            diag_name = s[0]
+            if not first_date:
+                first_date = s[1]
+            if first_date < s[1]:
+                first_date = s[1]
+            if not last_date:
+                last_date = s[2]
+            if last_date > s[2]:
+                last_date = s[2]
+            avg += s[3]
+            med += s[4]
+            davg += s[5]
+            dmed += s[6]
+            deavg += s[7]
+            demed += s[8]
+            dbszam += s[9]
+            if s[9] > 0:
+                counter += 1
+        if not counter:
+            counter = 1
+        cabg_final = [diag_name, first_date, last_date, (avg/counter), (med/counter), (davg/counter), (dmed/counter), (deavg/counter), (demed/counter), dbszam]
+        first_date = last_date = False
+        avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
+        for s in ka:
+            diag_name = s[0]
+            if not first_date:
+                first_date = s[1]
+            if first_date < s[1]:
+                first_date = s[1]
+            if not last_date:
+                last_date = s[2]
+            if last_date > s[2]:
+                last_date = s[2]
+            avg += s[3]
+            med += s[4]
+            davg += s[5]
+            dmed += s[6]
+            deavg += s[7]
+            demed += s[8]
+            dbszam += s[9]
+            if s[9] > 0:
+                counter += 1
+        if not counter:
+            counter = 1
+        ka_final = [diag_name, first_date, last_date, (avg/counter), (med/counter), (davg/counter), (dmed/counter), (deavg/counter), (demed/counter), dbszam]
+        first_date = last_date = False
+        avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
+        for s in ih:
+            diag_name = s[0]
+            if not first_date:
+                first_date = s[1]
+            if first_date < s[1]:
+                first_date = s[1]
+            if not last_date:
+                last_date = s[2]
+            if last_date > s[2]:
+                last_date = s[2]
+            avg += s[3]
+            med += s[4]
+            davg += s[5]
+            dmed += s[6]
+            deavg += s[7]
+            demed += s[8]
+            dbszam += s[9]
+            if s[9] > 0:
+                counter += 1
+        if not counter:
+            counter = 1
+        ih_final = [diag_name, first_date, last_date, (avg/counter), (med/counter), (davg/counter), (dmed/counter), (deavg/counter), (demed/counter), dbszam]
+        first_date = last_date = False
+        avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
+        for s in taa:
+            diag_name = s[0]
+            if not first_date:
+                first_date = s[1]
+            if first_date < s[1]:
+                first_date = s[1]
+            if not last_date:
+                last_date = s[2]
+            if last_date > s[2]:
+                last_date = s[2]
+            avg += s[3]
+            med += s[4]
+            davg += s[5]
+            dmed += s[6]
+            deavg += s[7]
+            demed += s[8]
+            dbszam += s[9]
+            if s[9] > 0:
+                counter += 1
+        if not counter:
+            counter = 1
+        taa_final = [diag_name, first_date, last_date, (avg/counter), (med/counter), (davg/counter), (dmed/counter), (deavg/counter), (demed/counter), dbszam]
+        first_date = last_date = False
+        avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
+        for s in cho:
+            diag_name = s[0]
+            if not first_date:
+                first_date = s[1]
+            if first_date < s[1]:
+                first_date = s[1]
+            if not last_date:
+                last_date = s[2]
+            if last_date > s[2]:
+                last_date = s[2]
+            avg += s[3]
+            med += s[4]
+            davg += s[5]
+            dmed += s[6]
+            deavg += s[7]
+            demed += s[8]
+            dbszam += s[9]
+            if s[9] > 0:
+                counter += 1
+        if not counter:
+            counter = 1
+        cho_final = [diag_name, first_date, last_date, (avg/counter), (med/counter), (davg/counter), (dmed/counter), (deavg/counter), (demed/counter), dbszam]
+        first_date = last_date = False
+        avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
+        for s in vvsal:
+            diag_name = s[0]
+            if not first_date:
+                first_date = s[1]
+            if first_date < s[1]:
+                first_date = s[1]
+            if not last_date:
+                last_date = s[2]
+            if last_date > s[2]:
+                last_date = s[2]
+            avg += s[3]
+            med += s[4]
+            davg += s[5]
+            dmed += s[6]
+            deavg += s[7]
+            demed += s[8]
+            dbszam += s[9]
+            if s[9] > 0:
+                counter += 1
+        if not counter:
+            counter = 1
+        vvsal_final = [diag_name, first_date, last_date, (avg/counter), (med/counter), (davg/counter), (dmed/counter), (deavg/counter), (demed/counter), dbszam]
+        diagnosis = (stroke_final, hap_final, hf_final, cabg_final, ka_final, ih_final, taa_final, cho_final, vvsal_final)
+        stat = {
+            "overall": overall,
+            "removed": removed,
+            "counted": counted,
+            "diagnosis": diagnosis
+        }
+        countryStat += [{
+            'name': name,
+            'statistics': stat
+        },]
+    combined_results = countryStat + statistics
+    ci = wi = 0
+    coi = woi = None
+    yourCountry = yourHospital = [{},]
+
+    for result in combined_results:
+        if user.get_profile().workplace.country.printable_name == result['name']:
+            coi = ci
+        ci += 1
+    if coi is not None:
+        yourCountry = combined_results.pop(coi)
+
+    for result in combined_results:
+        if user.get_profile().workplace.codename == result['name']:
+            woi = wi
+        wi += 1
+    if woi is not None:
+        yourHospital =  combined_results.pop(woi)
+
+    if coi is not None and woi is not None:
+        combined_results = [yourCountry,] + [yourHospital,] + combined_results
+    elif coi is not None:
+        combined_results = [yourCountry,] + combined_results
+    elif woi is not None:
+        combined_results = [yourHospital,] + combined_results
+
+    return combined_results
