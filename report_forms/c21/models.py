@@ -82,6 +82,7 @@ class c21CSV(CsvModel):
     time_of_last_dose               = CharField()
     date_of_wound_close             = CharField()
     time_of_wound_close             = CharField()
+    comments                        = CharField()
 
     class Meta:
         delimiter = ";"

@@ -108,15 +108,15 @@
         </tr>
         <tr>
             <td>{% trans "C.9. Operating theatre performance " %}</td>
-            <td><a href="{% url c9_operation_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Operation form" %}" /></a> <a href="{% url c9_patient_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Patient form" %}" /></a></td>
+            <td><a href="{% url c9_operation_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans " Central OR form" %}" /></a> <a href="{% url c9_patient_display %}"><img src="{{ STATIC_URL }}/images/appbar.clipboard.edit.png" title="{% trans "Day-level data form" %}" /></a></td>
             <td><a href="{% url c9_stat %}"><img src="{{ STATIC_URL }}/images/appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
             <td><a href="{% url c9_trend %}"><img src="{{ STATIC_URL }}/images/appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url c1_trend %}"></a><img src="{{ STATIC_URL }}/images/gray.appbar.group.png" title="{% trans "Benchmarking" %}" /></a></td>
             <td><a href="{% url c9_import %}"><img src="{{ STATIC_URL }}/images/appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
-            <td><a href="{% url c9_exporto %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Operation export" %}" /></a><a href="{% url c9_exportp %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Patient export" %}" /></a></td>
-            <td><a href="{% url c9_operation_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Operation template" %}" /></a><a href="{% url c9_patient_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Patient template" %}" /></a></td>
+            <td><a href="{% url c9_exporto %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans " Central OR export" %}" /></a><a href="{% url c9_exportp %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Day-level data export" %}" /></a></td>
+            <td><a href="{% url c9_operation_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans " Central OR template" %}" /></a><a href="{% url c9_patient_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Day-level data template" %}" /></a></td>
             <td><img src="{{ STATIC_URL }}/images/gray.appbar.page.word.png" title="{% trans "Data collecting sheet" %}" /></td>
-            <td><img src="{{ STATIC_URL }}/images/gray.appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></td>
+            <td><a href="{{ STATIC_URL }}documents/drt/{{ LANGUAGE_CODE }}/c9.xlsx"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></a></td>
             <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/c9.docx"><img src="{{ STATIC_URL }}/images/appbar.page.word.png" title="{% trans "Short indicator description" %}" /></a></td>
         </tr>
         <tr>
@@ -155,7 +155,7 @@
             <td><a href="{% url r1_export %}"><img src="{{ STATIC_URL }}/images/appbar.disk.download.png" title="{% trans "Export" %}" /></a></td>
             <td><a href="{% url r1_template %}"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Template" %}" /></a></td>
             <td><a href="{{ STATIC_URL }}documents/dcs/{{ LANGUAGE_CODE }}/r1a.docx"><img src="{{ STATIC_URL }}/images/appbar.page.word.png" title="{% trans "Data collecting sheet" %}" /></a></td>
-            <td><a href="{{ STATIC_URL }}documents/drt/{{ LANGUAGE_CODE }}/r1a.xls"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></a></td>
+            <td><a href="{{ STATIC_URL }}documents/drt/{{ LANGUAGE_CODE }}/r1.xls"><img src="{{ STATIC_URL }}/images/appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></a></td>
             <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/r1.docx"><img src="{{ STATIC_URL }}/images/appbar.page.word.png" title="{% trans "R1 Short indicator description" %}" /></a><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/r2.docx"><img src="{{ STATIC_URL }}/images/appbar.page.word.png" title="{% trans "R2 Short indicator description" %}" /></a></td>
         </tr>
     </table>

@@ -72,6 +72,7 @@ class c9_patientCSV(CsvModel):
     surgery_end                     = CharField()
     anesthesia_end                  = CharField()
     patient_leave_time              = CharField()
+    comments                        = CharField()
 
     class Meta:
         delimiter = ";"

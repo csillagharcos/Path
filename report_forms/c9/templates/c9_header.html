@@ -4,15 +4,15 @@
     <table>
         <tr>
             <td><a href="{% url report_forms %}"><img src="{{ STATIC_URL }}/images/white.appbar.arrow.left.png" title="{% trans "Report Forms" %}" /></a></td>
-            <td><a href="{% url c9_operation_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans "Operation form" %}" /></a> <a href="{% url c9_patient_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans "Patient form" %}" /></a></td>
+            <td><a href="{% url c9_operation_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans " Central OR form" %}" /></a> <a href="{% url c9_patient_display %}"><img src="{{ STATIC_URL }}/images/white.appbar.clipboard.edit.png" title="{% trans "Day-level data form" %}" /></a></td>
             <td><a href="{% url c9_stat %}"><img src="{{ STATIC_URL }}/images/white.appbar.graph.bar.png" title="{% trans "Statistics" %}" /></a></td>
             <td><a href="{% url c9_trend %}"><img src="{{ STATIC_URL }}/images/white.appbar.graph.line.up.png" title="{% trans "Trend" %}" /></a></td>
             <td><a href="{% url c9_import %}"><img src="{{ STATIC_URL }}/images/white.appbar.paperclip.png" title="{% trans "Import" %}" /></a></td>
-            <td><a href="{% url c9_exporto %}"><img src="{{ STATIC_URL }}/images/white.appbar.disk.download.png" title="{% trans "Operation export" %}" /></a><a href="{% url c9_exportp %}"><img src="{{ STATIC_URL }}/images/white.appbar.disk.download.png" title="{% trans "Patient export" %}" /></a></td>
-            <td><a href="{% url c9_operation_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Operation template" %}" /></a><a href="{% url c9_patient_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Patient template" %}" /></a></td>
+            <td><a href="{% url c9_exporto %}"><img src="{{ STATIC_URL }}/images/white.appbar.disk.download.png" title="{% trans " Central OR export" %}" /></a><a href="{% url c9_exportp %}"><img src="{{ STATIC_URL }}/images/white.appbar.disk.download.png" title="{% trans "Day-level data export" %}" /></a></td>
+            <td><a href="{% url c9_operation_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans " Central OR template" %}" /></a><a href="{% url c9_patient_template %}"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Day-level data template" %}" /></a></td>
             <td><a href="{{ STATIC_URL }}documents/dcs/{{ LANGUAGE_CODE }}/c8.docx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.word.png" title="{% trans "Data collecting sheet" %}" /></a></td>
-            <td><a href="{{ STATIC_URL }}documents/drt/{{ LANGUAGE_CODE }}/c8.xlsx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></a></td>
-            <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/c8.docx"></a><img src="{{ STATIC_URL }}/images/gray.appbar.page.word.png" title="{% trans "Short indicator description" %}" /></a></td>
+            <td><a href="{{ STATIC_URL }}documents/drt/{{ LANGUAGE_CODE }}/c9.xlsx"><img src="{{ STATIC_URL }}/images/white.appbar.page.excel.png" title="{% trans "Data reporting tables" %}" /></a></td>
+            <td><a href="{{ STATIC_URL }}documents/sid/{{ LANGUAGE_CODE }}/c9.docx"><img src="{{ STATIC_URL }}/images/white.appbar.page.word.png" title="{% trans "Short indicator description" %}" /></a></td>
         </tr>
     </table>
 </div>

@@ -45,6 +45,7 @@ class c20CSV(CsvModel):
     aspirin_at_discharge            = CharField()
     non_aspirin_platelet            = CharField()
     date_of_discharge               = CharField()
+    comments                        = CharField()
 
 
     class Meta:
