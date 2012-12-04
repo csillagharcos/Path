@@ -238,11 +238,17 @@ table.statistics {
 table.needle {
   margin: 0 auto; }
   table.needle th {
-    background-color: #808080;
+    background-color: #9a9a9a;
     font-weight: bold;
     border: 1px solid black;
     color: white;
     padding: 5px; }
+    table.needle th.yourCountry {
+      color: red; }
+    table.needle th.yourHospital {
+      color: orange; }
+    table.needle th.other {
+      color: #027997; }
   table.needle td:first-child {
     width: 50%; }
   table.needle td {

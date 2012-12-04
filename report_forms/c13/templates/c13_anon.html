@@ -8,25 +8,11 @@
     <table class="needle shorter">
         <tr>
             <th rowspan="2">{% trans "Job" %}</th>
-            <th colspan="{{ statistics|length }}">{% trans "Number of needle stick injuries to 100 workers (average number)" %}</th>
-            <th colspan="{{ statistics|length }}">{% trans "Number of needle stick injuries to 100 workers (FTE = full time equivalent)" %}</th>
+            <th class="first" colspan="{{ statistics.name|length }}">{% trans "Number of needle stick injuries to 100 workers (average number)" %}</th>
+            <th class="second" colspan="{{ statistics.name|length }}">{% trans "Number of needle stick injuries to 100 workers (FTE = full time equivalent)" %}</th>
         </tr>
-        <tr>
-            {% for stat in statistics.name %}
-                <th style="color: {% if user.get_profile.workplace.codename == stat %}red{% else %}{% if user.get_profile.workplace.country.printable_name == stat %}orange{% else %}#027997{% endif %}{% endif %}">{{ stat }}</th>
-            {% endfor %}
+        <tr class="names">
         </tr>
-        {% for stat in statistics.jobs %}
-            <tr>
-                {% for job in stat %}
-                    {% if forloop.first %}
-                        <td>{{ job }}</td>
-                    {% else %}
-                        <td>{{ job|floatformat:"2" }}</td>
-                    {% endif %}
-                {% endfor %}
-            </tr>
-        {% endfor %}
     </table>
     <div id="avg" style="margin-top: 20px; height: 200px;"></div>
     <div id="fte" style="margin-top: 20px; height: 200px;"></div>
@@ -44,25 +30,206 @@
     <script style="text/javascript">
         $(document).ready(function(){
             {% localize off %}
-                {% for job in graph %}{% for j in job.statistics.jobs %}
-                        var first{{ job.name }}{{ forloop.counter }} = [
-                            ["{{ j.0 }}", {{ j.1 }}]
-                        ]
-                        var second{{ job.name }}{{ forloop.counter }} = [
-                            ["{{ j.0 }}", {{ j.2 }}]
-                        ]
-                    {% endfor %}{% endfor %}
+                // Create data from django
+                var cases = [{% for stat in statistics %}{% for job in stat.statistics.jobs %}{
+                                name: "{{ stat.name }}",
+                                country: "{{ stat.country }}",
+                                speciality: "{{ job.0 }}",
+                                first: {{ job.1 }},
+                                second: {{ job.2 }}
+                    },{% endfor %}{% endfor %}]
             {% endlocalize %}
+            //Create the list of countries from the given data
+            var countries = []
+            for(var i= 0;i<cases.length;i++){
+                var itemNumber = []
+                var foundCountry = false
+                var foundSpeciality = false
+                var correctItemNumber = null
+                if( countries.length == 0 ){
+                    var country = {
+                        country: cases[i].country,
+                        speciality: cases[i].speciality,
+                        first: cases[i].first,
+                        second: cases[i].second,
+                        casecount: 1
+                    }
+                    countries.push(country)
+                }else{
+                    for(var j= 0;j<countries.length;j++){
+                        if(cases[i].country == countries[j].country){
+                            foundCountry = true
+                            itemNumber += [j]
+                        }
+                    }
+                    if(foundCountry){
+                        for(var j=0;j<itemNumber.length;j++){
+                            if(countries[itemNumber[j]].speciality == cases[i].speciality){
+                                foundSpeciality = true
+                                correctItemNumber = itemNumber[j]
+                            }
+                        }
+                    }
+                    if( foundCountry && foundSpeciality){
+                        countries[correctItemNumber].first = countries[correctItemNumber].first + cases[i].first
+                        countries[correctItemNumber].second = countries[correctItemNumber].second + cases[i].second
+                        if( cases[i].second > 0 || cases[i].first > 0){
+                            countries[correctItemNumber].casecount = countries[correctItemNumber].casecount + 1
+                        }
+                    }else{
+                        country = {
+                            country: cases[i].country,
+                            speciality: cases[i].speciality,
+                            first: cases[i].first,
+                            second: cases[i].second,
+                            casecount: 1
+                        }
+                        countries.push(country)
+                    }
+                }
+            }
+            //create final data
+            for(var i=0;i<countries.length;i++){
+                if(countries[i].casecount > 1){
+                    countries[i].first = countries[i].first / countries[i].casecount
+                    countries[i].second = countries[i].second / countries[i].casecount
+                }
+            }
+
+            //display all data
+            var userCountry = "{{ user.get_profile.workplace.country.printable_name }}"
+            var userHospital = "{{ user.get_profile.workplace.codename }}"
+            var countryOrder = []
+            var hospitalOrder = []
+
+            //Sorting country names
+            for(var i=0;i<countries.length;i++){
+                var found = false
+                for(var j=0;j<countryOrder.length;j++){
+                    if(countryOrder[j] == countries[i].country){
+                        found = true
+                    }
+                }
+                if(!found){
+                    if(countries[i].country == userCountry){
+                        countryOrder.unshift(countries[i].country)
+                    }else{
+                        countryOrder.push(countries[i].country)
+                    }
+                }
+            }
+
+            //sorting hospital names
+            for(var i=0;i<cases.length;i++){
+                var found = false
+                for(var j=0;j<hospitalOrder.length;j++){
+                    if(hospitalOrder[j] == cases[i].name){
+                        found = true
+                    }
+                }
+                if(!found){
+                    if(cases[i].name == userHospital){
+                        hospitalOrder.unshift(cases[i].name)
+                    }else{
+                        hospitalOrder.push(cases[i].name)
+                    }
+                }
+            }
+            var addCountries = "",
+                addHospitals = ""
+            for(var i=0;i<countryOrder.length;i++){
+                if(countryOrder[i] == userCountry){
+                    addCountries = addCountries + '<th class="yourCountry">' + countryOrder[i] + '</th>'
+                }else{
+                    addCountries = addCountries + '<th class="other">' + countryOrder[i] + '</th>'
+                }
+            }
+            for(var i=0;i<hospitalOrder.length;i++){
+                if(hospitalOrder[i] == userHospital){
+                    addHospitals = addHospitals + '<th class="yourHospital">' + hospitalOrder[i] + '</th>'
+                }else{
+                    addHospitals = addHospitals + '<th class="other">' + hospitalOrder[i] + '</th>'
+                }
+            }
+            //adding names
+            $('th.first, th.second').attr('colspan', countryOrder.length+hospitalOrder.length)
+            $('.needle tr.names').html(addCountries+addHospitals+addCountries+addHospitals)
+            //adding specialities
+            var lineAdded = []
+            var first = []
+            var second = []
+            for(var i=0;i<cases.length;i++){
+                var found = false
+                for(var j=0;j<lineAdded.length;j++){
+                    if(lineAdded[j] == cases[i].speciality){
+                        found = true
+                    }
+                }
+                if(!found){
+                    $('table.needle').append('<tr class="'+cases[i].speciality.replace(' ','-')+'"><td>'+cases[i].speciality+'</td></tr>')
+                    lineAdded.push(cases[i].speciality)
+                }
+            }
+            for(var i=0;i<lineAdded.length;i++){
+                var listOfFirst = []
+                var listOfSecond = []
+                for(var j=0;j<countries.length;j++){
+                    if(countries[j].speciality == lineAdded[i]){
+                        listOfFirst.push('<td>'+countries[j].first.toFixed(2)+'</td>')
+                        first.push([[lineAdded[i], parseFloat(countries[j].first.toFixed(2))]])
+                        listOfSecond.push('<td>'+countries[j].second.toFixed(2)+'</td>')
+                        second.push([[lineAdded[i], parseFloat(countries[j].second.toFixed(2))]])
+                    }
+                }
+                for(var j=0;j<cases.length;j++){
+                    if(cases[j].speciality == lineAdded[i]){
+                        listOfFirst.push('<td>'+cases[j].first.toFixed(2)+'</td>')
+                        first.push([[lineAdded[i], parseFloat(cases[j].first.toFixed(2))]])
+                        listOfSecond.push('<td>'+cases[j].second.toFixed(2)+'</td>')
+                        second.push([[lineAdded[i], parseFloat(cases[j].second.toFixed(2))]])
+                    }
+                }
+                for(var j=0;j<listOfFirst.length;j++){
+                    $('tr.'+lineAdded[i].replace(' ','-')).append(listOfFirst[j])
+                }
+                for(var j=0;j<listOfSecond.length;j++){
+                    $('tr.'+lineAdded[i].replace(' ','-')).append(listOfSecond[j])
+                }
+            }
+            console.log( first )
+            var serielabels = []
+            var seriecolors = []
+            for(var i=0;i<countryOrder.length;i++){
+                serielabels.push({ label: countryOrder[i] })
+                if(countryOrder[i] == userCountry){
+                    seriecolors.push("red")
+                }else{
+                    seriecolors.push('#027997')
+                }
+            }
+            for(var i=0;i<hospitalOrder.length;i++){
+                serielabels.push({ label: hospitalOrder[i] })
+                if(hospitalOrder[i] == userHospital){
+                    seriecolors.push("orange")
+                }else{
+                    seriecolors.push('#027997')
+                }
+            }
             jqplot_percent.axes.yaxis.label = ""
             jqplot_percent.axes.yaxis.ticks = ""
             jqplot_percent.highlighter.formatString = "%.2f"
             jqplot_percent.legend = { show: true }
-            jqplot_percent.series = [{% for job in graph %}{% for j in job.statistics.jobs %}{ label: '{{ job.name }}' }, {% endfor %}{% endfor %}]
-            jqplot_percent.seriesColors = [{% for job in graph %}{% for j in job.statistics.jobs %}{% if user.get_profile.workplace.codename == job.name %}"red",{% else %}{% if user.get_profile.workplace.country.printable_name == job.name %}"orange",{% else %}'#027997',{% endif %}{% endif %}{% endfor %}{% endfor %}]
+            jqplot_percent.series = serielabels
+            jqplot_percent.seriesColors = seriecolors
             jqplot_percent.title = "{% trans "Number of needle stick injuries to 100 workers (average number)" %}"
-            $.jqplot('avg', [{% for job in graph %}{% for j in job.statistics.jobs %}first{{ job.name }}{{ forloop.counter }},{% endfor %}{% endfor %}], jqplot_percent);
+            $.jqplot('avg', first, jqplot_percent);
             jqplot_percent.title = "{% trans "Number of needle stick injuries to 100 workers (FTE = full time equivalent)" %}"
-            $.jqplot('fte', [{% for job in graph %}{% for j in job.statistics.jobs %}second{{ job.name }}{{ forloop.counter }},{% endfor %}{% endfor %}], jqplot_percent);
+            $.jqplot('fte', second, jqplot_percent);
+            $('table.jqplot-table-legend tr.jqplot-table-legend td.jqplot-table-legend-label').each(function(){
+                if(this.innerHTML.indexOf("Series") >= 0){
+                    $(this).parent().remove()
+                }
+            })
         });
     </script>
 {% endblock js %}

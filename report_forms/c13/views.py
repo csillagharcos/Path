@@ -204,7 +204,7 @@ def ZipThat(one,two,formStuff,three=False):
 
 def ZipForAnon(stats):
     name = []
-    stuff = ["Nurse", 0, 100, 300, 100, 400, 500]
+    country = []
     first = True
     jobs = []
     item_codes = {}
@@ -215,6 +215,9 @@ def ZipForAnon(stats):
 
     for stat in stats:
         name += [stat['name'],]
+        this_workplace = School.objects.get(codename = stat['name'])
+        print this_workplace.country.printable_name
+        country += [this_workplace.country.printable_name,]
         for job in stat['statistics']['jobs']:
             if first:
                 job_list_to_add = [job[0], job[1],]
@@ -238,9 +241,9 @@ def ZipForAnon(stats):
                         for i in range(len(stats)*2):
                             job_list_to_add += [0,]
                         jobs += [job_list_to_add,]
-        names = name + name
     return {
-        'name': names,
+        'name': name,
+        'country': country,
         'jobs': jobs
     }
 
@@ -257,15 +260,32 @@ def AnonymStatistics(request):
                 if stat['overall']:
                     statistics += [{
                         "name" : workplace.codename,
+                        "country": workplace.country.printable_name,
                         "statistics" : stat
                     }]
-            statistics = SortAndAddCountryAverage(statistics, start, request.user)
-            return render_to_response('c13_anon.html', {'statistics': ZipForAnon(statistics), 'graph': statistics}, context_instance=RequestContext(request))
+            statistics = CreateUselessData(statistics)
+            return render_to_response('c13_anon.html', {'statistics': statistics}, context_instance=RequestContext(request))
         else:
             form = AnonymStatForm(request.POST)
             return render(request, 'c13.html', { 'form': form,'benchmarking': True })
     form = AnonymStatForm()
     return render(request, 'c13.html', { 'form': form,'benchmarking': True })
+
+def CreateUselessData(statistics):
+    specialities = []
+    for stat in statistics:
+        for job in stat['statistics']['jobs']:
+            if not job[0] in specialities:
+                specialities.append(job[0])
+    for stat in statistics:
+        for speciality in specialities:
+            found = False
+            for job in stat['statistics']['jobs']:
+                if job[0] == speciality:
+                    found = True
+            if not found:
+                stat['statistics']['jobs'] += [[speciality,0,0],]
+    return statistics
 
 def SortAndAddCountryAverage(statistics, start, user):
     statistics = sorted(statistics, key=lambda x: x['name'])
@@ -303,8 +323,8 @@ def SortAndAddCountryAverage(statistics, start, user):
                 first += job[1]
                 second += job[2]
                 counter += 1
-            if counter:
-                jobs += [[jobname, (first/counter), (second/counter), counter],]
+                if counter:
+                    jobs += [[jobname, (first/counter), (second/counter), counter],]
         stat = {
             "overall": overall,
             "removed": removed,

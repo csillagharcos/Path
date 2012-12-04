@@ -227,11 +227,21 @@ table.statistics{
 table.needle{
   margin: 0 auto;
   th{
-    background-color: #808080;
+    background-color: lighten(#808080,10%);
     font-weight: bold;
     border: 1px solid black;
     color: white;
     padding: 5px;
+    &.yourCountry{
+      color: red;
+    }
+
+    &.yourHospital{
+      color: orange;
+    }
+    &.other{
+      color: #027997;
+    }
   }
   td:first-child{
     width: 50%;
