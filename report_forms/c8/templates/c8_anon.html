@@ -5,7 +5,6 @@
 {% endblock header %}
 
 {% block content %}
-
     <table class="statistics">
         <thead>
             <tr>
@@ -35,57 +34,59 @@
         </tr>
     </table>
     <br /><hr /><br />
-    {% for stat in statistics %}
-    {% endfor %}
-
-
-    {% for data in diagnosis %}
-        {% if data.len.0 >= 60 or data.len.1 >= 60 or data.len.2 >= 60 %}
+    {% for data in datapacket %}
+        {% if data.len >= 60 %}
             <table class="los longer">
                 <tr>
                     <th>{{ data.name }}</th>
-                    <th>{{ data.startdate.0 }} - {{ data.enddate.0 }}</th>
-                    <th>{{ data.startdate.1 }} - {{ data.enddate.1 }}</th>
-                    {% if data.len.2 %}<th>{{ data.startdate.2 }} - {{ data.enddate.2 }}</th>{% endif %}
+                    {% for stat in statistics %}
+                        <th style="color: {% if user.get_profile.workplace.codename == stat.name %}red{% else %}{% if user.get_profile.workplace.country.printable_name == stat.name %}orange{% else %}#027997{% endif %}{% endif %}">{{ stat.name }}</th>
+                    {% endfor %}
                 </tr>
                 <tr>
                     <td>{% trans "Average length of stay" %}</td>
-                    <td>{{ data.avg.0|floatformat:"2" }} {% trans "days" %}</td>
-                    <td>{{ data.avg.1|floatformat:"2" }} {% trans "days" %}</td>
-                    {% if data.len.2 %}<td>{{ data.avg.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                    {% for d in data.avg %}
+                        <td>{{ d|floatformat:"2" }} {% trans "days" %}</td>
+                    {% endfor %}
                 </tr>
                 <tr>
                     <td>{% trans "Median length of stay" %}</td>
-                    <td>{{ data.med.0|floatformat:"2" }} {% trans "days" %}</td>
-                    <td>{{ data.med.1|floatformat:"2" }} {% trans "days" %}</td>
-                    {% if data.len.2 %}<td>{{ data.med.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                    {% for d in data.med %}
+                        <td>{{ d|floatformat:"2" }} {% trans "days" %}</td>
+                    {% endfor %}
                 </tr>
                 <tr>
                     <td>{% trans "Average length of stay until the first surgical procedure" %}</td>
-                    <td>{{ data.davg.0|floatformat:"2" }} {% trans "days" %}</td>
-                    <td>{{ data.davg.1|floatformat:"2" }} {% trans "days" %}</td>
-                    {% if data.len.2 %}<td>{{ data.davg.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                    {% for d in data.davg %}
+                        <td>{{ d|floatformat:"2" }} {% trans "days" %}</td>
+                    {% endfor %}
                 </tr>
                 <tr>
                     <td>{% trans "Median length of stay until the first surgical procedure" %}</td>
-                    <td>{{ data.dmed.0|floatformat:"2" }} {% trans "days" %}</td>
-                    <td>{{ data.dmed.1|floatformat:"2" }} {% trans "days" %}</td>
-                    {% if data.len.2 %}<td>{{ data.dmed.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                    {% for d in data.dmed %}
+                        <td>{{ d|floatformat:"2" }} {% trans "days" %}</td>
+                    {% endfor %}
                 </tr>
                 <tr>
                     <td>{% trans "Average length of stay from the first surgical procedure until discharge" %}</td>
-                    <td>{{ data.deavg.0|floatformat:"2" }} {% trans "days" %}</td>
-                    <td>{{ data.deavg.1|floatformat:"2" }} {% trans "days" %}</td>
-                    {% if data.len.2 %}<td>{{ data.deavg.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                    {% for d in data.deavg %}
+                        <td>{{ d|floatformat:"2" }} {% trans "days" %}</td>
+                    {% endfor %}
+
                 </tr>
                 <tr>
                     <td>{% trans "Median length of stay from the first surgical procedure until discharge" %}</td>
-                    <td>{{ data.demed.0|floatformat:"2" }} {% trans "days" %}</td>
-                    <td>{{ data.demed.1|floatformat:"2" }} {% trans "days" %}</td>
-                    {% if data.len.2 %}<td>{{ data.demed.2|floatformat:"2" }} {% trans "days" %}</td>{% endif %}
+                    {% for d in data.demed %}
+                        <td>{{ d|floatformat:"2" }} {% trans "days" %}</td>
+                    {% endfor %}
                 </tr>
             </table>
-            <div id="graph{{ forloop.counter }}" style="margin-top: 20px; height: 300px;"></div>
+            <div id="graph{{ forloop.counter }}-avg" style="margin-top: 20px; height: 300px;"></div>
+            <div id="graph{{ forloop.counter }}-med" style="margin-top: 20px; height: 300px;"></div>
+            <div id="graph{{ forloop.counter }}-davg" style="margin-top: 20px; height: 300px;"></div>
+            <div id="graph{{ forloop.counter }}-dmed" style="margin-top: 20px; height: 300px;"></div>
+            <div id="graph{{ forloop.counter }}-deavg" style="margin-top: 20px; height: 300px;"></div>
+            <div id="graph{{ forloop.counter }}-demed" style="margin-top: 20px; height: 300px;"></div>
         {% endif %}
     {% endfor %}
 {% endblock content %}
@@ -101,45 +102,55 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            {% for data in diagnosis %}
-                {% if data.len.0 >= 60 or data.len.1 >= 60 or data.len.2 >= 60 %}
                     {% localize off %}
-                        var data{{ forloop.counter }}1 = [
-                            ['{% trans "Average " %}', {{ data.avg.0 }}],
-                            ['{% trans "Median " %}', {{ data.med.0 }}],
-                            ['{% trans "Average until the first surgical procedure" %}', {{ data.davg.0 }}],
-                            ['{% trans "Median until the first surgical procedure" %}', {{ data.dmed.0 }}],
-                            ['{% trans "Average from the first surgical procedure until discharge" %}', {{ data.deavg.0 }}],
-                            ['{% trans "Median from the first surgical procedure until discharge" %}', {{ data.demed.0 }}]
-                        ];
-                        var data{{ forloop.counter }}2 = [
-                            ['{% trans "Average " %}', {{ data.avg.1 }}],
-                            ['{% trans "Median " %}', {{ data.med.1 }}],
-                            ['{% trans "Average until the first surgical procedure" %}', {{ data.davg.1 }}],
-                            ['{% trans "Median until the first surgical procedure" %}', {{ data.dmed.1 }}],
-                            ['{% trans "Average from the first surgical procedure until discharge" %}', {{ data.deavg.1 }}],
-                            ['{% trans "Median from the first surgical procedure until discharge" %}', {{ data.demed.1 }}]
-                        ];
-                        {% if data.len.2 %}
-                        var data{{ forloop.counter }}3 = [
-                            ['{% trans "Average " %}', {{ data.avg.2 }}],
-                            ['{% trans "Median " %}', {{ data.med.2 }}],
-                            ['{% trans "Average until the first surgical procedure" %}', {{ data.davg.2 }}],
-                            ['{% trans "Median until the first surgical procedure" %}', {{ data.dmed.2 }}],
-                            ['{% trans "Average from the first surgical procedure until discharge" %}', {{ data.deavg.2 }}],
-                            ['{% trans "Median from the first surgical procedure until discharge" %}', {{ data.demed.2 }}]
-                        ];
-                        {% endif %}
+                        {% for data in datapacket %}{% if data.len >= 60 %}{% for d in data.avg %}
+                                    var data_avg_{{ data.slug|slugify }}{{ forloop.counter }} = [
+                                        ['{% trans "Average" %}', {{ d }}]
+                                    ]
+                                {% endfor %}
+                                {% for d in data.med %}
+                                    var data_med_{{ data.slug|slugify }}{{ forloop.counter }} = [
+                                        ['{% trans "Median" %}', {{ d }}]
+                                    ]
+                                {% endfor %}
+                                {% for d in data.davg %}
+                                    var data_davg_{{ data.slug|slugify }}{{ forloop.counter }} = [
+                                        ['{% trans "Average until the first surgical procedure" %}', {{ d }}]
+                                    ]
+                                {% endfor %}
+                                {% for d in data.dmed %}
+                                    var data_dmed_{{ data.slug|slugify }}{{ forloop.counter }} = [
+                                        ['{% trans "Median until the first surgical procedure" %}', {{ d }}]
+                                    ]
+                                {% endfor %}
+                                {% for d in data.deavg %}
+                                    var data_deavg_{{ data.slug|slugify }}{{ forloop.counter }} = [
+                                        ['{% trans "Average from the first surgical procedure until discharge" %}', {{ d }}]
+                                    ]
+                                {% endfor %}
+                                {% for d in data.demed %}
+                                    var data_demed_{{ data.slug|slugify }}{{ forloop.counter }} = [
+                                        ['{% trans "Median from the first surgical procedure until discharge" %}', {{ d }}]
+                                    ]
+                        {% endfor %}{% endif %}{% endfor %}
                     {% endlocalize %}
                     jqplot_days.legend = { show: true }
-                    jqplot_days.series = [{ label: '{{ formdata.date1a|date:"Y-m-d" }} - {{ formdata.date1b|date:"Y-m-d" }}' },{ label: '{{ formdata.date2a|date:"Y-m-d" }} - {{ formdata.date2b|date:"Y-m-d" }}' },{ label: '{{ formdata.date3a|date:"Y-m-d" }} - {{ formdata.date3b|date:"Y-m-d" }}' }]
-                    jqplot_days.title = '{{ data.name }}'
+                    jqplot_days.series = [{% for stat in statistics %}{ label: '{{ stat.name }}' }, {% endfor %}]
+                    jqplot_days.seriesColors = [{% for stat in statistics %}{% if user.get_profile.workplace.codename == stat.name %}"red",{% else %}{% if user.get_profile.workplace.country.printable_name == stat.name %}"orange",{% else %}'#027997',{% endif %}{% endif %}{% endfor %}]
                     jqplot_days.axes.yaxis.tickOptions.formatString = "%.2f"
+                    jqplot_days.axes.xaxis.tickOptions.angle = 0
                     jqplot_days.highlighter.formatString = '<span class="font-size: 12px">%.2f {% trans "days" %}</span>'
-                    jqplot_percent.title = "{% trans "Length of stay" %}"
-                    $.jqplot('graph{{ forloop.counter }}', [data{{ forloop.counter }}1,data{{ forloop.counter }}2{% if data.len.2 %},data{{ forloop.counter }}3{% endif %}], jqplot_days);
-                {% endif %}
-            {% endfor %}
+                    {% for data in datapacket %}
+                        {% if data.len >= 60 %}
+                            jqplot_days.title = "{{ data.name }}"
+                            $.jqplot('graph{{ forloop.counter }}-avg', [{% for d in data.avg %}data_avg_{{ data.slug|slugify }}{{ forloop.counter }}{% if not forloop.last %},{% endif %}{% endfor %}], jqplot_days);
+                            $.jqplot('graph{{ forloop.counter }}-med', [{% for d in data.avg %}data_med_{{ data.slug|slugify }}{{ forloop.counter }}{% if not forloop.last %},{% endif %}{% endfor %}], jqplot_days);
+                            $.jqplot('graph{{ forloop.counter }}-davg', [{% for d in data.avg %}data_davg_{{ data.slug|slugify }}{{ forloop.counter }}{% if not forloop.last %},{% endif %}{% endfor %}], jqplot_days);
+                            $.jqplot('graph{{ forloop.counter }}-dmed', [{% for d in data.avg %}data_dmed_{{ data.slug|slugify }}{{ forloop.counter }}{% if not forloop.last %},{% endif %}{% endfor %}], jqplot_days);
+                            $.jqplot('graph{{ forloop.counter }}-deavg', [{% for d in data.avg %}data_deavg_{{ data.slug|slugify }}{{ forloop.counter }}{% if not forloop.last %},{% endif %}{% endfor %}], jqplot_days);
+                            $.jqplot('graph{{ forloop.counter }}-demed', [{% for d in data.avg %}data_demed_{{ data.slug|slugify }}{{ forloop.counter }}{% if not forloop.last %},{% endif %}{% endfor %}], jqplot_days);
+                        {% endif %}
+                    {% endfor %}
         });
     </script>
 {% endblock js %}

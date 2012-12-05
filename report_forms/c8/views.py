@@ -7,6 +7,7 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
+from unidecode import unidecode
 from report_forms.c8.forms import C8Form, FileUploadForm, TrendForm, AnonymStatForm
 from report_forms.c8.models import c8, c8CSV
 from django.utils.translation import ugettext_lazy as _
@@ -197,10 +198,6 @@ def CountStatistics(cases, notView=True):
             if (case.diagnosis_group == 0 and (case.icd == "I61" or case.icd == "I62" or case.icd == "I63" or case.icd == "I64")) or (case.diagnosis_group == 1 and (case.icd == "J13" or case.icd == "J14" or case.icd == "J15" or case.icd == "J18" or case.icd == "A48.1")) or (case.diagnosis_group == 2 and (case.icd == "S72.0" or case.icd == "S72.1" or case.icd == "S72.2")) or (case.diagnosis_group == 3 and (case.drg == "177A" or case.drg == "177B" or case.drg == "177C" or case.drg == "177D" or case.drg == "190A" or case.drg == "192A" or case.drg == "192B")) or (case.diagnosis_group == 4 and (case.drg == "398A" or case.drg == "398B")) or (case.diagnosis_group == 5 and (case.icd == "K40" or case.drg == "281B" or case.drg == "282A" or case.drg == "282B")) or (case.diagnosis_group == 6 and case.drg == "097A") or (case.diagnosis_group == 7 and (case.drg == "344" or case.drg == "345" or case.drg == "369Z")) or (case.diagnosis_group == 8 and case.drg == "2030"):
                 countable_case += (case,)
             else:
-                print case.diagnosis_group
-                print case.icd
-                print case.drg
-                print "----------------------------"
                 uncountable_case += (case,)
 
 #    if len(countable_case) < 60 and notView:
@@ -517,7 +514,7 @@ def AnonymStatistics(request):
                     "statistics" : stat
                 }]
             statistics = SortAndAddCountryAverage(statistics, start, end, request.user)
-            return render_to_response('c8_anon.html', {'statistics': ZipForAnon(statistics)}, context_instance=RequestContext(request))
+            return render_to_response('c8_anon.html', {'statistics': statistics, 'datapacket': ZipForAnon(statistics)}, context_instance=RequestContext(request))
         else:
             form = AnonymStatForm(request.POST)
             return render(request, 'c8.html', { 'form': form,'benchmarking': True })
@@ -525,14 +522,49 @@ def AnonymStatistics(request):
     return render(request, 'c8.html', { 'form': form,'benchmarking': True })
 
 def ZipForAnon(statistics):
-    name = ['random']
+    diagnosis = []
     for stat in statistics:
         for st in stat['statistics']['diagnosis']:
-            name += [st[0],]
-            for n in name:
-                print n
-                if n == st[0]:
-                    print "heil maria!"
+            found = False
+            for diag in diagnosis:
+                if unidecode(st[0]) == unidecode(diag['name']):
+                    found = True
+                    if type(diag['startdate']) is datetime.date and type(st[1]) is datetime.date:
+                        if diag['startdate'] > st[1]:
+                            diag['startdate'] = st[1]
+                    elif type(diag['startdate']) is not datetime.date and type(st[1]) is datetime.date:
+                        diag['startdate'] = st[1]
+
+                    if type(diag['enddate']) is datetime.date and type(st[2]) is datetime.date:
+                        if diag['enddate'] > st[2]:
+                            diag['enddate'] = st[2]
+                    elif type(diag['enddate']) is not datetime.date and type(st[2]) is datetime.date:
+                        diag['enddate'] = st[2]
+                    diag['avg'] += [st[3],]
+                    diag['med'] += [st[4],]
+                    diag['davg'] += [st[5],]
+                    diag['dmed'] += [st[6],]
+                    diag['deavg'] += [st[7],]
+                    diag['demed'] += [st[8],]
+                    diag['len'] += st[9]
+            if not found:
+                diagnose = {
+                    'name': st[0],
+                    'slug': unidecode(st[0]).replace(' ','_'),
+                    'startdate': st[1],
+                    'enddate': st[2],
+                    'avg': [st[3],],
+                    'med': [st[4],],
+                    'davg': [st[5],],
+                    'dmed': [st[6],],
+                    'deavg': [st[7],],
+                    'demed': [st[8],],
+                    'len': st[9],
+                }
+                diagnosis += [diagnose,]
+    return diagnosis
+
+
 def SortAndAddCountryAverage(statistics, start, end, user):
     statistics = sorted(statistics, key=lambda x: x['name'])
     hospitals = []
