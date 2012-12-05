@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-05 13:59+0100\n"
-"PO-Revision-Date: 2012-12-05 14:00\n"
+"POT-Creation-Date: 2012-12-05 14:06+0100\n"
+"PO-Revision-Date: 2012-12-05 14:07\n"
 "Last-Translator: Richard Hajdu <richard.hajdu@webdevil.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1118,7 +1118,6 @@ msgstr "Sablon"
 #: report_forms/templates/list_of_report_forms.html:79
 #: report_forms/templates/list_of_report_forms.html:92
 #: report_forms/templates/list_of_report_forms.html:105
-#: report_forms/templates/list_of_report_forms.html:118
 #: report_forms/templates/list_of_report_forms.html:131
 #: report_forms/templates/list_of_report_forms.html:144
 #: report_forms/templates/list_of_report_forms.html:157
@@ -2856,7 +2855,6 @@ msgid "Day-level data form"
 msgstr "Napi adatlap űrlap"
 
 #: report_forms/c9/templates/c9_header.html:11
-#: report_forms/templates/list_of_report_forms.html:116
 msgid " Central OR export"
 msgstr "Központi adatlap exportálás"
 
@@ -2866,7 +2864,6 @@ msgid "Day-level data export"
 msgstr "Napi adatlap exportálás"
 
 #: report_forms/c9/templates/c9_header.html:12
-#: report_forms/templates/list_of_report_forms.html:117
 msgid " Central OR template"
 msgstr "Központi adatlap sablon"
 
@@ -3735,6 +3732,22 @@ msgstr "Jelentési lap"
 #: report_forms/templates/list_of_report_forms.html:110
 msgid "C.9. Operating theatre performance "
 msgstr "C.9. Központi műtők kihasználtsága"
+
+#: report_forms/templates/list_of_report_forms.html:116
+msgid "Central OR export"
+msgstr "Központi adatlap exportálás"
+
+#: report_forms/templates/list_of_report_forms.html:117
+msgid "Central OR template"
+msgstr "Központi adatlap sablon"
+
+#: report_forms/templates/list_of_report_forms.html:118
+msgid "Central OR Data collecting sheet"
+msgstr "Központi adatlap adatgyűjtő lapok"
+
+#: report_forms/templates/list_of_report_forms.html:118
+msgid "Day-level data Data collecting sheet"
+msgstr "Napi adatlap adatgyűjtő lapok"
 
 #: templates/base.html:33
 msgid "Homepage"
