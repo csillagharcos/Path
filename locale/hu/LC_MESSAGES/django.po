@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-03 15:30+0100\n"
-"PO-Revision-Date: 2012-12-03 15:31\n"
+"POT-Creation-Date: 2012-12-05 13:59+0100\n"
+"PO-Revision-Date: 2012-12-05 14:00\n"
 "Last-Translator: Richard Hajdu <richard.hajdu@webdevil.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -504,7 +504,6 @@ msgstr "Egyéb Diagnózisok"
 #: report_forms/c32/models.py:11 report_forms/c32/views.py:114
 #: report_forms/c32/views.py:128 report_forms/c8/models.py:11
 #: report_forms/c8/views.py:138 report_forms/c8/views.py:157
-#: report_forms/r1/models.py:11 report_forms/r1/views.py:352
 #: report_forms/r1/views.py:430
 msgid "Patients ID"
 msgstr "Betegazonosító"
@@ -536,9 +535,8 @@ msgstr "Esetazonosító"
 msgid "Number of previous deliveries"
 msgstr "Ezt megelőző szülések száma"
 
-#: report_forms/c1/models.py:28 report_forms/c1/views.py:132
-#: report_forms/c1/views.py:151
-msgid "Number of earlier deliveries by c-section"
+#: report_forms/c1/models.py:28
+msgid "Number of previous deliveries by c-section"
 msgstr "Korábbi császármetszéssel végződő szülések száma"
 
 #: report_forms/c1/models.py:29 report_forms/c1/views.py:133
@@ -591,6 +589,10 @@ msgstr "Szülés dátuma"
 #: report_forms/c1/views.py:130 report_forms/c1/views.py:149
 msgid "Time of delivery"
 msgstr "Szülés ideje"
+
+#: report_forms/c1/views.py:132 report_forms/c1/views.py:151
+msgid "Number of earlier deliveries by c-section"
+msgstr "Korábbi császármetszéssel végződő szülések száma"
 
 #: report_forms/c1/views.py:134 report_forms/c1/views.py:153
 msgid "Weight of newborn"
@@ -1159,7 +1161,6 @@ msgstr "Adatjelentő tábla"
 #: report_forms/c32/templates/c32_header.html:16
 #: report_forms/c8/templates/c8_header.html:15
 #: report_forms/c9/templates/c9_header.html:15
-#: report_forms/r1/templates/r1_header.html:16
 #: report_forms/templates/list_of_report_forms.html:16
 #: report_forms/templates/list_of_report_forms.html:29
 #: report_forms/templates/list_of_report_forms.html:42
@@ -1245,7 +1246,7 @@ msgstr "Császármetszések aránya a korábbi szülések száma szerint"
 #: report_forms/c13/forms.py:15 report_forms/c13/forms.py:47
 #: report_forms/c13/models.py:19 report_forms/c13/models.py:23
 #: report_forms/c13/views.py:66 report_forms/c13/views.py:79
-#: report_forms/c13/templates/c13_anon.html:13
+#: report_forms/c13/templates/c13_anon.html:10
 #: report_forms/c13/templates/c13_statistics.html:10
 #: report_forms/c13/templates/c13_trend_diagram.html:10
 msgid "Job"
@@ -1322,8 +1323,8 @@ msgstr "Tűszúrás"
 msgid "Needle stick injuries"
 msgstr "Tűszúrások"
 
-#: report_forms/c13/templates/c13_anon.html:14
-#: report_forms/c13/templates/c13_anon.html:90
+#: report_forms/c13/templates/c13_anon.html:11
+#: report_forms/c13/templates/c13_anon.html:224
 #: report_forms/c13/templates/c13_statistics.html:11
 #: report_forms/c13/templates/c13_statistics.html:50
 #: report_forms/c13/templates/c13_trend_diagram.html:11
@@ -1331,8 +1332,8 @@ msgstr "Tűszúrások"
 msgid "Number of needle stick injuries to 100 workers (average number)"
 msgstr "100 dolgozóra (átlagos létszámra ) jutó tűszúrások száma"
 
-#: report_forms/c13/templates/c13_anon.html:15
-#: report_forms/c13/templates/c13_anon.html:92
+#: report_forms/c13/templates/c13_anon.html:12
+#: report_forms/c13/templates/c13_anon.html:226
 #: report_forms/c13/templates/c13_statistics.html:12
 #: report_forms/c13/templates/c13_statistics.html:54
 #: report_forms/c13/templates/c13_trend_diagram.html:12
@@ -1540,40 +1541,28 @@ msgid "Route of administration of first dose"
 msgstr "Első dózis beadási módja"
 
 #: report_forms/c21/forms.py:10 report_forms/c21/models.py:46
-#: report_forms/c21/views.py:183 report_forms/c21/views.py:216
 #: report_forms/c23/forms.py:11 report_forms/c23/models.py:47
-#: report_forms/c23/views.py:190 report_forms/c23/views.py:223
 #: report_forms/c24/forms.py:11 report_forms/c24/models.py:46
-#: report_forms/c24/views.py:183 report_forms/c24/views.py:216
-msgid "Date of surgical wound closure"
-msgstr "A műtéti seb zárásának dátuma"
+msgid "Date and time of surgical wound closure"
+msgstr "A műtéti seb zárásának dátuma és ideje"
 
 #: report_forms/c21/forms.py:11 report_forms/c21/models.py:43
-#: report_forms/c21/views.py:178 report_forms/c21/views.py:211
 #: report_forms/c23/forms.py:12 report_forms/c23/models.py:44
-#: report_forms/c23/views.py:185 report_forms/c23/views.py:218
 #: report_forms/c24/forms.py:12 report_forms/c24/models.py:43
-#: report_forms/c24/views.py:178 report_forms/c24/views.py:211
-msgid "Date of first dose"
-msgstr "Első dózis beadási dátuma"
+msgid "Date and time of first dose"
+msgstr "Első dózis beadási dátuma és ideje"
 
 #: report_forms/c21/forms.py:12 report_forms/c21/models.py:36
-#: report_forms/c21/views.py:170 report_forms/c21/views.py:203
 #: report_forms/c23/forms.py:13 report_forms/c23/models.py:37
-#: report_forms/c23/views.py:177 report_forms/c23/views.py:210
 #: report_forms/c24/forms.py:13 report_forms/c24/models.py:36
-#: report_forms/c24/views.py:170 report_forms/c24/views.py:203
-msgid "Date of surgical incision"
-msgstr "A műtéti bemetszés időpontja"
+msgid "Date and time of surgical incision"
+msgstr "A műtéti bemetszés időpontja és ideje"
 
 #: report_forms/c21/forms.py:13 report_forms/c21/models.py:45
-#: report_forms/c21/views.py:181 report_forms/c21/views.py:214
 #: report_forms/c23/forms.py:14 report_forms/c23/models.py:46
-#: report_forms/c23/views.py:188 report_forms/c23/views.py:221
 #: report_forms/c24/forms.py:14 report_forms/c24/models.py:45
-#: report_forms/c24/views.py:181 report_forms/c24/views.py:214
-msgid "Date of last dose"
-msgstr "Utolsó dózis beadási dátuma"
+msgid "Date and time of last dose"
+msgstr "Utolsó dózis beadási dátuma és ideje"
 
 #: report_forms/c21/forms.py:16 report_forms/c21/models.py:27
 #: report_forms/c23/forms.py:17 report_forms/c23/models.py:28
@@ -1765,6 +1754,12 @@ msgstr "Ez az eset már szerepel az adatbázisban!"
 msgid "Weight of patient"
 msgstr "A beteg testtömege"
 
+#: report_forms/c21/views.py:170 report_forms/c21/views.py:203
+#: report_forms/c23/views.py:177 report_forms/c23/views.py:210
+#: report_forms/c24/views.py:170 report_forms/c24/views.py:203
+msgid "Date of surgical incision"
+msgstr "A műtéti bemetszés időpontja"
+
 #: report_forms/c21/views.py:171 report_forms/c21/views.py:204
 #: report_forms/c23/views.py:178 report_forms/c23/views.py:211
 #: report_forms/c24/views.py:171 report_forms/c24/views.py:204
@@ -1795,17 +1790,35 @@ msgstr "Első dózis"
 msgid "Second dose"
 msgstr "Második dózis"
 
+#: report_forms/c21/views.py:178 report_forms/c21/views.py:211
+#: report_forms/c23/views.py:185 report_forms/c23/views.py:218
+#: report_forms/c24/views.py:178 report_forms/c24/views.py:211
+msgid "Date of first dose"
+msgstr "Első dózis beadási dátuma"
+
 #: report_forms/c21/views.py:179 report_forms/c21/views.py:212
 #: report_forms/c23/views.py:186 report_forms/c23/views.py:219
 #: report_forms/c24/views.py:179 report_forms/c24/views.py:212
 msgid "Time of first dose"
 msgstr "Első dózis beadási ideje"
 
+#: report_forms/c21/views.py:181 report_forms/c21/views.py:214
+#: report_forms/c23/views.py:188 report_forms/c23/views.py:221
+#: report_forms/c24/views.py:181 report_forms/c24/views.py:214
+msgid "Date of last dose"
+msgstr "Utolsó dózis beadási dátuma"
+
 #: report_forms/c21/views.py:182 report_forms/c21/views.py:215
 #: report_forms/c23/views.py:189 report_forms/c23/views.py:222
 #: report_forms/c24/views.py:182 report_forms/c24/views.py:215
 msgid "Time of last dose"
 msgstr "Utolsó dózis beadási ideje"
+
+#: report_forms/c21/views.py:183 report_forms/c21/views.py:216
+#: report_forms/c23/views.py:190 report_forms/c23/views.py:223
+#: report_forms/c24/views.py:183 report_forms/c24/views.py:216
+msgid "Date of surgical wound closure"
+msgstr "A műtéti seb zárásának dátuma"
 
 #: report_forms/c21/views.py:184 report_forms/c21/views.py:217
 #: report_forms/c23/views.py:191 report_forms/c23/views.py:224
@@ -2176,7 +2189,7 @@ msgstr "V. kritérium"
 #: report_forms/c23/models.py:29 report_forms/c23/views.py:169
 #: report_forms/c23/views.py:202
 msgid "Principal diagnosis code (DRG)"
-msgstr "Fődiagnózis (HRCS)"
+msgstr "Fődiagnózis (HBCS)"
 
 #: report_forms/c23/models.py:55 report_forms/c23/models.py:56
 msgid "Planned surgery for hip replacement"
@@ -3151,6 +3164,10 @@ msgstr "Felmérés az elbocsájtáskor nem lehet az elbocsájtás után!"
 msgid "Assessment at discharge can't be before admission!"
 msgstr "Felmérés az elbocsájtáskor nem lehet a felvétel előtt!"
 
+#: report_forms/r1/models.py:11 report_forms/r1/views.py:352
+msgid "Patient ID"
+msgstr "Betegazonosító"
+
 #: report_forms/r1/models.py:14 report_forms/r1/views.py:355
 #: report_forms/r1/views.py:433
 msgid "Professional field of rehabilitation"
@@ -3598,6 +3615,16 @@ msgstr "R1. Indikátorok rehabilitációs szakkórházak és osztályok számár
 msgid "Functional assessment at admission and discharge"
 msgstr "Funkcionális állapotfelmérés felvételkor és elbocsátáskor"
 
+#: report_forms/r1/templates/r1_header.html:16
+#: report_forms/templates/list_of_report_forms.html:159
+msgid "R1 Short indicator description"
+msgstr "R1 Rövidített indikátor leírások"
+
+#: report_forms/r1/templates/r1_header.html:16
+#: report_forms/templates/list_of_report_forms.html:159
+msgid "R2 Short indicator description"
+msgstr "R2 Rövidített indikátor leírások"
+
 #: report_forms/r1/templates/r1_statistics.html:9
 msgid "Sorry, you have less than 60 cases for R1/A."
 msgstr "Sajnálom, de kevesebb mint 60 R1/A eset van."
@@ -3708,14 +3735,6 @@ msgstr "Jelentési lap"
 #: report_forms/templates/list_of_report_forms.html:110
 msgid "C.9. Operating theatre performance "
 msgstr "C.9. Központi műtők kihasználtsága"
-
-#: report_forms/templates/list_of_report_forms.html:159
-msgid "R1 Short indicator description"
-msgstr "R1 Rövidített indikátor leírások"
-
-#: report_forms/templates/list_of_report_forms.html:159
-msgid "R2 Short indicator description"
-msgstr "R2 Rövidített indikátor leírások"
 
 #: templates/base.html:33
 msgid "Homepage"

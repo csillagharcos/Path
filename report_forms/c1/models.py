@@ -25,7 +25,7 @@ class c1(models.Model):
     date_of_birth                   = models.DateField(_('Date of birth'))
     date_of_delivery                = models.DateTimeField(_('Date and time of delivery'))
     number_of_prev_deliveries       = models.IntegerField(_('Number of previous deliveries'))
-    number_of_prev_deliveries_by_c  = models.IntegerField(_('Number of earlier deliveries by c-section'), default=0)
+    number_of_prev_deliveries_by_c  = models.IntegerField(_('Number of previous deliveries by c-section'), default=0)
     the_c_section                   = models.IntegerField(_('The c-section'), max_length=1, choices=C_SECTION_CHOICES, default=0)
     weight_of_the_newborn           = models.FloatField(_('Weight of newborn (g)'))
     mother_illness                  = models.IntegerField(_('Mother illnes or risk'), max_length=1, choices=YES_NO_CHOICES, default=0)

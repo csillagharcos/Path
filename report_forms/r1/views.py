@@ -349,7 +349,7 @@ def Trendr2(request):
 
 def Template(request):
     model = (
-        _('Patients ID'),
+        _('Patient ID'),
         _('Case ID'),
         _('Date of birth'),
         _('Professional field of rehabilitation'),

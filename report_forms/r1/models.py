@@ -8,7 +8,7 @@ from csvImporter.model import CsvModel
 from report_forms.choices import FIELD_OF_REHAB, YES_NO_CHOICES, DISCHARGE_STATUS_CHOICES, DISCHARGE, IF_UNPLANNED_DISCHARGE
 
 class r1(models.Model):
-    patient_id                      = models.IntegerField(_('Patients ID'), unique=True)
+    patient_id                      = models.IntegerField(_('Patient ID'), unique=True)
     case_id                         = models.IntegerField(_('Case ID'))
     date_of_birth                   = models.DateField(_('Date of birth'))
     field_of_rehab                  = models.IntegerField(_('Professional field of rehabilitation'), max_length=1, choices=FIELD_OF_REHAB, default=0)
