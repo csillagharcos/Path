@@ -564,7 +564,6 @@ def ZipForAnon(statistics):
                 diagnosis += [diagnose,]
     return diagnosis
 
-
 def SortAndAddCountryAverage(statistics, start, end, user):
     statistics = sorted(statistics, key=lambda x: x['name'])
     hospitals = []

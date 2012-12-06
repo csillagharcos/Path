@@ -5,7 +5,7 @@
 {% endblock header %}
 
 {% block content %}
-    <strong>{% trans "Choose a file and click on the submit button." %}</strong><br />
+    <strong>{% trans 'Attention! If you would like to upload an earlier data collection, please be aware that the previous data table and the current template may differ, e.g. in the order of columns or in the accepted date and time format. Please, use the current template format!' %}<br />{% trans 'For further information, please read the ' %}<a href="{{ STATIC_URL }}documents/knowledgecorner/{{ LANGUAGE_CODE }}/usersmanual.docx">{% trans "User's manual." %}</a></strong><br /><br />
     <form action="" method="POST" enctype="multipart/form-data">
         <table class="report_form">
             {% csrf_token %}

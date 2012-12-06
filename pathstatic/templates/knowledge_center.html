@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
-    {% trans "Under development..." %}
+    <table class="needle">
+        <tr>
+            <th>{% trans "Downloadable documents" %}</th>
+        </tr>
+        <tr>
+            <td><a href="{{ STATIC_URL }}documents/knowledgecorner/{{ LANGUAGE_CODE }}/usersmanual.docx">{% trans "User's manual" %}</a></td>
+        </tr>
+    </table>
 {% endblock content %}

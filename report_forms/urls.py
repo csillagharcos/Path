@@ -66,6 +66,7 @@ urlpatterns = patterns('',
     url(r'c9/exportp', 'report_forms.c9.views.Exportp', name='c9_exportp'),
     url(r'c9/statistics$', 'report_forms.c9.views.Statistics', name='c9_stat'),
     url(r'c9/trend$', 'report_forms.c9.views.Trend', name='c9_trend'),
+    url(r'c9/benchmarking$', 'report_forms.c9.views.AnonymStatistics', name='c9_anon'),
     url(r'c9/templateo$', 'report_forms.c9.views.operation_Template', name='c9_operation_template'),
     url(r'c9/templatep$', 'report_forms.c9.views.patients_Template', name='c9_patient_template'),
 

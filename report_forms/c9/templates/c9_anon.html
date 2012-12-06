@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% load i18n l10n %}
+{% block header %}
+    {% include "c9_header.html" %}
+{% endblock header %}
+
+{% block content %}
+    {% for data in display_stats %}
+        <table class="los longer">
+            <thead>
+                <tr>
+                    <th>{{ data.name }}</th>
+                    <th>{{ formdata.date1a|date:"Y-m-d" }} - {{ formdata.date1b|date:"Y-m-d" }}</th>
+                    <th>{{ formdata.date2a|date:"Y-m-d" }} - {{ formdata.date2b|date:"Y-m-d" }}</th>
+                    {% if data.cases.2 %}<th>{{ formdata.date3a|date:"Y-m-d" }} - {{ formdata.date3b|date:"Y-m-d" }}</th>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Operating theatre performance" %}:</td>
+                    <td>{{ data.mk.0|floatformat:"2" }}%</td>
+                    <td>{{ data.mk.1|floatformat:"2" }}%</td>
+                    {% if data.cases.2 %}<td>{{ data.mk.2|floatformat:"2" }}%</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Surgery performance" %}:</td>
+                    <td>{{ data.mka.0|floatformat:"2" }}%</td>
+                    <td>{{ data.mka.1|floatformat:"2" }}%</td>
+                    {% if data.cases.2 %}<td>{{ data.mka.2|floatformat:"2" }}%</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Average time in OR" %}:</td>
+                    <td>{{ data.amt.0 }} {% trans 'hours' %}</td>
+                    <td>{{ data.amt.1 }} {% trans 'hours' %}</td>
+                    {% if data.cases.2 %}<td>{{ data.amt.2 }} {% trans 'hours' %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Median time in OR" %}:</td>
+                    <td>{{ data.mmt.0 }} {% trans 'hours' %}</td>
+                    <td>{{ data.mmt.1 }} {% trans 'hours' %}</td>
+                    {% if data.cases.2 %}<td>{{ data.mmt.2 }} {% trans 'hours' %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Average time of anesthesia" %}:</td>
+                    <td>{{ data.aa.0 }} {% trans 'hours' %}</td>
+                    <td>{{ data.aa.1 }} {% trans 'hours' %}</td>
+                    {% if data.cases.2 %}<td>{{ data.aa.2 }} {% trans 'hours' %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Median time of anesthesia" %}:</td>
+                    <td>{{ data.ma.0 }} {% trans 'hours' %}</td>
+                    <td>{{ data.ma.1 }} {% trans 'hours' %}</td>
+                    {% if data.cases.2 %}<td>{{ data.ma.2 }} {% trans 'hours' %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Average time of surgery" %}:</td>
+                    <td>{{ data.ami.0 }} {% trans 'hours' %}</td>
+                    <td>{{ data.ami.1 }} {% trans 'hours' %}</td>
+                    {% if data.cases.2 %}<td>{{ data.ami.2 }} {% trans 'hours' %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Median time of surgery" %}:</td>
+                    <td>{{ data.mmi.0 }} {% trans 'hours' %}</td>
+                    <td>{{ data.mmi.1 }} {% trans 'hours' %}</td>
+                    {% if data.cases.2 %}<td>{{ data.mmi.2 }} {% trans 'hours' %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Average time before surgery" %}:</td>
+                    <td>{{ data.ame.0 }} {% trans 'hours' %}</td>
+                    <td>{{ data.ame.1 }} {% trans 'hours' %}</td>
+                    {% if data.cases.2 %}<td>{{ data.ame.2 }} {% trans 'hours' %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Median time before surgery" %}:</td>
+                    <td>{{ data.mme.0 }} {% trans 'hours' %}</td>
+                    <td>{{ data.mme.1 }} {% trans 'hours' %}</td>
+                    {% if data.cases.2 %}<td>{{ data.mme.2 }} {% trans 'hours' %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Number of days with overtime" %}:</td>
+                    <td>{{ data.tn.0 }} {% trans 'days' %}</td>
+                    <td>{{ data.tn.1 }} {% trans 'days' %}</td>
+                    {% if data.cases.2 %}<td>{{ data.tn.2 }} {% trans 'days' %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Average time of overtime" %}:</td>
+                    <td>{{ data.at.0 }} {% trans 'hours/days' %}</td>
+                    <td>{{ data.at.1 }} {% trans 'hours/days' %}</td>
+                    {% if data.cases.2 %}<td>{{ data.at.2 }} {% trans 'hours/days' %}</td>{% endif %}
+                </tr>
+                <tr>
+                    <td>{% trans "Average time of overtime on days with overtime" %}:</td>
+                    <td>{{ data.attn.0 }} {% trans 'hours' %}</td>
+                    <td>{{ data.attn.1 }} {% trans 'hours' %}</td>
+                    {% if data.cases.2 %}<td>{{ data.attn.2 }} {% trans 'hours' %}</td>{% endif %}
+                </tr>
+        </table>
+        <div id="{{ data.slug.0 }}_1" style="margin-top: 20px; height: 200px"></div>
+        <div id="{{ data.slug.0 }}_2" style="margin-top: 20px; height: 300px"></div>
+        <div id="{{ data.slug.0 }}_3" style="margin-top: 20px; height: 150px"></div>
+    {% endfor %}
+{% endblock content %}
+
+{% block js %}
+    <script src="{{ STATIC_URL }}js/jquery.jqplot.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.barRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.highlighter.min.js"></script>
+    <script src="{{ STATIC_URL }}js/plugins/jqplot.dateAxisRenderer.js"></script>
+    <script src="{{ STATIC_URL }}js/jqplot.default_kind.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% for data in display_stats %}
+                {% localize off %}
+                    var {{ data.slug.0 }}_1_1 = [
+                        ['{% trans "Operating theatre performance" %}', {{ data.mk.0|floatformat:"2" }}],
+                        ['{% trans "Surgery performance" %}', {{ data.mka.0|floatformat:"2" }}]
+                    ];
+                    var {{ data.slug.0 }}_1_2 = [
+                        ['{% trans "Operating theatre performance" %}', {{ data.mk.1|floatformat:"2" }}],
+                        ['{% trans "Surgery performance" %}', {{ data.mka.1|floatformat:"2" }}]
+                    ];
+                    {% if data.cases.2 %}
+                        var {{ data.slug.0 }}_1_3 = [
+                            ['{% trans "Operating theatre performance" %}', {{ data.mk.2|floatformat:"2" }}],
+                            ['{% trans "Surgery performance" %}', {{ data.mka.2|floatformat:"2" }}]
+                        ];
+                    {% endif %}
+                    var {{ data.slug.0 }}_2_1 = [
+                        ['{% trans "Average time in OR" %}', '{{ data.amt.0 }}'],
+                        ['{% trans "Median time in OR" %}', '{{ data.mmt.0 }}'],
+                        ['{% trans "Average time of anesthesia" %}', '{{ data.aa.0 }}'],
+                        ['{% trans "Median time of anesthesia" %}', '{{ data.ma.0 }}'],
+                        ['{% trans "Average time of surgery" %}', '{{ data.ami.0 }}'],
+                        ['{% trans "Median time of surgery" %}', '{{ data.mmi.0 }}'],
+                        ['{% trans "Average time before surgery" %}', '{{ data.ame.0 }}'],
+                        ['{% trans "Median time before surgery" %}', '{{ data.mme.0 }}']
+                    ];
+                    var {{ data.slug.0 }}_2_2 = [
+                        ['{% trans "Average time in OR" %}', '{{ data.amt.1 }}'],
+                        ['{% trans "Median time in OR" %}', '{{ data.mmt.1 }}'],
+                        ['{% trans "Average time of anesthesia" %}', '{{ data.aa.1 }}'],
+                        ['{% trans "Median time of anesthesia" %}', '{{ data.ma.1 }}'],
+                        ['{% trans "Average time of surgery" %}', '{{ data.ami.1 }}'],
+                        ['{% trans "Median time of surgery" %}', '{{ data.mmi.1 }}'],
+                        ['{% trans "Average time before surgery" %}', '{{ data.ame.1 }}'],
+                        ['{% trans "Median time before surgery" %}', '{{ data.mme.1 }}']
+                    ];
+                    {% if data.cases.2 %}
+                        var {{ data.slug.0 }}_2_3 = [
+                            ['{% trans "Average time in OR" %}', '{{ data.amt.2 }}'],
+                            ['{% trans "Median time in OR" %}', '{{ data.mmt.2 }}'],
+                            ['{% trans "Average time of anesthesia" %}', '{{ data.aa.2 }}'],
+                            ['{% trans "Median time of anesthesia" %}', '{{ data.ma.2 }}'],
+                            ['{% trans "Average time of surgery" %}', '{{ data.ami.2 }}'],
+                            ['{% trans "Median time of surgery" %}', '{{ data.mmi.2 }}'],
+                            ['{% trans "Average time before surgery" %}', '{{ data.ame.2 }}'],
+                            ['{% trans "Median time before surgery" %}', '{{ data.mme.2 }}']
+                        ];
+                    {% endif %}
+                    var {{ data.slug.0 }}_3_1 = [
+                        ['{% trans "Average time of overtime" %}', '{{ data.at.0 }}'],
+                        ['{% trans "Average time of overtime on days with overtime" %}', '{{ data.attn.0 }}']
+                    ];
+                    var {{ data.slug.0 }}_3_2 = [
+                        ['{% trans "Average time of overtime" %}', '{{ data.at.1 }}'],
+                        ['{% trans "Average time of overtime on days with overtime" %}', '{{ data.attn.1 }}']
+                    ];
+                    {% if data.cases.2 %}
+                        var {{ data.slug.0 }}_3_3 = [
+                            ['{% trans "Average time of overtime" %}', '{{ data.at.2 }}'],
+                            ['{% trans "Average time of overtime on days with overtime" %}', '{{ data.attn.2 }}']
+                        ];
+                    {% endif %}
+                {% endlocalize %}
+                jqplot_percent.title = jqplot_time.title = "{{ data.name }}"
+                jqplot_percent.legend = { show: true }
+                jqplot_percent.series = [{ label: '{{ formdata.date1a|date:"Y-m-d" }} - {{ formdata.date1b|date:"Y-m-d" }}' },{ label: '{{ formdata.date2a|date:"Y-m-d" }} - {{ formdata.date2b|date:"Y-m-d" }}' },{ label: '{{ formdata.date3a|date:"Y-m-d" }} - {{ formdata.date3b|date:"Y-m-d" }}' }]
+                jqplot_time.legend = { show: true }
+                jqplot_time.series = [{ label: '{{ formdata.date1a|date:"Y-m-d" }} - {{ formdata.date1b|date:"Y-m-d" }}' },{ label: '{{ formdata.date2a|date:"Y-m-d" }} - {{ formdata.date2b|date:"Y-m-d" }}' },{ label: '{{ formdata.date3a|date:"Y-m-d" }} - {{ formdata.date3b|date:"Y-m-d" }}' }]
+                $.jqplot('{{ data.slug.0 }}_1', [{{ data.slug.0 }}_1_1,{{ data.slug.0 }}_1_2{% if data.cases.2 %},{{ data.slug.0 }}_1_3{% endif %}], jqplot_percent);
+                jqplot_time.axes.xaxis.tickOptions.angle = -30
+                $.jqplot('{{ data.slug.0 }}_2', [{{ data.slug.0 }}_2_1,{{ data.slug.0 }}_2_2{% if data.cases.2 %},{{ data.slug.0 }}_2_3{% endif %}], jqplot_time);
+                jqplot_time.axes.xaxis.tickOptions.angle = 0
+                $.jqplot('{{ data.slug.0 }}_3', [{{ data.slug.0 }}_3_1,{{ data.slug.0 }}_3_2{% if data.cases.2 %},{{ data.slug.0 }}_3_3{% endif %}], jqplot_time);
+            {% endfor %}
+        });
+    </script>
+{% endblock js %}
