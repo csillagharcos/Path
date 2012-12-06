@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, time
+from datetime import datetime, time, timedelta
 from csvImporter.model import CsvDataException
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -9,10 +9,11 @@ from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.utils.datastructures import MultiValueDictKeyError
-from report_forms.c9.forms import C9_patient_Form, FileUploadForm, C9_operation_Form, TrendForm
+from report_forms.c9.forms import C9_patient_Form, FileUploadForm, C9_operation_Form, TrendForm, AnonymStatForm
 from report_forms.c9.models import c9_patient, c9_operation, c9_patientCSV, c9_operationCSV
 from report_forms.tools import csvDump, DateException, parseInt, getMinSec, median, csvExport
 from django.utils.translation import ugettext_lazy as _
+from university.models import School
 
 @login_required
 def Display_patient(request):
@@ -547,3 +548,115 @@ def ZipThat(one,two,formStuff,three = False):
             'formdata': formStuff,
         }
     return ZippedThat
+
+@login_required
+def AnonymStatistics(request):
+    if request.method == "POST":
+        form = AnonymStatForm(request.POST)
+        statistics = []
+        if form.is_valid():
+            start = form.cleaned_data['endDate'] - timedelta(days=365)
+            end = form.cleaned_data['endDate']
+            workplaces = School.objects.all()
+            for workplace in workplaces:
+                stat = CountStatistics(c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), request.user.get_profile().workplace, start, end)
+                statistics += [{
+                    "name" : workplace.codename,
+                    "statistics" : stat
+                }]
+            print statistics
+            statistics = SortAndAddCountryAverage(statistics, start, end, request.user)
+            return render_to_response('c9_anon.html', {'statistics': statistics, 'datapacket': ZipForAnon(statistics)}, context_instance=RequestContext(request))
+        else:
+            form = AnonymStatForm(request.POST)
+            return render(request, 'c9.html', { 'form': form,'benchmarking': True })
+    form = AnonymStatForm()
+    return render(request, 'c9.html', { 'form': form,'benchmarking': True })
+
+def ZipForAnon(statistics):
+    pass
+
+def SortAndAddCountryAverage(statistics, start, end, user):
+    statistics = sorted(statistics, key=lambda x: x['name'])
+    hospitals = []
+    countryStat = []
+    statis = []
+    operation_room = []
+    overall = removed = counted = 0
+    for workplace in statistics:
+        foundCountry = False
+        hospital = School.objects.get(codename=workplace['name'])
+        if not hospitals:
+            hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
+        else:
+            for hos in hospitals:
+                if hos['country'] == hospital.country.printable_name:
+                    hos['hospitals'] += [hospital.codename,]
+                    foundCountry = True
+                    break
+            if not foundCountry:
+                hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
+
+    for country in hospitals:
+        name = country['country']
+        for hospit in country['hospitals']:
+            query = c9_operation.objects.filter(added_by__personel__workplace__codename = hospit)
+            statis += [CountStatistics(query, user.get_profile().workplace, start, end),]
+        for stat in statis:
+            print stat['name']
+#            'name': operating_room['name'],
+#            'slug': "slug_"+slugify(operating_room['name']).replace('-',''),
+#            'tn'  : operating_room['tn'],
+#            'mk'  : mk,
+#            'cases': operating_room['limit'],
+#            'ordateerrors': operating_room['ordateerrors'],
+#            'pdateerrors': operating_room['pdateerrors'],
+#            'mka' : mka,
+#            'amt' : amt,
+#            'mmt' : mmt,
+#            'aa'  : aa,
+#            'ma'  : ma,
+#            'ami' : ami,
+#            'mmi' : mmi,
+#            'ame' : ame,
+#            'mme' : mme,
+#            'at'  : at,
+#            'attn'  : attn,
+#            'missing_fields' : operating_room['missing_fields'],
+        stat = {
+            "overall": overall,
+            "removed": removed,
+            "counted": counted,
+            "operation_room": operation_room
+        }
+        countryStat += [{
+            'name': name,
+            'statistics': stat
+        },]
+    combined_results = countryStat + statistics
+    ci = wi = 0
+    coi = woi = None
+    yourCountry = yourHospital = [{},]
+
+    for result in combined_results:
+        if user.get_profile().workplace.country.printable_name == result['name']:
+            coi = ci
+        ci += 1
+    if coi is not None:
+        yourCountry = combined_results.pop(coi)
+
+    for result in combined_results:
+        if user.get_profile().workplace.codename == result['name']:
+            woi = wi
+        wi += 1
+    if woi is not None:
+        yourHospital =  combined_results.pop(woi)
+
+    if coi is not None and woi is not None:
+        combined_results = [yourCountry,] + [yourHospital,] + combined_results
+    elif coi is not None:
+        combined_results = [yourCountry,] + combined_results
+    elif woi is not None:
+        combined_results = [yourHospital,] + combined_results
+
+    return combined_results
