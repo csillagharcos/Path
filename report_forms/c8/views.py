@@ -617,13 +617,15 @@ def SortAndAddCountryAverage(statistics, start, end, user):
         diag_name = ""
         for s in stroke:
             diag_name = s[0]
-            if not first_date:
+            if type(first_date) is datetime.date and type(s[1]) is datetime.date:
+                if first_date > s[1]:
+                    first_date = s[1]
+            elif type(first_date) is not datetime.date and type(s[1]) is datetime.date:
                 first_date = s[1]
-            if first_date < s[1]:
-                first_date = s[1]
-            if not last_date:
-                last_date = s[2]
-            if last_date > s[2]:
+            if type(last_date) is datetime.date and type(s[2]) is datetime.date:
+                if last_date > s[2]:
+                    last_date = s[2]
+            elif type(last_date) is not datetime.date and type(s[2]) is datetime.date:
                 last_date = s[2]
             avg += s[3]
             med += s[4]
@@ -641,13 +643,15 @@ def SortAndAddCountryAverage(statistics, start, end, user):
         avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
         for s in hap:
             diag_name = s[0]
-            if not first_date:
+            if type(first_date) is datetime.date and type(s[1]) is datetime.date:
+                if first_date > s[1]:
+                    first_date = s[1]
+            elif type(first_date) is not datetime.date and type(s[1]) is datetime.date:
                 first_date = s[1]
-            if first_date < s[1]:
-                first_date = s[1]
-            if not last_date:
-                last_date = s[2]
-            if last_date > s[2]:
+            if type(last_date) is datetime.date and type(s[2]) is datetime.date:
+                if last_date > s[2]:
+                    last_date = s[2]
+            elif type(last_date) is not datetime.date and type(s[2]) is datetime.date:
                 last_date = s[2]
             avg += s[3]
             med += s[4]
@@ -665,13 +669,15 @@ def SortAndAddCountryAverage(statistics, start, end, user):
         avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
         for s in hf:
             diag_name = s[0]
-            if not first_date:
+            if type(first_date) is datetime.date and type(s[1]) is datetime.date:
+                if first_date > s[1]:
+                    first_date = s[1]
+            elif type(first_date) is not datetime.date and type(s[1]) is datetime.date:
                 first_date = s[1]
-            if first_date < s[1]:
-                first_date = s[1]
-            if not last_date:
-                last_date = s[2]
-            if last_date > s[2]:
+            if type(last_date) is datetime.date and type(s[2]) is datetime.date:
+                if last_date > s[2]:
+                    last_date = s[2]
+            elif type(last_date) is not datetime.date and type(s[2]) is datetime.date:
                 last_date = s[2]
             avg += s[3]
             med += s[4]
@@ -689,13 +695,15 @@ def SortAndAddCountryAverage(statistics, start, end, user):
         avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
         for s in cabg:
             diag_name = s[0]
-            if not first_date:
+            if type(first_date) is datetime.date and type(s[1]) is datetime.date:
+                if first_date > s[1]:
+                    first_date = s[1]
+            elif type(first_date) is not datetime.date and type(s[1]) is datetime.date:
                 first_date = s[1]
-            if first_date < s[1]:
-                first_date = s[1]
-            if not last_date:
-                last_date = s[2]
-            if last_date > s[2]:
+            if type(last_date) is datetime.date and type(s[2]) is datetime.date:
+                if last_date > s[2]:
+                    last_date = s[2]
+            elif type(last_date) is not datetime.date and type(s[2]) is datetime.date:
                 last_date = s[2]
             avg += s[3]
             med += s[4]
@@ -713,13 +721,15 @@ def SortAndAddCountryAverage(statistics, start, end, user):
         avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
         for s in ka:
             diag_name = s[0]
-            if not first_date:
+            if type(first_date) is datetime.date and type(s[1]) is datetime.date:
+                if first_date > s[1]:
+                    first_date = s[1]
+            elif type(first_date) is not datetime.date and type(s[1]) is datetime.date:
                 first_date = s[1]
-            if first_date < s[1]:
-                first_date = s[1]
-            if not last_date:
-                last_date = s[2]
-            if last_date > s[2]:
+            if type(last_date) is datetime.date and type(s[2]) is datetime.date:
+                if last_date > s[2]:
+                    last_date = s[2]
+            elif type(last_date) is not datetime.date and type(s[2]) is datetime.date:
                 last_date = s[2]
             avg += s[3]
             med += s[4]
@@ -737,13 +747,15 @@ def SortAndAddCountryAverage(statistics, start, end, user):
         avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
         for s in ih:
             diag_name = s[0]
-            if not first_date:
+            if type(first_date) is datetime.date and type(s[1]) is datetime.date:
+                if first_date > s[1]:
+                    first_date = s[1]
+            elif type(first_date) is not datetime.date and type(s[1]) is datetime.date:
                 first_date = s[1]
-            if first_date < s[1]:
-                first_date = s[1]
-            if not last_date:
-                last_date = s[2]
-            if last_date > s[2]:
+            if type(last_date) is datetime.date and type(s[2]) is datetime.date:
+                if last_date > s[2]:
+                    last_date = s[2]
+            elif type(last_date) is not datetime.date and type(s[2]) is datetime.date:
                 last_date = s[2]
             avg += s[3]
             med += s[4]
@@ -761,13 +773,15 @@ def SortAndAddCountryAverage(statistics, start, end, user):
         avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
         for s in taa:
             diag_name = s[0]
-            if not first_date:
+            if type(first_date) is datetime.date and type(s[1]) is datetime.date:
+                if first_date > s[1]:
+                    first_date = s[1]
+            elif type(first_date) is not datetime.date and type(s[1]) is datetime.date:
                 first_date = s[1]
-            if first_date < s[1]:
-                first_date = s[1]
-            if not last_date:
-                last_date = s[2]
-            if last_date > s[2]:
+            if type(last_date) is datetime.date and type(s[2]) is datetime.date:
+                if last_date > s[2]:
+                    last_date = s[2]
+            elif type(last_date) is not datetime.date and type(s[2]) is datetime.date:
                 last_date = s[2]
             avg += s[3]
             med += s[4]
@@ -785,13 +799,15 @@ def SortAndAddCountryAverage(statistics, start, end, user):
         avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
         for s in cho:
             diag_name = s[0]
-            if not first_date:
+            if type(first_date) is datetime.date and type(s[1]) is datetime.date:
+                if first_date > s[1]:
+                    first_date = s[1]
+            elif type(first_date) is not datetime.date and type(s[1]) is datetime.date:
                 first_date = s[1]
-            if first_date < s[1]:
-                first_date = s[1]
-            if not last_date:
-                last_date = s[2]
-            if last_date > s[2]:
+            if type(last_date) is datetime.date and type(s[2]) is datetime.date:
+                if last_date > s[2]:
+                    last_date = s[2]
+            elif type(last_date) is not datetime.date and type(s[2]) is datetime.date:
                 last_date = s[2]
             avg += s[3]
             med += s[4]
@@ -809,13 +825,15 @@ def SortAndAddCountryAverage(statistics, start, end, user):
         avg = med = davg = dmed = deavg = demed = counter = dbszam = 0
         for s in vvsal:
             diag_name = s[0]
-            if not first_date:
+            if type(first_date) is datetime.date and type(s[1]) is datetime.date:
+                if first_date > s[1]:
+                    first_date = s[1]
+            elif type(first_date) is not datetime.date and type(s[1]) is datetime.date:
                 first_date = s[1]
-            if first_date < s[1]:
-                first_date = s[1]
-            if not last_date:
-                last_date = s[2]
-            if last_date > s[2]:
+            if type(last_date) is datetime.date and type(s[2]) is datetime.date:
+                if last_date > s[2]:
+                    last_date = s[2]
+            elif type(last_date) is not datetime.date and type(s[2]) is datetime.date:
                 last_date = s[2]
             avg += s[3]
             med += s[4]
