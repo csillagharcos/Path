@@ -464,26 +464,26 @@ def CountStatistics(operation_cases, workplace, startDate = False, endDate = Fal
         try: attn = getMinSec( float(operating_room['at1']) / operating_room['tn'] )
         except: attn = 0
         display_stats += ({
-                              'name': operating_room['name'],
-                              'slug': "slug_"+slugify(operating_room['name']).replace('-',''),
-                              'tn'  : operating_room['tn'],
-                              'mk'  : mk,
-                              'cases': operating_room['limit'],
-                              'ordateerrors': operating_room['ordateerrors'],
-                              'pdateerrors': operating_room['pdateerrors'],
-                              'mka' : mka,
-                              'amt' : amt,
-                              'mmt' : mmt,
-                              'aa'  : aa,
-                              'ma'  : ma,
-                              'ami' : ami,
-                              'mmi' : mmi,
-                              'ame' : ame,
-                              'mme' : mme,
-                              'at'  : at,
-                              'attn'  : attn,
-                              'missing_fields' : operating_room['missing_fields'],
-                              },)
+              'name': operating_room['name'],
+              'slug': "slug_"+slugify(operating_room['name']).replace('-',''),
+              'tn'  : operating_room['tn'],
+              'mk'  : mk,
+              'cases': operating_room['limit'],
+              'ordateerrors': operating_room['ordateerrors'],
+              'pdateerrors': operating_room['pdateerrors'],
+              'mka' : mka,
+              'amt' : amt,
+              'mmt' : mmt,
+              'aa'  : aa,
+              'ma'  : ma,
+              'ami' : ami,
+              'mmi' : mmi,
+              'ame' : ame,
+              'mme' : mme,
+              'at'  : at,
+              'attn'  : attn,
+              'missing_fields' : operating_room['missing_fields'],
+              },)
         i += 1
     ''' Displaying '''
     context = {
@@ -549,6 +549,9 @@ def ZipThat(one,two,formStuff,three = False):
         }
     return ZippedThat
 
+def ZipForAnon(statistics):
+    print statistics
+
 @login_required
 def AnonymStatistics(request):
     if request.method == "POST":
@@ -559,14 +562,14 @@ def AnonymStatistics(request):
             end = form.cleaned_data['endDate']
             workplaces = School.objects.all()
             for workplace in workplaces:
-                stat = CountStatistics(c9_operation.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), request.user.get_profile().workplace, start, end)
+                stat = CountStatistics(c9_operation.objects.filter(added_by__personel__workplace = workplace), workplace, start, end)
                 statistics += [{
                     "name" : workplace.codename,
                     "statistics" : stat
                 }]
             print statistics
             statistics = SortAndAddCountryAverage(statistics, start, end, request.user)
-            return render_to_response('c9_anon.html', {'statistics': statistics, 'datapacket': ZipForAnon(statistics)}, context_instance=RequestContext(request))
+            return render_to_response('c9_anon.html', {'statistics': ZipForAnon(statistics)}, context_instance=RequestContext(request))
         else:
             form = AnonymStatForm(request.POST)
             return render(request, 'c9.html', { 'form': form,'benchmarking': True })
@@ -574,15 +577,36 @@ def AnonymStatistics(request):
     return render(request, 'c9.html', { 'form': form,'benchmarking': True })
 
 def ZipForAnon(statistics):
-    pass
+    name = []
+    slug = []
+    mk = []
+    mka = []
+    lineAdded = []
+    for stat in statistics:
+        for sta in stat['statistics']['display_stats']:
+            if sta['slug'] not in lineAdded:
+                if stat['name'] == sta['name']:
+                    name += [stat['name'],]
+                else:
+                    name += [stat['name'] + " " + sta['name'],]
+                slug += [sta['slug'],]
+                mk += [sta['mk'],]
+                mka += [sta['mka'],]
+                lineAdded += [sta['slug'],]
+    Zipped = {
+        'name': name,
+        'mk': mk,
+        'mka': mka
+    }
+    return Zipped
+
 
 def SortAndAddCountryAverage(statistics, start, end, user):
     statistics = sorted(statistics, key=lambda x: x['name'])
     hospitals = []
     countryStat = []
     statis = []
-    operation_room = []
-    overall = removed = counted = 0
+    mk = mka = counter = 0
     for workplace in statistics:
         foundCountry = False
         hospital = School.objects.get(codename=workplace['name'])
@@ -596,38 +620,24 @@ def SortAndAddCountryAverage(statistics, start, end, user):
                     break
             if not foundCountry:
                 hospitals += [{ 'country': hospital.country.printable_name, 'hospitals': [hospital.codename,]},]
-
     for country in hospitals:
         name = country['country']
         for hospit in country['hospitals']:
             query = c9_operation.objects.filter(added_by__personel__workplace__codename = hospit)
-            statis += [CountStatistics(query, user.get_profile().workplace, start, end),]
+            this_workplace = School.objects.get(codename=hospit)
+            statis += [CountStatistics(query, this_workplace, start, end),]
         for stat in statis:
-            print stat['name']
-#            'name': operating_room['name'],
-#            'slug': "slug_"+slugify(operating_room['name']).replace('-',''),
-#            'tn'  : operating_room['tn'],
-#            'mk'  : mk,
-#            'cases': operating_room['limit'],
-#            'ordateerrors': operating_room['ordateerrors'],
-#            'pdateerrors': operating_room['pdateerrors'],
-#            'mka' : mka,
-#            'amt' : amt,
-#            'mmt' : mmt,
-#            'aa'  : aa,
-#            'ma'  : ma,
-#            'ami' : ami,
-#            'mmi' : mmi,
-#            'ame' : ame,
-#            'mme' : mme,
-#            'at'  : at,
-#            'attn'  : attn,
-#            'missing_fields' : operating_room['missing_fields'],
+            for st in stat['display_stats']:
+                mk += st['mk']
+                mka += st['mka']
+                counter += 1
         stat = {
-            "overall": overall,
-            "removed": removed,
-            "counted": counted,
-            "operation_room": operation_room
+            'display_stats': [{
+                                'name': name,
+                                'slug': "slug_"+slugify(name).replace('-',''),
+                                "mk": (mk/counter),
+                                'mka' : (mka/counter)
+                             },]
         }
         countryStat += [{
             'name': name,
