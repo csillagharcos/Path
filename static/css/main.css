@@ -47,7 +47,7 @@ table {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Tahoma" , sans-serif;
+  font-family: "Tahoma", sans-serif;
   font-size: 11px;
   color: #414141;
   background: #FFF; }
@@ -187,8 +187,8 @@ select[multiple="multiple"] {
 
 #language_selector {
   position: absolute;
-  top: 28px;
-  left: 880px; }
+  top: 29px;
+  left: 770px; }
   #language_selector li {
     display: inline-block;
     padding-left: 10px; }
@@ -202,7 +202,7 @@ select[multiple="multiple"] {
   margin: 10px 0 20px 200px;
   width: 260px;
   background-color: #0d4f92;
-  border: 1px solid #87ceeb;
+  border: 1px solid skyblue;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px; }
@@ -213,7 +213,7 @@ select[multiple="multiple"] {
     width: 100px;
     height: 50px;
     background-color: #87ceeb;
-    border: 1px solid #add8e6;
+    border: 1px solid lightblue;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px; }

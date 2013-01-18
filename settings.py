@@ -30,6 +30,8 @@ LANGUAGE_CODE = 'en-us'
 LANGUAGES = (
     ('en', 'English'),
     ('hu', 'Magyar'),
+    ('pl', 'Polish'),
+    ('hr', 'Hrvatski'),
 )
 
 SITE_ID = 1

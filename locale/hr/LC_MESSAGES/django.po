@@ -1,0 +1,3760 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-18 12:20+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
+
+#: countries/models.py:15 personel/models.py:11 university/models.py:9
+msgid "Country"
+msgstr ""
+
+#: countries/models.py:16
+msgid "Countries"
+msgstr ""
+
+#: pathstatic/forms.py:5 templates/base.html:45
+msgid "Username"
+msgstr ""
+
+#: pathstatic/forms.py:6 templates/base.html:48
+msgid "Password"
+msgstr ""
+
+#: pathstatic/templates/index.html:5
+msgid ""
+"\n"
+"        <p>Program: Eva Belicza Dr., Judit Lám Dr., Erika Takács</p>\n"
+"        <p>The PATH project by the World Health Organization Regional Office "
+"for Europe launched in 2003. The PATH to hospital quality improvement "
+"support benchmarking tools (Performance Assessment Tool for quality "
+"improvement in Hospitals), which helps hospitals work to assess the results, "
+"review, and to the results starting quality improvement activity to other "
+"hospitals the practical experience of using.</p>\n"
+"        <p>The PATH system goes beyond the traditional economic versus "
+"performance, clinical effectiveness of professional-type differentiation, "
+"and develop a comprehensive perspective, which includes both clinical "
+"effectiveness, efficiency, labor orientation of the reactive control, safety "
+"and patient centeredness. The PATH is not just a hospital performance "
+"measurement tools, but also focus on the interpretation of the results. The "
+"network within the hospital carried out a comparative analysis "
+"(benchmarking) will help the hospitals to learn about best practices. The "
+"PATH provides support for the initial stages of organizational benchmarking "
+"hospitals, sheltered environment for the measurement of culture.</p>\n"
+"        <p>The PATH provides four main components of the hospitals: a "
+"theoretical framework to evaluate performance, the necessary tools (such as "
+"indicators and guides), custom reports, and a national network. The first "
+"two components of the WHO Regional Office for Europe provides, while the "
+"latter two are adapted to local conditions in the country co-ordinators "
+"provide. The indicators include, for example, the current mortality rates, "
+"operating room utilization, employee smoking prevalence. In Hungary, the "
+"networking features direct contact with representatives of the participating "
+"hospitals, and two or three months of work under discussion, participants "
+"will discuss the data collection, processing and interpretation of results, "
+"dilemmas and experiences.</p></div>\n"
+"    "
+msgstr ""
+
+#: pathstatic/templates/index.html:11
+msgid "PATH international website"
+msgstr ""
+
+#: pathstatic/templates/knowledge_center.html:6
+msgid "Downloadable documents"
+msgstr ""
+
+#: pathstatic/templates/knowledge_center.html:9
+msgid "User's manual"
+msgstr ""
+
+#: pathstatic/templates/login.html:11 templates/base.html:52
+msgid "Login"
+msgstr ""
+
+#: personel/models.py:9 report_forms/c1/models.py:36
+#: report_forms/c13/models.py:31 report_forms/c20/models.py:25
+#: report_forms/c21/models.py:48 report_forms/c23/models.py:49
+#: report_forms/c24/models.py:48 report_forms/c31/models.py:20
+#: report_forms/c32/models.py:20 report_forms/c8/models.py:25
+#: report_forms/c9/models.py:23 report_forms/c9/models.py:52
+#: report_forms/r1/models.py:84
+msgid "User"
+msgstr ""
+
+#: personel/models.py:10
+msgid "University"
+msgstr ""
+
+#: report_forms/choices.py:4 report_forms/choices.py:107
+#: report_forms/choices.py:204 report_forms/c1/templates/c1_statistics.html:75
+#: report_forms/c1/templates/c1_trend_diagram.html:101
+#: report_forms/c1/templates/c1_trend_diagram.html:106
+#: report_forms/c1/templates/c1_trend_diagram.html:111
+msgid "Planned"
+msgstr ""
+
+#: report_forms/choices.py:5 report_forms/c1/templates/c1_statistics.html:76
+#: report_forms/c1/templates/c1_trend_diagram.html:102
+#: report_forms/c1/templates/c1_trend_diagram.html:107
+#: report_forms/c1/templates/c1_trend_diagram.html:112
+msgid "Acute"
+msgstr ""
+
+#: report_forms/choices.py:9 report_forms/choices.py:33
+#: report_forms/choices.py:57 report_forms/choices.py:81
+#: report_forms/choices.py:99 report_forms/choices.py:125
+#: report_forms/choices.py:150
+msgid "-- Select --"
+msgstr ""
+
+#: report_forms/choices.py:19
+msgid "No"
+msgstr ""
+
+#: report_forms/choices.py:20
+msgid "Yes"
+msgstr ""
+
+#: report_forms/choices.py:24
+msgid "Physician"
+msgstr ""
+
+#: report_forms/choices.py:25
+msgid "Nurse"
+msgstr ""
+
+#: report_forms/choices.py:26
+msgid "Other healthcare worker"
+msgstr ""
+
+#: report_forms/choices.py:27
+msgid "Cleaning staff"
+msgstr ""
+
+#: report_forms/choices.py:28
+msgid "Total number of hospital staff"
+msgstr ""
+
+#: report_forms/choices.py:29 report_forms/choices.py:45
+#: report_forms/choices.py:53 report_forms/choices.py:76
+#: report_forms/choices.py:192
+msgid "Other"
+msgstr ""
+
+#: report_forms/choices.py:44
+msgid "Immediate"
+msgstr ""
+
+#: report_forms/choices.py:46
+msgid "No Information"
+msgstr ""
+
+#: report_forms/choices.py:50 report_forms/choices.py:73
+msgid "IV"
+msgstr ""
+
+#: report_forms/choices.py:51 report_forms/choices.py:74
+msgid "IM"
+msgstr ""
+
+#: report_forms/choices.py:52 report_forms/choices.py:75
+msgid "SC"
+msgstr ""
+
+#: report_forms/choices.py:87
+msgid "From home/nursing home/community care"
+msgstr ""
+
+#: report_forms/choices.py:88
+msgid "Transferred from another hospital"
+msgstr ""
+
+#: report_forms/choices.py:92
+msgid "Home/nursing home/community care"
+msgstr ""
+
+#: report_forms/choices.py:93
+msgid "Transferred into another hospital"
+msgstr ""
+
+#: report_forms/choices.py:94
+msgid "Death"
+msgstr ""
+
+#: report_forms/choices.py:95
+msgid "Discharge at own request"
+msgstr ""
+
+#: report_forms/choices.py:108
+msgid "Urgent surgical"
+msgstr ""
+
+#: report_forms/choices.py:109
+msgid "Emergency care"
+msgstr ""
+
+#: report_forms/choices.py:113 report_forms/choices.py:126
+#: report_forms/c8/views.py:432
+msgid "Stroke"
+msgstr ""
+
+#: report_forms/choices.py:114 report_forms/choices.py:132
+msgid "Community acquired pneumonia"
+msgstr ""
+
+#: report_forms/choices.py:115 report_forms/choices.py:139
+#: report_forms/c8/views.py:434
+msgid "Hip fracture"
+msgstr ""
+
+#: report_forms/choices.py:116 report_forms/choices.py:151
+#: report_forms/c8/views.py:435
+msgid "CABG"
+msgstr ""
+
+#: report_forms/choices.py:117 report_forms/choices.py:160
+#: report_forms/c8/views.py:436
+msgid "Knee arthroscopy"
+msgstr ""
+
+#: report_forms/choices.py:118 report_forms/choices.py:144
+#: report_forms/choices.py:164 report_forms/c8/views.py:437
+msgid "Inguinal hernia"
+msgstr ""
+
+#: report_forms/choices.py:119 report_forms/choices.py:169
+#: report_forms/c8/views.py:438
+msgid "Tonsillectomy and/or adenoidectomy"
+msgstr ""
+
+#: report_forms/choices.py:120 report_forms/choices.py:172
+#: report_forms/c8/views.py:439
+msgid "Cholecystectomy"
+msgstr ""
+
+#: report_forms/choices.py:121 report_forms/choices.py:177
+#: report_forms/c8/views.py:440
+msgid "Varicose veins - stripping and ligation"
+msgstr ""
+
+#: report_forms/choices.py:183
+msgid "Acute department"
+msgstr ""
+
+#: report_forms/choices.py:184
+msgid "Rehabilitation department"
+msgstr ""
+
+#: report_forms/choices.py:188
+msgid "Transfer to another inpatient hospital"
+msgstr ""
+
+#: report_forms/choices.py:189
+msgid "Discharge to home, social home"
+msgstr ""
+
+#: report_forms/choices.py:190
+msgid "Patient left hospital against medical advice"
+msgstr ""
+
+#: report_forms/choices.py:191
+msgid "In-hospital death"
+msgstr ""
+
+#: report_forms/choices.py:196
+msgid "neurology"
+msgstr ""
+
+#: report_forms/choices.py:197
+msgid "cardiology"
+msgstr ""
+
+#: report_forms/choices.py:198
+msgid "muskoloskeletal"
+msgstr ""
+
+#: report_forms/choices.py:199
+msgid "pulmonary"
+msgstr ""
+
+#: report_forms/choices.py:200
+msgid "other"
+msgstr ""
+
+#: report_forms/choices.py:205
+msgid "Unplanned"
+msgstr ""
+
+#: report_forms/choices.py:209
+msgid "Complication realated to main disease"
+msgstr ""
+
+#: report_forms/choices.py:210
+msgid "Acute medical illness"
+msgstr ""
+
+#: report_forms/choices.py:211
+msgid "Acute surgical illness"
+msgstr ""
+
+#: report_forms/choices.py:212
+msgid "Acute needs of traumatology care"
+msgstr ""
+
+#: report_forms/choices.py:213
+msgid "Decision of the patient or his/her family"
+msgstr ""
+
+#: report_forms/choices.py:217
+msgid "Elective only"
+msgstr ""
+
+#: report_forms/choices.py:218
+msgid "Day surgery"
+msgstr ""
+
+#: report_forms/choices.py:219
+msgid "Emergency only"
+msgstr ""
+
+#: report_forms/choices.py:220
+msgid "Mixed (elective/emergency)"
+msgstr ""
+
+#: report_forms/choices.py:224
+msgid "Septic"
+msgstr ""
+
+#: report_forms/choices.py:225
+msgid "Aseptic"
+msgstr ""
+
+#: report_forms/choices.py:229
+msgid "Weekday"
+msgstr ""
+
+#: report_forms/choices.py:230
+msgid "Saturday"
+msgstr ""
+
+#: report_forms/choices.py:231
+msgid "Sunday/holiday"
+msgstr ""
+
+#: report_forms/c1/admin.py:16 report_forms/c1/forms.py:7
+#: report_forms/c1/models.py:34 report_forms/c1/views.py:138
+#: report_forms/c1/views.py:157
+msgid "Other diagnoses"
+msgstr ""
+
+#: report_forms/c1/forms.py:8 report_forms/c1/models.py:25
+#: report_forms/c1/views.py:128 report_forms/c1/views.py:147
+#: report_forms/c20/forms.py:7 report_forms/c20/models.py:13
+#: report_forms/c20/views.py:131 report_forms/c20/views.py:150
+#: report_forms/c21/forms.py:14 report_forms/c21/models.py:26
+#: report_forms/c21/views.py:160 report_forms/c21/views.py:193
+#: report_forms/c23/forms.py:15 report_forms/c23/models.py:27
+#: report_forms/c23/views.py:167 report_forms/c23/views.py:200
+#: report_forms/c24/forms.py:15 report_forms/c24/models.py:26
+#: report_forms/c24/views.py:160 report_forms/c24/views.py:193
+#: report_forms/c31/forms.py:7 report_forms/c31/models.py:13
+#: report_forms/c31/views.py:117 report_forms/c31/views.py:131
+#: report_forms/c32/forms.py:7 report_forms/c32/models.py:13
+#: report_forms/c32/views.py:116 report_forms/c32/views.py:130
+#: report_forms/c8/forms.py:7 report_forms/c8/models.py:13
+#: report_forms/c8/views.py:141 report_forms/c8/views.py:160
+#: report_forms/r1/forms.py:7 report_forms/r1/models.py:13
+#: report_forms/r1/views.py:354 report_forms/r1/views.py:432
+msgid "Date of birth"
+msgstr ""
+
+#: report_forms/c1/forms.py:8 report_forms/c1/forms.py:31
+#: report_forms/c1/forms.py:32 report_forms/c1/forms.py:33
+#: report_forms/c1/forms.py:34 report_forms/c1/forms.py:35
+#: report_forms/c1/forms.py:36 report_forms/c1/forms.py:39
+#: report_forms/c20/forms.py:7 report_forms/c20/forms.py:8
+#: report_forms/c20/forms.py:36 report_forms/c20/forms.py:37
+#: report_forms/c20/forms.py:38 report_forms/c20/forms.py:39
+#: report_forms/c20/forms.py:40 report_forms/c20/forms.py:41
+#: report_forms/c20/forms.py:44 report_forms/c21/forms.py:14
+#: report_forms/c21/forms.py:51 report_forms/c21/forms.py:52
+#: report_forms/c21/forms.py:53 report_forms/c21/forms.py:54
+#: report_forms/c21/forms.py:55 report_forms/c21/forms.py:56
+#: report_forms/c21/forms.py:59 report_forms/c23/forms.py:15
+#: report_forms/c23/forms.py:52 report_forms/c23/forms.py:53
+#: report_forms/c23/forms.py:54 report_forms/c23/forms.py:55
+#: report_forms/c23/forms.py:56 report_forms/c23/forms.py:57
+#: report_forms/c23/forms.py:60 report_forms/c24/forms.py:15
+#: report_forms/c24/forms.py:52 report_forms/c24/forms.py:53
+#: report_forms/c24/forms.py:54 report_forms/c24/forms.py:55
+#: report_forms/c24/forms.py:56 report_forms/c24/forms.py:57
+#: report_forms/c24/forms.py:60 report_forms/c31/forms.py:7
+#: report_forms/c31/forms.py:8 report_forms/c31/forms.py:9
+#: report_forms/c31/forms.py:39 report_forms/c31/forms.py:40
+#: report_forms/c31/forms.py:41 report_forms/c31/forms.py:42
+#: report_forms/c31/forms.py:43 report_forms/c31/forms.py:44
+#: report_forms/c31/forms.py:47 report_forms/c32/forms.py:7
+#: report_forms/c32/forms.py:8 report_forms/c32/forms.py:9
+#: report_forms/c32/forms.py:39 report_forms/c32/forms.py:40
+#: report_forms/c32/forms.py:41 report_forms/c32/forms.py:42
+#: report_forms/c32/forms.py:43 report_forms/c32/forms.py:44
+#: report_forms/c32/forms.py:47 report_forms/c8/forms.py:7
+#: report_forms/c8/forms.py:8 report_forms/c8/forms.py:9
+#: report_forms/c8/forms.py:10 report_forms/c8/forms.py:59
+#: report_forms/c8/forms.py:60 report_forms/c8/forms.py:61
+#: report_forms/c8/forms.py:62 report_forms/c8/forms.py:63
+#: report_forms/c8/forms.py:64 report_forms/c8/forms.py:67
+#: report_forms/c9/forms.py:7 report_forms/c9/forms.py:26
+#: report_forms/c9/forms.py:27 report_forms/c9/forms.py:39
+#: report_forms/c9/forms.py:40 report_forms/c9/forms.py:41
+#: report_forms/c9/forms.py:42 report_forms/c9/forms.py:43
+#: report_forms/c9/forms.py:44 report_forms/c9/forms.py:47
+#: report_forms/r1/forms.py:7 report_forms/r1/forms.py:8
+#: report_forms/r1/forms.py:9 report_forms/r1/forms.py:10
+#: report_forms/r1/forms.py:11 report_forms/r1/forms.py:12
+#: report_forms/r1/forms.py:13 report_forms/r1/forms.py:14
+#: report_forms/r1/forms.py:15 report_forms/r1/forms.py:16
+#: report_forms/r1/forms.py:17 report_forms/r1/forms.py:18
+#: report_forms/r1/forms.py:19 report_forms/r1/forms.py:20
+#: report_forms/r1/forms.py:21 report_forms/r1/forms.py:22
+#: report_forms/r1/forms.py:23 report_forms/r1/forms.py:24
+#: report_forms/r1/forms.py:25 report_forms/r1/forms.py:26
+#: report_forms/r1/forms.py:27 report_forms/r1/forms.py:28
+#: report_forms/r1/forms.py:29 report_forms/r1/forms.py:218
+#: report_forms/r1/forms.py:219 report_forms/r1/forms.py:220
+#: report_forms/r1/forms.py:221 report_forms/r1/forms.py:222
+#: report_forms/r1/forms.py:223 report_forms/r1/forms.py:226
+msgid "(yyyy-mm-dd)"
+msgstr ""
+
+#: report_forms/c1/forms.py:9 report_forms/c1/models.py:26
+msgid "Date and time of delivery"
+msgstr ""
+
+#: report_forms/c1/forms.py:9 report_forms/c21/forms.py:10
+#: report_forms/c21/forms.py:11 report_forms/c21/forms.py:12
+#: report_forms/c21/forms.py:13 report_forms/c23/forms.py:11
+#: report_forms/c23/forms.py:12 report_forms/c23/forms.py:13
+#: report_forms/c23/forms.py:14 report_forms/c24/forms.py:11
+#: report_forms/c24/forms.py:12 report_forms/c24/forms.py:13
+#: report_forms/c24/forms.py:14
+msgid "(yyyy-mm-dd hh:mm)"
+msgstr ""
+
+#: report_forms/c1/forms.py:16 report_forms/c1/forms.py:17
+#: report_forms/c1/views.py:63
+msgid "Born after date of delivery!"
+msgstr ""
+
+#: report_forms/c1/forms.py:31 report_forms/c1/forms.py:32
+#: report_forms/c13/forms.py:83 report_forms/c20/forms.py:36
+#: report_forms/c20/forms.py:37 report_forms/c21/forms.py:51
+#: report_forms/c21/forms.py:52 report_forms/c23/forms.py:52
+#: report_forms/c23/forms.py:53 report_forms/c24/forms.py:52
+#: report_forms/c24/forms.py:53 report_forms/c31/forms.py:39
+#: report_forms/c31/forms.py:40 report_forms/c32/forms.py:39
+#: report_forms/c32/forms.py:40 report_forms/c8/forms.py:59
+#: report_forms/c8/forms.py:60 report_forms/c9/forms.py:39
+#: report_forms/c9/forms.py:40 report_forms/r1/forms.py:218
+#: report_forms/r1/forms.py:219
+msgid "First date"
+msgstr ""
+
+#: report_forms/c1/forms.py:33 report_forms/c1/forms.py:34
+#: report_forms/c13/forms.py:84 report_forms/c20/forms.py:38
+#: report_forms/c20/forms.py:39 report_forms/c21/forms.py:53
+#: report_forms/c21/forms.py:54 report_forms/c23/forms.py:54
+#: report_forms/c23/forms.py:55 report_forms/c24/forms.py:54
+#: report_forms/c24/forms.py:55 report_forms/c31/forms.py:41
+#: report_forms/c31/forms.py:42 report_forms/c32/forms.py:41
+#: report_forms/c32/forms.py:42 report_forms/c8/forms.py:61
+#: report_forms/c8/forms.py:62 report_forms/c9/forms.py:41
+#: report_forms/c9/forms.py:42 report_forms/r1/forms.py:220
+#: report_forms/r1/forms.py:221
+msgid "Second date"
+msgstr ""
+
+#: report_forms/c1/forms.py:35 report_forms/c1/forms.py:36
+#: report_forms/c13/forms.py:85 report_forms/c20/forms.py:40
+#: report_forms/c20/forms.py:41 report_forms/c21/forms.py:55
+#: report_forms/c21/forms.py:56 report_forms/c23/forms.py:56
+#: report_forms/c23/forms.py:57 report_forms/c24/forms.py:56
+#: report_forms/c24/forms.py:57 report_forms/c31/forms.py:43
+#: report_forms/c31/forms.py:44 report_forms/c32/forms.py:43
+#: report_forms/c32/forms.py:44 report_forms/c8/forms.py:63
+#: report_forms/c8/forms.py:64 report_forms/c9/forms.py:43
+#: report_forms/c9/forms.py:44 report_forms/r1/forms.py:222
+#: report_forms/r1/forms.py:223
+msgid "Third date"
+msgstr ""
+
+#: report_forms/c1/forms.py:39 report_forms/c13/forms.py:88
+#: report_forms/c20/forms.py:44 report_forms/c21/forms.py:59
+#: report_forms/c23/forms.py:60 report_forms/c24/forms.py:60
+#: report_forms/c31/forms.py:47 report_forms/c32/forms.py:47
+#: report_forms/c8/forms.py:67 report_forms/c9/forms.py:7
+#: report_forms/c9/forms.py:47 report_forms/c9/models.py:12
+#: report_forms/c9/views.py:220 report_forms/c9/views.py:307
+#: report_forms/r1/forms.py:226
+msgid "Date"
+msgstr ""
+
+#: report_forms/c1/models.py:18
+msgid "Other Diagnose"
+msgstr ""
+
+#: report_forms/c1/models.py:19
+msgid "Other Diagnoses"
+msgstr ""
+
+#: report_forms/c1/models.py:23 report_forms/c1/views.py:126
+#: report_forms/c1/views.py:145 report_forms/c31/models.py:11
+#: report_forms/c31/views.py:115 report_forms/c31/views.py:129
+#: report_forms/c32/models.py:11 report_forms/c32/views.py:114
+#: report_forms/c32/views.py:128 report_forms/c8/models.py:11
+#: report_forms/c8/views.py:139 report_forms/c8/views.py:158
+#: report_forms/r1/views.py:430
+msgid "Patients ID"
+msgstr ""
+
+#: report_forms/c1/models.py:24 report_forms/c1/views.py:127
+#: report_forms/c1/views.py:146 report_forms/c1/templates/c1_error.html:30
+#: report_forms/c20/models.py:11 report_forms/c20/views.py:129
+#: report_forms/c20/views.py:148 report_forms/c20/templates/c20_error.html:30
+#: report_forms/c21/models.py:24 report_forms/c21/views.py:158
+#: report_forms/c21/views.py:191 report_forms/c21/templates/c21_error.html:22
+#: report_forms/c23/models.py:25 report_forms/c23/views.py:165
+#: report_forms/c23/views.py:198 report_forms/c23/templates/c23_error.html:22
+#: report_forms/c24/models.py:24 report_forms/c24/views.py:158
+#: report_forms/c24/views.py:191 report_forms/c24/templates/c24_error.html:22
+#: report_forms/c31/models.py:12 report_forms/c31/views.py:116
+#: report_forms/c31/views.py:130 report_forms/c31/templates/c31_error.html:30
+#: report_forms/c32/models.py:12 report_forms/c32/views.py:115
+#: report_forms/c32/views.py:129 report_forms/c32/templates/c32_error.html:30
+#: report_forms/c8/models.py:12 report_forms/c8/views.py:140
+#: report_forms/c8/views.py:159 report_forms/c8/templates/c8_error.html:30
+#: report_forms/c9/templates/c9_error.html:30 report_forms/r1/models.py:12
+#: report_forms/r1/views.py:353 report_forms/r1/views.py:431
+#: report_forms/r1/templates/r1_error.html:30
+msgid "Case ID"
+msgstr ""
+
+#: report_forms/c1/models.py:27 report_forms/c1/views.py:131
+#: report_forms/c1/views.py:150
+msgid "Number of previous deliveries"
+msgstr ""
+
+#: report_forms/c1/models.py:28
+msgid "Number of previous deliveries by c-section"
+msgstr ""
+
+#: report_forms/c1/models.py:29 report_forms/c1/views.py:133
+#: report_forms/c1/views.py:152
+msgid "The c-section"
+msgstr ""
+
+#: report_forms/c1/models.py:30
+msgid "Weight of newborn (g)"
+msgstr ""
+
+#: report_forms/c1/models.py:31 report_forms/c1/views.py:135
+#: report_forms/c1/views.py:154
+msgid "Mother illnes or risk"
+msgstr ""
+
+#: report_forms/c1/models.py:32 report_forms/c1/views.py:136
+#: report_forms/c1/views.py:155
+msgid "Specify"
+msgstr ""
+
+#: report_forms/c1/models.py:33 report_forms/c1/views.py:137
+#: report_forms/c1/views.py:156
+msgid "DRG Code"
+msgstr ""
+
+#: report_forms/c1/models.py:42
+msgid "C-Section Rate"
+msgstr ""
+
+#: report_forms/c1/models.py:43
+msgid "C-Section Rates"
+msgstr ""
+
+#: report_forms/c1/views.py:56 report_forms/c20/views.py:56
+#: report_forms/c21/views.py:67 report_forms/c23/views.py:68
+#: report_forms/c24/views.py:67 report_forms/c31/views.py:52
+#: report_forms/c32/views.py:51 report_forms/c8/views.py:56
+#: report_forms/r1/views.py:114
+msgid "You are not using the Template csv. The number of fields is different."
+msgstr ""
+
+#: report_forms/c1/views.py:129 report_forms/c1/views.py:148
+msgid "Date of delivery"
+msgstr ""
+
+#: report_forms/c1/views.py:130 report_forms/c1/views.py:149
+msgid "Time of delivery"
+msgstr ""
+
+#: report_forms/c1/views.py:132 report_forms/c1/views.py:151
+msgid "Number of earlier deliveries by c-section"
+msgstr ""
+
+#: report_forms/c1/views.py:134 report_forms/c1/views.py:153
+msgid "Weight of newborn"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:11
+#: report_forms/c1/templates/c1_trend_diagram.html:11
+#: report_forms/c20/templates/c20_anon.html:11
+#: report_forms/c20/templates/c20_trend_diagram.html:11
+#: report_forms/c21/templates/c21_anon.html:11
+#: report_forms/c21/templates/c21_trend_diagram.html:11
+#: report_forms/c23/templates/c23_anon.html:11
+#: report_forms/c23/templates/c23_trend_diagram.html:11
+#: report_forms/c24/templates/c24_anon.html:11
+#: report_forms/c24/templates/c24_trend_diagram.html:11
+#: report_forms/c31/templates/c31_anon.html:11
+#: report_forms/c31/templates/c31_trend_diagram.html:11
+#: report_forms/c32/templates/c32_anon.html:11
+#: report_forms/c32/templates/c32_trend_diagram.html:11
+#: report_forms/c8/templates/c8_anon.html:11
+#: report_forms/c8/templates/c8_trend_diagram.html:11
+msgid "Name of the indicator"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:18
+#: report_forms/c1/templates/c1_statistics.html:13
+#: report_forms/c1/templates/c1_trend_diagram.html:18
+#: report_forms/c20/templates/c20_anon.html:18
+#: report_forms/c20/templates/c20_statistics.html:13
+#: report_forms/c20/templates/c20_trend_diagram.html:18
+#: report_forms/c21/templates/c21_anon.html:18
+#: report_forms/c21/templates/c21_statistics.html:13
+#: report_forms/c21/templates/c21_trend_diagram.html:18
+#: report_forms/c23/templates/c23_anon.html:18
+#: report_forms/c23/templates/c23_statistics.html:13
+#: report_forms/c23/templates/c23_trend_diagram.html:18
+#: report_forms/c24/templates/c24_anon.html:18
+#: report_forms/c24/templates/c24_statistics.html:13
+#: report_forms/c24/templates/c24_trend_diagram.html:18
+#: report_forms/c31/templates/c31_anon.html:18
+#: report_forms/c31/templates/c31_statistics.html:13
+#: report_forms/c31/templates/c31_trend_diagram.html:18
+#: report_forms/c32/templates/c32_anon.html:18
+#: report_forms/c32/templates/c32_statistics.html:13
+#: report_forms/c32/templates/c32_trend_diagram.html:18
+#: report_forms/c8/templates/c8_anon.html:18
+#: report_forms/c8/templates/c8_statistics.html:11
+#: report_forms/c8/templates/c8_trend_diagram.html:17
+msgid "Overall:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:24
+#: report_forms/c1/templates/c1_statistics.html:17
+#: report_forms/c1/templates/c1_trend_diagram.html:24
+#: report_forms/c20/templates/c20_anon.html:24
+#: report_forms/c20/templates/c20_statistics.html:17
+#: report_forms/c20/templates/c20_trend_diagram.html:24
+#: report_forms/c21/templates/c21_anon.html:24
+#: report_forms/c21/templates/c21_statistics.html:17
+#: report_forms/c21/templates/c21_trend_diagram.html:24
+#: report_forms/c23/templates/c23_anon.html:24
+#: report_forms/c23/templates/c23_statistics.html:17
+#: report_forms/c23/templates/c23_trend_diagram.html:24
+#: report_forms/c24/templates/c24_anon.html:24
+#: report_forms/c24/templates/c24_statistics.html:17
+#: report_forms/c24/templates/c24_trend_diagram.html:24
+#: report_forms/c31/templates/c31_anon.html:24
+#: report_forms/c31/templates/c31_statistics.html:17
+#: report_forms/c31/templates/c31_trend_diagram.html:24
+#: report_forms/c32/templates/c32_anon.html:24
+#: report_forms/c32/templates/c32_statistics.html:17
+#: report_forms/c32/templates/c32_trend_diagram.html:24
+msgid "Removed:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:30
+#: report_forms/c1/templates/c1_statistics.html:21
+#: report_forms/c1/templates/c1_trend_diagram.html:30
+#: report_forms/c20/templates/c20_anon.html:30
+#: report_forms/c20/templates/c20_statistics.html:21
+#: report_forms/c20/templates/c20_trend_diagram.html:30
+#: report_forms/c21/templates/c21_anon.html:30
+#: report_forms/c21/templates/c21_statistics.html:21
+#: report_forms/c21/templates/c21_trend_diagram.html:30
+#: report_forms/c23/templates/c23_anon.html:30
+#: report_forms/c23/templates/c23_statistics.html:21
+#: report_forms/c23/templates/c23_trend_diagram.html:30
+#: report_forms/c24/templates/c24_anon.html:30
+#: report_forms/c24/templates/c24_statistics.html:21
+#: report_forms/c24/templates/c24_trend_diagram.html:30
+#: report_forms/c31/templates/c31_anon.html:30
+#: report_forms/c31/templates/c31_statistics.html:21
+#: report_forms/c31/templates/c31_trend_diagram.html:30
+#: report_forms/c32/templates/c32_anon.html:30
+#: report_forms/c32/templates/c32_statistics.html:21
+#: report_forms/c32/templates/c32_trend_diagram.html:30
+#: report_forms/c8/templates/c8_anon.html:30
+#: report_forms/c8/templates/c8_statistics.html:13
+#: report_forms/c8/templates/c8_trend_diagram.html:29
+msgid "Counted:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:36
+#: report_forms/c1/templates/c1_trend_diagram.html:36
+msgid "C-section rate:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:42
+#: report_forms/c1/templates/c1_trend_diagram.html:42
+msgid "Rate of planned C-section:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:48
+#: report_forms/c1/templates/c1_trend_diagram.html:48
+msgid "Rate of acute C-section:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:54
+#: report_forms/c1/templates/c1_trend_diagram.html:54
+msgid "Rate of c-section by the mother's age is less than 20:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:60
+#: report_forms/c1/templates/c1_trend_diagram.html:60
+msgid "Rate of c-section by the mother's age is between 20-35:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:66
+#: report_forms/c1/templates/c1_trend_diagram.html:66
+msgid "Rate of c-section by the mother's age is more than 35:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:72
+#: report_forms/c1/templates/c1_trend_diagram.html:72
+msgid ""
+"Rate of acute C-section by the previous number of deliveries first delivery:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:78
+#: report_forms/c1/templates/c1_trend_diagram.html:78
+msgid ""
+"Rate of acute C-section by the previous number of deliveries One or more "
+"previous deliveries:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:106
+#: report_forms/c1/templates/c1_anon.html:157
+#: report_forms/c1/templates/c1_statistics.html:25
+#: report_forms/c1/templates/c1_statistics.html:87
+#: report_forms/c1/templates/c1_trend_diagram.html:144
+msgid "C-section rate"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:112
+#: report_forms/c1/templates/c1_anon.html:159
+#: report_forms/c1/templates/c1_statistics.html:29
+msgid "Rate of planned C-section"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:118
+#: report_forms/c1/templates/c1_anon.html:161
+#: report_forms/c1/templates/c1_statistics.html:33
+msgid "Rate of acute C-section"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:124
+#: report_forms/c1/templates/c1_anon.html:163
+#: report_forms/c1/templates/c1_statistics.html:37
+msgid "Rate of c-section by the mother's age is less than 20"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:130
+#: report_forms/c1/templates/c1_anon.html:165
+#: report_forms/c1/templates/c1_statistics.html:41
+msgid "Rate of c-section by the mother's age is between 20-35"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:136
+#: report_forms/c1/templates/c1_anon.html:167
+#: report_forms/c1/templates/c1_statistics.html:45
+msgid "Rate of c-section by the mother's age is more than 35"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:142
+#: report_forms/c1/templates/c1_anon.html:169
+#: report_forms/c1/templates/c1_statistics.html:49
+msgid ""
+"Rate of acute C-section by the previous number of deliveries first delivery"
+msgstr ""
+
+#: report_forms/c1/templates/c1_anon.html:148
+#: report_forms/c1/templates/c1_anon.html:171
+msgid ""
+"Rate of acute C-section by the previous number of deliveries One or more "
+"previous deliveries"
+msgstr ""
+
+#: report_forms/c1/templates/c1_error.html:8
+#: report_forms/c20/templates/c20_error.html:8
+#: report_forms/c21/templates/c21_error.html:8
+#: report_forms/c23/templates/c23_error.html:8
+#: report_forms/c24/templates/c24_error.html:8
+#: report_forms/c31/templates/c31_error.html:8
+#: report_forms/c32/templates/c32_error.html:8
+#: report_forms/c8/templates/c8_error.html:8
+#: report_forms/c9/templates/c9_error.html:8
+#: report_forms/r1/templates/r1_error.html:8
+msgid "An error has happened!"
+msgstr ""
+
+#: report_forms/c1/templates/c1_error.html:10
+#: report_forms/c31/templates/c31_error.html:10
+#: report_forms/c32/templates/c32_error.html:10
+#: report_forms/c8/templates/c8_error.html:10
+#: report_forms/c9/templates/c9_error.html:10
+#: report_forms/r1/templates/r1_error.html:10
+msgid "The following Patient IDs are already exists:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_error.html:18
+#: report_forms/c31/templates/c31_error.html:18
+#: report_forms/c32/templates/c32_error.html:18
+#: report_forms/c8/templates/c8_error.html:18
+#: report_forms/c9/templates/c9_error.html:18
+#: report_forms/r1/templates/r1_error.html:18
+msgid "The following Patient IDs contains error:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_error.html:26
+#: report_forms/c20/templates/c20_error.html:26
+#: report_forms/c21/templates/c21_error.html:18
+#: report_forms/c23/templates/c23_error.html:18
+#: report_forms/c24/templates/c24_error.html:18
+#: report_forms/c31/templates/c31_error.html:26
+#: report_forms/c32/templates/c32_error.html:26
+#: report_forms/c8/templates/c8_error.html:26
+#: report_forms/c9/templates/c9_error.html:26
+#: report_forms/r1/templates/r1_error.html:26
+msgid "The following Case IDs contains date errors:"
+msgstr ""
+
+#: report_forms/c1/templates/c1_error.html:31
+#: report_forms/c20/templates/c20_error.html:31
+#: report_forms/c21/templates/c21_error.html:23
+#: report_forms/c23/templates/c23_error.html:23
+#: report_forms/c24/templates/c24_error.html:23
+#: report_forms/c31/templates/c31_error.html:31
+#: report_forms/c32/templates/c32_error.html:31
+#: report_forms/c8/templates/c8_error.html:31
+#: report_forms/c9/templates/c9_error.html:31
+#: report_forms/r1/templates/r1_error.html:31
+msgid "Error message"
+msgstr ""
+
+#: report_forms/c1/templates/c1_file_upload.html:8
+#: report_forms/c20/templates/c20_file_upload.html:8
+#: report_forms/c21/templates/c21_file_upload.html:8
+#: report_forms/c23/templates/c23_file_upload.html:8
+#: report_forms/c24/templates/c24_file_upload.html:8
+#: report_forms/c31/templates/c31_file_upload.html:8
+#: report_forms/c32/templates/c32_file_upload.html:8
+#: report_forms/c9/templates/c9_file_upload.html:8
+#: report_forms/r1/templates/r1_file_upload.html:8
+msgid ""
+"Attention! If you would like to upload an earlier data collection, please be "
+"aware that the previous data table and the current template may differ, e.g. "
+"in the order of columns or in the accepted date and time format. Please, use "
+"the current template format!"
+msgstr ""
+
+#: report_forms/c1/templates/c1_file_upload.html:8
+#: report_forms/c20/templates/c20_file_upload.html:8
+#: report_forms/c21/templates/c21_file_upload.html:8
+#: report_forms/c23/templates/c23_file_upload.html:8
+#: report_forms/c24/templates/c24_file_upload.html:8
+#: report_forms/c31/templates/c31_file_upload.html:8
+#: report_forms/c32/templates/c32_file_upload.html:8
+#: report_forms/c9/templates/c9_file_upload.html:8
+#: report_forms/r1/templates/r1_file_upload.html:8
+msgid "For further information, please read the "
+msgstr ""
+
+#: report_forms/c1/templates/c1_file_upload.html:8
+#: report_forms/c20/templates/c20_file_upload.html:8
+#: report_forms/c21/templates/c21_file_upload.html:8
+#: report_forms/c23/templates/c23_file_upload.html:8
+#: report_forms/c24/templates/c24_file_upload.html:8
+#: report_forms/c31/templates/c31_file_upload.html:8
+#: report_forms/c32/templates/c32_file_upload.html:8
+#: report_forms/c9/templates/c9_file_upload.html:8
+#: report_forms/r1/templates/r1_file_upload.html:8
+msgid "User's manual."
+msgstr ""
+
+#: report_forms/c1/templates/c1_file_upload.html:14
+#: report_forms/c1/templates/c1_trend.html:24
+#: report_forms/c13/templates/c13_trend.html:24
+#: report_forms/c20/templates/c20_file_upload.html:14
+#: report_forms/c20/templates/c20_trend.html:24
+#: report_forms/c21/templates/c21_file_upload.html:14
+#: report_forms/c21/templates/c21_trend.html:24
+#: report_forms/c23/templates/c23_file_upload.html:14
+#: report_forms/c23/templates/c23_trend.html:24
+#: report_forms/c24/templates/c24_file_upload.html:14
+#: report_forms/c24/templates/c24_trend.html:24
+#: report_forms/c31/templates/c31_file_upload.html:14
+#: report_forms/c31/templates/c31_trend.html:24
+#: report_forms/c32/templates/c32_file_upload.html:14
+#: report_forms/c32/templates/c32_trend.html:24
+#: report_forms/c8/templates/c8_file_upload.html:14
+#: report_forms/c8/templates/c8_trend.html:24
+#: report_forms/c9/templates/c9_file_upload.html:14
+#: report_forms/c9/templates/c9_trend.html:24
+#: report_forms/r1/templates/r1_file_upload.html:14
+#: report_forms/r1/templates/r1_trend.html:24
+#: report_forms/templates/file_upload.html:12
+#: report_forms/templates/form.html:14
+msgid "Submit"
+msgstr ""
+
+#: report_forms/c1/templates/c1_filled_out.html:8
+#: report_forms/c13/templates/c13_filled_out.html:8
+#: report_forms/c20/templates/c20_filled_out.html:8
+#: report_forms/c21/templates/c21_filled_out.html:8
+#: report_forms/c23/templates/c23_filled_out.html:8
+#: report_forms/c24/templates/c24_filled_out.html:8
+#: report_forms/c31/templates/c31_filled_out.html:8
+#: report_forms/c32/templates/c32_filled_out.html:8
+#: report_forms/c8/templates/c8_filled_out.html:8
+#: report_forms/c9/templates/c9_filled_out.html:8
+#: report_forms/r1/templates/r1_filled_out.html:9
+msgid "Congratulations for filling out the form!"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:2
+#: report_forms/templates/file_upload.html:3
+#: report_forms/templates/list_of_report_forms.html:19
+msgid "C1. C-section rate"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:6
+#: report_forms/c13/templates/c13_header.html:6
+#: report_forms/c20/templates/c20_header.html:6
+#: report_forms/c21/templates/c21_header.html:6
+#: report_forms/c23/templates/c23_header.html:6
+#: report_forms/c24/templates/c24_header.html:6
+#: report_forms/c31/templates/c31_header.html:6
+#: report_forms/c32/templates/c32_header.html:6
+#: report_forms/c8/templates/c8_header.html:6
+#: report_forms/c9/templates/c9_header.html:6
+#: report_forms/r1/templates/r1_header.html:6 templates/base.html:34
+msgid "Report Forms"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:7
+#: report_forms/c13/templates/c13_header.html:7
+#: report_forms/c20/templates/c20_header.html:7
+#: report_forms/c21/templates/c21_header.html:7
+#: report_forms/c23/templates/c23_header.html:7
+#: report_forms/c24/templates/c24_header.html:7
+#: report_forms/c31/templates/c31_header.html:7
+#: report_forms/c32/templates/c32_header.html:7
+#: report_forms/c8/templates/c8_header.html:7
+#: report_forms/r1/templates/r1_header.html:7
+#: report_forms/templates/list_of_report_forms.html:7
+#: report_forms/templates/list_of_report_forms.html:20
+#: report_forms/templates/list_of_report_forms.html:33
+#: report_forms/templates/list_of_report_forms.html:46
+#: report_forms/templates/list_of_report_forms.html:59
+#: report_forms/templates/list_of_report_forms.html:72
+#: report_forms/templates/list_of_report_forms.html:85
+#: report_forms/templates/list_of_report_forms.html:98
+#: report_forms/templates/list_of_report_forms.html:124
+#: report_forms/templates/list_of_report_forms.html:137
+#: report_forms/templates/list_of_report_forms.html:150
+msgid "Form"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:8
+#: report_forms/c13/templates/c13_header.html:8
+#: report_forms/c20/templates/c20_header.html:8
+#: report_forms/c21/templates/c21_header.html:8
+#: report_forms/c23/templates/c23_header.html:8
+#: report_forms/c24/templates/c24_header.html:8
+#: report_forms/c31/templates/c31_header.html:8
+#: report_forms/c32/templates/c32_header.html:8
+#: report_forms/c8/templates/c8_header.html:8
+#: report_forms/c9/templates/c9_header.html:8
+#: report_forms/r1/templates/r1_header.html:8
+#: report_forms/templates/list_of_report_forms.html:8
+#: report_forms/templates/list_of_report_forms.html:21
+#: report_forms/templates/list_of_report_forms.html:34
+#: report_forms/templates/list_of_report_forms.html:47
+#: report_forms/templates/list_of_report_forms.html:60
+#: report_forms/templates/list_of_report_forms.html:73
+#: report_forms/templates/list_of_report_forms.html:86
+#: report_forms/templates/list_of_report_forms.html:99
+#: report_forms/templates/list_of_report_forms.html:112
+#: report_forms/templates/list_of_report_forms.html:125
+#: report_forms/templates/list_of_report_forms.html:138
+#: report_forms/templates/list_of_report_forms.html:151
+msgid "Statistics"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:9
+#: report_forms/c13/templates/c13_header.html:9
+#: report_forms/c20/templates/c20_header.html:9
+#: report_forms/c21/templates/c21_header.html:9
+#: report_forms/c23/templates/c23_header.html:9
+#: report_forms/c24/templates/c24_header.html:9
+#: report_forms/c31/templates/c31_header.html:9
+#: report_forms/c32/templates/c32_header.html:9
+#: report_forms/c8/templates/c8_header.html:9
+#: report_forms/c9/templates/c9_header.html:9
+#: report_forms/templates/list_of_report_forms.html:9
+#: report_forms/templates/list_of_report_forms.html:22
+#: report_forms/templates/list_of_report_forms.html:35
+#: report_forms/templates/list_of_report_forms.html:48
+#: report_forms/templates/list_of_report_forms.html:61
+#: report_forms/templates/list_of_report_forms.html:74
+#: report_forms/templates/list_of_report_forms.html:87
+#: report_forms/templates/list_of_report_forms.html:100
+#: report_forms/templates/list_of_report_forms.html:113
+#: report_forms/templates/list_of_report_forms.html:126
+#: report_forms/templates/list_of_report_forms.html:139
+msgid "Trend"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:10
+#: report_forms/c13/templates/c13_header.html:10
+#: report_forms/c20/templates/c20_header.html:10
+#: report_forms/c21/templates/c21_header.html:10
+#: report_forms/c23/templates/c23_header.html:10
+#: report_forms/c24/templates/c24_header.html:10
+#: report_forms/c31/templates/c31_header.html:10
+#: report_forms/c32/templates/c32_header.html:10
+#: report_forms/c8/templates/c8_header.html:10
+#: report_forms/c9/templates/c9_header.html:10
+#: report_forms/r1/templates/r1_header.html:10
+#: report_forms/templates/list_of_report_forms.html:10
+#: report_forms/templates/list_of_report_forms.html:23
+#: report_forms/templates/list_of_report_forms.html:36
+#: report_forms/templates/list_of_report_forms.html:49
+#: report_forms/templates/list_of_report_forms.html:62
+#: report_forms/templates/list_of_report_forms.html:75
+#: report_forms/templates/list_of_report_forms.html:88
+#: report_forms/templates/list_of_report_forms.html:101
+#: report_forms/templates/list_of_report_forms.html:114
+#: report_forms/templates/list_of_report_forms.html:127
+#: report_forms/templates/list_of_report_forms.html:140
+#: report_forms/templates/list_of_report_forms.html:153
+msgid "Benchmarking"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:11
+#: report_forms/c13/templates/c13_header.html:11
+#: report_forms/c20/templates/c20_header.html:11
+#: report_forms/c21/templates/c21_header.html:11
+#: report_forms/c23/templates/c23_header.html:11
+#: report_forms/c24/templates/c24_header.html:11
+#: report_forms/c31/templates/c31_header.html:11
+#: report_forms/c32/templates/c32_header.html:11
+#: report_forms/c8/templates/c8_header.html:11
+#: report_forms/c9/templates/c9_header.html:11
+#: report_forms/r1/templates/r1_header.html:11
+#: report_forms/templates/list_of_report_forms.html:11
+#: report_forms/templates/list_of_report_forms.html:24
+#: report_forms/templates/list_of_report_forms.html:37
+#: report_forms/templates/list_of_report_forms.html:50
+#: report_forms/templates/list_of_report_forms.html:63
+#: report_forms/templates/list_of_report_forms.html:76
+#: report_forms/templates/list_of_report_forms.html:89
+#: report_forms/templates/list_of_report_forms.html:102
+#: report_forms/templates/list_of_report_forms.html:115
+#: report_forms/templates/list_of_report_forms.html:128
+#: report_forms/templates/list_of_report_forms.html:141
+#: report_forms/templates/list_of_report_forms.html:154
+msgid "Import"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:12
+#: report_forms/c13/templates/c13_header.html:12
+#: report_forms/c20/templates/c20_header.html:12
+#: report_forms/c21/templates/c21_header.html:12
+#: report_forms/c23/templates/c23_header.html:12
+#: report_forms/c24/templates/c24_header.html:12
+#: report_forms/c31/templates/c31_header.html:12
+#: report_forms/c32/templates/c32_header.html:12
+#: report_forms/c8/templates/c8_header.html:12
+#: report_forms/r1/templates/r1_header.html:12
+#: report_forms/templates/list_of_report_forms.html:12
+#: report_forms/templates/list_of_report_forms.html:25
+#: report_forms/templates/list_of_report_forms.html:38
+#: report_forms/templates/list_of_report_forms.html:51
+#: report_forms/templates/list_of_report_forms.html:64
+#: report_forms/templates/list_of_report_forms.html:77
+#: report_forms/templates/list_of_report_forms.html:90
+#: report_forms/templates/list_of_report_forms.html:103
+#: report_forms/templates/list_of_report_forms.html:129
+#: report_forms/templates/list_of_report_forms.html:142
+#: report_forms/templates/list_of_report_forms.html:155
+msgid "Export"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:13
+#: report_forms/c13/templates/c13_header.html:13
+#: report_forms/c20/templates/c20_header.html:13
+#: report_forms/c21/templates/c21_header.html:13
+#: report_forms/c23/templates/c23_header.html:13
+#: report_forms/c24/templates/c24_header.html:13
+#: report_forms/c31/templates/c31_header.html:13
+#: report_forms/c32/templates/c32_header.html:13
+#: report_forms/c8/templates/c8_header.html:13
+#: report_forms/r1/templates/r1_header.html:13
+#: report_forms/templates/list_of_report_forms.html:13
+#: report_forms/templates/list_of_report_forms.html:26
+#: report_forms/templates/list_of_report_forms.html:39
+#: report_forms/templates/list_of_report_forms.html:52
+#: report_forms/templates/list_of_report_forms.html:65
+#: report_forms/templates/list_of_report_forms.html:78
+#: report_forms/templates/list_of_report_forms.html:91
+#: report_forms/templates/list_of_report_forms.html:104
+#: report_forms/templates/list_of_report_forms.html:130
+#: report_forms/templates/list_of_report_forms.html:143
+#: report_forms/templates/list_of_report_forms.html:156
+msgid "Template"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:14
+#: report_forms/c13/templates/c13_header.html:14
+#: report_forms/c20/templates/c20_header.html:14
+#: report_forms/c21/templates/c21_header.html:14
+#: report_forms/c23/templates/c23_header.html:14
+#: report_forms/c24/templates/c24_header.html:14
+#: report_forms/c31/templates/c31_header.html:14
+#: report_forms/c32/templates/c32_header.html:14
+#: report_forms/c8/templates/c8_header.html:14
+#: report_forms/r1/templates/r1_header.html:14
+#: report_forms/templates/list_of_report_forms.html:14
+#: report_forms/templates/list_of_report_forms.html:27
+#: report_forms/templates/list_of_report_forms.html:40
+#: report_forms/templates/list_of_report_forms.html:53
+#: report_forms/templates/list_of_report_forms.html:66
+#: report_forms/templates/list_of_report_forms.html:79
+#: report_forms/templates/list_of_report_forms.html:92
+#: report_forms/templates/list_of_report_forms.html:105
+#: report_forms/templates/list_of_report_forms.html:131
+#: report_forms/templates/list_of_report_forms.html:144
+#: report_forms/templates/list_of_report_forms.html:157
+msgid "Data collecting sheet"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:15
+#: report_forms/c13/templates/c13_header.html:15
+#: report_forms/c20/templates/c20_header.html:15
+#: report_forms/c21/templates/c21_header.html:15
+#: report_forms/c23/templates/c23_header.html:15
+#: report_forms/c24/templates/c24_header.html:15
+#: report_forms/c31/templates/c31_header.html:15
+#: report_forms/c32/templates/c32_header.html:15
+#: report_forms/c8/templates/c8_header.html:15
+#: report_forms/c9/templates/c9_header.html:15
+#: report_forms/r1/templates/r1_header.html:15
+#: report_forms/templates/list_of_report_forms.html:15
+#: report_forms/templates/list_of_report_forms.html:28
+#: report_forms/templates/list_of_report_forms.html:41
+#: report_forms/templates/list_of_report_forms.html:54
+#: report_forms/templates/list_of_report_forms.html:67
+#: report_forms/templates/list_of_report_forms.html:80
+#: report_forms/templates/list_of_report_forms.html:93
+#: report_forms/templates/list_of_report_forms.html:106
+#: report_forms/templates/list_of_report_forms.html:119
+#: report_forms/templates/list_of_report_forms.html:132
+#: report_forms/templates/list_of_report_forms.html:145
+#: report_forms/templates/list_of_report_forms.html:158
+msgid "Data reporting tables"
+msgstr ""
+
+#: report_forms/c1/templates/c1_header.html:16
+#: report_forms/c13/templates/c13_header.html:16
+#: report_forms/c20/templates/c20_header.html:16
+#: report_forms/c21/templates/c21_header.html:16
+#: report_forms/c23/templates/c23_header.html:16
+#: report_forms/c24/templates/c24_header.html:16
+#: report_forms/c31/templates/c31_header.html:16
+#: report_forms/c32/templates/c32_header.html:16
+#: report_forms/c8/templates/c8_header.html:16
+#: report_forms/c9/templates/c9_header.html:16
+#: report_forms/templates/list_of_report_forms.html:16
+#: report_forms/templates/list_of_report_forms.html:29
+#: report_forms/templates/list_of_report_forms.html:42
+#: report_forms/templates/list_of_report_forms.html:55
+#: report_forms/templates/list_of_report_forms.html:68
+#: report_forms/templates/list_of_report_forms.html:81
+#: report_forms/templates/list_of_report_forms.html:94
+#: report_forms/templates/list_of_report_forms.html:107
+#: report_forms/templates/list_of_report_forms.html:120
+#: report_forms/templates/list_of_report_forms.html:133
+#: report_forms/templates/list_of_report_forms.html:146
+msgid "Short indicator description"
+msgstr ""
+
+#: report_forms/c1/templates/c1_statistics.html:9
+#: report_forms/c20/templates/c20_statistics.html:9
+#: report_forms/c21/templates/c21_statistics.html:9
+#: report_forms/c23/templates/c23_statistics.html:9
+#: report_forms/c24/templates/c24_statistics.html:9
+msgid "Sorry, you have less than 30 cases."
+msgstr ""
+
+#: report_forms/c1/templates/c1_statistics.html:53
+msgid ""
+"Rate of acute C-section by the previous number of deliveries first delivery "
+"one or more previous deliveries"
+msgstr ""
+
+#: report_forms/c1/templates/c1_statistics.html:74
+#: report_forms/c1/templates/c1_trend_diagram.html:100
+#: report_forms/c1/templates/c1_trend_diagram.html:105
+#: report_forms/c1/templates/c1_trend_diagram.html:110
+msgid "Total"
+msgstr ""
+
+#: report_forms/c1/templates/c1_statistics.html:79
+#: report_forms/c1/templates/c1_trend_diagram.html:115
+#: report_forms/c1/templates/c1_trend_diagram.html:120
+#: report_forms/c1/templates/c1_trend_diagram.html:125
+msgid "Mother younger than 20"
+msgstr ""
+
+#: report_forms/c1/templates/c1_statistics.html:80
+#: report_forms/c1/templates/c1_trend_diagram.html:116
+#: report_forms/c1/templates/c1_trend_diagram.html:121
+#: report_forms/c1/templates/c1_trend_diagram.html:126
+msgid "Mother between 20 and 35"
+msgstr ""
+
+#: report_forms/c1/templates/c1_statistics.html:81
+#: report_forms/c1/templates/c1_trend_diagram.html:117
+#: report_forms/c1/templates/c1_trend_diagram.html:122
+#: report_forms/c1/templates/c1_trend_diagram.html:127
+msgid "Mother older than 35"
+msgstr ""
+
+#: report_forms/c1/templates/c1_statistics.html:84
+#: report_forms/c1/templates/c1_trend_diagram.html:130
+#: report_forms/c1/templates/c1_trend_diagram.html:134
+#: report_forms/c1/templates/c1_trend_diagram.html:138
+msgid "First delivery"
+msgstr ""
+
+#: report_forms/c1/templates/c1_statistics.html:85
+#: report_forms/c1/templates/c1_trend_diagram.html:131
+#: report_forms/c1/templates/c1_trend_diagram.html:135
+#: report_forms/c1/templates/c1_trend_diagram.html:139
+msgid "One or more previous deliveries"
+msgstr ""
+
+#: report_forms/c1/templates/c1_statistics.html:89
+#: report_forms/c1/templates/c1_trend_diagram.html:146
+msgid "Rate of C-section by the mother’s age"
+msgstr ""
+
+#: report_forms/c1/templates/c1_statistics.html:91
+#: report_forms/c1/templates/c1_trend_diagram.html:148
+msgid "Rate of C-section by the previous number of deliveries"
+msgstr ""
+
+#: report_forms/c13/forms.py:15 report_forms/c13/forms.py:47
+#: report_forms/c13/models.py:19 report_forms/c13/models.py:23
+#: report_forms/c13/views.py:66 report_forms/c13/views.py:79
+#: report_forms/c13/templates/c13_anon.html:10
+#: report_forms/c13/templates/c13_statistics.html:10
+#: report_forms/c13/templates/c13_trend_diagram.html:10
+msgid "Job"
+msgstr ""
+
+#: report_forms/c13/forms.py:25 report_forms/c13/forms.py:29
+#: report_forms/c13/forms.py:33 report_forms/c13/forms.py:37
+#: report_forms/c13/forms.py:57 report_forms/c13/forms.py:61
+#: report_forms/c13/forms.py:65 report_forms/c13/forms.py:69
+msgid "Can't be zero!"
+msgstr ""
+
+#: report_forms/c13/forms.py:83 report_forms/c13/forms.py:84
+#: report_forms/c13/forms.py:85 report_forms/c13/forms.py:88
+msgid "(yyyy)"
+msgstr ""
+
+#: report_forms/c13/models.py:12
+msgid "Job name in english"
+msgstr ""
+
+#: report_forms/c13/models.py:13
+msgid "Job name in hungarian"
+msgstr ""
+
+#: report_forms/c13/models.py:20
+msgid "Jobs"
+msgstr ""
+
+#: report_forms/c13/models.py:24 report_forms/c13/views.py:67
+#: report_forms/c13/views.py:80
+msgid "Observed year"
+msgstr ""
+
+#: report_forms/c13/models.py:25 report_forms/c13/views.py:68
+#: report_forms/c13/views.py:81
+msgid "Number of needle stick injuries in the observed year"
+msgstr ""
+
+#: report_forms/c13/models.py:26 report_forms/c13/views.py:69
+#: report_forms/c13/views.py:82
+msgid ""
+"Total number of hospital staff at the beginning of the year (1st January)"
+msgstr ""
+
+#: report_forms/c13/models.py:27 report_forms/c13/views.py:70
+#: report_forms/c13/views.py:83
+msgid "Total number of hospital staff at the end of the year (31st December)"
+msgstr ""
+
+#: report_forms/c13/models.py:28 report_forms/c13/views.py:71
+#: report_forms/c13/views.py:84
+msgid ""
+"Total number of contracted working hours for the data at the beginning of "
+"the year/day (employee+ entrepreneur)"
+msgstr ""
+
+#: report_forms/c13/models.py:29 report_forms/c13/views.py:72
+#: report_forms/c13/views.py:85
+msgid ""
+"Total number of contracted working hours for the data at the end of the "
+"year /day(employee+ entrepreneur)"
+msgstr ""
+
+#: report_forms/c13/models.py:37
+msgid "Needle stick injury"
+msgstr ""
+
+#: report_forms/c13/models.py:38
+msgid "Needle stick injuries"
+msgstr ""
+
+#: report_forms/c13/templates/c13_anon.html:11
+#: report_forms/c13/templates/c13_anon.html:224
+#: report_forms/c13/templates/c13_statistics.html:11
+#: report_forms/c13/templates/c13_statistics.html:50
+#: report_forms/c13/templates/c13_trend_diagram.html:11
+#: report_forms/c13/templates/c13_trend_diagram.html:86
+msgid "Number of needle stick injuries to 100 workers (average number)"
+msgstr ""
+
+#: report_forms/c13/templates/c13_anon.html:12
+#: report_forms/c13/templates/c13_anon.html:226
+#: report_forms/c13/templates/c13_statistics.html:12
+#: report_forms/c13/templates/c13_statistics.html:54
+#: report_forms/c13/templates/c13_trend_diagram.html:12
+#: report_forms/c13/templates/c13_trend_diagram.html:90
+msgid ""
+"Number of needle stick injuries to 100 workers (FTE = full time equivalent)"
+msgstr ""
+
+#: report_forms/c13/templates/c13_header.html:2
+#: report_forms/templates/list_of_report_forms.html:123
+msgid "C.13. Needle stick injuries"
+msgstr ""
+
+#: report_forms/c20/forms.py:8 report_forms/c20/models.py:23
+#: report_forms/c20/views.py:141 report_forms/c20/views.py:160
+#: report_forms/r1/forms.py:19 report_forms/r1/models.py:51
+#: report_forms/r1/views.py:392 report_forms/r1/views.py:470
+msgid "Date of discharge"
+msgstr ""
+
+#: report_forms/c20/forms.py:17 report_forms/c20/forms.py:18
+#: report_forms/c20/views.py:63
+msgid "Can't born after discharge!"
+msgstr ""
+
+#: report_forms/c20/forms.py:23 report_forms/c20/views.py:65
+msgid ""
+"Aspirin contradiction should be yes, since patient is allergic to aspirin!"
+msgstr ""
+
+#: report_forms/c20/models.py:12 report_forms/c20/views.py:130
+#: report_forms/c20/views.py:149 report_forms/c21/models.py:25
+#: report_forms/c21/views.py:159 report_forms/c21/views.py:192
+#: report_forms/c23/models.py:26 report_forms/c23/views.py:166
+#: report_forms/c23/views.py:199 report_forms/c24/models.py:25
+#: report_forms/c24/views.py:159 report_forms/c24/views.py:192
+msgid "Hospital registration number"
+msgstr ""
+
+#: report_forms/c20/models.py:14 report_forms/c20/views.py:132
+#: report_forms/c20/views.py:151
+msgid "Principal diagnosis code (ICD-10)"
+msgstr ""
+
+#: report_forms/c20/models.py:15 report_forms/c20/views.py:133
+#: report_forms/c20/views.py:152
+msgid "Type of unit"
+msgstr ""
+
+#: report_forms/c20/models.py:16 report_forms/c20/views.py:134
+#: report_forms/c20/views.py:153
+msgid "Patient allergic to aspirin?"
+msgstr ""
+
+#: report_forms/c20/models.py:17 report_forms/c20/views.py:135
+#: report_forms/c20/views.py:154
+msgid "Is there a known contraindication or intolerance of aspirin?"
+msgstr ""
+
+#: report_forms/c20/models.py:18 report_forms/c20/views.py:136
+#: report_forms/c20/views.py:155
+msgid "Type of discharge"
+msgstr ""
+
+#: report_forms/c20/models.py:19 report_forms/c20/views.py:137
+#: report_forms/c20/views.py:156 report_forms/r1/models.py:15
+#: report_forms/r1/views.py:356 report_forms/r1/views.py:434
+msgid "If other"
+msgstr ""
+
+#: report_forms/c20/models.py:20 report_forms/c20/views.py:138
+#: report_forms/c20/views.py:157
+msgid ""
+"Is there a known objection/refusal to take aspirin-containing medication?"
+msgstr ""
+
+#: report_forms/c20/models.py:21 report_forms/c20/views.py:139
+#: report_forms/c20/views.py:158
+msgid "Was patient prescribed at discharge to take aspirin?"
+msgstr ""
+
+#: report_forms/c20/models.py:22 report_forms/c20/views.py:140
+#: report_forms/c20/views.py:159
+msgid ""
+"Was patient prescribed to take other (non-aspirin-containing) platelet "
+"aggregation inhibitor therapy?"
+msgstr ""
+
+#: report_forms/c20/models.py:31
+msgid "AMI patient prescribed aspirin at discharge"
+msgstr ""
+
+#: report_forms/c20/models.py:32
+msgid "AMI patients prescribed aspirin at discharge"
+msgstr ""
+
+#: report_forms/c20/views.py:71
+msgid "Diagnosis code not acceptable!"
+msgstr ""
+
+#: report_forms/c20/templates/c20_anon.html:36
+#: report_forms/c20/templates/c20_anon.html:72
+#: report_forms/c20/templates/c20_anon.html:85
+#: report_forms/c20/templates/c20_statistics.html:25
+#: report_forms/c20/templates/c20_trend_diagram.html:36
+msgid "Patient prescribed at discharge to take aspirin"
+msgstr ""
+
+#: report_forms/c20/templates/c20_anon.html:42
+#: report_forms/c20/templates/c20_anon.html:75
+#: report_forms/c20/templates/c20_anon.html:87
+#: report_forms/c20/templates/c20_statistics.html:29
+#: report_forms/c20/templates/c20_trend_diagram.html:42
+msgid ""
+"Patient prescribed to take other (non-aspirin-containing) platelet "
+"aggregation inhibitor therapy"
+msgstr ""
+
+#: report_forms/c20/templates/c20_anon.html:48
+#: report_forms/c20/templates/c20_anon.html:78
+#: report_forms/c20/templates/c20_anon.html:89
+#: report_forms/c20/templates/c20_statistics.html:33
+#: report_forms/c20/templates/c20_trend_diagram.html:48
+msgid ""
+"Patient prescribed to take aspirin or other (non-aspirin-containing) "
+"platelet aggregation inhibitor therapy"
+msgstr ""
+
+#: report_forms/c20/templates/c20_error.html:10
+msgid "The following Case IDs are already exists:"
+msgstr ""
+
+#: report_forms/c20/templates/c20_error.html:18
+#: report_forms/c21/templates/c21_error.html:10
+#: report_forms/c23/templates/c23_error.html:10
+#: report_forms/c24/templates/c24_error.html:10
+msgid "The following Case IDs contains error:"
+msgstr ""
+
+#: report_forms/c20/templates/c20_header.html:2
+#: report_forms/templates/list_of_report_forms.html:136
+msgid "C.20. AMI patients prescribed aspirin at discharge"
+msgstr ""
+
+#: report_forms/c20/templates/c20_statistics.html:52
+#: report_forms/c20/templates/c20_trend_diagram.html:69
+#: report_forms/c20/templates/c20_trend_diagram.html:74
+#: report_forms/c20/templates/c20_trend_diagram.html:79
+msgid "Aspirin"
+msgstr ""
+
+#: report_forms/c20/templates/c20_statistics.html:53
+#: report_forms/c20/templates/c20_trend_diagram.html:70
+#: report_forms/c20/templates/c20_trend_diagram.html:75
+#: report_forms/c20/templates/c20_trend_diagram.html:80
+msgid "Other platelet aggregation inibitor th"
+msgstr ""
+
+#: report_forms/c20/templates/c20_statistics.html:54
+#: report_forms/c20/templates/c20_trend_diagram.html:71
+#: report_forms/c20/templates/c20_trend_diagram.html:76
+#: report_forms/c20/templates/c20_trend_diagram.html:81
+msgid "Aspirin or other platelet aggregation th"
+msgstr ""
+
+#: report_forms/c20/templates/c20_statistics.html:57
+#: report_forms/c20/templates/c20_trend_diagram.html:86
+msgid ""
+"Rate of patients prescribed to take platelet aggregation inhibitor therapy "
+"medication"
+msgstr ""
+
+#: report_forms/c21/forms.py:7 report_forms/c21/models.py:33
+#: report_forms/c21/views.py:167 report_forms/c21/views.py:200
+#: report_forms/c23/forms.py:8 report_forms/c23/models.py:34
+#: report_forms/c23/views.py:174 report_forms/c23/views.py:207
+#: report_forms/c24/forms.py:8 report_forms/c24/models.py:33
+#: report_forms/c24/views.py:167 report_forms/c24/views.py:200
+msgid "In case of allergy to penicillin, scale of severity?"
+msgstr ""
+
+#: report_forms/c21/forms.py:8 report_forms/c21/models.py:42
+#: report_forms/c21/views.py:177 report_forms/c21/views.py:210
+#: report_forms/c23/forms.py:9 report_forms/c23/models.py:43
+#: report_forms/c23/views.py:184 report_forms/c23/views.py:217
+#: report_forms/c24/forms.py:9 report_forms/c24/models.py:42
+#: report_forms/c24/views.py:177 report_forms/c24/views.py:210
+msgid "Route of administration of first dose"
+msgstr ""
+
+#: report_forms/c21/forms.py:10 report_forms/c21/models.py:46
+#: report_forms/c23/forms.py:11 report_forms/c23/models.py:47
+#: report_forms/c24/forms.py:11 report_forms/c24/models.py:46
+msgid "Date and time of surgical wound closure"
+msgstr ""
+
+#: report_forms/c21/forms.py:11 report_forms/c21/models.py:43
+#: report_forms/c23/forms.py:12 report_forms/c23/models.py:44
+#: report_forms/c24/forms.py:12 report_forms/c24/models.py:43
+msgid "Date and time of first dose"
+msgstr ""
+
+#: report_forms/c21/forms.py:12 report_forms/c21/models.py:36
+#: report_forms/c23/forms.py:13 report_forms/c23/models.py:37
+#: report_forms/c24/forms.py:13 report_forms/c24/models.py:36
+msgid "Date and time of surgical incision"
+msgstr ""
+
+#: report_forms/c21/forms.py:13 report_forms/c21/models.py:45
+#: report_forms/c23/forms.py:14 report_forms/c23/models.py:46
+#: report_forms/c24/forms.py:14 report_forms/c24/models.py:45
+msgid "Date and time of last dose"
+msgstr ""
+
+#: report_forms/c21/forms.py:16 report_forms/c21/models.py:27
+#: report_forms/c23/forms.py:17 report_forms/c23/models.py:28
+#: report_forms/c24/forms.py:17 report_forms/c24/models.py:27
+msgid "Weight of patient (kg)"
+msgstr ""
+
+#: report_forms/c21/forms.py:18 report_forms/c21/models.py:39
+#: report_forms/c23/forms.py:19 report_forms/c23/models.py:40
+#: report_forms/c24/forms.py:19 report_forms/c24/models.py:39
+msgid "First dose of first antibiotic drug"
+msgstr ""
+
+#: report_forms/c21/forms.py:19 report_forms/c23/forms.py:20
+#: report_forms/c24/forms.py:20
+msgid "Second dose of first antibiotic drug"
+msgstr ""
+
+#: report_forms/c21/forms.py:20 report_forms/c21/models.py:44
+#: report_forms/c21/views.py:180 report_forms/c21/views.py:213
+#: report_forms/c23/forms.py:21 report_forms/c23/models.py:45
+#: report_forms/c23/views.py:187 report_forms/c23/views.py:220
+#: report_forms/c24/forms.py:21 report_forms/c24/models.py:44
+#: report_forms/c24/views.py:180 report_forms/c24/views.py:213
+msgid "Total doses in 24 hours"
+msgstr ""
+
+#: report_forms/c21/forms.py:30 report_forms/c21/forms.py:31
+#: report_forms/c21/views.py:82 report_forms/c23/forms.py:31
+#: report_forms/c23/forms.py:32 report_forms/c23/views.py:83
+#: report_forms/c24/forms.py:31 report_forms/c24/forms.py:32
+#: report_forms/c24/views.py:82
+msgid "Date of last dose happened before date of first dose!"
+msgstr ""
+
+#: report_forms/c21/forms.py:36 report_forms/c21/forms.py:37
+#: report_forms/c21/views.py:84 report_forms/c23/forms.py:37
+#: report_forms/c23/forms.py:38 report_forms/c23/views.py:85
+#: report_forms/c24/forms.py:37 report_forms/c24/forms.py:38
+#: report_forms/c24/views.py:84
+msgid "Can't close the wound before the incision!"
+msgstr ""
+
+#: report_forms/c21/models.py:11 report_forms/c23/models.py:12
+#: report_forms/c24/models.py:11
+msgid "Name"
+msgstr ""
+
+#: report_forms/c21/models.py:12 report_forms/c23/models.py:13
+#: report_forms/c24/models.py:12
+msgid "Dosage"
+msgstr ""
+
+#: report_forms/c21/models.py:13 report_forms/c23/models.py:14
+#: report_forms/c24/models.py:13
+msgid "Dosage under 60kg"
+msgstr ""
+
+#: report_forms/c21/models.py:14 report_forms/c23/models.py:15
+#: report_forms/c24/models.py:14
+msgid "Dosage above 100kg"
+msgstr ""
+
+#: report_forms/c21/models.py:20 report_forms/c23/models.py:21
+#: report_forms/c24/models.py:20
+msgid "Medicine"
+msgstr ""
+
+#: report_forms/c21/models.py:21 report_forms/c23/models.py:22
+#: report_forms/c24/models.py:21
+msgid "Medicines"
+msgstr ""
+
+#: report_forms/c21/models.py:28 report_forms/c21/views.py:162
+#: report_forms/c21/views.py:195 report_forms/c24/models.py:28
+#: report_forms/c24/views.py:162 report_forms/c24/views.py:195
+msgid "Principal diagnosis code (ICD-10 or DRG)"
+msgstr ""
+
+#: report_forms/c21/models.py:29 report_forms/c21/views.py:163
+#: report_forms/c21/views.py:196 report_forms/c23/models.py:30
+#: report_forms/c23/views.py:170 report_forms/c23/views.py:203
+#: report_forms/c24/models.py:29 report_forms/c24/views.py:163
+#: report_forms/c24/views.py:196
+msgid "Principal procedure code"
+msgstr ""
+
+#: report_forms/c21/models.py:30 report_forms/c21/views.py:164
+#: report_forms/c21/views.py:197 report_forms/c23/models.py:31
+#: report_forms/c23/views.py:171 report_forms/c23/views.py:204
+#: report_forms/c24/models.py:30 report_forms/c24/views.py:164
+#: report_forms/c24/views.py:197
+msgid "Is the surgical procedure planned?"
+msgstr ""
+
+#: report_forms/c21/models.py:31 report_forms/c21/views.py:165
+#: report_forms/c21/views.py:198 report_forms/c23/models.py:32
+#: report_forms/c23/views.py:172 report_forms/c23/views.py:205
+#: report_forms/c24/models.py:31 report_forms/c24/views.py:165
+#: report_forms/c24/views.py:198
+msgid "Is patient allergic to any antibiotics suggested in the protocol?"
+msgstr ""
+
+#: report_forms/c21/models.py:32 report_forms/c21/views.py:166
+#: report_forms/c21/views.py:199 report_forms/c23/models.py:33
+#: report_forms/c23/views.py:173 report_forms/c23/views.py:206
+#: report_forms/c24/models.py:32 report_forms/c24/views.py:166
+#: report_forms/c24/views.py:199
+msgid "Generic name of antibiotic drug"
+msgstr ""
+
+#: report_forms/c21/models.py:34 report_forms/c21/views.py:168
+#: report_forms/c21/views.py:201 report_forms/c23/models.py:35
+#: report_forms/c23/views.py:175 report_forms/c23/views.py:208
+#: report_forms/c24/models.py:34 report_forms/c24/views.py:168
+#: report_forms/c24/views.py:201
+msgid "Has patient preoperative infection?"
+msgstr ""
+
+#: report_forms/c21/models.py:35 report_forms/c21/views.py:169
+#: report_forms/c21/views.py:202 report_forms/c23/models.py:36
+#: report_forms/c23/views.py:176 report_forms/c23/views.py:209
+#: report_forms/c24/models.py:35 report_forms/c24/views.py:169
+#: report_forms/c24/views.py:202
+msgid "Type of infection"
+msgstr ""
+
+#: report_forms/c21/models.py:37 report_forms/c21/views.py:172
+#: report_forms/c21/views.py:205 report_forms/c23/models.py:38
+#: report_forms/c23/views.py:179 report_forms/c23/views.py:212
+#: report_forms/c24/models.py:37 report_forms/c24/views.py:172
+#: report_forms/c24/views.py:205
+msgid "Prophylactic antibiotic given?"
+msgstr ""
+
+#: report_forms/c21/models.py:38 report_forms/c23/models.py:39
+#: report_forms/c24/models.py:38
+msgid "Generic name first used antibiotic drug"
+msgstr ""
+
+#: report_forms/c21/models.py:40 report_forms/c23/models.py:41
+#: report_forms/c24/models.py:40
+msgid "Generic name second used antibiotic drug"
+msgstr ""
+
+#: report_forms/c21/models.py:41 report_forms/c23/models.py:42
+#: report_forms/c24/models.py:41
+msgid "First dose of second antibiotic drug"
+msgstr ""
+
+#: report_forms/c21/models.py:54
+msgid "Planned surgery for colorectal cancer"
+msgstr ""
+
+#: report_forms/c21/models.py:55
+msgid "Planned surgery for colorectal cancers"
+msgstr ""
+
+#: report_forms/c21/views.py:65 report_forms/c23/views.py:66
+#: report_forms/c24/views.py:65
+msgid ""
+"You probably forgot to delete the first row of the csv file, please recheck."
+msgstr ""
+
+#: report_forms/c21/views.py:74 report_forms/c21/views.py:76
+#: report_forms/c21/views.py:78 report_forms/c21/views.py:80
+#: report_forms/c23/views.py:75 report_forms/c23/views.py:77
+#: report_forms/c23/views.py:79 report_forms/c23/views.py:81
+#: report_forms/c24/views.py:74 report_forms/c24/views.py:76
+#: report_forms/c24/views.py:78 report_forms/c24/views.py:80
+msgid "Date format is unaccaptable! YYYY-MM-DD is the only acceptable format."
+msgstr ""
+
+#: report_forms/c21/views.py:90 report_forms/c23/views.py:92
+msgid "There is no diagnoses code for this record!"
+msgstr ""
+
+#: report_forms/c21/views.py:119 report_forms/c23/views.py:125
+#: report_forms/c24/views.py:118
+msgid "This case is already in the database!"
+msgstr ""
+
+#: report_forms/c21/views.py:161 report_forms/c21/views.py:194
+#: report_forms/c23/views.py:168 report_forms/c23/views.py:201
+#: report_forms/c24/views.py:161 report_forms/c24/views.py:194
+msgid "Weight of patient"
+msgstr ""
+
+#: report_forms/c21/views.py:170 report_forms/c21/views.py:203
+#: report_forms/c23/views.py:177 report_forms/c23/views.py:210
+#: report_forms/c24/views.py:170 report_forms/c24/views.py:203
+msgid "Date of surgical incision"
+msgstr ""
+
+#: report_forms/c21/views.py:171 report_forms/c21/views.py:204
+#: report_forms/c23/views.py:178 report_forms/c23/views.py:211
+#: report_forms/c24/views.py:171 report_forms/c24/views.py:204
+msgid "Time of surgical incision"
+msgstr ""
+
+#: report_forms/c21/views.py:173 report_forms/c21/views.py:206
+#: report_forms/c23/views.py:180 report_forms/c23/views.py:213
+#: report_forms/c24/views.py:173 report_forms/c24/views.py:206
+msgid "Name of first dose"
+msgstr ""
+
+#: report_forms/c21/views.py:174 report_forms/c21/views.py:207
+#: report_forms/c23/views.py:181 report_forms/c23/views.py:214
+#: report_forms/c24/views.py:174 report_forms/c24/views.py:207
+msgid "Name of second dose"
+msgstr ""
+
+#: report_forms/c21/views.py:175 report_forms/c21/views.py:208
+#: report_forms/c23/views.py:182 report_forms/c23/views.py:215
+#: report_forms/c24/views.py:175 report_forms/c24/views.py:208
+msgid "First dose"
+msgstr ""
+
+#: report_forms/c21/views.py:176 report_forms/c21/views.py:209
+#: report_forms/c23/views.py:183 report_forms/c23/views.py:216
+#: report_forms/c24/views.py:176 report_forms/c24/views.py:209
+msgid "Second dose"
+msgstr ""
+
+#: report_forms/c21/views.py:178 report_forms/c21/views.py:211
+#: report_forms/c23/views.py:185 report_forms/c23/views.py:218
+#: report_forms/c24/views.py:178 report_forms/c24/views.py:211
+msgid "Date of first dose"
+msgstr ""
+
+#: report_forms/c21/views.py:179 report_forms/c21/views.py:212
+#: report_forms/c23/views.py:186 report_forms/c23/views.py:219
+#: report_forms/c24/views.py:179 report_forms/c24/views.py:212
+msgid "Time of first dose"
+msgstr ""
+
+#: report_forms/c21/views.py:181 report_forms/c21/views.py:214
+#: report_forms/c23/views.py:188 report_forms/c23/views.py:221
+#: report_forms/c24/views.py:181 report_forms/c24/views.py:214
+msgid "Date of last dose"
+msgstr ""
+
+#: report_forms/c21/views.py:182 report_forms/c21/views.py:215
+#: report_forms/c23/views.py:189 report_forms/c23/views.py:222
+#: report_forms/c24/views.py:182 report_forms/c24/views.py:215
+msgid "Time of last dose"
+msgstr ""
+
+#: report_forms/c21/views.py:183 report_forms/c21/views.py:216
+#: report_forms/c23/views.py:190 report_forms/c23/views.py:223
+#: report_forms/c24/views.py:183 report_forms/c24/views.py:216
+msgid "Date of surgical wound closure"
+msgstr ""
+
+#: report_forms/c21/views.py:184 report_forms/c21/views.py:217
+#: report_forms/c23/views.py:191 report_forms/c23/views.py:224
+#: report_forms/c24/views.py:184 report_forms/c24/views.py:217
+msgid "Time of surgical wound closure"
+msgstr ""
+
+#: report_forms/c21/templates/c21_anon.html:36
+#: report_forms/c21/templates/c21_anon.html:128
+#: report_forms/c21/templates/c21_anon.html:165
+#: report_forms/c21/templates/c21_statistics.html:25
+#: report_forms/c21/templates/c21_trend_diagram.html:36
+#: report_forms/c23/templates/c23_anon.html:36
+#: report_forms/c23/templates/c23_anon.html:128
+#: report_forms/c23/templates/c23_anon.html:165
+#: report_forms/c23/templates/c23_statistics.html:25
+#: report_forms/c23/templates/c23_trend_diagram.html:36
+#: report_forms/c24/templates/c24_anon.html:36
+#: report_forms/c24/templates/c24_anon.html:128
+#: report_forms/c24/templates/c24_anon.html:165
+#: report_forms/c24/templates/c24_statistics.html:25
+#: report_forms/c24/templates/c24_trend_diagram.html:36
+msgid "I. criterion: Appropriate antibiotic drug"
+msgstr ""
+
+#: report_forms/c21/templates/c21_anon.html:42
+#: report_forms/c21/templates/c21_anon.html:131
+#: report_forms/c21/templates/c21_anon.html:167
+#: report_forms/c21/templates/c21_statistics.html:29
+#: report_forms/c21/templates/c21_trend_diagram.html:42
+#: report_forms/c23/templates/c23_anon.html:42
+#: report_forms/c23/templates/c23_anon.html:131
+#: report_forms/c23/templates/c23_anon.html:167
+#: report_forms/c23/templates/c23_statistics.html:29
+#: report_forms/c23/templates/c23_trend_diagram.html:42
+#: report_forms/c24/templates/c24_anon.html:42
+#: report_forms/c24/templates/c24_anon.html:131
+#: report_forms/c24/templates/c24_anon.html:167
+#: report_forms/c24/templates/c24_statistics.html:29
+#: report_forms/c24/templates/c24_trend_diagram.html:42
+msgid "II. criterion: Appropriate dose"
+msgstr ""
+
+#: report_forms/c21/templates/c21_anon.html:48
+#: report_forms/c21/templates/c21_anon.html:134
+#: report_forms/c21/templates/c21_anon.html:169
+#: report_forms/c21/templates/c21_statistics.html:33
+#: report_forms/c21/templates/c21_trend_diagram.html:48
+#: report_forms/c23/templates/c23_anon.html:48
+#: report_forms/c23/templates/c23_anon.html:134
+#: report_forms/c23/templates/c23_anon.html:169
+#: report_forms/c23/templates/c23_statistics.html:33
+#: report_forms/c23/templates/c23_trend_diagram.html:48
+#: report_forms/c24/templates/c24_anon.html:48
+#: report_forms/c24/templates/c24_anon.html:134
+#: report_forms/c24/templates/c24_anon.html:169
+#: report_forms/c24/templates/c24_statistics.html:33
+#: report_forms/c24/templates/c24_trend_diagram.html:48
+msgid "II/b criterion: Appropriate dose with weight"
+msgstr ""
+
+#: report_forms/c21/templates/c21_anon.html:54
+#: report_forms/c21/templates/c21_anon.html:137
+#: report_forms/c21/templates/c21_anon.html:171
+#: report_forms/c21/templates/c21_statistics.html:37
+#: report_forms/c21/templates/c21_trend_diagram.html:54
+#: report_forms/c23/templates/c23_anon.html:54
+#: report_forms/c23/templates/c23_anon.html:137
+#: report_forms/c23/templates/c23_anon.html:171
+#: report_forms/c23/templates/c23_statistics.html:37
+#: report_forms/c23/templates/c23_trend_diagram.html:54
+#: report_forms/c24/templates/c24_anon.html:54
+#: report_forms/c24/templates/c24_anon.html:137
+#: report_forms/c24/templates/c24_anon.html:171
+#: report_forms/c24/templates/c24_statistics.html:37
+#: report_forms/c24/templates/c24_trend_diagram.html:54
+msgid ""
+"III. criterion: Appropriate route of administration: intravenous "
+"administration"
+msgstr ""
+
+#: report_forms/c21/templates/c21_anon.html:60
+#: report_forms/c21/templates/c21_anon.html:140
+#: report_forms/c21/templates/c21_anon.html:173
+#: report_forms/c21/templates/c21_statistics.html:41
+#: report_forms/c21/templates/c21_trend_diagram.html:60
+#: report_forms/c23/templates/c23_anon.html:60
+#: report_forms/c23/templates/c23_anon.html:140
+#: report_forms/c23/templates/c23_anon.html:173
+#: report_forms/c23/templates/c23_statistics.html:41
+#: report_forms/c23/templates/c23_trend_diagram.html:60
+#: report_forms/c24/templates/c24_anon.html:60
+#: report_forms/c24/templates/c24_anon.html:140
+#: report_forms/c24/templates/c24_anon.html:173
+#: report_forms/c24/templates/c24_statistics.html:41
+#: report_forms/c24/templates/c24_trend_diagram.html:60
+msgid ""
+"IV. criterion: Appropriate timing, within one hour of surgical wound incision"
+msgstr ""
+
+#: report_forms/c21/templates/c21_anon.html:66
+#: report_forms/c21/templates/c21_anon.html:143
+#: report_forms/c21/templates/c21_anon.html:175
+#: report_forms/c21/templates/c21_trend_diagram.html:66
+#: report_forms/c23/templates/c23_anon.html:66
+#: report_forms/c23/templates/c23_anon.html:143
+#: report_forms/c23/templates/c23_anon.html:175
+#: report_forms/c23/templates/c23_trend_diagram.html:66
+#: report_forms/c24/templates/c24_anon.html:66
+#: report_forms/c24/templates/c24_anon.html:143
+#: report_forms/c24/templates/c24_anon.html:175
+#: report_forms/c24/templates/c24_trend_diagram.html:66
+msgid "V. criterion: Appropriate timing"
+msgstr ""
+
+#: report_forms/c21/templates/c21_anon.html:72
+#: report_forms/c21/templates/c21_anon.html:158
+#: report_forms/c21/templates/c21_anon.html:185
+#: report_forms/c21/templates/c21_statistics.html:49
+#: report_forms/c21/templates/c21_statistics.html:86
+#: report_forms/c21/templates/c21_trend_diagram.html:72
+#: report_forms/c21/templates/c21_trend_diagram.html:117
+#: report_forms/c21/templates/c21_trend_diagram.html:130
+#: report_forms/c21/templates/c21_trend_diagram.html:143
+#: report_forms/c23/templates/c23_anon.html:72
+#: report_forms/c23/templates/c23_anon.html:158
+#: report_forms/c23/templates/c23_anon.html:185
+#: report_forms/c23/templates/c23_statistics.html:49
+#: report_forms/c23/templates/c23_statistics.html:86
+#: report_forms/c23/templates/c23_trend_diagram.html:72
+#: report_forms/c23/templates/c23_trend_diagram.html:117
+#: report_forms/c23/templates/c23_trend_diagram.html:130
+#: report_forms/c23/templates/c23_trend_diagram.html:143
+#: report_forms/c24/templates/c24_anon.html:72
+#: report_forms/c24/templates/c24_anon.html:158
+#: report_forms/c24/templates/c24_anon.html:185
+#: report_forms/c24/templates/c24_statistics.html:49
+#: report_forms/c24/templates/c24_statistics.html:86
+#: report_forms/c24/templates/c24_trend_diagram.html:72
+#: report_forms/c24/templates/c24_trend_diagram.html:117
+#: report_forms/c24/templates/c24_trend_diagram.html:130
+#: report_forms/c24/templates/c24_trend_diagram.html:143
+msgid "Full compliance with criteria I-V"
+msgstr ""
+
+#: report_forms/c21/templates/c21_anon.html:78
+#: report_forms/c21/templates/c21_anon.html:146
+#: report_forms/c21/templates/c21_anon.html:177
+#: report_forms/c21/templates/c21_statistics.html:53
+#: report_forms/c21/templates/c21_statistics.html:93
+#: report_forms/c21/templates/c21_trend_diagram.html:78
+#: report_forms/c21/templates/c21_trend_diagram.html:124
+#: report_forms/c21/templates/c21_trend_diagram.html:137
+#: report_forms/c21/templates/c21_trend_diagram.html:150
+#: report_forms/c23/templates/c23_anon.html:78
+#: report_forms/c23/templates/c23_anon.html:146
+#: report_forms/c23/templates/c23_anon.html:177
+#: report_forms/c23/templates/c23_statistics.html:93
+#: report_forms/c23/templates/c23_trend_diagram.html:78
+#: report_forms/c23/templates/c23_trend_diagram.html:124
+#: report_forms/c23/templates/c23_trend_diagram.html:137
+#: report_forms/c23/templates/c23_trend_diagram.html:150
+#: report_forms/c24/templates/c24_anon.html:78
+#: report_forms/c24/templates/c24_anon.html:146
+#: report_forms/c24/templates/c24_anon.html:177
+#: report_forms/c24/templates/c24_statistics.html:93
+#: report_forms/c24/templates/c24_trend_diagram.html:78
+#: report_forms/c24/templates/c24_trend_diagram.html:124
+#: report_forms/c24/templates/c24_trend_diagram.html:137
+#: report_forms/c24/templates/c24_trend_diagram.html:150
+#, python-format
+msgid "% of misuse"
+msgstr ""
+
+#: report_forms/c21/templates/c21_anon.html:84
+#: report_forms/c21/templates/c21_anon.html:149
+#: report_forms/c21/templates/c21_anon.html:179
+#: report_forms/c21/templates/c21_statistics.html:57
+#: report_forms/c21/templates/c21_statistics.html:94
+#: report_forms/c21/templates/c21_trend_diagram.html:84
+#: report_forms/c21/templates/c21_trend_diagram.html:125
+#: report_forms/c21/templates/c21_trend_diagram.html:138
+#: report_forms/c21/templates/c21_trend_diagram.html:151
+#: report_forms/c23/templates/c23_anon.html:84
+#: report_forms/c23/templates/c23_anon.html:149
+#: report_forms/c23/templates/c23_anon.html:179
+#: report_forms/c23/templates/c23_statistics.html:94
+#: report_forms/c23/templates/c23_trend_diagram.html:84
+#: report_forms/c23/templates/c23_trend_diagram.html:125
+#: report_forms/c23/templates/c23_trend_diagram.html:138
+#: report_forms/c23/templates/c23_trend_diagram.html:151
+#: report_forms/c24/templates/c24_anon.html:84
+#: report_forms/c24/templates/c24_anon.html:149
+#: report_forms/c24/templates/c24_anon.html:179
+#: report_forms/c24/templates/c24_statistics.html:94
+#: report_forms/c24/templates/c24_trend_diagram.html:84
+#: report_forms/c24/templates/c24_trend_diagram.html:125
+#: report_forms/c24/templates/c24_trend_diagram.html:138
+#: report_forms/c24/templates/c24_trend_diagram.html:151
+#, python-format
+msgid "% of overuse"
+msgstr ""
+
+#: report_forms/c21/templates/c21_anon.html:90
+#: report_forms/c21/templates/c21_anon.html:152
+#: report_forms/c21/templates/c21_anon.html:181
+#: report_forms/c21/templates/c21_statistics.html:61
+#: report_forms/c21/templates/c21_statistics.html:95
+#: report_forms/c21/templates/c21_trend_diagram.html:90
+#: report_forms/c21/templates/c21_trend_diagram.html:126
+#: report_forms/c21/templates/c21_trend_diagram.html:139
+#: report_forms/c21/templates/c21_trend_diagram.html:152
+#: report_forms/c23/templates/c23_anon.html:90
+#: report_forms/c23/templates/c23_anon.html:152
+#: report_forms/c23/templates/c23_anon.html:181
+#: report_forms/c23/templates/c23_statistics.html:95
+#: report_forms/c23/templates/c23_trend_diagram.html:90
+#: report_forms/c23/templates/c23_trend_diagram.html:126
+#: report_forms/c23/templates/c23_trend_diagram.html:139
+#: report_forms/c23/templates/c23_trend_diagram.html:152
+#: report_forms/c24/templates/c24_anon.html:90
+#: report_forms/c24/templates/c24_anon.html:152
+#: report_forms/c24/templates/c24_anon.html:181
+#: report_forms/c24/templates/c24_statistics.html:95
+#: report_forms/c24/templates/c24_trend_diagram.html:90
+#: report_forms/c24/templates/c24_trend_diagram.html:126
+#: report_forms/c24/templates/c24_trend_diagram.html:139
+#: report_forms/c24/templates/c24_trend_diagram.html:152
+#, python-format
+msgid "% of underuse"
+msgstr ""
+
+#: report_forms/c21/templates/c21_anon.html:96
+#: report_forms/c21/templates/c21_anon.html:155
+#: report_forms/c21/templates/c21_anon.html:183
+#: report_forms/c21/templates/c21_statistics.html:65
+#: report_forms/c21/templates/c21_statistics.html:96
+#: report_forms/c21/templates/c21_trend_diagram.html:96
+#: report_forms/c21/templates/c21_trend_diagram.html:127
+#: report_forms/c21/templates/c21_trend_diagram.html:140
+#: report_forms/c21/templates/c21_trend_diagram.html:153
+#: report_forms/c23/templates/c23_anon.html:96
+#: report_forms/c23/templates/c23_anon.html:155
+#: report_forms/c23/templates/c23_anon.html:183
+#: report_forms/c23/templates/c23_statistics.html:96
+#: report_forms/c23/templates/c23_trend_diagram.html:96
+#: report_forms/c23/templates/c23_trend_diagram.html:127
+#: report_forms/c23/templates/c23_trend_diagram.html:140
+#: report_forms/c23/templates/c23_trend_diagram.html:153
+#: report_forms/c24/templates/c24_anon.html:96
+#: report_forms/c24/templates/c24_anon.html:155
+#: report_forms/c24/templates/c24_anon.html:183
+#: report_forms/c24/templates/c24_statistics.html:96
+#: report_forms/c24/templates/c24_trend_diagram.html:96
+#: report_forms/c24/templates/c24_trend_diagram.html:127
+#: report_forms/c24/templates/c24_trend_diagram.html:140
+#: report_forms/c24/templates/c24_trend_diagram.html:153
+#, python-format
+msgid "% of single shot treatment"
+msgstr ""
+
+#: report_forms/c21/templates/c21_header.html:2
+#: report_forms/templates/list_of_report_forms.html:32
+msgid ""
+"C.2.1. Prophylactic antibiotic use - Planned surgery for colorectal cancer"
+msgstr ""
+
+#: report_forms/c21/templates/c21_statistics.html:45
+#: report_forms/c23/templates/c23_statistics.html:45
+#: report_forms/c24/templates/c24_statistics.html:45
+msgid ""
+"V. criterion: Appropriate timing: (discontinued within 24 hours after "
+"surgical wound closure – or documentation of appropriate clinical indication "
+"for continuation of treatment beyond 24 hours)"
+msgstr ""
+
+#: report_forms/c21/templates/c21_statistics.html:87
+#: report_forms/c21/templates/c21_trend_diagram.html:118
+#: report_forms/c21/templates/c21_trend_diagram.html:131
+#: report_forms/c21/templates/c21_trend_diagram.html:144
+#: report_forms/c23/templates/c23_statistics.html:87
+#: report_forms/c23/templates/c23_trend_diagram.html:118
+#: report_forms/c23/templates/c23_trend_diagram.html:131
+#: report_forms/c23/templates/c23_trend_diagram.html:144
+#: report_forms/c24/templates/c24_statistics.html:87
+#: report_forms/c24/templates/c24_trend_diagram.html:118
+#: report_forms/c24/templates/c24_trend_diagram.html:131
+#: report_forms/c24/templates/c24_trend_diagram.html:144
+msgid "I. criterion"
+msgstr ""
+
+#: report_forms/c21/templates/c21_statistics.html:88
+#: report_forms/c21/templates/c21_trend_diagram.html:119
+#: report_forms/c21/templates/c21_trend_diagram.html:132
+#: report_forms/c21/templates/c21_trend_diagram.html:145
+#: report_forms/c23/templates/c23_statistics.html:88
+#: report_forms/c23/templates/c23_trend_diagram.html:119
+#: report_forms/c23/templates/c23_trend_diagram.html:132
+#: report_forms/c23/templates/c23_trend_diagram.html:145
+#: report_forms/c24/templates/c24_statistics.html:88
+#: report_forms/c24/templates/c24_trend_diagram.html:119
+#: report_forms/c24/templates/c24_trend_diagram.html:132
+#: report_forms/c24/templates/c24_trend_diagram.html:145
+msgid "II. criterion"
+msgstr ""
+
+#: report_forms/c21/templates/c21_statistics.html:89
+#: report_forms/c21/templates/c21_trend_diagram.html:120
+#: report_forms/c21/templates/c21_trend_diagram.html:133
+#: report_forms/c21/templates/c21_trend_diagram.html:146
+#: report_forms/c23/templates/c23_statistics.html:89
+#: report_forms/c23/templates/c23_trend_diagram.html:120
+#: report_forms/c23/templates/c23_trend_diagram.html:133
+#: report_forms/c23/templates/c23_trend_diagram.html:146
+#: report_forms/c24/templates/c24_statistics.html:89
+#: report_forms/c24/templates/c24_trend_diagram.html:120
+#: report_forms/c24/templates/c24_trend_diagram.html:133
+#: report_forms/c24/templates/c24_trend_diagram.html:146
+msgid "II/b criterion"
+msgstr ""
+
+#: report_forms/c21/templates/c21_statistics.html:90
+#: report_forms/c21/templates/c21_trend_diagram.html:121
+#: report_forms/c21/templates/c21_trend_diagram.html:134
+#: report_forms/c21/templates/c21_trend_diagram.html:147
+#: report_forms/c23/templates/c23_statistics.html:90
+#: report_forms/c23/templates/c23_trend_diagram.html:121
+#: report_forms/c23/templates/c23_trend_diagram.html:134
+#: report_forms/c23/templates/c23_trend_diagram.html:147
+#: report_forms/c24/templates/c24_statistics.html:90
+#: report_forms/c24/templates/c24_trend_diagram.html:121
+#: report_forms/c24/templates/c24_trend_diagram.html:134
+#: report_forms/c24/templates/c24_trend_diagram.html:147
+msgid "III. criterion"
+msgstr ""
+
+#: report_forms/c21/templates/c21_statistics.html:91
+#: report_forms/c21/templates/c21_trend_diagram.html:122
+#: report_forms/c21/templates/c21_trend_diagram.html:135
+#: report_forms/c21/templates/c21_trend_diagram.html:148
+#: report_forms/c23/templates/c23_statistics.html:91
+#: report_forms/c23/templates/c23_trend_diagram.html:122
+#: report_forms/c23/templates/c23_trend_diagram.html:135
+#: report_forms/c23/templates/c23_trend_diagram.html:148
+#: report_forms/c24/templates/c24_statistics.html:91
+#: report_forms/c24/templates/c24_trend_diagram.html:122
+#: report_forms/c24/templates/c24_trend_diagram.html:135
+#: report_forms/c24/templates/c24_trend_diagram.html:148
+msgid "IV. criterion"
+msgstr ""
+
+#: report_forms/c21/templates/c21_statistics.html:92
+#: report_forms/c21/templates/c21_trend_diagram.html:123
+#: report_forms/c21/templates/c21_trend_diagram.html:136
+#: report_forms/c21/templates/c21_trend_diagram.html:149
+#: report_forms/c23/templates/c23_statistics.html:92
+#: report_forms/c23/templates/c23_trend_diagram.html:123
+#: report_forms/c23/templates/c23_trend_diagram.html:136
+#: report_forms/c23/templates/c23_trend_diagram.html:149
+#: report_forms/c24/templates/c24_statistics.html:92
+#: report_forms/c24/templates/c24_trend_diagram.html:123
+#: report_forms/c24/templates/c24_trend_diagram.html:136
+#: report_forms/c24/templates/c24_trend_diagram.html:149
+msgid "V. criterion"
+msgstr ""
+
+#: report_forms/c23/models.py:29 report_forms/c23/views.py:169
+#: report_forms/c23/views.py:202
+msgid "Principal diagnosis code (DRG)"
+msgstr ""
+
+#: report_forms/c23/models.py:55 report_forms/c23/models.py:56
+msgid "Planned surgery for hip replacement"
+msgstr ""
+
+#: report_forms/c23/views.py:123
+msgid "Weight of the patient can't be null!"
+msgstr ""
+
+#: report_forms/c23/templates/c23_header.html:2
+#: report_forms/templates/list_of_report_forms.html:45
+msgid "C.2.3. Prophylactic antibiotic use - Hip replacement"
+msgstr ""
+
+#: report_forms/c23/templates/c23_statistics.html:53
+#: report_forms/c24/templates/c24_statistics.html:53
+#, python-format
+msgid "% of misuse:"
+msgstr ""
+
+#: report_forms/c23/templates/c23_statistics.html:57
+#: report_forms/c24/templates/c24_statistics.html:57
+#, python-format
+msgid "% of overuse:"
+msgstr ""
+
+#: report_forms/c23/templates/c23_statistics.html:61
+#: report_forms/c24/templates/c24_statistics.html:61
+#, python-format
+msgid "% of underuse:"
+msgstr ""
+
+#: report_forms/c23/templates/c23_statistics.html:65
+#: report_forms/c24/templates/c24_statistics.html:65
+#, python-format
+msgid "% of single shot treatment:"
+msgstr ""
+
+#: report_forms/c24/models.py:54 report_forms/c24/models.py:55
+msgid "Planned surgery for hysterectomy"
+msgstr ""
+
+#: report_forms/c24/templates/c24_header.html:2
+#: report_forms/templates/list_of_report_forms.html:58
+msgid "C.2.4. Prophylactic antibiotic use - Hysterectomy"
+msgstr ""
+
+#: report_forms/c31/forms.py:8 report_forms/c31/models.py:14
+#: report_forms/c31/views.py:118 report_forms/c31/views.py:132
+#: report_forms/c32/forms.py:8 report_forms/c32/models.py:14
+#: report_forms/c32/views.py:117 report_forms/c32/views.py:131
+#: report_forms/c8/forms.py:8 report_forms/c8/models.py:14
+#: report_forms/c8/views.py:142 report_forms/c8/views.py:161
+msgid "Date of hospital admission"
+msgstr ""
+
+#: report_forms/c31/forms.py:9 report_forms/c31/models.py:16
+#: report_forms/c31/views.py:120 report_forms/c31/views.py:134
+#: report_forms/c32/forms.py:9 report_forms/c32/models.py:16
+#: report_forms/c32/views.py:119 report_forms/c32/views.py:133
+#: report_forms/c8/forms.py:9 report_forms/c8/models.py:19
+#: report_forms/c8/views.py:147 report_forms/c8/views.py:166
+msgid "Date of hospital discharge"
+msgstr ""
+
+#: report_forms/c31/forms.py:18 report_forms/c31/forms.py:19
+#: report_forms/c31/views.py:58 report_forms/c32/forms.py:18
+#: report_forms/c32/forms.py:19 report_forms/c32/views.py:57
+#: report_forms/c8/forms.py:31 report_forms/c8/forms.py:32
+#: report_forms/c8/views.py:71 report_forms/r1/forms.py:56
+#: report_forms/r1/forms.py:57 report_forms/r1/views.py:168
+#: report_forms/r1/views.py:170
+msgid "Can't be born after admission!"
+msgstr ""
+
+#: report_forms/c31/forms.py:24 report_forms/c31/forms.py:25
+#: report_forms/c31/views.py:60 report_forms/c32/forms.py:24
+#: report_forms/c32/forms.py:25 report_forms/c32/views.py:59
+#: report_forms/r1/forms.py:62 report_forms/r1/forms.py:63
+msgid "Can't be discharged before admission!"
+msgstr ""
+
+#: report_forms/c31/models.py:15 report_forms/c31/views.py:119
+#: report_forms/c31/views.py:133 report_forms/c32/models.py:15
+#: report_forms/c32/views.py:118 report_forms/c32/views.py:132
+#: report_forms/c8/models.py:15 report_forms/c8/views.py:143
+#: report_forms/c8/views.py:162
+msgid "Patient admission status"
+msgstr ""
+
+#: report_forms/c31/models.py:17 report_forms/c31/views.py:121
+#: report_forms/c31/views.py:135 report_forms/c32/models.py:17
+#: report_forms/c32/views.py:120 report_forms/c32/views.py:134
+#: report_forms/c8/models.py:20 report_forms/c8/views.py:148
+#: report_forms/c8/views.py:167 report_forms/r1/models.py:48
+#: report_forms/r1/views.py:389 report_forms/r1/views.py:467
+msgid "Patient discharge status"
+msgstr ""
+
+#: report_forms/c31/models.py:18 report_forms/c31/views.py:122
+#: report_forms/c31/views.py:136 report_forms/c32/models.py:18
+#: report_forms/c32/views.py:121 report_forms/c32/views.py:135
+msgid "ICD-10 at that departmental admission"
+msgstr ""
+
+#: report_forms/c31/models.py:26
+msgid "30-day in-hospital mortality of patient admitted with AMI"
+msgstr ""
+
+#: report_forms/c31/models.py:27
+msgid "30-day in-hospital mortality of patients admitted with AMI"
+msgstr ""
+
+#: report_forms/c31/templates/c31_anon.html:36
+#: report_forms/c31/templates/c31_anon.html:73
+#: report_forms/c31/templates/c31_anon.html:86
+#: report_forms/c31/templates/c31_statistics.html:25
+#: report_forms/c31/templates/c31_trend_diagram.html:36
+#: report_forms/c32/templates/c32_anon.html:36
+#: report_forms/c32/templates/c32_anon.html:73
+#: report_forms/c32/templates/c32_anon.html:86
+#: report_forms/c32/templates/c32_statistics.html:25
+#: report_forms/c32/templates/c32_trend_diagram.html:36
+msgid "Hospital mortality rate within 30 days"
+msgstr ""
+
+#: report_forms/c31/templates/c31_anon.html:42
+#: report_forms/c31/templates/c31_anon.html:76
+#: report_forms/c31/templates/c31_anon.html:88
+#: report_forms/c31/templates/c31_statistics.html:29
+#: report_forms/c31/templates/c31_trend_diagram.html:42
+#: report_forms/c32/templates/c32_anon.html:42
+#: report_forms/c32/templates/c32_anon.html:76
+#: report_forms/c32/templates/c32_anon.html:88
+#: report_forms/c32/templates/c32_statistics.html:29
+#: report_forms/c32/templates/c32_trend_diagram.html:42
+msgid "Hospital mortality rate within 30 days without transmissions"
+msgstr ""
+
+#: report_forms/c31/templates/c31_anon.html:48
+#: report_forms/c31/templates/c31_anon.html:79
+#: report_forms/c31/templates/c31_anon.html:90
+#: report_forms/c31/templates/c31_statistics.html:33
+#: report_forms/c31/templates/c31_trend_diagram.html:48
+#: report_forms/c32/templates/c32_anon.html:48
+#: report_forms/c32/templates/c32_anon.html:79
+#: report_forms/c32/templates/c32_anon.html:90
+#: report_forms/c32/templates/c32_statistics.html:33
+#: report_forms/c32/templates/c32_trend_diagram.html:48
+msgid "Hospital mortality rate within 2 days"
+msgstr ""
+
+#: report_forms/c31/templates/c31_header.html:2
+#: report_forms/templates/list_of_report_forms.html:71
+msgid "C.3.1. 30-day in-hospital mortality of patients admitted with AMI"
+msgstr ""
+
+#: report_forms/c31/templates/c31_statistics.html:9
+#: report_forms/c32/templates/c32_statistics.html:9
+#: report_forms/c8/templates/c8_statistics.html:9
+msgid "Sorry, you have less than 60 cases."
+msgstr ""
+
+#: report_forms/c31/templates/c31_statistics.html:53
+#: report_forms/c31/templates/c31_trend_diagram.html:69
+#: report_forms/c31/templates/c31_trend_diagram.html:72
+#: report_forms/c31/templates/c31_trend_diagram.html:75
+#: report_forms/c32/templates/c32_statistics.html:53
+#: report_forms/c32/templates/c32_trend_diagram.html:69
+#: report_forms/c32/templates/c32_trend_diagram.html:72
+#: report_forms/c32/templates/c32_trend_diagram.html:75
+msgid "within 30 days"
+msgstr ""
+
+#: report_forms/c31/templates/c31_statistics.html:54
+#: report_forms/c32/templates/c32_statistics.html:54
+msgid "within 30 days without trasmissions"
+msgstr ""
+
+#: report_forms/c31/templates/c31_statistics.html:55
+#: report_forms/c31/templates/c31_trend_diagram.html:71
+#: report_forms/c31/templates/c31_trend_diagram.html:74
+#: report_forms/c31/templates/c31_trend_diagram.html:77
+#: report_forms/c32/templates/c32_statistics.html:55
+#: report_forms/c32/templates/c32_trend_diagram.html:71
+#: report_forms/c32/templates/c32_trend_diagram.html:74
+#: report_forms/c32/templates/c32_trend_diagram.html:77
+msgid "within 2 days"
+msgstr ""
+
+#: report_forms/c31/templates/c31_statistics.html:57
+#: report_forms/c31/templates/c31_trend_diagram.html:81
+msgid "AMI hopsital mortality"
+msgstr ""
+
+#: report_forms/c31/templates/c31_trend_diagram.html:70
+#: report_forms/c31/templates/c31_trend_diagram.html:73
+#: report_forms/c31/templates/c31_trend_diagram.html:76
+#: report_forms/c32/templates/c32_trend_diagram.html:70
+#: report_forms/c32/templates/c32_trend_diagram.html:73
+#: report_forms/c32/templates/c32_trend_diagram.html:76
+msgid "within 30 days without transmissions"
+msgstr ""
+
+#: report_forms/c32/models.py:26
+msgid "30-day in-hospital mortality of patient admitted with Stroke"
+msgstr ""
+
+#: report_forms/c32/models.py:27
+msgid "30-day in-hospital mortality of patients admitted with Stroke"
+msgstr ""
+
+#: report_forms/c32/templates/c32_header.html:2
+#: report_forms/templates/list_of_report_forms.html:84
+msgid ""
+"C.3.2. 30-day in-hospital mortality of patients admitted with acute stroke"
+msgstr ""
+
+#: report_forms/c32/templates/c32_statistics.html:57
+#: report_forms/c32/templates/c32_trend_diagram.html:81
+msgid "Stroke hopsital mortality"
+msgstr ""
+
+#: report_forms/c8/forms.py:10 report_forms/c8/models.py:18
+#: report_forms/c8/views.py:146 report_forms/c8/views.py:165
+msgid "Date of first surgical procedure"
+msgstr ""
+
+#: report_forms/c8/forms.py:23
+msgid "Diagnosis group is not for DRG!"
+msgstr ""
+
+#: report_forms/c8/forms.py:27
+msgid "Diagnosis group is not for ICD!"
+msgstr ""
+
+#: report_forms/c8/forms.py:38 report_forms/c8/forms.py:39
+#: report_forms/c8/views.py:73
+msgid "Can't be operated before admission!"
+msgstr ""
+
+#: report_forms/c8/forms.py:44 report_forms/c8/forms.py:45
+#: report_forms/c8/views.py:75
+msgid "Can't be operated after discharge!"
+msgstr ""
+
+#: report_forms/c8/models.py:16 report_forms/c8/views.py:144
+#: report_forms/c8/views.py:163
+msgid "Type of admission"
+msgstr ""
+
+#: report_forms/c8/models.py:17 report_forms/c8/views.py:145
+#: report_forms/c8/views.py:164
+msgid "Was surgical procedure?"
+msgstr ""
+
+#: report_forms/c8/models.py:21 report_forms/c8/views.py:149
+#: report_forms/c8/views.py:168
+msgid "Diagnosis group"
+msgstr ""
+
+#: report_forms/c8/models.py:22 report_forms/c8/views.py:150
+#: report_forms/c8/views.py:169
+msgid "Diagnosis code: ICD-10"
+msgstr ""
+
+#: report_forms/c8/models.py:23 report_forms/c8/views.py:151
+#: report_forms/c8/views.py:170
+msgid "Diagnosis code: DRG"
+msgstr ""
+
+#: report_forms/c8/models.py:31
+msgid "Length of Stay"
+msgstr ""
+
+#: report_forms/c8/models.py:32
+msgid "Length of Stays"
+msgstr ""
+
+#: report_forms/c8/views.py:63 report_forms/c8/views.py:65
+#: report_forms/c8/views.py:67 report_forms/c8/views.py:69
+msgid "Date field is empty!"
+msgstr ""
+
+#: report_forms/c8/views.py:77
+msgid "This does not contain a number"
+msgstr ""
+
+#: report_forms/c8/views.py:79
+msgid "Diagnosis group does not match ICD or DRG code."
+msgstr ""
+
+#: report_forms/c8/views.py:433
+msgid "Hospital acquired pneumonia"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:24
+#: report_forms/c8/templates/c8_statistics.html:12
+#: report_forms/c8/templates/c8_trend_diagram.html:23
+msgid "Excluded:"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:47
+#: report_forms/c8/templates/c8_statistics.html:23
+#: report_forms/c8/templates/c8_trend_diagram.html:47
+msgid "Average length of stay"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:49
+#: report_forms/c8/templates/c8_anon.html:55
+#: report_forms/c8/templates/c8_anon.html:61
+#: report_forms/c8/templates/c8_anon.html:67
+#: report_forms/c8/templates/c8_anon.html:73
+#: report_forms/c8/templates/c8_anon.html:80
+#: report_forms/c8/templates/c8_anon.html:142
+#: report_forms/c8/templates/c8_statistics.html:24
+#: report_forms/c8/templates/c8_statistics.html:28
+#: report_forms/c8/templates/c8_statistics.html:32
+#: report_forms/c8/templates/c8_statistics.html:36
+#: report_forms/c8/templates/c8_statistics.html:40
+#: report_forms/c8/templates/c8_statistics.html:44
+#: report_forms/c8/templates/c8_statistics.html:78
+#: report_forms/c8/templates/c8_trend_diagram.html:48
+#: report_forms/c8/templates/c8_trend_diagram.html:49
+#: report_forms/c8/templates/c8_trend_diagram.html:50
+#: report_forms/c8/templates/c8_trend_diagram.html:54
+#: report_forms/c8/templates/c8_trend_diagram.html:55
+#: report_forms/c8/templates/c8_trend_diagram.html:56
+#: report_forms/c8/templates/c8_trend_diagram.html:60
+#: report_forms/c8/templates/c8_trend_diagram.html:61
+#: report_forms/c8/templates/c8_trend_diagram.html:62
+#: report_forms/c8/templates/c8_trend_diagram.html:66
+#: report_forms/c8/templates/c8_trend_diagram.html:67
+#: report_forms/c8/templates/c8_trend_diagram.html:68
+#: report_forms/c8/templates/c8_trend_diagram.html:72
+#: report_forms/c8/templates/c8_trend_diagram.html:73
+#: report_forms/c8/templates/c8_trend_diagram.html:74
+#: report_forms/c8/templates/c8_trend_diagram.html:78
+#: report_forms/c8/templates/c8_trend_diagram.html:79
+#: report_forms/c8/templates/c8_trend_diagram.html:80
+#: report_forms/c8/templates/c8_trend_diagram.html:133
+#: report_forms/c9/templates/c9_statistics.html:82
+#: report_forms/c9/templates/c9_trend_diagram.html:79
+#: report_forms/c9/templates/c9_trend_diagram.html:80
+#: report_forms/c9/templates/c9_trend_diagram.html:81
+msgid "days"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:53
+#: report_forms/c8/templates/c8_statistics.html:27
+#: report_forms/c8/templates/c8_trend_diagram.html:53
+msgid "Median length of stay"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:59
+#: report_forms/c8/templates/c8_statistics.html:31
+#: report_forms/c8/templates/c8_trend_diagram.html:59
+msgid "Average length of stay until the first surgical procedure"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:65
+#: report_forms/c8/templates/c8_statistics.html:35
+#: report_forms/c8/templates/c8_trend_diagram.html:65
+msgid "Median length of stay until the first surgical procedure"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:71
+#: report_forms/c8/templates/c8_statistics.html:39
+#: report_forms/c8/templates/c8_trend_diagram.html:71
+msgid ""
+"Average length of stay from the first surgical procedure until discharge"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:78
+#: report_forms/c8/templates/c8_statistics.html:43
+#: report_forms/c8/templates/c8_trend_diagram.html:77
+msgid "Median length of stay from the first surgical procedure until discharge"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:108
+#: report_forms/c8/templates/c8_statistics.html:68
+msgid "Average"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:113
+#: report_forms/c8/templates/c8_statistics.html:69
+msgid "Median"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:118
+#: report_forms/c8/templates/c8_statistics.html:70
+#: report_forms/c8/templates/c8_trend_diagram.html:105
+#: report_forms/c8/templates/c8_trend_diagram.html:113
+#: report_forms/c8/templates/c8_trend_diagram.html:122
+msgid "Average until the first surgical procedure"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:123
+#: report_forms/c8/templates/c8_statistics.html:71
+#: report_forms/c8/templates/c8_trend_diagram.html:106
+#: report_forms/c8/templates/c8_trend_diagram.html:114
+#: report_forms/c8/templates/c8_trend_diagram.html:123
+msgid "Median until the first surgical procedure"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:128
+#: report_forms/c8/templates/c8_statistics.html:72
+#: report_forms/c8/templates/c8_trend_diagram.html:107
+#: report_forms/c8/templates/c8_trend_diagram.html:115
+#: report_forms/c8/templates/c8_trend_diagram.html:124
+msgid "Average from the first surgical procedure until discharge"
+msgstr ""
+
+#: report_forms/c8/templates/c8_anon.html:133
+#: report_forms/c8/templates/c8_statistics.html:73
+#: report_forms/c8/templates/c8_trend_diagram.html:108
+#: report_forms/c8/templates/c8_trend_diagram.html:116
+#: report_forms/c8/templates/c8_trend_diagram.html:125
+msgid "Median from the first surgical procedure until discharge"
+msgstr ""
+
+#: report_forms/c8/templates/c8_file_upload.html:8
+#: report_forms/templates/file_upload.html:6
+msgid "Choose a file and click on the submit button."
+msgstr ""
+
+#: report_forms/c8/templates/c8_header.html:2
+#: report_forms/templates/list_of_report_forms.html:97
+msgid "C.8. Length of Stay"
+msgstr ""
+
+#: report_forms/c8/templates/c8_statistics.html:79
+#: report_forms/c8/templates/c8_trend_diagram.html:134
+msgid "Length of stay"
+msgstr ""
+
+#: report_forms/c8/templates/c8_trend_diagram.html:103
+#: report_forms/c8/templates/c8_trend_diagram.html:111
+#: report_forms/c8/templates/c8_trend_diagram.html:120
+msgid "Average "
+msgstr ""
+
+#: report_forms/c8/templates/c8_trend_diagram.html:104
+#: report_forms/c8/templates/c8_trend_diagram.html:112
+#: report_forms/c8/templates/c8_trend_diagram.html:121
+msgid "Median "
+msgstr ""
+
+#: report_forms/c9/forms.py:8 report_forms/c9/models.py:16
+#: report_forms/c9/views.py:224 report_forms/c9/views.py:311
+msgid "Time patient arrives to OR"
+msgstr ""
+
+#: report_forms/c9/forms.py:8 report_forms/c9/forms.py:9
+#: report_forms/c9/forms.py:10 report_forms/c9/forms.py:11
+#: report_forms/c9/forms.py:12 report_forms/c9/forms.py:13
+#: report_forms/c9/forms.py:20 report_forms/c9/forms.py:21
+#: report_forms/c9/forms.py:22 report_forms/c9/forms.py:23
+#: report_forms/c9/forms.py:24 report_forms/c9/forms.py:25
+msgid "(hh:mm)"
+msgstr ""
+
+#: report_forms/c9/forms.py:9 report_forms/c9/models.py:17
+#: report_forms/c9/views.py:225 report_forms/c9/views.py:312
+msgid "Anesthesia start"
+msgstr ""
+
+#: report_forms/c9/forms.py:10 report_forms/c9/models.py:18
+#: report_forms/c9/views.py:226 report_forms/c9/views.py:313
+msgid "Surgery start"
+msgstr ""
+
+#: report_forms/c9/forms.py:11 report_forms/c9/models.py:19
+#: report_forms/c9/views.py:227 report_forms/c9/views.py:314
+msgid "Surgery end"
+msgstr ""
+
+#: report_forms/c9/forms.py:12 report_forms/c9/models.py:20
+#: report_forms/c9/views.py:228 report_forms/c9/views.py:315
+msgid "Anesthesia end"
+msgstr ""
+
+#: report_forms/c9/forms.py:13 report_forms/c9/models.py:21
+#: report_forms/c9/views.py:229 report_forms/c9/views.py:316
+msgid "Time patient leaves OR"
+msgstr ""
+
+#: report_forms/c9/forms.py:20 report_forms/c9/models.py:36
+#: report_forms/c9/views.py:238 report_forms/c9/views.py:262
+msgid "Normal time of opening on weekdays"
+msgstr ""
+
+#: report_forms/c9/forms.py:21 report_forms/c9/models.py:37
+#: report_forms/c9/views.py:239 report_forms/c9/views.py:263
+msgid "Normal time of closing on weekdays"
+msgstr ""
+
+#: report_forms/c9/forms.py:22 report_forms/c9/models.py:39
+#: report_forms/c9/views.py:241 report_forms/c9/views.py:265
+msgid "Normal time of opening on saturdays"
+msgstr ""
+
+#: report_forms/c9/forms.py:23 report_forms/c9/models.py:40
+#: report_forms/c9/views.py:242 report_forms/c9/views.py:266
+msgid "Normal time of closing on saturdays"
+msgstr ""
+
+#: report_forms/c9/forms.py:24 report_forms/c9/models.py:42
+#: report_forms/c9/views.py:244 report_forms/c9/views.py:268
+msgid "Normal time of opening on sundays and holidays"
+msgstr ""
+
+#: report_forms/c9/forms.py:25 report_forms/c9/models.py:43
+#: report_forms/c9/views.py:245 report_forms/c9/views.py:269
+msgid "Normal time of closing on sundays and holidays"
+msgstr ""
+
+#: report_forms/c9/forms.py:26 report_forms/c9/models.py:49
+#: report_forms/c9/views.py:251 report_forms/c9/views.py:275
+msgid "Beginning of observational period"
+msgstr ""
+
+#: report_forms/c9/forms.py:27 report_forms/c9/models.py:50
+#: report_forms/c9/views.py:252 report_forms/c9/views.py:276
+msgid "End of observational period"
+msgstr ""
+
+#: report_forms/c9/models.py:10 report_forms/c9/models.py:33
+#: report_forms/c9/views.py:218 report_forms/c9/views.py:235
+#: report_forms/c9/views.py:259 report_forms/c9/views.py:305
+msgid "Identifier of central operating unit"
+msgstr ""
+
+#: report_forms/c9/models.py:11
+msgid "Identifier of operating unit or operating rooms"
+msgstr ""
+
+#: report_forms/c9/models.py:13 report_forms/c9/views.py:221
+#: report_forms/c9/views.py:308
+msgid "Type of day"
+msgstr ""
+
+#: report_forms/c9/models.py:14 report_forms/c9/views.py:222
+#: report_forms/c9/views.py:309
+msgid "Case number"
+msgstr ""
+
+#: report_forms/c9/models.py:15 report_forms/c9/views.py:223
+#: report_forms/c9/views.py:310
+msgid "Patient identifier"
+msgstr ""
+
+#: report_forms/c9/models.py:29
+msgid "Patient"
+msgstr ""
+
+#: report_forms/c9/models.py:30
+msgid "Patients"
+msgstr ""
+
+#: report_forms/c9/models.py:34 report_forms/c9/views.py:219
+#: report_forms/c9/views.py:236 report_forms/c9/views.py:260
+#: report_forms/c9/views.py:306
+msgid "Identifier of OR"
+msgstr ""
+
+#: report_forms/c9/models.py:35 report_forms/c9/views.py:237
+#: report_forms/c9/views.py:261
+msgid "Type of OR"
+msgstr ""
+
+#: report_forms/c9/models.py:38 report_forms/c9/views.py:240
+#: report_forms/c9/views.py:264
+msgid "Weekday number of staffed days in the observed period"
+msgstr ""
+
+#: report_forms/c9/models.py:41 report_forms/c9/views.py:243
+#: report_forms/c9/views.py:267
+msgid "Saturday number of staffed days in the observed period"
+msgstr ""
+
+#: report_forms/c9/models.py:44 report_forms/c9/views.py:246
+#: report_forms/c9/views.py:270
+msgid "Sunday/Holiday number of staffed days in the observed period"
+msgstr ""
+
+#: report_forms/c9/models.py:45 report_forms/c9/views.py:247
+#: report_forms/c9/views.py:271
+msgid "Hygiene category of OR"
+msgstr ""
+
+#: report_forms/c9/models.py:46 report_forms/c9/views.py:248
+#: report_forms/c9/views.py:272
+msgid "Professional field"
+msgstr ""
+
+#: report_forms/c9/models.py:47 report_forms/c9/views.py:249
+#: report_forms/c9/views.py:273
+msgid "Preparatory room"
+msgstr ""
+
+#: report_forms/c9/models.py:48 report_forms/c9/views.py:250
+#: report_forms/c9/views.py:274
+msgid "Post-operative observatory room"
+msgstr ""
+
+#: report_forms/c9/models.py:58
+msgid "Operation room"
+msgstr ""
+
+#: report_forms/c9/models.py:59
+msgid "Operation rooms"
+msgstr ""
+
+#: report_forms/c9/views.py:92
+msgid ""
+"You are not using the Patients template csv. The number of fields is "
+"different."
+msgstr ""
+
+#: report_forms/c9/views.py:99
+msgid ""
+"You are not using the Operation template csv. The number of fields is "
+"different."
+msgstr ""
+
+#: report_forms/c9/templates/c9_anon.html:11
+#: report_forms/c9/templates/c9_anon.html:17
+#: report_forms/c9/templates/c9_anon.html:76
+#: report_forms/c9/templates/c9_statistics.html:41
+#: report_forms/c9/templates/c9_statistics.html:116
+#: report_forms/c9/templates/c9_trend_diagram.html:18
+#: report_forms/c9/templates/c9_trend_diagram.html:116
+#: report_forms/c9/templates/c9_trend_diagram.html:120
+#: report_forms/c9/templates/c9_trend_diagram.html:125
+msgid "Operating theatre performance"
+msgstr ""
+
+#: report_forms/c9/templates/c9_anon.html:23
+#: report_forms/c9/templates/c9_anon.html:78
+#: report_forms/c9/templates/c9_statistics.html:45
+#: report_forms/c9/templates/c9_statistics.html:117
+#: report_forms/c9/templates/c9_trend_diagram.html:24
+#: report_forms/c9/templates/c9_trend_diagram.html:117
+#: report_forms/c9/templates/c9_trend_diagram.html:121
+#: report_forms/c9/templates/c9_trend_diagram.html:126
+msgid "Surgery performance"
+msgstr ""
+
+#: report_forms/c9/templates/c9_header.html:2
+msgid "C9. Operating theatre performance "
+msgstr ""
+
+#: report_forms/c9/templates/c9_header.html:7
+#: report_forms/templates/list_of_report_forms.html:111
+msgid " Central OR form"
+msgstr ""
+
+#: report_forms/c9/templates/c9_header.html:7
+#: report_forms/templates/list_of_report_forms.html:111
+msgid "Day-level data form"
+msgstr ""
+
+#: report_forms/c9/templates/c9_header.html:12
+msgid " Central OR export"
+msgstr ""
+
+#: report_forms/c9/templates/c9_header.html:12
+#: report_forms/templates/list_of_report_forms.html:116
+msgid "Day-level data export"
+msgstr ""
+
+#: report_forms/c9/templates/c9_header.html:13
+msgid " Central OR template"
+msgstr ""
+
+#: report_forms/c9/templates/c9_header.html:13
+#: report_forms/templates/list_of_report_forms.html:117
+msgid "Day-level data template"
+msgstr ""
+
+#: report_forms/c9/templates/c9_header.html:14
+#: report_forms/templates/list_of_report_forms.html:118
+msgid "Central OR Data collecting sheet"
+msgstr ""
+
+#: report_forms/c9/templates/c9_header.html:14
+#: report_forms/templates/list_of_report_forms.html:118
+msgid "Day-level data Data collecting sheet"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:9
+msgid "Sorry, you don't have any OR."
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:20
+msgid "Patients operated while the OR was closed:"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:26
+msgid "Patients date errors:"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:32
+msgid "Sorry, you have less than 30 days of observation."
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:37
+msgid "Sorry, but you have a date or time error with this OR."
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:49
+#: report_forms/c9/templates/c9_statistics.html:120
+#: report_forms/c9/templates/c9_trend_diagram.html:30
+#: report_forms/c9/templates/c9_trend_diagram.html:130
+#: report_forms/c9/templates/c9_trend_diagram.html:140
+#: report_forms/c9/templates/c9_trend_diagram.html:151
+msgid "Average time in OR"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:50
+#: report_forms/c9/templates/c9_statistics.html:54
+#: report_forms/c9/templates/c9_statistics.html:58
+#: report_forms/c9/templates/c9_statistics.html:62
+#: report_forms/c9/templates/c9_statistics.html:66
+#: report_forms/c9/templates/c9_statistics.html:70
+#: report_forms/c9/templates/c9_statistics.html:74
+#: report_forms/c9/templates/c9_statistics.html:78
+#: report_forms/c9/templates/c9_statistics.html:90
+#: report_forms/c9/templates/c9_trend_diagram.html:31
+#: report_forms/c9/templates/c9_trend_diagram.html:32
+#: report_forms/c9/templates/c9_trend_diagram.html:33
+#: report_forms/c9/templates/c9_trend_diagram.html:37
+#: report_forms/c9/templates/c9_trend_diagram.html:38
+#: report_forms/c9/templates/c9_trend_diagram.html:39
+#: report_forms/c9/templates/c9_trend_diagram.html:43
+#: report_forms/c9/templates/c9_trend_diagram.html:44
+#: report_forms/c9/templates/c9_trend_diagram.html:45
+#: report_forms/c9/templates/c9_trend_diagram.html:49
+#: report_forms/c9/templates/c9_trend_diagram.html:50
+#: report_forms/c9/templates/c9_trend_diagram.html:51
+#: report_forms/c9/templates/c9_trend_diagram.html:55
+#: report_forms/c9/templates/c9_trend_diagram.html:56
+#: report_forms/c9/templates/c9_trend_diagram.html:57
+#: report_forms/c9/templates/c9_trend_diagram.html:61
+#: report_forms/c9/templates/c9_trend_diagram.html:62
+#: report_forms/c9/templates/c9_trend_diagram.html:63
+#: report_forms/c9/templates/c9_trend_diagram.html:67
+#: report_forms/c9/templates/c9_trend_diagram.html:68
+#: report_forms/c9/templates/c9_trend_diagram.html:69
+#: report_forms/c9/templates/c9_trend_diagram.html:73
+#: report_forms/c9/templates/c9_trend_diagram.html:74
+#: report_forms/c9/templates/c9_trend_diagram.html:75
+#: report_forms/c9/templates/c9_trend_diagram.html:91
+#: report_forms/c9/templates/c9_trend_diagram.html:92
+#: report_forms/c9/templates/c9_trend_diagram.html:93
+msgid "hours"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:53
+#: report_forms/c9/templates/c9_statistics.html:121
+#: report_forms/c9/templates/c9_trend_diagram.html:36
+#: report_forms/c9/templates/c9_trend_diagram.html:131
+#: report_forms/c9/templates/c9_trend_diagram.html:141
+#: report_forms/c9/templates/c9_trend_diagram.html:152
+msgid "Median time in OR"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:57
+#: report_forms/c9/templates/c9_statistics.html:122
+#: report_forms/c9/templates/c9_trend_diagram.html:42
+#: report_forms/c9/templates/c9_trend_diagram.html:132
+#: report_forms/c9/templates/c9_trend_diagram.html:142
+#: report_forms/c9/templates/c9_trend_diagram.html:153
+msgid "Average time of anesthesia"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:61
+#: report_forms/c9/templates/c9_statistics.html:123
+#: report_forms/c9/templates/c9_trend_diagram.html:48
+#: report_forms/c9/templates/c9_trend_diagram.html:133
+#: report_forms/c9/templates/c9_trend_diagram.html:143
+#: report_forms/c9/templates/c9_trend_diagram.html:154
+msgid "Median time of anesthesia"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:65
+#: report_forms/c9/templates/c9_statistics.html:124
+#: report_forms/c9/templates/c9_trend_diagram.html:54
+#: report_forms/c9/templates/c9_trend_diagram.html:134
+#: report_forms/c9/templates/c9_trend_diagram.html:144
+#: report_forms/c9/templates/c9_trend_diagram.html:155
+msgid "Average time of surgery"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:69
+#: report_forms/c9/templates/c9_statistics.html:125
+#: report_forms/c9/templates/c9_trend_diagram.html:60
+#: report_forms/c9/templates/c9_trend_diagram.html:135
+#: report_forms/c9/templates/c9_trend_diagram.html:145
+#: report_forms/c9/templates/c9_trend_diagram.html:156
+msgid "Median time of surgery"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:73
+#: report_forms/c9/templates/c9_statistics.html:126
+#: report_forms/c9/templates/c9_trend_diagram.html:66
+#: report_forms/c9/templates/c9_trend_diagram.html:136
+#: report_forms/c9/templates/c9_trend_diagram.html:146
+#: report_forms/c9/templates/c9_trend_diagram.html:157
+msgid "Average time before surgery"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:77
+#: report_forms/c9/templates/c9_statistics.html:127
+#: report_forms/c9/templates/c9_trend_diagram.html:72
+#: report_forms/c9/templates/c9_trend_diagram.html:137
+#: report_forms/c9/templates/c9_trend_diagram.html:147
+#: report_forms/c9/templates/c9_trend_diagram.html:158
+msgid "Median time before surgery"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:81
+#: report_forms/c9/templates/c9_trend_diagram.html:78
+msgid "Number of days with overtime"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:85
+#: report_forms/c9/templates/c9_statistics.html:130
+#: report_forms/c9/templates/c9_trend_diagram.html:84
+#: report_forms/c9/templates/c9_trend_diagram.html:162
+#: report_forms/c9/templates/c9_trend_diagram.html:166
+#: report_forms/c9/templates/c9_trend_diagram.html:171
+msgid "Average time of overtime"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:86
+#: report_forms/c9/templates/c9_trend_diagram.html:85
+#: report_forms/c9/templates/c9_trend_diagram.html:86
+#: report_forms/c9/templates/c9_trend_diagram.html:87
+msgid "hours/days"
+msgstr ""
+
+#: report_forms/c9/templates/c9_statistics.html:89
+#: report_forms/c9/templates/c9_statistics.html:131
+#: report_forms/c9/templates/c9_trend_diagram.html:90
+#: report_forms/c9/templates/c9_trend_diagram.html:163
+#: report_forms/c9/templates/c9_trend_diagram.html:167
+#: report_forms/c9/templates/c9_trend_diagram.html:172
+msgid "Average time of overtime on days with overtime"
+msgstr ""
+
+#: report_forms/r1/forms.py:8 report_forms/r1/models.py:16
+#: report_forms/r1/views.py:357 report_forms/r1/views.py:435
+msgid "Date of admission"
+msgstr ""
+
+#: report_forms/r1/forms.py:9 report_forms/r1/forms.py:20
+#: report_forms/r1/models.py:18 report_forms/r1/models.py:53
+#: report_forms/r1/views.py:359 report_forms/r1/views.py:394
+#: report_forms/r1/views.py:437 report_forms/r1/views.py:472
+msgid "FIM date of assessment"
+msgstr ""
+
+#: report_forms/r1/forms.py:10 report_forms/r1/forms.py:21
+#: report_forms/r1/models.py:21 report_forms/r1/models.py:56
+#: report_forms/r1/views.py:362 report_forms/r1/views.py:397
+#: report_forms/r1/views.py:440 report_forms/r1/views.py:475
+msgid "Barthel index date of assessment"
+msgstr ""
+
+#: report_forms/r1/forms.py:11 report_forms/r1/forms.py:22
+#: report_forms/r1/models.py:24 report_forms/r1/models.py:59
+#: report_forms/r1/views.py:365 report_forms/r1/views.py:400
+#: report_forms/r1/views.py:443 report_forms/r1/views.py:478
+msgid "6 minutes walk test date of assessment"
+msgstr ""
+
+#: report_forms/r1/forms.py:12 report_forms/r1/forms.py:23
+#: report_forms/r1/models.py:27 report_forms/r1/models.py:62
+#: report_forms/r1/views.py:368 report_forms/r1/views.py:403
+#: report_forms/r1/views.py:446 report_forms/r1/views.py:481
+msgid "SF-36 date of assessment"
+msgstr ""
+
+#: report_forms/r1/forms.py:13 report_forms/r1/forms.py:24
+#: report_forms/r1/models.py:30 report_forms/r1/models.py:65
+#: report_forms/r1/views.py:371 report_forms/r1/views.py:406
+#: report_forms/r1/views.py:449 report_forms/r1/views.py:484
+msgid "SAT date of assessment"
+msgstr ""
+
+#: report_forms/r1/forms.py:14 report_forms/r1/forms.py:25
+#: report_forms/r1/models.py:33 report_forms/r1/models.py:68
+#: report_forms/r1/views.py:374 report_forms/r1/views.py:409
+#: report_forms/r1/views.py:452 report_forms/r1/views.py:487
+msgid "FEV-1 date of assessment"
+msgstr ""
+
+#: report_forms/r1/forms.py:15 report_forms/r1/forms.py:26
+#: report_forms/r1/models.py:36 report_forms/r1/models.py:71
+#: report_forms/r1/views.py:377 report_forms/r1/views.py:412
+#: report_forms/r1/views.py:455 report_forms/r1/views.py:490
+msgid "ASIA impairment date of assessment"
+msgstr ""
+
+#: report_forms/r1/forms.py:16 report_forms/r1/forms.py:27
+#: report_forms/r1/models.py:39 report_forms/r1/models.py:74
+#: report_forms/r1/views.py:380 report_forms/r1/views.py:415
+#: report_forms/r1/views.py:458 report_forms/r1/views.py:493
+msgid ""
+"Standard neurological classification of spinal cord injury date of assessment"
+msgstr ""
+
+#: report_forms/r1/forms.py:17 report_forms/r1/forms.py:28
+#: report_forms/r1/models.py:42 report_forms/r1/models.py:77
+#: report_forms/r1/views.py:383 report_forms/r1/views.py:418
+#: report_forms/r1/views.py:461 report_forms/r1/views.py:496
+msgid "Spinal Cord Independence Measure date of assessment"
+msgstr ""
+
+#: report_forms/r1/forms.py:18 report_forms/r1/forms.py:29
+#: report_forms/r1/models.py:46 report_forms/r1/models.py:81
+#: report_forms/r1/views.py:387 report_forms/r1/views.py:422
+#: report_forms/r1/views.py:465 report_forms/r1/views.py:500
+msgid "Other date of assessment"
+msgstr ""
+
+#: report_forms/r1/forms.py:69 report_forms/r1/forms.py:76
+#: report_forms/r1/forms.py:83 report_forms/r1/forms.py:90
+#: report_forms/r1/forms.py:97 report_forms/r1/forms.py:104
+#: report_forms/r1/forms.py:111 report_forms/r1/forms.py:118
+#: report_forms/r1/forms.py:125 report_forms/r1/forms.py:132
+msgid "Assessment can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/forms.py:72 report_forms/r1/forms.py:79
+#: report_forms/r1/forms.py:86 report_forms/r1/forms.py:93
+#: report_forms/r1/forms.py:100 report_forms/r1/forms.py:107
+#: report_forms/r1/forms.py:114 report_forms/r1/forms.py:121
+#: report_forms/r1/forms.py:128 report_forms/r1/forms.py:135
+msgid "Assessment can't be before admission!"
+msgstr ""
+
+#: report_forms/r1/forms.py:139 report_forms/r1/forms.py:146
+#: report_forms/r1/forms.py:153 report_forms/r1/forms.py:160
+#: report_forms/r1/forms.py:167 report_forms/r1/forms.py:174
+#: report_forms/r1/forms.py:181 report_forms/r1/forms.py:188
+#: report_forms/r1/forms.py:195 report_forms/r1/forms.py:202
+msgid "Assessment at discharge can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/forms.py:142 report_forms/r1/forms.py:149
+#: report_forms/r1/forms.py:156 report_forms/r1/forms.py:163
+#: report_forms/r1/forms.py:170 report_forms/r1/forms.py:177
+#: report_forms/r1/forms.py:184 report_forms/r1/forms.py:191
+#: report_forms/r1/forms.py:198 report_forms/r1/forms.py:205
+msgid "Assessment at discharge can't be before admission!"
+msgstr ""
+
+#: report_forms/r1/models.py:11 report_forms/r1/views.py:352
+msgid "Patient ID"
+msgstr ""
+
+#: report_forms/r1/models.py:14 report_forms/r1/views.py:355
+#: report_forms/r1/views.py:433
+msgid "Professional field of rehabilitation"
+msgstr ""
+
+#: report_forms/r1/models.py:17 report_forms/r1/views.py:358
+#: report_forms/r1/views.py:436
+msgid "FIM applied at admission"
+msgstr ""
+
+#: report_forms/r1/models.py:19 report_forms/r1/models.py:54
+#: report_forms/r1/views.py:360 report_forms/r1/views.py:395
+#: report_forms/r1/views.py:438 report_forms/r1/views.py:473
+msgid "FIM value/score"
+msgstr ""
+
+#: report_forms/r1/models.py:20 report_forms/r1/views.py:361
+#: report_forms/r1/views.py:439
+msgid "Barthel index applied at admission"
+msgstr ""
+
+#: report_forms/r1/models.py:22 report_forms/r1/models.py:57
+#: report_forms/r1/views.py:363 report_forms/r1/views.py:398
+#: report_forms/r1/views.py:441 report_forms/r1/views.py:476
+msgid "Barthel index value/score"
+msgstr ""
+
+#: report_forms/r1/models.py:23 report_forms/r1/views.py:364
+#: report_forms/r1/views.py:442
+msgid "6 minutes walk test applied at admission"
+msgstr ""
+
+#: report_forms/r1/models.py:25 report_forms/r1/models.py:60
+#: report_forms/r1/views.py:366 report_forms/r1/views.py:401
+#: report_forms/r1/views.py:444 report_forms/r1/views.py:479
+msgid "6 minutes walk test value/score"
+msgstr ""
+
+#: report_forms/r1/models.py:26 report_forms/r1/views.py:367
+#: report_forms/r1/views.py:445
+msgid "SF-36 applied at admission"
+msgstr ""
+
+#: report_forms/r1/models.py:28 report_forms/r1/models.py:63
+#: report_forms/r1/views.py:369 report_forms/r1/views.py:404
+#: report_forms/r1/views.py:447 report_forms/r1/views.py:482
+msgid "SF-36 value/score"
+msgstr ""
+
+#: report_forms/r1/models.py:29 report_forms/r1/views.py:370
+#: report_forms/r1/views.py:448
+msgid "SAT applied at admission"
+msgstr ""
+
+#: report_forms/r1/models.py:31 report_forms/r1/models.py:66
+#: report_forms/r1/views.py:372 report_forms/r1/views.py:407
+#: report_forms/r1/views.py:450 report_forms/r1/views.py:485
+msgid "SAT value/score"
+msgstr ""
+
+#: report_forms/r1/models.py:32 report_forms/r1/views.py:373
+#: report_forms/r1/views.py:451
+msgid "FEV-1 applied at admission"
+msgstr ""
+
+#: report_forms/r1/models.py:34 report_forms/r1/models.py:69
+#: report_forms/r1/views.py:375 report_forms/r1/views.py:410
+#: report_forms/r1/views.py:453 report_forms/r1/views.py:488
+msgid "FEV-1 value/score"
+msgstr ""
+
+#: report_forms/r1/models.py:35 report_forms/r1/views.py:376
+#: report_forms/r1/views.py:454
+msgid "ASIA impairment applied at admission"
+msgstr ""
+
+#: report_forms/r1/models.py:37 report_forms/r1/models.py:72
+#: report_forms/r1/views.py:378 report_forms/r1/views.py:413
+#: report_forms/r1/views.py:456 report_forms/r1/views.py:491
+msgid "ASIA impairment value/score"
+msgstr ""
+
+#: report_forms/r1/models.py:38 report_forms/r1/views.py:379
+#: report_forms/r1/views.py:457
+msgid ""
+"Standard neurological classification of spinal cord injury applied at "
+"admission"
+msgstr ""
+
+#: report_forms/r1/models.py:40 report_forms/r1/models.py:75
+#: report_forms/r1/views.py:381 report_forms/r1/views.py:416
+#: report_forms/r1/views.py:459 report_forms/r1/views.py:494
+msgid "Standard neurological classification of spinal cord injury value/score"
+msgstr ""
+
+#: report_forms/r1/models.py:41 report_forms/r1/views.py:382
+#: report_forms/r1/views.py:460
+msgid "Spinal Cord Independence Measure applied at admission"
+msgstr ""
+
+#: report_forms/r1/models.py:43 report_forms/r1/models.py:78
+#: report_forms/r1/views.py:384 report_forms/r1/views.py:419
+#: report_forms/r1/views.py:462 report_forms/r1/views.py:497
+msgid "Spinal Cord Independence Measure value/score"
+msgstr ""
+
+#: report_forms/r1/models.py:44 report_forms/r1/views.py:385
+#: report_forms/r1/views.py:463
+msgid "Other applied at admission"
+msgstr ""
+
+#: report_forms/r1/models.py:45 report_forms/r1/models.py:80
+#: report_forms/r1/views.py:386 report_forms/r1/views.py:421
+#: report_forms/r1/views.py:464 report_forms/r1/views.py:499
+msgid "Other name of functional assessment"
+msgstr ""
+
+#: report_forms/r1/models.py:47 report_forms/r1/models.py:82
+#: report_forms/r1/views.py:388 report_forms/r1/views.py:423
+#: report_forms/r1/views.py:466 report_forms/r1/views.py:501
+msgid "Other value/score"
+msgstr ""
+
+#: report_forms/r1/models.py:49 report_forms/r1/views.py:390
+#: report_forms/r1/views.py:468
+msgid "Discharge"
+msgstr ""
+
+#: report_forms/r1/models.py:50 report_forms/r1/views.py:391
+#: report_forms/r1/views.py:469
+msgid "If unplanned, the reason"
+msgstr ""
+
+#: report_forms/r1/models.py:52 report_forms/r1/views.py:393
+#: report_forms/r1/views.py:471
+msgid "FIM applied at discharge"
+msgstr ""
+
+#: report_forms/r1/models.py:55 report_forms/r1/views.py:396
+#: report_forms/r1/views.py:474
+msgid "Barthel index applied at discharge"
+msgstr ""
+
+#: report_forms/r1/models.py:58 report_forms/r1/views.py:399
+#: report_forms/r1/views.py:477
+msgid "6 minutes walk test applied at discharge"
+msgstr ""
+
+#: report_forms/r1/models.py:61 report_forms/r1/views.py:402
+#: report_forms/r1/views.py:480
+msgid "SF-36 applied at discharge"
+msgstr ""
+
+#: report_forms/r1/models.py:64 report_forms/r1/views.py:405
+#: report_forms/r1/views.py:483
+msgid "SAT applied at discharge"
+msgstr ""
+
+#: report_forms/r1/models.py:67 report_forms/r1/views.py:408
+#: report_forms/r1/views.py:486
+msgid "FEV-1 applied at discharge"
+msgstr ""
+
+#: report_forms/r1/models.py:70 report_forms/r1/views.py:411
+#: report_forms/r1/views.py:489
+msgid "ASIA impairment applied at discharge"
+msgstr ""
+
+#: report_forms/r1/models.py:73 report_forms/r1/views.py:414
+#: report_forms/r1/views.py:492
+msgid ""
+"Standard neurological classification of spinal cord injury applied at "
+"discharge"
+msgstr ""
+
+#: report_forms/r1/models.py:76 report_forms/r1/views.py:417
+#: report_forms/r1/views.py:495
+msgid "Spinal Cord Independence Measure applied at discharge"
+msgstr ""
+
+#: report_forms/r1/models.py:79 report_forms/r1/views.py:420
+#: report_forms/r1/views.py:498
+msgid "Other applied at discharge"
+msgstr ""
+
+#: report_forms/r1/models.py:90
+msgid "Indicators for rehabilitation hospital and department"
+msgstr ""
+
+#: report_forms/r1/models.py:91
+msgid "Indicators for rehabilitation hospitals and departments"
+msgstr ""
+
+#: report_forms/r1/views.py:173
+msgid "FIM assessment can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:175
+msgid "Barthel index assessment can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:177
+msgid "6 minutes walk test assessment can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:179
+msgid "SF-36 assessment can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:181
+msgid "SAT assessment can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:183
+msgid "FEV-1 assessment can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:185
+msgid "ASIA impairment assessment can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:187
+msgid ""
+"Standard neurological classification of spinal cord injury assessment can't "
+"be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:189
+msgid "Spinal Cord Independence Measure assessment can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:191
+msgid "Other assessment can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:194
+msgid "FIM assessment at discharge can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:196
+msgid "Barthel index assessment at discharge can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:198
+msgid "6 minutes walk test assessment at discharge can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:200
+msgid "SF-36 assessment at discharge can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:202
+msgid "SAT assessment at discharge can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:204
+msgid "FEV-1 assessment at discharge can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:206
+msgid "ASIA impairment assessment at discharge can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:208
+msgid ""
+"Standard neurological classification of spinal cord injury assessment at "
+"discharge can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:210
+msgid ""
+"Spinal Cord Independence Measure assessment at discharge can't be after "
+"discharge!"
+msgstr ""
+
+#: report_forms/r1/views.py:212
+msgid "Other assessment at discharge can't be after discharge!"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:10
+#: report_forms/r1/templates/r1_statistics.html:13
+#: report_forms/r1/templates/r1_trend_diagram.html:10
+msgid "Functional assessment at admission"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:16
+#: report_forms/r1/templates/r1_anon.html:121
+#: report_forms/r1/templates/r1_anon.html:155
+#: report_forms/r1/templates/r1_statistics.html:16
+#: report_forms/r1/templates/r1_trend_diagram.html:16
+msgid ""
+"Percentage of patients who have documented functional assessment at "
+"admission to an inpatient unit for rehabilitation program within 7 days of "
+"admission"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:22
+#: report_forms/r1/templates/r1_anon.html:124
+#: report_forms/r1/templates/r1_anon.html:157
+#: report_forms/r1/templates/r1_statistics.html:20
+#: report_forms/r1/templates/r1_trend_diagram.html:22
+msgid ""
+"Percentage of patients who have documented functional assessment at "
+"admission to an inpatient unit for rehabilitation program within 2 days of "
+"admission"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:28
+#: report_forms/r1/templates/r1_anon.html:127
+#: report_forms/r1/templates/r1_anon.html:159
+#: report_forms/r1/templates/r1_statistics.html:24
+#: report_forms/r1/templates/r1_trend_diagram.html:28
+msgid ""
+"Percentage of patients who have documented functional assessment at "
+"admission to an inpatient unit for rehabilitation program within 3 days of "
+"admission"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:37
+#: report_forms/r1/templates/r1_statistics.html:34
+#: report_forms/r1/templates/r1_trend_diagram.html:37
+msgid "Functional assessment prior to discharge"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:43
+#: report_forms/r1/templates/r1_anon.html:130
+#: report_forms/r1/templates/r1_anon.html:161
+#: report_forms/r1/templates/r1_statistics.html:37
+#: report_forms/r1/templates/r1_trend_diagram.html:43
+msgid ""
+"Percentage of patients who have documented evidence of functional assessment "
+"in 3 days prior to discharge"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:49
+#: report_forms/r1/templates/r1_anon.html:133
+#: report_forms/r1/templates/r1_anon.html:163
+#: report_forms/r1/templates/r1_statistics.html:41
+#: report_forms/r1/templates/r1_trend_diagram.html:49
+msgid ""
+"Percentage of patients who have documented evidence of functional assessment "
+"in 1 days prior to discharge"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:55
+#: report_forms/r1/templates/r1_anon.html:136
+#: report_forms/r1/templates/r1_anon.html:165
+#: report_forms/r1/templates/r1_statistics.html:45
+#: report_forms/r1/templates/r1_trend_diagram.html:55
+msgid ""
+"Percentage of patients who have documented evidence of functional assessment "
+"in 2 days prior to discharge"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:64
+#: report_forms/r1/templates/r1_header.html:9
+#: report_forms/r1/templates/r1_statistics.html:55
+#: report_forms/r1/templates/r2_trend_diagram.html:10
+#: report_forms/templates/list_of_report_forms.html:152
+msgid "Unplanned interruption to rehabilitation program"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:70
+#: report_forms/r1/templates/r1_anon.html:139
+#: report_forms/r1/templates/r1_anon.html:167
+#: report_forms/r1/templates/r1_statistics.html:58
+#: report_forms/r1/templates/r1_statistics.html:119
+#: report_forms/r1/templates/r2_trend_diagram.html:16
+#: report_forms/r1/templates/r2_trend_diagram.html:76
+msgid ""
+"Percentage of those patients whose rehabilitation program interrupted "
+"unexpectedly"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:76
+#: report_forms/r1/templates/r1_anon.html:142
+#: report_forms/r1/templates/r1_anon.html:169
+#: report_forms/r1/templates/r1_statistics.html:62
+#: report_forms/r1/templates/r2_trend_diagram.html:22
+msgid ""
+"Percentage of those patients whose rehabilitation program interrupted "
+"unexpectedly because of an acute illness independent from the original "
+"disease"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:82
+#: report_forms/r1/templates/r1_anon.html:145
+#: report_forms/r1/templates/r1_anon.html:171
+#: report_forms/r1/templates/r1_statistics.html:66
+#: report_forms/r1/templates/r2_trend_diagram.html:28
+msgid ""
+"Percentage of those patients whose rehabilitation program interrupted "
+"unexpectedly on the demand of patient/family"
+msgstr ""
+
+#: report_forms/r1/templates/r1_anon.html:88
+#: report_forms/r1/templates/r1_anon.html:148
+#: report_forms/r1/templates/r1_anon.html:173
+#: report_forms/r1/templates/r1_statistics.html:70
+#: report_forms/r1/templates/r2_trend_diagram.html:34
+msgid ""
+"Percentage of those patients whose rehabilitation program interrupted "
+"unexpectedly because of a complication of the original disease"
+msgstr ""
+
+#: report_forms/r1/templates/r1_header.html:2
+#: report_forms/templates/list_of_report_forms.html:149
+msgid "R1. indicators for rehabilitation hospitals and departments"
+msgstr ""
+
+#: report_forms/r1/templates/r1_header.html:9
+#: report_forms/templates/list_of_report_forms.html:152
+msgid "Functional assessment at admission and discharge"
+msgstr ""
+
+#: report_forms/r1/templates/r1_header.html:16
+#: report_forms/templates/list_of_report_forms.html:159
+msgid "R1 Short indicator description"
+msgstr ""
+
+#: report_forms/r1/templates/r1_header.html:16
+#: report_forms/templates/list_of_report_forms.html:159
+msgid "R2 Short indicator description"
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:9
+msgid "Sorry, you have less than 60 cases for R1/A."
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:30
+msgid "Sorry, you have less than 60 cases for R1/B."
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:51
+msgid "Sorry, you have less than 60 cases for R2."
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:94
+#: report_forms/r1/templates/r1_trend_diagram.html:78
+#: report_forms/r1/templates/r1_trend_diagram.html:83
+#: report_forms/r1/templates/r1_trend_diagram.html:89
+msgid "in 7 days"
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:95
+#: report_forms/r1/templates/r1_statistics.html:103
+#: report_forms/r1/templates/r1_trend_diagram.html:79
+#: report_forms/r1/templates/r1_trend_diagram.html:84
+#: report_forms/r1/templates/r1_trend_diagram.html:90
+#: report_forms/r1/templates/r1_trend_diagram.html:97
+#: report_forms/r1/templates/r1_trend_diagram.html:102
+#: report_forms/r1/templates/r1_trend_diagram.html:108
+msgid "in 2 days"
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:96
+#: report_forms/r1/templates/r1_statistics.html:101
+#: report_forms/r1/templates/r1_trend_diagram.html:80
+#: report_forms/r1/templates/r1_trend_diagram.html:85
+#: report_forms/r1/templates/r1_trend_diagram.html:91
+#: report_forms/r1/templates/r1_trend_diagram.html:95
+#: report_forms/r1/templates/r1_trend_diagram.html:100
+#: report_forms/r1/templates/r1_trend_diagram.html:106
+msgid "in 3 days"
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:102
+#: report_forms/r1/templates/r1_trend_diagram.html:96
+#: report_forms/r1/templates/r1_trend_diagram.html:101
+#: report_forms/r1/templates/r1_trend_diagram.html:107
+msgid "in 1 days"
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:108
+#: report_forms/r1/templates/r2_trend_diagram.html:56
+#: report_forms/r1/templates/r2_trend_diagram.html:62
+#: report_forms/r1/templates/r2_trend_diagram.html:69
+msgid "total"
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:109
+#: report_forms/r1/templates/r2_trend_diagram.html:57
+#: report_forms/r1/templates/r2_trend_diagram.html:63
+#: report_forms/r1/templates/r2_trend_diagram.html:70
+msgid "due to acute illness"
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:110
+#: report_forms/r1/templates/r2_trend_diagram.html:58
+#: report_forms/r1/templates/r2_trend_diagram.html:64
+#: report_forms/r1/templates/r2_trend_diagram.html:71
+msgid "due to patient/ family demand"
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:111
+#: report_forms/r1/templates/r2_trend_diagram.html:59
+#: report_forms/r1/templates/r2_trend_diagram.html:65
+#: report_forms/r1/templates/r2_trend_diagram.html:72
+msgid "due to complications of the original disease"
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:115
+#: report_forms/r1/templates/r1_trend_diagram.html:112
+msgid ""
+"Percentage of patients who have documented functional assessment at "
+"admission to rehabilitation"
+msgstr ""
+
+#: report_forms/r1/templates/r1_statistics.html:117
+#: report_forms/r1/templates/r1_trend_diagram.html:114
+msgid ""
+"Percentage of patients who have documented evidence of functional assessment "
+"prior to discharge"
+msgstr ""
+
+#: report_forms/templates/form.html:6
+msgid ""
+"Please, define a date up to which we perform the benchmarking between the "
+"participating hospitals, for one year before the selected date."
+msgstr ""
+
+#: report_forms/templates/list_of_report_forms.html:6
+msgid "Report"
+msgstr ""
+
+#: report_forms/templates/list_of_report_forms.html:110
+msgid "C.9. Operating theatre performance"
+msgstr ""
+
+#: report_forms/templates/list_of_report_forms.html:116
+msgid "Central OR export"
+msgstr ""
+
+#: report_forms/templates/list_of_report_forms.html:117
+msgid "Central OR template"
+msgstr ""
+
+#: templates/base.html:33
+msgid "Homepage"
+msgstr ""
+
+#: templates/base.html:35
+msgid "Knowledge Corner"
+msgstr ""
+
+#: templates/base.html:37
+msgid "log out"
+msgstr ""
+
+#: templates/base.html:39
+msgid "login"
+msgstr ""
+
+#: templates/base.html:51 templates/admin/login.html:38
+msgid "Forgot password"
+msgstr ""
+
+#: templates/base.html:56
+msgid "Print"
+msgstr ""
+
+#: templates/admin/login.html:17
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/login.html:33
+msgid "Username:"
+msgstr ""
+
+#: templates/admin/login.html:37
+msgid "Password:"
+msgstr ""
+
+#: templates/admin/login.html:43
+msgid "Log in"
+msgstr ""
+
+#: university/models.py:7 university/models.py:15
+msgid "Hospital"
+msgstr ""
+
+#: university/models.py:8
+msgid "Codename"
+msgstr ""
+
+#: university/models.py:16
+msgid "Hospitals"
+msgstr ""
