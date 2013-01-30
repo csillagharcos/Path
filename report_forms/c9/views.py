@@ -560,7 +560,7 @@ def AnonymStatistics(request):
         if form.is_valid():
             start = form.cleaned_data['endDate'] - timedelta(days=365)
             end = form.cleaned_data['endDate']
-            workplaces = School.objects.all()
+            workplaces = School.objects.filter(country__printable_name = request.user.get_profile().country)
             for workplace in workplaces:
                 stat = CountStatistics(c9_operation.objects.filter(added_by__personel__workplace = workplace), workplace, start, end)
                 statistics += [{

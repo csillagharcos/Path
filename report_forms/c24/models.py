@@ -6,6 +6,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from csvImporter.model import CsvModel
 from report_forms.choices import YES_NO_CHOICES, PENICILIN_ALLERGY_CHOICES, ROUTE_OF_ADMIN_CHOICES_FOUR
+from settings import LANGUAGES
 
 class Medicine(models.Model):
     name                   = models.CharField(_('Name'),max_length=255)
@@ -20,12 +21,19 @@ class Medicine(models.Model):
         verbose_name = _('Medicine')
         verbose_name_plural = _('Medicines')
 
+class diagCode(models.Model):
+    code        = models.CharField(_('Code'), max_length=10)
+    language    = models.CharField(_('Language'), max_length=10, choices=LANGUAGES)
+
+    def __unicode__(self):
+        return self.code
+
 class c24(models.Model):
     case_id                         = models.IntegerField(_('Case ID'), unique=True)
     hospital_registration_number    = models.CharField(_('Hospital registration number'), max_length=50)
     date_of_birth                   = models.DateField(_('Date of birth'))
     weight_of_patient               = models.IntegerField(_('Weight of patient (kg)'))
-    principal_diagnoses_code        = models.CharField(_('Principal diagnosis code (ICD-10 or DRG)'), max_length=5, default='')
+    principal_diagnoses_code        = models.CharField(_('Principal diagnosis code (ICD-10)'), max_length=5, default='')
     principal_procedure_code        = models.CharField(_('Principal procedure code'), max_length=10)
     procedure_planned               = models.IntegerField(_('Is the surgical procedure planned?'), max_length=1, choices=YES_NO_CHOICES, default=1)
     patient_allergy                 = models.IntegerField(_('Is patient allergic to any antibiotics suggested in the protocol?'), max_length=1, choices=YES_NO_CHOICES, default=0)

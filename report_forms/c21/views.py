@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from report_forms.c21.forms import C21Form, FileUploadForm, TrendForm, AnonymStatForm
-from report_forms.c21.models import c21, c21CSV, Medicine
+from report_forms.c21.models import c21, c21CSV, Medicine, diagCode
 from report_forms.tools import parseInt, parseFloat, csvDump, calculate_age, DateException, csvExport
 from django.utils.translation import ugettext_lazy as _
 from university.models import School
@@ -16,7 +16,7 @@ from university.models import School
 @login_required
 def Display(request):
     if request.method == "POST":
-        form = C21Form(request.POST)
+        form = C21Form(request.LANGUAGE_CODE, request.POST)
         if form.is_valid():
             new_c21 = c21.objects.create(
                 case_id                         = form.cleaned_data['case_id'],
@@ -47,10 +47,10 @@ def Display(request):
             new_c21.save()
             return render_to_response('c21_filled_out.html', {}, context_instance=RequestContext(request))
         else:
-            form = C21Form(request.POST)
+            form = C21Form(request.LANGUAGE_CODE, request.POST)
             return render(request, 'c21.html', { 'form': form, 'medicines': Medicine.objects.all() })
 
-    form = C21Form()
+    form = C21Form(request.LANGUAGE_CODE, None)
     return render(request, 'c21.html', { 'form': form, 'medicines': Medicine.objects.all() })
 
 @login_required
@@ -131,7 +131,7 @@ def Import(request):
 
 @login_required
 def Statistics(request):
-    context = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace))
+    context = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), True, request.LANGUAGE_CODE)
     return render_to_response('c21_statistics.html', context, context_instance=RequestContext(request))
 
 @login_required
@@ -139,10 +139,10 @@ def Trend(request):
     if request.method == "POST":
         form = TrendForm(request.POST)
         if form.is_valid():
-            interval_one = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date1a'], surgical_incision__lte = form.cleaned_data['date1b'] ), False )
-            interval_two = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date2a'], surgical_incision__lte = form.cleaned_data['date2b'] ), False )
+            interval_one = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date1a'], surgical_incision__lte = form.cleaned_data['date1b'] ), False, request.LANGUAGE_CODE )
+            interval_two = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date2a'], surgical_incision__lte = form.cleaned_data['date2b'] ), False, request.LANGUAGE_CODE )
             if form.cleaned_data['date3a'] and form.cleaned_data['date3b']:
-                interval_three = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date3a'], surgical_incision__lte = form.cleaned_data['date3b'] ), False )
+                interval_three = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date3a'], surgical_incision__lte = form.cleaned_data['date3b'] ), False, request.LANGUAGE_CODE )
             else:
                 interval_three = False
             return render_to_response('c21_trend_diagram.html', { 'one': interval_one, 'two': interval_two, 'three': interval_three, 'form': form.cleaned_data }, context_instance=RequestContext(request))
@@ -159,7 +159,7 @@ def Template(request):
         _('Hospital registration number'),
         _('Date of birth'),
         _('Weight of patient'),
-        _('Principal diagnosis code (ICD-10 or DRG)'),
+        _('Principal diagnosis code (ICD-10)'),
         _('Principal procedure code'),
         _('Is the surgical procedure planned?'),
         _('Is patient allergic to any antibiotics suggested in the protocol?'),
@@ -253,9 +253,11 @@ def Export(request):
                       ),)
     return csvExport(model, 'c21_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
 
-def CountStatistics(cases, notView=True):
+def CountStatistics(cases, notView=True, language_code = "nolang"):
     ''' Query '''
-    accepted_diagnose_codes = ("C18", "C19", "C20", "C20.0", "C20.1", "C20.2", "C20.8")
+    accepted_diagnose_codes = ()
+    for code in diagCode.objects.filter(language=language_code):
+        accepted_diagnose_codes += (str(code.code),)
     countable_case=uncountable_case=()
     medicines=()
     for medicine in Medicine.objects.all():
@@ -266,7 +268,7 @@ def CountStatistics(cases, notView=True):
         else:
             uncountable_case += (case,)
 
-    if len(countable_case) < 30 and notView:
+    if len(countable_case) < 0 and notView:
         return render_to_response('c21_statistics.html', {"not_enough": True })
 
     ''' Working '''
@@ -408,7 +410,7 @@ def AnonymStatistics(request):
         if form.is_valid():
             start = form.cleaned_data['endDate'] - timedelta(days=365)
             end = form.cleaned_data['endDate']
-            workplaces = School.objects.all()
+            workplaces = School.objects.filter(country__printable_name = request.user.get_profile().country)
             for workplace in workplaces:
                 stat = CountStatistics(c21.objects.filter(added_by__personel__workplace = workplace, surgical_incision__gte = start, surgical_incision__lte = end ), False )
                 if stat['counted'] >= 30:

@@ -5,6 +5,7 @@ from report_forms.choices import ROUTE_OF_ADMIN_CHOICES_FOUR, PENICILIN_ALLERGY_
 from django.utils.translation import ugettext_lazy as _
 
 class C24Form(ModelForm):
+    principal_diagnoses_code= forms.ModelChoiceField(label=_('Principal diagnosis code (ICD-10)'), queryset=None)
     penicilin_allergy       = forms.ChoiceField(label=_('In case of allergy to penicillin, scale of severity?'), required=False, widget=forms.RadioSelect, choices=PENICILIN_ALLERGY_CHOICES, initial=3)
     route_of_admin          = forms.ChoiceField(label=_('Route of administration of first dose'), required=False, widget=forms.RadioSelect, choices=ROUTE_OF_ADMIN_CHOICES_FOUR, initial=1)
     ''' date - time '''
@@ -20,6 +21,14 @@ class C24Form(ModelForm):
     second_dose             = forms.FloatField(label=_('Second dose of first antibiotic drug'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
     total_dose_in_24h       = forms.FloatField(label=_('Total doses in 24 hours'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
 
+    def __init__(self, language_code="hu", *args, **kwargs):
+        super(C23Form, self).__init__(*args, **kwargs)
+        if diagCode.objects.filter(language=language_code):
+            self.fields['principal_diagnoses_code'].queryset = diagCode.objects.filter(language=language_code)
+        else:
+            self.fields['principal_diagnoses_code'].queryset = diagCode.objects.filter(language="hu")
+        self.fields['principal_diagnoses_code'].empty_label = None
+        
     def clean(self):
         cleaned_data = super(C24Form, self).clean()
         surgical_incision = cleaned_data.get("surgical_incision")

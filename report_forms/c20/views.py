@@ -236,14 +236,14 @@ def AnonymStatistics(request):
         if form.is_valid():
             start = form.cleaned_data['endDate'] - timedelta(days=365)
             end = form.cleaned_data['endDate']
-            workplaces = School.objects.all()
+            workplaces = School.objects.filter(country__printable_name = request.user.get_profile().country)
             for workplace in workplaces:
                 stat = CountStatistics(c20.objects.filter(added_by__personel__workplace = workplace, date_of_discharge__gte = start, date_of_discharge__lte = end ), False )
-#                if stat['counted'] >= 30:
-                statistics += [{
-                    "name" : workplace.codename,
-                    "statistics" : stat
-                }]
+                if stat['counted'] >= 30:
+                    statistics += [{
+                        "name" : workplace.codename,
+                        "statistics" : stat
+                    }]
             statistics = SortAndAddCountryAverage(statistics, start, end, request.user)
             return render_to_response('c20_anon.html', {'statistics': statistics}, context_instance=RequestContext(request))
         else:

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.utils.translation import ugettext_lazy as _
 
 C_SECTION_CHOICES = (
@@ -51,6 +52,7 @@ ROUTE_OF_ADMIN_CHOICES = (
     (2, _('IM')),
     (3, _('SC')),
     (4, _('Other')),
+    (5, _('PO')),
     )
 
 PRINCIPAL_DIAG_CODE_S = (
@@ -74,6 +76,14 @@ ROUTE_OF_ADMIN_CHOICES_FOUR = (
     (2, _('IM')),
     (3, _('SC')),
     (4, _('Other')),
+    )
+
+ROUTE_OF_ADMIN_CHOICES_FIVE = (
+    (1, _('IV')),
+    (2, _('IM')),
+    (3, _('SC')),
+    (4, _('Other')),
+    (5, _('PO')),
     )
 
 

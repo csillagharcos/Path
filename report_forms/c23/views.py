@@ -17,7 +17,7 @@ from university.models import School
 @login_required
 def Display(request):
     if request.method == "POST":
-        form = C23Form(request.POST)
+        form = C23Form(request.LANGUAGE_CODE, request.POST)
         if form.is_valid():
             new_c23 = c23.objects.create(
                 case_id                         = form.cleaned_data['case_id'],
@@ -48,10 +48,10 @@ def Display(request):
             new_c23.save()
             return render_to_response('c23_filled_out.html', {}, context_instance=RequestContext(request))
         else:
-            form = C23Form(request.POST)
+            form = C23Form(request.LANGUAGE_CODE, request.POST)
             return render(request, 'c23.html', { 'form': form, 'medicines': Medicine.objects.all() })
 
-    form = C23Form()
+    form = C23Form(request.LANGUAGE_CODE)
     return render(request, 'c23.html', { 'form': form, 'medicines': Medicine.objects.all() })
 
 @login_required
@@ -410,7 +410,7 @@ def AnonymStatistics(request):
         if form.is_valid():
             start = form.cleaned_data['endDate'] - timedelta(days=365)
             end = form.cleaned_data['endDate']
-            workplaces = School.objects.all()
+            workplaces = School.objects.filter(country__printable_name = request.user.get_profile().country)
             for workplace in workplaces:
                 stat = CountStatistics(c23.objects.filter(added_by__personel__workplace = workplace, surgical_incision__gte = start, surgical_incision__lte = end ), False )
                 if stat['counted'] >= 30:

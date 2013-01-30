@@ -153,7 +153,7 @@ def CountStatistics(cases, notView=True):
     indicator_one_numerator = subindicator_one_30 = subindicator_two_2 = subindicator_one = 0
     countable_case=uncountable_case=()
     for case in cases:
-        if calculate_age(case.date_of_birth, case.date_of_admission) < 18 and (case.icd == "I61" or case.icd == "I62" or case.icd == "I63" or case.icd == "I64"):
+        if calculate_age(case.date_of_birth, case.date_of_admission) <= 15 and (case.icd == "I61" or case.icd == "I62" or case.icd == "I63" or case.icd == "I64"):
             uncountable_case += (case,)
         else:
             countable_case += (case,)
@@ -199,7 +199,7 @@ def AnonymStatistics(request):
         if form.is_valid():
             start = form.cleaned_data['endDate'] - timedelta(days=365)
             end = form.cleaned_data['endDate']
-            workplaces = School.objects.all()
+            workplaces = School.objects.filter(country__printable_name = request.user.get_profile().country)
             for workplace in workplaces:
                 stat = CountStatistics(c32.objects.filter(added_by__personel__workplace = workplace, date_of_admission__gte = start, date_of_admission__lte = end ), False )
                 if stat['counted'] >= 30:

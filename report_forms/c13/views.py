@@ -254,7 +254,7 @@ def AnonymStatistics(request):
         statistics = []
         if form.is_valid():
             start = form.cleaned_data['endDate']
-            workplaces = School.objects.all()
+            workplaces = School.objects.filter(country__printable_name = request.user.get_profile().country)
             for workplace in workplaces:
                 stat = CountStatistics(c13.objects.filter(added_by__personel__workplace = workplace, year = start ))
                 if stat['overall']:

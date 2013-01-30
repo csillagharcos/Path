@@ -1,10 +1,11 @@
 from django import forms
 from django.forms.models import ModelForm
-from report_forms.c23.models import c23
+from report_forms.c23.models import c23, diagCode
 from report_forms.choices import ROUTE_OF_ADMIN_CHOICES_FOUR, PENICILIN_ALLERGY_CHOICES
 from django.utils.translation import ugettext_lazy as _
 
 class C23Form(ModelForm):
+    principal_diagnoses_code= forms.ModelChoiceField(label=_('Principal diagnosis code (ICD-10)'), queryset=None)
     penicilin_allergy       = forms.ChoiceField(label=_('In case of allergy to penicillin, scale of severity?'), required=False, widget=forms.RadioSelect, choices=PENICILIN_ALLERGY_CHOICES, initial=3)
     route_of_admin          = forms.ChoiceField(label=_('Route of administration of first dose'), required=False, widget=forms.RadioSelect, choices=ROUTE_OF_ADMIN_CHOICES_FOUR, initial=1)
     ''' date - time '''
@@ -19,6 +20,14 @@ class C23Form(ModelForm):
     first_dose              = forms.FloatField(label=_('First dose of first antibiotic drug'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
     second_dose             = forms.FloatField(label=_('Second dose of first antibiotic drug'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
     total_dose_in_24h       = forms.FloatField(label=_('Total doses in 24 hours'), required=False, widget=forms.TextInput(attrs={'class':'milligramm'}))
+
+    def __init__(self, language_code="hu", *args, **kwargs):
+        super(C23Form, self).__init__(*args, **kwargs)
+        if diagCode.objects.filter(language=language_code):
+            self.fields['principal_diagnoses_code'].queryset = diagCode.objects.filter(language=language_code)
+        else:
+            self.fields['principal_diagnoses_code'].queryset = diagCode.objects.filter(language="hu")
+        self.fields['principal_diagnoses_code'].empty_label = None
 
     def clean(self):
         cleaned_data = super(C23Form, self).clean()

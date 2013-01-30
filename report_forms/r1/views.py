@@ -822,7 +822,7 @@ def AnonymStatistics(request):
         if form.is_valid():
             start = form.cleaned_data['endDate'] - timedelta(days=365)
             end = form.cleaned_data['endDate']
-            workplaces = School.objects.all()
+            workplaces = School.objects.filter(country__printable_name = request.user.get_profile().country)
             for workplace in workplaces:
                 stat = CountStatistics(r1.objects.filter(added_by__personel__workplace = workplace, date_of_admission__gte = start, date_of_admission__lte = end ), False )
                 if stat['overall'] >= 60:

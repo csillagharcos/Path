@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from csvImporter.fields import IntegerField, FloatField, CharField
+from csvImporter.fields import CharField
 from django.contrib.auth.models import User
 from django.db import models
 from django.contrib import admin
@@ -24,13 +24,13 @@ class c1(models.Model):
     case_id                         = models.IntegerField(_('Case ID'))
     date_of_birth                   = models.DateField(_('Date of birth'))
     date_of_delivery                = models.DateTimeField(_('Date and time of delivery'))
-    number_of_prev_deliveries       = models.IntegerField(_('Number of previous deliveries'))
-    number_of_prev_deliveries_by_c  = models.IntegerField(_('Number of previous deliveries by c-section'), default=0)
+    number_of_prev_deliveries       = models.IntegerField(_('Number of previous deliveries'), null=True, blank=True)
+    number_of_prev_deliveries_by_c  = models.IntegerField(_('Number of previous deliveries by c-section'), default=0, null=True, blank=True)
     the_c_section                   = models.IntegerField(_('The c-section'), max_length=1, choices=C_SECTION_CHOICES, default=0)
     weight_of_the_newborn           = models.FloatField(_('Weight of newborn (g)'))
     mother_illness                  = models.IntegerField(_('Mother illnes or risk'), max_length=1, choices=YES_NO_CHOICES, default=0)
     specify_mother_illness          = models.CharField(_('Specify'), max_length=255, null=True, blank=True)
-    drg_code                        = models.CharField(_('DRG Code'), max_length=4, choices=DRG_CODES_CHOICES, default='', null=True, blank=True)
+    drg_code                        = models.CharField(_('Diagnose code'), max_length=4, choices=DRG_CODES_CHOICES, default='', null=True, blank=True)
     other_diagnoses                 = models.ManyToManyField(c1OtherDiagnose, verbose_name=_('Other diagnoses'), null=True, blank=True)
     added_on                        = models.DateTimeField(auto_now_add=True)
     added_by                        = models.ForeignKey(User, verbose_name=_('User'))

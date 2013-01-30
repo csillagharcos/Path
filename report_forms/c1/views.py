@@ -75,6 +75,7 @@ def Import(request):
                                             added_by = request.user,
                 )
                 if not line.other_diagnoses == "":
+
                     od = line.other_diagnoses.split(",")
                     for o in od:
                         try:
@@ -134,7 +135,7 @@ def Template(request):
         _('Weight of newborn'),
         _('Mother illnes or risk'),
         _('Specify'),
-        _('DRG Code'),
+        _('Diagnose code'),
         _('Other diagnoses'),
         )
     return csvDump(model, "c1")
@@ -153,7 +154,7 @@ def Export(request):
         _('Weight of newborn'),
         _('Mother illnes or risk'),
         _('Specify'),
-        _('DRG Code'),
+        _('Diagnose code'),
         _('Other diagnoses'),
     ),)
     cases = c1.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace)
@@ -267,7 +268,7 @@ def AnonymStatistics(request):
         if form.is_valid():
             start = form.cleaned_data['endDate'] - timedelta(days=365)
             end = form.cleaned_data['endDate']
-            workplaces = School.objects.all()
+            workplaces = School.objects.filter(country__printable_name = request.user.get_profile().country)
             for workplace in workplaces:
                 stat = CountStatistics(c1.objects.filter(added_by__personel__workplace = workplace, date_of_delivery__gte = start, date_of_delivery__lte = end ), False )
                 if stat['counted'] >= 30:
