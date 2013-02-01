@@ -28,6 +28,10 @@ class diagCode(models.Model):
     def __unicode__(self):
         return self.code
 
+    class Meta:
+        verbose_name = _('Diagnosis Code')
+        verbose_name_plural = _('Diagnosis Codes')
+
 class c21(models.Model):
     case_id                         = models.IntegerField(_('Case ID'), unique=True)
     hospital_registration_number    = models.CharField(_('Hospital registration number'), max_length=50)

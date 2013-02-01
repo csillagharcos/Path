@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from report_forms.c24.forms import C24Form, FileUploadForm, TrendForm, AnonymStatForm
-from report_forms.c24.models import c24, c24CSV, Medicine
+from report_forms.c24.models import c24, c24CSV, Medicine, diagCode
 from report_forms.tools import parseInt, parseFloat, csvDump, calculate_age, DateException, csvExport
 from django.utils.translation import ugettext_lazy as _
 from university.models import School
@@ -16,7 +16,7 @@ from university.models import School
 @login_required
 def Display(request):
     if request.method == "POST":
-        form = C24Form(request.LANGUAGE_CODE, request.POST)
+        form = C24Form(request.POST)
         if form.is_valid():
             new_c24 = c24.objects.create(
                 case_id                         = form.cleaned_data['case_id'],
@@ -47,10 +47,10 @@ def Display(request):
             new_c24.save()
             return render_to_response('c24_filled_out.html', {}, context_instance=RequestContext(request))
         else:
-            form = C24Form(request.LANGUAGE_CODE, request.POST)
+            form = C24Form(request.POST)
             return render(request, 'c24.html', { 'form': form, 'medicines': Medicine.objects.all() })
 
-    form = C24Form(request.LANGUAGE_CODE)
+    form = C24Form()
     return render(request, 'c24.html', { 'form': form, 'medicines': Medicine.objects.all() })
 
 @login_required
@@ -131,21 +131,27 @@ def Import(request):
 
 @login_required
 def Statistics(request):
-    context = CountStatistics( c24.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace) )
-    return render_to_response('c24_statistics.html', context, context_instance=RequestContext(request))
+    context = CountStatistics( c24.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), True, request.LANGUAGE_CODE )
+    if context:
+        return render_to_response('c24_statistics.html', context, context_instance=RequestContext(request))
+    else:
+        return render(request, 'c24_statistics.html', {"not_enough": True})
 
 @login_required
 def Trend(request):
     if request.method == "POST":
         form = TrendForm(request.POST)
         if form.is_valid():
-            interval_one = CountStatistics(c24.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date1a'], surgical_incision__lte = form.cleaned_data['date1b'] ), False )
-            interval_two = CountStatistics(c24.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date2a'], surgical_incision__lte = form.cleaned_data['date2b'] ), False )
+            interval_one = CountStatistics(c24.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date1a'], surgical_incision__lte = form.cleaned_data['date1b'] ), False, request.LANGUAGE_CODE )
+            interval_two = CountStatistics(c24.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date2a'], surgical_incision__lte = form.cleaned_data['date2b'] ), False, request.LANGUAGE_CODE )
             if form.cleaned_data['date3a'] and form.cleaned_data['date3b']:
-                interval_three = CountStatistics(c24.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date3a'], surgical_incision__lte = form.cleaned_data['date3b'] ), False )
+                interval_three = CountStatistics(c24.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace, surgical_incision__gte = form.cleaned_data['date3a'], surgical_incision__lte = form.cleaned_data['date3b'] ), False, request.LANGUAGE_CODE )
             else:
                 interval_three = False
-            return render_to_response('c24_trend_diagram.html', { 'one': interval_one, 'two': interval_two, 'three': interval_three, 'form': form.cleaned_data }, context_instance=RequestContext(request))
+            if not interval_one and not interval_two and not interval_three:
+                return render(request, 'c24_statistics.html', {"not_enough": True})
+            else:
+                return render_to_response('c24_trend_diagram.html', { 'one': interval_one, 'two': interval_two, 'three': interval_three, 'form': form.cleaned_data }, context_instance=RequestContext(request))
         else:
             form = TrendForm(request.POST)
             return render(request, 'c24_trend.html', { 'form': form })
@@ -159,7 +165,7 @@ def Template(request):
         _('Hospital registration number'),
         _('Date of birth'),
         _('Weight of patient'),
-        _('Principal diagnosis code (ICD-10 or DRG)'),
+        _('Principal diagnosis code (ICD-10)'),
         _('Principal procedure code'),
         _('Is the surgical procedure planned?'),
         _('Is patient allergic to any antibiotics suggested in the protocol?'),
@@ -253,20 +259,27 @@ def Export(request):
                       ),)
     return csvExport(model, 'c24_export_'+datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M"))
 
-def CountStatistics(cases, notView=True):
+def CountStatistics(cases, notView=True, language_code="hu"):
     ''' Query '''
     countable_case=uncountable_case=()
     medicines=()
+    acceptable_diagnoses = diagCode.objects.filter( language = language_code )
     for medicine in Medicine.objects.all():
         medicines += (medicine.name,)
     for case in cases:
-        if case.procedure_planned and calculate_age(case.date_of_birth) >= 18 and not case.preoperative_infection and not case.generic_name_of_drug in medicines:
+        exists = False
+        for diag in acceptable_diagnoses:
+            if case.principal_diagnoses_code in diag.code:
+                exists = True
+            if case.principal_procedure_code in diag.code:
+                exists = True
+        if exists and case.procedure_planned and calculate_age(case.date_of_birth) >= 18 and not case.preoperative_infection and not case.generic_name_of_drug in medicines:
             countable_case += (case,)
         else:
             uncountable_case += (case,)
 
     if len(countable_case) < 30 and notView:
-        return render_to_response('c24_statistics.html', {"not_enough": True })
+        return False
 
     ''' Working '''
     indicator_one = indicator_twoa = indicator_twob = indicator_three = indicator_four = indicator_five = indicator_six = indicator_seven = indicator_eight = indicator_nine = indicator_ten = 0

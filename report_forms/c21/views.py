@@ -132,7 +132,10 @@ def Import(request):
 @login_required
 def Statistics(request):
     context = CountStatistics(c21.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace), True, request.LANGUAGE_CODE)
-    return render_to_response('c21_statistics.html', context, context_instance=RequestContext(request))
+    if context:
+        return render_to_response('c21_statistics.html', context, context_instance=RequestContext(request))
+    else:
+        return render(request, 'c21_statistics.html', {"not_enough": True})
 
 @login_required
 def Trend(request):
@@ -269,7 +272,7 @@ def CountStatistics(cases, notView=True, language_code = "nolang"):
             uncountable_case += (case,)
 
     if len(countable_case) < 0 and notView:
-        return render_to_response('c21_statistics.html', {"not_enough": True })
+        return False
 
     ''' Working '''
     indicator_one = indicator_twoa = indicator_twob = indicator_three = indicator_four = indicator_five = indicator_six = indicator_seven = indicator_eight = indicator_nine = indicator_ten = 0

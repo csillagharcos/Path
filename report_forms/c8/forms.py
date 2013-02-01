@@ -1,13 +1,103 @@
 from django import forms
 from django.forms.models import ModelForm
-from report_forms.c8.models import c8
+from report_forms.c8.models import c8, diagCodes
 from django.utils.translation import ugettext_lazy as _
+from report_forms.choices import DIAGNOSES_GROUP_CHOICES
 
 class C8Form(ModelForm):
+    icd                         = forms.ChoiceField(label=_('Diagnosis code: ICD-10'), choices=())
+    drg                         = forms.ChoiceField(label=_('Diagnosis code: DRG'), choices=())
     date_of_birth               = forms.DateTimeField(label=_('Date of birth'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
     date_of_admission           = forms.DateTimeField(label=_('Date of hospital admission'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
     date_of_discharge           = forms.DateTimeField(label=_('Date of hospital discharge'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
     date_of_surgical_procedure  = forms.DateTimeField(label=_('Date of first surgical procedure'), widget=forms.TextInput(attrs={'class':'datepicker', 'placeholder':_('(yyyy-mm-dd)')}))
+
+    def __init__(self, language_code="hu", *args, **kwargs):
+        super(C8Form, self).__init__(*args, **kwargs)
+        #SETUP ICD-10 VERSION
+        stroke = CAP = HF = IH = CABG = KA = TAOA = CHOL = VVSAL = ()
+        for DC in diagCodes.objects.filter(language=language_code, group_category=0, group=0):
+            stroke += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=0, group=1):
+            CAP += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=0, group=2):
+            HF += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=0, group=3):
+            IH += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=0, group=4):
+            CABG += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=0, group=5):
+            KA += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=0, group=6):
+            TAOA += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=0, group=7):
+            CHOL += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=0, group=8):
+            VVSAL += ((str(DC.code), str(DC.code)),)
+        icd = (
+            ('', _('-- Select --')),
+        )
+        if stroke:
+            icd += ((_("Stroke"),  (stroke)),)
+        if CAP:
+            icd += ((_("Community acquired pneumonia"),  (CAP)),)
+        if HF:
+            icd += ((_("Hip fracture"),  (HF)),)
+        if IH:
+            icd += ((_("Inguinal hernia"),  (IH)),)
+        if CABG:
+            icd += ((_("CABG"),  (CABG)),)
+        if KA:
+            icd += ((_("Knee arthroscopy"),  (KA)),)
+        if TAOA:
+            icd += ((_("Tonsillectomy and/or adenoidectomy"),  (TAOA)),)
+        if CHOL:
+            icd += ((_("Cholecystectomy"),  (CHOL)),)
+        if VVSAL:
+            icd += ((_("Varicose veins - stripping and ligation"),  (VVSAL)),)
+        self.fields['icd'].choices=icd
+        #SETUP DRG VERSION
+        stroke = CAP = HF = IH = CABG = KA = TAOA = CHOL = VVSAL = ()
+        for DC in diagCodes.objects.filter(language=language_code, group_category=1, group=0):
+            stroke += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=1, group=1):
+            CAP += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=1, group=2):
+            HF += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=1, group=3):
+            IH += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=1, group=4):
+            CABG += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=1, group=5):
+            KA += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=1, group=6):
+            TAOA += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=1, group=7):
+            CHOL += ((str(DC.code), str(DC.code)),)
+        for DC in diagCodes.objects.filter(language=language_code, group_category=1, group=8):
+            VVSAL += ((str(DC.code), str(DC.code)),)
+        drg = (
+            ('', _('-- Select --')),
+            )
+        if stroke:
+            drg += ((_("Stroke"),  (stroke)),)
+        if CAP:
+            drg += ((_("Community acquired pneumonia"),  (CAP)),)
+        if HF:
+            drg += ((_("Hip fracture"),  (HF)),)
+        if IH:
+            drg += ((_("Inguinal hernia"),  (IH)),)
+        if CABG:
+            drg += ((_("CABG"),  (CABG)),)
+        if KA:
+            drg += ((_("Knee arthroscopy"),  (KA)),)
+        if TAOA:
+            drg += ((_("Tonsillectomy and/or adenoidectomy"),  (TAOA)),)
+        if CHOL:
+            drg += ((_("Cholecystectomy"),  (CHOL)),)
+        if VVSAL:
+            drg += ((_("Varicose veins - stripping and ligation"),  (VVSAL)),)
+        self.fields['drg'].choices=drg
 
     def clean(self):
         cleaned_data = super(C8Form, self).clean()

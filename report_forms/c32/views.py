@@ -88,7 +88,10 @@ def Import(request):
 @login_required
 def Statistics(request):
     context = CountStatistics(c32.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace))
-    return render_to_response('c32_statistics.html', context, context_instance=RequestContext(request))
+    if context:
+        return render_to_response('c32_statistics.html', context, context_instance=RequestContext(request))
+    else:
+        return render(request, 'c32_statistics.html', {"not_enough": True})
 
 @login_required
 def Trend(request):
@@ -159,7 +162,7 @@ def CountStatistics(cases, notView=True):
             countable_case += (case,)
 
     if len(countable_case) < 60 and notView:
-        return render_to_response('c32_statistics.html', {"not_enough": True })
+        return False
 
     ''' Working '''
     for case in countable_case:

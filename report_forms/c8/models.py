@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from csvImporter.fields import IntegerField, CharField
 from django.contrib.auth.models import User
 from django.db import models
@@ -6,6 +5,25 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from csvImporter.model import CsvModel
 from report_forms.choices import ADMISSION_STATUS_CHOICES, TYPE_OF_ADMISSION, YES_NO_CHOICES, DISCHARGE_STATUS_CHOICES, DIAGNOSES_GROUP_CHOICES, ICD10_CHOICES, DRG_CHOICES
+from settings import LANGUAGES
+
+DGC_CHOICES = (
+    (0, _("ICD-10")),
+    (1, _("DRG")),
+)
+
+class diagCodes(models.Model):
+    code = models.CharField(_('Code fields'), max_length=20)
+    group = models.IntegerField(_('Diagnosis group'), choices=DIAGNOSES_GROUP_CHOICES, default=0)
+    group_category = models.IntegerField(_('Diagnosis group category'), choices=DGC_CHOICES, default=0)
+    language = models.CharField(_('Language'), max_length=5, choices=LANGUAGES)
+
+    class Meta:
+        verbose_name = _('Diagnosis Code')
+        verbose_name_plural = _('Diagnosis Codes')
+
+    def __unicode__(self):
+        return self.code
 
 class c8(models.Model):
     patient_id                      = models.IntegerField(_('Patients ID'), unique=True)

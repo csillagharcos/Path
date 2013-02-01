@@ -17,7 +17,7 @@ from university.models import School
 @login_required
 def Display(request):
     if request.method == "POST":
-        form = C8Form(request.POST)
+        form = C8Form(request.LANGUAGE_CODE, request.POST)
         if form.is_valid():
             new_c8 = c8.objects.create(
                 patient_id                      = form.cleaned_data['patient_id'],
@@ -38,10 +38,10 @@ def Display(request):
             new_c8.save()
             return render_to_response('c8_filled_out.html', {}, context_instance=RequestContext(request))
         else:
-            form = C8Form(request.POST)
+            form = C8Form(request.LANGUAGE_CODE, request.POST)
             return render(request, 'c8.html', { 'form': form })
 
-    form = C8Form()
+    form = C8Form(request.LANGUAGE_CODE)
     return render(request, 'c8.html', { 'form': form })
 
 @login_required
@@ -111,7 +111,10 @@ def Import(request):
 @login_required
 def Statistics(request):
     context = CountStatistics(c8.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace))
-    return render_to_response('c8_statistics.html', context, context_instance=RequestContext(request))
+    if context:
+        return render_to_response('c8_statistics.html', context, context_instance=RequestContext(request))
+    else:
+        return render(request, 'c8_statistics.html', {"not_enough": True})
 
 @login_required
 def Trend(request):
@@ -200,8 +203,8 @@ def CountStatistics(cases, notView=True):
             else:
                 uncountable_case += (case,)
 
-#    if len(countable_case) < 60 and notView:
-#        return render_to_response('c8_statistics.html', { "not_enough": True })
+    if len(countable_case) < 60 and notView:
+        return False
 
     ''' Working '''
     s_days = hap_days = hf_days = cabg_days = ka_days = ih_days = taa_days = c_days = v_days = ()

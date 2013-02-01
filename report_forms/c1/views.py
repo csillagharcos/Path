@@ -101,7 +101,10 @@ def Import(request):
 @login_required
 def Statistics(request):
     context = CountStatistics(c1.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace) )
-    return render_to_response('c1_statistics.html', context, context_instance=RequestContext(request))
+    if context:
+        return render_to_response('c1_statistics.html', context, context_instance=RequestContext(request))
+    else:
+        return render(request, 'c1_statistics.html', {"not_enough": True})
 
 @login_required
 def Trend(request):
@@ -175,7 +178,7 @@ def CountStatistics(cases, notView=True):
             countable_case += (case,)
 
     if len(countable_case) < 30 and notView:
-        return render_to_response('c1_statistics.html', {"not_enough": True })
+        return False
 
     ''' Working '''
     numerator = map(float,[0,0,0,0,0,0,0,0])

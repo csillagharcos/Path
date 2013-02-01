@@ -139,7 +139,10 @@ def Import(request):
 @login_required
 def Statistics(request):
     context = CountStatistics(c23.objects.filter(added_by__personel__workplace = request.user.get_profile().workplace))
-    return render_to_response('c23_statistics.html', context, context_instance=RequestContext(request))
+    if context:
+        return render_to_response('c23_statistics.html', context, context_instance=RequestContext(request))
+    else:
+        return render(request, 'c23_statistics.html', {"not_enough": True})
 
 @login_required
 def Trend(request):
@@ -274,7 +277,7 @@ def CountStatistics(cases, notView=True):
             uncountable_case += (case,)
 
     if len(countable_case) < 30 and notView:
-        return render_to_response('c23_statistics.html', {"not_enough": True })
+        return False
 
     ''' Working '''
     indicator_one = indicator_twoa = indicator_twob = indicator_three = indicator_four = indicator_five = indicator_six = indicator_seven = indicator_eight = indicator_nine = indicator_ten = 0
