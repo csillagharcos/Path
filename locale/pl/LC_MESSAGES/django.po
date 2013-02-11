@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-18 12:20+0100\n"
+"POT-Creation-Date: 2013-02-11 15:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,9 +87,9 @@ msgstr ""
 
 #: personel/models.py:9 report_forms/c1/models.py:36
 #: report_forms/c13/models.py:31 report_forms/c20/models.py:25
-#: report_forms/c21/models.py:48 report_forms/c23/models.py:49
-#: report_forms/c24/models.py:48 report_forms/c31/models.py:20
-#: report_forms/c32/models.py:20 report_forms/c8/models.py:25
+#: report_forms/c21/models.py:60 report_forms/c23/models.py:60
+#: report_forms/c24/models.py:60 report_forms/c31/models.py:20
+#: report_forms/c32/models.py:20 report_forms/c8/models.py:43
 #: report_forms/c9/models.py:23 report_forms/c9/models.py:52
 #: report_forms/r1/models.py:84
 msgid "User"
@@ -99,284 +99,301 @@ msgstr ""
 msgid "University"
 msgstr ""
 
-#: report_forms/choices.py:4 report_forms/choices.py:107
-#: report_forms/choices.py:204 report_forms/c1/templates/c1_statistics.html:75
+#: report_forms/choices.py:5 report_forms/choices.py:117
+#: report_forms/choices.py:214 report_forms/c1/templates/c1_statistics.html:75
 #: report_forms/c1/templates/c1_trend_diagram.html:101
 #: report_forms/c1/templates/c1_trend_diagram.html:106
 #: report_forms/c1/templates/c1_trend_diagram.html:111
 msgid "Planned"
 msgstr ""
 
-#: report_forms/choices.py:5 report_forms/c1/templates/c1_statistics.html:76
+#: report_forms/choices.py:6 report_forms/c1/templates/c1_statistics.html:76
 #: report_forms/c1/templates/c1_trend_diagram.html:102
 #: report_forms/c1/templates/c1_trend_diagram.html:107
 #: report_forms/c1/templates/c1_trend_diagram.html:112
 msgid "Acute"
 msgstr ""
 
-#: report_forms/choices.py:9 report_forms/choices.py:33
-#: report_forms/choices.py:57 report_forms/choices.py:81
-#: report_forms/choices.py:99 report_forms/choices.py:125
-#: report_forms/choices.py:150
+#: report_forms/choices.py:10 report_forms/choices.py:34
+#: report_forms/choices.py:59 report_forms/choices.py:91
+#: report_forms/choices.py:109 report_forms/choices.py:135
+#: report_forms/choices.py:160 report_forms/c8/forms.py:38
+#: report_forms/c8/forms.py:80
 msgid "-- Select --"
 msgstr ""
 
-#: report_forms/choices.py:19
+#: report_forms/choices.py:20
 msgid "No"
 msgstr ""
 
-#: report_forms/choices.py:20
+#: report_forms/choices.py:21
 msgid "Yes"
 msgstr ""
 
-#: report_forms/choices.py:24
+#: report_forms/choices.py:25
 msgid "Physician"
 msgstr ""
 
-#: report_forms/choices.py:25
+#: report_forms/choices.py:26
 msgid "Nurse"
 msgstr ""
 
-#: report_forms/choices.py:26
+#: report_forms/choices.py:27
 msgid "Other healthcare worker"
 msgstr ""
 
-#: report_forms/choices.py:27
+#: report_forms/choices.py:28
 msgid "Cleaning staff"
 msgstr ""
 
-#: report_forms/choices.py:28
+#: report_forms/choices.py:29
 msgid "Total number of hospital staff"
 msgstr ""
 
-#: report_forms/choices.py:29 report_forms/choices.py:45
-#: report_forms/choices.py:53 report_forms/choices.py:76
-#: report_forms/choices.py:192
+#: report_forms/choices.py:30 report_forms/choices.py:46
+#: report_forms/choices.py:54 report_forms/choices.py:78
+#: report_forms/choices.py:85 report_forms/choices.py:202
 msgid "Other"
 msgstr ""
 
-#: report_forms/choices.py:44
+#: report_forms/choices.py:45
 msgid "Immediate"
 msgstr ""
 
-#: report_forms/choices.py:46
+#: report_forms/choices.py:47
 msgid "No Information"
 msgstr ""
 
-#: report_forms/choices.py:50 report_forms/choices.py:73
+#: report_forms/choices.py:51 report_forms/choices.py:75
+#: report_forms/choices.py:82
 msgid "IV"
 msgstr ""
 
-#: report_forms/choices.py:51 report_forms/choices.py:74
+#: report_forms/choices.py:52 report_forms/choices.py:76
+#: report_forms/choices.py:83
 msgid "IM"
 msgstr ""
 
-#: report_forms/choices.py:52 report_forms/choices.py:75
+#: report_forms/choices.py:53 report_forms/choices.py:77
+#: report_forms/choices.py:84
 msgid "SC"
 msgstr ""
 
-#: report_forms/choices.py:87
+#: report_forms/choices.py:55 report_forms/choices.py:86
+msgid "PO"
+msgstr ""
+
+#: report_forms/choices.py:97
 msgid "From home/nursing home/community care"
 msgstr ""
 
-#: report_forms/choices.py:88
+#: report_forms/choices.py:98
 msgid "Transferred from another hospital"
 msgstr ""
 
-#: report_forms/choices.py:92
+#: report_forms/choices.py:102
 msgid "Home/nursing home/community care"
 msgstr ""
 
-#: report_forms/choices.py:93
+#: report_forms/choices.py:103
 msgid "Transferred into another hospital"
 msgstr ""
 
-#: report_forms/choices.py:94
+#: report_forms/choices.py:104
 msgid "Death"
 msgstr ""
 
-#: report_forms/choices.py:95
+#: report_forms/choices.py:105
 msgid "Discharge at own request"
 msgstr ""
 
-#: report_forms/choices.py:108
+#: report_forms/choices.py:118
 msgid "Urgent surgical"
 msgstr ""
 
-#: report_forms/choices.py:109
+#: report_forms/choices.py:119
 msgid "Emergency care"
 msgstr ""
 
-#: report_forms/choices.py:113 report_forms/choices.py:126
-#: report_forms/c8/views.py:432
+#: report_forms/choices.py:123 report_forms/choices.py:136
+#: report_forms/c8/forms.py:41 report_forms/c8/forms.py:83
+#: report_forms/c8/views.py:435
 msgid "Stroke"
 msgstr ""
 
-#: report_forms/choices.py:114 report_forms/choices.py:132
+#: report_forms/choices.py:124 report_forms/choices.py:142
+#: report_forms/c8/forms.py:43 report_forms/c8/forms.py:85
 msgid "Community acquired pneumonia"
 msgstr ""
 
-#: report_forms/choices.py:115 report_forms/choices.py:139
-#: report_forms/c8/views.py:434
+#: report_forms/choices.py:125 report_forms/choices.py:149
+#: report_forms/c8/forms.py:45 report_forms/c8/forms.py:87
+#: report_forms/c8/views.py:437
 msgid "Hip fracture"
 msgstr ""
 
-#: report_forms/choices.py:116 report_forms/choices.py:151
-#: report_forms/c8/views.py:435
+#: report_forms/choices.py:126 report_forms/choices.py:161
+#: report_forms/c8/forms.py:49 report_forms/c8/forms.py:91
+#: report_forms/c8/views.py:438
 msgid "CABG"
 msgstr ""
 
-#: report_forms/choices.py:117 report_forms/choices.py:160
-#: report_forms/c8/views.py:436
+#: report_forms/choices.py:127 report_forms/choices.py:170
+#: report_forms/c8/forms.py:51 report_forms/c8/forms.py:93
+#: report_forms/c8/views.py:439
 msgid "Knee arthroscopy"
 msgstr ""
 
-#: report_forms/choices.py:118 report_forms/choices.py:144
-#: report_forms/choices.py:164 report_forms/c8/views.py:437
+#: report_forms/choices.py:128 report_forms/choices.py:154
+#: report_forms/choices.py:174 report_forms/c8/forms.py:47
+#: report_forms/c8/forms.py:89 report_forms/c8/views.py:440
 msgid "Inguinal hernia"
 msgstr ""
 
-#: report_forms/choices.py:119 report_forms/choices.py:169
-#: report_forms/c8/views.py:438
+#: report_forms/choices.py:129 report_forms/choices.py:179
+#: report_forms/c8/forms.py:53 report_forms/c8/forms.py:95
+#: report_forms/c8/views.py:441
 msgid "Tonsillectomy and/or adenoidectomy"
 msgstr ""
 
-#: report_forms/choices.py:120 report_forms/choices.py:172
-#: report_forms/c8/views.py:439
+#: report_forms/choices.py:130 report_forms/choices.py:182
+#: report_forms/c8/forms.py:55 report_forms/c8/forms.py:97
+#: report_forms/c8/views.py:442
 msgid "Cholecystectomy"
 msgstr ""
 
-#: report_forms/choices.py:121 report_forms/choices.py:177
-#: report_forms/c8/views.py:440
+#: report_forms/choices.py:131 report_forms/choices.py:187
+#: report_forms/c8/forms.py:57 report_forms/c8/forms.py:99
+#: report_forms/c8/views.py:443
 msgid "Varicose veins - stripping and ligation"
 msgstr ""
 
-#: report_forms/choices.py:183
+#: report_forms/choices.py:193
 msgid "Acute department"
 msgstr ""
 
-#: report_forms/choices.py:184
+#: report_forms/choices.py:194
 msgid "Rehabilitation department"
 msgstr ""
 
-#: report_forms/choices.py:188
+#: report_forms/choices.py:198
 msgid "Transfer to another inpatient hospital"
 msgstr ""
 
-#: report_forms/choices.py:189
+#: report_forms/choices.py:199
 msgid "Discharge to home, social home"
 msgstr ""
 
-#: report_forms/choices.py:190
+#: report_forms/choices.py:200
 msgid "Patient left hospital against medical advice"
 msgstr ""
 
-#: report_forms/choices.py:191
+#: report_forms/choices.py:201
 msgid "In-hospital death"
 msgstr ""
 
-#: report_forms/choices.py:196
+#: report_forms/choices.py:206
 msgid "neurology"
 msgstr ""
 
-#: report_forms/choices.py:197
+#: report_forms/choices.py:207
 msgid "cardiology"
 msgstr ""
 
-#: report_forms/choices.py:198
+#: report_forms/choices.py:208
 msgid "muskoloskeletal"
 msgstr ""
 
-#: report_forms/choices.py:199
+#: report_forms/choices.py:209
 msgid "pulmonary"
 msgstr ""
 
-#: report_forms/choices.py:200
+#: report_forms/choices.py:210
 msgid "other"
 msgstr ""
 
-#: report_forms/choices.py:205
+#: report_forms/choices.py:215
 msgid "Unplanned"
 msgstr ""
 
-#: report_forms/choices.py:209
+#: report_forms/choices.py:219
 msgid "Complication realated to main disease"
 msgstr ""
 
-#: report_forms/choices.py:210
+#: report_forms/choices.py:220
 msgid "Acute medical illness"
 msgstr ""
 
-#: report_forms/choices.py:211
+#: report_forms/choices.py:221
 msgid "Acute surgical illness"
 msgstr ""
 
-#: report_forms/choices.py:212
+#: report_forms/choices.py:222
 msgid "Acute needs of traumatology care"
 msgstr ""
 
-#: report_forms/choices.py:213
+#: report_forms/choices.py:223
 msgid "Decision of the patient or his/her family"
 msgstr ""
 
-#: report_forms/choices.py:217
+#: report_forms/choices.py:227
 msgid "Elective only"
 msgstr ""
 
-#: report_forms/choices.py:218
+#: report_forms/choices.py:228
 msgid "Day surgery"
 msgstr ""
 
-#: report_forms/choices.py:219
+#: report_forms/choices.py:229
 msgid "Emergency only"
 msgstr ""
 
-#: report_forms/choices.py:220
+#: report_forms/choices.py:230
 msgid "Mixed (elective/emergency)"
 msgstr ""
 
-#: report_forms/choices.py:224
+#: report_forms/choices.py:234
 msgid "Septic"
 msgstr ""
 
-#: report_forms/choices.py:225
+#: report_forms/choices.py:235
 msgid "Aseptic"
 msgstr ""
 
-#: report_forms/choices.py:229
+#: report_forms/choices.py:239
 msgid "Weekday"
 msgstr ""
 
-#: report_forms/choices.py:230
+#: report_forms/choices.py:240
 msgid "Saturday"
 msgstr ""
 
-#: report_forms/choices.py:231
+#: report_forms/choices.py:241
 msgid "Sunday/holiday"
 msgstr ""
 
 #: report_forms/c1/admin.py:16 report_forms/c1/forms.py:7
-#: report_forms/c1/models.py:34 report_forms/c1/views.py:138
-#: report_forms/c1/views.py:157
+#: report_forms/c1/models.py:34 report_forms/c1/views.py:142
+#: report_forms/c1/views.py:161
 msgid "Other diagnoses"
 msgstr ""
 
 #: report_forms/c1/forms.py:8 report_forms/c1/models.py:25
-#: report_forms/c1/views.py:128 report_forms/c1/views.py:147
+#: report_forms/c1/views.py:132 report_forms/c1/views.py:151
 #: report_forms/c20/forms.py:7 report_forms/c20/models.py:13
-#: report_forms/c20/views.py:131 report_forms/c20/views.py:150
-#: report_forms/c21/forms.py:14 report_forms/c21/models.py:26
-#: report_forms/c21/views.py:160 report_forms/c21/views.py:193
-#: report_forms/c23/forms.py:15 report_forms/c23/models.py:27
-#: report_forms/c23/views.py:167 report_forms/c23/views.py:200
-#: report_forms/c24/forms.py:15 report_forms/c24/models.py:26
-#: report_forms/c24/views.py:160 report_forms/c24/views.py:193
+#: report_forms/c20/views.py:135 report_forms/c20/views.py:154
+#: report_forms/c21/forms.py:15 report_forms/c21/models.py:38
+#: report_forms/c21/views.py:163 report_forms/c21/views.py:196
+#: report_forms/c23/forms.py:16 report_forms/c23/models.py:38
+#: report_forms/c23/views.py:170 report_forms/c23/views.py:203
+#: report_forms/c24/forms.py:15 report_forms/c24/models.py:38
+#: report_forms/c24/views.py:166 report_forms/c24/views.py:199
 #: report_forms/c31/forms.py:7 report_forms/c31/models.py:13
-#: report_forms/c31/views.py:117 report_forms/c31/views.py:131
+#: report_forms/c31/views.py:120 report_forms/c31/views.py:134
 #: report_forms/c32/forms.py:7 report_forms/c32/models.py:13
-#: report_forms/c32/views.py:116 report_forms/c32/views.py:130
-#: report_forms/c8/forms.py:7 report_forms/c8/models.py:13
-#: report_forms/c8/views.py:141 report_forms/c8/views.py:160
+#: report_forms/c32/views.py:119 report_forms/c32/views.py:133
+#: report_forms/c8/forms.py:10 report_forms/c8/models.py:31
+#: report_forms/c8/views.py:144 report_forms/c8/views.py:163
 #: report_forms/r1/forms.py:7 report_forms/r1/models.py:13
 #: report_forms/r1/views.py:354 report_forms/r1/views.py:432
 msgid "Date of birth"
@@ -390,15 +407,15 @@ msgstr ""
 #: report_forms/c20/forms.py:36 report_forms/c20/forms.py:37
 #: report_forms/c20/forms.py:38 report_forms/c20/forms.py:39
 #: report_forms/c20/forms.py:40 report_forms/c20/forms.py:41
-#: report_forms/c20/forms.py:44 report_forms/c21/forms.py:14
-#: report_forms/c21/forms.py:51 report_forms/c21/forms.py:52
-#: report_forms/c21/forms.py:53 report_forms/c21/forms.py:54
-#: report_forms/c21/forms.py:55 report_forms/c21/forms.py:56
-#: report_forms/c21/forms.py:59 report_forms/c23/forms.py:15
-#: report_forms/c23/forms.py:52 report_forms/c23/forms.py:53
-#: report_forms/c23/forms.py:54 report_forms/c23/forms.py:55
-#: report_forms/c23/forms.py:56 report_forms/c23/forms.py:57
-#: report_forms/c23/forms.py:60 report_forms/c24/forms.py:15
+#: report_forms/c20/forms.py:44 report_forms/c21/forms.py:15
+#: report_forms/c21/forms.py:60 report_forms/c21/forms.py:61
+#: report_forms/c21/forms.py:62 report_forms/c21/forms.py:63
+#: report_forms/c21/forms.py:64 report_forms/c21/forms.py:65
+#: report_forms/c21/forms.py:68 report_forms/c23/forms.py:16
+#: report_forms/c23/forms.py:61 report_forms/c23/forms.py:62
+#: report_forms/c23/forms.py:63 report_forms/c23/forms.py:64
+#: report_forms/c23/forms.py:65 report_forms/c23/forms.py:66
+#: report_forms/c23/forms.py:69 report_forms/c24/forms.py:15
 #: report_forms/c24/forms.py:52 report_forms/c24/forms.py:53
 #: report_forms/c24/forms.py:54 report_forms/c24/forms.py:55
 #: report_forms/c24/forms.py:56 report_forms/c24/forms.py:57
@@ -412,12 +429,12 @@ msgstr ""
 #: report_forms/c32/forms.py:39 report_forms/c32/forms.py:40
 #: report_forms/c32/forms.py:41 report_forms/c32/forms.py:42
 #: report_forms/c32/forms.py:43 report_forms/c32/forms.py:44
-#: report_forms/c32/forms.py:47 report_forms/c8/forms.py:7
-#: report_forms/c8/forms.py:8 report_forms/c8/forms.py:9
-#: report_forms/c8/forms.py:10 report_forms/c8/forms.py:59
-#: report_forms/c8/forms.py:60 report_forms/c8/forms.py:61
-#: report_forms/c8/forms.py:62 report_forms/c8/forms.py:63
-#: report_forms/c8/forms.py:64 report_forms/c8/forms.py:67
+#: report_forms/c32/forms.py:47 report_forms/c8/forms.py:10
+#: report_forms/c8/forms.py:11 report_forms/c8/forms.py:12
+#: report_forms/c8/forms.py:13 report_forms/c8/forms.py:149
+#: report_forms/c8/forms.py:150 report_forms/c8/forms.py:151
+#: report_forms/c8/forms.py:152 report_forms/c8/forms.py:153
+#: report_forms/c8/forms.py:154 report_forms/c8/forms.py:157
 #: report_forms/c9/forms.py:7 report_forms/c9/forms.py:26
 #: report_forms/c9/forms.py:27 report_forms/c9/forms.py:39
 #: report_forms/c9/forms.py:40 report_forms/c9/forms.py:41
@@ -445,11 +462,11 @@ msgstr ""
 msgid "Date and time of delivery"
 msgstr ""
 
-#: report_forms/c1/forms.py:9 report_forms/c21/forms.py:10
-#: report_forms/c21/forms.py:11 report_forms/c21/forms.py:12
-#: report_forms/c21/forms.py:13 report_forms/c23/forms.py:11
-#: report_forms/c23/forms.py:12 report_forms/c23/forms.py:13
-#: report_forms/c23/forms.py:14 report_forms/c24/forms.py:11
+#: report_forms/c1/forms.py:9 report_forms/c21/forms.py:11
+#: report_forms/c21/forms.py:12 report_forms/c21/forms.py:13
+#: report_forms/c21/forms.py:14 report_forms/c23/forms.py:12
+#: report_forms/c23/forms.py:13 report_forms/c23/forms.py:14
+#: report_forms/c23/forms.py:15 report_forms/c24/forms.py:11
 #: report_forms/c24/forms.py:12 report_forms/c24/forms.py:13
 #: report_forms/c24/forms.py:14
 msgid "(yyyy-mm-dd hh:mm)"
@@ -462,13 +479,13 @@ msgstr ""
 
 #: report_forms/c1/forms.py:31 report_forms/c1/forms.py:32
 #: report_forms/c13/forms.py:83 report_forms/c20/forms.py:36
-#: report_forms/c20/forms.py:37 report_forms/c21/forms.py:51
-#: report_forms/c21/forms.py:52 report_forms/c23/forms.py:52
-#: report_forms/c23/forms.py:53 report_forms/c24/forms.py:52
+#: report_forms/c20/forms.py:37 report_forms/c21/forms.py:60
+#: report_forms/c21/forms.py:61 report_forms/c23/forms.py:61
+#: report_forms/c23/forms.py:62 report_forms/c24/forms.py:52
 #: report_forms/c24/forms.py:53 report_forms/c31/forms.py:39
 #: report_forms/c31/forms.py:40 report_forms/c32/forms.py:39
-#: report_forms/c32/forms.py:40 report_forms/c8/forms.py:59
-#: report_forms/c8/forms.py:60 report_forms/c9/forms.py:39
+#: report_forms/c32/forms.py:40 report_forms/c8/forms.py:149
+#: report_forms/c8/forms.py:150 report_forms/c9/forms.py:39
 #: report_forms/c9/forms.py:40 report_forms/r1/forms.py:218
 #: report_forms/r1/forms.py:219
 msgid "First date"
@@ -476,13 +493,13 @@ msgstr ""
 
 #: report_forms/c1/forms.py:33 report_forms/c1/forms.py:34
 #: report_forms/c13/forms.py:84 report_forms/c20/forms.py:38
-#: report_forms/c20/forms.py:39 report_forms/c21/forms.py:53
-#: report_forms/c21/forms.py:54 report_forms/c23/forms.py:54
-#: report_forms/c23/forms.py:55 report_forms/c24/forms.py:54
+#: report_forms/c20/forms.py:39 report_forms/c21/forms.py:62
+#: report_forms/c21/forms.py:63 report_forms/c23/forms.py:63
+#: report_forms/c23/forms.py:64 report_forms/c24/forms.py:54
 #: report_forms/c24/forms.py:55 report_forms/c31/forms.py:41
 #: report_forms/c31/forms.py:42 report_forms/c32/forms.py:41
-#: report_forms/c32/forms.py:42 report_forms/c8/forms.py:61
-#: report_forms/c8/forms.py:62 report_forms/c9/forms.py:41
+#: report_forms/c32/forms.py:42 report_forms/c8/forms.py:151
+#: report_forms/c8/forms.py:152 report_forms/c9/forms.py:41
 #: report_forms/c9/forms.py:42 report_forms/r1/forms.py:220
 #: report_forms/r1/forms.py:221
 msgid "Second date"
@@ -490,23 +507,23 @@ msgstr ""
 
 #: report_forms/c1/forms.py:35 report_forms/c1/forms.py:36
 #: report_forms/c13/forms.py:85 report_forms/c20/forms.py:40
-#: report_forms/c20/forms.py:41 report_forms/c21/forms.py:55
-#: report_forms/c21/forms.py:56 report_forms/c23/forms.py:56
-#: report_forms/c23/forms.py:57 report_forms/c24/forms.py:56
+#: report_forms/c20/forms.py:41 report_forms/c21/forms.py:64
+#: report_forms/c21/forms.py:65 report_forms/c23/forms.py:65
+#: report_forms/c23/forms.py:66 report_forms/c24/forms.py:56
 #: report_forms/c24/forms.py:57 report_forms/c31/forms.py:43
 #: report_forms/c31/forms.py:44 report_forms/c32/forms.py:43
-#: report_forms/c32/forms.py:44 report_forms/c8/forms.py:63
-#: report_forms/c8/forms.py:64 report_forms/c9/forms.py:43
+#: report_forms/c32/forms.py:44 report_forms/c8/forms.py:153
+#: report_forms/c8/forms.py:154 report_forms/c9/forms.py:43
 #: report_forms/c9/forms.py:44 report_forms/r1/forms.py:222
 #: report_forms/r1/forms.py:223
 msgid "Third date"
 msgstr ""
 
 #: report_forms/c1/forms.py:39 report_forms/c13/forms.py:88
-#: report_forms/c20/forms.py:44 report_forms/c21/forms.py:59
-#: report_forms/c23/forms.py:60 report_forms/c24/forms.py:60
+#: report_forms/c20/forms.py:44 report_forms/c21/forms.py:68
+#: report_forms/c23/forms.py:69 report_forms/c24/forms.py:60
 #: report_forms/c31/forms.py:47 report_forms/c32/forms.py:47
-#: report_forms/c8/forms.py:67 report_forms/c9/forms.py:7
+#: report_forms/c8/forms.py:157 report_forms/c9/forms.py:7
 #: report_forms/c9/forms.py:47 report_forms/c9/models.py:12
 #: report_forms/c9/views.py:220 report_forms/c9/views.py:307
 #: report_forms/r1/forms.py:226
@@ -521,40 +538,40 @@ msgstr ""
 msgid "Other Diagnoses"
 msgstr ""
 
-#: report_forms/c1/models.py:23 report_forms/c1/views.py:126
-#: report_forms/c1/views.py:145 report_forms/c31/models.py:11
-#: report_forms/c31/views.py:115 report_forms/c31/views.py:129
-#: report_forms/c32/models.py:11 report_forms/c32/views.py:114
-#: report_forms/c32/views.py:128 report_forms/c8/models.py:11
-#: report_forms/c8/views.py:139 report_forms/c8/views.py:158
+#: report_forms/c1/models.py:23 report_forms/c1/views.py:130
+#: report_forms/c1/views.py:149 report_forms/c31/models.py:11
+#: report_forms/c31/views.py:118 report_forms/c31/views.py:132
+#: report_forms/c32/models.py:11 report_forms/c32/views.py:117
+#: report_forms/c32/views.py:131 report_forms/c8/models.py:29
+#: report_forms/c8/views.py:142 report_forms/c8/views.py:161
 #: report_forms/r1/views.py:430
 msgid "Patients ID"
 msgstr ""
 
-#: report_forms/c1/models.py:24 report_forms/c1/views.py:127
-#: report_forms/c1/views.py:146 report_forms/c1/templates/c1_error.html:30
-#: report_forms/c20/models.py:11 report_forms/c20/views.py:129
-#: report_forms/c20/views.py:148 report_forms/c20/templates/c20_error.html:30
-#: report_forms/c21/models.py:24 report_forms/c21/views.py:158
-#: report_forms/c21/views.py:191 report_forms/c21/templates/c21_error.html:22
-#: report_forms/c23/models.py:25 report_forms/c23/views.py:165
-#: report_forms/c23/views.py:198 report_forms/c23/templates/c23_error.html:22
-#: report_forms/c24/models.py:24 report_forms/c24/views.py:158
-#: report_forms/c24/views.py:191 report_forms/c24/templates/c24_error.html:22
-#: report_forms/c31/models.py:12 report_forms/c31/views.py:116
-#: report_forms/c31/views.py:130 report_forms/c31/templates/c31_error.html:30
-#: report_forms/c32/models.py:12 report_forms/c32/views.py:115
-#: report_forms/c32/views.py:129 report_forms/c32/templates/c32_error.html:30
-#: report_forms/c8/models.py:12 report_forms/c8/views.py:140
-#: report_forms/c8/views.py:159 report_forms/c8/templates/c8_error.html:30
+#: report_forms/c1/models.py:24 report_forms/c1/views.py:131
+#: report_forms/c1/views.py:150 report_forms/c1/templates/c1_error.html:30
+#: report_forms/c20/models.py:11 report_forms/c20/views.py:133
+#: report_forms/c20/views.py:152 report_forms/c20/templates/c20_error.html:30
+#: report_forms/c21/models.py:36 report_forms/c21/views.py:161
+#: report_forms/c21/views.py:194 report_forms/c21/templates/c21_error.html:22
+#: report_forms/c23/models.py:36 report_forms/c23/views.py:168
+#: report_forms/c23/views.py:201 report_forms/c23/templates/c23_error.html:22
+#: report_forms/c24/models.py:36 report_forms/c24/views.py:164
+#: report_forms/c24/views.py:197 report_forms/c24/templates/c24_error.html:22
+#: report_forms/c31/models.py:12 report_forms/c31/views.py:119
+#: report_forms/c31/views.py:133 report_forms/c31/templates/c31_error.html:30
+#: report_forms/c32/models.py:12 report_forms/c32/views.py:118
+#: report_forms/c32/views.py:132 report_forms/c32/templates/c32_error.html:30
+#: report_forms/c8/models.py:30 report_forms/c8/views.py:143
+#: report_forms/c8/views.py:162 report_forms/c8/templates/c8_error.html:30
 #: report_forms/c9/templates/c9_error.html:30 report_forms/r1/models.py:12
 #: report_forms/r1/views.py:353 report_forms/r1/views.py:431
 #: report_forms/r1/templates/r1_error.html:30
 msgid "Case ID"
 msgstr ""
 
-#: report_forms/c1/models.py:27 report_forms/c1/views.py:131
-#: report_forms/c1/views.py:150
+#: report_forms/c1/models.py:27 report_forms/c1/views.py:135
+#: report_forms/c1/views.py:154
 msgid "Number of previous deliveries"
 msgstr ""
 
@@ -562,8 +579,8 @@ msgstr ""
 msgid "Number of previous deliveries by c-section"
 msgstr ""
 
-#: report_forms/c1/models.py:29 report_forms/c1/views.py:133
-#: report_forms/c1/views.py:152
+#: report_forms/c1/models.py:29 report_forms/c1/views.py:137
+#: report_forms/c1/views.py:156
 msgid "The c-section"
 msgstr ""
 
@@ -571,19 +588,19 @@ msgstr ""
 msgid "Weight of newborn (g)"
 msgstr ""
 
-#: report_forms/c1/models.py:31 report_forms/c1/views.py:135
-#: report_forms/c1/views.py:154
+#: report_forms/c1/models.py:31 report_forms/c1/views.py:139
+#: report_forms/c1/views.py:158
 msgid "Mother illnes or risk"
 msgstr ""
 
-#: report_forms/c1/models.py:32 report_forms/c1/views.py:136
-#: report_forms/c1/views.py:155
+#: report_forms/c1/models.py:32 report_forms/c1/views.py:140
+#: report_forms/c1/views.py:159
 msgid "Specify"
 msgstr ""
 
-#: report_forms/c1/models.py:33 report_forms/c1/views.py:137
-#: report_forms/c1/views.py:156
-msgid "DRG Code"
+#: report_forms/c1/models.py:33 report_forms/c1/views.py:141
+#: report_forms/c1/views.py:160
+msgid "Diagnose code"
 msgstr ""
 
 #: report_forms/c1/models.py:42
@@ -602,19 +619,19 @@ msgstr ""
 msgid "You are not using the Template csv. The number of fields is different."
 msgstr ""
 
-#: report_forms/c1/views.py:129 report_forms/c1/views.py:148
+#: report_forms/c1/views.py:133 report_forms/c1/views.py:152
 msgid "Date of delivery"
 msgstr ""
 
-#: report_forms/c1/views.py:130 report_forms/c1/views.py:149
+#: report_forms/c1/views.py:134 report_forms/c1/views.py:153
 msgid "Time of delivery"
 msgstr ""
 
-#: report_forms/c1/views.py:132 report_forms/c1/views.py:151
+#: report_forms/c1/views.py:136 report_forms/c1/views.py:155
 msgid "Number of earlier deliveries by c-section"
 msgstr ""
 
-#: report_forms/c1/views.py:134 report_forms/c1/views.py:153
+#: report_forms/c1/views.py:138 report_forms/c1/views.py:157
 msgid "Weight of newborn"
 msgstr ""
 
@@ -1382,7 +1399,7 @@ msgid "C.13. Needle stick injuries"
 msgstr ""
 
 #: report_forms/c20/forms.py:8 report_forms/c20/models.py:23
-#: report_forms/c20/views.py:141 report_forms/c20/views.py:160
+#: report_forms/c20/views.py:145 report_forms/c20/views.py:164
 #: report_forms/r1/forms.py:19 report_forms/r1/models.py:51
 #: report_forms/r1/views.py:392 report_forms/r1/views.py:470
 msgid "Date of discharge"
@@ -1398,59 +1415,62 @@ msgid ""
 "Aspirin contradiction should be yes, since patient is allergic to aspirin!"
 msgstr ""
 
-#: report_forms/c20/models.py:12 report_forms/c20/views.py:130
-#: report_forms/c20/views.py:149 report_forms/c21/models.py:25
-#: report_forms/c21/views.py:159 report_forms/c21/views.py:192
-#: report_forms/c23/models.py:26 report_forms/c23/views.py:166
-#: report_forms/c23/views.py:199 report_forms/c24/models.py:25
-#: report_forms/c24/views.py:159 report_forms/c24/views.py:192
+#: report_forms/c20/models.py:12 report_forms/c20/views.py:134
+#: report_forms/c20/views.py:153 report_forms/c21/models.py:37
+#: report_forms/c21/views.py:162 report_forms/c21/views.py:195
+#: report_forms/c23/models.py:37 report_forms/c23/views.py:169
+#: report_forms/c23/views.py:202 report_forms/c24/models.py:37
+#: report_forms/c24/views.py:165 report_forms/c24/views.py:198
 msgid "Hospital registration number"
 msgstr ""
 
-#: report_forms/c20/models.py:14 report_forms/c20/views.py:132
-#: report_forms/c20/views.py:151
+#: report_forms/c20/models.py:14 report_forms/c20/views.py:136
+#: report_forms/c20/views.py:155 report_forms/c21/forms.py:7
+#: report_forms/c21/models.py:40 report_forms/c21/views.py:165
+#: report_forms/c23/forms.py:8 report_forms/c23/models.py:40
+#: report_forms/c24/models.py:40 report_forms/c24/views.py:168
 msgid "Principal diagnosis code (ICD-10)"
 msgstr ""
 
-#: report_forms/c20/models.py:15 report_forms/c20/views.py:133
-#: report_forms/c20/views.py:152
+#: report_forms/c20/models.py:15 report_forms/c20/views.py:137
+#: report_forms/c20/views.py:156
 msgid "Type of unit"
 msgstr ""
 
-#: report_forms/c20/models.py:16 report_forms/c20/views.py:134
-#: report_forms/c20/views.py:153
+#: report_forms/c20/models.py:16 report_forms/c20/views.py:138
+#: report_forms/c20/views.py:157
 msgid "Patient allergic to aspirin?"
 msgstr ""
 
-#: report_forms/c20/models.py:17 report_forms/c20/views.py:135
-#: report_forms/c20/views.py:154
+#: report_forms/c20/models.py:17 report_forms/c20/views.py:139
+#: report_forms/c20/views.py:158
 msgid "Is there a known contraindication or intolerance of aspirin?"
 msgstr ""
 
-#: report_forms/c20/models.py:18 report_forms/c20/views.py:136
-#: report_forms/c20/views.py:155
+#: report_forms/c20/models.py:18 report_forms/c20/views.py:140
+#: report_forms/c20/views.py:159
 msgid "Type of discharge"
 msgstr ""
 
-#: report_forms/c20/models.py:19 report_forms/c20/views.py:137
-#: report_forms/c20/views.py:156 report_forms/r1/models.py:15
+#: report_forms/c20/models.py:19 report_forms/c20/views.py:141
+#: report_forms/c20/views.py:160 report_forms/r1/models.py:15
 #: report_forms/r1/views.py:356 report_forms/r1/views.py:434
 msgid "If other"
 msgstr ""
 
-#: report_forms/c20/models.py:20 report_forms/c20/views.py:138
-#: report_forms/c20/views.py:157
+#: report_forms/c20/models.py:20 report_forms/c20/views.py:142
+#: report_forms/c20/views.py:161
 msgid ""
 "Is there a known objection/refusal to take aspirin-containing medication?"
 msgstr ""
 
-#: report_forms/c20/models.py:21 report_forms/c20/views.py:139
-#: report_forms/c20/views.py:158
+#: report_forms/c20/models.py:21 report_forms/c20/views.py:143
+#: report_forms/c20/views.py:162
 msgid "Was patient prescribed at discharge to take aspirin?"
 msgstr ""
 
-#: report_forms/c20/models.py:22 report_forms/c20/views.py:140
-#: report_forms/c20/views.py:159
+#: report_forms/c20/models.py:22 report_forms/c20/views.py:144
+#: report_forms/c20/views.py:163
 msgid ""
 "Was patient prescribed to take other (non-aspirin-containing) platelet "
 "aggregation inhibitor therapy?"
@@ -1540,202 +1560,216 @@ msgid ""
 "medication"
 msgstr ""
 
-#: report_forms/c21/forms.py:7 report_forms/c21/models.py:33
-#: report_forms/c21/views.py:167 report_forms/c21/views.py:200
-#: report_forms/c23/forms.py:8 report_forms/c23/models.py:34
-#: report_forms/c23/views.py:174 report_forms/c23/views.py:207
-#: report_forms/c24/forms.py:8 report_forms/c24/models.py:33
-#: report_forms/c24/views.py:167 report_forms/c24/views.py:200
+#: report_forms/c21/forms.py:8 report_forms/c21/models.py:45
+#: report_forms/c21/views.py:170 report_forms/c21/views.py:203
+#: report_forms/c23/forms.py:9 report_forms/c23/models.py:45
+#: report_forms/c23/views.py:177 report_forms/c23/views.py:210
+#: report_forms/c24/forms.py:8 report_forms/c24/models.py:45
+#: report_forms/c24/views.py:173 report_forms/c24/views.py:206
 msgid "In case of allergy to penicillin, scale of severity?"
 msgstr ""
 
-#: report_forms/c21/forms.py:8 report_forms/c21/models.py:42
-#: report_forms/c21/views.py:177 report_forms/c21/views.py:210
-#: report_forms/c23/forms.py:9 report_forms/c23/models.py:43
-#: report_forms/c23/views.py:184 report_forms/c23/views.py:217
-#: report_forms/c24/forms.py:9 report_forms/c24/models.py:42
-#: report_forms/c24/views.py:177 report_forms/c24/views.py:210
+#: report_forms/c21/forms.py:9 report_forms/c21/models.py:54
+#: report_forms/c21/views.py:180 report_forms/c21/views.py:213
+#: report_forms/c23/forms.py:10 report_forms/c23/models.py:54
+#: report_forms/c23/views.py:187 report_forms/c23/views.py:220
+#: report_forms/c24/forms.py:9 report_forms/c24/models.py:54
+#: report_forms/c24/views.py:183 report_forms/c24/views.py:216
 msgid "Route of administration of first dose"
 msgstr ""
 
-#: report_forms/c21/forms.py:10 report_forms/c21/models.py:46
-#: report_forms/c23/forms.py:11 report_forms/c23/models.py:47
-#: report_forms/c24/forms.py:11 report_forms/c24/models.py:46
+#: report_forms/c21/forms.py:11 report_forms/c21/models.py:58
+#: report_forms/c23/forms.py:12 report_forms/c23/models.py:58
+#: report_forms/c24/forms.py:11 report_forms/c24/models.py:58
 msgid "Date and time of surgical wound closure"
 msgstr ""
 
-#: report_forms/c21/forms.py:11 report_forms/c21/models.py:43
-#: report_forms/c23/forms.py:12 report_forms/c23/models.py:44
-#: report_forms/c24/forms.py:12 report_forms/c24/models.py:43
+#: report_forms/c21/forms.py:12 report_forms/c21/models.py:55
+#: report_forms/c23/forms.py:13 report_forms/c23/models.py:55
+#: report_forms/c24/forms.py:12 report_forms/c24/models.py:55
 msgid "Date and time of first dose"
 msgstr ""
 
-#: report_forms/c21/forms.py:12 report_forms/c21/models.py:36
-#: report_forms/c23/forms.py:13 report_forms/c23/models.py:37
-#: report_forms/c24/forms.py:13 report_forms/c24/models.py:36
+#: report_forms/c21/forms.py:13 report_forms/c21/models.py:48
+#: report_forms/c23/forms.py:14 report_forms/c23/models.py:48
+#: report_forms/c24/forms.py:13 report_forms/c24/models.py:48
 msgid "Date and time of surgical incision"
 msgstr ""
 
-#: report_forms/c21/forms.py:13 report_forms/c21/models.py:45
-#: report_forms/c23/forms.py:14 report_forms/c23/models.py:46
-#: report_forms/c24/forms.py:14 report_forms/c24/models.py:45
+#: report_forms/c21/forms.py:14 report_forms/c21/models.py:57
+#: report_forms/c23/forms.py:15 report_forms/c23/models.py:57
+#: report_forms/c24/forms.py:14 report_forms/c24/models.py:57
 msgid "Date and time of last dose"
 msgstr ""
 
-#: report_forms/c21/forms.py:16 report_forms/c21/models.py:27
-#: report_forms/c23/forms.py:17 report_forms/c23/models.py:28
-#: report_forms/c24/forms.py:17 report_forms/c24/models.py:27
+#: report_forms/c21/forms.py:17 report_forms/c21/models.py:39
+#: report_forms/c23/forms.py:18 report_forms/c23/models.py:39
+#: report_forms/c24/forms.py:17 report_forms/c24/models.py:39
 msgid "Weight of patient (kg)"
 msgstr ""
 
-#: report_forms/c21/forms.py:18 report_forms/c21/models.py:39
-#: report_forms/c23/forms.py:19 report_forms/c23/models.py:40
-#: report_forms/c24/forms.py:19 report_forms/c24/models.py:39
+#: report_forms/c21/forms.py:19 report_forms/c21/models.py:51
+#: report_forms/c23/forms.py:20 report_forms/c23/models.py:51
+#: report_forms/c24/forms.py:19 report_forms/c24/models.py:51
 msgid "First dose of first antibiotic drug"
 msgstr ""
 
-#: report_forms/c21/forms.py:19 report_forms/c23/forms.py:20
+#: report_forms/c21/forms.py:20 report_forms/c23/forms.py:21
 #: report_forms/c24/forms.py:20
 msgid "Second dose of first antibiotic drug"
 msgstr ""
 
-#: report_forms/c21/forms.py:20 report_forms/c21/models.py:44
-#: report_forms/c21/views.py:180 report_forms/c21/views.py:213
-#: report_forms/c23/forms.py:21 report_forms/c23/models.py:45
-#: report_forms/c23/views.py:187 report_forms/c23/views.py:220
-#: report_forms/c24/forms.py:21 report_forms/c24/models.py:44
-#: report_forms/c24/views.py:180 report_forms/c24/views.py:213
+#: report_forms/c21/forms.py:21 report_forms/c21/models.py:56
+#: report_forms/c21/views.py:183 report_forms/c21/views.py:216
+#: report_forms/c23/forms.py:22 report_forms/c23/models.py:56
+#: report_forms/c23/views.py:190 report_forms/c23/views.py:223
+#: report_forms/c24/forms.py:21 report_forms/c24/models.py:56
+#: report_forms/c24/views.py:186 report_forms/c24/views.py:219
 msgid "Total doses in 24 hours"
 msgstr ""
 
-#: report_forms/c21/forms.py:30 report_forms/c21/forms.py:31
-#: report_forms/c21/views.py:82 report_forms/c23/forms.py:31
-#: report_forms/c23/forms.py:32 report_forms/c23/views.py:83
+#: report_forms/c21/forms.py:39 report_forms/c21/forms.py:40
+#: report_forms/c21/views.py:82 report_forms/c23/forms.py:40
+#: report_forms/c23/forms.py:41 report_forms/c23/views.py:83
 #: report_forms/c24/forms.py:31 report_forms/c24/forms.py:32
 #: report_forms/c24/views.py:82
 msgid "Date of last dose happened before date of first dose!"
 msgstr ""
 
-#: report_forms/c21/forms.py:36 report_forms/c21/forms.py:37
-#: report_forms/c21/views.py:84 report_forms/c23/forms.py:37
-#: report_forms/c23/forms.py:38 report_forms/c23/views.py:85
+#: report_forms/c21/forms.py:45 report_forms/c21/forms.py:46
+#: report_forms/c21/views.py:84 report_forms/c23/forms.py:46
+#: report_forms/c23/forms.py:47 report_forms/c23/views.py:85
 #: report_forms/c24/forms.py:37 report_forms/c24/forms.py:38
 #: report_forms/c24/views.py:84
 msgid "Can't close the wound before the incision!"
 msgstr ""
 
-#: report_forms/c21/models.py:11 report_forms/c23/models.py:12
-#: report_forms/c24/models.py:11
+#: report_forms/c21/models.py:12 report_forms/c23/models.py:12
+#: report_forms/c24/models.py:12
 msgid "Name"
 msgstr ""
 
-#: report_forms/c21/models.py:12 report_forms/c23/models.py:13
-#: report_forms/c24/models.py:12
+#: report_forms/c21/models.py:13 report_forms/c23/models.py:13
+#: report_forms/c24/models.py:13
 msgid "Dosage"
 msgstr ""
 
-#: report_forms/c21/models.py:13 report_forms/c23/models.py:14
-#: report_forms/c24/models.py:13
+#: report_forms/c21/models.py:14 report_forms/c23/models.py:14
+#: report_forms/c24/models.py:14
 msgid "Dosage under 60kg"
 msgstr ""
 
-#: report_forms/c21/models.py:14 report_forms/c23/models.py:15
-#: report_forms/c24/models.py:14
+#: report_forms/c21/models.py:15 report_forms/c23/models.py:15
+#: report_forms/c24/models.py:15
 msgid "Dosage above 100kg"
 msgstr ""
 
-#: report_forms/c21/models.py:20 report_forms/c23/models.py:21
-#: report_forms/c24/models.py:20
+#: report_forms/c21/models.py:21 report_forms/c23/models.py:21
+#: report_forms/c24/models.py:21
 msgid "Medicine"
 msgstr ""
 
-#: report_forms/c21/models.py:21 report_forms/c23/models.py:22
-#: report_forms/c24/models.py:21
+#: report_forms/c21/models.py:22 report_forms/c23/models.py:22
+#: report_forms/c24/models.py:22
 msgid "Medicines"
 msgstr ""
 
-#: report_forms/c21/models.py:28 report_forms/c21/views.py:162
-#: report_forms/c21/views.py:195 report_forms/c24/models.py:28
-#: report_forms/c24/views.py:162 report_forms/c24/views.py:195
-msgid "Principal diagnosis code (ICD-10 or DRG)"
+#: report_forms/c21/models.py:25 report_forms/c23/models.py:25
+#: report_forms/c24/models.py:25
+msgid "Code"
 msgstr ""
 
-#: report_forms/c21/models.py:29 report_forms/c21/views.py:163
-#: report_forms/c21/views.py:196 report_forms/c23/models.py:30
-#: report_forms/c23/views.py:170 report_forms/c23/views.py:203
-#: report_forms/c24/models.py:29 report_forms/c24/views.py:163
-#: report_forms/c24/views.py:196
+#: report_forms/c21/models.py:26 report_forms/c23/models.py:26
+#: report_forms/c24/models.py:26 report_forms/c8/models.py:19
+msgid "Language"
+msgstr ""
+
+#: report_forms/c21/models.py:32 report_forms/c23/models.py:32
+#: report_forms/c24/models.py:32 report_forms/c8/models.py:22
+msgid "Diagnosis Code"
+msgstr ""
+
+#: report_forms/c21/models.py:33 report_forms/c23/models.py:33
+#: report_forms/c24/models.py:33 report_forms/c8/models.py:23
+msgid "Diagnosis Codes"
+msgstr ""
+
+#: report_forms/c21/models.py:41 report_forms/c21/views.py:166
+#: report_forms/c21/views.py:199 report_forms/c23/models.py:41
+#: report_forms/c23/views.py:173 report_forms/c23/views.py:206
+#: report_forms/c24/models.py:41 report_forms/c24/views.py:169
+#: report_forms/c24/views.py:202
 msgid "Principal procedure code"
 msgstr ""
 
-#: report_forms/c21/models.py:30 report_forms/c21/views.py:164
-#: report_forms/c21/views.py:197 report_forms/c23/models.py:31
-#: report_forms/c23/views.py:171 report_forms/c23/views.py:204
-#: report_forms/c24/models.py:30 report_forms/c24/views.py:164
-#: report_forms/c24/views.py:197
+#: report_forms/c21/models.py:42 report_forms/c21/views.py:167
+#: report_forms/c21/views.py:200 report_forms/c23/models.py:42
+#: report_forms/c23/views.py:174 report_forms/c23/views.py:207
+#: report_forms/c24/models.py:42 report_forms/c24/views.py:170
+#: report_forms/c24/views.py:203
 msgid "Is the surgical procedure planned?"
 msgstr ""
 
-#: report_forms/c21/models.py:31 report_forms/c21/views.py:165
-#: report_forms/c21/views.py:198 report_forms/c23/models.py:32
-#: report_forms/c23/views.py:172 report_forms/c23/views.py:205
-#: report_forms/c24/models.py:31 report_forms/c24/views.py:165
-#: report_forms/c24/views.py:198
+#: report_forms/c21/models.py:43 report_forms/c21/views.py:168
+#: report_forms/c21/views.py:201 report_forms/c23/models.py:43
+#: report_forms/c23/views.py:175 report_forms/c23/views.py:208
+#: report_forms/c24/models.py:43 report_forms/c24/views.py:171
+#: report_forms/c24/views.py:204
 msgid "Is patient allergic to any antibiotics suggested in the protocol?"
 msgstr ""
 
-#: report_forms/c21/models.py:32 report_forms/c21/views.py:166
-#: report_forms/c21/views.py:199 report_forms/c23/models.py:33
-#: report_forms/c23/views.py:173 report_forms/c23/views.py:206
-#: report_forms/c24/models.py:32 report_forms/c24/views.py:166
-#: report_forms/c24/views.py:199
+#: report_forms/c21/models.py:44 report_forms/c21/views.py:169
+#: report_forms/c21/views.py:202 report_forms/c23/models.py:44
+#: report_forms/c23/views.py:176 report_forms/c23/views.py:209
+#: report_forms/c24/models.py:44 report_forms/c24/views.py:172
+#: report_forms/c24/views.py:205
 msgid "Generic name of antibiotic drug"
 msgstr ""
 
-#: report_forms/c21/models.py:34 report_forms/c21/views.py:168
-#: report_forms/c21/views.py:201 report_forms/c23/models.py:35
-#: report_forms/c23/views.py:175 report_forms/c23/views.py:208
-#: report_forms/c24/models.py:34 report_forms/c24/views.py:168
-#: report_forms/c24/views.py:201
+#: report_forms/c21/models.py:46 report_forms/c21/views.py:171
+#: report_forms/c21/views.py:204 report_forms/c23/models.py:46
+#: report_forms/c23/views.py:178 report_forms/c23/views.py:211
+#: report_forms/c24/models.py:46 report_forms/c24/views.py:174
+#: report_forms/c24/views.py:207
 msgid "Has patient preoperative infection?"
 msgstr ""
 
-#: report_forms/c21/models.py:35 report_forms/c21/views.py:169
-#: report_forms/c21/views.py:202 report_forms/c23/models.py:36
-#: report_forms/c23/views.py:176 report_forms/c23/views.py:209
-#: report_forms/c24/models.py:35 report_forms/c24/views.py:169
-#: report_forms/c24/views.py:202
+#: report_forms/c21/models.py:47 report_forms/c21/views.py:172
+#: report_forms/c21/views.py:205 report_forms/c23/models.py:47
+#: report_forms/c23/views.py:179 report_forms/c23/views.py:212
+#: report_forms/c24/models.py:47 report_forms/c24/views.py:175
+#: report_forms/c24/views.py:208
 msgid "Type of infection"
 msgstr ""
 
-#: report_forms/c21/models.py:37 report_forms/c21/views.py:172
-#: report_forms/c21/views.py:205 report_forms/c23/models.py:38
-#: report_forms/c23/views.py:179 report_forms/c23/views.py:212
-#: report_forms/c24/models.py:37 report_forms/c24/views.py:172
-#: report_forms/c24/views.py:205
+#: report_forms/c21/models.py:49 report_forms/c21/views.py:175
+#: report_forms/c21/views.py:208 report_forms/c23/models.py:49
+#: report_forms/c23/views.py:182 report_forms/c23/views.py:215
+#: report_forms/c24/models.py:49 report_forms/c24/views.py:178
+#: report_forms/c24/views.py:211
 msgid "Prophylactic antibiotic given?"
 msgstr ""
 
-#: report_forms/c21/models.py:38 report_forms/c23/models.py:39
-#: report_forms/c24/models.py:38
+#: report_forms/c21/models.py:50 report_forms/c23/models.py:50
+#: report_forms/c24/models.py:50
 msgid "Generic name first used antibiotic drug"
 msgstr ""
 
-#: report_forms/c21/models.py:40 report_forms/c23/models.py:41
-#: report_forms/c24/models.py:40
+#: report_forms/c21/models.py:52 report_forms/c23/models.py:52
+#: report_forms/c24/models.py:52
 msgid "Generic name second used antibiotic drug"
 msgstr ""
 
-#: report_forms/c21/models.py:41 report_forms/c23/models.py:42
-#: report_forms/c24/models.py:41
+#: report_forms/c21/models.py:53 report_forms/c23/models.py:53
+#: report_forms/c24/models.py:53
 msgid "First dose of second antibiotic drug"
 msgstr ""
 
-#: report_forms/c21/models.py:54
+#: report_forms/c21/models.py:66
 msgid "Planned surgery for colorectal cancer"
 msgstr ""
 
-#: report_forms/c21/models.py:55
+#: report_forms/c21/models.py:67
 msgid "Planned surgery for colorectal cancers"
 msgstr ""
 
@@ -1763,82 +1797,86 @@ msgstr ""
 msgid "This case is already in the database!"
 msgstr ""
 
-#: report_forms/c21/views.py:161 report_forms/c21/views.py:194
-#: report_forms/c23/views.py:168 report_forms/c23/views.py:201
-#: report_forms/c24/views.py:161 report_forms/c24/views.py:194
+#: report_forms/c21/views.py:164 report_forms/c21/views.py:197
+#: report_forms/c23/views.py:171 report_forms/c23/views.py:204
+#: report_forms/c24/views.py:167 report_forms/c24/views.py:200
 msgid "Weight of patient"
-msgstr ""
-
-#: report_forms/c21/views.py:170 report_forms/c21/views.py:203
-#: report_forms/c23/views.py:177 report_forms/c23/views.py:210
-#: report_forms/c24/views.py:170 report_forms/c24/views.py:203
-msgid "Date of surgical incision"
-msgstr ""
-
-#: report_forms/c21/views.py:171 report_forms/c21/views.py:204
-#: report_forms/c23/views.py:178 report_forms/c23/views.py:211
-#: report_forms/c24/views.py:171 report_forms/c24/views.py:204
-msgid "Time of surgical incision"
 msgstr ""
 
 #: report_forms/c21/views.py:173 report_forms/c21/views.py:206
 #: report_forms/c23/views.py:180 report_forms/c23/views.py:213
-#: report_forms/c24/views.py:173 report_forms/c24/views.py:206
-msgid "Name of first dose"
+#: report_forms/c24/views.py:176 report_forms/c24/views.py:209
+msgid "Date of surgical incision"
 msgstr ""
 
 #: report_forms/c21/views.py:174 report_forms/c21/views.py:207
 #: report_forms/c23/views.py:181 report_forms/c23/views.py:214
-#: report_forms/c24/views.py:174 report_forms/c24/views.py:207
-msgid "Name of second dose"
-msgstr ""
-
-#: report_forms/c21/views.py:175 report_forms/c21/views.py:208
-#: report_forms/c23/views.py:182 report_forms/c23/views.py:215
-#: report_forms/c24/views.py:175 report_forms/c24/views.py:208
-msgid "First dose"
+#: report_forms/c24/views.py:177 report_forms/c24/views.py:210
+msgid "Time of surgical incision"
 msgstr ""
 
 #: report_forms/c21/views.py:176 report_forms/c21/views.py:209
 #: report_forms/c23/views.py:183 report_forms/c23/views.py:216
-#: report_forms/c24/views.py:176 report_forms/c24/views.py:209
-msgid "Second dose"
+#: report_forms/c24/views.py:179 report_forms/c24/views.py:212
+msgid "Name of first dose"
+msgstr ""
+
+#: report_forms/c21/views.py:177 report_forms/c21/views.py:210
+#: report_forms/c23/views.py:184 report_forms/c23/views.py:217
+#: report_forms/c24/views.py:180 report_forms/c24/views.py:213
+msgid "Name of second dose"
 msgstr ""
 
 #: report_forms/c21/views.py:178 report_forms/c21/views.py:211
 #: report_forms/c23/views.py:185 report_forms/c23/views.py:218
-#: report_forms/c24/views.py:178 report_forms/c24/views.py:211
-msgid "Date of first dose"
+#: report_forms/c24/views.py:181 report_forms/c24/views.py:214
+msgid "First dose"
 msgstr ""
 
 #: report_forms/c21/views.py:179 report_forms/c21/views.py:212
 #: report_forms/c23/views.py:186 report_forms/c23/views.py:219
-#: report_forms/c24/views.py:179 report_forms/c24/views.py:212
-msgid "Time of first dose"
+#: report_forms/c24/views.py:182 report_forms/c24/views.py:215
+msgid "Second dose"
 msgstr ""
 
 #: report_forms/c21/views.py:181 report_forms/c21/views.py:214
 #: report_forms/c23/views.py:188 report_forms/c23/views.py:221
-#: report_forms/c24/views.py:181 report_forms/c24/views.py:214
-msgid "Date of last dose"
+#: report_forms/c24/views.py:184 report_forms/c24/views.py:217
+msgid "Date of first dose"
 msgstr ""
 
 #: report_forms/c21/views.py:182 report_forms/c21/views.py:215
 #: report_forms/c23/views.py:189 report_forms/c23/views.py:222
-#: report_forms/c24/views.py:182 report_forms/c24/views.py:215
-msgid "Time of last dose"
-msgstr ""
-
-#: report_forms/c21/views.py:183 report_forms/c21/views.py:216
-#: report_forms/c23/views.py:190 report_forms/c23/views.py:223
-#: report_forms/c24/views.py:183 report_forms/c24/views.py:216
-msgid "Date of surgical wound closure"
+#: report_forms/c24/views.py:185 report_forms/c24/views.py:218
+msgid "Time of first dose"
 msgstr ""
 
 #: report_forms/c21/views.py:184 report_forms/c21/views.py:217
 #: report_forms/c23/views.py:191 report_forms/c23/views.py:224
-#: report_forms/c24/views.py:184 report_forms/c24/views.py:217
+#: report_forms/c24/views.py:187 report_forms/c24/views.py:220
+msgid "Date of last dose"
+msgstr ""
+
+#: report_forms/c21/views.py:185 report_forms/c21/views.py:218
+#: report_forms/c23/views.py:192 report_forms/c23/views.py:225
+#: report_forms/c24/views.py:188 report_forms/c24/views.py:221
+msgid "Time of last dose"
+msgstr ""
+
+#: report_forms/c21/views.py:186 report_forms/c21/views.py:219
+#: report_forms/c23/views.py:193 report_forms/c23/views.py:226
+#: report_forms/c24/views.py:189 report_forms/c24/views.py:222
+msgid "Date of surgical wound closure"
+msgstr ""
+
+#: report_forms/c21/views.py:187 report_forms/c21/views.py:220
+#: report_forms/c23/views.py:194 report_forms/c23/views.py:227
+#: report_forms/c24/views.py:190 report_forms/c24/views.py:223
 msgid "Time of surgical wound closure"
+msgstr ""
+
+#: report_forms/c21/views.py:198 report_forms/c24/views.py:201
+msgid "Principal diagnosis code (ICD-10 or DRG)"
 msgstr ""
 
 #: report_forms/c21/templates/c21_anon.html:36
@@ -2200,17 +2238,16 @@ msgstr ""
 msgid "V. criterion"
 msgstr ""
 
-#: report_forms/c23/models.py:29 report_forms/c23/views.py:169
-#: report_forms/c23/views.py:202
-msgid "Principal diagnosis code (DRG)"
-msgstr ""
-
-#: report_forms/c23/models.py:55 report_forms/c23/models.py:56
+#: report_forms/c23/models.py:66 report_forms/c23/models.py:67
 msgid "Planned surgery for hip replacement"
 msgstr ""
 
 #: report_forms/c23/views.py:123
 msgid "Weight of the patient can't be null!"
+msgstr ""
+
+#: report_forms/c23/views.py:172 report_forms/c23/views.py:205
+msgid "Principal diagnosis code (DRG)"
 msgstr ""
 
 #: report_forms/c23/templates/c23_header.html:2
@@ -2242,7 +2279,7 @@ msgstr ""
 msgid "% of single shot treatment:"
 msgstr ""
 
-#: report_forms/c24/models.py:54 report_forms/c24/models.py:55
+#: report_forms/c24/models.py:66 report_forms/c24/models.py:67
 msgid "Planned surgery for hysterectomy"
 msgstr ""
 
@@ -2252,27 +2289,27 @@ msgid "C.2.4. Prophylactic antibiotic use - Hysterectomy"
 msgstr ""
 
 #: report_forms/c31/forms.py:8 report_forms/c31/models.py:14
-#: report_forms/c31/views.py:118 report_forms/c31/views.py:132
+#: report_forms/c31/views.py:121 report_forms/c31/views.py:135
 #: report_forms/c32/forms.py:8 report_forms/c32/models.py:14
-#: report_forms/c32/views.py:117 report_forms/c32/views.py:131
-#: report_forms/c8/forms.py:8 report_forms/c8/models.py:14
-#: report_forms/c8/views.py:142 report_forms/c8/views.py:161
+#: report_forms/c32/views.py:120 report_forms/c32/views.py:134
+#: report_forms/c8/forms.py:11 report_forms/c8/models.py:32
+#: report_forms/c8/views.py:145 report_forms/c8/views.py:164
 msgid "Date of hospital admission"
 msgstr ""
 
 #: report_forms/c31/forms.py:9 report_forms/c31/models.py:16
-#: report_forms/c31/views.py:120 report_forms/c31/views.py:134
+#: report_forms/c31/views.py:123 report_forms/c31/views.py:137
 #: report_forms/c32/forms.py:9 report_forms/c32/models.py:16
-#: report_forms/c32/views.py:119 report_forms/c32/views.py:133
-#: report_forms/c8/forms.py:9 report_forms/c8/models.py:19
-#: report_forms/c8/views.py:147 report_forms/c8/views.py:166
+#: report_forms/c32/views.py:122 report_forms/c32/views.py:136
+#: report_forms/c8/forms.py:12 report_forms/c8/models.py:37
+#: report_forms/c8/views.py:150 report_forms/c8/views.py:169
 msgid "Date of hospital discharge"
 msgstr ""
 
 #: report_forms/c31/forms.py:18 report_forms/c31/forms.py:19
 #: report_forms/c31/views.py:58 report_forms/c32/forms.py:18
 #: report_forms/c32/forms.py:19 report_forms/c32/views.py:57
-#: report_forms/c8/forms.py:31 report_forms/c8/forms.py:32
+#: report_forms/c8/forms.py:121 report_forms/c8/forms.py:122
 #: report_forms/c8/views.py:71 report_forms/r1/forms.py:56
 #: report_forms/r1/forms.py:57 report_forms/r1/views.py:168
 #: report_forms/r1/views.py:170
@@ -2286,26 +2323,26 @@ msgstr ""
 msgid "Can't be discharged before admission!"
 msgstr ""
 
-#: report_forms/c31/models.py:15 report_forms/c31/views.py:119
-#: report_forms/c31/views.py:133 report_forms/c32/models.py:15
-#: report_forms/c32/views.py:118 report_forms/c32/views.py:132
-#: report_forms/c8/models.py:15 report_forms/c8/views.py:143
-#: report_forms/c8/views.py:162
+#: report_forms/c31/models.py:15 report_forms/c31/views.py:122
+#: report_forms/c31/views.py:136 report_forms/c32/models.py:15
+#: report_forms/c32/views.py:121 report_forms/c32/views.py:135
+#: report_forms/c8/models.py:33 report_forms/c8/views.py:146
+#: report_forms/c8/views.py:165
 msgid "Patient admission status"
 msgstr ""
 
-#: report_forms/c31/models.py:17 report_forms/c31/views.py:121
-#: report_forms/c31/views.py:135 report_forms/c32/models.py:17
-#: report_forms/c32/views.py:120 report_forms/c32/views.py:134
-#: report_forms/c8/models.py:20 report_forms/c8/views.py:148
-#: report_forms/c8/views.py:167 report_forms/r1/models.py:48
+#: report_forms/c31/models.py:17 report_forms/c31/views.py:124
+#: report_forms/c31/views.py:138 report_forms/c32/models.py:17
+#: report_forms/c32/views.py:123 report_forms/c32/views.py:137
+#: report_forms/c8/models.py:38 report_forms/c8/views.py:151
+#: report_forms/c8/views.py:170 report_forms/r1/models.py:48
 #: report_forms/r1/views.py:389 report_forms/r1/views.py:467
 msgid "Patient discharge status"
 msgstr ""
 
-#: report_forms/c31/models.py:18 report_forms/c31/views.py:122
-#: report_forms/c31/views.py:136 report_forms/c32/models.py:18
-#: report_forms/c32/views.py:121 report_forms/c32/views.py:135
+#: report_forms/c31/models.py:18 report_forms/c31/views.py:125
+#: report_forms/c31/views.py:139 report_forms/c32/models.py:18
+#: report_forms/c32/views.py:124 report_forms/c32/views.py:138
 msgid "ICD-10 at that departmental admission"
 msgstr ""
 
@@ -2427,59 +2464,75 @@ msgstr ""
 msgid "Stroke hopsital mortality"
 msgstr ""
 
-#: report_forms/c8/forms.py:10 report_forms/c8/models.py:18
-#: report_forms/c8/views.py:146 report_forms/c8/views.py:165
+#: report_forms/c8/forms.py:8 report_forms/c8/models.py:40
+#: report_forms/c8/views.py:153 report_forms/c8/views.py:172
+msgid "Diagnosis code: ICD-10"
+msgstr ""
+
+#: report_forms/c8/forms.py:9 report_forms/c8/models.py:41
+#: report_forms/c8/views.py:154 report_forms/c8/views.py:173
+msgid "Diagnosis code: DRG"
+msgstr ""
+
+#: report_forms/c8/forms.py:13 report_forms/c8/models.py:36
+#: report_forms/c8/views.py:149 report_forms/c8/views.py:168
 msgid "Date of first surgical procedure"
 msgstr ""
 
-#: report_forms/c8/forms.py:23
+#: report_forms/c8/forms.py:113
 msgid "Diagnosis group is not for DRG!"
 msgstr ""
 
-#: report_forms/c8/forms.py:27
+#: report_forms/c8/forms.py:117
 msgid "Diagnosis group is not for ICD!"
 msgstr ""
 
-#: report_forms/c8/forms.py:38 report_forms/c8/forms.py:39
+#: report_forms/c8/forms.py:128 report_forms/c8/forms.py:129
 #: report_forms/c8/views.py:73
 msgid "Can't be operated before admission!"
 msgstr ""
 
-#: report_forms/c8/forms.py:44 report_forms/c8/forms.py:45
+#: report_forms/c8/forms.py:134 report_forms/c8/forms.py:135
 #: report_forms/c8/views.py:75
 msgid "Can't be operated after discharge!"
 msgstr ""
 
-#: report_forms/c8/models.py:16 report_forms/c8/views.py:144
-#: report_forms/c8/views.py:163
-msgid "Type of admission"
+#: report_forms/c8/models.py:11
+msgid "ICD-10"
 msgstr ""
 
-#: report_forms/c8/models.py:17 report_forms/c8/views.py:145
-#: report_forms/c8/views.py:164
-msgid "Was surgical procedure?"
+#: report_forms/c8/models.py:12
+msgid "DRG"
 msgstr ""
 
-#: report_forms/c8/models.py:21 report_forms/c8/views.py:149
-#: report_forms/c8/views.py:168
+#: report_forms/c8/models.py:16
+msgid "Code fields"
+msgstr ""
+
+#: report_forms/c8/models.py:17 report_forms/c8/models.py:39
+#: report_forms/c8/views.py:152 report_forms/c8/views.py:171
 msgid "Diagnosis group"
 msgstr ""
 
-#: report_forms/c8/models.py:22 report_forms/c8/views.py:150
-#: report_forms/c8/views.py:169
-msgid "Diagnosis code: ICD-10"
+#: report_forms/c8/models.py:18
+msgid "Diagnosis group category"
 msgstr ""
 
-#: report_forms/c8/models.py:23 report_forms/c8/views.py:151
-#: report_forms/c8/views.py:170
-msgid "Diagnosis code: DRG"
+#: report_forms/c8/models.py:34 report_forms/c8/views.py:147
+#: report_forms/c8/views.py:166
+msgid "Type of admission"
 msgstr ""
 
-#: report_forms/c8/models.py:31
+#: report_forms/c8/models.py:35 report_forms/c8/views.py:148
+#: report_forms/c8/views.py:167
+msgid "Was surgical procedure?"
+msgstr ""
+
+#: report_forms/c8/models.py:49
 msgid "Length of Stay"
 msgstr ""
 
-#: report_forms/c8/models.py:32
+#: report_forms/c8/models.py:50
 msgid "Length of Stays"
 msgstr ""
 
@@ -2496,7 +2549,7 @@ msgstr ""
 msgid "Diagnosis group does not match ICD or DRG code."
 msgstr ""
 
-#: report_forms/c8/views.py:433
+#: report_forms/c8/views.py:436
 msgid "Hospital acquired pneumonia"
 msgstr ""
 
